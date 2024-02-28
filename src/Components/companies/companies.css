@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h2{
+    font-family: outfit;
+    text-align: center;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.content-para{
+    font-family: montserrat;
+    text-align: center;
+    padding: 13px 113px;
+}
+
+
+.banner-one img{
+    padding: 0 18px;
+}
+.banner-two img{
+    padding: 0 18px;
+}
+.banner-three img{
+    padding: 0 18px;
+}
+
+.img-items{
+    width: 170px;
+    height: 70px;
+} 
+
+.banner-one {
+  width: 95%;
+  /* background-color: antiquewhite; */
+  height: 60px;
+  margin: 0 40px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.banner-one-img{
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  /* background-color: black; */
+  animation: scroll 15s linear infinite;
+}
+
+.banner-two {
+  height: 60px;
+  margin: 0 140px;
+  /* background-color: aqua; */
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.banner-two-img {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  animation: scroll2 18s linear infinite;
+}
+  
+.banner-three {
+  width: 95%;
+  height: 60px;
+  margin: 0 40px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.banner-three-img {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll{
+  0%   { 
+    transform: translateX(100%); 
+  }
+  100% { 
+    transform: translateX(-100%); 
+  }
+}
+
+@keyframes scroll2{
+  100%   { 
+    transform: translateX(100%); 
+  }
+  0% { 
+    transform: translateX(-100%); 
+  }
+} 

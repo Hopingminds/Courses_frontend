@@ -1,0 +1,9 @@
+.wave{
+    background-image: url('../../../public/bg.png');
+    background-repeat: no-repeat;
+  
+    /* height: px; */
+    background-size: 50% 80%;
+    background-position:left bottom ;
+    /* margin-top: 20px; */
+}

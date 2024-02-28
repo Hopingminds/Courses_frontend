@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    margin-top: 25px;
+}
+
+h3{
+    font-family: outfit;
+    font-weight: 600;
+    font-size: 36px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.hero{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box{
+    display: flex;
+    width: 568px;
+    height: 166px;
+    margin: 20px 0 0 65px;
+}
+
+.img1{
+    width: 153px;
+    height: 136px;
+    padding: 16px 0 0 16px;
+}
+
+.content{
+    width: 369px;
+    margin: 16px 0 0 30px;
+}
+
+.row1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.health-box{
+    background-color: #E1F7E3;
+    width: 87px;
+}
+.health-para{
+    text-align: center;
+    padding-top: 5px; 
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 9px;
+    color: #15711F;
+}
+
+.price{
+    display: flex;
+}
+
+.dst-price{
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.org-price{
+    position: relative;
+    top: -2px;
+    padding: 0 2px;
+    color: #A1A5B3;
+    text-decoration: line-through;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.row2{
+    margin: 5px 0 ;
+}
+
+.row2-para{
+    font-family: montserrat;
+    padding: 3px 0;
+    font-size: 12.5px;
+}
+
+.row3{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0 ;
+}
+
+.row3-left{
+    display: flex;
+    width: 160px;
+    height: 32px;
+}
+
+.row3-left img{
+    width: 24px;
+    height: 24px;
+}
+
+.row3-name{
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 11px;
+    color: #4E5566;
+    position: relative;
+    padding: 5px 7px;
+}
+
+.row3-right{
+    display: flex;
+}
+
+.row3-star img{
+    width: 14px;
+}
+
+.row3-rating{
+    position: relative;
+    top: 2px;
+    font-family: DM Sans;
+    font-weight: 400;
+    font-size: 11px;
+}
+
+.row3-rating span{
+    font-weight: 500;
+    color: #8C94A3;
+}
+
+.row4{
+    display: flex;
+    justify-content: space-between;
+    font-family: DM Sans;
+    padding: 5px 0;
+}
+
+.row4-user{
+    display: flex;
+    justify-content: space-between;
+}
+
+.row4-user img{
+    width: 18px;
+    position: relative;
+    top: -3px;
+}
+
+.row4-username {
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.row4-username span{
+    font-weight: 500;
+    font-size: 12px;
+    color: #8C94A3;
+}
+
+.row4-hours{
+    display: flex;
+    justify-content: space-between;
+}
+
+.row4-hours img{
+    width: 18px;
+    position: relative;
+    top: -3px;
+}
+
+.row4-clock {
+    font-weight: 500;
+    font-size: 12px;
+    color: #8C94A3;
+}
+
+.row4-level{
+    display: flex;
+    justify-content: space-between;
+}
+
+.row4-level img{
+    width: 18px;
+    position: relative;
+    top: -3px;
+}
+
+.row4-levels {
+    font-weight: 500;
+    font-size: 12px;
+    color: #8C94A3;
+}
