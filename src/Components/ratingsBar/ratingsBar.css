@@ -1,0 +1,44 @@
+.ratings-container{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 5px;
+    gap: 11px;
+}
+.ratings-bar{
+    background: #EAEAEA;
+    width: 530px;
+    height: 10px;
+}
+.ratings-fill{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 5px;
+    gap: 11px;
+}
+.ratings-fill-1{
+    background: #F6B40A;
+    width: 512.62px;
+    height: 10px;
+}
+.ratings-fill-2{
+    background: #F6B40A;
+    width: 32.5px;
+    height: 10px;
+}
+.ratings-fill-3{
+    background: #F6B40A;
+    width: 13px;
+    height: 10px;
+}
+.ratings-fill-4{
+    background: #F6B40A;
+    width: 13px;
+    height: 10px;
+}
+.ratings-fill-5{
+    background: #F6B40A;
+    width: 13px;
+    height: 10px;
+}

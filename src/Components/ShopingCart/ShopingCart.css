@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.SC-Header{
+    background-color: black;
+    width: 100%;
+    height: 85px;
+    display: flex;
+    flex-direction: row;
+}
+
+.SC-Header-btn{
+    display: inline-block;
+    margin: 25px 0 0 12px;
+}
+
+.SC-Header-btn button{
+    background-color: #fff;
+    border: 1px solid #EAEAEA;
+    border-radius: 23px;
+    padding: 0px 7px;
+    margin: 0 3px;
+    height: 29px;
+    cursor: pointer;
+    font-family: Jost;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.SC-Header-btn button img{
+    width: 13px;
+}
+
+.SC-Header-content{
+    margin: 21px 0 0 45px;
+    width: 177px;
+    height: 37px;
+}
+
+.SC-Header-content h2{
+    font-family: Outfit;
+    font-weight: 600;
+    font-size: 27px;
+    color: #fff;
+}
+
+.SC-content{
+    display: flex;
+    /* padding: 50px 0px; */
+}
+
+.SC-content-left-box{
+    width: 853px;
+    margin: 20px 0 0 53px;
+    border: 2px solid #EAEAEA;
+    height: 200px;
+    border-radius: 14px;
+    display: flex;    
+}
+
+.SC-content-left-box-img img{
+    width: 420px;
+    height: 100%;
+}
+
+.SC-content-left-box-content{
+    width: 100%;
+    margin: 15px;
+}
+
+.SC-content-left-box-row1 p{
+    font-family: Montserrat;
+    font-size: 10.5px;
+}
+
+.SC-content-left-box-row1 p span{
+    color: #555555;
+}
+
+.SC-content-left-box-row2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SC-content-left-box-row2-left p{
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 8px 0;
+}
+
+.SC-content-left-box-row2-right p{
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 8px 0;
+    color: #1DBF73;
+}
+
+.SC-content-left-box-row3{
+    display: flex;
+    justify-content: space-between;
+}
+
+.SC-content-left-box-row3-left{
+    display: flex;
+    justify-content: space-between;
+    margin: 6px 0;
+    width: 58%;
+}
+
+.SC-content-left-box-row3-left-clock{
+    display: flex;
+    align-items: center;
+}
+
+.SC-content-left-box-row3-left-clock img{
+    width: 15px;
+    margin-right: 3px;
+}
+
+.SC-content-left-box-row3-left-clock p{
+    font-family: Montserrat;
+    font-size: 11px;
+    font-weight: 400;
+    color: #555555;
+}
+
+.SC-content-left-box-row3-left-hat{
+    display: flex;
+    align-items: center;
+}
+
+.SC-content-left-box-row3-left-hat img{
+    width: 17px;
+    margin-right: 3px;
+}
+
+.SC-content-left-box-row3-left-hat p{
+    font-family: Montserrat;
+    font-size: 11px;
+    font-weight: 400;
+    color: #555555;
+}
+
+.SC-content-left-box-row3-left-level{
+    display: flex;
+    align-items: center;
+}
+
+.SC-content-left-box-row3-left-level img{
+    width: 12px;
+    margin-right: 3px;
+}
+
+.SC-content-left-box-row3-left-level p{
+    font-family: Montserrat;
+    font-size: 11px;
+    font-weight: 400;
+    color: #555555;
+}
+
+.SC-content-left-box-row3-left-files{
+    display: flex;
+    align-items: center;
+}
+
+.SC-content-left-box-row3-left-files img{
+    width: 12px;
+    margin-right: 3px;
+}
+
+.SC-content-left-box-row3-left-files p{
+    font-family: Montserrat;
+    font-size: 11px;
+    font-weight: 400;
+    color: #555555;
+}
+
+.SC-content-left-box-row3-right p{
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 8px 0;
+    color: #1DBF73;
+}
+.SC-content-left-box-row4{
+    display: flex;
+    justify-content: flex-end;
+}
+.SC-content-left-box-row4 p{
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 8px 0;
+    color: #1DBF73;
+}   
+
+.SC-hr-line{
+    color: #555555;
+    margin-top: 11px;
+}
+
+.SC-content-left-box-row5{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 9px;
+}
+
+.SC-content-left-box-row5-rating-star{
+    display: flex;
+}
+.SC-content-left-box-row5-rating-star img{
+    width: 14px;
+    padding-right: 2px;
+}
+
+.SC-content-left-box-row5-price p{
+    color: #555555;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+
+.SC-content-right{
+    width: auto;
+    margin: 31px 87px;
+}
+
+.SC-content-right-row1 p{
+    font-family: outfit;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.SC-content-right-row2 p{
+    margin: 13px 0;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.SC-content-right-row3 p{
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 13px;
+    color: #1DBF73;
+}
+
+.SC-content-right-row4 button{
+    margin: 24px 0;
+    font-family: jost;
+    font-size: 22.84px;
+    padding: 9px 84px;
+    background-color: #1D2026;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+}
+

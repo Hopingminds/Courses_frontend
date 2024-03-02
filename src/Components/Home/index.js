@@ -4,6 +4,7 @@ import Category from '../Category'
 import Courses_Home from '../Courses_Home'
 import Companies from '../companies/Company'
 import CourseFeatures from '../CourseFeatures/CourseFeatures'
+import Testimonials from '../Testimonials'
 // import {Whatsapp  from '../../Assests/Icons/whatsapp.png'
 // import {Youtube } from '../../Assests/Icons/youtube.png'
 // import {Linkedin } from '../../Assests/Icons/linkedin.png'
@@ -36,18 +37,18 @@ export default function Home(){
             </div>
         </div>
 
-        <div className='w-[60%] flex'>
-            <div>
+        <div className='w-[60%] flex h-full items-end'>
+            <div >
                 <img src='/girl.png'/>
             </div>
-            <div className='flex flex-col space-y-5'>
+            {/* <div className='flex flex-col space-y-5'>
                 <Link className='h-12 w-12'><img src='/whatsapp.png'/></Link>
                 <Link className='h-12 w-12'><img src='/youtube.png'/></Link>
                 <Link className='h-12 w-12'><img src='/fb.png'/></Link>
                 <Link className='h-12 w-12'><img src='/insta.png'/></Link>
                 <Link className='h-12 w-12'><img src='/linkedin.png'/></Link>
               
-            </div>
+            </div> */}
         </div>
     </div>
     </div>
@@ -55,5 +56,6 @@ export default function Home(){
     <Courses_Home/>
     <Companies/>
     <CourseFeatures/>
+    <Testimonials />
     </>)
 }

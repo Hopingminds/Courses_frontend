@@ -1,0 +1,152 @@
+.main-rating-box{
+    display: flex;
+    flex-direction: row;
+}
+.reviews{
+    font-family: Montserrat;
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F5;
+    height: 1000px;
+    border-radius: 0px 0px 20px 20px;
+    gap: 20px;
+    padding: 26px;
+    /* z-index: 200; */
+}
+.reviews h3{
+    width: 115px;
+    height: 24px;
+    top: 30px;
+    left: 30px;
+}
+.review-head{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 8px;
+}
+.review-head img{
+    width: 25px;
+    height: 25px;
+    gap: 4px;
+
+}
+.img{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #555555;
+
+
+}
+
+.review-head h2{
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 43px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+/* Section-3 ratings */
+.main-rating-box{
+    position: relative;
+    gap: 15px;
+}
+.ratings-box{
+    display: flex;
+    flex-direction: column;
+}
+.ratings{
+    display: flex;
+}
+.ratings span{
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #555555;
+}
+.ratings img{
+    width: 16px;
+    height: 16px;
+    padding: 2px 2.66px 3.15px 2px;
+}
+/* Ratings Bar */
+
+/* Section-4 Person review */
+.person-reviews{
+    margin: 7px;
+}
+.person-review-1{
+    display: flex;
+    align-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    width: 650px;
+    height: 167px;
+    border-top: 1px solid #EAEAEA;
+}
+.person-review-1 img{
+    position: relative;
+    top: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 43px;
+    background: #F3F3F3;
+}
+.person-content{
+    /* background-color: red; */
+    Width: 560px;
+    color: #555555;
+}
+.person-review-box{
+    margin-top: 15px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+.person-review-box .h-1{
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0em;
+    text-align: left;
+    color: black;
+}
+.person-content .h-3{
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    color: black;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 3px;
+}
+.person-content .h-3 span{
+    margin-top: 16px;
+}
+.person-content img{
+    margin: 0;
+    padding: 0;
+    width: 14.74px;
+    height: 11.25px;
+
+}
+.person-review-box .h-2{
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left; 
+}
+.person-content .content-para1{
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+}

@@ -1,5 +1,6 @@
 import ProgressBar from "@ramonak/react-progress-bar";
 import './wishlistContent.css'
+import { Link } from "react-router-dom";
 
 export default function Mycourses(){
     return(<>
@@ -16,69 +17,69 @@ export default function Mycourses(){
             </select>
         </div>
         <div className="flex  mt-16 font-mons flex-wrap justify-between ">
-            <div className="h-[350px] w-[370px] border rounded-xl mb-16">
+            <a href='/single' className="h-[350px] w-[370px] border rounded-xl mb-16">
                 <img src="/fsdcard.png" className="h-[230px] w-full"/>
                 <div className="text-sm px-2 mt-2">by Determined-Instructors</div>
                 <div className="text-[15px] font-semibold px-2 mt-2">Beginner Guide For full Stack Development</div>
                 <ProgressBar completed={60} maxCompleted={100} height={4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2"/>
                 <div className="text-center font-semibold mt-2">25% Complete</div>
-            </div>
-            <div className="h-[350px] w-[370px] border rounded-xl mb-16">
+            </a>
+            <a href='/single' className="h-[350px] w-[370px] border rounded-xl mb-16">
                 <img src="/fsdcard.png" className="h-[230px] w-full"/>
                 <div className="text-sm px-2 mt-2">by Determined-Instructors</div>
                 <div className="text-[15px] font-semibold px-2 mt-2">Beginner Guide For full Stack Development</div>
                 <ProgressBar completed={60} maxCompleted={100} height={4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2"/>
                 <div className="text-center font-semibold mt-2">25% Complete</div>
-            </div>
-            <div className="h-[350px] w-[370px] border rounded-xl mb-16">
+            </a>
+            <a href='/single' className="h-[350px] w-[370px] border rounded-xl mb-16">
                 <img src="/fsdcard.png" className="h-[230px] w-full"/>
                 <div className="text-sm px-2 mt-2">by Determined-Instructors</div>
                 <div className="text-[15px] font-semibold px-2 mt-2">Beginner Guide For full Stack Development</div>
                 <ProgressBar completed={60} maxCompleted={100} height={4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2"/>
                 <div className="text-center font-semibold mt-2">25% Complete</div>
-            </div>
-            <div className="h-[350px] w-[370px] border rounded-xl mb-16">
+            </a>
+            <a href='/single' className="h-[350px] w-[370px] border rounded-xl mb-16">
                 <img src="/fsdcard.png" className="h-[230px] w-full"/>
                 <div className="text-sm px-2 mt-2">by Determined-Instructors</div>
                 <div className="text-[15px] font-semibold px-2 mt-2">Beginner Guide For full Stack Development</div>
                 <ProgressBar completed={60} maxCompleted={100} height={4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2"/>
                 <div className="text-center font-semibold mt-2">25% Complete</div>
-            </div>
-            <div className="h-[350px] w-[370px] border rounded-xl mb-16">
+            </a>
+            <a href='/single' className="h-[350px] w-[370px] border rounded-xl mb-16">
                 <img src="/fsdcard.png" className="h-[230px] w-full"/>
                 <div className="text-sm px-2 mt-2">by Determined-Instructors</div>
                 <div className="text-[15px] font-semibold px-2 mt-2">Beginner Guide For full Stack Development</div>
                 <ProgressBar completed={60} maxCompleted={100} height={4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2"/>
                 <div className="text-center font-semibold mt-2">25% Complete</div>
-            </div>
-            <div className="h-[350px] w-[370px] border rounded-xl mb-16">
+            </a>
+            <a href='/single' className="h-[350px] w-[370px] border rounded-xl mb-16">
                 <img src="/fsdcard.png" className="h-[230px] w-full"/>
                 <div className="text-sm px-2 mt-2">by Determined-Instructors</div>
                 <div className="text-[15px] font-semibold px-2 mt-2">Beginner Guide For full Stack Development</div>
                 <ProgressBar completed={60} maxCompleted={100} height={4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2"/>
                 <div className="text-center font-semibold mt-2">25% Complete</div>
-            </div>
-            <div className="h-[350px] w-[370px] border rounded-xl mb-16">
+            </a>
+            <a href='/single' className="h-[350px] w-[370px] border rounded-xl mb-16">
                 <img src="/fsdcard.png" className="h-[230px] w-full"/>
                 <div className="text-sm px-2 mt-2">by Determined-Instructors</div>
                 <div className="text-[15px] font-semibold px-2 mt-2">Beginner Guide For full Stack Development</div>
                 <ProgressBar completed={60} maxCompleted={100} height={4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2"/>
                 <div className="text-center font-semibold mt-2">25% Complete</div>
-            </div>
-            <div className="h-[350px] w-[370px] border rounded-xl mb-16">
+            </a>
+            <a href='/single' className="h-[350px] w-[370px] border rounded-xl mb-16">
                 <img src="/fsdcard.png" className="h-[230px] w-full"/>
                 <div className="text-sm px-2 mt-2">by Determined-Instructors</div>
                 <div className="text-[15px] font-semibold px-2 mt-2">Beginner Guide For full Stack Development</div>
                 <ProgressBar completed={60} maxCompleted={100} height={4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2"/>
                 <div className="text-center font-semibold mt-2">25% Complete</div>
-            </div>
-            <div className="h-[350px] w-[370px] border rounded-xl mb-16">
+            </a>
+            <a href='/single' className="h-[350px] w-[370px] border rounded-xl mb-16">
                 <img src="/fsdcard.png" className="h-[230px] w-full"/>
                 <div className="text-sm px-2 mt-2">by Determined-Instructors</div>
                 <div className="text-[15px] font-semibold px-2 mt-2">Beginner Guide For full Stack Development</div>
                 <ProgressBar completed={60} maxCompleted={100} height={4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2"/>
                 <div className="text-center font-semibold mt-2">25% Complete</div>
-            </div>
+            </a>
         </div>
     </div>
     <div className='wishlist-pages'>
