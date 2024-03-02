@@ -55,6 +55,13 @@ export default function Category(){
                         <div className="text-sm text-[#6E7485]">63,476 Courses</div>
                     </div>
             </Link>           
+            <Link to='/courses?category=management' className="flex h-24 w-[280px]  bg-[#EBEBFF] items-center">
+                    <div className="ml-2"><img  className="mix-blend-multiply w-14 h-12" src="/structur.png"/></div>
+                    <div className="ml-4">
+                        <div className="font-semibold">Management</div>
+                        <div className="text-sm text-[#6E7485]">63,476 Courses</div>
+                    </div>
+            </Link>           
     </div>
     </>)
 } 

@@ -10,7 +10,7 @@ const Footer = () => {
   return (<>
     <div className="bg-[#F5F5F5] flex flex-row justify-between px-24 py-7">
       <div className="flex flex-col gap-2 w-[341px]">
-        <Hm className="w-[154.88px] h-[59.86px]" />
+        <img src="/logo.png" className="w-[154.88px] h-[59.86px]" />
         <p className="text-[#555555] text-[18px] font-Montserrat w-[341px]">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
