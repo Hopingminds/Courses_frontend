@@ -33,7 +33,7 @@ export default function CDDetails(){
                         <ReactPlayer height='100%' width='100%' playing={false} url='https://www.youtube.com/watch?v=XewspIh58Qg'/>
                     </div>
                     <div className=' p-3'>
-                        <ChatBot/>
+                        {/* <ChatBot/> */}
                     </div>
                     
                 </div>
@@ -135,30 +135,20 @@ export default function CDDetails(){
                                             <button>
                                                 <p>Download</p>
                                             </button>
-                                            <button>
-                                                <p>Upload</p>
-                                            </button>
+                                           <div className='relative'>
+                                           <input style={{visibility:'hidden'}} className='w-16 absolute top-3 left-8 '
+                                 id="contained-button-file" type='file'/>
+                                            <label htmlFor="contained-button-file">
+                                            <p className='upload cursor-pointer'>
+                                                Upload                                               
+                                            </p>
+                                            </label>
+                                           </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div onClick={()=>ClickSection(2)}  className='CCDetails-Header-content-right-list-course'>
-                                <div className='CCDetails-Header-content-right-list-course-left'>
-                                    <div className='CCDetails-Header-content-right-list-course-left-row1'>
-                                        <p>Section 1 : Getting Started</p>
-                                    </div>
-                                    <div className='CCDetails-Header-content-right-list-course-left-row2'>
-                                        <p>5 Lessons</p>
-                                        <p>45 Mins</p>
-                                    </div>
-                                </div>
-                                <div className='CCDetails-Header-content-right-list-course-right'>
-                                    <button>
-                                        <img src="../Icons/dropdownarrow.svg" alt="dropdownarrow"></img>
-                                    </button>
-                                </div>
-                            </div>
                             <div className='outer-wrapper' id={2}>
                                 <div className='CCDetails-Header-content-right-list-course-list'>
                                     <div className='CCDetails-Header-content-right-list-course-list-video1'>

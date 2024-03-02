@@ -256,7 +256,7 @@
     color: #1DBF73;
 }
 
-.SC-content-right-row4 button{
+.checkout{
     margin: 24px 0;
     font-family: jost;
     font-size: 22.84px;
@@ -266,4 +266,3 @@
     border: none;
     border-radius: 50px;
 }
-

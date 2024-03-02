@@ -1,16 +1,12 @@
 import './a.css'
 export default function Testimonials(){
     return(<>
-     <div className="containertest my-10 font-mons">
+     <div className="containertest my-5 font-mons">
         <div className="contenttest">
         <div className="A"><img src="/Group 3749.png"/></div>
         <div className="B"><img src="/Group 3747.png"/></div>
         <div className="C"><img src="/Group 3748.png"/></div>
         </div>
-
-
-       
-
 <div className="content1" >
             <div className="card">
                 <img className="icon" src="/comma.png"/>

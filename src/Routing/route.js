@@ -21,6 +21,8 @@ import Comment from '../Components/Comment/Comment'
 import Faqs from '../Components/Faqs/Faqs'
 import Reviews from '../Components/Reviews/Reviews'
 import Certificate from '../Components/Certificate/Certificate'
+import Faq_single from '../Components/Faq_Single'
+import Checkout from '../Components/Checkout/checkout'
 
 
 
@@ -45,9 +47,10 @@ const Router = () => {
                     <Route exact path={'/chat'} element={<ChatBot/>}></Route>
                     <Route exact path={'/test'} element={<Testimonials/>}></Route>
                     <Route exact path={'/com'} element={<Comment/>}></Route>
-                    <Route exact path={'/faq'} element={<Faqs/>}></Route>
+                    <Route exact path={'/faq'} element={<Faq_single/>}></Route>
                     <Route exact path={'/review'} element={<Reviews/>}></Route>
                     <Route exact path={'/c'} element={<Certificate/>}></Route>
+                    <Route exact path={'/checkout'} element={<Checkout/>}></Route>
                 </Routes>
             <Footer/>
             </BrowserRouter >

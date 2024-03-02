@@ -7,8 +7,8 @@ import { ReactComponent as Instagram } from "../../Assets/Icons/instagram.svg";
 import { ReactComponent as Youtube } from "../../Assets/Icons/youtube.svg";
 
 const Footer = () => {
-  return (
-    <div className="bg-[#F5F5F5] flex flex-row justify-between px-24 py-28">
+  return (<>
+    <div className="bg-[#F5F5F5] flex flex-row justify-between px-24 py-7">
       <div className="flex flex-col gap-2 w-[341px]">
         <Hm className="w-[154.88px] h-[59.86px]" />
         <p className="text-[#555555] text-[18px] font-Montserrat w-[341px]">
@@ -73,7 +73,8 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  );
+    <div className="bg-[#F5F5F5] w-full text-center text-[#555555] font-semibold font-mons">© KATINA SKILLS PRIVATE LIMITED 2024</div>
+    </>);
 };
 
 export default Footer;

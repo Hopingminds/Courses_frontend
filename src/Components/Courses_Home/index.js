@@ -38,7 +38,7 @@ setBgColor(color[id])
             <button id='Electric Vechicle Design' onClick={Courses_Data}>Electric Vechicle Design</button>
             <button id='Cyber Security' onClick={Courses_Data}>Cyber Security</button>
             <button id='Hydro Carbon' onClick={Courses_Data}>Hydro Carbon</button>
-            <button id='Design' onClick={Courses_Data}>Design</button>
+            {/* <button id='Design' onClick={Courses_Data}>Design</button> */}
         </div>
         <div className="text-4xl font-outfit font-semibold mt-3">{content}</div>
         <div className="text-[#333333] text-[20px] mt-1">From critical workplace skills to technical topics, our catalog supports well-rounded professional development.</div>

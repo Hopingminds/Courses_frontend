@@ -1,15 +1,16 @@
 import ReactPlayer from 'react-player';
 import Main from '../Main/Main';
 import './CDHeader.css';
+import { Link } from 'react-router-dom';
 
 function CDHeader() {
     return (<>
     <div className='min-h-[1000px]'>
         <div className='cd-Header-container'>
-            <div className='Header-btn'>
-                <button type='submit' >
-                    <img src="../Icons/leftsidearrow.svg" alt="left-arrow"></img>
-                </button>
+            <div className=' ml-14 pt-5'>
+                <Link to='/'  >
+                    <img className='w-8 h-8 rounded-full bg-white p-2' src="../Icons/leftsidearrow.svg" alt="left-arrow"></img>
+                </Link>
             </div>
             <div className='Header-main'>
                 <div className='Header-content'>

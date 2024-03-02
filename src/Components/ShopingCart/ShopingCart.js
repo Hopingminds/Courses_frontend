@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import './ShopingCart.css';
 
 function ShopingCart(){
     return (
-        <div className='SC-container'>
+        <div className='SC-container mb-4'>
             <div className='SC-Header'>
                 <div className='SC-Header-btn'>
                     <button type='submit' >
@@ -85,8 +86,8 @@ function ShopingCart(){
                         <div className='SC-content-right-row3'>
                             <p>Including all the taxes</p>
                         </div>
-                        <div className='SC-content-right-row4'>
-                            <button type="">CHECKOUT</button>
+                        <div className='SC-content-right-row4 mt-4'>
+                            <Link className='checkout ' to='/checkout'>CHECKOUT</Link>
                         </div>
                     </div>
             </div>

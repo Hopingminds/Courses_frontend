@@ -19,7 +19,7 @@
     margin: 11px 0 0 8px;
 }
 
-.Header-btn button{
+.Header-btn Link{
     background-color: #fff;
     border: 1px solid #EAEAEA;
     border-radius: 23px;
@@ -33,7 +33,7 @@
     
 }
 
-.Header-btn button img{
+.Header-btn Link img{
     width: 10px;
 }
 
