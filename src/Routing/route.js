@@ -23,6 +23,7 @@ import Reviews from '../Components/Reviews/Reviews'
 import Certificate from '../Components/Certificate/Certificate'
 import Faq_single from '../Components/Faq_Single'
 import Checkout from '../Components/Checkout/checkout'
+import Overview_content from '../Components/Overview_content'
 
 
 
@@ -51,6 +52,7 @@ const Router = () => {
                     <Route exact path={'/review'} element={<Reviews/>}></Route>
                     <Route exact path={'/c'} element={<Certificate/>}></Route>
                     <Route exact path={'/checkout'} element={<Checkout/>}></Route>
+                    <Route exact path={'/over'} element={<Overview_content/>}></Route>
                 </Routes>
             <Footer/>
             </BrowserRouter >

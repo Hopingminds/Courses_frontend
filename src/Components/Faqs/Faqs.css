@@ -1,6 +1,7 @@
 .faq-main-container{
-    position: relative;
-    height: 504px;
+    /* position: relative; */
+    height:auto;
+    padding-bottom: 20px;
     background: #F5F5F5;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -9,12 +10,14 @@
     /* background-color: red; */
     display: flex;
     flex-direction: column;
-    position: absolute;
+    /* position: absolute; */
     width: 700px;
-    height: 444px;
-    left: 20px;
-    top: 30px;
+    /* min-height: 444px; */
+    /* left: 20px; */
+    /* top: 30px; */
     gap: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
 
 }
 .faq-box{
@@ -54,7 +57,7 @@
 .faq-box-descrip{
     background: #fff;
     width: 660px;
-    height: 192px;
+    min-height: 192px;
     top: 84px;
     padding: 5px 30px 5px 30px;
     border-radius: 8px;

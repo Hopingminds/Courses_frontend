@@ -20,7 +20,7 @@ function Curriculum() {
 
 
   return (
-    <div className='curriculum'>
+    <div className='curriculum' id='curriculum'>
       <p>Fast track your journey to become a skilled developer in just 6 months with our best Full Stack Developer Course.</p>
 
       <div className='curriculum-lessons'>

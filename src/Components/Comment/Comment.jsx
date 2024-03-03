@@ -5,7 +5,7 @@ const Comment = () => {
     return(
         <>
         {/* Last Section Comment-box */}
-        <div className="h-[400px]">
+        <div className="h-[400px] mt-5">
         <div className="faq-comment">
                 <h3>Leave comment</h3>
                 <p>Your email address will not be published. Required fields are marked.</p>

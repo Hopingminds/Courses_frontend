@@ -2,6 +2,7 @@ import ReactPlayer from 'react-player';
 import Main from '../Main/Main';
 import './CDHeader.css';
 import { Link } from 'react-router-dom';
+import Overview_content from '../Overview_content';
 
 function CDHeader() {
     return (<>
@@ -59,7 +60,8 @@ function CDHeader() {
            
 
         </div>
-        <Main />
+        {/* <Main /> */}
+        <Overview_content/>
         </div>
         </> );
 }

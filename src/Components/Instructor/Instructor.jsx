@@ -15,7 +15,7 @@ function Instructor() {
   const iconPaths = [Icon1, Icon2, Icon3, Icon4, Icon5];
 
   return (
-    <div className='instructor'>
+    <div className='instructor' id='Instructor'>
 
       <div className='instructor-container'>
 

@@ -1,13 +1,14 @@
 .main-rating-box{
     display: flex;
     flex-direction: row;
+    
 }
 .reviews{
     font-family: Montserrat;
     display: flex;
     flex-direction: column;
-    background-color: #F5F5F5;
-    height: 1000px;
+    /* background-color:red; */
+   height: fit-content;
     border-radius: 0px 0px 20px 20px;
     gap: 20px;
     padding: 26px;
@@ -16,8 +17,8 @@
 .reviews h3{
     width: 115px;
     height: 24px;
-    top: 30px;
-    left: 30px;
+    /* top: 30px; */
+    /* left: 30px; */
 }
 .review-head{
     display: flex;
@@ -81,6 +82,7 @@
 /* Section-4 Person review */
 .person-reviews{
     margin: 7px;
+    height: auto;
 }
 .person-review-1{
     display: flex;
@@ -88,7 +90,7 @@
     align-items: flex-start;
     gap: 20px;
     width: 650px;
-    height: 167px;
+    height: 185px;
     border-top: 1px solid #EAEAEA;
 }
 .person-review-1 img{
@@ -101,7 +103,7 @@
 }
 .person-content{
     /* background-color: red; */
-    Width: 560px;
+    width: 560px;
     color: #555555;
 }
 .person-review-box{
