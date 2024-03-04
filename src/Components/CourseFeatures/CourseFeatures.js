@@ -16,7 +16,7 @@ function CourseFeatures() {
                             <div className='health-box'>
                                 <p className='health-para'>Health & Fitness</p>
                             </div>
-                            <div className='price'>
+                            <div className='price1'>
                                 <p className='dst-price'>$14.00</p>
                                 <p className='org-price'>$26.00</p>
                             </div>
@@ -61,7 +61,7 @@ function CourseFeatures() {
                             <div className='health-box'>
                                 <p className='health-para'>Health & Fitness</p>
                             </div>
-                            <div className='price'>
+                            <div className='price1'>
                                 <p className='dst-price'>$14.00</p>
                                 <p className='org-price'>$26.00</p>
                             </div>
@@ -106,7 +106,7 @@ function CourseFeatures() {
                             <div className='health-box'>
                                 <p className='health-para'>Health & Fitness</p>
                             </div>
-                            <div className='price'>
+                            <div className='price1'>
                                 <p className='dst-price'>$14.00</p>
                                 <p className='org-price'>$26.00</p>
                             </div>
@@ -151,7 +151,7 @@ function CourseFeatures() {
                             <div className='health-box'>
                                 <p className='health-para'>Health & Fitness</p>
                             </div>
-                            <div className='price'>
+                            <div className='price1'>
                                 <p className='dst-price'>$14.00</p>
                                 <p className='org-price'>$26.00</p>
                             </div>
