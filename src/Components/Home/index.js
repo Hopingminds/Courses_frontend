@@ -15,25 +15,26 @@ export default function Home(){
     <div className='w-full bg-gradient-to-r from-[#FFF5BE] to-[#D0F7EA]'>
     <div className="h-[88vh] flex w-full px-10  pt-10 wave">
         <div className="w-[45%] h-full  ">
-            <div className="text-6xl font-bold text-left font-outfit">Learn a New Skill Anytime , and Anywhere.</div>
+            <div className="text-6xl font-bold text-left font-outfit">Level Up Your Skills. Stand Out from the Crowd</div>
+            <div className='font-mons font-semibold text-lg'>(learn anytime, earn academic credits anywhere)</div>
             <div className="flex text-[20px]  w-full pt-5">
-                <div className="w-full font-mons text-[#4E5566]"><span className="font-semibold">1000+</span> Courses covering all tech domains for you to learn and explore new oppurtunities. Learn from Industry Experts and land your Dream Job.</div>
+                <div className="w-full font-mons text-[#4E5566]">Explore over 1000 courses across various technology domains to broaden your skills and uncover exciting opportunities</div>
             </div>
             <div className="flex font-mons h-12 w-[340px]  justify-between mt-5">
                 <button className="bg-[#333333] w-40 rounded-full text-white font-semibold">Start Trial</button>
             </div>
             <div className="flex mt-3 justify-around">
                 <div className="w-28 font-mons">
-                    <div className="text-[#1DBF73] font-bold text-[30px]">1000+</div>
-                    <div className='text-[#333333] font-bold'>Courses to choose from</div>
+                    <div className="text-[#1DBF73] font-bold text-[30px]">100+</div>
+                    <div className='text-[#333333] font-bold'>Courses to learn</div>
                 </div>
                 <div className="w-28 font-mons">
-                    <div className="text-[#333333] font-bold text-[30px]">5000+</div>
-                    <div className='text-[#333333] font-bold'>Courses to choose from</div>
+                    <div className="text-[#333333] font-bold text-[30px]">150+</div>
+                    <div className='text-[#333333] font-bold'>Companies to Land</div>
                 </div>
                 <div className="w-28 font-mons">
                     <div className="text-[#F0C932] font-bold text-[30px]">200+</div>
-                    <div className='text-[#333333] font-bold'>Courses to choose from</div>
+                    <div className='text-[#333333] font-bold'>Projects to build</div>
                 </div>
             </div>
         </div>

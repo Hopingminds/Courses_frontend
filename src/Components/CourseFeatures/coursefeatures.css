@@ -27,7 +27,7 @@ h3{
 
 .box{
     display: flex;
-    width: 568px;
+    width: 42%;
     height: 166px;
     margin: 20px 0 0 65px;
 }
@@ -143,17 +143,18 @@ h3{
     justify-content: space-between;
     font-family: DM Sans;
     padding: 5px 0;
+    align-items: center;
 }
 
 .row4-user{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .row4-user img{
     width: 18px;
     position: relative;
-    top: -3px;
 }
 
 .row4-username {
@@ -170,12 +171,12 @@ h3{
 .row4-hours{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .row4-hours img{
     width: 18px;
     position: relative;
-    top: -3px;
 }
 
 .row4-clock {
@@ -192,7 +193,6 @@ h3{
 .row4-level img{
     width: 18px;
     position: relative;
-    top: -3px;
 }
 
 .row4-levels {

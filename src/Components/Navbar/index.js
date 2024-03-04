@@ -36,7 +36,7 @@ export default function Navbar(){
 
         <div className='flex items-center space-x-4'>
             <Link to='/learning' className='font-semibold'>My Learning</Link>
-            <Bell/>           
+            <Link to='/notification'><Bell/></Link>           
             <Link to='/learning/wishlist'><Heart/></Link>
             <Link to='/cart'><Cart /></Link>
             <Link to='/register' className='text-[#1D2026] font-mons py-2 px-4 text-[16px] font-semibold'>Create Account</Link>

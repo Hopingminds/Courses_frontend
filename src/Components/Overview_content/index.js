@@ -18,7 +18,7 @@ export default function Overview_content(){
                     <Link smooth  to="#Reviews" className="w-28 h-10 bg-white flex items-center justify-center font-semibold">Reviews</Link>
                     <Link smooth  to="#FAQ's" className="w-28 h-10 bg-white flex items-center justify-center font-semibold">FAQ's</Link>
                 </div>
-                <div className="flex flex-col w-[700px] overflow-y-scroll overflow-x-hidden scroll-smooth">
+                <div className="flex flex-col w-[700px]  scroll-smooth">
                     <Overview />
                     <Curriculum/>
                     <Instructor/>

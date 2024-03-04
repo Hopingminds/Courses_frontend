@@ -87,6 +87,19 @@ function Companies() {
                         <img className='img-items' src='../img/sharechat.png' alt='sharechat'></img>
                         <img className='img-items' src='../img/uolo.png' alt='google'></img>
                         <img className='img-items' src='../img/ola.png' alt='ajio'></img>
+                        <img className='img-items' src='../img/ola.png' alt='ajio'></img>
+                        <img className='img-items' src='../img/wipro.png' alt='paytm'></img>
+                        <img className='img-items' src='../img/revv.png' alt='paytm'></img>
+                        <img className='img-items' src='../img/infosys.png' alt='paytm'></img>
+                        <img className='img-items' src='../img/sharechat.png' alt='sharechat'></img>
+                        <img className='img-items' src='../img/uolo.png' alt='google'></img>
+                        <img className='img-items' src='../img/ola.png' alt='ajio'></img>
+                        <img className='img-items' src='../img/wipro.png' alt='paytm'></img>
+                        <img className='img-items' src='../img/revv.png' alt='paytm'></img>
+                        <img className='img-items' src='../img/infosys.png' alt='paytm'></img>
+                        <img className='img-items' src='../img/sharechat.png' alt='sharechat'></img>
+                        <img className='img-items' src='../img/uolo.png' alt='google'></img>
+                        <img className='img-items' src='../img/ola.png' alt='ajio'></img>
                     {/* </div> */}
                 </div>
             </div>

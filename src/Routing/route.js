@@ -24,6 +24,7 @@ import Certificate from '../Components/Certificate/Certificate'
 import Faq_single from '../Components/Faq_Single'
 import Checkout from '../Components/Checkout/checkout'
 import Overview_content from '../Components/Overview_content'
+import Notification from '../Components/Notification'
 
 
 
@@ -53,6 +54,7 @@ const Router = () => {
                     <Route exact path={'/c'} element={<Certificate/>}></Route>
                     <Route exact path={'/checkout'} element={<Checkout/>}></Route>
                     <Route exact path={'/over'} element={<Overview_content/>}></Route>
+                    <Route exact path={'/notification'} element={<Notification/>}></Route>
                 </Routes>
             <Footer/>
             </BrowserRouter >
