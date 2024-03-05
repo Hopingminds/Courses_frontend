@@ -13,7 +13,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0 40px;
-    /* background-color: red; */
 }
 
 @media only screen and (max-width: 1300px){
@@ -28,7 +27,6 @@
     }
     .wishlist-box-content{
         width: 100%;
-        padding: 0 5vw;
     }
     .wishlist-box-row3{
         gap: 15px;
@@ -38,24 +36,31 @@
 .wishlist-box{
     width: 48%;
     border: 2px solid #EAEAEA;
-    height: 170px;
-    border-radius: 14px;
+    border-radius: 1vw;
     display: flex;    
     margin-top: 20px;
 }
 
+.wishlist-box-img{
+    width: 60%;
+}
+
 .wishlist-box-img img{
     height: 100%;
+    width: -webkit-fill-available;
 }
 
 .wishlist-box-content{
     margin: 11px 7px 11px 11px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .wishlist-box-row1 p{
     font-family: Montserrat;
-    font-size: 10.5px;
+    font-size: 0.8vw;
 }
 
 .wishlist-box-row1 p span{
@@ -64,92 +69,89 @@
 
 .wishlist-box-row2 p{
     font-family: Montserrat;
-    font-size: 13px;
+    font-size: 1.1vw;
     font-weight: 600;
     margin: 8px 0;
 }
 
 .wishlist-box-row3{
     display: flex;
+    align-items: center;
     margin: 14px 0;
     gap: 7px;
 }
 
 .wishlist-box-row3-clock{
     display: flex;
+    align-items: center;
 }
 
 .wishlist-box-row3-clock img{
-    width: 15px;
-    position: relative;
-    top: -1px;
+    width: 1.1vw;
     margin-right: 3px;
 }
 
 .wishlist-box-row3-clock p{
     font-family: Montserrat;
-    font-size: 11px;
+    font-size: 0.8vw;
     font-weight: 400;
     color: #555555;
 }
 
 .wishlist-box-row3-hat{
     display: flex;
+    align-items: center;
 }
 
 .wishlist-box-row3-hat img{
-    width: 17px;
-    position: relative;
-    top: -1px;
+    width: 1.5vw;
     margin-right: 3px;
 }
 
 .wishlist-box-row3-hat p{
     font-family: Montserrat;
-    font-size: 11px;
+    font-size: 0.8vw;
     font-weight: 400;
     color: #555555;
 }
 
 .wishlist-box-row3-level{
     display: flex;
+    align-items: center;
 }
 
 .wishlist-box-row3-level img{
-    width: 12px;
-    position: relative;
-    top: -1px;
+    width: 1vw;
     margin-right: 3px;
 }
 
 .wishlist-box-row3-level p{
     font-family: Montserrat;
-    font-size: 11px;
+    font-size: 0.8vw;
     font-weight: 400;
     color: #555555;
 }
 
 .wishlist-box-row3-files{
     display: flex;
+    align-items: center;
 }
 
 .wishlist-box-row3-files img{
-    width: 12px;
-    position: relative;
-    top: -1px;
+    width: 1vw;
     margin-right: 3px;
 }
 
 .wishlist-box-row3-files p{
     font-family: Montserrat;
-    font-size: 11px;
+    font-size: 0.8vw;
     font-weight: 400;
     color: #555555;
 }
 
-.hr-line{
+.hr-line hr{
     color: #555555;
-    margin-top: 25px;
+    border-top-width: 2px;
 }
 
 .wishlist-box-row4{
@@ -162,7 +164,7 @@
     color: #555555;
     font-family: Jost;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 0.8vw;
 }
 
 .wishlist-box-row4-price p span{
@@ -174,7 +176,7 @@
 .wishlist-box-row4-more p{
     font-family: Montserrat;
     font-weight: 500;
-    font-size: 11px;
+    font-size: 0.8vw;
 }
 
 .wishlist-pages{
@@ -206,5 +208,5 @@
     color: #fff;;
     font-family: Jost;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1.2vw;
 }

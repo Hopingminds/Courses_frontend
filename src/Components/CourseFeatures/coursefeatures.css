@@ -8,195 +8,190 @@
     padding: 0;
 }
 
-.container{
+.CF-container{
     margin-top: 25px;
+    
 }
 
-h3{
+.CF-heading h3{
     font-family: outfit;
     font-weight: 600;
-    font-size: 36px;
+    font-size: 2.5vw;
     text-align: center;
     padding: 10px 0;
 }
 
-.hero{
+.CF-hero{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.box{
+.CF-box{
     display: flex;
-    width: 42%;
-    height: 166px;
-    margin: 20px 0 0 65px;
+    width: 45%;
+    height: max-content;
+    align-items: center;
+    margin-top: 1.5vw;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 10px;
 }
 
-.img1{
-    width: 153px;
-    height: 136px;
-    padding: 16px 0 0 16px;
+
+.CF-content{
+    width: 29vw;
+    margin: 0 0 0 3vw;
+    display: flex;
+    flex-direction: column;
 }
 
-.content{
-    width: 369px;
-    margin: 16px 0 0 30px;
-}
-
-.row1{
+.CF-row1{
     display: flex;
     justify-content: space-between;
 }
 
-.health-box{
+.CF-health-box{
     background-color: #E1F7E3;
-    width: 87px;
+    padding: 1px;
+    /* width: 25%; */
 }
-.health-para{
+.CF-health-para{
     text-align: center;
-    padding-top: 5px; 
+    padding-top: 4px; 
     font-family: Inter;
     font-weight: 500;
-    font-size: 9px;
+    font-size: 0.7vw;
     color: #15711F;
 }
 
-.price1{
+.CF-price{
     display: flex;
 }
 
-.dst-price{
+.CF-org-price{
     font-family: Inter;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 1.2vw;
 }
 
-.org-price{
-    position: relative;
-    top: -2px;
-    padding: 0 2px;
-    color: #A1A5B3;
-    text-decoration: line-through;
-    font-weight: 400;
-    font-size: 16px;
+.CF-row2{
+    /* margin: 5px 0 ; */
 }
 
-.row2{
-    margin: 5px 0 ;
-}
-
-.row2-para{
+.CF-row2-para{
     font-family: montserrat;
     padding: 3px 0;
-    font-size: 12.5px;
+    font-size: 1vw;
+    font-weight: 500;
 }
 
-.row3{
+.CF-row3{
     display: flex;
     justify-content: space-between;
-    padding: 5px 0 ;
+    /* padding: 5px 0; */
+    align-items: center;
 }
 
-.row3-left{
+.CF-row3-left{
     display: flex;
-    width: 160px;
-    height: 32px;
+    width: 9vw;
+    align-items: center;
 }
 
-.row3-left img{
-    width: 24px;
-    height: 24px;
+.CF-row3-left img{
+    width: 2.3vw;
 }
 
-.row3-name{
+.CF-row3-name{
     font-family: Montserrat;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 0.88vw;
     color: #4E5566;
     position: relative;
     padding: 5px 7px;
 }
 
-.row3-right{
+.CF-row3-right{
     display: flex;
+    align-items: center;
 }
 
-.row3-star img{
-    width: 14px;
+.CF-row3-star img{
+    width: 1.2vw;
 }
 
-.row3-rating{
+.CF-row3-rating{
     position: relative;
     top: 2px;
     font-family: DM Sans;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 0.88vw;
 }
 
-.row3-rating span{
+.CF-row3-rating span{
     font-weight: 500;
     color: #8C94A3;
 }
 
-.row4{
+.CF-row4{
     display: flex;
     justify-content: space-between;
     font-family: DM Sans;
-    padding: 5px 0;
+    /* margin: 5px 0; */
     align-items: center;
 }
 
-.row4-user{
+.CF-row4-user{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.row4-user img{
-    width: 18px;
+.CF-row4-user img{
+    width: 1.5vw;
     position: relative;
 }
 
-.row4-username {
+.CF-row4-username {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 0.88vw;
 }
 
-.row4-username span{
+.CF-row4-username span{
     font-weight: 500;
-    font-size: 12px;
+    font-size: 0.88vw;
     color: #8C94A3;
 }
 
-.row4-hours{
+.CF-row4-hours{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.row4-hours img{
-    width: 18px;
+.CF-row4-hours img{
+    width: 1.5vw;
     position: relative;
 }
 
-.row4-clock {
+.CF-row4-clock {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 0.88vw;
     color: #8C94A3;
 }
 
-.row4-level{
+.CF-row4-level{
     display: flex;
     justify-content: space-between;
 }
 
-.row4-level img{
-    width: 18px;
+.CF-row4-level img{
+    width: 1.5vw;
     position: relative;
 }
 
-.row4-levels {
+.CF-row4-levels {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 0.88vw;
     color: #8C94A3;
 }

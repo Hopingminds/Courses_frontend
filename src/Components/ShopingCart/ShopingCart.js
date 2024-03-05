@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './ShopingCart.css';
 
 function ShopingCart(){
@@ -6,8 +5,9 @@ function ShopingCart(){
         <div className='SC-container'>
             <div className='SC-Header'>
                 <div className='SC-Header-btn'>
-                <Link to='/' className="h-8 w-8 bg-white rounded-full flex justify-center items-center"> <img src="../Icons/leftsidearrow.svg" alt="left-arrow"></img></Link>
-
+                    <button type='submit' >
+                        <img src="../Icons/leftsidearrow.svg" alt="left-arrow"></img>
+                    </button>
                 </div>
                 <div className='SC-Header-content'>
                     <h2>Shopping Cart</h2>

@@ -4,7 +4,9 @@ import Router from './Routing/route';
 
 function App() {
   return (
+    <div className='xl:px-[10%] 2xl:px-[17%]'>
    <Router/>
+   </div>
   );
 }
 

@@ -11,7 +11,7 @@ export default function Navbar(){
         navigate(id)
     }
     return(<>
-    <div className="h-[80px] flex justify-between items-center font-mons px-10 ">
+    <div className="h-[80px] flex justify-between items-center font-mons px-[5%] 2xl:px-[0%]">
         <div className="flex justify-center items-center text-[#4E5566] space-x-20">
             <Link to=''><img src="/logo.png"/></Link>
             <div className='flex justify-center items-center space-x-3'>

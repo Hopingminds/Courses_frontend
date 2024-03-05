@@ -4,6 +4,15 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
+      keyframes: {
+        scroll: {
+          '100%': { transform: 'translateX(-100%)' }
+        },
+        scroll2: {
+          '100%': { transform: 'translateX(100%)' },
+          '0%': { transform: 'translateX(0%)' },
+        },
+      },
       fontFamily: {
         'Gorditas': ['Gorditas'],
         'mons': ['Montserrat', 'sans-serif'],
@@ -16,8 +25,8 @@ module.exports = {
       'sm': { 'min': '721px', 'max': '767px' },
       'md': { 'min': '768px', 'max': '1023px' },
       'lg': { 'min': '1024px', 'max': '1279px' },
-      'xl': { 'min': '1280px', 'max': '1535px' },
-      '2xl': { 'min': '1536px' },
+      'xl': { 'min': '1500px', 'max': '1700px' },
+      '2xl': { 'min': '1800px' },
     },
   },
   plugins: [],

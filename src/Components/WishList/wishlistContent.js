@@ -502,7 +502,7 @@ function WishlistContent() {
                     <img src="../Icons/rightarrow.svg" alt="right-arrow"></img>
                 </button>
             </div>
-        // </div>
+        </div>
         </>
     );
 }
