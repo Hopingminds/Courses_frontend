@@ -39,9 +39,9 @@ export default function Home(){
             </div>
         </div>
 
-        <div className='w-[40%] flex h-full items-end '>
+        <div className='w-[40%] flex h-full  justify-center items-end'>
             <div className='h-full  '>
-                <img className='h-full' src='/girl.png'/>
+                <img className='h-full object-cover' src='/girl.png'/>
             </div>
             {/* <div className='flex flex-col space-y-5'>
                 <Link className='h-12 w-12'><img src='/whatsapp.png'/></Link>
