@@ -1,14 +1,15 @@
+import { Link } from 'react-router-dom';
 import './ShopingCart.css';
 
 function ShopingCart(){
     return (
         <div className='SC-container'>
             <div className='SC-Header'>
-                <div className='SC-Header-btn'>
+                <Link to='/' className='SC-Header-btn'>
                     <button type='submit' >
                         <img src="../Icons/leftsidearrow.svg" alt="left-arrow"></img>
                     </button>
-                </div>
+                </Link>
                 <div className='SC-Header-content'>
                     <h2>Shopping Cart</h2>
                 </div>

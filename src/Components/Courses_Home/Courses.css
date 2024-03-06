@@ -5,3 +5,15 @@
 .back{
     display: none;
 }
+.afterclick{
+    background-color: #1FC074;
+    color: white;
+    /* border-radius: 9999px; */
+    transition: all 0.4s ease-in-out;
+}
+.beforeclick{
+    background-color: transparent;
+    color: black;
+    
+    transition: all 0.4s ease-in-out;
+}
