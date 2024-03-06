@@ -2,9 +2,12 @@ import { useState } from 'react';
 import './CCDetails.css';
 import ReactPlayer from 'react-player';
 import ChatBot from '../chatbot/chatbot';
+import { useSearchParams } from 'react-router-dom';
 
 export default function CDDetails(){
     const [clicked, setclicked] = useState(false)
+    const [slug,setslug]=useSearchParams()
+    console.log(slug);
     // useEffect(() => {
     //     ClickSection();
     // }, [])

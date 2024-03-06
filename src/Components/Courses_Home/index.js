@@ -48,7 +48,7 @@ setBgColor(color[id])
 
 }
     return(<>
-    <div className={`h-[85vh]  w-full px-10 pt-5 mt-10 font-outfit ${BgColor}`}>
+    <div className={`h-[90vh]  w-full px-10 pt-5 mt-10 font-outfit ${BgColor} 2xl:h-[60vh]`}>
         <div className="flex w-full space-x-5">
             {
                 content=='All Courses'?<button onClick={Courses_Data} id='All Courses' className=" px-3 py-2  afterclick rounded-full ">All Courses</button>:<button onClick={Courses_Data} id='All Courses' className=" beforeclick">All Courses</button>
@@ -117,7 +117,7 @@ setBgColor(color[id])
                 return(<>
                 <SplideSlide key={ind}>                                                    
             <div className='relative h-[360px] w-[300px] shadow-lg bg-white front cursor-pointer'>
-                <a href='/singlecourse' className="h-[360px] w-[300px] bg-white ">
+                <a href={`/singlecourse/${item.slug}`} className="h-[360px] w-[300px] bg-white ">
                     <div className="h-[200px] w-full"><img className="h-full w-full" src={item.featured_image}/></div>
                     <div className="flex justify-between  mt-3">
                         <div className='text-xs bg-[#FFEEE8] px-2  text-[#993D20]'>{item.category}</div>
@@ -136,7 +136,7 @@ setBgColor(color[id])
                         </div>
                     </div>
                 </a>
-                <a href='/singlecourse'  className="h-[360px] w-[300px] bg-white absolute z-20 top-0 back ">
+                <a href={`/singlecourse/${item.slug}`}  className="h-[360px] w-[300px] bg-white absolute z-20 top-0 back ">
                     <div className='px-1  text-[#342F98] text-xs bg-[#EBEBFF] w-fit'>{item.category}</div>
                     <div className='text-[13px] pl-2 font-semibold font-mons mt-1'>{item.title}</div>
                     <div className='flex justify-between px-2 mt-2'>
