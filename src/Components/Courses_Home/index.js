@@ -97,7 +97,7 @@ setBgColor(color[id])
         <Splide
                     options={{
                         type: "loop",
-                        perPage: 4,
+                        perPage: (window.innerWidth>=2000?5:4),
                         pagination: true,
                         perMove: 1,
                         wheel: false,
@@ -109,7 +109,7 @@ setBgColor(color[id])
                         pauseOnHover: true,
                         drag: true,
 
-                    }} className="flex mt-10 justify-between">
+                    }} className="flex mt-10 justify-between ">
                         
        
         {

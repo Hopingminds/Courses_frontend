@@ -1,18 +1,18 @@
 
 export default function Companies() {
     return (
-        <div>
+        <div className="mt-16">
             <div>
                 <div>
-                    <h2 className='font-[outfit] text-center font-semibold text-2xl'>150+ Companies are waiting for you</h2>
+                    <h2 className='font-[outfit] text-center font-semibold text-5xl'>150+ Companies are waiting for you</h2>
                 </div>
                 <div>
                     <p className='font-[montserrat] text-center py-3 px-28'>We'll help you get hired. Our team will work with you throughout the program and after graduation to help you embellish your portfolio, practice interviewing and land a job that enhances your skills and accelerates your growth.</p>
                 </div>
             </div>
             <div>
-                <div className="h-[65px] mx-[40px] overflow-hidden">
-                    <div className='flex w-max'>
+                <div className="h-[65px] my-5 mx-[40px] overflow-hidden ">
+                    <div className='flex w-max '>
                         <div className='flex flex-row mt-[5px] animate-[scroll_20s_linear_infinite] '>
                             <img className='px-4 w-[185px] h-[70px]' src='../img/paytm.png' alt='paytm'></img>
                             <img className='px-4 w-[185px] h-[70px]' src='../img/sharechat.png' alt='sharechat'></img>
@@ -31,7 +31,7 @@ export default function Companies() {
                         </div>
                     </div>
                 </div>
-                <div className="h-[65px] mx-[70px] overflow-hidden">
+                <div className="h-[65px] my-5 mx-[70px] overflow-hidden">
                     <div className='flex w-max'>
                         <div className='flex flex-row mt-[5px] animate-[scroll2_17s_linear_infinite]'>
                             <img className='px-4 w-[185px] h-[70px]' src='../img/wipro.png' alt='paytm'></img>
@@ -51,7 +51,7 @@ export default function Companies() {
                         </div>
                     </div>
                 </div>
-                <div className="h-[65px] mx-[40px] overflow-hidden">
+                <div className="h-[65px] my-5 mx-[40px] overflow-hidden">
                     <div className='flex w-max'>
                         <div className='flex flex-row mt-[5px] animate-[scroll_27.8s_linear_infinite]'>
                             <img className='px-4 w-[185px] h-[70px]' src='../img/capegimini.png' alt='paytm'></img>

@@ -2,11 +2,11 @@ import './coursefeatures.css';
 
 function CourseFeatures() {
     return (
-        <div className='CF-container '>
-            <div className='CF-heading text-5xl'>
+        <div className='CF-container pt-16'>
+            <div className='CF-heading text-5xl '>
                 <h3>Our Feature Courses</h3>
             </div>
-            <div className='CF-hero'>
+            <div className='CF-hero pt-5'>
                 <div className='CF-box'>
                     <div className='CF-img 2xl:h-[100%] 2xl:w-[40%]'>
                         <img className='w-[100%] h-[100%]' src='../img/featuresImage.png' alt='person-with-laptop'></img>

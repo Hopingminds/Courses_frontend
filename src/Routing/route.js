@@ -25,6 +25,7 @@ import Faq_single from '../Components/Faq_Single'
 import Checkout from '../Components/Checkout/checkout'
 import Overview_content from '../Components/Overview_content'
 import Notification from '../Components/Notification'
+import ScrollToTop from '../Components/ScrollToTop'
 
 
 
@@ -32,6 +33,7 @@ const Router = () => {
     return (
      
             <BrowserRouter >
+            <ScrollToTop/>
                 <Navbar />
                 <Routes>
                     <Route exact path={'/'} element={<Home />}></Route>

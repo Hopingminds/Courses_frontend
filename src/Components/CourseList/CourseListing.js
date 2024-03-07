@@ -30,13 +30,13 @@ const CourseListing = () => {
   };
 
   return (
-    <div className="flex flex-col font-mons">
-      <div className="flex flex-row px-10  pb-10">
+    <div className="flex flex-col font-mons w-full ">
+      <div className="flex flex-row  pb-10 justify-evenly ">
         <div onClick={arrowBack} className="cursor-pointer mr-2">
           <Arrow />
         </div>
-        <div className="flex flex-row gap-12">
-          <div className="w-[890px] flex flex-col justify-center gap-10">
+        <div className="flex flex-row gap-12 w-full">
+          <div className="w-[85%] flex flex-col justify-center gap-10">
             <div className="flex flex-row justify-between">
               <p className="text-[#000000] text-[36px] font-Outfit font-semibold">
                 All Courses
@@ -58,9 +58,9 @@ const CourseListing = () => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-8">
+            <div className=" w-[100%] flex flex-wrap justify-between">
               {/* 1 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border border-[#EAEAEA] ">
+              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
                 <img src={Fullstack} className="h-[220px] rounded-t-3xl w-[380px]" />
                 <div className="flex flex-col gap-2 px-4 py-5">
                   <p className="text-[#555555] text-[16px] font-Montserrat">
@@ -102,7 +102,7 @@ const CourseListing = () => {
                 </div>
               </div>
               {/* 2 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border border-[#EAEAEA] ">
+              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
                 <img src={Cyber} className="h-[220px] rounded-t-3xl w-[380px]" />
                 <div className="flex flex-col gap-2 px-4 py-5">
                   <p className="text-[#555555] text-[16px] font-Montserrat">
@@ -144,7 +144,7 @@ const CourseListing = () => {
                 </div>
               </div>
               {/* 3 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border border-[#EAEAEA] ">
+              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
                 <img src={Aiml} className="h-[220px] rounded-t-3xl w-[380px]" />
                 <div className="flex flex-col gap-2 px-4 py-5">
                   <p className="text-[#555555] text-[16px] font-Montserrat">
@@ -186,7 +186,7 @@ const CourseListing = () => {
                 </div>
               </div>
               {/* 4 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border border-[#EAEAEA] ">
+              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
                 <img src={Ds} className="h-[220px] rounded-t-3xl w-[380px]" />
                 <div className="flex flex-col gap-2 px-4 py-5">
                   <p className="text-[#555555] text-[16px] font-Montserrat">
@@ -228,7 +228,7 @@ const CourseListing = () => {
                 </div>
               </div>
               {/* 5 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border border-[#EAEAEA] ">
+              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
                 <img src={Ui} className="h-[220px] rounded-t-3xl w-[380px]" />
                 <div className="flex flex-col gap-2 px-4 py-5">
                   <p className="text-[#555555] text-[16px] font-Montserrat">
@@ -270,7 +270,7 @@ const CourseListing = () => {
                 </div>
               </div>
               {/* 6 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border border-[#EAEAEA] ">
+              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
                 <img src={Hc} className="h-[220px] rounded-t-3xl w-[380px]" />
                 <div className="flex flex-col gap-2 px-4 py-5">
                   <p className="text-[#555555] text-[16px] font-Montserrat">
@@ -312,7 +312,7 @@ const CourseListing = () => {
                 </div>
               </div>
               {/* 7 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border border-[#EAEAEA] ">
+              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
                 <img src={Ai} className="h-[220px] rounded-t-3xl w-[380px]" />
                 <div className="flex flex-col gap-2 px-4 py-5">
                   <p className="text-[#555555] text-[16px] font-Montserrat">
@@ -354,7 +354,7 @@ const CourseListing = () => {
                 </div>
               </div>
               {/* 8 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border border-[#EAEAEA] ">
+              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
                 <img src={Datas} className="h-[220px] rounded-t-3xl w-[380px]" />
                 <div className="flex flex-col gap-2 px-4 py-5">
                   <p className="text-[#555555] text-[16px] font-Montserrat">
@@ -396,7 +396,7 @@ const CourseListing = () => {
                 </div>
               </div>
               {/* 9 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border border-[#EAEAEA] ">
+              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
                 <img src={Ux} className="h-[220px] rounded-t-3xl w-[380px]" />
                 <div className="flex flex-col gap-2 px-4 py-5">
                   <p className="text-[#555555] text-[16px] font-Montserrat">
@@ -438,7 +438,7 @@ const CourseListing = () => {
                 </div>
               </div>
               {/* 10 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border border-[#EAEAEA] ">
+              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
                 <img src={Hcs} className="h-[220px] rounded-t-3xl w-[380px]" />
                 <div className="flex flex-col gap-2 px-4 py-5">
                   <p className="text-[#555555] text-[16px] font-Montserrat">
@@ -511,10 +511,11 @@ const CourseListing = () => {
               </div>
             </div>
           </div>
-          <div className="w-[300px] pt-2">
+       
+        </div>
+        <div className="w-[450px] pt-2">
             <Categories />
           </div>
-        </div>
       </div>
     </div>
   );
