@@ -40,7 +40,7 @@ const Router = () => {
                     <Route exact path={'/login'} element={<Login />}></Route>
                     <Route exact path={'/register'} element={<Registration/>}></Route>
                     <Route exact path={'/courses'} element={<CourseListing/>}></Route>
-                    <Route exact path={'/singlecourse'} element={<CDHeader/>}></Route>
+                    <Route exact path={'/singlecourse/:slug'} element={<CDHeader/>}></Route>
                     <Route exact path={'/cart'} element={<ShopingCart/>}></Route>
                     <Route exact path={'/learning/wishlist'} element={<WishlistContent/>}></Route>
                     <Route exact path={'/single'} element={<CDDetails/>}></Route>

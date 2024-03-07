@@ -1,1 +1,1 @@
-export const COURSESURL='http://api.hopingminds.in/'
+export const COURSESURL='http://api.hopingminds.in/api/'

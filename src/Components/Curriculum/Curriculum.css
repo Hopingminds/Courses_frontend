@@ -55,6 +55,7 @@
 /* lesson-container-content */
 .lesson-container-content{
     display: flex;
+    margin: 10px 0;
     justify-content: space-between;
     padding-left: 44px;
 }
@@ -80,7 +81,7 @@
 .lesson-container-content-right button{
     padding: 4px 12px 4px 12px;
     border-radius: 8px;
-    width: 90px;
+    width: 80px;
     height: 32px;
     line-height: 24px;
     color: #fff;

@@ -11,6 +11,12 @@ import { ReactComponent as Eyeclosed } from "../../Assets/Icons/eyeclosed.svg";
 const Registration = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setemail] = useState()
+const [username, setusername] = useState()
+const [password, setpassword] = useState()
+const [clg, setclg] = useState()
+const [stream, setstream] = useState()
+const [passingyear, setpassingyear] = useState()
 
   const handleRegister = () => {
     navigate("/otp");
@@ -36,6 +42,7 @@ const Registration = () => {
             <div className="flex flex-col gap-4 justify-center items-center">
               <div className="">
                 <input
+                value={email}
                   type="email"
                   id="OwnerEmail"
                   name="OwnerEmail"
@@ -44,16 +51,19 @@ const Registration = () => {
                 />
               </div>
               <div className="">
+                
                 <input
-                  type="email"
+                value={username}
+                  type="text"
                   id="OwnerEmail"
                   name="OwnerEmail"
-                  placeholder="Username*"
+                  placeholder="usernamename*"
                   className="border border-[#9D9D9D] text-[#9D9D9D] text-[18px] rounded-md p-2 pl-3 w-[570px] h-[48px] font-Montserrat"
                 />
               </div>
               <div className="flex flex-row border border-[#9D9D9D] rounded-md justify-between items-center pl-1 pr-4 w-[570px] h-[48px] ">
                 <input
+                value={password}
                   type={showPassword ? "text" : "password"}
                   id="OwnerPassword"
                   name="OwnerPassword"
@@ -68,6 +78,7 @@ const Registration = () => {
               </div>
               <div className="">
                 <input
+                value
                   type="email"
                   id="OwnerEmail"
                   name="OwnerEmail"

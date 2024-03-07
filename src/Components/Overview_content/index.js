@@ -6,8 +6,9 @@ import Overview from "../Overview/Overview";
 import Reviews from "../Reviews/Reviews";
 import { HashLink as Link } from "react-router-hash-link";
 
-export default function Overview_content(){
-    
+export default function Overview_content(props){
+    let {overview,curriculum,instructor,reviews,faqs}=props;
+    // console.log(overview);
    return(<>
     <div className="w-full flex justify-center  mt-28 h-auto">
         <div className="w-[80%] flex justify-around ">
@@ -18,13 +19,13 @@ export default function Overview_content(){
                     <Link smooth  to="#Reviews" className="w-28 h-10 bg-white flex items-center justify-center font-semibold">Reviews</Link>
                     <Link smooth  to="#FAQ's" className="w-28 h-10 bg-white flex items-center justify-center font-semibold">FAQ's</Link>
                 </div>
-                <div className="flex flex-col w-[700px]  scroll-smooth">
-                    <Overview />
-                    <Curriculum/>
-                    <Instructor/>
+                <div className="flex flex-col w-[740px]  scroll-smooth">
+                    <Overview data={overview}/>
+                    <Curriculum data={curriculum}/>
+                    <Instructor data={instructor}/>
 
-                    <Reviews/>
-                    <Faqs/>
+                    <Reviews data={reviews}/>
+                    <Faqs data={faqs}/>
                     <Comment />
                 </div>
         </div>

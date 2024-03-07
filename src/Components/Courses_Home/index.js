@@ -28,7 +28,7 @@ export default function Courses_Home(){
 
 useEffect(() => {
 async function Fetchdata(){
-    let url=COURSESURL+'api/courses'
+    let url=COURSESURL+'courses'
 const data=await fetch(url)
 const response=await data.json()
 setCourses(response.courses)
