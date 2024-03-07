@@ -29,9 +29,6 @@
     margin: 0 3px;
     height: 29px;
     cursor: pointer;
-    font-family: Jost;
-    font-weight: 500;
-    font-size: 16px;
 }
 
 .SC-Header-btn button img{
@@ -68,9 +65,9 @@
 }
 
 .SC-content-left-box{
-    margin: 20px 0 0 53px;
+    margin: 20px 0 0 0;
     border: 2px solid #EAEAEA;
-    height: max-content;
+    height: 17vw;
     border-radius: 1.2vw;
     display: flex;    
 }
@@ -285,7 +282,7 @@
     margin: 24px 0;
     font-family: jost;
     font-size: 1.7vw;
-    padding: 9px 84px;
+    /* padding: 9px 84px; */
     background-color: #1D2026;
     color: #fff;
     border: none;

@@ -16,7 +16,6 @@
 .CF-heading h3{
     font-family: outfit;
     font-weight: 600;
-    font-size: 2.5vw;
     text-align: center;
     padding: 10px 0;
 }
@@ -30,7 +29,6 @@
 .CF-box{
     display: flex;
     width: 45%;
-    height: max-content;
     align-items: center;
     margin-top: 1.5vw;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -39,8 +37,6 @@
 
 
 .CF-content{
-    width: 29vw;
-    margin: 0 0 0 3vw;
     display: flex;
     flex-direction: column;
 }
@@ -52,15 +48,14 @@
 
 .CF-health-box{
     background-color: #E1F7E3;
-    padding: 1px;
     /* width: 25%; */
 }
 .CF-health-para{
     text-align: center;
-    padding-top: 4px; 
+    padding: 4px; 
     font-family: Inter;
     font-weight: 500;
-    font-size: 0.7vw;
+    font-size: 10px;
     color: #15711F;
 }
 
@@ -71,7 +66,7 @@
 .CF-org-price{
     font-family: Inter;
     font-weight: 400;
-    font-size: 1.2vw;
+    font-size: 24px;
 }
 
 .CF-row2{
@@ -81,7 +76,7 @@
 .CF-row2-para{
     font-family: montserrat;
     padding: 3px 0;
-    font-size: 1vw;
+    font-size: 18px;
     font-weight: 500;
 }
 
@@ -99,13 +94,13 @@
 }
 
 .CF-row3-left img{
-    width: 2.3vw;
+    width: 20%;
 }
 
 .CF-row3-name{
     font-family: Montserrat;
     font-weight: 400;
-    font-size: 0.88vw;
+    font-size: 14px;
     color: #4E5566;
     position: relative;
     padding: 5px 7px;
@@ -117,7 +112,7 @@
 }
 
 .CF-row3-star img{
-    width: 1.2vw;
+    width: 85%;
 }
 
 .CF-row3-rating{
@@ -125,7 +120,7 @@
     top: 2px;
     font-family: DM Sans;
     font-weight: 400;
-    font-size: 0.88vw;
+    font-size: 14px;
 }
 
 .CF-row3-rating span{
@@ -148,18 +143,18 @@
 }
 
 .CF-row4-user img{
-    width: 1.5vw;
+    width: 14%;
     position: relative;
 }
 
 .CF-row4-username {
     font-weight: 500;
-    font-size: 0.88vw;
+    font-size: 14px;
 }
 
 .CF-row4-username span{
     font-weight: 500;
-    font-size: 0.88vw;
+    font-size: 14px;
     color: #8C94A3;
 }
 
@@ -170,13 +165,13 @@
 }
 
 .CF-row4-hours img{
-    width: 1.5vw;
+    width: 25%;
     position: relative;
 }
 
 .CF-row4-clock {
     font-weight: 500;
-    font-size: 0.88vw;
+    font-size: 14px;
     color: #8C94A3;
 }
 
@@ -186,12 +181,12 @@
 }
 
 .CF-row4-level img{
-    width: 1.5vw;
+    width: 16%;
     position: relative;
 }
 
 .CF-row4-levels {
     font-weight: 500;
-    font-size: 0.88vw;
+    font-size: 14px;
     color: #8C94A3;
 }

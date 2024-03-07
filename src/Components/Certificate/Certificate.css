@@ -13,10 +13,12 @@
 .Certificate-content{
     display: flex;
     justify-content: space-around;
+    height: 60vh;
 }
 
 .Certificate-content-left{
     width: 60%;
+    height: fit-content;
 }
 
 .Certificate-content-left-box{
@@ -132,6 +134,7 @@
 
 .Certificate-content-right{
     width: auto;
+    height: fit-content;
     margin: 31px 0px;
     display: flex;
     flex-direction: column;
