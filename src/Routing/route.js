@@ -22,7 +22,7 @@ import Faqs from '../Components/Faqs/Faqs'
 import Reviews from '../Components/Reviews/Reviews'
 import Certificate from '../Components/Certificate/Certificate'
 import Faq_single from '../Components/Faq_Single'
-import Checkout from '../Components/Checkout/checkout'
+import Checkout from '../Components/checkout/checkout'
 import Overview_content from '../Components/Overview_content'
 import Notification from '../Components/Notification'
 
@@ -30,35 +30,35 @@ import Notification from '../Components/Notification'
 
 const Router = () => {
     return (
-     
-            <BrowserRouter >
-                <Navbar />
-                <Routes>
-                    <Route exact path={'/'} element={<Home />}></Route>
-                    <Route exact path={'/learning'} element={<My_learning />}></Route>
-                    <Route exact path={'/wishlist'} element={<Wishlist />}></Route>
-                    <Route exact path={'/login'} element={<Login />}></Route>
-                    <Route exact path={'/register'} element={<Registration/>}></Route>
-                    <Route exact path={'/courses'} element={<CourseListing/>}></Route>
-                    <Route exact path={'/singlecourse'} element={<CDHeader/>}></Route>
-                    <Route exact path={'/cart'} element={<ShopingCart/>}></Route>
-                    <Route exact path={'/learning/wishlist'} element={<WishlistContent/>}></Route>
-                    <Route exact path={'/single'} element={<CDDetails/>}></Route>
-                    <Route exact path={'/main'} element={<Main/>}></Route>
-                    <Route exact path={'/contact'} element={<Contact/>}></Route>
-                    <Route exact path={'/chat'} element={<ChatBot/>}></Route>
-                    <Route exact path={'/test'} element={<Testimonials/>}></Route>
-                    <Route exact path={'/com'} element={<Comment/>}></Route>
-                    <Route exact path={'/faq'} element={<Faq_single/>}></Route>
-                    <Route exact path={'/review'} element={<Reviews/>}></Route>
-                    <Route exact path={'/c'} element={<Certificate/>}></Route>
-                    <Route exact path={'/checkout'} element={<Checkout/>}></Route>
-                    <Route exact path={'/over'} element={<Overview_content/>}></Route>
-                    <Route exact path={'/notification'} element={<Notification/>}></Route>
-                </Routes>
-            <Footer/>
-            </BrowserRouter >
-      
+
+        <BrowserRouter >
+            <Navbar />
+            <Routes>
+                <Route exact path={'/'} element={<Home />}></Route>
+                <Route exact path={'/learning'} element={<My_learning />}></Route>
+                <Route exact path={'/wishlist'} element={<Wishlist />}></Route>
+                <Route exact path={'/login'} element={<Login />}></Route>
+                <Route exact path={'/register'} element={<Registration />}></Route>
+                <Route exact path={'/courses'} element={<CourseListing />}></Route>
+                <Route exact path={'/singlecourse'} element={<CDHeader />}></Route>
+                <Route exact path={'/cart'} element={<ShopingCart />}></Route>
+                <Route exact path={'/learning/wishlist'} element={<WishlistContent />}></Route>
+                <Route exact path={'/single'} element={<CDDetails />}></Route>
+                <Route exact path={'/main'} element={<Main />}></Route>
+                <Route exact path={'/contact'} element={<Contact />}></Route>
+                <Route exact path={'/chat'} element={<ChatBot />}></Route>
+                <Route exact path={'/test'} element={<Testimonials />}></Route>
+                <Route exact path={'/com'} element={<Comment />}></Route>
+                <Route exact path={'/faq'} element={<Faq_single />}></Route>
+                <Route exact path={'/review'} element={<Reviews />}></Route>
+                <Route exact path={'/c'} element={<Certificate />}></Route>
+                <Route exact path={'/checkout'} element={<Checkout />}></Route>
+                <Route exact path={'/over'} element={<Overview_content />}></Route>
+                <Route exact path={'/notification'} element={<Notification />}></Route>
+            </Routes>
+            <Footer />
+        </BrowserRouter >
+
     )
 }
 
