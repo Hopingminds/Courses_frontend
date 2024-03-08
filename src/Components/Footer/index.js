@@ -11,9 +11,10 @@ const Footer = () => {
     <div className="bg-[#F5F5F5] flex flex-row justify-between px-24 py-7">
       <div className="flex flex-col gap-2 w-[341px]">
         <img src="/logo.png" className="w-[154.88px] h-[59.86px]" />
-        <p className="text-[#555555] text-[18px] font-Montserrat w-[341px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <p className="text-[#555555] text-[15px] font-Montserrat w-[341px]">
+          HopingMinds,an NSDC accredited partner,is an innovative EdTech venture
+          transforming India’ s educational system into an outcome-oriented system by helping
+          students identify,train for and get placed in high growth career paths.
         </p>
       </div>
       <div className="flex flex-col gap-5 w-[110px]">
@@ -74,7 +75,7 @@ const Footer = () => {
       </div>
     </div>
     <div className="bg-[#F5F5F5] w-full text-center text-[#555555] font-semibold font-mons">© KATINA SKILLS PRIVATE LIMITED 2024</div>
-    </>);
+  </>);
 };
 
 export default Footer;

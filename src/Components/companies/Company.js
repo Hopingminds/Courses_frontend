@@ -7,7 +7,7 @@ export default function Companies() {
                     <h2 className='font-[outfit] text-center font-semibold text-5xl'>150+ Companies are waiting for you</h2>
                 </div>
                 <div>
-                    <p className='font-[montserrat] text-center py-3 px-28'>We'll help you get hired. Our team will work with you throughout the program and after graduation to help you embellish your portfolio, practice interviewing and land a job that enhances your skills and accelerates your growth.</p>
+                    <p className='font-[montserrat] text-center py-3 px-28'>We're committed to your success. Our dedicated team will guide you every step of the way, refining your portfolio, honing your interview skills, and securing opportunities that elevate your expertise and propel your career forward.</p>
                 </div>
             </div>
             <div>
