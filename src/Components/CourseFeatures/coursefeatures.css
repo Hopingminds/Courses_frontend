@@ -18,12 +18,7 @@
 } */
 
 .CF-box{
-<<<<<<< HEAD
     display: flex;  
-=======
-    display: flex;
-    width: 45%;
->>>>>>> 3c14e31c699c22581921be285ef56a265b991350
     align-items: center;
     box-shadow: rgba(149, 157, 165, 0.2) 2px 2px 2px 2px;
     padding:1rem 2rem;
