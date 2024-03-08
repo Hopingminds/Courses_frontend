@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { ReactComponent as Arrow } from "../../Assets/Icons/arrow-back.svg";
 import { ReactComponent as Menu } from "../../Assets/Icons/menu.svg";
 import { ReactComponent as Window } from "../../Assets/Icons/window.svg";
@@ -17,17 +17,49 @@ import Datas from "../../Assets/Images/datas.png";
 import Ux from "../../Assets/Images/ux.png";
 import Hcs from "../../Assets/Images/hcs.png";
 import Categories from './Categories'
+import { fetchcourseByCategory } from "../../Api/api";
+
+
+// const fetchCourses = async () => {
+//   const courses = await fetchcourseByCategory();
+//   const courseData = courses.data.courses;
+//   console.log(courseData);
+//   return courseData;
+// }
+
 const CourseListing = () => {
   const navigate = useNavigate();
   const [selectedPage, setSelectedPage] = useState(1);
+  const [coursesData, setCoursesData] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
+
+  // console.log(searchParams.get('category'));
   const arrowBack = () => {
     navigate("/");
   };
 
   const handlePageClick = (pageNumber) => {
     setSelectedPage(pageNumber);
+    console.log(pageNumber)
   };
+
+
+  const fetchData = async () => {
+
+    const cData = await fetchcourseByCategory(searchParams.get('category'));
+    const courseData = cData.data.courses
+    console.log(courseData);
+    setCoursesData(courseData)
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+
+
+
 
   return (
     <div className="flex flex-col font-mons w-full ">
@@ -59,432 +91,63 @@ const CourseListing = () => {
               </div>
             </div>
             <div className=" w-[100%] flex flex-wrap justify-between">
-              {/* 1 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
-                <img src={Fullstack} className="h-[220px] rounded-t-3xl w-[380px]" />
-                <div className="flex flex-col gap-2 px-4 py-5">
-                  <p className="text-[#555555] text-[16px] font-Montserrat">
-                    by Determined-Instructors
-                  </p>
-                  <p className="text-[#000000] text-[16.5px] font-semibold font-Montserrat">
-                    Beginner Guide For full Stack Developent
-                  </p>
-                  <div className=" flex flex-row gap-8">
-                    <div className="flex flex-row items-center gap-2">
-                      <Watch />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        2Weeks
-                      </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-2">
-                      <Edu />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        156 Students
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-2 pb-2">
-                    <hr />
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-row gap-2">
-                      <p className="text-[#9D9D9D] text-[18px] font-Jost">
-                        $29.0
-                      </p>
-                      <p className="text-[#1DBF73] text-[18px] font-Jost">
-                        Free
-                      </p>
-                    </div>
-                    <p className="text-[#000000] text-[18px] font-Montserrat">
-                      View more
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* 2 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
-                <img src={Cyber} className="h-[220px] rounded-t-3xl w-[380px]" />
-                <div className="flex flex-col gap-2 px-4 py-5">
-                  <p className="text-[#555555] text-[16px] font-Montserrat">
-                    by Determined-Instructors
-                  </p>
-                  <p className="text-[#000000] text-[16.5px] font-semibold font-Montserrat">
-                  Cyber Security
-                  </p>
-                  <div className=" flex flex-row gap-8">
-                    <div className="flex flex-row items-center gap-2">
-                      <Watch />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        2Weeks
-                      </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-2">
-                      <Edu />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        156 Students
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-2 pb-2">
-                    <hr />
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-row gap-2">
-                      <p className="text-[#9D9D9D] text-[18px] font-Jost">
-                        $29.0
-                      </p>
-                      <p className="text-[#1DBF73] text-[18px] font-Jost">
-                        Free
-                      </p>
-                    </div>
-                    <p className="text-[#000000] text-[18px] font-Montserrat">
-                      View more
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* 3 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
-                <img src={Aiml} className="h-[220px] rounded-t-3xl w-[380px]" />
-                <div className="flex flex-col gap-2 px-4 py-5">
-                  <p className="text-[#555555] text-[16px] font-Montserrat">
-                    by Determined-Instructors
-                  </p>
-                  <p className="text-[#000000] text-[16.5px] font-semibold font-Montserrat">
-                  Beginner course for AI/ML
-                  </p>
-                  <div className=" flex flex-row gap-8">
-                    <div className="flex flex-row items-center gap-2">
-                      <Watch />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        2Weeks
-                      </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-2">
-                      <Edu />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        156 Students
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-2 pb-2">
-                    <hr />
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-row gap-2">
-                      <p className="text-[#9D9D9D] text-[18px] font-Jost">
-                        $29.0
-                      </p>
-                      <p className="text-[#1DBF73] text-[18px] font-Jost">
-                        Free
-                      </p>
-                    </div>
-                    <p className="text-[#000000] text-[18px] font-Montserrat">
-                      View more
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* 4 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
-                <img src={Ds} className="h-[220px] rounded-t-3xl w-[380px]" />
-                <div className="flex flex-col gap-2 px-4 py-5">
-                  <p className="text-[#555555] text-[16px] font-Montserrat">
-                    by Determined-Instructors
-                  </p>
-                  <p className="text-[#000000] text-[16.5px] font-semibold font-Montserrat">
-                  Introduction to Data Science
-                  </p>
-                  <div className=" flex flex-row gap-8">
-                    <div className="flex flex-row items-center gap-2">
-                      <Watch />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        2Weeks
-                      </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-2">
-                      <Edu />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        156 Students
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-2 pb-2">
-                    <hr />
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-row gap-2">
-                      <p className="text-[#9D9D9D] text-[18px] font-Jost">
-                        $29.0
-                      </p>
-                      <p className="text-[#1DBF73] text-[18px] font-Jost">
-                        Free
-                      </p>
-                    </div>
-                    <p className="text-[#000000] text-[18px] font-Montserrat">
-                      View more
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* 5 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
-                <img src={Ui} className="h-[220px] rounded-t-3xl w-[380px]" />
-                <div className="flex flex-col gap-2 px-4 py-5">
-                  <p className="text-[#555555] text-[16px] font-Montserrat">
-                    by Determined-Instructors
-                  </p>
-                  <p className="text-[#000000] text-[16.5px] font-semibold font-Montserrat">
-                  Professional Website Using UI/UX
-                  </p>
-                  <div className=" flex flex-row gap-8">
-                    <div className="flex flex-row items-center gap-2">
-                      <Watch />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        2Weeks
-                      </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-2">
-                      <Edu />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        156 Students
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-2 pb-2">
-                    <hr />
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-row gap-2">
-                      <p className="text-[#9D9D9D] text-[18px] font-Jost">
-                        $29.0
-                      </p>
-                      <p className="text-[#1DBF73] text-[18px] font-Jost">
-                        Free
-                      </p>
-                    </div>
-                    <p className="text-[#000000] text-[18px] font-Montserrat">
-                      View more
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* 6 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
-                <img src={Hc} className="h-[220px] rounded-t-3xl w-[380px]" />
-                <div className="flex flex-col gap-2 px-4 py-5">
-                  <p className="text-[#555555] text-[16px] font-Montserrat">
-                    by Determined-Instructors
-                  </p>
-                  <p className="text-[#000000] text-[16.5px] font-semibold font-Montserrat">
-                  Introduction to hydrocarbons
-                  </p>
-                  <div className=" flex flex-row gap-8">
-                    <div className="flex flex-row items-center gap-2">
-                      <Watch />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        2Weeks
-                      </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-2">
-                      <Edu />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        156 Students
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-2 pb-2">
-                    <hr />
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-row gap-2">
-                      <p className="text-[#9D9D9D] text-[18px] font-Jost">
-                        $29.0
-                      </p>
-                      <p className="text-[#1DBF73] text-[18px] font-Jost">
-                        Free
-                      </p>
-                    </div>
-                    <p className="text-[#000000] text-[18px] font-Montserrat">
-                      View more
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* 7 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
-                <img src={Ai} className="h-[220px] rounded-t-3xl w-[380px]" />
-                <div className="flex flex-col gap-2 px-4 py-5">
-                  <p className="text-[#555555] text-[16px] font-Montserrat">
-                    by Determined-Instructors
-                  </p>
-                  <p className="text-[#000000] text-[16.5px] font-semibold font-Montserrat">
-                  Beginner course for AI/ML
-                  </p>
-                  <div className=" flex flex-row gap-8">
-                    <div className="flex flex-row items-center gap-2">
-                      <Watch />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        2Weeks
-                      </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-2">
-                      <Edu />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        156 Students
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-2 pb-2">
-                    <hr />
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-row gap-2">
-                      <p className="text-[#9D9D9D] text-[18px] font-Jost">
-                        $29.0
-                      </p>
-                      <p className="text-[#1DBF73] text-[18px] font-Jost">
-                        Free
-                      </p>
-                    </div>
-                    <p className="text-[#000000] text-[18px] font-Montserrat">
-                      View more
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* 8 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
-                <img src={Datas} className="h-[220px] rounded-t-3xl w-[380px]" />
-                <div className="flex flex-col gap-2 px-4 py-5">
-                  <p className="text-[#555555] text-[16px] font-Montserrat">
-                    by Determined-Instructors
-                  </p>
-                  <p className="text-[#000000] text-[16.5px] font-semibold font-Montserrat">
-                  Introduction to Data Science
-                  </p>
-                  <div className=" flex flex-row gap-8">
-                    <div className="flex flex-row items-center gap-2">
-                      <Watch />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        2Weeks
-                      </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-2">
-                      <Edu />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        156 Students
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-2 pb-2">
-                    <hr />
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-row gap-2">
-                      <p className="text-[#9D9D9D] text-[18px] font-Jost">
-                        $29.0
-                      </p>
-                      <p className="text-[#1DBF73] text-[18px] font-Jost">
-                        Free
-                      </p>
-                    </div>
-                    <p className="text-[#000000] text-[18px] font-Montserrat">
-                      View more
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* 9 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
-                <img src={Ux} className="h-[220px] rounded-t-3xl w-[380px]" />
-                <div className="flex flex-col gap-2 px-4 py-5">
-                  <p className="text-[#555555] text-[16px] font-Montserrat">
-                    by Determined-Instructors
-                  </p>
-                  <p className="text-[#000000] text-[16.5px] font-semibold font-Montserrat">
-                  Professional Website Using UI/UX
-                  </p>
-                  <div className=" flex flex-row gap-8">
-                    <div className="flex flex-row items-center gap-2">
-                      <Watch />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        2Weeks
-                      </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-2">
-                      <Edu />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        156 Students
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-2 pb-2">
-                    <hr />
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-row gap-2">
-                      <p className="text-[#9D9D9D] text-[18px] font-Jost">
-                        $29.0
-                      </p>
-                      <p className="text-[#1DBF73] text-[18px] font-Jost">
-                        Free
-                      </p>
-                    </div>
-                    <p className="text-[#000000] text-[18px] font-Montserrat">
-                      View more
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* 10 */}
-              <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] ">
-                <img src={Hcs} className="h-[220px] rounded-t-3xl w-[380px]" />
-                <div className="flex flex-col gap-2 px-4 py-5">
-                  <p className="text-[#555555] text-[16px] font-Montserrat">
-                    by Determined-Instructors
-                  </p>
-                  <p className="text-[#000000] text-[16.5px] font-semibold font-Montserrat">
-                  Introduction to hydrocarbons
-                  </p>
-                  <div className=" flex flex-row gap-8">
-                    <div className="flex flex-row items-center gap-2">
-                      <Watch />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        2Weeks
-                      </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-2">
-                      <Edu />
-                      <p className="text-[#555555] text-[16px] font-Montserrat">
-                        156 Students
-                      </p>
-                    </div>
-                  </div>
-                  <div className="pt-2 pb-2">
-                    <hr />
-                  </div>
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-row gap-2">
-                      <p className="text-[#9D9D9D] text-[18px] font-Jost">
-                        $29.0
-                      </p>
-                      <p className="text-[#1DBF73] text-[18px] font-Jost">
-                        Free
-                      </p>
-                    </div>
-                    <p className="text-[#000000] text-[18px] font-Montserrat">
-                      View more
-                    </p>
-                  </div>
-                </div>
-              </div>
+              {
+                coursesData.map((val, ind) => {
+                  return (
+                    <>
+                      <div className="flex flex-col w-[380px] min-h-[430px] rounded-3xl border my-4 border-[#EAEAEA] " key={ind}>
+                        <img src={Fullstack} className="h-[220px] rounded-t-3xl w-[380px]" />
+                        <div className="flex flex-col gap-2 px-4 py-5">
+                          <p className="text-[#555555] text-[16px] font-Montserrat">
+                            by Determined-Instructors
+                          </p>
+                          <p className="text-[#000000] text-[16.5px] font-semibold font-Montserrat">
+                            Beginner Guide For full Stack Developent
+                          </p>
+                          <div className=" flex flex-row gap-8">
+                            <div className="flex flex-row items-center gap-2">
+                              <Watch />
+                              <p className="text-[#555555] text-[16px] font-Montserrat">
+                                2Weeks
+                              </p>
+                            </div>
+                            <div className="flex flex-row items-center gap-2">
+                              <Edu />
+                              <p className="text-[#555555] text-[16px] font-Montserrat">
+                                156 Students
+                              </p>
+                            </div>
+                          </div>
+                          <div className="pt-2 pb-2">
+                            <hr />
+                          </div>
+                          <div className="flex flex-row justify-between">
+                            <div className="flex flex-row gap-2">
+                              <p className="text-[#9D9D9D] text-[18px] font-Jost">
+                                $29.0
+                              </p>
+                              <p className="text-[#1DBF73] text-[18px] font-Jost">
+                                Free
+                              </p>
+                            </div>
+                            <p className="text-[#000000] text-[18px] font-Montserrat">
+                              View more
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )
+                })
+              }
+
+
+
             </div>
             <div className="flex flex-row justify-center gap-2">
               <div
-                className={`rounded-full border flex justify-center items-center text-[#000000] text-[18px] font-Jost font-semibold ${
-                  selectedPage === "<" ? "selected-page" : ""
-                }`}
+                className={`rounded-full border flex justify-center items-center text-[#000000] text-[18px] font-Jost font-semibold ${selectedPage === "<" ? "selected-page" : ""
+                  }`}
                 style={{ width: "50px", height: "50px", borderRadius: "50%" }}
               >
                 {" < "}
@@ -493,29 +156,27 @@ const CourseListing = () => {
                 <div
                   key={pageNumber}
                   onClick={() => handlePageClick(pageNumber)}
-                  className={`rounded-full border flex justify-center items-center text-[#000000] text-[18px] font-Jost font-semibold ${
-                    selectedPage === pageNumber ? (pageNumber === 1 ? "selected-page bg-[#000000] text-[#FFFFFF]" : "selected-page bg-white") : ""
-                  }`}
+                  className={`rounded-full border flex justify-center items-center text-[#000000] text-[18px] font-Jost font-semibold ${selectedPage === pageNumber ? (pageNumber === 1 ? "selected-page bg-[#000000] text-[#FFFFFF]" : "selected-page bg-white") : ""
+                    }`}
                   style={{ width: "50px", height: "50px", borderRadius: "50%" }}
                 >
                   {pageNumber}
                 </div>
               ))}
               <div
-                className={`rounded-full border flex justify-center items-center text-[#000000] text-[18px] font-Jost font-semibold ${
-                  selectedPage === ">" ? "selected-page" : ""
-                }`}
+                className={`rounded-full border flex justify-center items-center text-[#000000] text-[18px] font-Jost font-semibold ${selectedPage === ">" ? "selected-page" : ""
+                  }`}
                 style={{ width: "50px", height: "50px", borderRadius: "50%" }}
               >
                 {" > "}
               </div>
             </div>
           </div>
-       
+
         </div>
         <div className="w-[450px] pt-2">
-            <Categories />
-          </div>
+          <Categories />
+        </div>
       </div>
     </div>
   );

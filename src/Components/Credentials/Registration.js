@@ -40,7 +40,7 @@ const Registration = () => {
     }
     setBtnLoader(true);
     try {
-      const res = await axios.post(`${COURSESURL}api/register`, {
+      const res = await axios.post(`${COURSESURL}register`, {
         username: user.username,
         password: user.password,
         email: user.email,
@@ -56,7 +56,7 @@ const Registration = () => {
 
       // getUserDetails()
       // localStorage.setItem('COURSES_USER_TOKEN', res.data.token)
-      navigate('/')
+      navigate('/login')
 
 
     } catch (error) {
@@ -91,7 +91,7 @@ const Registration = () => {
                   <input
                     type="email"
                     id="OwnerEmail"
-                    name="OwnerEmail"
+                    name="email"
                     onChange={handleChange}
                     placeholder="Email or Mobile Number*"
                     className="border border-[#9D9D9D] text-[#9D9D9D] text-[18px] rounded-md p-2 pl-3 w-[570px] h-[48px] font-Montserrat"
@@ -112,7 +112,7 @@ const Registration = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     id="OwnerPassword"
-                    name="OwnerPassword"
+                    name="password"
                     placeholder="Password*"
                     onChange={handleChange}
                     className="text-[#9D9D9D] text-[18px] p-2 w-[520px] font-Montserrat outline-none"

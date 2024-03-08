@@ -34,7 +34,7 @@ const Login = () => {
     }
     setBtnLoader(true);
     try {
-      const res = await axios.post(`${COURSESURL}api/login`, {
+      const res = await axios.post(`${COURSESURL}login`, {
         email: user.email,
         password: user.password,
       })
@@ -54,9 +54,6 @@ const Login = () => {
     } finally {
       setBtnLoader(false)
     }
-
-
-
 
   }
 
@@ -81,7 +78,8 @@ const Login = () => {
                     id="OwnerEmail"
                     name="username"
                     value={user.username}
-                    placeholder="Username*"
+                    onChange={(e) => setUser({ ...user, username: e.target.value })}
+                    placeholder="Email*"
                     className="border border-[#9D9D9D] text-[#9D9D9D] text-[18px] rounded-md p-2 pl-3 w-[570px] h-[48px] font-Montserrat"
                   />
                 </div>
@@ -92,6 +90,8 @@ const Login = () => {
                     name="password"
                     placeholder="Password*"
                     value={user.password}
+                    onChange={(e) => setUser({ ...user, password: e.target.value })}
+
                     className="text-[#9D9D9D] text-[18px] p-2 w-[520px] font-Montserrat outline-none"
                   />
                   {showPassword ? <Eyeclosed onClick={() => setShowPassword(!showPassword)} /> : <Eye onClick={() => setShowPassword(!showPassword)} />}
