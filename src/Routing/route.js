@@ -31,9 +31,9 @@ import ScrollToTop from '../Components/ScrollToTop'
 
 const Router = () => {
     return (
-<<<<<<< HEAD
 
         <BrowserRouter >
+            <ScrollToTop />
             <Navbar />
             <Routes>
                 <Route exact path={'/'} element={<Home />}></Route>
@@ -42,7 +42,7 @@ const Router = () => {
                 <Route exact path={'/login'} element={<Login />}></Route>
                 <Route exact path={'/register'} element={<Registration />}></Route>
                 <Route exact path={'/courses'} element={<CourseListing />}></Route>
-                <Route exact path={'/singlecourse'} element={<CDHeader />}></Route>
+                <Route exact path={'/singlecourse/:slug'} element={<CDHeader />}></Route>
                 <Route exact path={'/cart'} element={<ShopingCart />}></Route>
                 <Route exact path={'/learning/wishlist'} element={<WishlistContent />}></Route>
                 <Route exact path={'/single'} element={<CDDetails />}></Route>
@@ -61,38 +61,6 @@ const Router = () => {
             <Footer />
         </BrowserRouter >
 
-=======
-     
-            <BrowserRouter >
-            <ScrollToTop/>
-                <Navbar />
-                <Routes>
-                    <Route exact path={'/'} element={<Home />}></Route>
-                    <Route exact path={'/learning'} element={<My_learning />}></Route>
-                    <Route exact path={'/wishlist'} element={<Wishlist />}></Route>
-                    <Route exact path={'/login'} element={<Login />}></Route>
-                    <Route exact path={'/register'} element={<Registration/>}></Route>
-                    <Route exact path={'/courses'} element={<CourseListing/>}></Route>
-                    <Route exact path={'/singlecourse/:slug'} element={<CDHeader/>}></Route>
-                    <Route exact path={'/cart'} element={<ShopingCart/>}></Route>
-                    <Route exact path={'/learning/wishlist'} element={<WishlistContent/>}></Route>
-                    <Route exact path={'/single'} element={<CDDetails/>}></Route>
-                    <Route exact path={'/main'} element={<Main/>}></Route>
-                    <Route exact path={'/contact'} element={<Contact/>}></Route>
-                    <Route exact path={'/chat'} element={<ChatBot/>}></Route>
-                    <Route exact path={'/test'} element={<Testimonials/>}></Route>
-                    <Route exact path={'/com'} element={<Comment/>}></Route>
-                    <Route exact path={'/faq'} element={<Faq_single/>}></Route>
-                    <Route exact path={'/review'} element={<Reviews/>}></Route>
-                    <Route exact path={'/c'} element={<Certificate/>}></Route>
-                    <Route exact path={'/checkout'} element={<Checkout/>}></Route>
-                    <Route exact path={'/over'} element={<Overview_content/>}></Route>
-                    <Route exact path={'/notification'} element={<Notification/>}></Route>
-                </Routes>
-            <Footer/>
-            </BrowserRouter >
-      
->>>>>>> 9026ec3363a5e795d6ec25264fe019036d980af0
     )
 }
 
