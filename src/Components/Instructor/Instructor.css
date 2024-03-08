@@ -7,17 +7,22 @@
 
 .instructor-container{
     display: flex;
+    flex-direction: row;
+    height: auto;
     gap: 24px;
+    
 }
 
 .instructor-image{
     width: 180px;
     height: 180px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .instructor-image img{
     border-radius: 20px;
+    width: 180px;
+    height: 180px;
 }
 
 
@@ -81,7 +86,6 @@
     font-size: 18px;
     line-height: 27px;
     font-weight: 400;
-    font-family: "Jost ";
     color: #555555;
     margin-bottom: 0;
 }

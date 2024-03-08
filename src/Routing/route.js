@@ -22,9 +22,10 @@ import Faqs from '../Components/Faqs/Faqs'
 import Reviews from '../Components/Reviews/Reviews'
 import Certificate from '../Components/Certificate/Certificate'
 import Faq_single from '../Components/Faq_Single'
-import Checkout from '../Components/checkout/checkout'
+import Checkout from '../Components/Checkout/checkout'
 import Overview_content from '../Components/Overview_content'
 import Notification from '../Components/Notification'
+import ScrollToTop from '../Components/ScrollToTop'
 
 
 
@@ -32,6 +33,7 @@ const Router = () => {
     return (
 
         <BrowserRouter >
+            <ScrollToTop />
             <Navbar />
             <Routes>
                 <Route exact path={'/'} element={<Home />}></Route>
@@ -40,7 +42,7 @@ const Router = () => {
                 <Route exact path={'/login'} element={<Login />}></Route>
                 <Route exact path={'/register'} element={<Registration />}></Route>
                 <Route exact path={'/courses'} element={<CourseListing />}></Route>
-                <Route exact path={'/singlecourse'} element={<CDHeader />}></Route>
+                <Route exact path={'/singlecourse/:slug'} element={<CDHeader />}></Route>
                 <Route exact path={'/cart'} element={<ShopingCart />}></Route>
                 <Route exact path={'/learning/wishlist'} element={<WishlistContent />}></Route>
                 <Route exact path={'/single'} element={<CDDetails />}></Route>

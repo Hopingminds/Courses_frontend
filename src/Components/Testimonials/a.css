@@ -1,57 +1,99 @@
-.containertest{
+/*.container{
     height: 501px;
     width: 100%;
+    position: relative;
     background-color:  #1DBF73;
-    /* display: flex; */
-    flex-direction: row;
-    gap: 20%;
+    display: grid;
+    grid-template-columns: ( 3 1fr);
+    gap: 19%;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
     align-content: space-between;
     font-family: Montserrat;
-    background-image: url('../../../public/Rectangle.png');
-    background-size: 100% , 710px;
+    top: 20%;
+    background-image: url(Rectangle\ 1577.png);
+    background-position: fixed;
+    background-size: 100% , 100%; 
+     justify-items: center;
+
 }
-.contenttest{
+
+
+.card {
+    height: 290px;
+    width: 300px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    justify-self: center;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}*/
+.containertest {
+    background-image: url('../../../public/Rectangle.png');
+    background-repeat: no-repeat;
+    height: 442px;
+    width: 100%;
+    background-size: cover;
+    background-color: #1DBF73;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-row-gap: 30%;
+    overflow: hidden;
+    padding: 20px;
+}
+
+
+.content{
     display: flex;
     flex-direction: row;
     width: 100%;
     gap:25%;
 }
 .A{
-    position: relative;
+   position: relative;
     height: fit-content;
-    top:9%;
+    top:-21%;
     left:11%;
 }
 .B{
-    position: relative;
+  position: relative;
     height: fit-content;
-    top:9%;
+    top:-21%;
     left:1%;
 }
 .C{
-    position: relative;
+  position: relative;
     height: fit-content;
-    top:9%;
-    right: 8%;
+    top:-21%;
+    right: -10%;
 }
 .content1{
     width:100%;
     display: flex;
     justify-content: center;
-    gap: 100px;
-    
-    /* height: fit-content; */
 }
-.card{
-    position: relative;
-    top:12%;
-    height: 400px;
-    width: 320px; /* setting width to 300px for square shape */
+.cardtest{
+    position: sticky;
+    height: 330px;
+    width: 290px; /* setting width to 300px for square shape */
     background-color: #fff;
-    margin: 20px 10px; /* added margin for spacing */
+    margin: 0 10px; /* added margin for spacing */
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    /*scroll-snap-type: x mandatory;*/
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    justify-self: center;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    top: 13%;
+    animation: slide 10s linear infinite ;
+   
+    
 }
+.cards::-webkit-scrollbar {
+    display: none;
+  }
 .icon{
     position: absolute;
     top: 3%;
@@ -59,11 +101,10 @@
 }
 .info1{
     font: Montserrat;
-margin-top: 30px;
-    /* position: absolute; */
-    /* top: 20%; */
+    position: absolute;
+    top: 20%;
    padding: 13px;
-   /* align-content: justify; */
+   align-content: justify;
 }
 .info2{
     position:absolute;
@@ -81,7 +122,33 @@ margin-top: 30px;
     height: fit-content;
     width: fit-content;
     position: absolute;
-    top:45%;
+    top:51%;
     left:37%;
     color: #1DBF73;
 }
+
+@keyframes slide {
+    0% {
+      transform: translateY(0);
+    }
+    15%{
+        transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-125%);
+    }
+    33%{
+        transform: translateY(-125%);
+    }
+    45% {
+      transform: translateY(-260%);
+    }
+    53% {
+      transform: translateY(-260%);
+    }
+   
+   
+    
+  }
+  
+  

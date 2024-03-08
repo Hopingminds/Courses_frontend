@@ -28,7 +28,7 @@ const Categories = () => {
   const [l4Checked, setl4Checked] = useState(false); 
   
   return (
-    <div className="flex flex-col h-[1104px] gap-6">
+    <div className="flex flex-col h-[1104px] gap-8 ">
       <div className="flex flex-col gap-4">
         <p className="text-[#000000] text-[20px] font-Montserrat font-bold">
           Course Category
