@@ -8,12 +8,14 @@ import Reply from "../../Assets/Reply.png";
 import Comment from "../Comment/Comment";
 
 
-const Reviews = () => {
+const Reviews = (props) => {
+    let {data}=props;
+    console.log(data);
     return (
         <>
         <div className="" id="Reviews">
             <div className="reviews">
-                <h3>Comments</h3>
+                <h3 className="font-semibold text-3xl">Comments</h3>
                 <div className="review-head">
                     <span><h2>4.0</h2></span>
                     <div className="img">
@@ -48,48 +50,29 @@ const Reviews = () => {
                 </div>
                 {/* Person Reviews */}
                 {/* Box-1 */}
-                    <div className="person-review-1 ">
+                {
+                    data?.map((item)=>{
+                        return(<>
+                        
+                        <div className="person-review-1 ">
                         <img src = {profile} alt = "profile"/>
                         <div className="person-content">
                             <div className="person-review-box">
                                 <span className="h-1">nnn</span>
                                 <span className="h-2">kkkl</span>
                             </div>
-                            <span className="content-para1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi incidunt odit quod adipisci obcaecati esse cum totam quia aliquam vitae sequi, consequatur delectus officia perspiciatis voluptatem libero? Culpa, maiores? Ratione quod suscipit delectus. Error mollitia molestias doloribus ad vero perspiciatis ipsam, sequi consequuntur recusandae suscipit optio provident iure sunt nemo.</span>
+                            <span className="content-para1">{item.review}</span>
                             <div className="h-3">
                                 <img src={Reply} alt="reply"/>
                                 <span>Reply</span>
                             </div>
                     </div>
                 </div>
-                    <div className="person-review-1">
-                        <img src = {profile} alt = "profile"/>
-                        <div className="person-content">
-                            <div className="person-review-box">
-                                <span className="h-1">nnn</span>
-                                <span className="h-2">kkkl</span>
-                            </div>
-                            <span className="content-para1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi incidunt odit quod adipisci obcaecati esse cum totam quia aliquam vitae sequi, consequatur delectus officia perspiciatis voluptatem libero? Culpa, maiores? Ratione quod suscipit delectus. Error mollitia molestias doloribus ad vero perspiciatis ipsam, sequi consequuntur recusandae suscipit optio provident iure sunt nemo.</span>
-                            <div className="h-3 ">
-                                <img src={Reply} alt="reply"/>
-                                <span>Reply</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="person-review-1">
-                        <img src = {profile} alt = "profile"/>
-                        <div className="person-content">
-                            <div className="person-review-box">
-                                <span className="h-1">nnn</span>
-                                <span className="h-2">kkkl</span>
-                            </div>
-                            <span className="content-para1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi incidunt odit quod adipisci obcaecati esse cum totam quia aliquam vitae sequi, consequatur delectus officia perspiciatis voluptatem libero? Culpa, maiores? Ratione quod suscipit delectus. Error mollitia molestias doloribus ad vero perspiciatis ipsam, sequi consequuntur recusandae suscipit optio provident iure sunt nemo.</span>
-                            <div className="h-3">
-                                <img src={Reply} alt="reply"/>
-                                <span>Reply</span>
-                            </div>
-                        </div>
-                    </div>
+                        </>)
+                    })
+                }
+                 
+                   
                 {/* Box-2 */}
             
             </div>

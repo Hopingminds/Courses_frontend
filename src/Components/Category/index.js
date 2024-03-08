@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Category(){
     return(<>
-    <div className="text-center text-[50px] font-semibold font-outfit">Top  industry courses in demand</div>
+    <div className="text-center text-[50px] font-semibold font-outfit mt-16">Top  industry courses in demand</div>
     <div className="flex justify-center w-full ">
     <div className="flex flex-wrap w-[90vw]  mt-10  2xl:justify-between pl-[6%]">
             <Link to='/courses?category=full-stack-developer' className="flex h-24 w-[25%] 2xl:w-[20%] m-4  bg-[#EBEBFF] items-center">

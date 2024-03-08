@@ -13,9 +13,9 @@ import { ReactComponent as Online } from '../../Assets/Icons/online.svg'
 
 export default function Our_features(){
     return(<>
-    <div className="h-[400px] ">
-        <div className="text-5xl font-outfit font-semibold text-center mt-4">About us</div>
-        <div className="flex justify-between font-mons px-5 mt-6">
+    <div className="h-[400px] mt-20">
+        <div className="text-5xl font-outfit font-semibold text-center mb-5">About us</div>
+        <div className="flex justify-between font-mons px-5 mt-10 2xl:justify-around ">
             <div className="h-[290px] bg-[#FAEFD9] w-[240px] features-baloon rounded-b-3xl rounded-tr-3xl">
                 <div className="flex w-36 justify-center items-center h-24 ">
                     <Medal/>

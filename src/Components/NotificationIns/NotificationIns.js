@@ -3,7 +3,7 @@ import './NotificationIns.css';
 export default function NotificationIns(){
     return (
         <div className='Notifi-container'>
-            <div className='Notifi-content'>
+            <div className='Notifi-content 2xl:w-full'>
                 <div className='NotifiIns-box'>
                     <div className='NotiIns-box-img'>
                         <img src='../img/Notifiimg.png' alt='Notifiimg'/>

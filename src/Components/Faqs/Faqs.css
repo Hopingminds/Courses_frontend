@@ -57,7 +57,7 @@
 .faq-box-descrip{
     background: #fff;
     width: 660px;
-    min-height: 192px;
+    min-height: fit-content;
     top: 84px;
     padding: 5px 30px 5px 30px;
     border-radius: 8px;

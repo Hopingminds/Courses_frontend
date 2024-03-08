@@ -1,4 +1,5 @@
 import './wishlistContent.css';
+import { AiTwotoneDelete } from "react-icons/ai";
 
 function WishlistContent() {
     return (
@@ -8,9 +9,12 @@ function WishlistContent() {
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>
@@ -48,9 +52,12 @@ function WishlistContent() {
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>
@@ -84,13 +91,16 @@ function WishlistContent() {
                         </div>
                     </div>
                 </div>
-                <div className='wishlist-box'>
+<div className='wishlist-box'>
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>
@@ -124,13 +134,16 @@ function WishlistContent() {
                         </div>
                     </div>
                 </div>
-                <div className='wishlist-box'>
+<div className='wishlist-box'>
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>
@@ -164,13 +177,16 @@ function WishlistContent() {
                         </div>
                     </div>
                 </div>
-                <div className='wishlist-box'>
+<div className='wishlist-box'>
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>
@@ -204,13 +220,16 @@ function WishlistContent() {
                         </div>
                     </div>
                 </div>
-                <div className='wishlist-box'>
+<div className='wishlist-box'>
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>
@@ -244,13 +263,16 @@ function WishlistContent() {
                         </div>
                     </div>
                 </div>
-                <div className='wishlist-box'>
+<div className='wishlist-box'>
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>
@@ -284,13 +306,16 @@ function WishlistContent() {
                         </div>
                     </div>
                 </div>
-                <div className='wishlist-box'>
+<div className='wishlist-box'>
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>
@@ -324,13 +349,16 @@ function WishlistContent() {
                         </div>
                     </div>
                 </div>
-                <div className='wishlist-box'>
+<div className='wishlist-box'>
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>
@@ -364,13 +392,16 @@ function WishlistContent() {
                         </div>
                     </div>
                 </div>
-                <div className='wishlist-box'>
+<div className='wishlist-box'>
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>
@@ -404,13 +435,16 @@ function WishlistContent() {
                         </div>
                     </div>
                 </div>
-                <div className='wishlist-box'>
+<div className='wishlist-box'>
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>
@@ -444,13 +478,16 @@ function WishlistContent() {
                         </div>
                     </div>
                 </div>
-                <div className='wishlist-box'>
+<div className='wishlist-box'>
                     <div className='wishlist-box-img'>
                         <img src='../img/fsdimg.png' alt='FSD-img'></img>
                     </div>
-                    <div className='wishlist-box-content'>
-                        <div className='wishlist-box-row1'>
+                    <div className='wishlist-box-content space-y-3'>
+                        <div className='wishlist-box-row1 flex justify-between'>
                             <p><span>by</span> Determined-instructure</p>
+                            <button className=''>
+                                <AiTwotoneDelete className='text-xl cursor-pointer text-[#1DBF73]' />
+                            </button>
                         </div>
                         <div className='wishlist-box-row2'>
                             <p>Beginner course for full stack Development</p>

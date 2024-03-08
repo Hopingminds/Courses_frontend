@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import "./Faqs.css";
 import { ReactComponent as Down } from '../../Assets/Icons/Down.svg'
 
-const Faqs = () => {
+const Faqs = (props) => {
     const [clicked, setclicked] = useState(false)
-    // useEffect(() => {
-    //     ClickSection();
-    // }, [])
-
+  
+let data=props.data;
+// console.log(data);
     function ClickSection(id){
         if(!clicked){
             setclicked(true);
@@ -29,30 +28,23 @@ const Faqs = () => {
             <div className="faq-main" id="FAQ's">
                 <div className="faq-main-container">
                     <div className="faq-container">
-                        <div className="faq-box cursor-pointer" onClick={()=>ClickSection(1)}>
-                            <h3>What does Royalty mean?</h3>
+
+                        {
+                            data?.map((item,ind)=>{
+                                return(<>
+                                    <div className="faq-box cursor-pointer" onClick={()=>ClickSection(ind)}>
+                            <h3>{item.question}</h3>
                             <Down/>
                         </div>
-                        <div id={1} className="faq-box-descrip" style={{ display: "none" }}>
-                            <h3>What does Royalty mean?</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, et eligendi illum eaque ex iusto quisquam esse. Quae commodi hic ipsam officiis consequuntur.</p>
+                        <div id={ind} className="faq-box-descrip" style={{ display: "none" }}>
+                            {/* <h3>What does Royalty mean?</h3> */}
+                            <p>{item.answer}</p>
                         </div>
-                        <div className="faq-box cursor-pointer" onClick={()=>ClickSection(2)}>
-                            <h3>What does Royalty mean?</h3>
-                            <Down/>
-                        </div>
-                        <div id={2} className="faq-box-descrip" style={{ display: "none" }}>
-                            <h3>What does Royalty mean?</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, et eligendi illum eaque ex iusto quisquam esse. Quae commodi hic ipsam officiis consequuntur.</p>
-                        </div>
-                        <div className="faq-box cursor-pointer" onClick={()=>ClickSection(3)}>
-                            <h3>What does Royalty mean?</h3>
-                            <Down/>
-                        </div>
-                        <div id={3} className="faq-box-descrip" style={{ display: "none" }}>
-                            <h3>What does Royalty mean?</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, et eligendi illum eaque ex iusto quisquam esse. Quae commodi hic ipsam officiis consequuntur.</p>
-                        </div>
+                                </>)
+                            })
+                        }
+                    
+                        
                         
                     </div>
                 </div>
