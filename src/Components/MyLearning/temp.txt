@@ -1,0 +1,22 @@
+{/* <table className=" table space-y-2 ">
+                    <div className="w-[100%]">
+                        <tr className=" bg-[#E2FFF1] rounded-md" >
+                        <th className="font-pop font-semibold py-4 px-4">Section</th>
+                        <th className="font-pop font-semibold py-4 px-4">Assignment No</th>
+                        <th className="font-pop font-semibold py-4 px-4">Subject</th>
+                        <th className="font-pop font-semibold py-4 px-4">Issue Date</th>
+                        <th className="font-pop font-semibold py-4 px-4">Deadline</th>
+                        <th className="font-pop font-semibold py-4 px-4">Status</th>
+                    </tr>
+                    </div>
+                    <div>
+                        <tr className=" bg-[#E2FFF1] rounded-md" >
+                        <th className="font-pop font-semibold py-4 px-4">Section</th>
+                        <th className="font-pop font-semibold py-4 px-4">Assignment No</th>
+                        <th className="font-pop font-semibold py-4 px-4">Subject</th>
+                        <th className="font-pop font-semibold py-4 px-4">Issue Date</th>
+                        <th className="font-pop font-semibold py-4 px-4">Deadline</th>
+                        <th className="font-pop font-semibold py-4 px-4">Status</th>
+                    </tr>
+                    </div>
+                </table> */}

@@ -1,0 +1,10 @@
+.MLheader{
+    background-image: url('../../../public/img/MyLearningbgimg.png');
+    background-size: cover;
+    height: 200px;
+}
+
+.Certificate-right{
+    margin-top: 0 !important;
+    column-width: 20px;
+}

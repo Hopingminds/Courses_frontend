@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+.instructor{
+    border-radius: 0 0 20px 20px;
+    padding: 24px 30px;
+    gap: 10px;
+    min-height: 425px;
+}
+
+.instructor-container{
+    display: flex;
+    gap: 24px;
+}
+
+.instructor-image{
+    width: 350px;
+}
+
+.instructor-image img{
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+
+.instructor-content > :nth-child(1) {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    font-family: Montserrat;
+}
+  
+.instructor-content > :nth-child(2) {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 27px;
+    font-family: Montserrat;
+}
+
+
+.instructor-content .students{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.instructor-content .students img{
+    height: 16px;
+    width: 16px;
+}
+
+.instructor-content .students p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #555555;
+    font-family: Jost;
+}
+
+
+.instructor-content .lessons{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.instructor-content .lessons img{
+    height: 16px;
+    width: 16px;
+}
+
+
+.instructor-content .lessons p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #555555;
+    font-family: Jost;
+}
+
+.instructor > p{
+    margin-top: 15px;
+    font-weight: 400;
+    color: #555555;
+    font-family: Nunito Sans;
+    font-size: 14px;
+}
+
+.instructor .links{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.instructor .links p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 27px;
+    color: #555555;
+    font-family: Jost;
+}
+
+.instructor .links img{
+    width: 16px;
+    height: 16px
+}

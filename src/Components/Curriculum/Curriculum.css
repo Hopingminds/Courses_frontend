@@ -1,0 +1,142 @@
+.curriculum{
+    border-radius: 0 0 20px 20px;
+    padding: 20px 30px;
+    gap: 10px;
+    background-color: #E2FFF1;
+    min-height: 425px;
+}
+
+.curriculum-content{
+    font-family: Nunito Sans;
+    font-size: 14px;
+    color: #555555;
+    text-align: justify;
+}
+
+.lesson-container-title-right p:first-child{
+    color: #555555;
+    font-size: 14px;
+}
+
+.lesson-container-title-right p:last-child{
+    color: #555555;
+    font-size: 14px;
+}
+
+.lesson-container{
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px 20px 16px 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.lesson-container:active{
+    color: #1DBF73;
+}
+
+.lesson-container-contents{
+    margin: 10px 0;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* lesson-container-title */
+.lesson-container-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.lesson-container-title-left, .lesson-container-title-right{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lesson-container-title-right{
+    gap: 23px;
+}
+
+.lesson-container-title-left p{
+    font-weight: 600;
+    line-height: 19.2px;
+    color: black;
+}
+
+
+
+
+
+
+
+/* lesson-container-content */
+.lesson-container-content{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 44px;
+}
+
+.lesson-container-content-left, .lesson-container-content-right{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+}
+
+.lesson-container-content-right{
+    gap: 40px;
+}
+
+.lesson-container-content-right p{
+    font-family: Jost;
+    font-size: 14px;
+    color: #555555;
+}
+
+.lesson-container-content-left p{
+    font-weight: 400;
+    line-height: 27px;
+    color: black;
+    font-family: Nunito Sans;
+    font-size: 14px;
+}
+
+.lesson-container-content-left p:focus{
+    color: #1DBF73;
+    font-family: Nunito Sans;
+    font-size: 14px;
+}
+
+.lesson-container-content-right button{
+    padding: 4px 12px;
+    border-radius: 8px;
+    color: #fff;
+    background: #1DBF73;
+    font-family: Montserrat;
+    font-size: 12px;
+    border: none;
+}
+
+
+/* Classes to be applied when toggle is active */
+.icon-arrow img {
+    transition: transform 0.2s ease;
+    width: 15px;
+    height: 15px;
+}
+  
+.icon-arrow img.icon-rotated {
+    transform: rotate(180deg);
+}
+  
+.lesson-container-title-left .para-color{
+    /* color: #1DBF73; */
+    font-family: Nunito Sans;
+}
+.lesson-container-title-left .para-color:active{
+    /* color: #1DBF73; */
+    font-family: Nunito Sans;
+}
