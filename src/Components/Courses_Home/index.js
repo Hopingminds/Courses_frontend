@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Courses.css';
 import CourseCard from './CourseCard';
+import { COURSESURL } from '../confidential';
 // import { COURSESURL } from '../Confidential';
 
 const Courses_Home = () => {
@@ -8,80 +9,80 @@ const Courses_Home = () => {
     const [selectedCourse, setSelectedCourse] = useState('');
     const [cardsToShow, setCardsToShow] = useState(4); // State to keep track of number of cards to display
     const [showAllCards, setShowAllCards] = useState(false);
-    // const [courses, setcourses] = useState([])
+    const [courses, setcourses] = useState([])
 
-//     useEffect(() => {
-//      async function Fetchdata(){
-//         let url=COURSESURL+'courses'
-// const data=await fetch(url)
-// const response=await data.json();
-// console.log(response);
-// setcourses(response)
-//      }
-//      Fetchdata()
-//     }, [])
+    useEffect(() => {
+     async function Fetchdata(){
+        let url=COURSESURL+'courses'
+const data=await fetch(url)
+const response=await data.json();
+console.log(response);
+setcourses(response)
+     }
+     Fetchdata()
+    }, [])
     
 
-    const courses = [
-        {
-            category: 'Full Stack Development',
-            title: 'Full Stack Course Title 1',
-            price: '$99',
-            duration: '6 weeks',
-            image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
-        },
+    // const courses = [
+    //     {
+    //         category: 'Full Stack Development',
+    //         title: 'Full Stack Course Title 1',
+    //         price: '$99',
+    //         duration: '6 weeks',
+    //         image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
+    //     },
        
-        {
-            category: 'AI & ML',
-            title: 'AI/ML Course Title 1',
-            price: '$99',
-            duration: '6 weeks',
-            image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
-        },
-        {
-            category: 'Data science',
-            title: 'Data science Course Title 1',
-            price: '$99',
-            duration: '6 weeks',
-            image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
-        },
-        {
-            category: 'Electric Vehicle Design',
-            title: 'Electric Vehicle Design Course Title 1',
-            price: '$99',
-            duration: '6 weeks',
-            image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
-        },
-        {
-            category: 'Cyber Security',
-            title: 'Cyber Security Course Title 1',
-            price: '$99',
-            duration: '6 weeks',
-            image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
-        },
-        {
-            category: 'Hydro Carbon',
-            title: 'Hydro Carbon Course Title 1',
-            price: '$99',
-            duration: '6 weeks',
-            image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
-        },
-        {
-            category: 'Design',
-            title: 'Design Course Title 1',
-            price: '$99',
-            duration: '6 weeks',
-            image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
-        },
-        {
-            category: 'Management',
-            title: 'AI/ML Course Title 1',
-            price: '$99',
-            duration: '6 weeks',
-            image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
-        },
+    //     {
+    //         category: 'AI & ML',
+    //         title: 'AI/ML Course Title 1',
+    //         price: '$99',
+    //         duration: '6 weeks',
+    //         image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
+    //     },
+    //     {
+    //         category: 'Data science',
+    //         title: 'Data science Course Title 1',
+    //         price: '$99',
+    //         duration: '6 weeks',
+    //         image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
+    //     },
+    //     {
+    //         category: 'Electric Vehicle Design',
+    //         title: 'Electric Vehicle Design Course Title 1',
+    //         price: '$99',
+    //         duration: '6 weeks',
+    //         image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
+    //     },
+    //     {
+    //         category: 'Cyber Security',
+    //         title: 'Cyber Security Course Title 1',
+    //         price: '$99',
+    //         duration: '6 weeks',
+    //         image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
+    //     },
+    //     {
+    //         category: 'Hydro Carbon',
+    //         title: 'Hydro Carbon Course Title 1',
+    //         price: '$99',
+    //         duration: '6 weeks',
+    //         image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
+    //     },
+    //     {
+    //         category: 'Design',
+    //         title: 'Design Course Title 1',
+    //         price: '$99',
+    //         duration: '6 weeks',
+    //         image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
+    //     },
+    //     {
+    //         category: 'Management',
+    //         title: 'AI/ML Course Title 1',
+    //         price: '$99',
+    //         duration: '6 weeks',
+    //         image: 'https://burst.shopifycdn.com/photos/laptop-from-above.jpg?width=1000&format=pjpg&exif=0&iptc=0'
+    //     },
 
-    ];
+    // ];
 
     let filteredCourses = selectedCategory === 'All Courses' ? courses : courses.filter(course => course.category === selectedCategory);
 
@@ -124,15 +125,17 @@ const Courses_Home = () => {
                 <div className="grid grid-cols-4 gap-7  justify-center mt-5 flex-wrap xsm:grid xsm:grid-cols-2 pb-5"> {/* Changed flex to flex-wrap */}
                     {filteredCourses?.slice(0, cardsToShow).map(course => (
                         <CourseCard 
-                            key={course.title} 
-                            title={course.title} 
-                            price={course.price} 
-                            duration={course.duration} 
-                            image={course.image} 
-                            // slug={course.slug}
-                            onClick={() => handleCourseClick(course.title)}
-                            isSelected={selectedCourse === course.title}
-                            category={course.category} // Pass category to CourseCard component
+                        key={course.title} 
+                        title={course.title} 
+                        price={course.base_price} 
+                        duration={course.duration} 
+                        image={course.featured_image} 
+                        slug={course.slug}
+                        onClick={() => handleCourseClick(course.title)}
+                        isSelected={selectedCourse === course.title}
+                        category={course.category}
+                        description={course.whatWillILearn}
+                         // Pass category to CourseCard component
                         />
                     ))}
                     {/* {filteredCourses.length === 1 && ( // Render additional cards if there is only one course

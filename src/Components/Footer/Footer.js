@@ -9,13 +9,13 @@ import Icon4 from "../../Assests/Icons/yt.svg";
 const Footer = () => {
   return (
     <>
-    <div className='flex flex-col gap-14 bg-[#E2FFF1] pt-14 pb-8'>
+    <div className='flex flex-col gap-14 bg-[#E2FFF1] py-5'>
         <div className='grid grid-cols-4 justify-between pl-36'>
             <div className='flex flex-col gap-12 w-[220px]'>
                 <img src={Img2} className='w-[217px] h-[84px]' />
                 <p className='text-[#555555] text-[20px] font-Nunito Sans text-justify'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
-            <div className='flex flex-col gap-6'>
+            <div className='flex flex-col gap-4'>
                 <p className='text-[#555555] text-[24px] font-Nunito Sans font-semibold'>GET HELP</p>
                 <div className='flex flex-col gap-4'>
                     <p className='text-[#555555] text-[20px] font-Nunito Sans'>Contact Us</p>
@@ -23,7 +23,7 @@ const Footer = () => {
                     <p className='text-[#555555] text-[20px] font-Nunito Sans'>FAQ</p>
                 </div>
             </div>
-            <div className='flex flex-col gap-6'>
+            <div className='flex flex-col gap-4'>
                 <p className='text-[#555555] text-[24px] font-Nunito Sans font-semibold'>PROGRAMS</p>
                 <div className='flex flex-col gap-4'>
                     <p className='text-[#555555] text-[20px] font-Nunito Sans'>Data Science</p>
@@ -33,7 +33,7 @@ const Footer = () => {
                     <p className='text-[#555555] text-[20px] font-Nunito Sans'>Electric Vehicle Design</p>
                 </div>
             </div>
-            <div className='flex flex-col gap-6'>
+            <div className='flex flex-col gap-4'>
                 <p className='text-[#555555] text-[24px] font-Nunito Sans font-semibold'>CONTACT US</p>
                 <div className='flex flex-col gap-4'>
                     <p className='text-[#555555] text-[20px] font-Nunito Sans'>Tel: + 9779886900</p>

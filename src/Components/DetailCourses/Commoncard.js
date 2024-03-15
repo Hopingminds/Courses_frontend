@@ -1,13 +1,15 @@
-export default function Commoncard(){
+export default function Commoncard(props){
+    let {Data}=props;
+console.log(Data);
     return (
         <div className="bg-[#E2FFF1] w-[33%] h-max mt-20 p-6 rounded-xl flex flex-col  top-14 ">
             <div>
-                <img src="../img/DetailCoursescardimg.png"/>
+                <img src={Data?.featured_image}/>
             </div>
             <div className="flex flex-col mt space-y-4 mt-6">
-                <p className="font-pop font-semibold">The Ultimate Guide to the best Full Stack Development</p>
+                <p className="font-pop font-semibold">{Data?.title}</p>
                 <div className="flex justify-between items-center">
-                    <p className="font-nu text-[16px] font-semibold">₹4999</p>
+                    <p className="font-nu text-[16px] font-semibold">₹{Data?.base_price}</p>
                     <button className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold">Join Now</button>
                 </div>
                 <hr/>

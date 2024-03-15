@@ -46,7 +46,7 @@ const ProfilEdit = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
           <div className="grid grid-cols-2 gap-x-60 gap-y-8">
             <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg h-[65px] w-[550px] text-[#000000] text-[20px] px-6">
               <input
