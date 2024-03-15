@@ -8,26 +8,36 @@ import AboutUs from '../Components/AboutUs/AboutUs'
 import Footer from '../Components/Footer/Footer'
 import ProfilEdit from '../Components/ProfileEdit/ProfilEdit'
 import MyLearning from '../Components/MyLearning/MyLearning'
+import Login from '../Components/Login/login'
+import Register from '../Components/Register/register'
+import Cart from '../Components/Cart/Cart.jsx'
+import CDDetails from '../Components/courseDetails/courseDetails.js'
+import AllCourses from '../Components/AllCourses/AllCourses.js'
 
 
 
 const Router = () => {
     return (
-     
-            <BrowserRouter >
-                <Navbar/>
 
-                <Routes>
-                   <Route path='/' element={<Home/>}/>
-                   <Route path='/detailcourse/:slug' element={<DetailCourses/>}/>
-                   <Route path='/about' element={<AboutUs/>}/>
-                   <Route path='/profile' element={<ProfilEdit/>}/>
-                   <Route path='/learning' element={<MyLearning/>}/>
-                </Routes>
-                <Footer/>
+        <BrowserRouter >
+            <Navbar />
 
-            </BrowserRouter >
-      
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/detailcourse/:slug' element={<DetailCourses />} />
+                <Route path='/about' element={<AboutUs />} />
+                <Route path='/profile' element={<ProfilEdit />} />
+                <Route path='/learning' element={<MyLearning />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/cart' element={<Cart />} />
+                <Route path='/course' element={<AllCourses />} />
+                <Route path='/course/:slug' element={<CDDetails />} />
+            </Routes>
+            <Footer />
+
+        </BrowserRouter >
+
     )
 }
 

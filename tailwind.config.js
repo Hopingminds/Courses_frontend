@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // important: false,
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js,jsx}"],
+  // content: ["./src/**/*.{js,jsx,ts,tsx"],
   theme: {
     extend: {
       keyframes: {
@@ -19,7 +20,7 @@ module.exports = {
         'Inter': ['Inter', 'sans-serif'],
         'outfit': ['Outfit'],
         'pop': ['Poppins'],
-        'nu':['Nunito Sans']
+        'nu': ['Nunito Sans']
       },
     },
     screens: {
