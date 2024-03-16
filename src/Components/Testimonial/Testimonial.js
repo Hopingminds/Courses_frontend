@@ -48,18 +48,18 @@ const Testimonial = () => {
 
   return (
     <>
-      <div className="grid grid-cols-2  justify-between px-20 pb-32">
-        <div className="flex flex-col gap-8 ">
+      <div className="flex flex-row gap-10 justify-center pt-0 px-20 pb-32">
+        <div className="flex flex-col gap-8 w-[60%]">
           <div className="flex flex-row gap-4 items-center">
             <hr className="border border-[#525596] w-20" />
             <p className="text-[#525596] text-[20px] font-Nunito Sans">
               TESTIMONIAL
             </p>
           </div>
-          <p className="text-[#2F327D] text-[60px] font-Nunito Sans font-semibold">
+          <p className="text-[#2F327D] text-[40px] font-Nunito Sans font-semibold">
             What They Say?
           </p>
-          <div className="flex flex-col gap-4 text-[#696984] text-[24px] font-poppins">
+          <div className="flex flex-col gap-4 text-[#696984] text-[18px] font-poppins">
             <p className="">
               HopingMinds has got more than 100k positive ratings from our users
               around the world.{" "}
@@ -69,27 +69,26 @@ const Testimonial = () => {
               Skilline.
             </p>
           </div>
-          <p className="text-[#696984] text-[24px] font-poppins">
+          <p className="text-[#696984] text-[18px] font-poppins">
             Are you too? Please give your assessment
           </p>
-          <div className="flex flex-row">
-            <div className="w-[400px] h-[80px] border border-[#49BBBD] text-[#49BBBD] text-[22px] font-poppins flex justify-between items-center rounded-full">
-              <div className="flex justify-center items-center pl-12">
-                {/* <p className="cursor-pointer">Write your assessment</p> */}
-                <input type="text" name="" placeholder="Write Your assessment" id="review" className="outline-none" />
+          {/* <div className="flex flex-row">
+            <div className="w-[45%] border border-[#49BBBD] text-[#49BBBD] text-[16px] font-poppins flex justify-between items-center rounded-full">
+              <div className="flex justify-center items-center pl-4">
+                <p className="cursor-pointer">Write your assessment</p>
               </div>
-              <div className="w-[80px] h-[80px] border border-[#49BBBD] rounded-full flex justify-center cursor-pointer" onClick={handleReview}>
+              <div className="w-[20%] h-[100%] py-5 border border-[#49BBBD] rounded-full flex justify-center cursor-pointer">
                 <img src={Arrow} className="self-center" />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* right */}
-        <div className="relative ">
+        <div className="relative w-[50%]">
           <div className="relative">
-            <img src={testimonials[currentIndex].image} className=" object-fit rounded-3xl" />
-            <div className="absolute flex flex-row gap-10 justify-center rounded-xl shadow-2xl bg-[#ffffff] right-0 top-[72%]">
+            <img src={testimonials[currentIndex].image} className="w-[80%] h-[80%] object-fit rounded-3xl" />
+            <div className="absolute flex flex-row gap-10 justify-center rounded-xl shadow-2xl w-[90%] h-[45%] bg-[#ffffff] right-0 top-[72%]">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
@@ -105,13 +104,13 @@ const Testimonial = () => {
                   className={`flex relative ${index === currentIndex ? "" : "hidden"
                     }`}
                 >
-                  <hr className=" border border-[#BDBDD1] absolute top-12" />
-                  <div className="flex flex-col justify-between px-10 pt-10 pb-8">
-                    <p className="text-[#5F5F7E] text-[22px] font-Nunito Sans leading-9 text-justify">
+                  <hr className="h-[45%] border border-[#BDBDD1] absolute top-8" />
+                  <div className="flex flex-col justify-between px-10 pt-6 pb-6">
+                    <p className="text-[#5F5F7E] text-[16px] font-Nunito Sans leadng-6 text-justify">
                       {testimonial.text}
                     </p>
                     <div className="flex flex-row justify-between items-center">
-                      <p className="text-[#5F5F7E] text-[24px] font-Nunito Sans font-semibold">
+                      <p className="text-[#5F5F7E] text-[18px] font-Nunito Sans font-semibold">
                         {/* Gloria Rose */}
                         {testimonial.author}
                       </p>
@@ -133,7 +132,7 @@ const Testimonial = () => {
                             </svg>
                           ))}
                         </div>
-                        <p className="text-[#80819A] text-[18px] font-Nunito Sans">
+                        <p className="text-[#80819A] text-[14px] font-Nunito Sans">
                           {testimonial.reviews} reviews at Yelp
                         </p>
                       </div>
@@ -146,7 +145,7 @@ const Testimonial = () => {
 
           {/* arrrow */}
           <div
-            className="w-[80px] h-[80px] absolute bg-[#ffffff] rounded-full right-28 top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer"
+            className="w-[80px] h-[80px] absolute bg-[#ffffff] rounded-full right-[10%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer"
             style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }} onClick={handleArrow2Click}
           >
             <img src={Arrow2} className="self-center" />

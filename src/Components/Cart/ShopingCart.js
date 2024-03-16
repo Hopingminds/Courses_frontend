@@ -3,7 +3,7 @@ import './ShopingCart.css';
 function ShopingCart(){
     return (
         <div className='SC-container font-pop'>
-            <div className=' w-[100%] h-[10vw] flex flex-row items-center cartbg px-[4%]'>
+            <div className=' w-[100%] h-[20vh] flex flex-row items-center cartbg px-[4%]'>
                 {/* <div className='inline-block ml-[1vw]'>
                     <button className='bg-white border border-[#EAEAEA] rounded-2xl px-[7px] h-[2vw] mx-[7px] cursor-pointer' type='submit' >
                         <img className='w-[1vw]' src="../Icons/leftsidearrow.svg" alt="left-arrow"></img>

@@ -16,7 +16,7 @@ const Footer = () => {
                 <div className='grid grid-cols-4 justify-between pl-36'>
                     <div className='flex flex-col gap-8 w-[220px]'>
                         <img src={Img2} className='w-[217px] h-[84px]' />
-                        <p className='text-[#555555] text-[14px] font-Nunito Sans text-justify'>Holistic development programs that place students in specific high growth roles across 150+ Corporate Partners.</p>
+                        <p className='text-[#555555] text-[14px] font-Nunito Sans text-balance w-full'>Holistic a development programs that place students in specific high growth roles across 150+ Corporate Partners.</p>
                     </div>
                     <div className='flex flex-col gap-4'>
                         <p className='text-[#555555] text-[24px] font-Nunito Sans font-semibold'>GET HELP</p>
