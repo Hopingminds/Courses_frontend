@@ -10,9 +10,9 @@ import ProfilEdit from '../Components/ProfileEdit/ProfilEdit'
 import MyLearning from '../Components/MyLearning/MyLearning'
 import Login from '../Components/Login/login'
 import Register from '../Components/Register/register'
-import Cart from '../Components/Cart/Cart.jsx'
 import CDDetails from '../Components/courseDetails/courseDetails.js'
 import AllCourses from '../Components/AllCourses/AllCourses.js'
+import ShopingCart from '../Components/Cart/ShopingCart.js'
 
 
 
@@ -30,7 +30,7 @@ const Router = () => {
                 <Route path='/learning' element={<MyLearning />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
-                <Route path='/cart' element={<Cart />} />
+                <Route path='/cart' element={< ShopingCart/>} />
                 <Route path='/course' element={<AllCourses />} />
                 <Route path='/course/:slug' element={<CDDetails />} />
             </Routes>

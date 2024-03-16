@@ -17,7 +17,6 @@ module.exports = {
       fontFamily: {
         'Gorditas': ['Gorditas'],
         'mons': ['Montserrat', 'sans-serif'],
-        'Inter': ['Inter', 'sans-serif'],
         'outfit': ['Outfit'],
         'pop': ['Poppins'],
         'nu': ['Nunito Sans']
