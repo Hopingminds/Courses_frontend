@@ -16,12 +16,12 @@ export default function Navbar() {
             <Link to='/' className="">
                 <img src="/logo.png" />
             </Link>
-            <div className="flex gap-4 items-center">
-                <Link to={'/'}  className={`hover:bg-[#1DBF73] rounded-full hover:text-white py-1 px-7 text-[22px] ${location.pathname === '/' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Home</Link>
-                <Link to={'/course'}  className={`hover:bg-[#1DBF73] rounded-full hover:text-white py-1 px-7 text-[22px] ${location.pathname === '/course' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Courses</Link>
+            <div className="flex space-x-10 items-center">
+                <Link to={'/'}  className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Home</Link>
+                <Link to={'/course'}  className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/course' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Courses</Link>
                 {/* <Link>Search</Link> */}
-                <Link to={'/learning'}  className={`hover:bg-[#1DBF73] rounded-full hover:text-white py-1 px-7 text-[22px] ${location.pathname === '/learning' ? 'underline font-bold text-[#1DBF73]' : ''}`}>My Learning</Link>
-                <Link to={'/cart'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white py-1 px-7 text-[22px] ${location.pathname === '/cart' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Cart</Link>
+                <Link to={'/learning'}  className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/learning' ? 'underline font-bold text-[#1DBF73]' : ''}`}>My Learning</Link>
+                <Link to={'/cart'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/cart' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Cart</Link>
                 {userDetail?._id ? < Link to="/profile" className="pl-4" style={{ cursor: "pointer" }}>  <span>
                     <Account />
 

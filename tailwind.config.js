@@ -17,7 +17,6 @@ module.exports = {
       fontFamily: {
         'Gorditas': ['Gorditas'],
         'mons': ['Montserrat', 'sans-serif'],
-        'Inter': ['Inter', 'sans-serif'],
         'outfit': ['Outfit'],
         'pop': ['Poppins'],
         'nu': ['Nunito Sans']
@@ -28,7 +27,7 @@ module.exports = {
       'sm': { 'min': '721px', 'max': '767px' },
       'md': { 'min': '768px', 'max': '1023px' },
       'lg': { 'min': '1024px', 'max': '1279px' },
-      'xl': { 'min': '1500px', 'max': '1700px' },
+      'xl': { 'min': '1500px', 'max': '1999px' },
       '2xl': { 'min': '2000px' },
     },
   },
