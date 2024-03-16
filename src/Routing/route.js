@@ -20,7 +20,10 @@ const Router = () => {
     return (
 
         <BrowserRouter >
-            <Navbar />
+            <div className='h-20'>
+
+                <Navbar />
+            </div>
 
             <Routes>
                 <Route path='/' element={<Home />} />
@@ -30,7 +33,7 @@ const Router = () => {
                 <Route path='/learning' element={<MyLearning />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
-                <Route path='/cart' element={< ShopingCart/>} />
+                <Route path='/cart' element={< ShopingCart />} />
                 <Route path='/course' element={<AllCourses />} />
                 <Route path='/course/:slug' element={<CDDetails />} />
             </Routes>

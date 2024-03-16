@@ -9,7 +9,7 @@ export default function Herosection() {
     return (<>
             <div className="border bg-[#E2FFF1] h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%] 2xl:h-[65vh]">
             <div className='w-[45%] space-y-6 2xl:space-y-10'>
-                <div className='text-[3.5vw] font-bold leading-[4.5rem] 2xl:leading-[5.8rem]'>Studying Online is now much easier</div>
+                <div className='text-[3.5vw] font-bold leading-[4.5rem] 2xl:leading-[5.8rem]'>Passion and persistence will lead me to your dream job.</div>
                 <div className='font-nu text-[20px]'>TOTC is an interesting platform that will teach you in more an interactive way</div>
                 <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full ' onClick={() => navigate('/register')}>Join for free</button>
             </div>

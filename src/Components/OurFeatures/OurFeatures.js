@@ -99,18 +99,18 @@ const OurFeatures = () => {
               <img
                 src={displayImage} alt=""
                 className="w-full h-full object-fit"
-                style={{ animation: "slideRight 4s linear infinite" }}
+                style={{ animation: "slideRight 6s linear infinite" }}
               />
             </div>
             <div className="relative overflow-hidden w-[650px] h-auto">
               <div
                 className="flex flex-col gap-12 w-[650px] h-auto"
-                style={{ animation: "slideLeft  linear infinite" }}
+                style={{ animation: "slideLeft 6s linear infinite" }}
               >
                 <img
                 src={ssimage1} alt=""
                 className="w-full h-full object-fit"
-                style={{ animation: "slideLeft 4s linear infinite" }}
+                style={{ animation: "slideLeft 6s linear infinite" }}
               />
                 {/* <p className="text-[40px] text-[#000000] font-poppins font-semibold">
                   A{" "}
