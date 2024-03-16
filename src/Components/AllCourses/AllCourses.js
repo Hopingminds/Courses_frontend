@@ -14,6 +14,7 @@ import { BASE_URL } from "../../Api/api";
 import { Link } from "react-router-dom";
 
 const AllCourses = () => {
+    const [selectedUser, setSelectedUser] = useState(null);
     const [allCourses, setAllCourses] = useState([]);
     useEffect(() => {
         fetchCourses();
@@ -28,6 +29,10 @@ const AllCourses = () => {
         } catch (error) {
 
         }
+    }
+    
+    const toggleUserImage = (user) => {
+        setSelectedUser(selectedUser === user ? null : user);
     }
 
     return (
@@ -253,7 +258,7 @@ const AllCourses = () => {
                 </p>
                 <div className="bg-[#ffffff] rounded-xl flex flex-row gap-28 py-10 pt-20 px-14">
                     <div className="flex w-[55%] justify-end">
-                        <img src={Img3} className="w-[90%] object-contain" />
+                    <img src={selectedUser ? User1 : Img3} className="w-[90%] object-contain" onClick={() => toggleUserImage('')} />
                     </div>
                     <div className="flex flex-col gap-4 w-full justify-end pl-4">
                         <p className="text-[#252641] text-[30px] font-poppins font-semibold">
@@ -285,10 +290,10 @@ const AllCourses = () => {
                                 </div>
                             </div>
                             <div className="flex flex-col gap-4 justify-between">
-                                <img src={User1} className="w-full object-contain" />
-                                <img src={User2} className="w-full object-contain" />
-                                <img src={User3} className="w-full object-contain" />
-                                <img src={User4} className="w-full object-contain" />
+                                <img src={User1} className="w-full object-contain" onClick={() => toggleUserImage('user1')} />
+                                <img src={User2} className="w-full object-contain" onClick={() => toggleUserImage('user2')} />
+                                <img src={User3} className="w-full object-contain" onClick={() => toggleUserImage('user3')} />
+                                <img src={User4} className="w-full object-contain" onClick={() => toggleUserImage('user4')} />
                             </div>
                         </div>
                     </div>
