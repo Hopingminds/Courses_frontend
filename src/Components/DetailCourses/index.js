@@ -5,6 +5,7 @@ import RecommendedCourses from '../RecommendedCourses/RecommendedCourses';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { COURSESURL } from '../confidential';
+import { BASE_URL } from '../../Api/api';
 
 export default function DetailCourses(){
     const param=useParams()
@@ -14,7 +15,7 @@ const [Data, setData] = useState()
         async function Fetchdata(){
             try {
                 // setshow(true)
-            let url=COURSESURL+'course/'+slug
+            let url=BASE_URL+'/course/'+slug
             const data = await fetch(url);
             const response=await data.json()
             // console.log(response);
@@ -31,12 +32,12 @@ const [Data, setData] = useState()
     return (
         <div className="  h-auto min-h-screen overflow-x-visible ">
             <div className=" mx-[5%]">
-                <div className='CCDetails-Header-main flex justify-evenly w-full'>
-                    <div className='CCDetails-Header-content-left '>
-                        <div className='CCDetails-Header-content-row1'>
-                            <h2 className='font-pop'>{Data?.title}</h2>
+                <div className='CCDetails-Header-main flex justify-between px-[5%]   w-full'>
+                    <div className='CCDetails-Header-content-leftqw '>
+                        <div className='CCDetails-Header-content-row1qw'>
+                            <h2 className='font-pop '>{Data?.title}</h2>
                         </div>
-                        <div className='CCDetails-Header-content-row2'>
+                        <div className='CCDetails-Header-content-row2 w-[90%]'>
                             <div className='CCDetails-Header-content-row2-clock'>
                                 <img src="../Icons/clockfilled.svg" alt="clock"></img>
                                 <p className='font-nu'> 2Weeks</p>
