@@ -3,6 +3,7 @@ import Arrow from "../../Assests/Icons/testimonialarrow.svg";
 import Arrow2 from "../../Assests/Icons/tarrow2.svg";
 import Img1 from "../../Assests/Images/testimonial1.png";
 import Img2 from "../../Assests/Images/testimonial2.png";
+import { useNavigate } from "react-router-dom";
 
 const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,6 +24,7 @@ const Testimonial = () => {
     },
     // Add more testimonials as needed
   ];
+  const navigate = useNavigate()
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -35,10 +37,19 @@ const Testimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
 
+  const handleReview = () => {
+    if (localStorage.getItem('COURSES_USER_TOKEN')) {
+
+    }
+    else {
+      navigate('/login')
+    }
+  }
+
   return (
     <>
-      <div className="flex flex-row gap-44 justify-center py-20 px-20 pb-32">
-        <div className="flex flex-col gap-8 w-[613px]">
+      <div className="grid grid-cols-2  justify-between px-20 pb-32">
+        <div className="flex flex-col gap-8 ">
           <div className="flex flex-row gap-4 items-center">
             <hr className="border border-[#525596] w-20" />
             <p className="text-[#525596] text-[20px] font-Nunito Sans">
@@ -64,9 +75,10 @@ const Testimonial = () => {
           <div className="flex flex-row">
             <div className="w-[400px] h-[80px] border border-[#49BBBD] text-[#49BBBD] text-[22px] font-poppins flex justify-between items-center rounded-full">
               <div className="flex justify-center items-center pl-12">
-                <p className="cursor-pointer">Write your assessment</p>
+                {/* <p className="cursor-pointer">Write your assessment</p> */}
+                <input type="text" name="" placeholder="Write Your assessment" id="review" className="outline-none" />
               </div>
-              <div className="w-[80px] h-[80px] border border-[#49BBBD] rounded-full flex justify-center cursor-pointer">
+              <div className="w-[80px] h-[80px] border border-[#49BBBD] rounded-full flex justify-center cursor-pointer" onClick={handleReview}>
                 <img src={Arrow} className="self-center" />
               </div>
             </div>
@@ -75,15 +87,14 @@ const Testimonial = () => {
 
         {/* right */}
         <div className="relative ">
-          <div className="relative w-[726px]">
-            <img src={testimonials[currentIndex].image} className="w-[560px] h-[700px] object-fit rounded-3xl" />
-            <div className="absolute flex flex-row gap-10 justify-center rounded-xl shadow-2xl w-[660px] h-[300px] bg-[#ffffff] right-0 top-[72%]">
+          <div className="relative">
+            <img src={testimonials[currentIndex].image} className=" object-fit rounded-3xl" />
+            <div className="absolute flex flex-row gap-10 justify-center rounded-xl shadow-2xl bg-[#ffffff] right-0 top-[72%]">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`bg-[#1DBF73] text-[#1DBF73] w-14 rounded-l-xl ${
-                    index === currentIndex ? "" : "hidden"
-                  }`}
+                  className={`bg-[#1DBF73] text-[#1DBF73] w-14 rounded-l-xl ${index === currentIndex ? "" : "hidden"
+                    }`}
                 >
                   .
                 </div>
@@ -91,11 +102,10 @@ const Testimonial = () => {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`flex relative ${
-                    index === currentIndex ? "" : "hidden"
-                  }`}
+                  className={`flex relative ${index === currentIndex ? "" : "hidden"
+                    }`}
                 >
-                  <hr className="h-[130px] border border-[#BDBDD1] absolute top-12" />
+                  <hr className=" border border-[#BDBDD1] absolute top-12" />
                   <div className="flex flex-col justify-between px-10 pt-10 pb-8">
                     <p className="text-[#5F5F7E] text-[22px] font-Nunito Sans leading-9 text-justify">
                       {testimonial.text}
@@ -106,7 +116,7 @@ const Testimonial = () => {
                         {testimonial.author}
                       </p>
                       <div className="flex flex-col gap-1">
-                      <div className="flex justify-center">
+                        <div className="flex justify-center">
                           {[...Array(testimonial.stars)].map((star, index) => (
                             <svg
                               key={index}
