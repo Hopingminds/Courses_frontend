@@ -5,8 +5,11 @@ import Icon1 from "../../Assests/Icons/insta.svg";
 import Icon2 from "../../Assests/Icons/fb.svg";
 import Icon3 from "../../Assests/Icons/lkd.svg";
 import Icon4 from "../../Assests/Icons/yt.svg";
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
+    const { pathname } = useLocation();
+    console.log(pathname)
     return (
         <>
             <div className='flex flex-col gap-14 bg-[#E2FFF1] py-5 mt-12'>

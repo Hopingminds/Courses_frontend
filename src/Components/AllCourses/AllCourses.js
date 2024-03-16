@@ -110,7 +110,7 @@ const AllCourses = () => {
                 {
                     allCourses.map((val, ind) => {
                         return (
-                            <Link to={'/detailcourse/' + val.slug} className=" px-4 py-6 mt-2 h-[350px] rounded-xl shadow-xl shadow-[#D9D9D9]">
+                            <Link to={'/detailcourse/' + val.slug} className=" px-4 py-6 mt-2 h-[350px] rounded-xl shadow-xl shadow-[#D9D9D9]transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">
                                 <div className="h-[55%]">
                                     <img className="w-full h-full" src={val?.featured_image} />
                                 </div>
