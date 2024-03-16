@@ -47,6 +47,11 @@ export default function MyLearning() {
 
     return (
         <div>
+            <head>
+                <title>
+                    MyLearing | HopingMinds
+                </title>
+            </head>
             <div className='MLheader px-[5%] pt-14 flex flex-col space-y-8 '>
                 <div>
                     <p className='font-pop text-white font-semibold text-[44px]'>My Learning</p>

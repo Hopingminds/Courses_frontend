@@ -3,7 +3,7 @@ import React from "react";
 const WhatHM = () => {
   return (
     <>
-      <div className=" py-24">
+      <div className="">
         <div className="flex flex-col gap-10">
           <div className="flex justify-center">
             <p className="text-[#1DBF73] text-[44px] font-poppins font-semibold">What is Hoping Minds</p>
