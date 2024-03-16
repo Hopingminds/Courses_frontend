@@ -5,29 +5,30 @@ import RecommendedCourses from '../RecommendedCourses/RecommendedCourses';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { COURSESURL } from '../confidential';
+import { BASE_URL } from '../../Api/api';
 
-export default function DetailCourses(){
-    const param=useParams()
-const [Data, setData] = useState()
-    let slug=param.slug;
+export default function DetailCourses() {
+    const param = useParams()
+    const [Data, setData] = useState()
+    let slug = param.slug;
     useEffect(() => {
-        async function Fetchdata(){
+        async function Fetchdata() {
             try {
                 // setshow(true)
-            let url=COURSESURL+'course/'+slug
-            const data = await fetch(url);
-            const response=await data.json()
-            // console.log(response);
-            setData(response.course)
-            // setshow(false)
+                let url = BASE_URL + '/course/' + slug
+                const data = await fetch(url);
+                const response = await data.json()
+                // console.log(response);
+                setData(response.course)
+                // setshow(false)
             } catch (error) {
                 console.log(error);
             }
             // console.log(response.course);
-         }
-         Fetchdata()
+        }
+        Fetchdata()
     }, [])
-    
+
     return (
         <div className="  h-auto min-h-screen overflow-x-visible ">
             <div className=" mx-[5%]">
@@ -59,10 +60,10 @@ const [Data, setData] = useState()
                             </div>
                         </div>
                     </div>
-                    <Commoncard Data={Data}/> 
+                    <Commoncard Data={Data} />
                 </div>
-                <Main/>
-                <RecommendedCourses/>
+                <Main />
+                <RecommendedCourses />
             </div>
         </div>
     );

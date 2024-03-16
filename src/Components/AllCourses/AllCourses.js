@@ -45,15 +45,15 @@ const AllCourses = () => {
                 <div className="flex flex-row rounded-2xl w-[70%]">
                     <input
                         type="text"
-                        placeholder=""
-                        className="flex-1 outline-none placeholder-gray-500 text-[22px] font-poppins rounded-l-2xl py-3 px-4"
+                        placeholder="Search Here..."
+                        className="flex-1 outline-none placeholder-gray-500 text-[16px] font-poppins rounded-l-2xl py-3 px-4"
                     />
-                    <button className="text-[#ffffff] text-[22px] font-poppins bg-[#1DBF73] rounded-r-2xl py-3 px-10">
+                    <button className="text-[#ffffff] text-[16px] font-poppins bg-[#1DBF73] rounded-r-2xl py-3 px-10">
                         Search
                     </button>
                 </div>
                 <div className="grid grid-cols-6 gap-6 w-[70%]">
-                    <select className="w-full p-3 px-4 text-[22px] text-[#000000] rounded-lg outline-none">
+                    <select className="w-full p-3 px-4 text-[16px] text-[#000000] rounded-lg outline-none">
                         <option value="" disabled selected hidden>
                             Subject
                         </option>
@@ -61,7 +61,7 @@ const AllCourses = () => {
                         <option value="science">Science</option>
                         <option value="history">History</option>
                     </select>
-                    <select className="w-full p-3 px-4 text-[22px] text-[#000000] rounded-lg outline-none">
+                    <select className="w-full p-3 px-4 text-[16px] text-[#000000] rounded-lg outline-none">
                         <option value="" disabled selected hidden>
                             Partner
                         </option>
@@ -69,7 +69,7 @@ const AllCourses = () => {
                         <option value="science">Science</option>
                         <option value="history">History</option>
                     </select>
-                    <select className="w-full p-3 px-4 text-[22px] text-[#000000] rounded-lg outline-none">
+                    <select className="w-full p-3 px-4 text-[16px] text-[#000000] rounded-lg outline-none">
                         <option value="" disabled selected hidden>
                             Program
                         </option>
@@ -77,7 +77,7 @@ const AllCourses = () => {
                         <option value="science">Science</option>
                         <option value="history">History</option>
                     </select>
-                    <select className="w-full p-3 px-4 text-[22px] text-[#000000] rounded-lg outline-none">
+                    <select className="w-full p-3 px-4 text-[16px] text-[#000000] rounded-lg outline-none">
                         <option value="" disabled selected hidden>
                             Language
                         </option>
@@ -85,7 +85,7 @@ const AllCourses = () => {
                         <option value="science">Science</option>
                         <option value="history">History</option>
                     </select>
-                    <select className="w-full p-3 px-4 text-[22px] text-[#000000] rounded-lg outline-none">
+                    <select className="w-full p-3 px-4 text-[16px] text-[#000000] rounded-lg outline-none">
                         <option value="" disabled selected hidden>
                             Abaility
                         </option>
@@ -93,7 +93,7 @@ const AllCourses = () => {
                         <option value="science">Science</option>
                         <option value="history">History</option>
                     </select>
-                    <select className="w-full p-3 text-[22px] text-[#000000] rounded-lg outline-none">
+                    <select className="w-full p-3 text-[16px] text-[#000000] rounded-lg outline-none">
                         <option value="" disabled selected hidden>
                             Learning Type
                         </option>
@@ -125,14 +125,14 @@ const AllCourses = () => {
                                             <p className="font-pop text-[12px] font-medium text-[#555555]">{val?.duration}</p>
                                         </div>
                                     </div>
-                                    <p className="font-pop font-semibold text-[18px] text-[#252641]">{val?.title}</p>
+                                    <p className="font-pop font-semibold text-[16px] text-[#252641]">{val?.title}</p>
                                     <div className=" flex items-center justify-between">
                                         <div className="flex items-center space-x-3">
                                             <img className="w-[32px] h-[32px]" src="../img/RCimg2.png" />
                                             <p className="font-pop font-medium text-[14px]">{val?.instructor.firstName + val?.instructor.lastName}</p>
                                         </div>
                                         <div>
-                                            <p className="font-pop font-bold text-[#49BBBD] text-[18px]">₹ {val?.base_price}</p>
+                                            <p className="font-pop font-bold text-[#49BBBD] text-[16px]">₹ {val?.base_price}</p>
                                         </div>
                                     </div>
 
@@ -161,7 +161,7 @@ const AllCourses = () => {
                             <p className="text-[#252641] text-[24px] font-poppins font-semibold">
                                 Adam
                             </p>
-                            <p className="text-[#696984] text-[18px] font-poppins w-[70%]">
+                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
                                 Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
                                 eiusmod tempor
                             </p>
@@ -176,7 +176,7 @@ const AllCourses = () => {
                             <p className="text-[#252641] text-[24px] font-poppins font-semibold">
                                 Adam
                             </p>
-                            <p className="text-[#696984] text-[18px] font-poppins w-[70%]">
+                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
                                 Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
                                 eiusmod tempor
                             </p>
@@ -191,7 +191,7 @@ const AllCourses = () => {
                             <p className="text-[#252641] text-[24px] font-poppins font-semibold">
                                 Adam
                             </p>
-                            <p className="text-[#696984] text-[18px] font-poppins w-[70%]">
+                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
                                 Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
                                 eiusmod tempor
                             </p>
@@ -206,7 +206,7 @@ const AllCourses = () => {
                             <p className="text-[#252641] text-[24px] font-poppins font-semibold">
                                 Adam
                             </p>
-                            <p className="text-[#696984] text-[18px] font-poppins w-[70%]">
+                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
                                 Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
                                 eiusmod tempor
                             </p>
@@ -221,7 +221,7 @@ const AllCourses = () => {
                             <p className="text-[#252641] text-[24px] font-poppins font-semibold">
                                 Adam
                             </p>
-                            <p className="text-[#696984] text-[18px] font-poppins w-[70%]">
+                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
                                 Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
                                 eiusmod tempor
                             </p>
@@ -236,7 +236,7 @@ const AllCourses = () => {
                             <p className="text-[#252641] text-[24px] font-poppins font-semibold">
                                 Adam
                             </p>
-                            <p className="text-[#696984] text-[18px] font-poppins w-[70%]">
+                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
                                 Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
                                 eiusmod tempor
                             </p>
@@ -265,15 +265,15 @@ const AllCourses = () => {
                                     <p className="text-[#252641] text-[24px] font-poppins font-semibold">
                                         tanya.hill@example.com
                                     </p>
-                                    <p className="text-[#696984] text-[18px] font-poppins">
+                                    <p className="text-[#696984] text-[16px] font-poppins">
                                         Lorem ipsum dolor sit amet, consectetur adipising elit, sed
                                         do eiusmod tempor
                                     </p>
-                                    <p className="text-[#696984] text-[18px] font-poppins">
+                                    <p className="text-[#696984] text-[16px] font-poppins">
                                         Lorem ipsum dolor sit amet, consectetur adipising elit, sed
                                         do eiusmod tempor
                                     </p>
-                                    <p className="text-[#696984] text-[18px] font-poppins">
+                                    <p className="text-[#696984] text-[16px] font-poppins">
                                         Lorem ipsum dolor sit amet, consectetur adipising elit, sed
                                         do eiusmod tempor
                                     </p>
