@@ -32,6 +32,11 @@ const AllCourses = () => {
 
     return (
         <>
+            <head>
+                <title>
+                    Courses | HopingMinds
+                </title>
+            </head>
             {/* Search */}
             <div
                 className="flex flex-col gap-5 p-20 items-center"
