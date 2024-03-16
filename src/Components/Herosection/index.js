@@ -8,10 +8,10 @@ export default function Herosection() {
     const navigate = useNavigate()
     return (<>
         <div className="border bg-[#E2FFF1] h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%] 2xl:h-[65vh]">
-            <div className='w-[45%] h-[65%] space-y-6 2xl:space-y-10'>
-                <div className='text-[3.2vw] font-bold leading-[5.5rem] 2xl:leading-[5.8rem]'>Studying Online Is Now Much Easier</div>
-                <div className='font-nu text-[24px] w-[65%] leading-[2.2rem]'>TOTC is an interesting platform that will teach you in more an interactive way</div>
-                <div className='pt-6'><button className='px-8 py-4 h-[13%] text-white bg-[#1DBF73] rounded-full text-[20px]' onClick={() => navigate('/register')}>Join for free</button></div>
+            <div className='w-[45%] space-y-6 2xl:space-y-10'>
+                <div className='text-[3.5vw] font-bold leading-[4.5rem] 2xl:leading-[5.8rem]'>Studying Online is now much easier</div>
+                <div className='font-nu text-[20px]'>TOTC is an interesting platform that will teach you in more an interactive way</div>
+                <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full ' onClick={() => navigate('/register')}>Join for free</button>
             </div>
             <div className='w-[50%] flex justify-center items-center  relative text-[#545567]'>
                 <div className='h-[90%] w-[90%] herobox'>
