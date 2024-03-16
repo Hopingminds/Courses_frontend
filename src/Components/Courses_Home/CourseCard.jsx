@@ -21,7 +21,7 @@ const CourseCard = ({
     <Link
       style={{ padding: "12px" }}
       to={`/detailcourse/${slug}`}
-      className={`max-w-sm font-pop rounded-xl relative h-[430px] coursecardhome m-4  bg-white   ${
+      className={`max-w-sm font-pop rounded-xl relative coursecardhome m-4  bg-white   ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
     >
@@ -48,7 +48,7 @@ const CourseCard = ({
               style={{ color: "#252641" }}
               className="font-bold text-[14px] mb-2 "
             >
-              {cropString(title, 15)}
+              {cropString(title, 13)}
             </div>
             <div className="text-[#696984]">
               {cropString(description[0], 50)}

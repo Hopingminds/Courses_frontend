@@ -62,7 +62,11 @@ const Login = () => {
 
     return (
         <>
-
+            <head>
+                <title>
+                    Login | HopingMinds
+                </title>
+            </head>
             <div className={styles.register_container}>
                 <div className={styles.register_box_main}>
 

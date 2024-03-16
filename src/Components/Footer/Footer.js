@@ -9,7 +9,7 @@ import Icon4 from "../../Assests/Icons/yt.svg";
 const Footer = () => {
     return (
         <>
-            <div className='flex flex-col gap-14 bg-[#E2FFF1] py-5'>
+            <div className='flex flex-col gap-14 bg-[#E2FFF1] py-5 mt-12'>
                 <div className='grid grid-cols-4 justify-between pl-36'>
                     <div className='flex flex-col gap-8 w-[220px]'>
                         <img src={Img2} className='w-[217px] h-[84px]' />
