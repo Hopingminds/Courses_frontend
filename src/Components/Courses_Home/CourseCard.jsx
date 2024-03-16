@@ -21,13 +21,13 @@ const CourseCard = ({
     <Link
       style={{ padding: "12px" }}
       to={`/detailcourse/${slug}`}
-      className={`max-w-sm font-pop rounded-xl relative coursecardhome m-4  bg-white   ${
+      className={` font-pop rounded-xl relative coursecardhome m-4  bg-white   ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
     >
       <img
         style={{ height: "10rem" }}
-        className="w-full  rounded-lg"
+        className="w-full  rounded-lg "
         src={image}
         alt="Course"
       />
