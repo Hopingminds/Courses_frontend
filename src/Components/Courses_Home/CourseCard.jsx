@@ -27,7 +27,7 @@ const CourseCard = ({
     >
       <img
         style={{ height: "10rem" }}
-        className="w-full  rounded-lg"
+        className="w-full  rounded-lg "
         src={image}
         alt="Course"
       />
