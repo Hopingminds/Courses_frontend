@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Courses.css';
 import CourseCard from './CourseCard';
 import { COURSESURL } from '../confidential';
+import { BASE_URL } from '../../Api/api';
 // import { COURSESURL } from '../Confidential';
 
 const Courses_Home = () => {
@@ -13,7 +14,7 @@ const Courses_Home = () => {
 
     useEffect(() => {
      async function Fetchdata(){
-        let url=COURSESURL+'courses'
+        let url=BASE_URL+'/courses'
 const data=await fetch(url)
 const response=await data.json();
 console.log(response);
@@ -122,7 +123,7 @@ setcourses(response)
                 </div>
                 <div className="text-4xl font-semibold mt-3">{selectedCategory}</div>
                 {/* <div className="text-[#333333] text-[20px] mt-1">Our training covers everything you need for a successful career, from basic job skills to advanced tech know-how.</div> */}
-                <div className="grid grid-cols-4 gap-7  justify-center mt-5 flex-wrap xsm:grid xsm:grid-cols-2 pb-5"> {/* Changed flex to flex-wrap */}
+                <div className="grid grid-cols-4   justify-center mt-5 flex-wrap xsm:grid xsm:grid-cols-2 pb-5"> {/* Changed flex to flex-wrap */}
                     {filteredCourses?.slice(0, cardsToShow).map(course => (
                         <CourseCard 
                         key={course.title} 

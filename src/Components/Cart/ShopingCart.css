@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.cartbg{
+    background-image: url('../../../public/cartbg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.SC-Header{
+    background-color: black;
+    width: 100%;
+    height: 85px;
+    display: flex;
+    flex-direction: row;
+}
+
+.SC-Header-btn{
+    display: inline-block;
+    margin: 25px 0 0 12px;
+}
+
+.SC-Header-btn button{
+    background-color: #fff;
+    border: 1px solid #EAEAEA;
+    border-radius: 23px;
+    padding: 0px 7px;
+    margin: 0 3px;
+    height: 29px;
+    cursor: pointer;
+}
+
+.SC-Header-btn button img{
+    width: 13px;
+}
+
+.SC-Header-content{
+    margin: 21px 0 0 45px;
+    height: 37px;
+}
+
+.SC-Header-content h2{
+    font-family: Outfit;
+    font-weight: 600;
+    font-size: 27px;
+    color: #fff;
+}
+
+.SC-content{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 1314px){
+    .SC-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.SC-content-left{
+    width: 69%;
+}
+
+.SC-content-left-box{
+    margin: 20px 0 0 0;
+    border: 2px solid #EAEAEA;
+    height: 17vw;
+    border-radius: 1.2vw;
+    display: flex;    
+}
+
+.SC-content-left-box-img{
+    width: 55%;
+}
+
+.SC-content-left-box-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.SC-content-left-box-content{
+    width: 100%;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.SC-content-left-box-row1 p{
+    font-family: Montserrat;
+    font-size: 0.8vw;
+}
+
+.SC-content-left-box-row1 p span{
+    color: #555555;
+}
+
+.SC-content-left-box-row2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.SC-content-left-box-row2-left p{
+    font-family: Montserrat;
+    font-size: 1.2vw;
+    font-weight: 600;
+    margin: 8px 0;
+}
+
+.SC-content-left-box-row2-right p{
+    font-family: Montserrat;
+    font-size: 1vw;
+    font-weight: 400;
+    margin: 8px 0;
+    color: #1DBF73;
+}
+
+.SC-content-left-box-row3{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.SC-content-left-box-row3-left{
+    display: flex;
+    justify-content: space-between;
+    margin: 6px 0;
+    width: 60%;
+}
+
+.SC-content-left-box-row3-left-clock{
+    display: flex;
+    align-items: center;
+}
+
+.SC-content-left-box-row3-left-clock img{
+    width: 1.3vw;
+    margin-right: 3px;
+}
+
+.SC-content-left-box-row3-left-clock p{
+    font-family: Montserrat;
+    font-size: 0.8vw;
+    font-weight: 400;
+    color: #555555;
+}
+
+.SC-content-left-box-row3-left-hat{
+    display: flex;
+    align-items: center;
+}
+
+.SC-content-left-box-row3-left-hat img{
+    width: 1.6vw;
+    margin-right: 3px;
+}
+
+.SC-content-left-box-row3-left-hat p{
+    font-family: Montserrat;
+    font-size: 0.8vw;
+    font-weight: 400;
+    color: #555555;
+}
+
+.SC-content-left-box-row3-left-level{
+    display: flex;
+    align-items: center;
+}
+
+.SC-content-left-box-row3-left-level img{
+    width: 1.1vw;
+    margin-right: 3px;
+}
+
+.SC-content-left-box-row3-left-level p{
+    font-family: Montserrat;
+    font-size: 0.8vw;
+    font-weight: 400;
+    color: #555555;
+}
+
+.SC-content-left-box-row3-left-files{
+    display: flex;
+    align-items: center;
+}
+
+.SC-content-left-box-row3-left-files img{
+    width: 1.2vw;
+    margin-right: 3px;
+}
+
+.SC-content-left-box-row3-left-files p{
+    font-family: Montserrat;
+    font-size: 0.8vw;
+    font-weight: 400;
+    color: #555555;
+}
+
+.SC-content-left-box-row3-right p{
+    font-family: Montserrat;
+    font-size: 1vw;
+    font-weight: 400;
+    margin: 8px 0;
+    color: #1DBF73;
+}
+.SC-content-left-box-row4{
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+.SC-content-left-box-row4 p{
+    font-family: Montserrat;
+    font-size: 1vw;
+    font-weight: 400;
+    margin: 8px 0;
+    color: #1DBF73;
+}   
+
+.SC-hr-line hr{
+    color: #555555;
+    margin-top: 11px;
+    border-top-width: 2px;
+}
+
+.SC-content-left-box-row5{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 9px;
+    flex-wrap: wrap;
+}
+
+.SC-content-left-box-row5-rating-star{
+    display: flex;
+}
+.SC-content-left-box-row5-rating-star img{
+    width: 1.4vw;
+    padding-right: 2px;
+}
+
+.SC-content-left-box-row5-price p{
+    color: #555555;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 1.2vw;
+}
+
+
+.SC-content-right{
+    width: 19%;
+    margin: 6vh 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.SC-content-right-row1 p{
+    font-family: outfit;
+    font-weight: 600;
+    font-size: 2vw;   /*18px*/
+}
+
+.SC-content-right-row2 p{
+    margin: 13px 0;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 1.7vw;
+}
+
+.SC-content-right-row3 p{
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 1vw;
+    color: #1DBF73;
+}
+
+.SC-content-right-row4 button{
+    margin: 24px 0;
+    font-family: jost;
+    font-size: 1.7vw;
+    /* padding: 9px 84px; */
+    background-color: #1D2026;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+}
+
