@@ -105,12 +105,12 @@ const OurFeatures = () => {
       `}
       </style>
       <div className="">
-        <div className="flex flex-col gap-12 bg-[#E2FFF180] py-10 pb-20 px-28">
-          <div className="flex flex-col gap-4 justify-center items-center">
-            <p className="text-[42px] text-[#1E1E1E] font-poppins font-semibold">
+        <div className="flex flex-col gap-12 bg-[#E2FFF180] py-10 pb-20 px-28 xsm:px-[5%] xsm:gap-2 xsm:pb-[3%] xsm:py-[5%]">
+          <div className="flex flex-col gap-4 justify-center items-center xsm:gap-2">
+            <p className="text-[42px] text-[#1E1E1E] font-pop font-semibold xsm:text-[12px]">
               Our <span className="text-[#33EFA0]"> Features </span>{" "}
             </p>
-            <p className="text-[#696984] text-[22px] font-poppins">
+            <p className="text-[#696984] text-[22px] font-pop xsm:text-[8px]">
               This very extraordinary feature, can make learning activities more
               efficient
             </p>
@@ -120,14 +120,14 @@ const OurFeatures = () => {
               <img
                 key={displayImage}
                 src={displayImage}
-                className={`w-[90%] h-[60vh] object-contain slide-in-left ${
+                className={`w-[90%] h-[60vh] object-contain slide-in-left xsm:h-[25vh] ${
                   applyZoomOutImage ? "zoom-out" : ""
                 }`}
               />
             </div>
             <div className="relative overflow-hidden w-[45%] flex justify-left items-center h-auto">
               <div
-                className={`flex flex-col gap-6 w-[90%] h-auto slide-in-right ${
+                className={`flex flex-col gap-6 w-[90%] h-auto slide-in-right xsm:gap-2 xsm:w-[95%] ${
                   applyZoomOutText ? "zoom-out" : ""
                 }`}
               >

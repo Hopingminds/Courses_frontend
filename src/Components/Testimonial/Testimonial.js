@@ -48,15 +48,15 @@ const Testimonial = () => {
 
   return (
     <>
-      <div className="flex flex-row gap-10 justify-center pt-0 px-20 pb-32">
-        <div className="flex flex-col gap-8 w-[60%]">
-          <div className="flex flex-row gap-4 items-center">
-            <hr className="border border-[#525596] w-20" />
-            <p className="text-[#525596] text-[20px] font-Nunito Sans">
+      <div className="flex flex-row gap-10 justify-center pt-0 px-20 pb-32 xsm:px-[5%]">
+        <div className="flex flex-col gap-8 w-[60%] xsm:gap-2">
+          <div className="flex flex-row gap-4 items-center xsm:gap-2 xsm:pl-2">
+            <hr className="border border-[#525596] w-20 xsm:w-6" />
+            <p className="text-[#525596] text-[20px] font-nu xsm:text-[6px]">
               TESTIMONIAL
             </p>
           </div>
-          <p className="text-[#2F327D] text-[40px] font-Nunito Sans font-semibold">
+          <p className="text-[#2F327D] text-[40px] font-nu font-semibold xsm:text-[10px]">
             What They Say?
           </p>
           <div className="flex flex-col gap-4 text-[#696984] text-[18px] font-poppins">
