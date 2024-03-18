@@ -84,29 +84,29 @@ const AllCourses = () => {
       </head>
       {/* Search */}
       <div
-        className="flex flex-col gap-5 p-20 items-center"
+        className="flex flex-col gap-5 p-20 items-center xsm:py-6 xsm:px-0 xsm:gap-2"
         style={{ backgroundImage: `url(${Img1})`, backgroundSize: "cover" }}
       >
-        <div className="flex flex-row rounded-2xl w-[80%]">
+        <div className="flex flex-row rounded-2xl w-[80%] xsm:w-[90%] xsm:rounded-md">
           <input
             type="text"
             placeholder=""
-            className="flex-1 outline-none placeholder-gray-500 text-[18px] font-poppins rounded-l-2xl py-2 px-4"
+            className="flex-1 outline-none placeholder-gray-500 text-[18px] font-pop rounded-l-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px]"
           />
-          <button className="text-[#ffffff] text-[22px] font-poppins bg-[#1DBF73] rounded-r-2xl py-2 px-10">
+          <button className="text-[#ffffff] text-[22px] font-pop bg-[#1DBF73] rounded-r-2xl py-2 px-10 xsm:rounded-r-md xsm:text-[10px] xsm:py-1 xsm:px-2">
             Search
           </button>
         </div>
-        <div className="grid grid-cols-6 gap-4 w-[80%]">
-          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center">
+        <div className="grid grid-cols-6 gap-4 w-[80%] font-pop xsm:w-[90%] xsm:gap-2 xsm:grid-cols-4">
+          <select className="w-full p-3 px-1 text-[18px] text-[#000000] font-pop rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
             <option value="" disabled selected hidden>
               Subject
             </option>
             <option value="math">Math</option>
             <option value="science">Science</option>
             <option value="history">History</option>
-          </select>
-          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center">
+          </select> 
+          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center xsm:hidden">
             <option value="" disabled selected hidden>
               Partner
             </option>
@@ -114,7 +114,7 @@ const AllCourses = () => {
             <option value="science">Science</option>
             <option value="history">History</option>
           </select>
-          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center">
+          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center xsm:hidden">
             <option value="" disabled selected hidden>
               Program
             </option>
@@ -122,7 +122,7 @@ const AllCourses = () => {
             <option value="science">Science</option>
             <option value="history">History</option>
           </select>
-          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center">
+          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
             <option value="" disabled selected hidden>
               Language
             </option>
@@ -130,7 +130,7 @@ const AllCourses = () => {
             <option value="science">Science</option>
             <option value="history">History</option>
           </select>
-          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center">
+          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
             <option value="" disabled selected hidden>
               Abaility
             </option>
@@ -138,7 +138,7 @@ const AllCourses = () => {
             <option value="science">Science</option>
             <option value="history">History</option>
           </select>
-          <select className="w-full py-3 text-[18px] text-[#000000] rounded-lg outline-none flex text-center">
+          <select className="w-full py-3 text-[18px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
             <option value="" disabled selected hidden>
               Learning Type
             </option>
