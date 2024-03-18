@@ -64,7 +64,7 @@ const AllCourses = () => {
       const res = await axios.get(`${BASE_URL}/courses`);
       console.log(res);
       setAllCourses(res.data);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const toggleShowAllCards = () => {
@@ -189,9 +189,9 @@ const AllCourses = () => {
                     {val?.title}
                   </p>
                   <p className="font-pop text-[14px] text-[#555555]">
-                      Lorem ipsum dolor sit amet, consectetur adipising elit,
-                      sed do eiusmod tempor
-                    </p>
+                    Lorem ipsum dolor sit amet, consectetur adipising elit,
+                    sed do eiusmod tempor
+                  </p>
                 </div>
                 <div className=" flex items-center justify-between">
                   <div className="flex items-center space-x-3">
@@ -232,9 +232,8 @@ const AllCourses = () => {
           {allCourses.map((course, index) => (
             <div
               key={index}
-              className={`w-[full] h-full flex flex-col gap-4 items-center px-4 py-5 rounded-xl shadow-2xl shadow-[#D9D9D9] bg-white ${
-                !showAllCards && index > 3 ? "hidden" : ""
-              }`}
+              className={`w-[full] h-full flex flex-col gap-4 items-center px-4 py-5 rounded-xl shadow-2xl shadow-[#D9D9D9] bg-white ${!showAllCards && index > 3 ? "hidden" : ""
+                }`}
             >
               <div className="h-[50%] w-full rounded-xl">
                 <img className="w-full h-full" src="../img/RCimg1.png" />

@@ -1,10 +1,23 @@
+import { useContext } from "react";
 import { CiShoppingCart } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { Globalinfo } from "../../App";
 
 export default function Commoncard(props) {
     let { Data } = props;
     console.log(Data);
+    const { userDetail } = useContext(Globalinfo)
+
+
+    let purchasedCourses = [];
+    if (Data) {
+        userDetail?.purchased_courses.forEach((val) => {
+            purchasedCourses.push(val._id)
+        })
+
+    }
+    console.log(purchasedCourses)
     return (
         <div className="bg-[#E2FFF1] w-[33%] h-max mt-20 p-6 rounded-xl flex flex-col  top-14 ">
             <div>
@@ -21,7 +34,7 @@ export default function Commoncard(props) {
                         <button className="">
                             <CiShoppingCart size={'25'} />
                         </button>
-                        <Link to={'/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold">Join Now</Link>
+                        {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold">View Course</Link> : <Link to={'/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold">Join Now</Link>}
                     </div>
                 </div>
                 <hr />
