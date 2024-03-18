@@ -5,15 +5,18 @@ import Icon1 from "../../Assests/Icons/insta.svg";
 import Icon2 from "../../Assests/Icons/fb.svg";
 import Icon3 from "../../Assests/Icons/lkd.svg";
 import Icon4 from "../../Assests/Icons/yt.svg";
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
+    const { pathname } = useLocation();
+    console.log(pathname)
     return (
         <>
             <div className='flex flex-col gap-14 bg-[#E2FFF1] py-5 mt-12'>
                 <div className='grid grid-cols-4 justify-between pl-36'>
                     <div className='flex flex-col gap-8 w-[220px]'>
                         <img src={Img2} className='w-[217px] h-[84px]' />
-                        <p className='text-[#555555] text-[14px] font-Nunito Sans text-justify'>Holistic development programs that place students in specific high growth roles across 150+ Corporate Partners.</p>
+                        <p className='text-[#555555] text-[14px] font-Nunito Sans text-balance w-full'>Holistic a development programs that place students in specific high growth roles across 150+ Corporate Partners.</p>
                     </div>
                     <div className='flex flex-col gap-4'>
                         <p className='text-[#555555] text-[24px] font-Nunito Sans font-semibold'>GET HELP</p>

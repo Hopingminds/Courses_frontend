@@ -3,6 +3,7 @@ import Arrow from "../../Assests/Icons/testimonialarrow.svg";
 import Arrow2 from "../../Assests/Icons/tarrow2.svg";
 import Img1 from "../../Assests/Images/testimonial1.png";
 import Img2 from "../../Assests/Images/testimonial2.png";
+import { useNavigate } from "react-router-dom";
 
 const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,6 +24,7 @@ const Testimonial = () => {
     },
     // Add more testimonials as needed
   ];
+  const navigate = useNavigate()
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -34,6 +36,15 @@ const Testimonial = () => {
   const handleArrow2Click = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
+
+  const handleReview = () => {
+    if (localStorage.getItem('COURSES_USER_TOKEN')) {
+
+    }
+    else {
+      navigate('/login')
+    }
+  }
 
   return (
     <>
@@ -61,7 +72,7 @@ const Testimonial = () => {
           <p className="text-[#696984] text-[18px] font-poppins">
             Are you too? Please give your assessment
           </p>
-          <div className="flex flex-row">
+          {/* <div className="flex flex-row">
             <div className="w-[45%] border border-[#49BBBD] text-[#49BBBD] text-[16px] font-poppins flex justify-between items-center rounded-full">
               <div className="flex justify-center items-center pl-4">
                 <p className="cursor-pointer">Write your assessment</p>
@@ -70,7 +81,7 @@ const Testimonial = () => {
                 <img src={Arrow} className="self-center" />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* right */}
@@ -81,9 +92,8 @@ const Testimonial = () => {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`bg-[#1DBF73] text-[#1DBF73] w-14 rounded-l-xl ${
-                    index === currentIndex ? "" : "hidden"
-                  }`}
+                  className={`bg-[#1DBF73] text-[#1DBF73] w-14 rounded-l-xl ${index === currentIndex ? "" : "hidden"
+                    }`}
                 >
                   .
                 </div>
@@ -91,9 +101,8 @@ const Testimonial = () => {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`flex relative ${
-                    index === currentIndex ? "" : "hidden"
-                  }`}
+                  className={`flex relative ${index === currentIndex ? "" : "hidden"
+                    }`}
                 >
                   <hr className="h-[45%] border border-[#BDBDD1] absolute top-8" />
                   <div className="flex flex-col justify-between px-10 pt-6 pb-6">
@@ -106,7 +115,7 @@ const Testimonial = () => {
                         {testimonial.author}
                       </p>
                       <div className="flex flex-col gap-1">
-                      <div className="flex justify-center">
+                        <div className="flex justify-center">
                           {[...Array(testimonial.stars)].map((star, index) => (
                             <svg
                               key={index}

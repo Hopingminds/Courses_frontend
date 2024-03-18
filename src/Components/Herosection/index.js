@@ -7,7 +7,7 @@ export default function Herosection() {
 
     const navigate = useNavigate()
     return (<>
-            <div className="border bg-[#E2FFF1] h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%] 2xl:h-[65vh]">
+        <div className="border bg-[#E2FFF1] h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%] 2xl:h-[65vh]">
             <div className='w-[45%] space-y-6 2xl:space-y-10'>
                 <div className='text-[3.5vw] font-bold leading-[4.5rem] 2xl:leading-[5.8rem]'>Passion and persistence will lead me to your dream job.</div>
                 <div className='font-nu text-[20px]'>TOTC is an interesting platform that will teach you in more an interactive way</div>
@@ -15,7 +15,7 @@ export default function Herosection() {
             </div>
             <div className='w-[50%] flex justify-center items-center  relative text-[#545567]'>
                 <div className='h-[90%] w-[90%] herobox'>
-                    <ReactPlayer width='100%' height='100%' url='/home_video.mp4' playing={true} loop={true} controls={false} />
+                    <ReactPlayer width='100%' height='100%' url='/home_video.mp4' playing={true} loop={true} controls={false} muted />
                     {/* <img  className='w-full h-full ' src='/tiger.webp' /> */}
                 </div>
                 <div className='flex absolute -top-8 left-10  bg-[#FFFFFFCC] backdrop:blur-[8px] py-2 px-4 space-x-3 items-center font-nu rounded-lg'>
@@ -46,5 +46,5 @@ export default function Herosection() {
         </div>
     </>)
 
-   
+
 }
