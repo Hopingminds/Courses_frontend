@@ -31,7 +31,7 @@ const CourseCard = ({
         src={image}
         alt="Course"
       />
-      <div className="h-full">
+      <div className="h-max">
         <div className="flex justify-between items-center text-[#696984] mt-2">
           <div className="flex space-x-2 items-center">
             <Design />
