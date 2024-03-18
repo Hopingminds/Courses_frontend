@@ -21,7 +21,7 @@ const CourseCard = ({
     <Link
       style={{ padding: "12px" }}
       to={`/detailcourse/${slug}`}
-      className={` font-pop rounded-xl relative coursecardhome m-4  bg-white   ${
+      className={`transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 max-w-sm font-pop rounded-xl relative coursecardhome m-4  bg-white   ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
     >
@@ -31,7 +31,7 @@ const CourseCard = ({
         src={image}
         alt="Course"
       />
-      <div className="h-full">
+      <div className="h-max">
         <div className="flex justify-between items-center text-[#696984] mt-2">
           <div className="flex space-x-2 items-center">
             <Design />
