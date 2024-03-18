@@ -16,7 +16,7 @@ const WhatHM = () => {
               <iframe
                 width="100%"
                 height="100%"
-                src="https://drive.google.com/file/d/1KLomRhq70c1PkUWU3YGYv3FkWKJh229Y/view?usp=sharing"
+                src="/Corporate.mp4"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -27,11 +27,12 @@ const WhatHM = () => {
               <iframe
                 width="100%"
                 height="100%"
-                src="https://drive.google.com/file/d/1KLomRhq70c1PkUWU3YGYv3FkWKJh229Y/view?usp=sharing"
+                src="/Corporate.mp4"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                // aria-controls="false"
               ></iframe>
             </div>
           </div>
