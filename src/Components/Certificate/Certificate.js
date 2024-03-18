@@ -5,7 +5,7 @@ const Certificate = () => {
   return (
     <>
       <div className="flex flex-row justify-between items-center bg-[#F0FFF7] gap-10 px-[5%] py-16 xsm:py-6 xsm:gap-4">
-        <div className="w-[60%] h-[70vh] xsm:h-[20vh]">
+        <div className="w-[60%] h-[70vh] xsm:h-[18vh]">
           <img src={Img1} className="w-full h-full object-fit" />
         </div>
         <div className="flex flex-col w-[70%] xsm:gap-2">
@@ -14,7 +14,7 @@ const Certificate = () => {
             <span className="text-[#1DBF73]"> Certification </span> By The
             N.S.D.C
           </p>
-          <p className="text-[#000000] text-[20px] font-nu text-justify leading-10 tracking-wider xsm:text-[6px] xsm:leading-3">
+          <p className="text-[#000000] text-[20px] font-nu text-justify leading-10 tracking-wider xsm:text-[8px] xsm:leading-none">
             NSDC Certification is a prestigious recognition for students who
             have completed accredited skill-based training programs. <span className="text-[#000000] text-[20px] font-nu xsm:hidden"> It
             validates their expertise, demonstrating their dedication to
