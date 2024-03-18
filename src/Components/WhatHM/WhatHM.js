@@ -16,7 +16,7 @@ const WhatHM = () => {
               <iframe
                 width="100%"
                 height="100%"
-                src="/Corporate.mp4"
+                src="/Corporate1.mp4"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -27,8 +27,9 @@ const WhatHM = () => {
               <iframe
                 width="100%"
                 height="100%"
-                src="/Corporate.mp4"
+                src="/Corporate2.mp4"
                 title="YouTube video player"
+                aria-controls={false}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
