@@ -13,6 +13,7 @@ import Register from '../Components/Register/register'
 import CDDetails from '../Components/courseDetails/courseDetails.js'
 import AllCourses from '../Components/AllCourses/AllCourses.js'
 import ShopingCart from '../Components/Cart/ShopingCart.js'
+import CartCheckout from '../Components/Checkout/Cart.jsx'
 
 
 
@@ -36,6 +37,7 @@ const Router = () => {
                 <Route path='/cart' element={< ShopingCart />} />
                 <Route path='/course' element={<AllCourses />} />
                 <Route path='/course/:slug' element={<CDDetails />} />
+                <Route path='/checkout' element={<CartCheckout />} />
             </Routes>
             <Footer />
 

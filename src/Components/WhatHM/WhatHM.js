@@ -16,7 +16,7 @@ const WhatHM = () => {
               <iframe
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/Z4pCqK-V_Wo?autoplay=1&mute=1"
+                src="https://drive.google.com/file/d/1KLomRhq70c1PkUWU3YGYv3FkWKJh229Y/view?usp=sharing"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -27,7 +27,7 @@ const WhatHM = () => {
               <iframe
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/c-I5S_zTwAc?autoplay=1&mute=1"
+                src="https://drive.google.com/file/d/1KLomRhq70c1PkUWU3YGYv3FkWKJh229Y/view?usp=sharing"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
