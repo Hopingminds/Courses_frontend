@@ -118,73 +118,20 @@ const OurFeatures = () => {
           <div className="flex flex-row justify-between items-center">
             <div className="flex w-[50%] relative justify-end items-center overflow-hidden">
               <img
-<<<<<<< HEAD
-                src={displayImage} alt=""
-                className="w-full h-full object-fit"
-                style={{ animation: "slideRight 6s linear infinite" }}
-=======
                 key={displayImage}
                 src={displayImage}
                 className={`w-[90%] h-[60vh] object-contain slide-in-left ${
                   applyZoomOutImage ? "zoom-out" : ""
                 }`}
->>>>>>> e230b26dea985b53b9c092c502fa9cabd90a55f1
               />
             </div>
             <div className="relative overflow-hidden w-[45%] flex justify-left items-center h-auto">
               <div
-<<<<<<< HEAD
-                className="flex flex-col gap-12 w-[650px] h-auto"
-                style={{ animation: "slideLeft 6s linear infinite" }}
-              >
-                <img
-                src={ssimage1} alt=""
-                className="w-full h-full object-fit"
-                style={{ animation: "slideLeft 6s linear infinite" }}
-              />
-                {/* <p className="text-[40px] text-[#000000] font-poppins font-semibold">
-                  A{" "}
-                  <span style={{ color: "#33EFA0", fontWeight: "bold" }}>
-                    user interface
-                  </span>{" "}
-                  designed for the classroom
-                </p> */}
-                {/* <div className="flex flex-col gap-8">
-                  <div className="flex flex-row gap-10 justify-between items-center">
-                    <div className="bg-[#ffffff] shadow-xl rounded-full w-[75px] h-[60px] flex justify-center items-center">
-                      <img src={Img1} className="w-[24px] h-[24px]" />
-                    </div>
-                    <p className="text-[#696984] text-[22px] font-poppins">
-                      Teachers don’t get lost in the grid view and have a
-                      dedicated Podium space.
-                    </p>
-                  </div>
-                  <div className="flex flex-row gap-10 items-center">
-                    <div className="bg-[#ffffff] shadow-xl rounded-full w-[60px] h-[60px] flex justify-center items-center">
-                      <img src={Img2} className="w-[28px] h-[26px]" />
-                    </div>
-                    <p className="text-[#696984] text-[22px] font-poppins">
-                      TA’s and presenters can be moved to the front of the
-                      class.
-                    </p>
-                  </div>
-                  <div className="flex flex-row gap-10 items-center">
-                    <div className="bg-[#ffffff] shadow-xl rounded-full w-[65px] h-[60px] flex justify-center items-center">
-                      <img src={Img3} className="w-[30px] h-[26px]" />
-                    </div>
-                    <p className="text-[#696984] text-[22px] font-poppins">
-                      Teachers can easily see all students and class data at one
-                      time.
-                    </p>
-                  </div>
-                </div> */}
-=======
                 className={`flex flex-col gap-6 w-[90%] h-auto slide-in-right ${
                   applyZoomOutText ? "zoom-out" : ""
                 }`}
               >
                 {displayText}
->>>>>>> e230b26dea985b53b9c092c502fa9cabd90a55f1
               </div>
             </div>
           </div>
