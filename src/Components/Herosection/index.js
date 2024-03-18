@@ -11,7 +11,7 @@ export default function Herosection() {
             <div className='w-[45%] space-y-6 2xl:space-y-10'>
                 <div className='text-[3.5vw] font-bold leading-[4.5rem] 2xl:leading-[5.8rem]'>Passion and persistence will lead me to your dream job.</div>
                 <div className='font-nu text-[20px]'>TOTC is an interesting platform that will teach you in more an interactive way</div>
-                <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full ' onClick={() => navigate('/register')}>Join for free</button>
+                {/* <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full ' onClick={() => navigate('/register')}>Join for free</button> */}
             </div>
             <div className='w-[50%] flex justify-center items-center  relative text-[#545567]'>
                 <div className='h-[90%] w-[90%] herobox'>

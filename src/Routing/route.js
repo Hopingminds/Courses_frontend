@@ -14,6 +14,7 @@ import CDDetails from '../Components/courseDetails/courseDetails.js'
 import AllCourses from '../Components/AllCourses/AllCourses.js'
 import ShopingCart from '../Components/Cart/ShopingCart.js'
 import CartCheckout from '../Components/Checkout/Cart.jsx'
+import ScrollToTop from '../Components/ScrollToTop.js'
 
 
 
@@ -21,6 +22,7 @@ const Router = () => {
     return (
 
         <BrowserRouter >
+        <ScrollToTop/>
             <div className='h-20'>
 
                 <Navbar />
