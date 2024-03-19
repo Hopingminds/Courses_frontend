@@ -12,7 +12,7 @@ const Footer = () => {
     console.log(pathname)
     return (
         <>
-            <div className='flex flex-col gap-14 bg-[#E2FFF1] py-5 mt-12 xsm:gap-8'>
+            <div className='flex flex-col gap-14 bg-[#E2FFF1] py-5 mt-12 xsm:gap-8 xsm:mt-8'>
                 <div className='grid grid-cols-4 justify-between pl-36 xsm:pl-[5%] xsm:flex xsm:flex-col xsm:gap-8'>
                     <div className='flex flex-col gap-8 w-[220px] xsm:gap-2 xsm:w-[90%]'>
                         <img src={Img2} className='w-[217px] h-[84px] xsm:w-[40%] xsm:h-[10%]' />
