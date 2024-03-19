@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Instructor.css"
 import instructorImg from "../../Assets/instructor.png";
 import studentsIcon from "../../Assets/students.png";
@@ -8,12 +8,31 @@ import Icon2 from "../../Assets/icon2.png";
 import Icon3 from "../../Assets/icon3.png";
 import Icon4 from "../../Assets/icon4.png";
 import Icon5 from "../../Assets/icon5.png";
+import { useParams } from 'react-router-dom';
+import { BASE_URL } from '../../Api/api';
 
 
 function Instructor() {
 
   const iconPaths = [Icon1, Icon2, Icon3, Icon4, Icon5];
-
+  const [Data, setData] = useState();
+  const params = useParams();
+  useEffect(() => {
+    async function Fetchdata() {
+      try {
+        let url = BASE_URL + "/course/" + params.slug;
+        const data = await fetch(url);
+        const response = await data.json();
+        // console.log(response);
+        setData(response.course);
+      } catch (error) {
+        console.log(error);
+      }
+      // console.log(response.course.curriculum);
+      // setVideoUrl(response?.course?.curriculum[0]?.lessons[0]?.video);
+    }
+    Fetchdata();
+  }, []);
   return (
     <div className='instructor  bg-[#E2FFF1]' id='Instructor'>
 
@@ -25,8 +44,9 @@ function Instructor() {
 
         <div className='instructor-content space-y-2'>
 
-          <p className='font-mons font-semibold text-[22px]'>Anil Sharma</p>
-          <p>Anil Sharma is experienced Web Developer He is one of the best educator who has helped multiples students to get placement in multiple companies.</p>
+          <p className='font-mons font-semibold text-[22px]'>{Data?.instructor.firstName} {Data?.instructor.lastName}</p>
+          {/* <p className='text-[14px]'>{Data?.instructor.about}</p> */}
+
 
           <div className='students'>
             <img src={studentsIcon} />
@@ -40,8 +60,7 @@ function Instructor() {
         </div>
       </div>
 
-      <p className='text-[14px]'>Anil has further experience in many fields and he has working experience of 10+ year and himself worked on many professional projects .</p>
-
+      <p className='text-[14px]'>{Data?.instructor.about}</p>
       <div className='links'>
         <p>Follow: </p>
         {iconPaths.map((icon, index) => (

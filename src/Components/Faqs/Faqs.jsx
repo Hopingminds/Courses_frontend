@@ -1,12 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Faqs.css";
 import { ReactComponent as Down } from '../../Assets/Icons/Down.svg'
+import { useParams } from "react-router-dom";
+import { BASE_URL } from "../../Api/api";
 
 const Faqs = () => {
     const [clicked, setclicked] = useState(false)
-    // useEffect(() => {
-    //     ClickSection();
-    // }, [])
+    const [Data, setData] = useState();
+    const params = useParams();
+    useEffect(() => {
+      async function Fetchdata() {
+      try {
+        let url = BASE_URL + "/course/" + params.slug;
+        const data = await fetch(url);
+        const response = await data.json();
+        // console.log(response);
+        setData(response.course);
+      } catch (error) {
+        console.log(error);
+      }
+        // console.log(response.course.curriculum);
+        // setVideoUrl(response?.course?.curriculum[0]?.lessons[0]?.video);
+      }
+      Fetchdata();
+    }, []);
 
     function ClickSection(id){
         if(!clicked){
@@ -29,17 +46,27 @@ const Faqs = () => {
             <div className="faq-main" id="FAQ's">
                 <div className="faq-main-container">
                     <div className="faq-container">
-                        <div className="faq-box">
-                            <div className="faq-box-head" onClick={()=>ClickSection(1)}>
-                                <h3>What does Royalty mean?</h3>
+
+                            {
+                                Data?.faqs.map((item,ind)=>{
+                                    return(<>
+                                                            <div className="faq-box ">
+
+                                     <div className="faq-box-head" onClick={()=>ClickSection(ind)}>
+                                <h3>{item?.question}</h3>
                                 <Down/>
                             </div>
-                            <div id={1} className="faq-box-descrip" style={{ display: "none" }}>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, et eligendi illum eaque ex iusto quisquam esse. Quae commodi hic ipsam officiis consequuntur.</p>
+                            <div id={ind} className="faq-box-descrip" style={{ display: "none" }}>
+                                <p>{item?.answer}</p>
                             </div>
-                        </div>
+                            </div>
+
+                                    </>)
+                                })
+                            }
+                           
                         
-                        <div className="faq-box">
+                        {/* <div className="faq-box">
                             <div className="faq-box-head" onClick={()=>ClickSection(2)}>
                                 <h3>What does Royalty mean?</h3>
                                 <Down/>
@@ -48,8 +75,8 @@ const Faqs = () => {
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, et eligendi illum eaque ex iusto quisquam esse. Quae commodi hic ipsam officiis consequuntur.</p>
                             </div>
                         </div>
-                        
-                        <div className="faq-box">
+                         */}
+                        {/* <div className="faq-box">
                             <div className="faq-box-head" onClick={()=>ClickSection(3)}>
                                 <h3>What does Royalty mean?</h3>
                                 <Down/>
@@ -57,8 +84,8 @@ const Faqs = () => {
                             <div id={3} className="faq-box-descrip" style={{ display: "none" }}>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, et eligendi illum eaque ex iusto quisquam esse. Quae commodi hic ipsam officiis consequuntur.</p>
                             </div>
-                        </div>
-                        <div className="faq-box">
+                        </div> */}
+                        {/* <div className="faq-box">
                             <div className="faq-box-head" onClick={()=>ClickSection(4)}>
                                 <h3>What does Royalty mean?</h3>
                                 <Down/>
@@ -66,7 +93,7 @@ const Faqs = () => {
                             <div id={4} className="faq-box-descrip" style={{ display: "none" }}>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, et eligendi illum eaque ex iusto quisquam esse. Quae commodi hic ipsam officiis consequuntur.</p>
                             </div>
-                        </div>
+                        </div> */}
                         
                     </div>
                 </div>
