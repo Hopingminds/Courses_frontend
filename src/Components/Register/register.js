@@ -71,7 +71,6 @@ const Login = () => {
     };
 
 
-
     return (
         <>
             <head>
@@ -93,10 +92,9 @@ const Login = () => {
                         {/* Input fields */}
                         <div className={styles.inputs}>
 
-
                             <div>
                                 {/* Email input */}
-                                <p>Email</p>
+                                <p>Username</p>
                                 <input type="text" placeholder="Enter Your Username" name="username" value={user.username} onChange={handleChange} />
                             </div>
                             <div>
