@@ -9,7 +9,6 @@ import { BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
 
 
-
 const Login = () => {
 
     const navigate = useNavigate();
