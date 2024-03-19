@@ -6,11 +6,24 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { COURSESURL } from '../confidential';
 import { BASE_URL } from '../../Api/api';
+import { jwtDecode } from 'jwt-decode';
 
 export default function DetailCourses() {
     const param = useParams()
     const [Data, setData] = useState()
     let slug = param.slug;
+    
+    async function Addtocart(){
+        try {
+            let token=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
+            let email=token.email;
+            let url=BASE_URL+'/addtocart'
+            let data=await fetch()
+        } catch (error) {
+            
+        }
+    }
+
     useEffect(() => {
         async function Fetchdata() {
             try {

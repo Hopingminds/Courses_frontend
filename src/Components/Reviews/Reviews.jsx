@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Reviews.css";
 import ratings from "../../Assets/ratings.png";
 import emptyratings from "../../Assets/emptyratings.png";
@@ -6,9 +6,25 @@ import RatingsBar from "../ratingsBar/ratingsBar";
 import profile from "../../Assets/profile.png";
 import Reply from "../../Assets/Reply.png";
 import Comment from "../Comment/Comment";
+import { useParams } from "react-router-dom";
+import { BASE_URL } from "../../Api/api";
 
 
 function Reviews() {
+    const [Data, setData] = useState();
+    const params = useParams();
+    useEffect(() => {
+      async function Fetchdata() {
+        let url = BASE_URL + "/course/" + params.slug;
+        const data = await fetch(url);
+        const response = await data.json();
+        console.log(response);
+        setData(response.course);
+        // console.log(response.course.curriculum);
+        // setVideoUrl(response?.course?.curriculum[0]?.lessons[0]?.video);
+      }
+      Fetchdata();
+    }, []);
     return (
         <>
             <div className="" id="Reviews">

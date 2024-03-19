@@ -1,18 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Overview.css"
+import { BASE_URL } from '../../Api/api';
+import { useParams } from 'react-router-dom';
 
 function Overview() {
+  const [Data, setData] = useState();
+  const params = useParams();
+  useEffect(() => {
+    async function Fetchdata() {
+      let url = BASE_URL + "/course/" + params.slug;
+      const data = await fetch(url);
+      const response = await data.json();
+      console.log(response);
+      setData(response.course);
+      // console.log(response.course.curriculum);
+      // setVideoUrl(response?.course?.curriculum[0]?.lessons[0]?.video);
+    }
+    Fetchdata();
+  }, []);
   return (
     <div className='overview bg-[#E2FFF1] flex flex-col ' id='overview'>
       <p className='font-nu text-justify'>
-      This masterclass is meticulously designed to bridge the gap between academic knowledge and industry demands in full-stack web and mobile development. Students will embark on a comprehensive journey through the realms of web development with React and Django, coupled with mobile app development for Android platforms. .......................
+{Data?.overview}
       </p>
 
       <ul>
-        <li>Engaging live classes with interactive learning.</li>
-        <li>Industry expert-led master classes every two weeks.</li>
-        <li>Real-time corporate assignments for practical learning.</li>
-        <li>Instant doubt resolution by our experienced experts.</li>
+        {Data?.whatWillILearn.map((item,ind)=>{
+          return(<>
+                  <li key={ind}>{item}</li>
+
+          </>)
+        })}
+       
       </ul>
       
    
