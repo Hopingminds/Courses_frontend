@@ -25,7 +25,7 @@ const Router = () => {
 
         <BrowserRouter >
         <ScrollToTop/>
-            <div className='h-20'>
+            <div className='h-20 xsm:h-10'>
 
                 <Navbar />
             </div>

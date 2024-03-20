@@ -3,14 +3,14 @@ import './ShopingCart.css';
 function ShopingCart(){
     return (
         <div className='SC-container font-pop'>
-            <div className=' w-[100%] h-[20vh] flex flex-row items-center cartbg px-[4%]'>
+            <div className=' w-[100%] h-[20vh] flex flex-row items-center cartbg px-[4%] xsm:h-[10vh]'>
                 {/* <div className='inline-block ml-[1vw]'>
                     <button className='bg-white border border-[#EAEAEA] rounded-2xl px-[7px] h-[2vw] mx-[7px] cursor-pointer' type='submit' >
                         <img className='w-[1vw]' src="../Icons/leftsidearrow.svg" alt="left-arrow"></img>
                     </button>
                 </div> */}
                 <div className=''>
-                    <h2 className='font-outfit  font-semibold text-4xl text-white'>My Cart</h2>
+                    <h2 className='font-outfit font-semibold text-4xl text-white xsm:text-[18px]'>My Cart</h2>
                 </div>
             </div>
             <div className='flex justify-between items-start mt-[10px] lg:flex-col lg:items-center h-[600px] px-[3%] xsm:flex-col xsm:justify-start xsm:gap-8'>
