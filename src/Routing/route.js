@@ -18,6 +18,7 @@ import ScrollToTop from '../Components/ScrollToTop.js'
 import AssignmentMeet from '../Components/Meeting/AssignmentMeet.js'
 import AssignmentStart from '../Components/Meeting/AssignmentStart.js'
 import NavSubAdmin from '../Components/SubAdminDashboard/NavSubAdmin.js'
+import DashboardSubAdmin from '../Components/SubAdminDashboard/DashboardSubAdmin.js'
 
 
 // subadmin
@@ -54,6 +55,7 @@ const Router = () => {
                 <Route path='/AssignmentStart' element={<AssignmentStart />} />
 
                 <Route path='/subadmin-login' element={<SubAdmin />} />
+                <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
 
             </Routes>
           { pathname.includes('subadmin') ? <></> : <Footer />}

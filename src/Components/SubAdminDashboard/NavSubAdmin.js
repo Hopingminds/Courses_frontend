@@ -16,7 +16,7 @@ const NavSubAdmin = () => {
           to={"/subadmin-login"}
           className="bg-black text-[22px] px-2 w-[150px] h-[45px] justify-center text-center rounded-full text-white py-1 xsm:text-[8px] xsm:px-3"
         >
-          Sign UP
+          Sign Up
         </Link>
       </div>
     </div>
