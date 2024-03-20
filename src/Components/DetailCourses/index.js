@@ -44,31 +44,31 @@ export default function DetailCourses() {
 
     return (
         <div className="  h-auto min-h-screen overflow-x-visible ">
-            <div className=" mx-[5%]">
-                <div className='CCDetails-Header-main flex justify-between px-[5%]   w-full'>
+            <div className=" mx-[5%] xsm:mx-0">
+                <div className='CCDetails-Header-main flex justify-between px-[5%] w-full'>
                     <div className='CCDetails-Header-content-leftqw '>
                         <div className='CCDetails-Header-content-row1qw'>
-                            <h2 className='font-pop '>{Data?.title}</h2>
+                            <h2 className='font-pop'>{Data?.title}</h2>
                         </div>
                         <div className='CCDetails-Header-content-row2 w-[90%]'>
                             <div className='CCDetails-Header-content-row2-clock'>
-                                <img src="../Icons/clockfilled.svg" alt="clock"></img>
+                                <img src="../Icons/clockfilled.svg" className=' xsm:w-[6px] xsm:h-[6px]' alt="clock"></img>
                                 <p className='font-nu'> 2Weeks</p>
                             </div>
                             <div className='CCDetails-Header-content-row2-hat'>
-                                <img src="../Icons/hat.svg" alt="hat"></img>
+                                <img src="../Icons/hat.svg" className=' xsm:w-[8px] xsm:h-[8px]' alt="hat"></img>
                                 <p className='font-nu'> 156 Students</p>
                             </div>
                             <div className='CCDetails-Header-content-row2-level'>
-                                <img src="../Icons/barchartgreen.svg" alt="bar-chart"></img>
+                                <img src="../Icons/barchartgreen.svg" className=' xsm:w-[8px] xsm:h-[8px]' alt="bar-chart"></img>
                                 <p className='font-nu'> All levels</p>
                             </div>
                             <div className='CCDetails-Header-content-row2-files'>
-                                <img src="../Icons/files.svg" alt="files"></img>
+                                <img src="../Icons/files.svg" className=' xsm:w-[8px] xsm:h-[8px]' alt="files"></img>
                                 <p className='font-nu'> 20 Lessons</p>
                             </div>
                             <div className='CCDetails-Header-content-row2-faq'>
-                                <img src="../Icons/faq.svg" alt="faq"></img>
+                                <img src="../Icons/faq.svg" className=' xsm:w-[8px] xsm:h-[8px]' alt="faq"></img>
                                 <p className='font-nu'> 3 Quizzes</p>
                             </div>
                         </div>
