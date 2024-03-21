@@ -4,16 +4,23 @@ import { jwtDecode } from "jwt-decode";
 
 export default function WishList(){
     const [Data, setData] = useState([])
-    let token=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
+    let login=localStorage.getItem('COURSES_USER_TOKEN')
 
     useEffect(() => {
         async function Fetchdata(){
-          // console.log(token);
-          let url=BASE_URL+'/getwishlist?email='+token.email;
-        //   console.log(url);
-          const data=await fetch(url)
-          const response=await data.json()
-          setData(response?.wishlist)
+         try {
+            if(login){
+                let token=jwtDecode(login)
+                let url=BASE_URL+'/getwishlist?email='+token.email;
+                //   console.log(url);
+                  const data=await fetch(url)
+                  const response=await data.json()
+                  setData(response?.wishlist)
+             }
+         } catch (error) {
+            console.log(error);
+         }
+         
         //   console.log(response);
         }
         Fetchdata()

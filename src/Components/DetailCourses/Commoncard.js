@@ -9,37 +9,42 @@ import toast, { Toaster } from "react-hot-toast";
 
 export default function Commoncard(props) {
     let { Data } = props;
-    console.log(Data);
+    // console.log(Data);
+    let login=localStorage.getItem('COURSES_USER_TOKEN')
     // const [Show, setShow] = useState(false)
     async function Addtocart(courseid){
         try {
-            let token=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
-            let email=token.email;
-            let quantity=1;
-            let url=BASE_URL+'/addtocart'
-            let data=await fetch(url,{
-                method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body:JSON.stringify({email,courseid,quantity})
-            })
-            let response=await data.json()
-            console.log(response);
-            if(response.success){
-                toast.success(response.msg)
+            if(login){
+                let token=jwtDecode()
+                let email=token.email;
+                let quantity=1;
+                let url=BASE_URL+'/addtocart'
+                let data=await fetch(url,{
+                    method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body:JSON.stringify({email,courseid,quantity})
+                })
+                let response=await data.json()
+                console.log(response);
+                if(response.success){
+                    toast.success(response.msg)
+                }
+                else{
+                    toast.error(response.msg)
+                }
             }
-            else{
-                toast.error(response.msg)
-            }
+            
         } catch (error) {
             console.log(error);
         }
     }
     async function Addtowishlist(courseid){
         try {
-            let token=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
+           if(login){
+            let token=jwtDecode(login)
             let email=token.email;
             let url=BASE_URL+'/addtowishlist'
             let data=await fetch(url,{
@@ -58,6 +63,7 @@ export default function Commoncard(props) {
             else{
                 toast.error(response.msg)
             }
+           }
         } catch (error) {
             console.log(error);
         }
