@@ -1,4 +1,5 @@
 import React from "react";
+import ReactPlayer from "react-player";
 
 const WhatHM = () => {
   return (
@@ -13,28 +14,10 @@ const WhatHM = () => {
           </div>
           <div className="flex flex-row gap-20 justify-center xsm:gap-4">
             <div className="w-[500px] h-[350px] 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[15vh] xsm:rounded-lg">
-              <iframe
-                width="100%"
-                height="100%"
-                src="/Corporate1.mp4"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <ReactPlayer className={'w-full h-full'} url='/Corporate1.mp4' playing={true} loop={true} controls={false} muted />
             </div>
             <div className="w-[500px] h-[350px] 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[15vh] xsm:rounded-lg">
-              <iframe
-                width="100%"
-                height="100%"
-                src="/Corporate2.mp4"
-                title="YouTube video player"
-                aria-controls={false}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                // aria-controls="false"
-              ></iframe>
+                <ReactPlayer className={'w-full h-full'} url='/Corporate2.mp4' playing={true} loop={true} controls={false} muted />
             </div>
           </div>
         </div>

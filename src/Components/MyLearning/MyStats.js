@@ -228,26 +228,31 @@ export default function MyStats() {
                                             Width here needs to be (100 - 2 * strokeWidth)% 
                                             in order to fit exactly inside the outer progressbar.
                                           */}
-                                <div style={{ width: "85%" }}>
-                                  <AnimatedProgressProvider
-                                    valueStart={0}
-                                    valueEnd={maxValues.third}
-                                    duration={1.4}
-                                    easingFunction={easeQuadInOut}
-                                  >
-                                    {(value) => {
-                                      const roundedValue = Math.round(value);
-                                      return (
-                                        <CircularProgressbarWithChildren
-                                          value={maxValues.third}
-                                          strokeWidth={5}
-                                          styles={buildStyles({
-                                            pathColor: "#04BFDA",
-                                            trailColor: "#E9EBF3",
-                                            pathTransition:
-                                              "stroke-dashoffset 1s ease 0s",
-                                          })}
-                                        ></CircularProgressbarWithChildren>
+                                          <div style={{ width: "80%" }}>
+                                          <AnimatedProgressProvider
+                                            valueStart={0}
+                                            valueEnd={maxValues.third}
+                                            duration={1.4}
+                                            easingFunction={easeQuadInOut}
+                                          >
+                                            {value => {
+                                              const roundedValue = Math.round(value);
+                                              return (
+                                                <CircularProgressbarWithChildren
+                                                value={maxValues.third}
+                                                strokeWidth={5}
+                                                styles={buildStyles({
+                                                  pathColor: "#04BFDA",
+                                                  trailColor: "#E9EBF3",
+                                                  pathTransition: "stroke-dashoffset 1s ease 0s"
+                                                })}
+                                                >
+                                                </CircularProgressbarWithChildren>
+                                              );
+                                            }}
+                                          </AnimatedProgressProvider>
+                                          </div>
+                                        </CircularProgressbarWithChildren>
                                       );
                                     }}
                                   </AnimatedProgressProvider>
@@ -256,59 +261,33 @@ export default function MyStats() {
                             );
                           }}
                         </AnimatedProgressProvider>
-                      </div>
-                    </CircularProgressbarWithChildren>
-                  );
-                }}
-              </AnimatedProgressProvider>
+                    </div>
+                    <div className='flex space-x-10 mt-12'>
+                        <div className='flex flex-col items-center'>
+                            <div className='flex space-x-2 items-center'>
+                                <img className='w-[15px] h-[15px]' src='../Icons/MSbluecircle.svg'/>
+                                <p className='font-Inter font-semibold text-[#7A7A7A] text-[18px]'>Completed</p>
+                            </div>
+                            <p className='font-nu font-semibold text-[20px]'>90%</p>
+                        </div>
+                        <div className='flex flex-col items-center'>
+                            <div className='flex space-x-2 items-center'>
+                                <img className='w-[15px] h-[15px]' src='../Icons/MSorangecircle.svg'/>
+                                <p className='font-Inter font-semibold text-[#7A7A7A] text-[18px]'>Assignment</p>
+                            </div>
+                            <p className='font-nu font-semibold text-[20px]'>90%</p>
+                        </div>
+                        <div className='flex flex-col items-center'>
+                            <div className='flex space-x-2 items-center'>
+                                <img className='w-[15px] h-[15px]' src='../Icons/MSpinkcircle.svg'/>
+                                <p className='font-Inter font-semibold text-[#7A7A7A] text-[18px]'>Progress</p>
+                            </div>
+                            <p className='font-nu font-semibold text-[20px]'>90%</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="flex space-x-10 mt-12 xsm:flex-col xsm:space-x-0 xsm:gap-4 xsm:mt-0">
-              <div className="flex flex-col items-center">
-                <div className="flex space-x-2 items-center">
-                  <img
-                    className="w-[15px] h-[15px] xsm:w-[6px] xsm:h-[6px]"
-                    src="../Icons/MSbluecircle.svg"
-                  />
-                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[6px]">
-                    Completed
-                  </p>
-                </div>
-                <p className="font-nu font-semibold text-[20px] xsm:text-[6px]">
-                  90%
-                </p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="flex space-x-2 items-center">
-                  <img
-                    className="w-[15px] h-[15px] xsm:w-[6px] xsm:h-[6px]"
-                    src="../Icons/MSorangecircle.svg"
-                  />
-                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[6px]">
-                    Assignment
-                  </p>
-                </div>
-                <p className="font-nu font-semibold text-[20px] xsm:text-[6px]">
-                  90%
-                </p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="flex space-x-2 items-center">
-                  <img
-                    className="w-[15px] h-[15px] xsm:w-[6px] xsm:h-[6px]"
-                    src="../Icons/MSpinkcircle.svg"
-                  />
-                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[6px]">
-                    Progress
-                  </p>
-                </div>
-                <p className="font-nu font-semibold text-[20px] xsm:text-[6px]">
-                  90%
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
-  );
+    );
 }
