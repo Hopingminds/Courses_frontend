@@ -159,10 +159,6 @@ export default function MyStats(){
                                   pathTransition: "stroke-dashoffset 1s ease 0s"
                                 })}
                               >
-                                {/*
-                                  Width here needs to be (100 - 2 * strokeWidth)% 
-                                  in order to fit exactly inside the outer progressbar.
-                                */}
                                 <div style={{ width: "85%" }}>
                                   <AnimatedProgressProvider
                                     valueStart={0}
@@ -180,13 +176,9 @@ export default function MyStats(){
                                           pathColor: "#FFA84A",
                                           trailColor: "#E9EBF3",
                                           pathTransition: "stroke-dashoffset 1s ease 0s"
-                                        })}
+                                        })} 
                                         >
-                                          {/*
-                                            Width here needs to be (100 - 2 * strokeWidth)% 
-                                            in order to fit exactly inside the outer progressbar.
-                                          */}
-                                          <div style={{ width: "85%" }}>
+                                          <div style={{ width: "80%" }}>
                                           <AnimatedProgressProvider
                                             valueStart={0}
                                             valueEnd={maxValues.third}

@@ -25,11 +25,7 @@ const Router = () => {
 
         <BrowserRouter >
         <ScrollToTop/>
-            <div className='h-20'>
-
-                <Navbar />
-            </div>
-
+            <Navbar />
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/detailcourse/:slug' element={<DetailCourses />} />
