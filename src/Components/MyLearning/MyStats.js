@@ -186,7 +186,7 @@ export default function MyStats(){
                                             Width here needs to be (100 - 2 * strokeWidth)% 
                                             in order to fit exactly inside the outer progressbar.
                                           */}
-                                          <div style={{ width: "85%" }}>
+                                          <div style={{ width: "80%" }}>
                                           <AnimatedProgressProvider
                                             valueStart={0}
                                             valueEnd={maxValues.third}

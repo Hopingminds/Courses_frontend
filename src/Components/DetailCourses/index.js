@@ -13,17 +13,7 @@ export default function DetailCourses() {
     const [Data, setData] = useState()
     let slug = param.slug;
     
-    async function Addtocart(){
-        try {
-            let token=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
-            let email=token.email;
-            let url=BASE_URL+'/addtocart'
-            let data=await fetch()
-        } catch (error) {
-            
-        }
-    }
-
+   
     useEffect(() => {
         async function Fetchdata() {
             try {

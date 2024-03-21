@@ -3,10 +3,66 @@ import { CiShoppingCart } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { Globalinfo } from "../../App";
+import { BASE_URL } from "../../Api/api";
+import { jwtDecode } from "jwt-decode";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Commoncard(props) {
     let { Data } = props;
     console.log(Data);
+    // const [Show, setShow] = useState(false)
+    async function Addtocart(courseid){
+        try {
+            let token=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
+            let email=token.email;
+            let quantity=1;
+            let url=BASE_URL+'/addtocart'
+            let data=await fetch(url,{
+                method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body:JSON.stringify({email,courseid,quantity})
+            })
+            let response=await data.json()
+            console.log(response);
+            if(response.success){
+                toast.success(response.msg)
+            }
+            else{
+                toast.error(response.msg)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async function Addtowishlist(courseid){
+        try {
+            let token=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
+            let email=token.email;
+            let url=BASE_URL+'/addtowishlist'
+            let data=await fetch(url,{
+                method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body:JSON.stringify({email,courseid})
+            })
+            let response=await data.json()
+            // console.log(response);
+            if(response.success){
+                toast.success(response.msg)
+            }
+            else{
+                toast.error(response.msg)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const { userDetail } = useContext(Globalinfo)
 
 
@@ -17,7 +73,7 @@ export default function Commoncard(props) {
         })
 
     }
-    console.log(purchasedCourses)
+    // console.log(purchasedCourses)
     return (
         <div className="bg-[#E2FFF1] w-[33%] h-max mt-20 p-6 rounded-xl flex flex-col  top-14 ">
             <div>
@@ -27,13 +83,19 @@ export default function Commoncard(props) {
                 <p className="font-pop font-semibold">{Data?.title}</p>
                 <div className="flex justify-between items-center">
                     <p className="font-nu text-[16px] font-semibold">₹{Data?.base_price}</p>
+                 
                     <div className="space-x-4 flex items-center">
-                        <button className="">
-                            <CiHeart size={'25'} />
-                        </button>
-                        <button className="">
-                            <CiShoppingCart size={'25'} />
-                        </button>
+                           {
+                        !purchasedCourses.includes(Data?._id)?<div className="space-x-4 flex items-center">
+                            <button className="">
+                        <CiHeart size={'25'} onClick={()=>Addtowishlist(Data?._id)}/>
+                    </button>
+                    <button className="">
+                        <CiShoppingCart onClick={()=>Addtocart(Data?._id)} size={'25'} />
+                    </button>
+                        </div>:''
+                    }
+                        
                         {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold">View Course</Link> : <Link to={'/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold">Join Now</Link>}
                     </div>
                 </div>
@@ -68,6 +130,7 @@ export default function Commoncard(props) {
                     </div>
                 </div>
             </div>
+            <Toaster/>
         </div>
     );
 }

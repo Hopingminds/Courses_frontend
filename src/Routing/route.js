@@ -17,6 +17,7 @@ import CartCheckout from '../Components/Checkout/Cart.jsx'
 import ScrollToTop from '../Components/ScrollToTop.js'
 import AssignmentMeet from '../Components/Meeting/AssignmentMeet.js'
 import AssignmentStart from '../Components/Meeting/AssignmentStart.js'
+import Success from '../Components/Success/success.js'
 
 
 
@@ -44,6 +45,7 @@ const Router = () => {
                 <Route path='/checkout' element={<CartCheckout />} />
                 <Route path='/AssignmentMeet' element={<AssignmentMeet />} />
                 <Route path='/AssignmentStart' element={<AssignmentStart />} />
+                <Route path='/success' element={<Success/>} />
             </Routes>
             <Footer />
 

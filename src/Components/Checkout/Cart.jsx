@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Cart.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as Clock } from "../../Assets/Icons/clock.svg";
 import { ReactComponent as Design } from "../../Assets/Icons/design.svg";
 import { ReactComponent as Star } from "../../Assets/Icons/Star.svg";
+import { BASE_URL } from "../../Api/api";
+import { jwtDecode } from "jwt-decode";
 const CartCheckout = () => {
     const [selectedCountry, setSelectedCountry] = useState("");
     const [selectedState, setSelectedState] = useState("");
@@ -11,7 +13,32 @@ const CartCheckout = () => {
     const countries = ["Country 1", "Country 2", "Country 3"];
     const states = ["State 1", "State 2", "State 3"];
 
+    const [Data, setData] = useState([])
+    const [total, settotal] = useState(0)
+    let token=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
 
+    function Total(data){
+        let price=0;
+        data.map((item)=>{
+price+=item.course.base_price
+        })
+        settotal(price)
+    }
+
+    useEffect(() => {
+        async function Fetchdata(){
+          // console.log(token);
+          let url=BASE_URL+'/getcart?email='+token.email;
+        //   console.log(url);
+          const data=await fetch(url)
+          const response=await data.json()
+          setData(response?.cart)
+          Total(response?.cart)
+          console.log(response);
+        }
+        Fetchdata()
+  
+      }, [])
     const handleCountryChange = (e) => {
         setSelectedCountry(e.target.value);
     };
@@ -24,7 +51,7 @@ const CartCheckout = () => {
     const navigate = useNavigate();
 
     const handleContinueCheckout = () => {
-        navigate('/credit');
+        navigate('/success');
     }
 
     return (
@@ -32,7 +59,7 @@ const CartCheckout = () => {
             {/* CheckOut start */}
             <div className="card-checkout mx-14 my-5 flex gap-40">
                 {/* Billing address start */}
-                <div className="w-[55%] h-[100vh]">
+                <div className="w-[55%] min-h-[100vh]">
                     <span className="text-xl font-bold ">Billing Address</span>
 
                     {/* Dropdown buttons start */}
@@ -169,22 +196,25 @@ const CartCheckout = () => {
                         </div>
                     </div> */}
 
-                    <div>
+                    <div className="h-auto space-y-7">
                             <h1 className="text-xl font-bold mt-6 mb-3 ">Order Details</h1>
-                            <div className="bg-green-100 rounded-lg flex items-center card-shadow2 w-[100%]">
-                                <img src="/confident-teacher-explaining-lesson-pupils.png" alt="course" className="w-[230px] h-[140px]  object-cover rounded-lg mt-[-4px] ml-4" />
+                            {Data?.map((item)=>{
+                                return(<>
+                                  <div className="bg-green-100 rounded-lg flex items-center card-shadow2 w-[100%]">
+                                <img src={item.course.featured_image} alt="course" className="w-[230px] h-[140px]  object-cover rounded-lg mt-[-4px] ml-4" />
                                 <div className="ml-[20px] my-3">
-                                    <h2 className="text-md font-semibold text-[#252641] text-custom-color ">AWS Certified Solutions Architect</h2>
-                                    <p className="mt-1 text-[13px] text-wrap " style={{ color: "#696984" }}> Lorem ipsum dolor sit amet consectetur, fd d f dfdf adipisicing elit. Cumque, nostrum!
+                                    <h2 className="text-md font-semibold text-[#252641] text-custom-color ">{item.course.title}</h2>
+                                    <p className="mt-1 text-[13px] text-wrap " style={{ color: "#696984" }}>
+                                    {item.course.overview.slice(0,110)}.. 
                                     </p>
 
                                     <div className="flex mt-8 gap-6">
                                         <div className="flex gap-1">
-                                            <Design className="w-[15px] h-[15px] " /><p className="mt-[-2px] text-[13px] " style={{ color: "#696984" }}>Design</p>
+                                            <Design className="w-[15px] h-[15px] " /><p className="mt-[-2px] text-[13px] " style={{ color: "#696984" }}>{item.course.category}</p>
                                         </div>
 
                                         <div className="flex gap-1">
-                                            <Clock className="w-[15px] h-[15px] " /><p className=" mb-2 mt-[-2px] text-[13px] " style={{ color: "#696984" }}>3 months</p>
+                                            <Clock className="w-[15px] h-[15px] " /><p className=" mb-2 mt-[-2px] text-[13px] " style={{ color: "#696984" }}>{item.course.duration}</p>
                                         </div>
                                     </div>
                                     {/* <img src="src/assets/Group.png" className="w-[590px] h-[1px]" /> */}
@@ -192,13 +222,18 @@ const CartCheckout = () => {
                                         <span className="flex mt-4"><Star  />
                                             <Star  /><Star /><Star  /><Star /></span>
                                         <span className="mt-3">
-                                            <p className="flex justify-end mr-4 text-[18px] mt-[-3px] font-semibold" >₹2000</p>
+                                            <p className="flex justify-end mr-4 text-[18px] mt-[-3px] font-semibold" >₹{item.course.base_price}</p>
 
                                         </span>
                                     </div>
                                 </div>
 
                             </div>
+                                </>)
+                            })}
+                          
+                         
+                       
                         </div>
 
 
@@ -216,7 +251,7 @@ const CartCheckout = () => {
                         <h1 className="text-base">Original Price:</h1>
                         <div className="flex justify-between">
                             <p className=" green-color text-sm">Including all the taxes</p>
-                            <p>₹4999</p>
+                            <p>₹{total}</p>
                         </div>
                     </div>
                     <hr />
@@ -224,7 +259,7 @@ const CartCheckout = () => {
                         <h1 className="text-base">Total:</h1>
                         <div className="flex justify-between">
                             <p className=" green-color text-sm">Including all the taxes</p>
-                            <p>₹4999</p>
+                            <p>₹{total}</p>
                         </div>
                     </div>
                     <span className="flex justify-center">
