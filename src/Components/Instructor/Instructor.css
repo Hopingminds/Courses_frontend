@@ -13,16 +13,23 @@
 
 .instructor-container{
     display: flex;
-    gap: 24px;
+    flex-direction: row;
+    align-items: center;
+    /* background-color: black; */
+    /* gap: 24px; */
 }
 
 .instructor-image{
-    width: 350px;
+    width: 20%;
+    height: 10%;
+    /* background-color: black; */
+    margin-right: 40px;
+
 }
 
 .instructor-image img{
     border-radius: 20px;
-    height: 100%;
+    height: 80%;
     width: 100%;
 }
 

@@ -3,30 +3,30 @@ import './ShopingCart.css';
 function ShopingCart(){
     return (
         <div className='SC-container font-pop'>
-            <div className=' w-[100%] h-[20vh] flex flex-row items-center cartbg px-[4%]'>
+            <div className=' w-[100%] h-[20vh] flex flex-row items-center cartbg px-[4%] xsm:h-[10vh]'>
                 {/* <div className='inline-block ml-[1vw]'>
                     <button className='bg-white border border-[#EAEAEA] rounded-2xl px-[7px] h-[2vw] mx-[7px] cursor-pointer' type='submit' >
                         <img className='w-[1vw]' src="../Icons/leftsidearrow.svg" alt="left-arrow"></img>
                     </button>
                 </div> */}
                 <div className=''>
-                    <h2 className='font-outfit  font-semibold text-4xl text-white'>My Cart</h2>
+                    <h2 className='font-outfit font-semibold text-4xl text-white xsm:text-[18px]'>My Cart</h2>
                 </div>
             </div>
-            <div className='flex justify-between items-start mt-[10px] lg:flex-col lg:items-center h-[600px]  px-[3%]'>
-                <div className="w-[75%] bg-[#E2FFF1] p-3 shadow-xl rounded-xl">
-                    <div className='flex  h-[15vw] rounded-[1.2vw] 2xl:w-[900px] 2xl:h-[240px]'>
+            <div className='flex justify-between items-start mt-[10px] lg:flex-col lg:items-center h-[600px] px-[3%] xsm:flex-col xsm:justify-start xsm:gap-8'>
+                <div className="w-[75%] bg-[#E2FFF1] p-3 shadow-xl rounded-xl xsm:w-[100%] xsm:p-1 xsm:rounded-md">
+                    <div className='flex  h-[15vw] rounded-[1.2vw] 2xl:w-[900px] 2xl:h-[240px] xsm:h-[13vh]'>
                         <div className='w-[50%] 2xl:w-[600px]'>
-                            <img className='w-[100%] h-[100%] rounded-xl' src='../img/fsdimg.png' alt='FSD-img'></img>
+                            <img className='w-[100%] h-[100%] rounded-xl xsm:rounded-md' src='../img/fsdimg.png' alt='FSD-img'></img>
                         </div>
-                        <div className='flex flex-col justify-evenly mx-[1vw] w-[100%] 2xl:h-[100%]'>
+                        <div className='flex flex-col justify-evenly mx-[1vw] w-[100%] 2xl:h-[100%] xsm:mx-[2vw]'>
                             {/* <div>
                                 <p className='font-mons text-[0.8vw] 2xl:text-[14px]'><span className='text-[#555555]'>by</span> Determined-instructure</p>
                             </div> */}
                             <div className='flex flex-nowrap justify-between items-center'>
                                 <div className='space-y-2'>
                                     <p className='font-mons text-[1.5vw] font-semibold  2xl:text-[18px]'>Beginner course for full stack Development</p>
-                                    <p className='text-[#696984] text-sm'>Lorem ipsum dolor sit amet, consectetur adipising elit, sed do eiusmod </p>
+                                    <p className='text-[#696984] text-sm xsm:hidden'>Lorem ipsum dolor sit amet, consectetur adipising elit, sed do eiusmod </p>
 
                                 </div>
                                 <div>
@@ -77,7 +77,7 @@ function ShopingCart(){
                         </div>
                     </div>
                 </div>
-                <div className='w-[20%] h-max flex flex-col justify-around space-y-4 font-pop'>
+                <div className='w-[20%] h-max flex flex-col justify-around space-y-4 font-pop xsm:justify-start xsm:space-y-1 xsm:pl-2'>
                         <div>
                             <p className='font-outfit font-semibold text-[2vw] 2xl:text-[24px]'>Total :</p>
                         </div>
