@@ -1,4 +1,25 @@
+import { jwtDecode } from "jwt-decode";
+import { useEffect, useState } from "react";
+import { BASE_URL } from "../../Api/api";
+
 export default function RecommendedCourses(){
+
+    const [Data, setData] = useState([])
+    let token=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
+
+    useEffect(() => {
+        async function Fetchdata(){
+          // console.log(token);
+          let url=BASE_URL+'/getwishlist?email='+token.email;
+        //   console.log(url);
+          const data=await fetch(url)
+          const response=await data.json()
+          setData(response?.wishlist)
+        //   console.log(response);
+        }
+        Fetchdata()
+  
+      }, [])
     return (
         <div className="my-6 mx-[5%]">
             <div className="my-6">

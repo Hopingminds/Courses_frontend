@@ -68,7 +68,7 @@ export default function Commoncard(props) {
 
     let purchasedCourses = [];
     if (Data) {
-        userDetail?.purchased_courses.forEach((val) => {
+        userDetail?.purchased_courses?.forEach((val) => {
             purchasedCourses.push(val._id)
         })
 

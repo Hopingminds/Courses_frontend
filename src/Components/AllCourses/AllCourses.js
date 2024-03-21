@@ -64,7 +64,7 @@ const AllCourses = () => {
     try {
       const res = await axios.get(`${BASE_URL}/courses`);
       console.log(res);
-      setAllCourses(res.data);
+      setAllCourses(res.data.courses);
     } catch (error) { }
   };
 

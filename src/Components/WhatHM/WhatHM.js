@@ -19,7 +19,7 @@ const WhatHM = () => {
                 src="/Corporate1.mp4"
                 title="YouTube video player"
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay;muted; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
             </div>
@@ -31,7 +31,7 @@ const WhatHM = () => {
                 title="YouTube video player"
                 aria-controls={false}
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay;muted; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 // aria-controls="false"
               ></iframe>

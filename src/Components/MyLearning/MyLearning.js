@@ -36,8 +36,9 @@ export default function MyLearning() {
         // setshow(true)
         try {
             const res = await axios.get(`${BASE_URL}/user/${email}`)
-            console.log(res.data[0]?.purchased_courses)
-            setPurchasedCourses(res?.data[0]?.purchased_courses)
+            // console.log(res.data[0]?.purchased_courses)
+            setPurchasedCourses(res?.data?.userDetails?.purchased_courses)
+            console.log(res);
             // setshow(false)
         } catch (error) {
             console.log(error)
@@ -64,7 +65,7 @@ export default function MyLearning() {
                     <button className='font-pop font-medium text-white text-[17px]' onClick={() => setshowpage('stats')} style={{ borderBottom: showpage === 'stats' ? "2px solid white" : "1px solid transparent" }}>My Stats</button>
                 </div>
             </div>
-            {showpage === 'courses' ? <Mycourse courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate /> : showpage === 'stats' ? <MyStats /> : <Assignment />}
+            {showpage === 'courses' ? <Mycourse courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses}/> : showpage === 'stats' ? <MyStats /> : <Assignment />}
             <RecommendedCourses />
         </div>
     );

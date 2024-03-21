@@ -18,6 +18,8 @@ import ScrollToTop from '../Components/ScrollToTop.js'
 import AssignmentMeet from '../Components/Meeting/AssignmentMeet.js'
 import AssignmentStart from '../Components/Meeting/AssignmentStart.js'
 import Success from '../Components/Success/success.js'
+import DashboardSubAdmin from '../Components/SubAdminDashboard/DashboardSubAdmin.js'
+import SubAdmin from '../Components/SubAdminDashboard/index.js'
 
 
 
@@ -46,6 +48,8 @@ const Router = () => {
                 <Route path='/AssignmentMeet' element={<AssignmentMeet />} />
                 <Route path='/AssignmentStart' element={<AssignmentStart />} />
                 <Route path='/success' element={<Success/>} />
+                <Route path='/subadmin-login' element={<SubAdmin />} />
+                <Route path='/subadmin-dashboard' element={<DashboardSubAdmin/>} />
             </Routes>
             <Footer />
 

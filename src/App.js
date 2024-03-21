@@ -59,14 +59,14 @@ function App() {
   const getUserDetails = async () => {
     // console.log(localStorage.getItem('GROC_USER_TOKEN'))
     const token = localStorage.getItem('COURSES_USER_TOKEN')
-    console.log(token)
+    // console.log(token)
     if (token) {
       const decoded = jwtDecode(token);
       // console.log(decoded.email)
       try {
         const res = await axios.get(`${BASE_URL}/user/${decoded.email}`)
         console.log(res.data)
-        setUserDetail(res.data[0])
+        setUserDetail(res.data.userDetails)
 
       } catch (error) {
         console.log(error)

@@ -1,6 +1,27 @@
+import { useEffect, useState } from 'react';
 import './MLheader.css';
+import { jwtDecode } from 'jwt-decode';
+import { BASE_URL } from '../../Api/api';
 
 export default function Assignment(){
+    const [Data, setData] = useState([])
+    let token=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
+
+    useEffect(() => {
+        async function Fetchdata(){
+          // console.log(token);
+          let url=BASE_URL+'/getUserAssignements/'+token.email;
+        //   console.log(url);
+          const data=await fetch(url)
+          const response=await data.json()
+          setData(response.userDetails)
+          console.log(response.userDetails);
+        //   setData(response?.wishlist)
+        //   console.log(response);
+        }
+        Fetchdata()
+  
+      }, [])
     return (
         <div className="px-[5%] my-6 mb-24">
             <div className="flex flex-col w-full space-y-1">
@@ -12,15 +33,24 @@ export default function Assignment(){
                     <p className="font-pop font-semibold text-center">Deadline</p>
                     <p className="font-pop font-semibold text-center">Status</p>
                 </div>
-                 
-                <div className="grid grid-cols-[1fr,1.5fr,3fr,2fr,2fr,1.5fr] w-full bg-[#E2FFF1] py-4 px-4 rounded-md">
-                    <p className="font-nu font-semibold text-center">1</p>
-                    <p className="font-nu font-semibold text-center">1</p>
-                    <p className="font-nu font-semibold text-center">Full Stack Development</p>
-                    <p className="font-nu font-semibold text-center">12 November 2024</p>
-                    <p className="font-nu font-semibold text-center">12 November 2024</p>
-                    <p className="font-nu font-semibold text-center text-[#1DBF73]">Succcess</p>
+                 {
+                    Data?.map((item,ind)=>{
+return(<>
+<div className="grid grid-cols-[1fr,1.5fr,3fr,2fr,2fr,1.5fr] w-full bg-[#E2FFF1] py-4 px-4 rounded-md">
+                    <p className="font-nu font-semibold text-center">{ind+1}</p>
+                    <p className="font-nu font-semibold text-center">{ind+1}</p>
+                    <p className="font-nu font-semibold text-center">{item.subject.title}</p>
+                    <p className="font-nu font-semibold text-center">{item.date.split('T')[0]}</p>
+                    <p className="font-nu font-semibold text-center">{item.deadline.split('T')[0]}</p>
+                    {
+                        item.submitted?<p className="font-nu font-semibold text-center text-[#1DBF73]">Success</p>:<p className="font-nu font-semibold text-center text-[red]">Pending</p>
+
+                    }
                 </div>
+</>)
+                    })
+                 }
+                
             </div>
         </div>
     );
