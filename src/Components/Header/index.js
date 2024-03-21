@@ -19,6 +19,7 @@ export default function Navbar() {
             <div className="flex space-x-10 items-center">
                 <Link to={'/'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Home</Link>
                 <Link to={'/course'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/course' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Courses</Link>
+                <a href={'#pap'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '#pap' ? 'underline font-bold text-[#1DBF73]' : ''}`}>PAP</a>
                 {/* <Link>Search</Link> */}
                 <Link to={'/learning'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/learning' ? 'underline font-bold text-[#1DBF73]' : ''}`}>My Learning</Link>
                 <Link to={'/cart'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/cart' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Cart</Link>
