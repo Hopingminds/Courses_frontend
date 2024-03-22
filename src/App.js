@@ -62,10 +62,10 @@ function App() {
     // console.log(token)
     if (token) {
       const decoded = jwtDecode(token);
-      // console.log(decoded.email)
+      console.log(decoded)
       try {
         const res = await axios.get(`${BASE_URL}/user/${decoded.email}`)
-        console.log(res.data)
+        console.log(res.data.userDetails)
         setUserDetail(res.data.userDetails)
 
       } catch (error) {
