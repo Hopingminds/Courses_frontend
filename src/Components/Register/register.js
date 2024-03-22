@@ -96,7 +96,7 @@ const Login = () => {
 
                             <div>
                                 {/* Email input */}
-                                <p>Email</p>
+                                <p>Username</p>
                                 <input type="text" placeholder="Enter Your Username" name="username" value={user.username} onChange={handleChange} />
                             </div>
                             <div>
@@ -125,7 +125,7 @@ const Login = () => {
                                 <input type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={handleChange} />
                             </div>
                             {/* Forgot password link */}
-                            <h6>Forgot password?</h6>
+                            {/* <h6>Forgot password?</h6> */}
                         </div>
                         {/* Action buttons */}
                         <div className={styles.action_button}>

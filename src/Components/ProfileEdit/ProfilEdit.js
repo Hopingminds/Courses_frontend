@@ -74,6 +74,16 @@ const ProfilEdit = () => {
     const file = e.target.files[0];
     setSelectedImage(file);
     console.log(file)
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const imageUrl = e.target.result;
+        console.log(imageUrl);
+      };
+      reader.readAsDataURL(file)
+      console.log(reader.readAsDataURL(file))
+    }
+
     setUser({ ...user, profile: URL.createObjectURL(file) })
   };
 
