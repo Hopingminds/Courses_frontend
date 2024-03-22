@@ -12,7 +12,7 @@ import { Globalinfo } from '../../App';
 const Login = () => {
 
     const navigate = useNavigate();
-    const { userDetail, getUserDetails, GetCart, GetWishList } = useContext(Globalinfo)
+    const { userDetail, getUserDetails, GetCart } = useContext(Globalinfo)
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);
 
@@ -122,7 +122,7 @@ const Login = () => {
                                 <input type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={handleChange} />
                             </div>
                             {/* Forgot password link */}
-                            <h6>Forgot password?</h6>
+                            {/* <h6>Forgot password?</h6> */}
                         </div>
                         {/* Action buttons */}
                         <div className={styles.action_button}>

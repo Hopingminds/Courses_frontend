@@ -127,7 +127,7 @@ const ChatBot = () => {
 
     return (
         <div>
-            <div className="h-[100%]">
+            <div className="h-[80%]">
                 <button className="chatbot-toggler">
                     <span className="material-symbols-rounded pt-2">
                         <img src="/chat.svg" />
@@ -136,7 +136,7 @@ const ChatBot = () => {
                         <img src="/chat.svg" />
                     </span>
                 </button>
-                <div className="chatbot mb-16 mr-6" style={{ zIndex: "9999999" }}>
+                <div className="chatbot mb-16 mr-8 " style={{ zIndex: "9999999" }}>
                     <header>
                         <h2>CHAT With US</h2>
                         {/* <img src="/chatmenu.svg" /> */}

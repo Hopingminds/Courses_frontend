@@ -20,6 +20,8 @@ import AssignmentStart from '../Components/Meeting/AssignmentStart.js'
 import NavSubAdmin from '../Components/SubAdminDashboard/NavSubAdmin.js'
 import DashboardSubAdmin from '../Components/SubAdminDashboard/DashboardSubAdmin.js'
 import Success from '../Components/Success/success.js'
+import DashboardSubAdmin from '../Components/SubAdminDashboard/DashboardSubAdmin.js'
+import SubAdmin from '../Components/SubAdminDashboard/index.js'
 
 
 // subadmin
@@ -61,7 +63,8 @@ const Router = () => {
                 <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
 
                 <Route path='/success' element={<Success/>} />
-                <Route path='/pap' element={<Pap/>} />
+                <Route path='/subadmin-login' element={<SubAdmin />} />
+                <Route path='/subadmin-dashboard' element={<DashboardSubAdmin/>} />
             </Routes>
           { pathname.includes('subadmin') ? <></> : <Footer />}
 

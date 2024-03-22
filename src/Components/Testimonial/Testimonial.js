@@ -9,15 +9,15 @@ const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const testimonials = [
     {
-      text: "Thank you so much for your help. It's exactly what I've been looking for. You won't regret it. It really saves me time and effort. HopingMinds is exactly what our business has been lacking.",
-      author: "Gloria Rose",
+      text: "I have observed the transformation HopingMinds' programs bring in their students. Their hands-on approach, personalised focus on each student and curriculum alignment with market trends are key strengths. I recommend their programs as a pathway to a better future.",
+      author: "Ajitesh Abhishek",
       stars: 5,
       reviews: 12,
-      image: Img1,
+      image: '/ajitesh.jpeg',
     },
     {
-      text: "It's exactly what I've been looking for. You won't regret it. It really saves me time and effort. HopingMinds is exactly what our business has been lacking.",
-      author: "Rose",
+      text: "It's not often that I come across an Ed-Tech firm as transformative as Hoping Minds. I've had the pleasure of collaborating with them to enhance our educational initiatives. Hoping Minds' commitment to excellence, higher packages and their passion for advancing in the field of education is commendable.",
+      author: "Navdeepak Sandhu",
       stars: 3,
       reviews: 4,
       image: Img2,
@@ -89,7 +89,7 @@ const Testimonial = () => {
               src={testimonials[currentIndex].image}
               className="w-[80%] h-[80%] object-fit rounded-3xl xsm:rounded-md"
             />
-            <div className="absolute flex flex-row gap-10 justify-center rounded-xl shadow-2xl w-[90%] h-[45%] bg-[#ffffff] right-0 top-[72%] xsm:gap-2 xsm:rounded-md">
+            <div className="absolute flex flex-row gap-10 justify-center rounded-xl shadow-2xl w-[90%] min-h-[45%] bg-[#ffffff] right-0 top-[72%] xsm:gap-2 xsm:rounded-md">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
@@ -107,7 +107,7 @@ const Testimonial = () => {
                     index === currentIndex ? "" : "hidden"
                   }`}
                 >
-                  <hr className="h-[45%] border border-[#BDBDD1] absolute top-8 xsm:top-2" />
+                  <hr className="h-[45%]  border border-[#BDBDD1] absolute top-8 xsm:top-2" />
                   <div className="flex flex-col justify-between px-10 py-6 xsm:px-2 xsm:py-2">
                     <p className="text-[#5F5F7E] text-[16px] font-nu leadng-6 text-justify xsm:text-[5px] xsm:leading-none">
                       {testimonial.text}

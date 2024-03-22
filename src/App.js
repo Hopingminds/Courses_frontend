@@ -18,7 +18,7 @@ function App() {
     // console.log(cartData)
     getUserDetails();
     GetCart()
-    GetWishList()
+    // GetWishList()
   }, [localStorage.getItem('COURSES_USER_TOKEN'), userDetail?._id])
 
 
@@ -44,29 +44,29 @@ function App() {
 
 
   }
-  async function GetWishList() {
-    try {
-      let url = BASE_URL + `api/getwishlist?mobile=${userDetail?.mobile}`
-      const data = await fetch(url)
-      const response = await data.json()
-      // console.log(response)
-      setWishListData(response?.wishlist || [])
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // async function GetWishList() {
+  //   try {
+  //     let url = BASE_URL + `api/getwishlist?mobile=${userDetail?.mobile}`
+  //     const data = await fetch(url)
+  //     const response = await data.json()
+  //     // console.log(response)
+  //     setWishListData(response?.wishlist || [])
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   const getUserDetails = async () => {
     // console.log(localStorage.getItem('GROC_USER_TOKEN'))
     const token = localStorage.getItem('COURSES_USER_TOKEN')
-    console.log(token)
+    // console.log(token)
     if (token) {
       const decoded = jwtDecode(token);
       // console.log(decoded.email)
       try {
         const res = await axios.get(`${BASE_URL}/user/${decoded.email}`)
         console.log(res.data)
-        setUserDetail(res.data[0])
+        setUserDetail(res.data.userDetails)
 
       } catch (error) {
         console.log(error)
@@ -89,7 +89,7 @@ function App() {
 
 
   return (
-    <Globalinfo.Provider value={{ cartData, GetCart, wishListData, GetWishList, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
+    <Globalinfo.Provider value={{ cartData, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
       <div className='2xl:px-[17%] overflow-x-hidden'>
         <Router />
       </div>
