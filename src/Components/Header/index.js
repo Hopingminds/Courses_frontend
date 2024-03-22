@@ -13,9 +13,9 @@ export default function Navbar() {
     return (<>
 
 
-        <div className="w-full flex justify-between px-[5%] h-20 items-center shadow-lg font-pop fixed top-0 z-20 bg-white">
+        <div className="w-full flex justify-between px-[5%] h-20 items-center shadow-lg font-pop fixed top-0 z-20 bg-white xsm:h-10">
             <Link to='/' className="">
-                <img src="/logo.png" />
+                <img src="/logo.png" className="xsm:w-[40px] xsm:h-[18px]"/>
             </Link>
             <div className="flex space-x-10 items-center">
                 <Link to={'/'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Home</Link>

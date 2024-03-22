@@ -153,3 +153,68 @@
   display: flex;
   gap: 20px;
 }
+
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .register_container {
+    background-image: none;
+  }
+
+  .register_box_main {
+    width: 100%;
+    left: 0%;
+    justify-content: center;
+  }
+
+  .register_box_main h1 {
+    font-size: 0.8rem;
+  }
+
+  .switch_btn {
+    width: 60%;
+  }
+
+  .active {
+    font-size: 0.8rem;
+    height: 25px;
+  }
+
+  .inactive {
+    font-size: 0.7rem;
+    height: 25px;
+  }
+
+  .inputs {
+    width: 80%;
+  }
+
+  .inputs p {
+    font-size: 0.8rem;
+    margin-bottom: 1px;
+  }
+
+  .inputs h6 {
+    font-size: 0.5rem;
+  }
+
+  .input_main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input_main input {
+    font-size: 0.8rem;
+    height: 30px;
+  }
+
+  .submit button {
+    font-size: 0.8rem;
+    padding: 4px 25px;
+  }
+
+  .login_options {
+    font-size: 0.6rem;
+  }
+}

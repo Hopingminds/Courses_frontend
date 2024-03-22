@@ -29,8 +29,8 @@ export default function Certificate(props){
                             </div>
                         </div>
                         <div className="flex justify-between items-center">
-                            <p className="font-pop font-medium text-[13px] text-[#555555]">Add credential to Your Resume </p>
-                            <button className="bg-[#1DBF73] py-2 px-6 rounded-full text-white text-[14px] font-nu font-bold">Get Certification</button>
+                            <p className="font-pop font-medium text-[13px] text-[#555555] xsm:text-[6px]">Add credential to Your Resume </p>
+                            <button className="bg-[#1DBF73] py-2 px-6 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3">Get Certification</button>
                         </div>
                     </div>
                 </div>
@@ -38,10 +38,10 @@ export default function Certificate(props){
                     })
                 }
             </div>
-            <div className="flex flex-col Certificate-right gap-y-5">
-                <p className="font-pop font-semibold text-[18px]">Explore Certificates By Category</p>
-                <button className="bg-[#E2FFF1] py-3 px-10 rounded-lg font-nu font-semibold">Professional Certificates</button>
-                <button className="bg-[#E2FFF1] py-3 px-10 rounded-lg font-nu font-semibold">Free Certificates</button>
+            <div className="flex flex-col Certificate-right gap-y-5 xsm:flex-row xsm:justify-between">
+                <p className="font-pop font-semibold text-[18px] xsm:hidden">Explore Certificates By Category</p>
+                <button className="bg-[#E2FFF1] py-3 px-10 rounded-lg font-nu font-semibold xsm:text-[6px] xsm:py-2 xsm:px-6 xsm:rounded-sm">Professional Certificates</button>
+                <button className="bg-[#E2FFF1] py-3 px-10 rounded-lg font-nu font-semibold xsm:text-[6px] xsm:py-2 xsm:px-6 xsm:rounded-sm">Free Certificates</button>
             </div>
         </div>
     );
