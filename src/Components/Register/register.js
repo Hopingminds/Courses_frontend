@@ -9,7 +9,6 @@ import { BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
 
 
-
 const Login = () => {
 
     const navigate = useNavigate();
@@ -71,7 +70,6 @@ const Login = () => {
     };
 
 
-
     return (
         <>
             <head>
@@ -92,7 +90,6 @@ const Login = () => {
                         </div>
                         {/* Input fields */}
                         <div className={styles.inputs}>
-
 
                             <div>
                                 {/* Email input */}

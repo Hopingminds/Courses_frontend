@@ -21,9 +21,9 @@ const CourseCard = ({
   // console.log(description);
   return (
     <Link
-      style={{ padding: "12px" }}
+      style={{ padding: "10px" }}
       to={`/detailcourse/${slug}`}
-      className={`transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 max-w-sm font-pop rounded-xl relative coursecardhome m-4  bg-white   ${
+      className={` transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 max-w-sm font-pop rounded-xl relative coursecardhome   bg-white   ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
     >
@@ -36,34 +36,34 @@ const CourseCard = ({
       <div className="h-max">
         <div className="flex justify-between items-center text-[#696984] mt-2">
           <div className="flex space-x-2 items-center">
-            <Design />
-            <span className="">{category}</span>
+            <Design className="h-4 w-4"/>
+            <span className="text-[12px]">{category}</span>
           </div>
           <div className=" flex items-center space-x-2">
-            <Clock />
-            <p> {duration}</p>
+            <Clock className="h-4 w-4"/>
+            <p className="text-[12px]"> {duration}</p>
           </div>
         </div>
         <div className="px-2 py-5 mt-2 space-y-2 flex  flex-col h-full">
           <div>
             <div
               style={{ color: "#252641" }}
-              className="font-bold text-[14px] mb-2 "
+              className="font-bold text-[16px] mb-2 "
             >
-              {cropString(title, 13)}
+              {cropString(title, 50)}
             </div>
-            <div className="text-[#696984]">
-              {cropString(description[0], 50)}
+            <div className="text-[#696984] text-[14px] ">
+              {cropString(description[0], 70)}
             </div>
           </div>
-          <div className="flex justify-between items-center bottom-4">
-            <div className="flex items-center space-x-2">
-              <img src="/lina.png" className="h-14 w-14" />
+          <div className="flex justify-between items-center ">
+            <div className="flex items-center space-x-1">
+              <img src="/lina.png" className="h-10 w-10" />
               <div className="font-semibold text-sm">{firstName} {lastName}</div>
             </div>
             <div
-              style={{ color: "#49BBBD" }}
-              className="text-[18px] font-semibold"
+              style={{ color: "#" }}
+              className="text-[18px] font-semibold text-[#1DBF73]"
             >
               ₹{price}
             </div>

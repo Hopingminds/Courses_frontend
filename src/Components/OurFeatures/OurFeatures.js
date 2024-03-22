@@ -110,7 +110,7 @@ const OurFeatures = () => {
             <p className="text-[42px] text-[#1E1E1E] font-pop font-semibold xsm:text-[12px]">
               Our <span className="text-[#33EFA0]"> Features </span>{" "}
             </p>
-            <p className="text-[#696984] text-[22px] font-pop xsm:text-[8px]">
+            <p className="text-[#696984] text-[20px] font-pop xsm:text-[8px]">
               This very extraordinary feature, can make learning activities more
               efficient
             </p>

@@ -17,21 +17,32 @@ import CartCheckout from '../Components/Checkout/Cart.jsx'
 import ScrollToTop from '../Components/ScrollToTop.js'
 import AssignmentMeet from '../Components/Meeting/AssignmentMeet.js'
 import AssignmentStart from '../Components/Meeting/AssignmentStart.js'
-import Success from '../Components/Success/success.js'
+import NavSubAdmin from '../Components/SubAdminDashboard/NavSubAdmin.js'
 import DashboardSubAdmin from '../Components/SubAdminDashboard/DashboardSubAdmin.js'
+import Success from '../Components/Success/success.js'
+// import DashboardSubAdmin from '../Components/SubAdminDashboard/DashboardSubAdmin.js'
 import SubAdmin from '../Components/SubAdminDashboard/index.js'
 
 
+// subadmin
+// import SubAdmin from '../Components/SubAdminDashboard/index.js'
+import Pap from '../Components/PAP/Pap.js'
 
 const Router = () => {
+    let pathname = window.location.pathname;
+    console.log(pathname.includes('subadmin'));
     return (
 
         <BrowserRouter >
-        <ScrollToTop/>
-            <div className='h-20'>
+            <ScrollToTop />
+            <Navbar />
+            {pathname.includes('subadmin') ? <div>
+
+                <NavSubAdmin />
+            </div> : <div className='h-20 xsm:h-10'>
 
                 <Navbar />
-            </div>
+            </div>}
 
             <Routes>
                 <Route path='/' element={<Home />} />
@@ -47,13 +58,18 @@ const Router = () => {
                 <Route path='/checkout' element={<CartCheckout />} />
                 <Route path='/AssignmentMeet' element={<AssignmentMeet />} />
                 <Route path='/AssignmentStart' element={<AssignmentStart />} />
-                <Route path='/success' element={<Success/>} />
+
                 <Route path='/subadmin-login' element={<SubAdmin />} />
-                <Route path='/subadmin-dashboard' element={<DashboardSubAdmin/>} />
+                <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
+
+                <Route path='/success' element={<Success />} />
+                <Route path='/subadmin-login' element={<SubAdmin />} />
+                <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
             </Routes>
-            <Footer />
+            {pathname.includes('subadmin') ? <></> : <Footer />}
 
         </BrowserRouter >
+
 
     )
 }

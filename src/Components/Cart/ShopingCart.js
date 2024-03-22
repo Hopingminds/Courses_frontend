@@ -63,7 +63,7 @@ price+=item.course.base_price
                     </button>
                 </div> */}
                 <div className=''>
-                    <h2 className='font-outfit  font-semibold text-4xl text-white'>My Cart</h2>
+                    <h2 className='font-outfit font-semibold text-4xl text-white xsm:text-[18px]'>My Cart</h2>
                 </div>
             </div>
             <div className='flex justify-between items-start mt-[10px] lg:flex-col lg:items-center h-[600px]  px-[3%]'>
@@ -76,7 +76,7 @@ price+=item.course.base_price
                         <div className='w-[50%] 2xl:w-[600px]'>
                             <img className='w-[100%] h-[100%] rounded-xl' src={item.course.featured_image} alt='FSD-img'></img>
                         </div>
-                        <div className='flex flex-col justify-evenly mx-[1vw] w-[100%] 2xl:h-[100%]'>
+                        <div className='flex flex-col justify-evenly mx-[1vw] w-[100%] 2xl:h-[100%] xsm:mx-[2vw]'>
                             {/* <div>
                                 <p className='font-mons text-[0.8vw] 2xl:text-[14px]'><span className='text-[#555555]'>by</span> Determined-instructure</p>
                             </div> */}
