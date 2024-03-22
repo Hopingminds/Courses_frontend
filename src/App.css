@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.bg-gradient-to-outside{
+  background-image: radial-gradient(circle at center, #E2FFFF 60%, rgba(0,0,0,0) 77%)
+}

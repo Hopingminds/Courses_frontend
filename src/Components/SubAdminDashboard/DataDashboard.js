@@ -15,7 +15,8 @@ import { easeQuadInOut } from "d3-ease";
 
 const DataDashboard = () => {
 
-  // const data = [10,0,2.5,5];
+  
+
   return (
     <div className="flex flex-col gap-12 px-[4%] pt-[2%] mb-2 w-full">
       <div className="flex flex-row justify-between">

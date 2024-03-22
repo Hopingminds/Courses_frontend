@@ -24,6 +24,7 @@ import Success from '../Components/Success/success.js'
 
 // subadmin
 import SubAdmin from '../Components/SubAdminDashboard/index.js'
+import Pap from '../Components/PAP/Pap.js'
 
 const Router = () => {
     let pathname=window.location.pathname;
@@ -60,6 +61,7 @@ const Router = () => {
                 <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
 
                 <Route path='/success' element={<Success/>} />
+                <Route path='/pap' element={<Pap/>} />
             </Routes>
           { pathname.includes('subadmin') ? <></> : <Footer />}
 
