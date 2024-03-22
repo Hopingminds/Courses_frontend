@@ -11,12 +11,15 @@ import User4 from "../../Assests/Images/user4.png";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import { Link } from "react-router-dom";
+import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
 
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
   const [selectedUser, setSelectedUser] = useState(User1);
   const [allCourses, setAllCourses] = useState([]);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [Data, setData] = useState([])
+  const [SearchedData, setSearchedData] = useState([])
   const [userData, setUserData] = useState({
     [User1]: {
       name: "John",
@@ -65,9 +68,28 @@ const AllCourses = () => {
       const res = await axios.get(`${BASE_URL}/courses`);
       console.log(res);
       setAllCourses(res.data.courses);
+      setData(res.data.courses)
     } catch (error) { }
   };
-
+	function SearchData(e){
+		let query=e.target.value;
+    // console.log(query);
+        // console.log(query);
+        if(query==''){
+            setSearchedData([])
+			// console.log("query:",Data);
+			setAllCourses(Data)
+        }
+        else{
+       setSearchedData(allCourses.filter((item)=>{
+            const searchitem=query.toLowerCase()
+              const slug=item.slug.toLowerCase()
+            // console.log(slug);
+            // console.log(searchitem && (slug.includes(searchitem)));
+              return searchitem && (slug.includes(searchitem));
+        }))
+      }
+	}
   const toggleShowAllCards = () => {
     setShowAllCards((prevShowAllCards) => !prevShowAllCards);
   };
@@ -99,12 +121,26 @@ const AllCourses = () => {
         style={{ backgroundImage: `url(${Img1})`, backgroundSize: "cover" }}
       >
         <div className="flex flex-row rounded-2xl w-[80%] xsm:w-[90%] xsm:rounded-md">
-          <input
+       <div className="relative w-full">
+       <input
             type="text"
             placeholder=""
-            className="flex-1 outline-none placeholder-gray-500 text-[18px] font-pop rounded-l-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px]"
+            onChange={SearchData}
+            className="flex-1 w-full outline-none placeholder-gray-500 text-[18px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px]"
           />
-          <button className="text-[#ffffff] text-[22px] font-pop bg-[#1DBF73] rounded-r-2xl py-2 px-10 xsm:rounded-r-md xsm:text-[10px] xsm:py-1 xsm:px-2">
+          <div className="flex flex-col w-full absolute bg-[#deffef]  justify-center">
+            {
+              SearchedData.map((item,ind)=>{
+                // console.log(item.);
+return(<>
+<Link key={ind} to={"/detailcourse/" + item.slug} className="text-center py-1 border-b-[2px]" >{item.title}</Link>
+
+</>)
+              })
+            }
+          </div>
+       </div>
+          <button className="text-[#ffffff] text-[22px] font-pop bg-[#1DBF73] rounded-r-2xl py-1 px-10 xsm:rounded-r-md xsm:text-[10px] xsm:py-1 xsm:px-2">
             Search
           </button>
         </div>
@@ -200,8 +236,9 @@ const AllCourses = () => {
                     {val?.title}
                   </p>
                   <p className="font-pop text-[14px] text-[#555555] xsm:hidden">
-                    Lorem ipsum dolor sit amet, consectetur adipising elit,
-                    sed do eiusmod tempor
+                 {
+                  val?.overview.slice(0,70)
+                 }..
                   </p>
                 </div>
                 <div className=" flex items-center justify-between">
@@ -211,7 +248,7 @@ const AllCourses = () => {
                       src="../img/RCimg2.png"
                     />
                     <p className="font-pop font-medium text-[14px] xsm:text-[6px]">
-                      {val?.instructor.firstName + val?.instructor.lastName}
+                      {val?.instructor.firstName +' '+ val?.instructor.lastName}
                     </p>
                   </div>
                   <div>
@@ -227,7 +264,8 @@ const AllCourses = () => {
       </div>
 
       {/* recommended cards */}
-      <div className="mt-12 py-10 px-[5%] flex flex-col justify-center gap-6 bg-[#E2FFF1] xsm:mt-[8%] xsm:py-[4%] xsm:gap-2">
+      <RecommendedCourses/>
+      {/* <div className="mt-12 py-10 px-[5%] flex flex-col justify-center gap-6 bg-[#E2FFF1] xsm:mt-[8%] xsm:py-[4%] xsm:gap-2">
         <div className="px-6 flex flex-row justify-between items-center xsm:px-1">
           <p className="font-pop font-semibold text-[30px] xsm:text-[10px]">
             Recommended For You
@@ -299,7 +337,7 @@ const AllCourses = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* creater */}
       <div className="flex flex-col gap-14 px-24 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-6">

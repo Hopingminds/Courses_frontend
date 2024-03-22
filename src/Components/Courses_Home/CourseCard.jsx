@@ -15,8 +15,10 @@ const CourseCard = ({
   onClick,
   isSelected,
   category,
+  firstName,
+  lastName,
 }) => {
-  console.log(description);
+  // console.log(description);
   return (
     <Link
       style={{ padding: "12px" }}
@@ -57,11 +59,11 @@ const CourseCard = ({
           <div className="flex justify-between items-center bottom-4">
             <div className="flex items-center space-x-2">
               <img src="/lina.png" className="h-14 w-14" />
-              <div className="font-semibold">Lina</div>
+              <div className="font-semibold text-sm">{firstName} {lastName}</div>
             </div>
             <div
               style={{ color: "#49BBBD" }}
-              className="text-[20px] font-semibold"
+              className="text-[18px] font-semibold"
             >
               ₹{price}
             </div>

@@ -13,7 +13,7 @@ import { Globalinfo } from '../../App';
 const Login = () => {
 
     const navigate = useNavigate();
-    const { userDetail, getUserDetails, GetCart, GetWishList } = useContext(Globalinfo)
+    const { userDetail, getUserDetails, GetCart } = useContext(Globalinfo)
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);
 

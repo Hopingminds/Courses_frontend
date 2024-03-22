@@ -68,6 +68,8 @@ const Courses_Home = () => {
                             key={course.title}
                             title={course.title}
                             price={course.base_price}
+                            firstName={course.instructor.firstName}
+                            lastName={course.instructor.lastName}
                             duration={course.duration}
                             image={course.featured_image}
                             slug={course.slug}

@@ -18,7 +18,7 @@ function App() {
     // console.log(cartData)
     getUserDetails();
     GetCart()
-    GetWishList()
+    // GetWishList()
   }, [localStorage.getItem('COURSES_USER_TOKEN'), userDetail?._id])
 
 
@@ -44,17 +44,17 @@ function App() {
 
 
   }
-  async function GetWishList() {
-    try {
-      let url = BASE_URL + `api/getwishlist?mobile=${userDetail?.mobile}`
-      const data = await fetch(url)
-      const response = await data.json()
-      // console.log(response)
-      setWishListData(response?.wishlist || [])
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // async function GetWishList() {
+  //   try {
+  //     let url = BASE_URL + `api/getwishlist?mobile=${userDetail?.mobile}`
+  //     const data = await fetch(url)
+  //     const response = await data.json()
+  //     // console.log(response)
+  //     setWishListData(response?.wishlist || [])
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   const getUserDetails = async () => {
     // console.log(localStorage.getItem('GROC_USER_TOKEN'))
@@ -89,7 +89,7 @@ function App() {
 
 
   return (
-    <Globalinfo.Provider value={{ cartData, GetCart, wishListData, GetWishList, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
+    <Globalinfo.Provider value={{ cartData, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
       <div className='2xl:px-[17%] overflow-x-hidden'>
         <Router />
       </div>
