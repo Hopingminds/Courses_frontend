@@ -8,9 +8,9 @@
 
 .curriculum-content{
     font-family: Nunito Sans;
-    font-size: 14px;
+    font-size: 15px;
     color: #555555;
-    text-align: justify;
+    /* text-align: justify; */
 }
 
 .lesson-container-title-right p:first-child{
@@ -39,8 +39,9 @@
 .lesson-container-contents{
     margin: 10px 0;
     gap: 10px;
-    display: flex;
+    display: none;
     flex-direction: column;
+    
 }
 
 
@@ -64,6 +65,7 @@
     font-weight: 600;
     line-height: 19.2px;
     color: black;
+    font-size: 14px;
 }
 
 

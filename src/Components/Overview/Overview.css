@@ -1,5 +1,5 @@
 .overview{
-    font-size: 14px;
+    /* font-size: 14px; */
     color: #555555;
     border-radius: 0 0 20px 20px;
     padding: 24px 30px;
@@ -9,7 +9,6 @@
 
 .overview p{
     line-height: 27px;
-    text-align: justify;
     color: #555555;
 }
 
@@ -20,14 +19,14 @@
 
 .overview li{
     line-height: 27px;
-    position: relative;
+    /* position: relative; */
     color: #555555;
 }
 
 .overview li::before {
     content: '•';
     color: #555555;
-    font-size: 20px;
+    /* font-size: 20px; */
     margin-right: 12px;
     margin-left: 12px; 
   }

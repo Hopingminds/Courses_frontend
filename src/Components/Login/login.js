@@ -81,20 +81,26 @@ const Login = () => {
                         {/* Input fields */}
                         <div className={styles.inputs}>
 
-                            <div>
+                            <div className='flex flex-col gap-2'>
                                 {/* Email input */}
-                                <p>Email</p>
-                                <input type="text" placeholder="Enter Your Email" name="email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
+                                <p className='text-[14px]'>Username/Email</p>
+                                <input className='w-full' type="text" placeholder="Enter Your Username/Email" name="email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
                             </div>
 
 
                             {/* Password input */}
-                            <div>
-                                <p>Password</p>
-                                <input type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                            <div className='flex flex-col gap-2'>
+                                <p className='text-[14px]'>Password</p>
+                                <input className='w-full' type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
                             </div>
                             {/* Forgot password link */}
-                            <h6>Forgot password?</h6>
+                            <div className='flex justify-between'>
+                                <div className='flex items-center gap-1'>
+                                    <input className='' type="checkbox" />
+                                    <p className='text-[14px]'>Rememeber me</p>
+                                </div>
+                                <h6>Forgot password?</h6>
+                            </div>
                         </div>
                         {/* Action buttons */}
                         <div className={styles.action_button}>
@@ -107,7 +113,7 @@ const Login = () => {
                                 <span>
                                     <p>New Here ?</p>
                                     {/* Sign up link */}
-                                    <Link to={'/register'}>  <h5>Sign Up</h5></Link>
+                                    <Link to={'/register'}>  <h5 className='text-[#1dbf73]'>Sign Up</h5></Link>
                                 </span>
                                 {/* Social media login buttons */}
 
