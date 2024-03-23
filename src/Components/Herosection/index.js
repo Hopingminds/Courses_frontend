@@ -7,7 +7,7 @@ export default function Herosection() {
 
     const navigate = useNavigate()
     return (<>
-        <div className="border bg-[#E2FFF1] h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%] 2xl:h-[65vh]">
+        <div className=" bg-[#E2FFF1] h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%] 2xl:h-[65vh]">
             <div className='w-[45%] space-y-6 2xl:space-y-10'>
                 <div className='text-[3.2vw] font-semibold leading-[4.0rem] 2xl:leading-[5.5rem]'>Shape Your Tomorrow, Today with HopingMinds: Where Education Meets Aspiration</div>
                 <div className='font-nu text-[18px]'>Holistic a development programs that place students in specific high growth roles across 150+ Corporate Partners.</div>

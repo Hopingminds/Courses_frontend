@@ -1,7 +1,7 @@
 import React from 'react'
 import { ReactComponent as Pap1 } from "../../Assets/Icons/pap1.svg";
 import { ReactComponent as Pap2 } from "../../Assets/Icons/pap2.svg";
-import { ReactComponent as Pap3 } from "../../Assets/Icons/pap4.svg";
+// import { ReactComponent as Pap3 } from "../../Assets/Icons/pap5.png";
 import { useNavigate } from 'react-router-dom';
 
 const PapHome = () => {
@@ -22,12 +22,12 @@ const PapHome = () => {
                     <p className='text-[#696984] text-justify text-[14px]'>Choose between online or offline classes and gain additional skills in technical subjects, aptitude, and personality development. Join us to unlock your full potential!</p>
                 </div>
                 <div className='bg-white py-5 px-8 flex flex-col items-center gap-2'>
-                    <Pap3 />
+                    <img src='/pap5.png'/>
                     <h3 className='text-[#696984] text-center text-[20px]'>Get Placed & Pay</h3>
                     <p className='text-[#696984] text-justify text-[14px]'>With HopingMinds, you get a job before you pay any fees. It's a simple, stress-free approach. No job means no charges</p>
                 </div>
             </div>
-            <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full ' onClick={() => navigate('/')}>Get Started</button>
+            <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full ' onClick={() => navigate('/pap')}>Get Started</button>
         </div>
     )
 }

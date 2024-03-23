@@ -7,7 +7,7 @@ import { ReactComponent as Cart } from '../../Assets/Icons/cart.svg'
 export default function Navbar() {
 
     const { cartData, GetCart, wishListData, GetWishList, userDetail, getUserDetails } = useContext(Globalinfo)
-    console.log(userDetail)
+    // console.log(userDetail)
     const location = useLocation();
 
     return (<>
