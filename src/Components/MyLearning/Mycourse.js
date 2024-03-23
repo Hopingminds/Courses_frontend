@@ -1,10 +1,10 @@
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom";
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 
 export default function Mycourse({ courses }) {
 
-    const isXSmallScreen = useMediaQuery({ maxWidth: 480 });
+    // const isXSmallScreen = useMediaQuery({ maxWidth: 480 });
     console.log(courses)
     return (
         <div className="my-10 mx-[5%] flex flex-wrap justify-between xsm:my-2">
@@ -22,7 +22,9 @@ export default function Mycourse({ courses }) {
                                     <img className="w-[32px] h-[32px] xsm:w-[10px] xsm:h-[10px] rounded-full" src="../img/RCimg2.png" />
                                     <p className="font-pop font-medium text-[16px] xsm:text-[6px]"> {val.instructor.firstName + " " + val.instructor.lastName}</p>
                                 </div>
-                                <ProgressBar completed={60} maxCompleted={100}  height={isXSmallScreen ? 2 : 4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2" />
+                                <ProgressBar completed={60} maxCompleted={100}
+                                    //  height={isXSmallScreen ? 2 : 4} 
+                                    bgColor='#1DBF73' isLabelVisible={false} className="mt-2" />
 
                                 <p className="font-pop text-end text-[12px] xsm:text-[6px]">Lesson 5 of 7</p>
                             </div>
