@@ -10,7 +10,7 @@ import User3 from "../../Assests/Images/Khushpreet Kaur-Delta IT.jpeg";
 import User4 from "../../Assests/Images/Amritpal Protiviti GDU 5.7.png";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
 
 const AllCourses = () => {
@@ -64,12 +64,24 @@ const AllCourses = () => {
     fetchCourses();
   }, []);
 
+  const [params,setparams]=useSearchParams()
   const fetchCourses = async () => {
     try {
-      const res = await axios.get(`${BASE_URL}/courses`);
-      console.log(res);
+      let category=params.get('category')
+      
+      if(category){
+        const res = await axios.get(`${BASE_URL}/courses?category=${category}`);
+      // console.log(res);
       setAllCourses(res.data.courses);
       setData(res.data.courses)
+      }
+      else{
+        const res = await axios.get(`${BASE_URL}/courses`);
+        // console.log(res);
+        setAllCourses(res.data.courses);
+        setData(res.data.courses)
+      }
+      
     } catch (error) { }
   };
 	function SearchData(e){
