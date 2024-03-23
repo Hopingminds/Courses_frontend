@@ -4,10 +4,10 @@ import Img2 from "../../Assests/Images/creator.png";
 import Icon1 from "../../Assests/Icons/twitter.svg";
 import Icon2 from "../../Assests/Icons/facebook.svg";
 import Icon3 from "../../Assests/Icons/instagram.svg";
-import User1 from "../../Assests/Images/user1.png";
-import User2 from "../../Assests/Images/user2.png";
-import User3 from "../../Assests/Images/user3.png";
-import User4 from "../../Assests/Images/user4.png";
+import User1 from "../../Assests/Images/Saurabh Pal-Data Resolve.png";
+import User2 from "../../Assests/Images/Sumit.jpg";
+import User3 from "../../Assests/Images/Khushpreet Kaur-Delta IT.jpeg";
+import User4 from "../../Assests/Images/Amritpal Protiviti GDU 5.7.png";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import { Link } from "react-router-dom";
@@ -22,41 +22,42 @@ const AllCourses = () => {
   const [SearchedData, setSearchedData] = useState([])
   const [userData, setUserData] = useState({
     [User1]: {
-      name: "John",
-      email: "john@example.com",
+      name: "SAURABH PAL",
+      email: "saurabh@dataresolve.com",
       description1:
-        "Lorem ipsum dolor sit amet, consectetuor incididunt ut labore et dolore magna aliqua.",
+        "Being a recent Computer Science graduate from Jaypee University, MP,I faced job challenges post-college. Enrolling in Hoping Minds for personal development and placement training, I swiftly secured a System Developer role at Data Resolve, grateful for their transformative assistance in my professional journey.",
       description2: "Lorem ipsuut labore et dolore magna aliqua.",
       description3:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     [User2]: {
-      name: "Deo",
-      email: "deo@example.com",
+      name: "SUMIT VERMA",
+      email: "sumit@example.com",
       description1:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut sequat.",
+        "HopingMinds played a crucial role in securing my first job, providing unwavering support, essential skills, and invaluable guidance. Their exceptional job placement assistance led me to a role aligned with my aspirations, illuminating my path to success.",
       description2:
         "Ut enim ad min, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       description3: "Ut enim ad minim vequat.",
     },
     [User3]: {
-      name: "Sam",
-      email: "sam@example.com",
+      name: "KHUSHPREET KAUR",
+      email: "khushpreet@example.com",
       description1:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "Hoping Minds' dedicated efforts and comprehensive job assistance program transformed me from a hopeful job seeker to a proud employee. Their personalized approach, insightful counseling, and invaluable support led to securing my first job and equipped me for future career success.",
       description2: "Duis aute irure dolor nulla pariatur.",
       description3:
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillumulla pariatur.",
     },
     [User4]: {
-      name: "Jack",
+      name: "AMRITPAL SINGH",
       email: "jack@example.com",
       description1:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culit anim id est laborum.",
+        "Thrilled to join Protiviti, thanks to Hoping Minds' fantastic support. The journey was challenging, but their assistance and opportunities for growth were invaluable. Grateful to family, teachers, and friends. Excited and determined for this new career chapter!",
       description2: "Exce cupidatat non proident, sunt in culpaborum.",
       description3:
         "Excepteur sint occaect in culpa qui officia deserunt mollit anim id est laborum.",
     },
+
   });
 
   useEffect(() => {
@@ -265,79 +266,7 @@ return(<>
 
       {/* recommended cards */}
       <RecommendedCourses/>
-      {/* <div className="mt-12 py-10 px-[5%] flex flex-col justify-center gap-6 bg-[#E2FFF1] xsm:mt-[8%] xsm:py-[4%] xsm:gap-2">
-        <div className="px-6 flex flex-row justify-between items-center xsm:px-1">
-          <p className="font-pop font-semibold text-[30px] xsm:text-[10px]">
-            Recommended For You
-          </p>
-          <p
-            className="font-pop font-semibold text-[22px] cursor-pointer xsm:text-[6px]"
-            onClick={toggleShowAllCards}
-          >
-            {showAllCards ? "See Less" : "See All"}
-          </p>
-        </div>
-        <div className="grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3">
-          {allCourses.slice(0, screenWidth >= 320 && screenWidth <= 480 ? 3 : allCourses.length).map((course, index) => (
-            <div
-              key={index}
-              className={`w-[full] h-full flex flex-col gap-4 items-center px-4 py-5 rounded-xl shadow-2xl shadow-[#D9D9D9] bg-white xsm:rounded-md xsm:px-1 xsm:py-2 xsm:gap-2 ${!showAllCards && index > 3 ? "hidden" : ""
-                }`}
-            >
-              <div className="h-[50%] w-full rounded-xl xsm:rounded-md">
-                <img className="w-full h-full" src="../img/RCimg1.png" />
-              </div>
-              <div className="w-[95%] h-full flex flex-col justify-between space-y-4 xsm:space-y-2">
-                <div className="flex flex-col gap-4 xsm:gap-2">
-                  <div className="flex justify-between">
-                    <div className="flex space-x-2 items-center xsm:space-x-1">
-                      <img
-                        className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px]"
-                        src="../Icons/RCDesign.svg"
-                      />
-                      <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px]">
-                        Design
-                      </p>
-                    </div>
-                    <div className="flex space-x-2 items-center xsm:space-x-1">
-                      <img
-                        className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px]"
-                        src="../Icons/RCClock.svg"
-                      />
-                      <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px]">
-                        3 Month
-                      </p>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="font-pop text-[18px] font-medium xsm:text-[8px]">
-                      AWS Certified solutions Architect
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-pop text-[14px] text-[#555555] xsm:hidden">
-                      Lorem ipsum dolor sit amet, consectetur adipising elit,
-                      sed do eiusmod tempor
-                    </p>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center space-x-2">
-                    <img
-                      className="w-[34px] h-[34px] xsm:w-[12px] xsm:h-[12px]"
-                      src="../img/RCimg2.png"
-                    />
-                    <p className="font-pop font-medium text-[14px] xsm:text-[6px]">Lina</p>
-                  </div>
-                  <div className="flex space-x-2">
-                    <p className="font-pop font-bold text-[#49BBBD] xsm:text-[5px]">₹250</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
+     
 
       {/* creater */}
       <div className="flex flex-col gap-14 px-24 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-6">
@@ -447,7 +376,7 @@ return(<>
           <div className="flex w-[65%] justify-center xsm:items-center">
             <img
               src={selectedUser === User1 ? User1 : selectedUser}
-              className="w-[80%] h-[80%] object-contain"
+              className="h-[300px] w-[200px] "
               onClick={() => toggleUserImage("")}
             />
           </div>
@@ -464,12 +393,12 @@ return(<>
                   <p className="text-[#696984] text-[16px] font-pop xsm:text-[6px]">
                     {userData[selectedUser]?.description1}
                   </p>
-                  <p className="text-[#696984] text-[16px] font-pop xsm:hidden">
+                  {/* <p className="text-[#696984] text-[16px] font-pop xsm:hidden">
                     {userData[selectedUser]?.description2}
                   </p>
                   <p className="text-[#696984] text-[16px] font-pop xsm:hidden">
                     {userData[selectedUser]?.description3}
-                  </p>
+                  </p> */}
                 </div>
                 <div className="flex flex-row gap-6 xsm:gap-2">
                   <img src={Icon1} className="w-[6%] object-contain" />
