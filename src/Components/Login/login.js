@@ -46,7 +46,13 @@ const Login = () => {
                 // getUserDetails()
                 localStorage.setItem('COURSES_USER_TOKEN', res.data.token)
                 setTimeout(() => {
-                    navigate('/')
+                    if (res.data.role === 'subadmin') {
+                        navigate('/subadmin-dashboard')
+                    }
+                    else {
+
+                        navigate('/')
+                    }
                 }, 1000);
 
             } catch (error) {

@@ -7,7 +7,7 @@ import { ReactComponent as Cart } from '../../Assets/Icons/cart.svg'
 export default function Navbar() {
 
     const { cartData, GetCart, wishListData, GetWishList, userDetail, getUserDetails } = useContext(Globalinfo)
-    console.log(userDetail)
+    // console.log(userDetail)
     const location = useLocation();
 
     return (<>
@@ -18,12 +18,14 @@ export default function Navbar() {
                 <img src="/logo.png" className="xsm:w-[40px] xsm:h-[18px]"/>
             </Link>
             <div className="flex space-x-10 items-center">
-                <Link to={'/'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Home</Link>
-                <Link to={'/course'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/course' ? 'underline font-bold text-[#1DBF73]' : ''}`}>Courses</Link>
-                <a href={'#pap'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '#pap' ? 'underline font-bold text-[#1DBF73]' : ''}`}>PAP</a>
-                {/* <Link>Search</Link> */}
-                {userDetail?._id && <Link to={'/learning'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/learning' ? 'underline font-bold text-[#1DBF73]' : ''}`}>My Learning</Link>}
-                <Link to={'/cart'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/cart' ? 'underline font-bold text-[#1DBF73]' : ''}`}> <Cart className="hover:color-white"/> </Link>
+                {userDetail?.role != 'subadmin' && <>
+                    <Link to={'/'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/' ? ' font-bold text-[#1DBF73]' : ''}`}>Home</Link>
+                    <Link to={'/course'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/course' ? ' font-bold text-[#1DBF73]' : ''}`}>Courses</Link>
+                    <a href={'#pap'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '#pap' ? ' font-bold text-[#1DBF73]' : ''}`}>PAP</a>
+                    {/* <Link>Search</Link> */}
+                    {userDetail?._id && <Link to={'/learning'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/learning' ? ' font-bold text-[#1DBF73]' : ''}`}>My Learning</Link>}
+                    {userDetail?._id && <Link to={'/cart'} className={`hover:bg-[#1DBF73] rounded-full hover:text-white hover:py-1 hover:px-7 hover:duration-500  ${location.pathname === '/cart' ? ' font-bold text-[#1DBF73]' : ''}`}> <Cart className="hover:color-white" /> </Link>}
+                </>}
                 {userDetail?._id ? < Link to="/profile" className="pl-4" style={{ cursor: "pointer" }}>  <span>
                     <Account />
 

@@ -42,7 +42,7 @@ const ProfilEdit = () => {
         let url = BASE_URL + '/user/' + token.email;
         const data = await fetch(url)
         const response = await data.json()
-        console.log(response.userDetails);
+        // console.log(response.userDetails);
         setData(response?.userDetails)
         setUser({
           username: response?.userDetails?.username,
@@ -70,18 +70,18 @@ const ProfilEdit = () => {
   };
 
   const handleFileChange = (e) => {
-    console.log(e.target.files[0])
+    // console.log(e.target.files[0])
     const file = e.target.files[0];
     setSelectedImage(file);
-    console.log(file)
+    // console.log(file)
     if (file) {
       const reader = new FileReader();
       reader.onload = function (e) {
         const imageUrl = e.target.result;
-        console.log(imageUrl);
+        // console.log(imageUrl);
       };
       reader.readAsDataURL(file)
-      console.log(reader.readAsDataURL(file))
+      // console.log(reader.readAsDataURL(file))
     }
 
     setUser({ ...user, profile: URL.createObjectURL(file) })
@@ -107,7 +107,7 @@ const ProfilEdit = () => {
         toast.success("Saved Successfully")
         setbtnLoader(false);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         setbtnLoader(false);
       }
     }

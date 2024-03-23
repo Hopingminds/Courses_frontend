@@ -20,21 +20,23 @@ import AssignmentStart from '../Components/Meeting/AssignmentStart.js'
 import NavSubAdmin from '../Components/SubAdminDashboard/NavSubAdmin.js'
 import DashboardSubAdmin from '../Components/SubAdminDashboard/DashboardSubAdmin.js'
 import Success from '../Components/Success/success.js'
+// import DashboardSubAdmin from '../Components/SubAdminDashboard/DashboardSubAdmin.js'
 import SubAdmin from '../Components/SubAdminDashboard/index.js'
 
 
 // subadmin
+// import SubAdmin from '../Components/SubAdminDashboard/index.js'
 import Pap from '../Components/PAP/Pap.js'
 
 const Router = () => {
-    let pathname=window.location.pathname;
+    let pathname = window.location.pathname;
     console.log(pathname.includes('subadmin'));
     return (
 
         <BrowserRouter >
-        <ScrollToTop/>
+            <ScrollToTop />
             <Navbar />
-           { pathname.includes('subadmin') ?  <div>
+            {pathname.includes('subadmin') ? <div>
 
                 <NavSubAdmin />
             </div> : <div className='h-20 xsm:h-10'>
@@ -60,15 +62,15 @@ const Router = () => {
                 <Route path='/subadmin-login' element={<SubAdmin />} />
                 <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
 
-                <Route path='/success' element={<Success/>} />
+                <Route path='/success' element={<Success />} />
                 <Route path='/subadmin-login' element={<SubAdmin />} />
-                <Route path='/subadmin-dashboard' element={<DashboardSubAdmin/>} />
+                <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
                 <Route path='/pap' element={<Pap/>} />
             </Routes>
-          { pathname.includes('subadmin') ? <></> : <Footer />}
+            {pathname.includes('subadmin') ? <></> : <Footer />}
 
         </BrowserRouter >
-        
+
 
     )
 }
