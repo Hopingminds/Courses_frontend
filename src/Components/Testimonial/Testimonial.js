@@ -65,12 +65,7 @@ const Testimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
 
-  const handleReview = () => {
-    if (localStorage.getItem("COURSES_USER_TOKEN")) {
-    } else {
-      navigate("/login");
-    }
-  };
+
 
   return (
     <>
@@ -87,10 +82,10 @@ const Testimonial = () => {
           </p>
           <div className="flex flex-col gap-4 text-[#696984] text-[18px] font-poppins xsm:text-[6px] xsm:gap-0">
             <p className="">
-            HopingMinds has earned the trust of over 100 corporations, more than 50 universities, and over 10,000 students based on positive experiences and successful outcomes. {" "}
+              HopingMinds has earned the trust of over 100 corporations, more than 50 universities, and over 10,000 students based on positive experiences and successful outcomes. {" "}
             </p>
             <p>
-            Our community continues to grow, thanks to the proven results and confidence shared by our partners and learners
+              Our community continues to grow, thanks to the proven results and confidence shared by our partners and learners
             </p>
           </div>
           {/* <p className="text-[#696984] text-[18px] font-pop xsm:text-[6px]">
@@ -113,15 +108,14 @@ const Testimonial = () => {
           <div className="relative ">
             <img
               src={testimonials[currentIndex].image}
-              className="w-[350px] h-[400px]  rounded-3xl xsm:rounded-md"
+              className="w-[350px] h-[400px]  rounded-3xl xsm:rounded-md object-cover"
             />
             <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-2xl w-[90%] min-h-[38%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`bg-[#1DBF73] text-[rgb(29,191,115)] w-14 rounded-l-xl xsm:w-6 ${
-                    index === currentIndex ? "" : "hidden"
-                  }`}
+                  className={`bg-[#1DBF73] text-[rgb(29,191,115)] w-14 rounded-l-xl xsm:w-6 ${index === currentIndex ? "" : "hidden"
+                    }`}
                 >
                   .
                 </div>
@@ -129,9 +123,8 @@ const Testimonial = () => {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`flex relative ${
-                    index === currentIndex ? "" : "hidden"
-                  }`}
+                  className={`flex relative ${index === currentIndex ? "" : "hidden"
+                    }`}
                 >
                   <hr className="h-[60%]  border border-[rgb(189,189,209)] absolute top-3 xsm:top-2" />
                   <div className="flex flex-col justify-between px-4 py-3 xsm:px-2 xsm:py-2">
@@ -174,7 +167,7 @@ const Testimonial = () => {
 
           {/* arrrow */}
           <div
-            className="w-[70px] h-[70px] absolute bg-[#ffffff] rounded-full right-[18%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[12%]"
+            className="w-[70px] h-[70px] absolute bg-[#ffffff] rounded-full left-[315px] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[12%]"
             style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }}
             onClick={handleArrow2Click}
           >

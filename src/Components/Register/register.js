@@ -72,12 +72,8 @@ const Login = () => {
 
     return (
         <>
-            <head>
-                <title>
-                    Register | HopingMinds
-                </title>
-            </head>
             <div className={styles.register_container}>
+                {/* <div></div> */}
                 <div className={styles.register_box_main}>
 
                     {/* Main heading */}
@@ -91,36 +87,36 @@ const Login = () => {
                         {/* Input fields */}
                         <div className={styles.inputs}>
 
-                            <div>
+                            <div className='flex flex-col gap-2'>
                                 {/* Email input */}
-                                <p>Username</p>
-                                <input type="text" placeholder="Enter Your Username" name="username" value={user.username} onChange={handleChange} />
+                                <p className='text-[14px]'>Username/Email</p>
+                                <input className='w-full' type="text" placeholder="Enter Your Username/Email" name="username" value={user.username} onChange={handleChange} />
                             </div>
-                            <div>
+                            <div className='flex flex-col gap-2 hidden'>
                                 {/* Email input */}
-                                <p>Email</p>
-                                <input type="text" placeholder="Enter Your Email" name="email" value={user.email} onChange={handleChange} />
+                                <p className='text-[14px]'>Email</p>
+                                <input className='w-full' type="text" placeholder="Enter Your Email" name="email" value={user.email} onChange={handleChange} />
                             </div>
-                            <div>
+                            <div className='flex flex-col gap-2'>
+                                <p className='text-[14px]'>Password</p>
+                                <input className='w-full' type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={handleChange} />
+                            </div>
+                            <div className='flex flex-col gap-2'>
 
-                                <p>College</p>
-                                <input type="text" placeholder="Enter Your College" name="college" value={user.college} onChange={handleChange} />
+                                <p className='text-[14px]'>College/University</p>
+                                <input className='w-full' type="text" placeholder="Enter Your College/University" name="college" value={user.college} onChange={handleChange} />
                             </div>
-                            <div>
+                            <div className='flex flex-col gap-2 hidden'>
 
-                                <p>Stream</p>
-                                <input type="text" placeholder="Enter Your Stream" name="stream" value={user.stream} onChange={handleChange} />
+                                <p className='text-[14px]'>Stream</p>
+                                <input className='w-full' type="text" placeholder="Enter Your Stream" name="stream" value={user.stream} onChange={handleChange} />
                             </div>
-                            <div>
+                            <div className='flex flex-col gap-2 hidden'>
 
-                                <p>Year Of pass</p>
-                                <input type="text" placeholder="Enter Your Year Of Passing" name="yearofpass" value={user.yearofpass} onChange={handleChange} />
+                                <p className='text-[14px]'>Year Of pass</p>
+                                <input className='w-full' type="text" placeholder="Enter Your Year Of Passing" name="yearofpass" value={user.yearofpass} onChange={handleChange} />
                             </div>
 
-                            <div>
-                                <p>Password</p>
-                                <input type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={handleChange} />
-                            </div>
                             {/* Forgot password link */}
                             {/* <h6>Forgot password?</h6> */}
                         </div>
@@ -135,7 +131,7 @@ const Login = () => {
                                 <span>
                                     <p>Already registered ?</p>
                                     {/* Sign up link */}
-                                    <Link to={'/login'}>  <h5>Login</h5></Link>
+                                    <Link to={'/login'}>  <h5 className='text-[#1dbf73]'>Login</h5></Link>
                                 </span>
                                 {/* Social media login buttons */}
 
