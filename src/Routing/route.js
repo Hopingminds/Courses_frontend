@@ -65,6 +65,7 @@ const Router = () => {
                 <Route path='/success' element={<Success />} />
                 <Route path='/subadmin-login' element={<SubAdmin />} />
                 <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
+                <Route path='/pap' element={<Pap/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 

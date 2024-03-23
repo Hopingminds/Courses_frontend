@@ -27,7 +27,7 @@ const PapHome = () => {
                     <p className='text-[#696984] text-justify text-[14px]'>Get trained with online or offline class with additional to technical of aptitude and personality development classes.</p>
                 </div>
             </div>
-            <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full ' onClick={() => navigate('/')}>Get Started</button>
+            <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full ' onClick={() => navigate('/pap')}>Get Started</button>
         </div>
     )
 }
