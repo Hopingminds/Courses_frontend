@@ -376,7 +376,7 @@ return(<>
           <div className="flex w-[65%] justify-center xsm:items-center">
             <img
               src={selectedUser === User1 ? User1 : selectedUser}
-              className="h-[300px] w-[200px] "
+              className="h-[300px] w-[300px] rounded-full object-cover"
               onClick={() => toggleUserImage("")}
             />
           </div>
@@ -409,22 +409,22 @@ return(<>
               <div className="flex flex-col gap-4 justify-between xsm:gap-1">
                 <img
                   src={User1}
-                  className="w-full object-contain cursor-pointer xsm:w-[15px]"
+                  className="w-[50px] h-[50px] object-cover cursor-pointer xsm:w-[15px] rounded-full"
                   onClick={() => toggleUserImage(User1)}
                 />
                 <img
                   src={User2}
-                  className="w-full object-contain cursor-pointer xsm:w-[15px]"
+                  className="w-[50px] h-[50px] object-cover cursor-pointer xsm:w-[15px] rounded-full"
                   onClick={() => toggleUserImage(User2)}
                 />
                 <img
                   src={User3}
-                  className="w-full object-contain cursor-pointer xsm:w-[15px]"
+                  className="w-[50px] h-[50px] object-cover cursor-pointer xsm:w-[15px] rounded-full"
                   onClick={() => toggleUserImage(User3)}
                 />
                 <img
                   src={User4}
-                  className="w-full object-contain cursor-pointer xsm:w-[15px]"
+                  className="w-[50px] h-[50px] object-cover cursor-pointer xsm:w-[15px] rounded-full"
                   onClick={() => toggleUserImage(User4)}
                 />
               </div>
