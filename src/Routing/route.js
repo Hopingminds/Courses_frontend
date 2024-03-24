@@ -27,6 +27,7 @@ import SubAdmin from '../Components/SubAdminDashboard/index.js'
 // subadmin
 // import SubAdmin from '../Components/SubAdminDashboard/index.js'
 import Pap from '../Components/PAP/Pap.js'
+import CareerServices from '../Components/CareerServices/CareerServices.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -66,6 +67,7 @@ const Router = () => {
                 <Route path='/subadmin-login' element={<SubAdmin />} />
                 <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
                 <Route path='/pap' element={<Pap/>} />
+                <Route path='/career' element={<CareerServices/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
