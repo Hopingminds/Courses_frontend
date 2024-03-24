@@ -111,8 +111,7 @@ const OurFeatures = () => {
               Our <span className="text-[#33EFA0]"> Features </span>{" "}
             </p>
             <p className="text-[#696984] text-[20px] font-pop xsm:text-[8px]">
-              This very extraordinary feature, can make learning activities more
-              efficient
+            Unleash Your Potential: Explore Our Feature-Rich Toolbox for a Seamless, Engaging, and Rewarding Learning Journey Like Never Before!
             </p>
           </div>
           <div className="flex flex-row justify-between items-center">

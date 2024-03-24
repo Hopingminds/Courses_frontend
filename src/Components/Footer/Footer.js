@@ -16,7 +16,7 @@ const Footer = () => {
                 <div className='flex  justify-between px-[5%] xsm:pl-[5%] xsm:flex xsm:flex-col xsm:gap-8'>
                     <div className='flex flex-col gap-8 w-[220px] xsm:gap-2 xsm:w-[90%]'>
                         <img src={Img2} className='w-[140px] h-[55px] xsm:w-[40%] xsm:h-[10%]' />
-                        <p className='text-[#555555] text-[14px] font-nu text-balance w-full xsm:text-[10px]'>Holistic a development programs that place students in specific high growth roles across 150+ Corporate Partners.</p>
+                        <p className='text-[#555555] text-[14px] font-nu text-balance w-full xsm:text-[10px]'>Empower your future with interactive courses tailored to your goals. Join our dynamic eLearning community and unlock your potential today!</p>
                     </div>
                     <div className='flex flex-col gap-4 xsm:gap-2  '>
                         <p className='text-[#555555] text-[20px] font-nu font-semibold xsm:text-[10px]'>GET HELP</p>
