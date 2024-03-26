@@ -13,7 +13,7 @@ export default function Navbar() {
     return (<>
 
 
-        <div className="w-full flex justify-between px-[5%] h-20 items-center shadow-lg font-pop fixed top-0 z-20 bg-white xsm:h-10">
+        <div  className="w-full flex justify-between px-[5%] h-20 items-center shadow-md  shadow-[#afd8c5] font-pop fixed top-0 z-20 bg-white xsm:h-10">
             <Link to='/' className="">
                 <img src="/logo.png" className="xsm:w-[40px] xsm:h-[18px]"/>
             </Link>
@@ -32,7 +32,7 @@ export default function Navbar() {
 
 
                 </span> </Link> : <div className="flex space-x-5 pl-4">
-                    <Link to={"/login"} className="bg-[#1DBF73] px-7 rounded-full text-white py-1">Login</Link>
+                    <Link to={"/login"} className="bg-[#1DBF73] px-7 rounded-full text-white py-1">Log in</Link>
                     <Link to={"/register"} className="bg-black px-7 rounded-full text-white py-1">Sign Up</Link>
                 </div>}
             </div>

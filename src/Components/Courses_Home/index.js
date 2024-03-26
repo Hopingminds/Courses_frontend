@@ -52,17 +52,20 @@ const Courses_Home = () => {
         <>
             {/* <h1 className='text-[40px] mt-16 font-semibold' style={{ textAlign: 'center' }}> Our Feature Courses</h1> */}
 
-            <div className="h-[100%] w-full px-20 pt-5 mt-12 font-pop bg-[#EBEBFF] ">
-                <div className="flex w-full space-x-4 font-pop xl:space-x-12">
-                    {['All Courses', 'Full Stack Development', 'AI & ML', 'Data science', 'Electric Vehicle Design', 'Cyber Security', 'Hydro Carbon', 'Design', 'Management'].map(category => (
+            <div className="h-[100%] w-full px-20 py-8 mt-12 font-pop bg-[#E2FFF180] space-y-5">
+                <div className="flex w-full space-x-10 font-pop xl:space-x-12">
+                    {['All Courses', 'Full Stack Development', 'AI & ML', 'Data science', 'Cyber Security', 'Management'].map(category => (
                         <button key={category} onClick={() => handleCategoryClick(category)} className={selectedCategory === category ? "px-3 py-2 afterclick rounded-full" : "beforeclick"}>
                             {category}
                         </button>
                     ))}
                 </div>
+                <div className='flex justify-between w-full items-center'>
                 <div className="text-4xl font-semibold mt-3">{selectedCategory}</div>
+                <button className='text-[#1DBF73]'>See all</button>
+                </div>
                 {/* <div className="text-[#333333] text-[20px] mt-1">Our training covers everything you need for a successful career, from basic job skills to advanced tech know-how.</div> */}
-                <div className="grid grid-cols-4  space-x-5 justify-between mt-2 flex-wrap xsm:grid xsm:grid-cols-2 pb-5 2xl:gap-10"> {/* Changed flex to flex-wrap */}
+                <div className="grid grid-cols-4  space-x-5 justify-between mt-2 flex-wrap xsm:grid xsm:grid-cols-2  2xl:gap-10"> {/* Changed flex to flex-wrap */}
                     {filteredCourses?.slice(0, cardsToShow)?.map(course => (
                         <CourseCard
                             key={course.title}

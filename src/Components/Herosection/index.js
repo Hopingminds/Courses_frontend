@@ -8,9 +8,10 @@ export default function Herosection() {
     const navigate = useNavigate()
     return (<>
         <div className=" bg-[#E2FFF1] h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%] 2xl:h-[65vh]">
-            <div className='w-[45%] space-y-6 2xl:space-y-10'>
-                <div className='text-[3.2vw] font-semibold leading-[4.0rem] 2xl:leading-[5.5rem]'>Shape Your Tomorrow, Today with HopingMinds: Where Education Meets Aspiration</div>
-                <div className='font-nu text-[18px]'>Holistic a development programs that place students in specific high growth roles across 150+ Corporate Partners.</div>
+            <div className='w-[45%] h-[70%] items-start 2xl:space-y-10'>
+                {/* <div className='text-[3.2vw] font-semibold leading-[4.0rem] 2xl:leading-[5.5rem]'>Shape Your Tomorrow, Today with HopingMinds: Where Education Meets Aspiration</div> */}
+                <div className='text-[3.2vw] font-semibold leading-[4.0rem] 2xl:leading-[5.5rem] font-pop'>Empower Your Future With Hoping Minds!</div>
+                <div className='font-nu text-[18px] mt-5 w-[83%] text-justify'>"HopingMinds offers holistic development programs designed to position students in high-growth roles through our network of over 150 corporate partners. Our tailored approach ensures you're not just prepared, but primed for success in your chosen field."</div>
                 {/* <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full ' onClick={() => navigate('/register')}>Join for free</button> */}
             </div>
             <div className='w-[50%] flex justify-center items-center  relative text-[#545567]'>

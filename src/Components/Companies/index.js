@@ -10,7 +10,7 @@ const Companies = () => {
         ['/indmoney.png', '/paytm.png', '/google.png', '/ajio.png', '/cleartax.png', '/dream11.png'],
         ['/ajio.png', '/cleartax.png', '/dream11.png', '/indmoney.png', '/paytm.png', '/google.png'],
         ['/cleartax.png', '/dream11.png', '/indmoney.png', '/paytm.png', '/google.png', '/ajio.png'],
-        ['/indmoney.png', '/paytm.png', '/google.png', '/ajio.png', '/cleartax.png', '/dream11.png'],
+        ['/dream11.png', '/indmoney.png', '/paytm.png', '/google.png', '/ajio.png', '/cleartax.png'],
         ['/paytm.png', '/google.png', '/ajio.png', '/cleartax.png', '/dream11.png', '/indmoney.png']
     ];
 
@@ -24,7 +24,7 @@ const Companies = () => {
                     newIndexes[index] = (newIndexes[index] + 1) % total;
                     return newIndexes;
                 });
-            }, index % 2 === 0 ? 3000 : 5000);
+            }, index % 2 === 0 ? 3000 : 6000);
         });
     
         return () => {
@@ -62,8 +62,8 @@ const Companies = () => {
     return (
         <div className="text-[#696984] flex justify-center mt-12 font-pop">
             <div className="w-[90%] space-y-8">
-                <div className="text-center text-[24px]">Trusted by 5,000+ Companies Worldwide</div>
-                <div className="flex justify-center">
+                <div className="text-center text-[24px] text-[#696984]">Trusted by 5,000+ Companies Worldwide</div>
+                <div className="flex justify-center ">
                     {logos.map((row, rowIndex) => (
                         <div key={rowIndex} className="slider-container w-[20%]">
                             {row.map((logo, index) => (
