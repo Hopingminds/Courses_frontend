@@ -23,7 +23,7 @@ const CourseCard = ({
     <Link
       style={{ padding: "10px" }}
       to={`/detailcourse/${slug}`}
-      className={`shadow-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 max-w-sm font-pop rounded-xl relative coursecardhome   bg-white   ${
+      className={`shadow-lg  max-w-sm font-pop rounded-xl relative coursecardhome   bg-white   ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
     >

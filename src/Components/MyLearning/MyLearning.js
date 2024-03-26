@@ -66,7 +66,7 @@ export default function MyLearning() {
                 </div>
             </div>
             {showpage === 'courses' ? <Mycourse courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses}/> : showpage === 'stats' ? <MyStats /> : <Assignment />}
-            <RecommendedCourses />
+            <RecommendedCourses className={'bg-[#E2FFF1]'} />
         </div>
     );
 }

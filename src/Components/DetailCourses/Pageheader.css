@@ -18,14 +18,14 @@
 
 .CCDetails-Header-content-row1qw h2 {
   font-weight: 600;
-  font-size: 32px;
+  font-size: 36px;
   text-align: left;
   color: #fff;
 }
 
 .CCDetails-Header-content-row2 {
   display: flex;
-  gap: 25px;
+  /* gap: 25px; */
   margin: 14px 41px 14px 0;
 }
 

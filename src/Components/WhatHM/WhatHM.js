@@ -16,10 +16,10 @@ const WhatHM = () => {
           </div>
           <div className="flex flex-row gap-20 justify-center xsm:gap-4">
             <div className="w-[500px] h-[350px] 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[15vh] xsm:rounded-lg">
-              <ReactPlayer  onPlay={()=>setsecond(false)} className={'w-full h-full'} url='/Corporate1.mp4' playing={first} loop={first} controls={true} muted />
+              <ReactPlayer   className={'w-full h-full'} url='/Corporate1.mp4' playing={false} loop={true} controls={true}  />
             </div>
             <div className="w-[500px] h-[350px] 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[15vh] xsm:rounded-lg">
-                <ReactPlayer onPlay={()=>setfirst(false)} className={'w-full h-full'} url='/Corporate2.mp4' playing={second} loop={second} controls={true} muted />
+                <ReactPlayer  className={'w-full h-full'} url='/Corporate2.mp4' playing={false} loop={true} controls={true}  />
             </div>
           </div>
         </div>

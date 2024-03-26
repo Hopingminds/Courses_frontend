@@ -40,7 +40,7 @@ export default function DetailCourses() {
                         <div className='CCDetails-Header-content-row1qw'>
                             <h2 className='font-pop'>{Data?.title}</h2>
                         </div>
-                        <div className='CCDetails-Header-content-row2 w-[90%]'>
+                        <div className='CCDetails-Header-content-row2 w-[70%]'>
                             <div className='CCDetails-Header-content-row2-clock'>
                                 <img src="../Icons/clockfilled.svg" className=' xsm:w-[6px] xsm:h-[6px]' alt="clock"></img>
                                 <p className='font-nu'> 2Weeks</p>

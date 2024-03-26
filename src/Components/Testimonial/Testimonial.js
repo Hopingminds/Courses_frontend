@@ -110,7 +110,7 @@ const Testimonial = () => {
               src={testimonials[currentIndex].image}
               className="w-[350px] h-[400px]  rounded-3xl xsm:rounded-md object-cover"
             />
-            <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-2xl w-[90%] min-h-[38%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md">
+            <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[80%] min-h-[45%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}

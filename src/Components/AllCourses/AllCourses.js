@@ -139,7 +139,7 @@ const AllCourses = () => {
             type="text"
             placeholder=""
             onChange={SearchData}
-            className="flex-1 w-full outline-none placeholder-gray-500 text-[18px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px]"
+            className="flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px]"
           />
           <div className="flex flex-col w-full absolute bg-[#deffef]  justify-center">
             {
@@ -158,7 +158,7 @@ return(<>
           </button>
         </div>
         <div className="grid grid-cols-6 gap-4 w-[80%] font-pop xsm:w-[90%] xsm:gap-2 xsm:grid-cols-4">
-          <select className="w-full p-3 px-1 text-[18px] text-[#000000] font-pop rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
+          <select className="w-full p-3 px-1 text-[16px] text-[#000000] font-pop rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
             <option value="" disabled selected hidden>
               Subject
             </option>
@@ -166,7 +166,7 @@ return(<>
             <option value="science">Science</option>
             <option value="history">History</option>
           </select> 
-          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center xsm:hidden">
+          <select className="w-full p-3 px-1 text-[16px] text-[#000000] rounded-lg outline-none flex text-center xsm:hidden">
             <option value="" disabled selected hidden>
               Partner
             </option>
@@ -174,7 +174,7 @@ return(<>
             <option value="science">Science</option>
             <option value="history">History</option>
           </select>
-          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center xsm:hidden">
+          <select className="w-full p-3 px-1 text-[16px] text-[#000000] rounded-lg outline-none flex text-center xsm:hidden">
             <option value="" disabled selected hidden>
               Program
             </option>
@@ -182,7 +182,7 @@ return(<>
             <option value="science">Science</option>
             <option value="history">History</option>
           </select>
-          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
+          <select className="w-full p-3 px-1 text-[16px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
             <option value="" disabled selected hidden>
               Language
             </option>
@@ -190,15 +190,15 @@ return(<>
             <option value="science">Science</option>
             <option value="history">History</option>
           </select>
-          <select className="w-full p-3 px-1 text-[18px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
+          <select className="w-full p-3 px-1 text-[16px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
             <option value="" disabled selected hidden>
-              Abaility
+              Ability
             </option>
             <option value="math">Math</option>
             <option value="science">Science</option>
             <option value="history">History</option>
           </select>
-          <select className="w-full py-3 text-[18px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
+          <select className="w-full py-3 text-[16px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
             <option value="" disabled selected hidden>
               Learning Type
             </option>
@@ -245,7 +245,7 @@ return(<>
                       </p>
                     </div>
                   </div>
-                  <p className="font-pop font-semibold text-[18px] text-[#252641] xsm:text-[8px]">
+                  <p className="font-pop font-semibold text-[16px] text-[#252641] xsm:text-[8px]">
                     {val?.title}
                   </p>
                   <p className="font-pop text-[14px] text-[#555555] xsm:hidden">
@@ -265,7 +265,7 @@ return(<>
                     </p>
                   </div>
                   <div>
-                    <p className="font-pop font-bold text-[#49BBBD] text-[18px] xsm:text-[6px]">
+                    <p className="font-pop font-bold text-[#49BBBD] text-[16px] xsm:text-[6px]">
                       ₹ {val?.base_price}
                     </p>
                   </div>

@@ -72,7 +72,7 @@ function Curriculum() {
                   </div>
                 </div>
 
-                <div className="lesson-container-contents" id={ind + 1}>
+                <div className="lesson-container-contents hidden" id={ind + 1}>
                   {val?.lessons.map((chapter, index) => {
                     return (
                       <>
