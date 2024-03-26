@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-// import styles from './register.module.css';
+import './register.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
@@ -80,8 +80,8 @@ const Login = () => {
                     <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p>
                     <div className='flex flex-col w-[65%] gap-4 xsm:w-[95%]'>
                         <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 '>
-                            <button className='bg-transparent cursor-pointer inactive'onClick={() => navigate('/login')} >Login</button>
-                            <button className='bg-transparent cursor-pointer active' >Register</button>
+                            <button className='bg-transparent cursor-pointer Logininactive'onClick={() => navigate('/login')} >Login</button>
+                            <button className='bg-transparent cursor-pointer Loginactive' >Register</button>
                         </div>
                         {/* inputs */}
                         <div className='flex flex-col gap-4'>

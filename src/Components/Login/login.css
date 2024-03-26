@@ -1,5 +1,5 @@
 
-.active {
+.Loginactive {
   background-color: #1dbf73 !important;
   border-radius: 20px;
   /* box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25); */
@@ -10,7 +10,7 @@
   width: 120px;
   margin: 0 10px;
 }
-.inactive {
+.Logininactive {
   transition: all 0.18s ease-in;
   font-size: 1rem;
   height: 35px;
