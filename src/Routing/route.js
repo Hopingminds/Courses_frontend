@@ -37,7 +37,7 @@ const Router = () => {
 
         <BrowserRouter >
             <ScrollToTop />
-            <Navbar />
+            {/* <Navbar /> */}
             {pathname.includes('subadmin') ? <div>
 
                 <NavSubAdmin />
