@@ -6,7 +6,7 @@ const Certificate = () => {
     <>
       <div className="flex flex-row justify-between items-center bg-[#F0FFF7] gap-10 px-[5%] py-16 xsm:py-6 xsm:gap-4">
         <div className="w-[65%] h-[60vh] xsm:h-[18vh]">
-          <img src={Img1} className="w-full h-full object-fit" />
+          <img src='/Divyam-vashisht.jpg' className="w-full h-full object-fit" />
         </div>
         <div className="flex flex-col space-y-3 w-[70%] xsm:gap-2">
           <p className="text-[42px] text-[#000000] font-pop font-extrabold xsm:text-[8px]">

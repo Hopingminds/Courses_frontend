@@ -48,11 +48,11 @@ const CourseCard = ({
           <div>
             <div
               style={{ color: "#252641" }}
-              className="font-bold text-[16px] mb-2 "
+              className="font-bold text-[16px] mb-2 h-10 "
             >
               {cropString(title, 50)}
             </div>
-            <div className="text-[#696984] text-[14px] ">
+            <div className="text-[#696984] text-[14px] text-pretty">
               {cropString(description[0], 70)}
             </div>
           </div>

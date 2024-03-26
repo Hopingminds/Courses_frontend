@@ -29,6 +29,7 @@ import SubAdmin from '../Components/SubAdminDashboard/index.js'
 import Pap from '../Components/PAP/Pap.js'
 import Forgotpassword from '../Components/forgotPassword/forgotPassword.js'
 import CareerServices from '../Components/CareerServices/CareerServices.js'
+import AiMinds from '../Components/AiMinds/AiMinds.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -37,7 +38,7 @@ const Router = () => {
 
         <BrowserRouter >
             <ScrollToTop />
-            <Navbar />
+            {/* <Navbar /> */}
             {pathname.includes('subadmin') ? <div>
 
                 <NavSubAdmin />
@@ -71,6 +72,7 @@ const Router = () => {
                 <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
                 <Route path='/pap' element={<Pap />} />
                 <Route path='/career' element={<CareerServices />} />
+                <Route path='/ai' element={<AiMinds />} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 

@@ -116,11 +116,11 @@ export default function CareerServices(){
                 </div>
                 <div className="grid grid-cols-2 gap-6 ">
                     <div className="flex flex-col gap-6 items-center bg-white p-[34px]">
-                        <img className="w-[15%]" src="../Icons/careercard3icon2.svg"/>
+                        <img className="w-[15%]" src="../Icons/careercard1icon1.svg"/>
                         <p className="font-mons font-medium text-center text-[14px] leading-8">Focus On Communications, Reasoning And Aptitude So That You Are Ready For Any Interview</p>
                     </div>
                     <div className="flex flex-col gap-6 items-center bg-white p-[34px]">
-                        <img className="w-[15%]" src="../Icons/careercard3icon1.svg"/>
+                        <img className="w-[15%]" src="../Icons/careercard4icon4.svg"/>
                         <p className="font-mons font-medium text-center text-[14px] leading-8">Resume Building Support And Tools To Make That Stellar Resume & LinkedIn Profile Which Leaves An Impression</p>
                     </div>
                 </div>
