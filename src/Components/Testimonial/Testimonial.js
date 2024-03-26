@@ -11,6 +11,7 @@ const Testimonial = () => {
     {
       text: "Hoping Minds' programs transform students through hands-on learning, personalized attention, and market-aligned curriculum. Highly recommend as a pathway to success.",
       author: "Ajitesh Abhishek",
+      empty:0,
       stars: 5,
       reviews: 12,
       image: '/ajitesh.jpeg',
@@ -18,13 +19,15 @@ const Testimonial = () => {
     // {
     //   text: "It's not often that I come across an Ed-Tech firm as transformative as Hoping Minds. I've had the pleasure of collaborating with them to enhance our educational initiatives. Hoping Minds' commitment to excellence, higher packages and their passion for advancing in the field of education is commendable.",
     //   author: "Navdeepak Sandhu",
-    //   stars: 3,
+    // empty:2,//   
+    // stars: 3,
     //   reviews: 4,
     //   image: Img2,
     // },
     {
       text: "Right from the recruitment and interview process,we were able to see a different level of professionalism in Hm's candidates.It is great to see freshers demonstrating corperate manually.",
       author: "Lakshay S",
+      empty:0,
       stars: 5,
       reviews: 12,
       image: '/Lakshay.jpg',
@@ -32,6 +35,7 @@ const Testimonial = () => {
     {
       text: "Their program cultivated skilled and motivated coders who now excel in their roles, driving impressive performance.They have been able to quickly adopt to their roles and outshine.",
       author: "Sidharth Kakkar",
+      empty:2,
       stars: 3,
       reviews: 4,
       image: '/Sidharth Kakar.jpg',
@@ -39,6 +43,7 @@ const Testimonial = () => {
     {
       text: "HM's students come with a certain level of exposure and practical experience that distinguishes them from the rest.we are able to save critical time as they start delivering early.",
       author: "Tuhina Jain",
+      empty:0,
       stars: 5,
       reviews: 12,
       image: '/Tuhina Jain .jpg',
@@ -46,7 +51,8 @@ const Testimonial = () => {
     // {
     //   text: "It's not often that I come across an Ed-Tech firm as transformative as Hoping Minds. I've had the pleasure of collaborating with them to enhance our educational initiatives. Hoping Minds' commitment to excellence, higher packages and their passion for advancing in the field of education is commendable.",
     //   author: "Navdeepak Sandhu",
-    //   stars: 3,
+    // empty:2,//   
+    // stars: 3,
     //   reviews: 4,
     //   image: Img2,
     // },
@@ -113,9 +119,9 @@ const Testimonial = () => {
           <div className="relative ">
             <img
               src={testimonials[currentIndex].image}
-              className="w-[350px] h-[400px]  rounded-3xl xsm:rounded-md"
+              className="w-[350px] h-[420px]  rounded-3xl xsm:rounded-md"
             />
-            <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[80%] min-h-[45%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md">
+            <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[80%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
@@ -144,7 +150,7 @@ const Testimonial = () => {
                         {testimonial.author}
                       </p>
                       <div className="flex flex-col gap-1  xsm:gap-0">
-                        <div className="flex justify-center">
+                        <div className="flex justify-center items-center">
                           {[...Array(testimonial.stars)].map((star, index) => (
                             <svg
                               key={index}
@@ -159,6 +165,11 @@ const Testimonial = () => {
                                 clipRule="evenodd"
                               />
                             </svg>
+                          ))}
+                         {[...Array(testimonial.empty)].map((star, index) => (
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" fill="#DCE2EE"/>
+                        </svg>
                           ))}
                         </div>
                         {/* <p className="text-[#80819A] text-[14px] font-nu xsm:text-[5px]">

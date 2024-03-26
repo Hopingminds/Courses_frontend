@@ -20,7 +20,7 @@ function Overview() {
   }, []);
   return (
     <div className='overview bg-[#E2FFF1] flex flex-col ' id='overview'>
-      <p className='font-nu  text-[15px]'>
+      <p className='font-nu  text-[15px] text-justify'>
 {Data?.overview}
       </p>
 

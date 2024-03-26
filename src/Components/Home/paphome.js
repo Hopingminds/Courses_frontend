@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 const PapHome = () => {
     const navigate = useNavigate();
     return (
-        <div className='  px-20 flex flex-col items-center ' id='pap'>
-            <h1 className='text-center text-[#1DBF73] text-[42px] font-pop font-semibold'> Pay After Placement</h1>
+        <div id='pap' className='px-20 flex flex-col items-center' >
+            <h1 className='text-center text-[#1DBF73] text-[42px] font-pop font-semibold' > Pay After Placement</h1>
             <p className='text-center text-[#696984] text-[20px] mt-4'>Hoping Minds is democratising education with a unique Pay After Placement (PAP) Model. <br /> PAP allows you to study the course of your choice at ₹0 upfront fee with our PAP Agreement.</p>
             <div className='flex justify-between my-10 space-x-20'>
                 <div className='bg-white py-5 px-8 flex flex-col items-center gap-2 shadow-md shadow-[#b4e6ce] rounded-lg'>
