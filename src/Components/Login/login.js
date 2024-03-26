@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import styles from './login.module.css';
+import './login.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
@@ -68,61 +68,44 @@ const Login = () => {
 
     return (
         <>
-            <head>
-                <title>
-                    Login | HopingMinds
-                </title>
-            </head>
-            <div className={styles.register_container}>
-                <div className={styles.register_box_main}>
-
-                    {/* Main heading */}
-                    <h1>Welcome to Hoping Minds</h1>
-                    <div className={styles.input_main}>
-                        {/* Switch button for email or mobile number */}
-                        <div className={styles.switch_btn}>
-                            <button className={styles.active} >Login</button>
-                            <button className={styles.inactive} onClick={() => navigate('/register')}>Register</button>
+            <div className='flex overflow-hidden'>
+                <div className='w-[50%] flex justify-center relative xsm:hidden'>
+                    <img className='w-[60%] object-cover absolute top-10' src='../login_bg.png'/>
+                </div>
+                <div className='flex flex-col items-center my-16 w-[45%] gap-4 xsm:w-full'>
+                    <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p>
+                    <div className='flex flex-col w-[65%] gap-4 xsm:w-[95%]'>
+                        <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 '>
+                            <button className='bg-transparent cursor-pointer active' >Login</button>
+                            <button className='bg-transparent cursor-pointer inactive' onClick={() => navigate('/register')}>Register</button>
                         </div>
-                        {/* Input fields */}
-                        <div className={styles.inputs}>
-
-                            <div className='flex flex-col gap-2'>
-                                {/* Email input */}
-                                <p className='text-[14px]'>Username/Email</p>
-                                <input className='w-full' type="text" placeholder="Enter Your Username/Email" name="email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
+                        {/* inputs */}
+                        <div className='flex flex-col gap-4'>
+                            <div>
+                                <p className='text-[14px] font-pop'>Username/Email</p>
+                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="text" placeholder="Enter Your Username/Email" name="email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
                             </div>
-
-
-                            {/* Password input */}
-                            <div className='flex flex-col gap-2'>
-                                <p className='text-[14px]'>Password</p>
-                                <input className='w-full' type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                            <div>
+                                <p className='text-[14px] font-pop'>Password</p>
+                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
                             </div>
-                            {/* Forgot password link */}
                             <div className='flex justify-between'>
                                 <div className='flex items-center gap-1'>
                                     <input className='' type="checkbox" />
-                                    <p className='text-[14px]'>Rememeber me</p>
+                                    <p className='text-[12px]'>Rememeber me</p>
                                 </div>
-                                <h6>Forgot password?</h6>
+                                <p className='text-[12px]'>Forgot password?</p>
                             </div>
                         </div>
-                        {/* Action buttons */}
-                        <div className={styles.action_button}>
-                            {/* Sign in button */}
-                            <div className={styles.submit}>
-                                <button onClick={handleLogin}>{btnLoader ? "Loading..." : "Login"}</button>
+                        <div className='flex flex-col items-center gap-4'>
+                            <div className=''>
+                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold" onClick={handleLogin}>{btnLoader ? "Loading..." : "Login"}</button>
                             </div>
-
-                            <div className={styles.login_options}>
-                                <span>
-                                    <p>New Here ?</p>
+                            <div className='flex items-center '>
+                                    <p className='font-pop text-[14px]'>New Here ?</p>
                                     {/* Sign up link */}
                                     <Link to={'/register'}>  <h5 className='text-[#1dbf73]'>Sign Up</h5></Link>
-                                </span>
                                 {/* Social media login buttons */}
-
                             </div>
                         </div>
                     </div>
