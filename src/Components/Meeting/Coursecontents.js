@@ -3,7 +3,7 @@ import { ReactComponent as Down } from '../../Assets/Icons/Down.svg'
 import { IoBookOutline } from "react-icons/io5";
 
 export default function Coursecontents({ data }) {
-    console.log(data);
+    // console.log(data);
 
     const [clicked, setclicked] = useState(false);
 

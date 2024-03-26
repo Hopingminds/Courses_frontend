@@ -14,13 +14,19 @@ function Curriculum() {
     if (!clicked) {
       setclicked(true);
       let inner = document.getElementById(id);
+      let arrow=document.getElementById(`arrow${id}`)
+      // console.log(inner);
+      // inner.style
+      arrow.style.transform = 'rotate(180deg)';
       // console.log(inner);
       inner.style.display = "none";
     } else {
       setclicked(false);
       let inner = document.getElementById(id);
-
+let arrow=document.getElementById(`arrow${id}`)
       // console.log(inner);
+      // inner.style
+      arrow.style.transform = 'rotate(180deg)';
       inner.style.display = "flex";
     }
   }
@@ -60,8 +66,8 @@ function Curriculum() {
                   onClick={() => ClickSection(ind + 1)}
                 >
                   <div className="lesson-container-title-left">
-                    <div className="icon-arrow">
-                      <img src={arrowIcon} />
+                    <div className="icon-arrow" >
+                      <img src={arrowIcon} id={`arrow${ind+1}`}/>
                     </div>
                     <p>{val.chapter_name}</p>
                   </div>
@@ -86,7 +92,7 @@ function Curriculum() {
                             </p>
                           </div>
                           <div className="lesson-container-content-right">
-                            <button>Preview</button>
+                            {/* <button>Preview</button> */}
                             <p>{chapter?.duration}</p>
                           </div>
                         </div>
