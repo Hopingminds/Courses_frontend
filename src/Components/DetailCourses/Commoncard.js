@@ -79,6 +79,7 @@ export default function Commoncard(props) {
         })
 
     }
+    console.log(Data)
     // console.log(purchasedCourses)
     return (
         <div className="bg-[#E2FFF1] w-[33%] h-max mt-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg">
