@@ -61,11 +61,11 @@ const Courses_Home = () => {
                     ))}
                 </div>
                 <div className='flex justify-between w-full items-center'>
-                    <div className="text-4xl font-semibold mt-3 xsm:mt-0">{selectedCategory}</div>
-                    <button className='text-[#1DBF73]'>See all</button>
+                <div className="text-4xl font-semibold mt-3">{selectedCategory}</div>
+                <button className='text-[#1DBF73] text-[18px] mr-2'>See all</button>
                 </div>
                 {/* <div className="text-[#333333] text-[20px] mt-1">Our training covers everything you need for a successful career, from basic job skills to advanced tech know-how.</div> */}
-                <div className="grid grid-cols-4  space-x-5 justify-between mt-2 flex-wrap xsm:grid xsm:grid-cols-2  2xl:gap-10 xsm:space-x-0 xsm:gap-x-2 xsm:gap-y-4"> {/* Changed flex to flex-wrap */}
+                <div className="my-10  grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%]"> {/* Changed flex to flex-wrap */}
                     {filteredCourses?.slice(0, cardsToShow)?.map(course => (
                         <CourseCard
                             key={course.title}
