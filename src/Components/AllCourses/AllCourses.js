@@ -130,7 +130,7 @@ const AllCourses = () => {
       </head>
       {/* Search */}
       <div
-        className="flex flex-col gap-5 p-20 items-center xsm:py-6 xsm:px-0 xsm:gap-2"
+        className="flex flex-col gap-5 p-20 items-center xsm:py-6 xsm:px-0 xsm:gap-2 bg-[#000000]"
         style={{ backgroundImage: `url(${Img1})`, backgroundSize: "cover" }}
       >
         <div className="flex flex-row rounded-2xl w-[80%] xsm:w-[90%] xsm:rounded-md">

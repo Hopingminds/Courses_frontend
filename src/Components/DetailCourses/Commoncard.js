@@ -75,12 +75,12 @@ export default function Commoncard(props) {
     let purchasedCourses = [];
     if (Data) {
         userDetail?.purchased_courses?.forEach((val) => {
-            purchasedCourses.push(val._id)
+            purchasedCourses.push(val?.course?._id)
         })
 
     }
     console.log(Data)
-    // console.log(purchasedCourses)
+    console.log(purchasedCourses)
     return (
         <div className="bg-[#E2FFF1] w-[33%] h-max mt-20 p-6 rounded-xl flex flex-col  top-14 ">
             <div className="h-[225px]">

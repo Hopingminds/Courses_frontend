@@ -21,7 +21,7 @@ export default function DetailCourses() {
                 let url = BASE_URL + '/course/' + slug
                 const data = await fetch(url);
                 const response = await data.json()
-                // console.log(response);
+                console.log(response);
                 setData(response.course)
                 // setshow(false)
             } catch (error) {
