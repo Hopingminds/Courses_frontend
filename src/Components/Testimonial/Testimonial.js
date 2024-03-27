@@ -81,6 +81,7 @@ const Testimonial = () => {
   return (
     <>
       <div className="flex flex-row  justify-between pt-0 px-[5%] pb-32 xsm:px-[5%] xsm:pb-0 xsm:gap-4">
+        {/* left */}
         <div className="flex flex-col gap-4 w-[50%] xsm:gap-2">
           <div className="flex flex-row gap-4 items-center xsm:gap-2 xsm:pl-2">
             <hr className="border border-[black] w-20 xsm:w-6" />
@@ -119,9 +120,9 @@ const Testimonial = () => {
           <div className="relative ">
             <img
               src={testimonials[currentIndex].image}
-              className="w-[350px] h-[420px]  rounded-3xl xsm:rounded-md"
+              className="w-[350px] h-[420px]  rounded-3xl xsm:rounded-md xsm:w-[95px] xsm:h-[120px]"
             />
-            <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[80%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md">
+            <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[80%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md xsm:top-[69%]">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
@@ -141,7 +142,7 @@ const Testimonial = () => {
                 >
                   <hr className="h-[60%]  border border-[rgb(189,189,209)] absolute top-3 xsm:top-2" />
                   <div className="flex flex-col justify-between px-4 py-3 xsm:px-2 xsm:py-2">
-                    <p className="text-[#5F5F7E] text-[15px] font-nu leadng-6 text-justify xsm:text-[5px] xsm:leading-none">
+                    <p className="text-[#5F5F7E] text-[15px] font-nu leadng-6 text-justify xsm:text-[5px] xsm:leading-[6px]">
                       {testimonial.text}
                     </p>
                     <div className="flex flex-row justify-between items-center ">
@@ -152,23 +153,13 @@ const Testimonial = () => {
                       <div className="flex flex-col gap-1  xsm:gap-0">
                         <div className="flex justify-center items-center">
                           {[...Array(testimonial.stars)].map((star, index) => (
-                            <svg
-                              key={index}
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="#FBA333"
-                              className="h-4 w-4 mr-1 xsm:h-2 xsm:w-2 xsm:mr-0"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M10 0l2.478 6.237H20l-5.832 4.718 2.197 6.726L10 14.127 3.635 17.681l2.197-6.726L0 6.237h7.522L10 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
+                            <svg  viewBox="0 0 24 24" className="h-5 w-5 xsm:h-2 xsm:w-2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" fill="#FBA333"/>
+                          </svg>
                           ))}
                          {[...Array(testimonial.empty)].map((star, index) => (
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" fill="#DCE2EE"/>
+                        <svg viewBox="0 0 24 24" className="h-5 w-5 xsm:h-2 xsm:w-2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" fill="#DCE2EE"/>
                         </svg>
                           ))}
                         </div>
@@ -185,7 +176,7 @@ const Testimonial = () => {
 
           {/* arrrow */}
           <div
-            className="w-[70px] h-[70px] absolute bg-[#ffffff] rounded-full right-[18%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[12%]"
+            className="w-[70px] h-[70px] absolute bg-[#ffffff] rounded-full right-[20%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[26%]"
             style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }}
             onClick={handleArrow2Click}
           >

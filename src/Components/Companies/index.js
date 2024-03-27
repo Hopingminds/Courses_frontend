@@ -62,7 +62,7 @@ const Companies = () => {
     return (
         <div className="text-[#696984] flex justify-center mt-12 font-pop">
             <div className="w-[90%] space-y-8">
-                <div className="text-center text-[24px] text-[#696984]">Trusted by 5,000+ Companies Worldwide</div>
+                <div className="text-center text-[24px] text-[#696984] xsm:text-[14px]">Trusted by 5,000+ Companies Worldwide</div>
                 <div className="flex justify-center ">
                     {logos.map((row, rowIndex) => (
                         <div key={rowIndex} className="slider-container w-[20%]">
