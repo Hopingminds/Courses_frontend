@@ -52,8 +52,8 @@ const Courses_Home = () => {
         <>
             {/* <h1 className='text-[40px] mt-16 font-semibold' style={{ textAlign: 'center' }}> Our Feature Courses</h1> */}
 
-            <div className="h-[100%] w-full px-20 py-8 mt-12 font-pop bg-[#E2FFF180] space-y-5">
-                <div className="flex w-full space-x-10 font-pop xl:space-x-12">
+            <div className="h-[100%] w-full px-20 py-8 mt-12 font-pop bg-[#E2FFF180] space-y-5 xsm:px-2">
+                <div className="flex w-full space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-4 xsm:gap-x-[1px] xsm:justify-center">
                     {['All Courses', 'Full Stack Development', 'AI & ML', 'Data science', 'Cyber Security', 'Management'].map(category => (
                         <button key={category} onClick={() => handleCategoryClick(category)} className={selectedCategory === category ? "px-3 py-2 afterclick rounded-full" : "beforeclick"}>
                             {category}

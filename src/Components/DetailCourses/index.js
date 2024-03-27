@@ -36,11 +36,11 @@ export default function DetailCourses() {
         <div className="  h-auto min-h-screen overflow-x-visible ">
             <div className=" mx-[5%] xsm:mx-0">
                 <div className='CCDetails-Header-main flex justify-between px-[5%] w-full'>
-                    <div className='CCDetails-Header-content-leftqw '>
+                    <div className='CCDetails-Header-content-leftqw xsm:text-[14px]'>
                         <div className='CCDetails-Header-content-row1qw'>
                             <h2 className='font-pop'>{Data?.title}</h2>
                         </div>
-                        <div className='CCDetails-Header-content-row2 w-[90%] '>
+                        <div className='CCDetails-Header-content-row2 w-[90%] xsm:mt-1 '>
                             <div className='CCDetails-Header-content-row2-clock'>
                                 <img src="../Icons/clockfilled.svg" className=' xsm:w-[6px] xsm:h-[6px]' alt="clock"></img>
                                 <p className='font-nu text-white' > 2Weeks</p>

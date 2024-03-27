@@ -82,31 +82,31 @@ export default function Commoncard(props) {
     console.log(Data)
     console.log(purchasedCourses)
     return (
-        <div className="bg-[#E2FFF1] w-[33%] h-max mt-20 p-6 rounded-xl flex flex-col  top-14 ">
-            <div className="h-[225px]">
-                <img className="w-full h-full rounded-xl" src={Data?.featured_image} />
+        <div className="bg-[#E2FFF1] w-[33%] h-max mt-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg">
+            <div className="h-[225px] xsm:h-[65px]">
+                <img className="w-full h-full rounded-xl xsm:rounded-md" src={Data?.featured_image} />
             </div>
-            <div className="flex flex-col mt gap-4 mt-6">
-                <p className="font-pop font-semibold">{Data?.title}</p>
-                <div className="flex justify-between items-center">
-                    <p className="font-nu text-[16px] font-semibold">₹{Data?.base_price}</p>
+            <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1">
+                <p className="font-pop font-semibold xsm:text-[8px]">{Data?.title}</p>
+                <div className="flex justify-between items-center xsm:pb-1">
+                    <p className="font-nu text-[16px] font-semibold xsm:text-[8px]">₹{Data?.base_price}</p>
                  
-                    <div className="space-x-4 flex items-center">
+                    <div className="space-x-4 flex items-center xsm:space-x-0 xsm:gap-1">
                            {
                         !purchasedCourses.includes(Data?._id)?<div className="space-x-4 flex items-center">
-                            <button className="">
+                            <button className="xsm:w-1 hidden">
                         <CiHeart size={'25'} onClick={()=>Addtowishlist(Data?._id)}/>
                     </button>
-                    <button className="">
+                    <button className="xsm:w-1 hidden">
                         <CiShoppingCart onClick={()=>Addtocart(Data?._id)} size={'25'} />
                     </button>
                         </div>:''
                     }
                         
-                        {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold">View Course</Link> : <Link to={'/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold">Join Now</Link>}
+                        {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px]">View Course</Link> : <Link to={'/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px]">Join Now</Link>}
                     </div>
                 </div>
-                <div className="flex flex-col gap-6 my-6">
+                <div className="flex flex-col gap-6 my-6 xsm:hidden">
                     <div className="space-y-4">
                         <p className="font-pop font-semibold">This Course Includes</p>
                         <div className="flex items-center space-x-4">
