@@ -61,3 +61,21 @@
     font-family: Nunito Sans;
     color: #555555;
 }
+
+@media (min-width: 320px) and (max-width: 480px){
+    .faq-main-container{
+        padding: 10px 8px;
+        min-height: 0;
+    }
+    .faq-container{
+        padding: 0;
+        gap: 5px;
+    }
+    .faq-box{
+        padding: 5px 8px;
+        border-radius: 3px;
+    }
+    .faq-box h3{
+        font-size: 8px;
+    }
+}

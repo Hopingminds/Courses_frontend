@@ -20,14 +20,14 @@ function Overview() {
   }, []);
   return (
     <div className='overview bg-[#E2FFF1] flex flex-col ' id='overview'>
-      <p className='font-nu  text-[15px] text-justify'>
+      <p className='font-nu  text-[15px] text-balance xsm:text-[8px]'>
 {Data?.overview}
       </p>
 
       <ul>
         {Data?.whatWillILearn.map((item,ind)=>{
           return(<>
-                  <li key={ind} className='text-[14px]'>{item}</li>
+                  <li key={ind} className='text-[14px] xsm:text-[8px]'>{item}</li>
 
           </>)
         })}

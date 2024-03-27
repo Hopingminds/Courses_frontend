@@ -22,7 +22,7 @@ export default function RecommendedCourses(){
         Fetchdata()
       }, [])
     return (
-        <div className="my-6 px-[5%] bg-[#E2FFF1] py-5 xsm:px-[2%] xsm:hidden">
+        <div className="my-6 px-[5%] bg-[#E2FFF1] py-5 xsm:px-[2%]">
             <div className="my-6 xsm:mt-0 xsm:">
                 <p className="font-pop font-semibold text-[30px] xsm:text-[18px]">Recommended Courses</p>
             </div>
