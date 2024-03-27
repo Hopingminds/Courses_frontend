@@ -11,8 +11,14 @@ import { jwtDecode } from "jwt-decode";
 export default function CDDetails() {
     const [clicked, setclicked] = useState(false);
     const [videoUrl, setVideoUrl] = useState('');
-    const [Data, setData] = useState();
+    const [Data, setData] = useState(null);
     const [completed_lessons, setcompleted_lessons] = useState([])
+    const [count, setcount] = useState(0)
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+    const [ALLCHAPTER, setALLCHAPTER] = useState([])
+const [courseId, setcourseId] = useState()
+
+    const [url, seturl] = useState()
     const params = useParams()
     // console.log(params.slug);
 
@@ -20,31 +26,76 @@ export default function CDDetails() {
     //     ClickSection();
     // }, [])
     let completed = [];
-    
+    let allchapters=[]
+  
     useEffect(() => {
         async function Fetchdata() {
             let login=localStorage.getItem('COURSES_USER_TOKEN')
             if(login){
                 let token=jwtDecode(login)
-                let url = BASE_URL + '/user/' + token.email+'/'+params.slug
-                const data = await fetch(url);
+                let url1 = BASE_URL + '/user/' + token.email+'/'+params.slug
+             
+                const data = await fetch(url1);
                 const response = await data.json()
+                // console.log(response);
                 if (response?.data?.course) {
+                    setcourseId(response?.data?.course?._id)
                     response?.data?.completed_lessons?.forEach((val) => {
                         completed.push(val)
             
                 })
             }
+                
+                if (response?.data?.course) {
+                    response?.data?.course?.curriculum?.forEach((val) => {
+                        val?.lessons?.map((it)=>{
+                            // console.log("it",val);
+                            allchapters.push({video:BASE_URL+'/videos/'+it?.video,_id:it?._id})
+                        })
+            
+                })
+            }
+                // console.log("all",allchapters[0]?.video);
+                setALLCHAPTER(allchapters)
+                seturl(allchapters[0]?.video)
                 setData(response?.data?.course)
-                // console.log(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
                 setcompleted_lessons(response?.data?.completed_lessons)
                 setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video)
+                // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
+
             }
            
         }
         Fetchdata()
     }, [])
-
+    const handleVideoEnded = async() => {
+        setcount(count+1);
+        seturl(ALLCHAPTER[count+1]?.video)
+        completed_lessons.push([...ALLCHAPTER],ALLCHAPTER[count+1]?._id)
+        
+        try {
+            let login=localStorage.getItem('COURSES_USER_TOKEN')
+            if(login){
+                let url=BASE_URL+'/lessoncompleted'
+                let bodydata={courseId,lessonId:ALLCHAPTER[count+1]?._id}
+                const data1=await fetch(url,{
+                            method: 'PUT',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization':'Bearer '+login
+                    },
+                    body:JSON.stringify(bodydata)
+                })
+                const response=await data1.json()
+                console.log(response);
+            }
+            
+        } catch (error) {
+            console.log(error);
+        }
+      };
+      
     function ClickSection(id) {
         if (!clicked) {
             setclicked(true);
@@ -59,7 +110,10 @@ export default function CDDetails() {
             inner.style.display = "block";
         }
     }
-
+    const handleDuration = (duration) => {
+        // setDuration(duration);
+        console.log(duration);
+      };
     return (
         <>
             <div className="CCD-container py-10 px-16">
@@ -72,8 +126,9 @@ export default function CDDetails() {
                                 playing={true}
                              controls={true}
                                 autoPlay={true}
-                                url={BASE_URL+'/videos/'+videoUrl}
-
+                                url={url}
+                                onDuration={handleDuration}
+                                onEnded={handleVideoEnded}
                             />
                             <div className="absolute right-0 bottom-10">
                                 <ChatBot className="w-fit" />

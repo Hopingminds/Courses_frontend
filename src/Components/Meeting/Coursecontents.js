@@ -4,11 +4,12 @@ import { IoBookOutline } from "react-icons/io5";
 import { BASE_URL } from '../../Api/api';
 
 export default function Coursecontents({ data,completed_lessons }) {
-    // console.log(data);
+    console.log(data);
 
     const [clicked, setclicked] = useState(false);
+    let allchapters=[]
+   
     let completed = [];
-    // console.log("data",data[0]?.lessons[0]?.video);
 
     if (completed_lessons) {
         completed_lessons?.forEach((val) => {
