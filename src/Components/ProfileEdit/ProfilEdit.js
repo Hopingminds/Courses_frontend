@@ -145,16 +145,16 @@ const ProfilEdit = () => {
               Log Out {" "}
             </button>
           </div>
-          <div className="absolute w-[244px] h-[244px] rounded-full top-20 xsm:h-[80px] xsm:w-[80px] xsm:top-10 bg-[#FFFFFF]">
+          <div className="absolute w-[160px] h-[160px] rounded-full top-28 xsm:h-[80px] xsm:w-[80px] xsm:top-10 bg-[#FFFFFF]">
             <img
               src={user.profile ? user.profile : User}
-              className="w-[244px] h-[244px] rounded-full object-fit xsm:h-[80px] xsm:w-[80px] object-contain"
+              className="w-full h-full rounded-full object-fit xsm:h-[80px] xsm:w-[80px] object-contain"
             />
-            <div className="absolute w-[70px] h-[70px] bg-[#E2FFF1] text-[#E2FFF1] shadow-sm rounded-full top-[65%] right-[0%] flex justify-center items-center cursor-pointer
+            <div className="absolute w-[40px] h-[40px] bg-[#E2FFF1] text-[#E2FFF1] shadow-sm rounded-full top-[65%] right-[0%] flex justify-center items-center cursor-pointer
             xsm:w-[20px] xsm:h-[20px]">
               <img
                 src={Edit}
-                className="w-[35px] h-[35px] xsm:w-[10px] xsm:h-[10px]"
+                className="w-[20px] h-[20px] xsm:w-[10px] xsm:h-[10px]"
                 onClick={handleEditClick}
               />
               <input

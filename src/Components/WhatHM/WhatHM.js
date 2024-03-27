@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import ReactPlayer from "react-player";
 
 const WhatHM = () => {
-  const [first, setfirst] = useState(false)
-  const [second, setsecond] = useState(false)
+  const [first, setfirst] = useState(false);
+  const [second, setsecond] = useState(false);
   return (
     <>
       <div className="">

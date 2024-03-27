@@ -24,10 +24,10 @@ function Overview() {
 {Data?.overview}
       </p>
 
-      <ul>
+      <ul className='ml-4'>
         {Data?.whatWillILearn.map((item,ind)=>{
           return(<>
-                  <li key={ind} className='text-[14px] xsm:text-[8px]'>{item}</li>
+                  <li key={ind} className='text-[14px] xsm:text-[8px] list-disc'>{item}</li>
 
           </>)
         })}

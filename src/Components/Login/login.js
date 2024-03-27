@@ -68,7 +68,7 @@ const Login = () => {
 
     return (
         <>
-            <div className='flex overflow-hidden'>
+            <div className='flex overflow-hidden pb-6'>
                 <div className='w-[50%] flex justify-center relative xsm:hidden'>
                     <img className='w-[60%] object-cover absolute top-10' src='../login_bg.png'/>
                 </div>
@@ -102,9 +102,9 @@ const Login = () => {
                                 <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold" onClick={handleLogin}>{btnLoader ? "Loading..." : "Login"}</button>
                             </div>
                             <div className='flex items-center '>
-                                    <p className='font-pop text-[14px]'>New Here ?</p>
+                                    <p className='font-pop text-[14px]'>New User?  </p>
                                     {/* Sign up link */}
-                                    <Link to={'/register'}>  <h5 className='text-[#1dbf73]'>Sign Up</h5></Link>
+                                    <Link to={'/register'}>  <h5 className='text-[#1dbf73]'> Sign Up</h5></Link>
                                 {/* Social media login buttons */}
                             </div>
                         </div>

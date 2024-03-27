@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CiShoppingCart } from "react-icons/ci";
+import { ReactComponent as Cart } from '../../Assets/Icons/cart.svg'
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { Globalinfo } from "../../App";
@@ -56,7 +56,7 @@ export default function Commoncard(props) {
         body:JSON.stringify({email,courseid})
             })
             let response=await data.json()
-            // console.log(response);
+            console.log(response);
             if(response.success){
                 toast.success(response.msg)
             }
@@ -79,10 +79,10 @@ export default function Commoncard(props) {
         })
 
     }
-    console.log(Data)
+    // console.log(Data)
     console.log(purchasedCourses)
     return (
-        <div className="bg-[#E2FFF1] w-[33%] h-max mt-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg">
+        <div className="bg-[#E2FFF1] w-[33%] h-max my-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg">
             <div className="h-[225px] xsm:h-[65px]">
                 <img className="w-full h-full rounded-xl xsm:rounded-md" src={Data?.featured_image} />
             </div>
@@ -91,15 +91,15 @@ export default function Commoncard(props) {
                 <div className="flex justify-between items-center xsm:pb-1">
                     <p className="font-nu text-[16px] font-semibold xsm:text-[8px]">₹{Data?.base_price}</p>
                  
-                    <div className="space-x-4 flex items-center xsm:space-x-0 xsm:gap-1">
+                    <div className="gap-x-4 flex items-center xsm:gap-1">
                            {
                         !purchasedCourses.includes(Data?._id)?<div className="space-x-4 flex items-center">
-                            <button className="xsm:w-1 hidden">
-                        <CiHeart size={'25'} onClick={()=>Addtowishlist(Data?._id)}/>
-                    </button>
-                    <button className="xsm:w-1 hidden">
-                        <CiShoppingCart onClick={()=>Addtocart(Data?._id)} size={'25'} />
-                    </button>
+                            <button className="xsm:w-1 xsm:hidden ">
+                                <CiHeart className=" w-6 h-6 xsm:w-3 xsm:h-3"  onClick={()=>Addtowishlist(Data?._id)}/>
+                            </button>
+                            <button className="xsm:w-1 xsm:hidden">
+                                <Cart onClick={()=>Addtocart(Data?._id)}  className="xsm:w-3 xsm:h-3" />
+                            </button>
                         </div>:''
                     }
                         
@@ -132,9 +132,9 @@ export default function Commoncard(props) {
                     <div className="space-y-4">
                         <p className="font-pop font-semibold">Share this course</p>
                         <div className="flex space-x-4">
-                            <img className="w-[12px]" src="../Icons/facebook.svg" />
-                            <img className="w-[20px]" src="../Icons/instagram.svg" />
-                            <img className="w-[24px]" src="../Icons/youtube12.svg" />
+                            <Link to={'https://www.facebook.com/share/Z3c1iwpnxsDk3YJH/?mibextid=qi2Omg'}><img className="w-[12px]" src="../Icons/facebook.svg" /></Link>
+                            <Link to={'https://www.instagram.com/hopingminds_?igsh=MWxvN2F5YmM0aW1lYQ=='}><img className="w-[20px]" src="../Icons/instagram.svg" /></Link>
+                            <Link to={'https://youtube.com/@HopingMinds?si=t7nBGjhMukWF6aN9'}><img className="w-[24px]" src="../Icons/youtube12.svg" /></Link>
                         </div>
                     </div>
                 </div>

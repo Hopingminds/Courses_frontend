@@ -24,7 +24,7 @@
 }
 
 .overview li::before {
-    content: '•';
+    /* content: '•'; */
     color: #555555;
     /* font-size: 20px; */
     /* margin-right: 12px; */

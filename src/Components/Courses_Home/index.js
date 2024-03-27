@@ -3,6 +3,7 @@ import './Courses.css';
 import CourseCard from './CourseCard';
 import { COURSESURL } from '../confidential';
 import { BASE_URL } from '../../Api/api';
+import { Link } from 'react-router-dom';
 // import { COURSESURL } from '../Confidential';
 
 const Courses_Home = () => {
@@ -62,7 +63,7 @@ const Courses_Home = () => {
                 </div>
                 <div className='flex justify-between w-full items-center'>
                 <div className="text-4xl font-semibold mt-3">{selectedCategory}</div>
-                <button className='text-[#1DBF73] text-[18px] mr-2'>See all</button>
+                <Link to={'/course'} className='text-[#1DBF73] text-[18px] mr-2'>See all</Link>
                 </div>
                 {/* <div className="text-[#333333] text-[20px] mt-1">Our training covers everything you need for a successful career, from basic job skills to advanced tech know-how.</div> */}
                 <div className="my-10  grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%]"> {/* Changed flex to flex-wrap */}

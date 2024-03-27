@@ -137,6 +137,7 @@
     margin: 4px 0;
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   .CCDetails-Header-content-row2-clock p {

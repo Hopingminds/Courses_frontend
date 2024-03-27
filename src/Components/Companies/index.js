@@ -6,12 +6,12 @@ const Companies = () => {
     const [alternateCount, setAlternateCount] = useState(0);
 
     const logos = [
-        ['/google.png', '/ajio.png', '/cleartax.png', '/dream11.png', '/indmoney.png', '/paytm.png'],
-        ['/indmoney.png', '/paytm.png', '/google.png', '/ajio.png', '/cleartax.png', '/dream11.png'],
-        ['/ajio.png', '/cleartax.png', '/dream11.png', '/indmoney.png', '/paytm.png', '/google.png'],
-        ['/cleartax.png', '/dream11.png', '/indmoney.png', '/paytm.png', '/google.png', '/ajio.png'],
-        ['/dream11.png', '/indmoney.png', '/paytm.png', '/google.png', '/ajio.png', '/cleartax.png'],
-        ['/paytm.png', '/google.png', '/ajio.png', '/cleartax.png', '/dream11.png', '/indmoney.png']
+        ['/google.png', '/dream11.png', '/ajio.png', '/google.png', '/dream11.png', '/ajio.png'],
+        ['/indmoney.png', '/paytm.png', '/cleartax.png', '/indmoney.png', '/paytm.png', '/cleartax.png'],
+        ['/ajio.png', '/google.png', '/dream11.png', '/ajio.png', '/google.png', '/dream11.png'],
+        ['/cleartax.png', '/indmoney.png', '/paytm.png', '/cleartax.png', '/indmoney.png', '/google.png'],
+        ['/dream11.png', '/ajio.png', '/google.png', '/dream11.png', '/ajio.png', '/cleartax.png'],
+        ['/paytm.png', '/cleartax.png', '/indmoney.png', '/paytm.png', '/cleartax.png', '/indmoney.png']
     ];
 
     const totalLogos = logos.map(row => row.length);
