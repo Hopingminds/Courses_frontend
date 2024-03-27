@@ -50,15 +50,14 @@ const Faqs = () => {
                             {
                                 Data?.faqs.map((item,ind)=>{
                                     return(<>
-                                                            <div className="faq-box ">
-
-                                     <div className="faq-box-head" onClick={()=>ClickSection(ind)}>
-                                <h3>{item?.question}</h3>
-                                <Down/>
-                            </div>
-                            <div id={ind} className="faq-box-descrip" style={{ display: "none" }}>
-                                <p>{item?.answer}</p>
-                            </div>
+                            <div className="faq-box ">
+                                <div className="faq-box-head" onClick={()=>ClickSection(ind)}>
+                                    <h3>{item?.question}</h3>
+                                    <Down className="xsm:w-2 xsm:h-2"/>
+                                </div>
+                                <div id={ind} className="faq-box-descrip" style={{ display: "none" }}>
+                                    <p>{item?.answer}</p>
+                                </div>
                             </div>
 
                                     </>)

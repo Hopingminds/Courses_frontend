@@ -19,15 +19,15 @@ function Main() {
     <div className="container1 xsm:w-full">
 
         <div className="nav-buttons xsm:w-full">
-            <button className={`btn_corners_first font-nu text-[14px] xsm:text-[2px] ${activeComponent === 'Overview' ? 'active' : ''}`} 
+            <button className={`btn_corners_first font-nu text-[14px]  ${activeComponent === 'Overview' ? 'active' : ''}`} 
                     onClick={() => renderComponent('Overview')}>Overview</button>
-            <button className={`btn_border font-nu text-[14px] xsm:text-[2px] ${activeComponent === 'Curriculum' ? 'active' : ''}`} 
+            <button className={`btn_border font-nu text-[14px]  ${activeComponent === 'Curriculum' ? 'active' : ''}`} 
                     onClick={() => renderComponent('Curriculum')}>Curriculum</button>
-            <button className={ `btn_border font-nu text-[14px] xsm:text-[2px] ${activeComponent === 'Instructor' ? 'active' : ''}`}
+            <button className={ `btn_border font-nu text-[14px]  ${activeComponent === 'Instructor' ? 'active' : ''}`}
                     onClick={() => renderComponent('Instructor')}>Instructor</button>
-            <button className={`btn_border font-nu text-[14px] xsm:text-[2px] ${activeComponent === 'Faqs' ? 'active' : ''}`} 
+            <button className={`btn_border font-nu text-[14px]  ${activeComponent === 'Faqs' ? 'active' : ''}`} 
                     onClick={() => renderComponent('Faqs')}>FAQs</button>
-            <button className={`btn_corners_last font-nu text-[14px] xsm:text-[2px] ${activeComponent === 'Reviews' ? 'active' : ''}`}
+            <button className={`btn_corners_last font-nu text-[14px]  ${activeComponent === 'Reviews' ? 'active' : ''}`}
                     onClick={() => renderComponent('Reviews')}>Reviews</button>
         </div>
 

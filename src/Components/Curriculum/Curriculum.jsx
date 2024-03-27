@@ -84,8 +84,8 @@ let arrow=document.getElementById(`arrow${id}`)
                       <>
                         <div className="lesson-container-content">
                           <div className="lesson-container-content-left">
-                            <div className="icon-arrow">
-                              <img src={folderIcon} />
+                            <div className="icon-file">
+                              <img className="xsm:w-3" src={folderIcon} />
                             </div>
                             <p className="font-nu text-[14px]">
                               {chapter?.lesson_name}
