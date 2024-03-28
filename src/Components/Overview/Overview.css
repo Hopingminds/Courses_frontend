@@ -18,15 +18,22 @@
 }
 
 .overview li{
-    line-height: 27px;
+    /* line-height: 27px; */
     /* position: relative; */
     color: #555555;
 }
 
 .overview li::before {
-    content: '•';
+    /* content: '•'; */
     color: #555555;
     /* font-size: 20px; */
     /* margin-right: 12px; */
     /* margin-left: 12px;  */
   }
+
+@media (min-width: 320px) and (max-width: 480px){
+    .overview{
+        padding: 10px 8px;
+        min-height: 0;
+    }
+}

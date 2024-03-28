@@ -3,6 +3,7 @@ import './Courses.css';
 import CourseCard from './CourseCard';
 import { COURSESURL } from '../confidential';
 import { BASE_URL } from '../../Api/api';
+import { Link } from 'react-router-dom';
 // import { COURSESURL } from '../Confidential';
 
 const Courses_Home = () => {
@@ -52,8 +53,8 @@ const Courses_Home = () => {
         <>
             {/* <h1 className='text-[40px] mt-16 font-semibold' style={{ textAlign: 'center' }}> Our Feature Courses</h1> */}
 
-            <div className="h-[100%] w-full px-20 py-8 mt-12 font-pop bg-[#E2FFF180] space-y-5">
-                <div className="flex w-full space-x-10 font-pop xl:space-x-12">
+            <div className="h-[100%] w-full px-20 py-8 mt-12 font-pop bg-[#E2FFF180] space-y-5 xsm:px-2">
+                <div className="flex w-full space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-4 xsm:gap-x-[1px] xsm:justify-center">
                     {['All Courses', 'Full Stack Development', 'AI & ML', 'Data science', 'Cyber Security', 'Management'].map(category => (
                         <button key={category} onClick={() => handleCategoryClick(category)} className={selectedCategory === category ? "px-3 py-2 afterclick rounded-full" : "beforeclick"}>
                             {category}
@@ -62,10 +63,10 @@ const Courses_Home = () => {
                 </div>
                 <div className='flex justify-between w-full items-center'>
                 <div className="text-4xl font-semibold mt-3">{selectedCategory}</div>
-                <button className='text-[#1DBF73]'>See all</button>
+                <Link to={'/course'} className='text-[#1DBF73] text-[18px] mr-2'>See all</Link>
                 </div>
                 {/* <div className="text-[#333333] text-[20px] mt-1">Our training covers everything you need for a successful career, from basic job skills to advanced tech know-how.</div> */}
-                <div className="grid grid-cols-4  space-x-5 justify-between mt-2 flex-wrap xsm:grid xsm:grid-cols-2  2xl:gap-10"> {/* Changed flex to flex-wrap */}
+                <div className="my-10  grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%]"> {/* Changed flex to flex-wrap */}
                     {filteredCourses?.slice(0, cardsToShow)?.map(course => (
                         <CourseCard
                             key={course.title}

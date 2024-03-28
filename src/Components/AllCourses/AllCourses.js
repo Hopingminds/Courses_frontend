@@ -130,7 +130,7 @@ const AllCourses = () => {
       </head>
       {/* Search */}
       <div
-        className="flex flex-col gap-5 p-20 items-center xsm:py-6 xsm:px-0 xsm:gap-2"
+        className="flex flex-col gap-5 p-20 items-center xsm:py-6 xsm:px-0 xsm:gap-2 bg-[#000000]"
         style={{ backgroundImage: `url(${Img1})`, backgroundSize: "cover" }}
       >
         <div className="flex flex-row rounded-2xl w-[80%] xsm:w-[90%] xsm:rounded-md">
@@ -281,7 +281,7 @@ return(<>
      
 
       {/* creater */}
-      <div className="flex flex-col gap-14 px-24 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-6">
+      {/* <div className="flex flex-col gap-14 px-24 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-6">
         <p className="text-[#252641] text-[32px] font-pop font-semibold pl-4 xsm:text-[10px] xsm:pl-0">
           Classes taught by real creators
         </p>
@@ -377,7 +377,7 @@ return(<>
             <img src={Img2} className="absolute top-0 w-[53%]" />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* review */}
       <div className="flex flex-col gap-10 bg-[#E2FFF1] px-28 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-2">

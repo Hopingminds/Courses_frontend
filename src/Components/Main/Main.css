@@ -3,7 +3,7 @@
     /* top: 50px; */
     /* left: 315px; */
     width: 675px;
-    min-height: 448px;
+    min-height: 540px;
     /* margin-left: 50px; */
     margin-top: 20px;
     /* max-height: fit-content; */
@@ -44,4 +44,20 @@
 .nav-buttons button.active {
     background-color: #E2FFF1;
     color: #1FC074;
+}
+
+@media (min-width: 320px) and (max-width: 480px){
+    .container1{
+        width: 95%;
+        margin: 10px;
+        margin-top: 50px;
+        min-height: 0;
+    }
+    .nav-buttons{
+        width: 100%;
+    }
+    .nav-buttons button{
+        font-size: 10px;
+        padding: 2px 0;
+    }
 }

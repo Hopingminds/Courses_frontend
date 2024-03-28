@@ -110,13 +110,13 @@ const Login = () => {
                                 <p className='text-[14px] font-pop'>Year Of pass</p>
                                 <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="text" placeholder="Enter Your Year Of Passing" name="yearofpass" value={user.yearofpass} onChange={handleChange} />
                             </div>
-                            <div className='flex justify-end'>
-                                {/* <div className='flex items-center gap-1'>
+                            {/* <div className='flex justify-end'>
+                                <div className='flex items-center gap-1'>
                                     <input className='' type="checkbox" />
                                     <p className='text-[12px]'>Rememeber me</p>
-                                </div> */}
+                                </div>
                                 <p className='text-[12px]'>Forgot password?</p>
-                            </div>
+                            </div> */}
                         </div>
                         <div className='flex flex-col items-center gap-4'>
                             <div className=''>

@@ -6,12 +6,12 @@ const Companies = () => {
     const [alternateCount, setAlternateCount] = useState(0);
 
     const logos = [
-        ['/google.png', '/ajio.png', '/cleartax.png', '/dream11.png', '/indmoney.png', '/paytm.png'],
-        ['/indmoney.png', '/paytm.png', '/google.png', '/ajio.png', '/cleartax.png', '/dream11.png'],
-        ['/ajio.png', '/cleartax.png', '/dream11.png', '/indmoney.png', '/paytm.png', '/google.png'],
-        ['/cleartax.png', '/dream11.png', '/indmoney.png', '/paytm.png', '/google.png', '/ajio.png'],
-        ['/dream11.png', '/indmoney.png', '/paytm.png', '/google.png', '/ajio.png', '/cleartax.png'],
-        ['/paytm.png', '/google.png', '/ajio.png', '/cleartax.png', '/dream11.png', '/indmoney.png']
+        ['/google.png', '/dream11.png', '/ajio.png', '/google.png', '/dream11.png', '/ajio.png'],
+        ['/indmoney.png', '/paytm.png', '/cleartax.png', '/indmoney.png', '/paytm.png', '/cleartax.png'],
+        ['/ajio.png', '/google.png', '/dream11.png', '/ajio.png', '/google.png', '/dream11.png'],
+        ['/cleartax.png', '/indmoney.png', '/paytm.png', '/cleartax.png', '/indmoney.png', '/google.png'],
+        ['/dream11.png', '/ajio.png', '/google.png', '/dream11.png', '/ajio.png', '/cleartax.png'],
+        ['/paytm.png', '/cleartax.png', '/indmoney.png', '/paytm.png', '/cleartax.png', '/indmoney.png']
     ];
 
     const totalLogos = logos.map(row => row.length);
@@ -62,7 +62,7 @@ const Companies = () => {
     return (
         <div className="text-[#696984] flex justify-center mt-12 font-pop">
             <div className="w-[90%] space-y-8">
-                <div className="text-center text-[24px] text-[#696984]">Trusted by 5,000+ Companies Worldwide</div>
+                <div className="text-center text-[24px] text-[#696984] xsm:text-[14px]">Trusted by 5,000+ Companies Worldwide</div>
                 <div className="flex justify-center ">
                     {logos.map((row, rowIndex) => (
                         <div key={rowIndex} className="slider-container w-[20%]">

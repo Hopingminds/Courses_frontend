@@ -25,7 +25,7 @@
 
 .CCDetails-Header-content-row2 {
   display: flex;
-  /* gap: 25px; */
+  justify-content: space-between;
   margin: 14px 41px 14px 0;
 }
 
@@ -36,13 +36,14 @@
 
 .CCDetails-Header-content-row2-clock img {
   width: 15px;
-  margin-right: 3px;
+  /* margin-right: 3px; */
 }
 
 .CCDetails-Header-content-row2-clock p {
-  font-size: 11px;
+  font-family: Montserrat;
+  font-size: 14px;
   font-weight: 400;
-  color: white;
+  color: #9d9d9d;
 }
 
 .CCDetails-Header-content-row2-hat {
@@ -52,13 +53,14 @@
 
 .CCDetails-Header-content-row2-hat img {
   width: 17px;
-  margin-right: 3px;
+  /* margin-right: 3px; */
 }
 
 .CCDetails-Header-content-row2-hat p {
-  font-size: 11px;
+  font-family: Montserrat;
+  font-size: 14px;
   font-weight: 400;
-  color: white;
+  color: #9d9d9d;
 }
 
 .CCDetails-Header-content-row2-level {
@@ -68,13 +70,14 @@
 
 .CCDetails-Header-content-row2-level img {
   width: 12px;
-  margin-right: 3px;
+  /* margin-right: 3px; */
 }
 
 .CCDetails-Header-content-row2-level p {
-  font-size: 11px;
+  font-family: Montserrat;
+  font-size: 14px;
   font-weight: 400;
-  color: white;
+  color: #9d9d9d;
 }
 
 .CCDetails-Header-content-row2-files {
@@ -84,13 +87,14 @@
 
 .CCDetails-Header-content-row2-files img {
   width: 12px;
-  margin-right: 3px;
+  /* margin-right: 3px; */
 }
 
 .CCDetails-Header-content-row2-files p {
-  font-size: 11px;
+  font-family: Montserrat;
+  font-size: 14px;
   font-weight: 400;
-  color: white;
+  color: #9d9d9d;
 }
 
 .CCDetails-Header-content-row2-faq {
@@ -100,13 +104,14 @@
 
 .CCDetails-Header-content-row2-faq img {
   width: 12px;
-  margin-right: 3px;
+  /* margin-right: 3px; */
 }
 
 .CCDetails-Header-content-row2-faq p {
-  font-size: 11px;
+  font-family: Montserrat;
+  font-size: 14px;
   font-weight: 400;
-  color: white;
+  color: #9d9d9d;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
@@ -124,14 +129,15 @@
   }
 
   .CCDetails-Header-content-row1qw h2 {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .CCDetails-Header-content-row2 {
-    gap: 5px;
-    margin: 0px;
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    margin: 4px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   .CCDetails-Header-content-row2-clock p {

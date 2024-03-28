@@ -42,7 +42,7 @@ function Instructor() {
           <img src={instructorImg} />
         </div>
 
-        <div className='instructor-content space-y-2'>
+        <div className='instructor-content space-y-2 xsm:space-y-0'>
 
           <p className='font-mons font-semibold text-[22px]'>{Data?.instructor.firstName} {Data?.instructor.lastName}</p>
           {/* <p className='text-[14px]'>{Data?.instructor.about}</p> */}

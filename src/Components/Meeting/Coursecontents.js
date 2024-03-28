@@ -1,11 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ReactComponent as Down } from '../../Assets/Icons/Down.svg'
 import { IoBookOutline } from "react-icons/io5";
+import { BASE_URL } from '../../Api/api';
 
-export default function Coursecontents({ data }) {
-    // console.log(data);
+export default function Coursecontents({ data,completed_lessons }) {
+    console.log(data);
 
     const [clicked, setclicked] = useState(false);
+    let allchapters=[]
+   
+    let completed = [];
+
+    if (completed_lessons) {
+        completed_lessons?.forEach((val) => {
+            completed.push(val)
+
+    })
+}
+
 
     function ClickSection(id) {
         if (!clicked) {
@@ -65,8 +77,8 @@ export default function Coursecontents({ data }) {
                                             <div className='w-full'>
                                                 {val?.lessons?.map((chapter, index) => {
                                                     return (
-                                                        <div className='flex justify-between border-t py-2 w-full'>
-                                                            <p className='font-pop font-bold text-[11px]'>{index + 1}. {chapter?.lesson_name}</p>
+                                                        <div className={`flex justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id)?'cursor-not-allowed text-gray-300':''}`}>
+                                                            <p className="font-pop font-bold text-[11px] ">{index + 1}. {chapter?.lesson_name}</p>
                                                             <p className='font-pop font-bold text-[11px]'>{chapter?.duration}</p>
                                                         </div>
                                                     )

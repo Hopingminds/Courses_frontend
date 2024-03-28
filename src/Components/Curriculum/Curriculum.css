@@ -142,3 +142,39 @@
     /* color: #1DBF73; */
     font-family: Nunito Sans;
 }
+
+@media (min-width: 320px) and (max-width: 480px){
+    .curriculum{
+        padding: 10px 8px;
+        min-height: 0;
+    }
+    .curriculum-content{
+        font-size: 8px;
+    }
+    .lesson-container{
+        padding: 10px 8px;
+        border-radius: 3px;
+    }
+    .lesson-container-title-left p{
+        font-size: 8px;
+    }
+
+    .lesson-container-title-right p:first-child{
+        font-size: 7px;
+    }
+    .lesson-container-title-right p:last-child{
+        font-size: 7px;
+    }
+    .lesson-container-content-left p{
+        font-size: 8px;
+    }
+    .lesson-container-content-right p{
+        font-size: 7px;
+    }
+    .lesson-container-content-left{
+        gap: 5px;
+    }
+    .lesson-container-title-left{
+        gap: 5px;
+    }
+}

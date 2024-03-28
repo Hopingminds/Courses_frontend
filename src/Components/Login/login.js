@@ -62,7 +62,7 @@ const Login = () => {
 
     return (
         <>
-            <div className='flex overflow-hidden'>
+            <div className='flex overflow-hidden pb-6'>
                 <div className='w-[50%] flex justify-center relative xsm:hidden'>
                     <img className='w-[60%] object-cover absolute top-10' src='../login_bg.png' />
                 </div>

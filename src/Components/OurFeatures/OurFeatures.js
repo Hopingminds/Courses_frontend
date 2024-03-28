@@ -110,8 +110,9 @@ const OurFeatures = () => {
             <p className="text-[42px] text-[#1E1E1E] font-pop font-semibold xsm:text-[12px]">
               Our <span className="text-[#33EFA0]"> Features </span>{" "}
             </p>
-            <p className="text-[#696984] text-[20px] font-pop text-center xsm:text-[8px]">
-            Unleash Your Potential: Explore Our Feature-Rich Toolbox for a Seamless, Engaging, and Rewarding Learning Journey Like Never Before!
+            {/* <p className="text-[#696984] text-[20px] font-pop text-center xsm:text-[7px]">Unleash Your Potential</p> */}
+            <p className="text-[#696984] text-[20px] font-pop text-center xsm:text-[7px]">
+              Explore Our Feature-Rich Toolbox for a Seamless, Engaging, and Rewarding Learning Journey Like Never Before!
             </p>
           </div>
           <div className="flex flex-row justify-between items-center">

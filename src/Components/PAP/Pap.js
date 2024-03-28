@@ -39,67 +39,67 @@ export default function Pap(){
         <div >
             {/* Header */}
             <div 
-                className="h-[210px] flex flex-col justify-center" 
+                className="h-[210px] flex flex-col justify-center xsm:h-[100px]" 
                 style={{ 
                     backgroundImage: `url(${Img1})`,
                     backgroundSize:'cover'
                 } }
             >
-                <div className="font-pop font-semibold text-white text-[44px] pl-20 ">Pay After Placement</div>
+                <div className="font-pop font-semibold text-white text-[44px] pl-20 xsm:text-[20px] xsm:pl-4">Pay After Placement</div>
             </div>
             {/* Main */}
-            <div className="px-[8%] my-6">
+            <div className="px-[8%] my-6 xsm:px-[2%]">
                 <div>
-                    <p className="font-pop font-semibold text-[32px]">How this works ? </p>
+                    <p className="font-pop font-semibold text-[32px] xsm:text-[14px]">How this works ? </p>
                 </div>
                 {/* Agreement */}
                 <div className="flex justify-between">
                     <div className="w-[55%] mt-10 flex flex-col gap-4">
                         <div>
-                            <p className="font-pop font-semibold text-[26px] text-[#2D3436]">Pay After Placement Agreement</p>
+                            <p className="font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px]">Pay After Placement Agreement</p>
                         </div>
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-4 xsm:gap-2">
                             <div className="w-[7%]">
                                 <img src="../Icons/handwithmoney.svg"/>
                             </div>
                             <div className="w-[90%]">
                                 <div>
-                                    <p className="font-nu font-semibold text-[22px]">Minimum CTC</p>
-                                    <p className="font-nu font-medium text-[16px]">If your salary is above the CTC of ₹3,50,000/-, the PAP monthly payments come into effect.</p>
+                                    <p className="font-nu font-semibold text-[22px] xsm:text-[10px]">Minimum CTC</p>
+                                    <p className="font-nu font-medium text-[16px] xsm:text-[7px]">If your salary is above the CTC of ₹3,50,000/-, the PAP monthly payments come into effect.</p>
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-4 xsm:gap-2">
                             <div className="w-[7%]">
                                 <img src="../Icons/greencalender.svg"/>
                             </div>
                             <div className="w-[90%]">
                                 <div>
-                                    <p className="font-nu font-semibold text-[22px]">1 Year</p>
-                                    <p className="font-nu font-medium text-[16px]">If you don’t get a job offer within 1 year of course  you pay nothing for your learning at  Hoping Minds.</p>
+                                    <p className="font-nu font-semibold text-[22px] xsm:text-[10px]">1 Year</p>
+                                    <p className="font-nu font-medium text-[16px] xsm:text-[7px]">If you don’t get a job offer within 1 year of course  you pay nothing for your learning at  Hoping Minds.</p>
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-4 xsm:gap-2">
                             <div className="w-[7%]">
                                 <img src="../Icons/electricbolt.svg"/>
                             </div>
                             <div className="w-[90%]">
                                 <div>
-                                    <p className="font-nu font-semibold text-[22px]">Enforcement</p>
-                                    <p className="font-nu font-medium text-[16px]">In the event you are not working or if your income drops below the CTC mentioned in the Pay After Placement Agreement the monthly payments pause.</p>
+                                    <p className="font-nu font-semibold text-[22px] xsm:text-[10px]">Enforcement</p>
+                                    <p className="font-nu font-medium text-[16px] xsm:text-[7px]">In the event you are not working or if your income drops below the CTC mentioned in the Pay After Placement Agreement the monthly payments pause.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="w-[40%] relative">
-                        <div className="absolute left-[37%] top-[8%] z-10">
-                            <img className="w-[310px] h-[180px]" src="../img/papagreeimg1.png"/>
+                        <div className="absolute left-[37%] top-[8%] z-10 xsm:left-[14%] xsm:top-[15%]">
+                            <img className="w-[310px] h-[180px] xsm:w-[110px] xsm:h-[85px]" src="../img/papagreeimg1.png"/>
                         </div> 
                         <div className="absolute top-[60%] z-10">
-                            <img className="w-[310px] h-[180px]" src="../img/papagreeimg2.png"/>
+                            <img className="w-[310px] h-[180px] xsm:w-[110px] xsm:h-[85px]" src="../img/papagreeimg2.png"/>
                         </div>
-                        <div className="bg-[#E2FFF1] rounded-xl w-[70%] h-[80%] absolute left-[25%] top-[20%]"></div>
+                        <div className="bg-[#E2FFF1] rounded-xl w-[70%] h-[80%] absolute left-[25%] top-[20%] xsm:h-[65%] xsm:left-[15%]"></div>
                     </div>
                 </div>
                 {/* course fee */}
