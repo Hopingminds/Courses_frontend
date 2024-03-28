@@ -103,7 +103,7 @@ export default function Commoncard(props) {
                         </div>:''
                     }
                         
-                        {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px]">View Course</Link> : <Link to={'/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px]">Join Now</Link>}
+                        {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px]">View Course</Link> : <Link to={'/checkout?slug=' + Data?.slug} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px]">Join Now</Link>}
                     </div>
                 </div>
                 <div className="flex flex-col gap-6 my-6 xsm:hidden">
