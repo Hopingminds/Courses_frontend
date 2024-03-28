@@ -66,7 +66,7 @@ export default function MyLearning() {
                     <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px]' onClick={() => setshowpage('stats')} style={{ borderBottom: showpage === 'stats' ? "2px solid white" : "1px solid transparent" }}>My Stats</button>
                 </div>
             </div>
-            {showpage === 'courses' ? <Mycourse courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses}/> : showpage === 'stats' ? <MyStats /> : <Assignment />}
+            {showpage === 'courses' ? <Mycourse courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses}/> : showpage === 'stats' ? <MyStats courses={purchasedCourses}/> : <Assignment courses={purchasedCourses}/>}
             <RecommendedCourses className={'bg-[#E2FFF1]'} />
         </div>
     );

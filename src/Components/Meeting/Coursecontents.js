@@ -2,22 +2,43 @@ import { useEffect, useState } from 'react';
 import { ReactComponent as Down } from '../../Assets/Icons/Down.svg'
 import { IoBookOutline } from "react-icons/io5";
 import { BASE_URL } from '../../Api/api';
+import { TiFolderOpen } from "react-icons/ti";
+import { Navigate, useNavigate } from 'react-router-dom';
 
-export default function Coursecontents({ data,completed_lessons }) {
-    console.log(data);
+export default function Coursecontents({ data, completed_lessons }) {
+
+
+    const navigate = useNavigate()
+    console.log(data, completed_lessons);
 
     const [clicked, setclicked] = useState(false);
-    let allchapters=[]
-   
+    const [totallessons, setTotalLessons] = useState(0);
+    const [openDropDown, setOpenDropdown] = useState('');
+    let allchapters = []
+
     let completed = [];
 
     if (completed_lessons) {
         completed_lessons?.forEach((val) => {
             completed.push(val)
 
-    })
-}
+        })
+    }
 
+    const countLessons = () => {
+        let temp = 0;
+        data?.forEach((val) => {
+            temp += val.lessons.length;
+        })
+        setTotalLessons(temp)
+
+    }
+
+    useEffect(() => {
+        countLessons();
+    }, [data])
+
+    console.log(totallessons)
 
     function ClickSection(id) {
         if (!clicked) {
@@ -35,6 +56,17 @@ export default function Coursecontents({ data,completed_lessons }) {
         }
     }
 
+    console.log(openDropDown)
+
+
+    const handleDropDown = (id) => {
+        if (openDropDown) {
+            setOpenDropdown("");
+        }
+        else {
+            setOpenDropdown(id);
+        }
+    }
     return (
         <div className="bg-[#E2FFF1] rounded-2xl">
             <div className="px-5 py-8">
@@ -43,7 +75,7 @@ export default function Coursecontents({ data,completed_lessons }) {
                         <p className="font-pop font-semibold text-[21px] text-[#1DBF73]">Course Contents</p>
                     </div>
                     <div className="flex justify-between items-center">
-                        <p className="font-pop text-[12px] text-[#1DBF73]">2/5 COMPLETED</p>
+                        <p className="font-pop text-[12px] text-[#1DBF73]">{completed_lessons.length}/{totallessons}  COMPLETED</p>
                         <img className="w-[19px] h-[19px]" src="../Icons/Calender.svg" />
                     </div>
                     <div>
@@ -54,7 +86,7 @@ export default function Coursecontents({ data,completed_lessons }) {
                 {data?.map((val, ind) => {
                     return (
                         <>
-                            <div className='mt-3 py-2 border border-[#1DBF73] px-4 bg-white rounded-xl cursor-pointer'>
+                            <div className='mt-3 py-2 border border-[#1DBF73] px-4 bg-white rounded-xl cursor-pointer' key={ind}>
                                 <div className=''>
                                     <div>
                                         <div className='' onClick={() => ClickSection(ind + 1)} >
@@ -76,10 +108,24 @@ export default function Coursecontents({ data,completed_lessons }) {
                                         <div id={ind + 1} className='pt-2'>
                                             <div className='w-full'>
                                                 {val?.lessons?.map((chapter, index) => {
+
+
                                                     return (
-                                                        <div className={`flex justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id)?'cursor-not-allowed text-gray-300':''}`}>
-                                                            <p className="font-pop font-bold text-[11px] ">{index + 1}. {chapter?.lesson_name}</p>
-                                                            <p className='font-pop font-bold text-[11px]'>{chapter?.duration}</p>
+                                                        <div className={`flex flex-col justify-between border-t py-2 w-full `} key={index}>
+                                                            <span className='flex justify-between'>
+                                                                <p className="font-pop font-bold text-[11px] ">{index + 1}. {chapter?.lesson_name}</p>
+                                                                <p className='font-pop font-bold text-[11px]'>{chapter?.duration}</p>
+                                                            </span>
+
+                                                            {(chapter?.notes || chapter?.assignment) && <div className='relative'>
+                                                                <button className='flex gap-2 align-middle justify-self-end border w-fit items-center px-2 mt-3 realtive' onClick={() => handleDropDown(chapter._id)}> <TiFolderOpen /> <p className='text-[12px] '> Resouces</p>  </button>
+                                                                {openDropDown === chapter._id &&
+                                                                    <ul className='list-none absolute top-10 left-0 bg-white text-sm  shadow-lg py-2 z-40'>
+                                                                        {chapter?.notes && <a href={chapter?.notes} target='_blank' className='  border-b-8'> <li className='border-b-[1px] px-5' > Notes</li> </a>}
+                                                                        {chapter?.assignment && <a href={chapter?.assignment} target='_blank'> <li className=' px-5'> Assignment</li> </a>}
+                                                                    </ul>}
+                                                            </div>}
+
                                                         </div>
                                                     )
 
