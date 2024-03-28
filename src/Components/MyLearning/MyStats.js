@@ -8,7 +8,8 @@ import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 import React, { useState, useEffect } from "react";
 
-export default function MyStats() {
+export default function MyStats({courses}) {
+  console.log(courses);
   const [maxValues, setMaxValues] = useState({
     first: 0,
     second: 0,
@@ -33,7 +34,10 @@ export default function MyStats() {
             TOTAL COURSES
           </p>
           <div className="">
-            <div className="flex justify-evenly py-6 xsm:justify-between xsm:py-2 xsm:pt-4">
+            {
+              courses?.map((val,ind)=>{
+                return(<>
+                <div className="flex justify-evenly py-6 xsm:justify-between xsm:py-2 xsm:pt-4">
               <div className="w-[17%] font-nu font-semibold xsm:w-[14%]">
                 <AnimatedProgressProvider
                   valueStart={0}
@@ -45,8 +49,8 @@ export default function MyStats() {
                     const roundedValue = Math.round(value);
                     return (
                       <CircularProgressbar
-                        value={maxValues.first}
-                        text={`${maxValues.first}%`}
+                        value={val?.completed_lessons.length}
+                        text={`${val?.completed_lessons.length}%`}
                         styles={buildStyles({
                           pathTransition: "stroke-dashoffset 1s ease 0s",
                           pathColor: "#04BFDA",
@@ -60,11 +64,11 @@ export default function MyStats() {
               <div className="flex items-center justify-between w-[60%]">
                 <div>
                   <p className="font-nu font-semibold text-[#243465] text-[22px] xsm:text-[10px] xsm:pb-1">
-                    UI & UX
+                    {val?.course.title}
                   </p>
-                  <p className="font-nu text-[#848A9C] text-[18px] xsm:text-[10px]">
+                  {/* <p className="font-nu text-[#848A9C] text-[18px] xsm:text-[10px]">
                     Nabung jang imah dekah{" "}
-                  </p>
+                  </p> */}
                 </div>
                 <div>
                   <img
@@ -77,100 +81,15 @@ export default function MyStats() {
             </div>
 
             <hr className="border-dashed" />
-
-            <div className="flex justify-evenly py-6 xsm:justify-between xsm:py-2 xsm:pt-4">
-              <div className="w-[17%] font-nu font-semibold xsm:w-[14%]">
-                <AnimatedProgressProvider
-                  valueStart={0}
-                  valueEnd={maxValues.second}
-                  duration={1.4}
-                  easingFunction={easeQuadInOut}
-                >
-                  {(value) => {
-                    const roundedValue = Math.round(value);
-                    return (
-                      <CircularProgressbar
-                        value={maxValues.second}
-                        text={`${maxValues.second}%`}
-                        styles={buildStyles({
-                          pathTransition: "stroke-dashoffset 1s ease 0s",
-                          pathColor: "#FFA84A",
-                          trailColor: "#E9EBF3",
-                        })}
-                      />
-                    );
-                  }}
-                </AnimatedProgressProvider>
-              </div>
-              <div className="flex items-center justify-between w-[60%]">
-                <div>
-                  <p className="font-nu font-semibold text-[#243465] text-[22px] xsm:text-[10px] xsm:pb-1">
-                    UI & UX
-                  </p>
-                  <p className="font-nu text-[#848A9C] text-[18px] xsm:text-[10px]">
-                    Nabung jang imah dekah{" "}
-                  </p>
-                </div>
-                <div>
-                  <img
-                    className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px]"
-                    src="../Icons/MSarrow.svg"
-                    alt="arrow"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <hr className="border-dashed" />
-
-            <div className="flex justify-evenly py-6 xsm:justify-between xsm:py-2 xsm:pt-4">
-              <div className="w-[17%] font-nu font-semibold xsm:w-[14%]">
-                <AnimatedProgressProvider
-                  valueStart={0}
-                  valueEnd={maxValues.third}
-                  duration={1.4}
-                  easingFunction={easeQuadInOut}
-                >
-                  {(value) => {
-                    const roundedValue = Math.round(value);
-                    return (
-                      <CircularProgressbar
-                        value={maxValues.third}
-                        text={`${maxValues.third}%`}
-                        styles={buildStyles({
-                          pathTransition: "stroke-dashoffset 1s ease 0s",
-                          pathColor: "#FB67CA",
-                          trailColor: "#E9EBF3",
-                        })}
-                      />
-                    );
-                  }}
-                </AnimatedProgressProvider>
-              </div>
-              <div className="flex items-center justify-between w-[60%]">
-                <div>
-                  <p className="font-nu font-semibold text-[#243465] text-[22px] xsm:text-[10px] xsm:pb-1">
-                    UI & UX
-                  </p>
-                  <p className="font-nu text-[#848A9C] text-[18px] xsm:text-[10px]">
-                    Nabung jang imah dekah{" "}
-                  </p>
-                </div>
-                <div>
-                  <img
-                    className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px]"
-                    src="../Icons/MSarrow.svg"
-                    alt="arrow"
-                  />
-                </div>
-              </div>
-            </div>
-            <hr className="border-dashed" />
-            <div className="flex xsm:justify-center">
+                
+                </>)
+              })
+            }
+            {/* <div className="flex xsm:justify-center">
             <button className="bg-[#F2F6F8] w-full py-4 font-nu font-semibold text-[23px] mt-12 text-[#243465] rounded-lg xsm:mt-4 xsm:py-2 xsm:w-[50%] xsm:text-[8px] xsm:rounded-sm">
               Show More
             </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="w-[45%] xsm:w-full xsm:flex xsm:flex-col xsm:gap-2">
@@ -184,7 +103,7 @@ export default function MyStats() {
               {/* progressbar */}
               <AnimatedProgressProvider
                 valueStart={0}
-                valueEnd={maxValues.first}
+                valueEnd={0}
                 duration={1.4}
                 easingFunction={easeQuadInOut}
               >
@@ -192,7 +111,7 @@ export default function MyStats() {
                   const roundedValue = Math.round(value);
                   return (
                     <CircularProgressbarWithChildren
-                      value={maxValues.first}
+                      value={0}
                       strokeWidth={3}
                       styles={buildStyles({
                         pathColor: "#FB67CA",
@@ -207,7 +126,7 @@ export default function MyStats() {
                       <div style={{ width: "85%" }}>
                         <AnimatedProgressProvider
                           valueStart={0}
-                          valueEnd={maxValues.second}
+                          valueEnd={0}
                           duration={1.4}
                           easingFunction={easeQuadInOut}
                         >
@@ -215,7 +134,7 @@ export default function MyStats() {
                             const roundedValue = Math.round(value);
                             return (
                               <CircularProgressbarWithChildren
-                                value={maxValues.second}
+                                value={0}
                                 strokeWidth={4}
                                 styles={buildStyles({
                                   pathColor: "#FFA84A",
@@ -231,7 +150,7 @@ export default function MyStats() {
                                           <div style={{ width: "80%" }}>
                                           <AnimatedProgressProvider
                                             valueStart={0}
-                                            valueEnd={maxValues.third}
+                                            valueEnd={0}
                                             duration={1.4}
                                             easingFunction={easeQuadInOut}
                                           >
@@ -239,7 +158,7 @@ export default function MyStats() {
                                               const roundedValue = Math.round(value);
                                               return (
                                                 <CircularProgressbarWithChildren
-                                                value={maxValues.third}
+                                                value={0}
                                                 strokeWidth={5}
                                                 styles={buildStyles({
                                                   pathColor: "#04BFDA",
@@ -268,21 +187,21 @@ export default function MyStats() {
                                 <img className='w-[15px] h-[15px]' src='../Icons/MSbluecircle.svg'/>
                                 <p className='font-Inter font-semibold text-[#7A7A7A] text-[18px]'>Completed</p>
                             </div>
-                            <p className='font-nu font-semibold text-[20px]'>90%</p>
+                            <p className='font-nu font-semibold text-[20px]'>0%</p>
                         </div>
                         <div className='flex flex-col items-center'>
                             <div className='flex space-x-2 items-center'>
                                 <img className='w-[15px] h-[15px]' src='../Icons/MSorangecircle.svg'/>
                                 <p className='font-Inter font-semibold text-[#7A7A7A] text-[18px]'>Assignment</p>
                             </div>
-                            <p className='font-nu font-semibold text-[20px]'>90%</p>
+                            <p className='font-nu font-semibold text-[20px]'>0%</p>
                         </div>
                         <div className='flex flex-col items-center'>
                             <div className='flex space-x-2 items-center'>
                                 <img className='w-[15px] h-[15px]' src='../Icons/MSpinkcircle.svg'/>
                                 <p className='font-Inter font-semibold text-[#7A7A7A] text-[18px]'>Progress</p>
                             </div>
-                            <p className='font-nu font-semibold text-[20px]'>90%</p>
+                            <p className='font-nu font-semibold text-[20px]'>0%</p>
                         </div>
                     </div>
                 </div>
