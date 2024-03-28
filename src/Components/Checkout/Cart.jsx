@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
 import './Cart.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { ReactComponent as Clock } from "../../Assets/Icons/clock.svg";
 import { ReactComponent as Design } from "../../Assets/Icons/design.svg";
 import { ReactComponent as Star } from "../../Assets/Icons/Star.svg";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
+import toast, { Toaster } from "react-hot-toast";
+
+
 const CartCheckout = () => {
     const [selectedCountry, setSelectedCountry] = useState("");
     const [selectedState, setSelectedState] = useState("");
-
-    const countries = ["Country 1", "Country 2", "Country 3"];
-    const states = ["State 1", "State 2", "State 3"];
-
+const [query,setquery]=useSearchParams()
+    const countries = ["India"];
+    const states = ["Punjab"];
+    const [Payment, setPayment] = useState()
+const [courseId, setcourseId] = useState()
     const [Data, setData] = useState([])
     const [total, settotal] = useState(0)
-    let token=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
 
+    let login=localStorage.getItem('COURSES_USER_TOKEN')
+let temp=[]
     function Total(data){
         let price=0;
         data.map((item)=>{
@@ -26,15 +31,37 @@ price+=item.course.base_price
     }
 
     useEffect(() => {
+        
         async function Fetchdata(){
-          // console.log(token);
-          let url=BASE_URL+'/getcart?email='+token.email;
-        //   console.log(url);
-          const data=await fetch(url)
-          const response=await data.json()
-          setData(response?.cart)
-          Total(response?.cart)
-          console.log(response);
+    //   console.log(query.get('slug'));
+   if(login){
+    let slug=query.get('slug')
+    let token=jwtDecode(login)
+    if(slug ){
+      let url=BASE_URL+'/course/'+slug;
+//   console.log(url);
+        const data=await fetch(url)
+        const response=await data.json()
+        // setData(response?.cart)
+        // Total(response?.cart)
+        // console.log(Array(response?.course));
+        setData(Array(response))
+        // setcourseId([...courseId],response?.course?._id)
+        
+        // setcourseId(temp)
+        Total(Array(response))
+    }
+    else{
+      let url=BASE_URL+'/getcart?email='+token.email;
+  
+      const data=await fetch(url)
+      const response=await data.json()
+      setData(response?.cart)
+      Total(response?.cart)
+    //   console.log(response);
+    }
+   }
+          
         }
         Fetchdata()
   
@@ -50,8 +77,46 @@ price+=item.course.base_price
     // Navigate page
     const navigate = useNavigate();
 
-    const handleContinueCheckout = () => {
-        navigate('/success');
+    const handleContinueCheckout = async() => {
+        if(!Payment){
+            toast.error("Select payment method")
+        }
+        else{
+            try {
+                let url=BASE_URL+'/purchasecourse'
+                // console.log(courseId);
+                // setcourseId(temp)
+                // console.log(temp);
+            let data=await fetch(url,{
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization':'Bearer '+login
+                },
+                body:JSON.stringify({courses:temp})
+
+            })
+            let response=await data.json()
+            // console.log(response);
+            if(response.success){
+toast.success(response.message)
+setTimeout(() => {
+    navigate('/success')
+}, 1000);
+            }
+            else{
+                toast.error(response.message)
+     
+            }
+            } catch (error) {
+                console.log(error);
+            }
+            
+            // console.log(response);
+
+        }
+       
     }
 
     return (
@@ -135,25 +200,25 @@ price+=item.course.base_price
                         <div className="bg-green-100 rounded-md p-4 card-shadow">
                             <p className="text-base green-color pb-4">Select payment method</p>
                             <div className="space-y-2">
-                                <div className="py-1">
-                                    <input type="radio" id="creditDebitCard" name="paymentMethod" value="creditDebitCard" className="mr-2" />
-                                    <label htmlFor="creditDebitCard"> Credit/ Debit card</label>
+                                <div className="py-1 cursor-not-allowed" >
+                                    <input disabled type="radio" id="creditDebitCard" name="paymentMethod" value="creditDebitCard" className="mr-2" />
+                                    <label className="text-gray-400"  htmlFor="creditDebitCard"> Credit/ Debit card</label >
+                                </div>
+                                <div className="py-1 cursor-not-allowed">
+                                    <input disabled type="radio" id="upi" name="paymentMethod" value="upi" className="mr-2" />
+                                    <label className="text-gray-400"  htmlFor="upi"> UPI</label >
+                                </div>
+                                <div className="py-1 cursor-not-allowed">
+                                    <input disabled type="radio" id="netBanking" name="paymentMethod" value="netBanking" className="mr-2" />
+                                    <label className="text-gray-400"  htmlFor="netBanking"> Net banking</label >
                                 </div>
                                 <div className="py-1">
-                                    <input type="radio" id="upi" name="paymentMethod" value="upi" className="mr-2" />
-                                    <label htmlFor="upi"> UPI</label>
+                                    <input onChange={(e)=>setPayment(e.target.value)} type="radio" id="cashOnDelivery" name="paymentMethod" value="cashOnDelivery" className="mr-2" />
+                                    <label className=""  htmlFor="cashOnDelivery"> Cash on Delivery</label >
                                 </div>
-                                <div className="py-1">
-                                    <input type="radio" id="netBanking" name="paymentMethod" value="netBanking" className="mr-2" />
-                                    <label htmlFor="netBanking"> Net banking</label>
-                                </div>
-                                <div className="py-1">
-                                    <input type="radio" id="cashOnDelivery" name="paymentMethod" value="cashOnDelivery" className="mr-2" />
-                                    <label htmlFor="cashOnDelivery"> Cash on Delivery</label>
-                                </div>
-                                <div className="py-1">
-                                    <input type="radio" id="emi" name="paymentMethod" value="emi" className="mr-2" />
-                                    <label htmlFor="emi"> EMI</label>
+                                <div className="py-1 cursor-not-allowed">
+                                    <input disabled type="radio" id="emi" name="paymentMethod" value="emi" className="mr-2" />
+                                    <label className="text-gray-400"  htmlFor="emi"> EMI</label >
                                 </div>
                             </div>
                         </div>
@@ -199,6 +264,7 @@ price+=item.course.base_price
                     <div className="h-auto space-y-7">
                             <h1 className="text-xl font-bold mt-6 mb-3 ">Order Details</h1>
                             {Data?.map((item)=>{
+                                temp.push(item?.course?._id)
                                 return(<>
                                   <div className="bg-green-100 rounded-lg flex items-center card-shadow2 w-[100%]">
                                 <img src={item.course.featured_image} alt="course" className="w-[230px] h-[140px]  object-cover rounded-lg mt-[-4px] ml-4" />
@@ -269,6 +335,7 @@ price+=item.course.base_price
                 </div>
                 {/* Summary end */}
             </div>
+            <Toaster/>
             {/* CheckOut end */}
         </>
     )

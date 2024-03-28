@@ -18,33 +18,34 @@ export default function MyLearning() {
     const [showpage, setshowpage] = useState('courses');
     const [purchasedCourses, setPurchasedCourses] = useState();
 
-    useEffect(() => {
-        let login = localStorage.getItem('COURSES_USER_TOKEN')
-        console.log(login)
-        if (!login) {
-            navigate('/login')
-        }
-        else {
-            const token = localStorage.getItem('COURSES_USER_TOKEN');
-            const decoded = jwtDecode(token);
-            console.log(decoded)
-            fetchUserData(decoded?.email)
-        }
-    }, [])
-
     const fetchUserData = async (email) => {
         // setshow(true)
         try {
             const res = await axios.get(`${BASE_URL}/user/${email}`)
             // console.log(res.data[0]?.purchased_courses)
             setPurchasedCourses(res?.data?.userDetails?.purchased_courses)
-            console.log(res);
+            // console.log(res);
             // setshow(false)
         } catch (error) {
             console.log(error)
         }
 
     }
+    useEffect(() => {
+        let login = localStorage.getItem('COURSES_USER_TOKEN')
+        // console.log(login)
+        if (!login) {
+            navigate('/login')
+        }
+        else {
+            const token = localStorage.getItem('COURSES_USER_TOKEN');
+            const decoded = jwtDecode(token);
+            // console.log(decoded)
+            fetchUserData(decoded?.email)
+        }
+    }, [])
+
+
 
     return (
         <div>
