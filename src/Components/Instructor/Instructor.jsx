@@ -61,12 +61,12 @@ function Instructor() {
       </div>
 
       <p className='text-[14px]'>{Data?.instructor.about}</p>
-      <div className='links'>
+      {/* <div className='links'>
         <p>Follow: </p>
         {iconPaths.map((icon, index) => (
             <img key={index} src={icon}/>
           ))}
-      </div>
+      </div> */}
       
     </div>
   )

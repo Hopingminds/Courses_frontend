@@ -38,7 +38,7 @@ export default function Navbar() {
 
         <div className="w-full flex justify-between px-[5%] h-20 items-center  font-pop fixed top-0 z-20 bg-[#0F2027] xsm:h-12 xsm:px-[2%] text-white">
             <div onClick={Top} to='/' className=" cursor-pointer">
-                <img src="/logo.png" className="xsm:w-[50px] xsm:h-[30px]" />
+                <img src="/logo.png" className="h-[150px] w-auto xsm:w-[50px] xsm:h-[30px]" />
             </div>
             <div className="flex space-x-10 items-center xsm:space-x-2">
                 {userDetail?.role != 'subadmin' && <>

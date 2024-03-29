@@ -20,9 +20,9 @@ const CourseCard = ({
 }) => {
   // console.log(description);
   return (
-    <Link
+    <a
       // style={{ padding: "10px" }}
-      to={`/detailcourse/${slug}`}
+      href={`/detailcourse/${slug}`}
       className={`shadow-lg  max-w-sm font-pop rounded-xl relative coursecardhome   bg-white p-2  ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
@@ -70,7 +70,7 @@ const CourseCard = ({
           </div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
 

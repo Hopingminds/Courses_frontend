@@ -44,7 +44,7 @@ const Footer = () => {
                         <p className='text-white text-[20px] font-nu font-semibold xsm:text-[10px]'>CONTACT US</p>
                         <div className='flex flex-col gap-4 xsm:gap-1'>
                             <p className='text-white text-[16px] font-nu xsm:text-[8px]'>Tel: + 9779886900</p>
-                            <p className='text-white text-[16px] font-nu xsm:text-[8px]'>Mail: support@hopingminds.com</p>
+                            <Link to='mailto:support@hopingminds.com' target='_blank' className='text-white text-[16px] font-nu xsm:text-[8px]'>Mail: support@hopingminds.com</Link>
                             <div className='flex flex-row gap-2 items-center'>
                                 <Link to='https://www.instagram.com/hopingminds_?igsh=MWxvN2F5YmM0aW1lYQ=='> <img src={Icon1} className='w-[28px] h-[28px] xsm:w-[15px] xsm:h-[15px]' /></Link>
                                 <Link to='https://www.facebook.com/share/Z3c1iwpnxsDk3YJH/?mibextid=qi2Omg'> <img src={Icon2} className='w-[28px] h-[28px] xsm:w-[15px] xsm:h-[15px]' /></Link>

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import Img1 from "../../Assets/Images/papheaderbg.png";
 import styled from "styled-components";
+import Test from "../Test/Test";
+import { useNavigate } from "react-router-dom";
 
 export default function Pap(){
 
     const [clicked, setclicked] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    let navigate=useNavigate()
 
     const [formValues, setFormValues] = useState({
       name: "",
@@ -33,7 +36,9 @@ export default function Pap(){
     const closeModal=()=>{
       setIsModalOpen(false);
     }
-
+function handleForm(){
+  navigate('/test')
+}
     // function ClickSection(id) {
     //     if (!clicked) {
     //       setclicked(true);
@@ -256,8 +261,8 @@ export default function Pap(){
 
             {isModalOpen && (
                 <Wrapper>
-                  <div className="modal ">
-                    <div className="form-container w-[50%] rounded-lg overflow-hidden">
+                  <div className="modal bg-black">
+                    <div className="form-container w-[40%] rounded-lg overflow-hidden">
                       <div className="img">
                         <img src="../img/papmodalbg.jpg" alt="" />
                         <p className="button">
@@ -337,7 +342,7 @@ export default function Pap(){
                             />
                           </div>
                           <div className="flex justify-center">
-                          <button type="submit" className="btn">
+                          <button onClick={handleForm} type="submit" className="btn">
                             Submit
                           </button>
                           </div>
@@ -346,13 +351,19 @@ export default function Pap(){
                     </div>
                   </div>
                 </Wrapper>
+          
             )}
         </div>
     );
 };
 
 const Wrapper = styled.div`
-  width: 50%;
+  // width: 50%;
+  position:fixed;
+  top:70%;
+  left:30%;
+  // transform:translate(-50%,-50%)
+  z-index:999;
   margin: 0 auto;
   @media screen and (max-width: 768px) {
     width: 90%;
@@ -360,12 +371,12 @@ const Wrapper = styled.div`
   }
 
   .content {
-    padding: 10px 5px;
+    padding: 10px 100px;
   }
 
   .form-container {
     position: fixed;
-    top:3%;
+    top:12%;
     // left:30%;
     // padding: 0% 2.2% 2.5% 2.2%;
     // margin-top: -2.3rem;
@@ -450,6 +461,6 @@ const Wrapper = styled.div`
 
   .form-container .btn:hover {
     background-color: #75ebd2;
-    transform: translateY(-10px);
+    
   }
 `;
