@@ -29,6 +29,7 @@ import SubAdmin from '../Components/SubAdminDashboard/index.js'
 import Pap from '../Components/PAP/Pap.js'
 import CareerServices from '../Components/CareerServices/CareerServices.js'
 import AiMinds from '../Components/AiMinds/AiMinds.jsx'
+import PapModal from '../Components/PAP/PapModal.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -68,6 +69,7 @@ const Router = () => {
                 <Route path='/subadmin-login' element={<SubAdmin />} />
                 <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
                 <Route path='/pap' element={<Pap/>} />
+                <Route path='/papmodal' element={<PapModal/>} />
                 <Route path='/career' element={<CareerServices/>} />
                 <Route path='/ai' element={<AiMinds/>} />
             </Routes>
