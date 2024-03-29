@@ -20,7 +20,8 @@ export default function Navbar() {
         return null;
     }
     
-    function ScrollToPap() {
+    function ScrollToPap(event) {
+        event.preventDefault(); // Prevent the default behavior of the anchor tag
         const navbarHeight = 80; // Adjust this value to match the height of your navbar
         const papElement = document.getElementById('pap');
         if (papElement) {
