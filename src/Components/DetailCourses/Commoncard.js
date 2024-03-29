@@ -7,7 +7,7 @@ import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import toast, { Toaster } from "react-hot-toast";
 import { IoIosShareAlt } from "react-icons/io";
-//import { RWebShare } from "react-web-share";
+import { RWebShare } from "react-web-share";
 export default function Commoncard(props) {
     let { Data } = props;
     // console.log(Data);
