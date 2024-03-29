@@ -17,7 +17,7 @@ function Curriculum() {
       let arrow=document.getElementById(`arrow${id}`)
       // console.log(inner);
       // inner.style
-      arrow.style.transform = 'rotate(180deg)';
+      arrow.style.transform = 'rotate(0deg)';
       // console.log(inner);
       inner.style.display = "none";
     } else {

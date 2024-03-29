@@ -48,7 +48,7 @@ export default function Navbar() {
                     <a href={location.pathname == '/' ? '#' : '/pap'} onClick={ScrollToPap} className={` rounded-full hover:text-[#1DBF73] xsm:text-[10px] cursor-pointer  ${location.pathname === '#pap' ? ' font-bold text-[#1DBF73]' : ''}`}>PAP</a>
                     {/* <Link>Search</Link> */}
                     {userDetail?._id && <Link to={'/learning'} className={` rounded-full hover:text-[#1DBF73] xsm:text-[10px]   ${location.pathname === '/learning' ? ' font-bold text-[#1DBF73]' : ''}`}>My Learning</Link>}
-                    {userDetail?._id && <Link to={'/cart'} className={` rounded-full hover:text-[#1DBF73] xsm:text-[10px]   ${location.pathname === '/cart' ? ' font-bold text-[#1DBF73]' : ''}`}> <Cart className="hover:color-white" /> </Link>}
+                    {userDetail?._id && <Link to={'/cart'} className={` rounded-full hover:text-[#1DBF73] xsm:text-[10px] ${location.pathname === '/cart' ? ' font-bold text-[#1DBF73]' : ''}`}> <Cart style={{color:'white'}} className=" text-white " /> </Link>}
                 </>}
                 {userDetail?._id ? < Link to="/profile" className="pl-4" style={{ cursor: "pointer" }}>  <span>
                     <Account />

@@ -77,7 +77,7 @@ const Forgotpassword = () => {
             try {
                 const res = await axios.get(`${BASE_URL}/generateOTP?email=${user.email}`)
 
-                console.log(res);
+                // console.log(res);
                 if (res.data.success) {
                     setShow(2)
                 }
@@ -182,12 +182,12 @@ const Forgotpassword = () => {
                                 <div>
                                     {/* Email input */}
                                     <p>Enter New Password</p>
-                                    <input type="text" placeholder="Enter Your New Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                                    <input type="password" placeholder="Enter Your New Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
                                 </div>
                                 <div>
                                     {/* Email input */}
                                     <p>Confirm New Password</p>
-                                    <input type="text" placeholder="Confirm New Password" name="confirmPassword" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} />
+                                    <input type="password" placeholder="Confirm New Password" name="confirmPassword" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} />
                                 </div>
 
                             </div>
