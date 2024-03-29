@@ -30,6 +30,7 @@ import Pap from '../Components/PAP/Pap.js'
 import CareerServices from '../Components/CareerServices/CareerServices.js'
 import AiMinds from '../Components/AiMinds/AiMinds.jsx'
 import PapModal from '../Components/PAP/PapModal.jsx'
+import Test from '../Components/Test/Test.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -72,6 +73,7 @@ const Router = () => {
                 <Route path='/papmodal' element={<PapModal/>} />
                 <Route path='/career' element={<CareerServices/>} />
                 <Route path='/ai' element={<AiMinds/>} />
+                <Route path='/test' element={<Test/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
