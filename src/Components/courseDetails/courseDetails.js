@@ -121,16 +121,18 @@ export default function CDDetails() {
             <div className="CCD-container py-10 px-16">
                 <div className="CCD-content flex gap-5">
                     <div className="CCD-content-left 2xl:w-[55%]">
-                        <div className="relative h-[100%]">
+                        <div className="relative h-[100%] shadow-lg">
                             <ReactPlayer
                                 height="100%"
                                 width="100%"
+                                className='shadow-2xl'
                                 playing={true}
                                 controls={true}
                                 autoPlay={true}
                                 url={url}
                                 onDuration={handleDuration}
                                 onEnded={handleVideoEnded}
+
                             />
                             {/* <div className="absolute right-0 bottom-10">
                                 <ChatBot className="w-fit" />

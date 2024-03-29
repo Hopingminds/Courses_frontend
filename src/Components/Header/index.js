@@ -36,7 +36,7 @@ export default function Navbar() {
     return (<>
 
 
-        <div className="w-full flex justify-between px-[5%] h-20 items-center shadow-md  shadow-[#afd8c5] font-pop fixed top-0 z-20 bg-white xsm:h-12 xsm:px-[2%]">
+        <div className="w-full flex justify-between px-[5%] h-20 items-center  font-pop fixed top-0 z-20 bg-[#0F2027] xsm:h-12 xsm:px-[2%] text-white">
             <div onClick={Top} to='/' className=" cursor-pointer">
                 <img src="/logo.png" className="xsm:w-[50px] xsm:h-[30px]" />
             </div>
@@ -56,7 +56,7 @@ export default function Navbar() {
 
                 </span> </Link> : <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-2">
                     <Link to={"/login"} className="bg-[#1DBF73] px-7 rounded-full text-white py-1 xsm:text-[10px] xsm:px-2 ">Log in</Link>
-                    <Link to={"/register"} className="bg-black px-7 rounded-full text-white py-1 xsm:text-[10px] xsm:px-2 ">Sign Up</Link>
+                    <Link to={"/register"} className="bg-white px-7 rounded-full text-black py-1 xsm:text-[10px] xsm:px-2 ">Sign Up</Link>
                 </div>}
             </div>
         </div>

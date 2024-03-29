@@ -10,6 +10,14 @@ html {
   height: 40vmin;
   pointer-events: none;
 }
+.add_gradient {
+  background: radial-gradient(
+    124.14% 368.76% at 83.44% 60.01%,
+    #0f2027 0%,
+    #0b1418 0.01%,
+    #203a43 100%
+  );
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -41,6 +49,10 @@ html {
   }
 }
 
-.bg-gradient-to-outside{
-  background-image: radial-gradient(circle at center, #E2FFFF 60%, rgba(0,0,0,0) 77%)
+.bg-gradient-to-outside {
+  background-image: radial-gradient(
+    circle at center,
+    #e2ffff 60%,
+    rgba(0, 0, 0, 0) 77%
+  );
 }

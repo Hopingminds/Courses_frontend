@@ -7,7 +7,7 @@ export default function Herosection() {
 
     const navigate = useNavigate()
     return (<>
-        <div className=" bg-[#E2FFF1] h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%] 2xl:h-[65vh] xsm:h-[70vh]">
+        <div className="add_gradient h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%] 2xl:h-[65vh] xsm:h-[70vh] text-white">
             <div className='w-[45%] h-[70%] items-start 2xl:space-y-10'>
                 {/* <div className='text-[3.2vw] font-semibold leading-[4.0rem] 2xl:leading-[5.5rem]'>Shape Your Tomorrow, Today with HopingMinds: Where Education Meets Aspiration</div> */}
                 <div className='text-[3.2vw] font-semibold leading-[4.0rem] 2xl:leading-[5.5rem] font-pop xsm:text-[15px] xsm:leading-5'>Empower Your Future With Hoping Minds!</div>
