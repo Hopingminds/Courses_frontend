@@ -3,7 +3,7 @@ import "./courseDetails.css";
 import ReactPlayer from "react-player";
 import ChatBot from "../chatbot/chatbot";
 import { useParams, useSearchParams } from "react-router-dom";
-import { BASE_URL } from "../../Api/api";
+import { AWS_S3_LINK, BASE_URL } from "../../Api/api";
 import { CiSettings } from "react-icons/ci";
 import Coursecontents from "../Meeting/Coursecontents";
 import { jwtDecode } from "jwt-decode";
@@ -16,7 +16,7 @@ export default function CDDetails() {
     const [count, setcount] = useState(0)
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
     const [ALLCHAPTER, setALLCHAPTER] = useState([])
-const [courseId, setcourseId] = useState()
+    const [courseId, setcourseId] = useState()
 
     const [url, seturl] = useState()
     const params = useParams()
@@ -26,15 +26,15 @@ const [courseId, setcourseId] = useState()
     //     ClickSection();
     // }, [])
     let completed = [];
-    let allchapters=[]
-  
+    let allchapters = []
+
     useEffect(() => {
         async function Fetchdata() {
-            let login=localStorage.getItem('COURSES_USER_TOKEN')
-            if(login){
-                let token=jwtDecode(login)
-                let url1 = BASE_URL + '/user/' + token.email+'/'+params.slug
-             
+            let login = localStorage.getItem('COURSES_USER_TOKEN')
+            if (login) {
+                let token = jwtDecode(login)
+                let url1 = BASE_URL + '/user/' + token.email + '/' + params.slug
+
                 const data = await fetch(url1);
                 const response = await data.json()
                 // console.log(response);
@@ -42,20 +42,20 @@ const [courseId, setcourseId] = useState()
                     setcourseId(response?.data?.course?._id)
                     response?.data?.completed_lessons?.forEach((val) => {
                         completed.push(val)
-            
-                })
-            }
-                
+
+                    })
+                }
+
                 if (response?.data?.course) {
                     response?.data?.course?.curriculum?.forEach((val) => {
-                        val?.lessons?.map((it)=>{
+                        val?.lessons?.map((it) => {
                             // console.log("it",val);
-                            allchapters.push({video:BASE_URL+'/videos/'+it?.video,_id:it?._id})
+                            allchapters.push({ video: AWS_S3_LINK + '/' + it?.video, _id: it?._id })
                         })
-            
-                })
-            }
-                // console.log("all",allchapters[0]?.video);
+
+                    })
+                }
+                console.log("all", allchapters[0]?.video);
                 setALLCHAPTER(allchapters)
                 seturl(allchapters[0]?.video)
                 setData(response?.data?.course)
@@ -64,38 +64,40 @@ const [courseId, setcourseId] = useState()
                 // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
 
             }
-           
+
         }
         Fetchdata()
     }, [])
-    const handleVideoEnded = async() => {
-        setcount(count+1);
-        seturl(ALLCHAPTER[count+1]?.video)
-        completed_lessons.push([...ALLCHAPTER],ALLCHAPTER[count+1]?._id)
-        
+
+    console.log(allchapters)
+    const handleVideoEnded = async () => {
+        setcount(count + 1);
+        seturl(ALLCHAPTER[count + 1]?.video)
+        completed_lessons.push([...ALLCHAPTER], ALLCHAPTER[count + 1]?._id)
+
         try {
-            let login=localStorage.getItem('COURSES_USER_TOKEN')
-            if(login){
-                let url=BASE_URL+'/lessoncompleted'
-                let bodydata={courseId,lessonId:ALLCHAPTER[count+1]?._id}
-                const data1=await fetch(url,{
-                            method: 'PUT',
+            let login = localStorage.getItem('COURSES_USER_TOKEN')
+            if (login) {
+                let url = BASE_URL + '/lessoncompleted'
+                let bodydata = { courseId, lessonId: ALLCHAPTER[count + 1]?._id }
+                const data1 = await fetch(url, {
+                    method: 'PUT',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
-                        'Authorization':'Bearer '+login
+                        'Authorization': 'Bearer ' + login
                     },
-                    body:JSON.stringify(bodydata)
+                    body: JSON.stringify(bodydata)
                 })
-                const response=await data1.json()
+                const response = await data1.json()
                 console.log(response);
             }
-            
+
         } catch (error) {
             console.log(error);
         }
-      };
-      
+    };
+
     function ClickSection(id) {
         if (!clicked) {
             setclicked(true);
@@ -113,7 +115,7 @@ const [courseId, setcourseId] = useState()
     const handleDuration = (duration) => {
         // setDuration(duration);
         console.log(duration);
-      };
+    };
     return (
         <>
             <div className="CCD-container py-10 px-16">
@@ -124,21 +126,21 @@ const [courseId, setcourseId] = useState()
                                 height="100%"
                                 width="100%"
                                 playing={true}
-                             controls={true}
+                                controls={true}
                                 autoPlay={true}
                                 url={url}
                                 onDuration={handleDuration}
                                 onEnded={handleVideoEnded}
                             />
-                            <div className="absolute right-0 bottom-10">
+                            {/* <div className="absolute right-0 bottom-10">
                                 <ChatBot className="w-fit" />
-                            </div>
+                            </div> */}
                         </div>
 
                     </div>
                     <div className="w-[45%]  h-[80vh] overflow-y-auto">
 
-                        <Coursecontents data={Data?.curriculum} completed_lessons={completed_lessons}/>
+                        <Coursecontents data={Data?.curriculum} completed_lessons={completed_lessons} />
                     </div>
                 </div>
             </div>

@@ -4,12 +4,16 @@ import { IoBookOutline } from "react-icons/io5";
 import { BASE_URL } from '../../Api/api';
 import { TiFolderOpen } from "react-icons/ti";
 import { Navigate, useNavigate } from 'react-router-dom';
+import { MdOutlineFileUpload } from "react-icons/md";
+import { MdOutlineFileDownload } from "react-icons/md";
+
+
 
 export default function Coursecontents({ data, completed_lessons }) {
 
 
     const navigate = useNavigate()
-    console.log(data, completed_lessons);
+    console.log(completed_lessons);
 
     const [clicked, setclicked] = useState(false);
     const [totallessons, setTotalLessons] = useState(0);
@@ -28,7 +32,7 @@ export default function Coursecontents({ data, completed_lessons }) {
     const countLessons = () => {
         let temp = 0;
         data?.forEach((val) => {
-            temp += val.lessons.length;
+            temp += val?.lessons?.length;
         })
         setTotalLessons(temp)
 
@@ -75,7 +79,7 @@ export default function Coursecontents({ data, completed_lessons }) {
                         <p className="font-pop font-semibold text-[21px] text-[#1DBF73]">Course Contents</p>
                     </div>
                     <div className="flex justify-between items-center">
-                        <p className="font-pop text-[12px] text-[#1DBF73]">{completed_lessons.length}/{totallessons}  COMPLETED</p>
+                        <p className="font-pop text-[12px] text-[#1DBF73]">{completed_lessons?.length}/{totallessons}  COMPLETED</p>
                         <img className="w-[19px] h-[19px]" src="../Icons/Calender.svg" />
                     </div>
                     <div>
@@ -111,7 +115,7 @@ export default function Coursecontents({ data, completed_lessons }) {
 
 
                                                     return (
-                                                        <div className={`flex flex-col justify-between border-t py-2 w-full `} key={index}>
+                                                        <div className={`flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id) ? 'cursor-not-allowed text-gray-300' : ''}`} key={index}>
                                                             <span className='flex justify-between'>
                                                                 <p className="font-pop font-bold text-[11px] ">{index + 1}. {chapter?.lesson_name}</p>
                                                                 <p className='font-pop font-bold text-[11px]'>{chapter?.duration}</p>
@@ -120,9 +124,10 @@ export default function Coursecontents({ data, completed_lessons }) {
                                                             {(chapter?.notes || chapter?.assignment) && <div className='relative'>
                                                                 <button className='flex gap-2 align-middle justify-self-end border w-fit items-center px-2 mt-3 realtive' onClick={() => handleDropDown(chapter._id)}> <TiFolderOpen /> <p className='text-[12px] '> Resouces</p>  </button>
                                                                 {openDropDown === chapter._id &&
-                                                                    <ul className='list-none absolute top-10 left-0 bg-white text-sm  shadow-lg py-2 z-40'>
-                                                                        {chapter?.notes && <a href={chapter?.notes} target='_blank' className='  border-b-8'> <li className='border-b-[1px] px-5' > Notes</li> </a>}
-                                                                        {chapter?.assignment && <a href={chapter?.assignment} target='_blank'> <li className=' px-5'> Assignment</li> </a>}
+                                                                    <ul className='list-none absolute top-10 left-0 bg-white text-sm  shadow-xl py-1 z-40 w-[11rem]'>
+                                                                        {chapter?.notes && <span className=' flex justify-between items-center px-5 border-b-[1px] py-1'> <li className=' px-5' > Notes</li> <span className='flex gap-2'> <a href={chapter?.notes} target='_blank' ><MdOutlineFileDownload size={16} /></a></span> </span>}
+
+                                                                        {chapter?.assignment && <span className='flex justify-between items-center px-5 py-1'> <li > Assignment</li> <span className='flex gap-2'> <a href={chapter?.assignment} target='_blank' ><MdOutlineFileDownload size={16} /></a>  <MdOutlineFileUpload size={16} />  </span> </span>}
                                                                     </ul>}
                                                             </div>}
 
