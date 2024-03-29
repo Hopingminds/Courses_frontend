@@ -9,9 +9,9 @@ export default function Mycourse({ courses }) {
 
             {
                 courses?.map((val, ind) => {
-                    let totallessons=0
-                    val?.course?.curriculum.map((it)=>{
-totallessons+=it?.lessons?.length
+                    let totallessons = 0
+                    val?.course?.curriculum.map((it) => {
+                        totallessons += it?.lessons?.length
                     })
                     return (
                         <Link to={`/course/${val?.course?.slug}`} className="w-full flex flex-col justify-between p-4  mt-2 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm">
@@ -24,7 +24,7 @@ totallessons+=it?.lessons?.length
                                     <img className="w-[32px] h-[32px] xsm:w-[10px] xsm:h-[10px] rounded-full" src="../img/RCimg2.png" />
                                     <p className="font-pop font-medium text-[16px] xsm:text-[6px]"> {val?.course?.instructor.firstName + " " + val?.course?.instructor.lastName}</p>
                                 </div>
-                                <ProgressBar completed={val?.completed_lessons.length} maxCompleted={totallessons}  height={4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2" />
+                                <ProgressBar completed={val?.completed_lessons.length} maxCompleted={totallessons} height={4} bgColor='#1DBF73' isLabelVisible={false} className="mt-2" />
 
                                 <p className="font-pop text-end text-[12px] xsm:text-[6px] ">Lesson {val?.completed_lessons.length} of {totallessons}</p>
                             </div>

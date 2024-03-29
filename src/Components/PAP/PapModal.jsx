@@ -38,7 +38,7 @@ const Compo = () => {
 
       {isModalOpen && (
         <Wrapper>
-          <div className="modal">
+          <div className="modal ">
             <div className="form-container">
               <div className="img">
                 <img src="../img/papmodalbg.jpg" alt="" />
@@ -153,12 +153,12 @@ const Wrapper = styled.div`
   }
 
   .content {
-    padding: 10px 5px;
+    padding: 10px 150px;
   }
 
   .form-container {
     position: fixed;
-    padding: 0% 2.2% 2.5% 2.2%;
+    padding: 0% 5% 2.5% 2.2%;
     margin-top: -2.3rem;
     z-index: 999;
     background-color: #fffdfd;

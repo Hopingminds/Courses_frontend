@@ -12,14 +12,14 @@ export default function Navbar() {
     // console.log(userDetail)
     const location = useLocation();
     console.log(location);
-    let navigate=useNavigate()
-    
-    function Top(){
+    let navigate = useNavigate()
+
+    function Top() {
         window.scrollTo(0, 0);
         navigate('/')
         return null;
     }
-    
+
     function ScrollToPap(event) {
         event.preventDefault(); // Prevent the default behavior of the anchor tag
         const navbarHeight = 80; // Adjust this value to match the height of your navbar
@@ -28,21 +28,24 @@ export default function Navbar() {
             const targetOffset = papElement.offsetTop - navbarHeight;
             window.scrollTo({ top: targetOffset, behavior: 'smooth' });
         }
+        else {
+            navigate('/pap')
+        }
     }
 
     return (<>
 
 
-        <div  className="w-full flex justify-between px-[5%] h-20 items-center shadow-md  shadow-[#afd8c5] font-pop fixed top-0 z-20 bg-white xsm:h-12 xsm:px-[2%]">
+        <div className="w-full flex justify-between px-[5%] h-20 items-center shadow-md  shadow-[#afd8c5] font-pop fixed top-0 z-20 bg-white xsm:h-12 xsm:px-[2%]">
             <div onClick={Top} to='/' className=" cursor-pointer">
-                <img src="/logo.png" className="xsm:w-[50px] xsm:h-[30px]"/>
+                <img src="/logo.png" className="xsm:w-[50px] xsm:h-[30px]" />
             </div>
             <div className="flex space-x-10 items-center xsm:space-x-2">
                 {userDetail?.role != 'subadmin' && <>
                     <Link to={'/'} className={` rounded-full hover:text-[#1DBF73] xsm:text-[10px]  ${location.pathname === '/' ? ' font-bold text-[#1DBF73]' : ''}`}>Home</Link>
                     <Link to={'/course'} className={` rounded-full hover:text-[#1DBF73] xsm:text-[10px]  ${location.pathname === '/course' ? ' font-bold text-[#1DBF73]' : ''}`}>Courses</Link>
                     <Link to={'/career'} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[10px] ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Career</Link>
-                    <a href={location.pathname=='/'?'#':'/pap'} onClick={ScrollToPap} className={` rounded-full hover:text-[#1DBF73] xsm:text-[10px] cursor-pointer  ${location.pathname === '#pap' ? ' font-bold text-[#1DBF73]' : ''}`}>PAP</a>
+                    <a href={location.pathname == '/' ? '#' : '/pap'} onClick={ScrollToPap} className={` rounded-full hover:text-[#1DBF73] xsm:text-[10px] cursor-pointer  ${location.pathname === '#pap' ? ' font-bold text-[#1DBF73]' : ''}`}>PAP</a>
                     {/* <Link>Search</Link> */}
                     {userDetail?._id && <Link to={'/learning'} className={` rounded-full hover:text-[#1DBF73] xsm:text-[10px]   ${location.pathname === '/learning' ? ' font-bold text-[#1DBF73]' : ''}`}>My Learning</Link>}
                     {userDetail?._id && <Link to={'/cart'} className={` rounded-full hover:text-[#1DBF73] xsm:text-[10px]   ${location.pathname === '/cart' ? ' font-bold text-[#1DBF73]' : ''}`}> <Cart className="hover:color-white" /> </Link>}

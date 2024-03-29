@@ -11,7 +11,7 @@ const Testimonial = () => {
     {
       text: "Hoping Minds' programs transform students through hands-on learning, personalized attention, and market-aligned curriculum. Highly recommend as a pathway to success.",
       author: "Ajitesh Abhishek",
-      empty:0,
+      empty: 0,
       stars: 5,
       reviews: 12,
       image: '/ajitesh.jpeg',
@@ -27,7 +27,7 @@ const Testimonial = () => {
     {
       text: "Right from the recruitment and interview process,we were able to see a different level of professionalism in Hm's candidates.It is great to see freshers demonstrating corperate manually.",
       author: "Lakshay S",
-      empty:0,
+      empty: 0,
       stars: 5,
       reviews: 12,
       image: '/Lakshay.jpg',
@@ -35,15 +35,15 @@ const Testimonial = () => {
     {
       text: "Their program cultivated skilled and motivated coders who now excel in their roles, driving impressive performance.They have been able to quickly adopt to their roles and outshine.",
       author: "Sidharth Kakkar",
-      empty:2,
-      stars: 3,
+      empty: 0,
+      stars: 5,
       reviews: 4,
       image: '/Sidharth Kakar.jpg',
     },
     {
       text: "HM's students come with a certain level of exposure and practical experience that distinguishes them from the rest.we are able to save critical time as they start delivering early.",
       author: "Tuhina Jain",
-      empty:0,
+      empty: 0,
       stars: 5,
       reviews: 12,
       image: '/Tuhina Jain .jpg',
@@ -71,12 +71,7 @@ const Testimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
 
-  const handleReview = () => {
-    if (localStorage.getItem("COURSES_USER_TOKEN")) {
-    } else {
-      navigate("/login");
-    }
-  };
+
 
   return (
     <>
@@ -94,10 +89,10 @@ const Testimonial = () => {
           </p>
           <div className="flex flex-col gap-4 text-[#696984] text-[18px] font-poppins xsm:text-[6px] xsm:gap-0">
             <p className="">
-            HopingMinds has earned the trust of over 100 corporations, more than 50 universities, and over 10,000 students based on positive experiences and successful outcomes. {" "}
+              HopingMinds has earned the trust of over 100 corporations, more than 50 universities, and over 10,000 students based on positive experiences and successful outcomes. {" "}
             </p>
             <p>
-            Our community continues to grow, thanks to the proven results and confidence shared by our partners and learners
+              Our community continues to grow, thanks to the proven results and confidence shared by our partners and learners
             </p>
           </div>
           {/* <p className="text-[#696984] text-[18px] font-pop xsm:text-[6px]">
@@ -126,9 +121,8 @@ const Testimonial = () => {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`bg-[#1DBF73] text-[rgb(29,191,115)] w-14 rounded-l-xl xsm:w-6 ${
-                    index === currentIndex ? "" : "hidden"
-                  }`}
+                  className={`bg-[#1DBF73] text-[rgb(29,191,115)] w-14 rounded-l-xl xsm:w-6 ${index === currentIndex ? "" : "hidden"
+                    }`}
                 >
                   .
                 </div>
@@ -136,9 +130,8 @@ const Testimonial = () => {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`flex relative ${
-                    index === currentIndex ? "" : "hidden"
-                  }`}
+                  className={`flex relative ${index === currentIndex ? "" : "hidden"
+                    }`}
                 >
                   <hr className="h-[60%]  border border-[rgb(189,189,209)] absolute top-3 xsm:top-2" />
                   <div className="flex flex-col justify-between px-4 py-3 xsm:px-2 xsm:py-2">
@@ -153,14 +146,14 @@ const Testimonial = () => {
                       <div className="flex flex-col gap-1  xsm:gap-0">
                         <div className="flex justify-center items-center">
                           {[...Array(testimonial.stars)].map((star, index) => (
-                            <svg  viewBox="0 0 24 24" className="h-5 w-5 xsm:h-2 xsm:w-2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" fill="#FBA333"/>
-                          </svg>
+                            <svg viewBox="0 0 24 24" className="h-5 w-5 xsm:h-2 xsm:w-2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" fill="#FBA333" />
+                            </svg>
                           ))}
-                         {[...Array(testimonial.empty)].map((star, index) => (
-                        <svg viewBox="0 0 24 24" className="h-5 w-5 xsm:h-2 xsm:w-2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" fill="#DCE2EE"/>
-                        </svg>
+                          {[...Array(testimonial.empty)].map((star, index) => (
+                            <svg viewBox="0 0 24 24" className="h-5 w-5 xsm:h-2 xsm:w-2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" fill="#DCE2EE" />
+                            </svg>
                           ))}
                         </div>
                         {/* <p className="text-[#80819A] text-[14px] font-nu xsm:text-[5px]">

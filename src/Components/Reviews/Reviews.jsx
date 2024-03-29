@@ -118,7 +118,7 @@ function Reviews() {
 
             </div>
             {/* Comment-box */}
-            <Comment/>
+            {/* <Comment/> */}
         </>
     );
 }
