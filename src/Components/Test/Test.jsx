@@ -6,24 +6,24 @@ export default function Test(){
                     <p className="font-pop font-semibold text-[26px] text-[#1DBF73]">Please Fill Your Form</p>
                 </div>
                 <div className="flex justify-between">
-                    <div className="w-[48%] border border-[#1DBF73] rounded-lg px-4 py-2 flex">
+                    <label htmlFor="take" className="w-[48%] border border-[#1DBF73] rounded-lg cursor-pointer px-4 py-2 flex">
                         <div className="w-[95%] flex flex-col justify-between">
                             <img className="w-20" src="../img/Testimg.png" alt="" />
                             <p className="font-nu font-bold text-[18px]">Take Your Test</p>
                         </div>
                         <div>
-                            <input className="w-6 h-6 accent-[#1DBF73]" type="radio" name="test" id="" />
+                            <input className="w-6 h-6 accent-[#1DBF73]" type="radio" name="test" id="take" />
                         </div>
-                    </div>
-                    <div className="w-[48%] border border-[#1DBF73] rounded-lg px-4 py-2 flex">
+                    </label>
+                    <label htmlFor="schedule" className="w-[48%] border border-[#1DBF73] rounded-lg cursor-pointer px-4 py-2 flex">
                         <div className="w-[95%] flex flex-col justify-between">
                             <input className="w-max" type="date" name="" id="" />
                             <p className="font-nu font-bold text-[18px]">Schedule Your Test</p>
                         </div>
                         <div>
-                            <input className="w-6 h-6 accent-[#1DBF73]" type="radio" name="test" id="" />
+                            <input className="w-6 h-6 accent-[#1DBF73]" type="radio" name="test" id="schedule" />
                         </div>
-                    </div>
+                    </label>
                 </div>
                 <div className="flex justify-center">
                     <button className="font-pop font-semibold text-white text-[20px] px-4 py-1 rounded-lg bg-[#1DBF73]" type="submit">Submit</button>

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import Img1 from "../../Assets/Images/papheaderbg.png";
 import styled from "styled-components";
+import Test from "../Test/Test";
+import { useNavigate } from "react-router-dom";
 
 export default function Pap(){
 
     const [clicked, setclicked] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    let navigate=useNavigate()
 
     const [formValues, setFormValues] = useState({
       name: "",
@@ -33,7 +36,9 @@ export default function Pap(){
     const closeModal=()=>{
       setIsModalOpen(false);
     }
-
+function handleForm(){
+  navigate('/test')
+}
     // function ClickSection(id) {
     //     if (!clicked) {
     //       setclicked(true);
@@ -337,7 +342,7 @@ export default function Pap(){
                             />
                           </div>
                           <div className="flex justify-center">
-                          <button type="submit" className="btn">
+                          <button onClick={handleForm} type="submit" className="btn">
                             Submit
                           </button>
                           </div>
@@ -346,6 +351,7 @@ export default function Pap(){
                     </div>
                   </div>
                 </Wrapper>
+          
             )}
         </div>
     );
