@@ -35,8 +35,8 @@ const Testimonial = () => {
     {
       text: "Their program cultivated skilled and motivated coders who now excel in their roles, driving impressive performance.They have been able to quickly adopt to their roles and outshine.",
       author: "Sidharth Kakkar",
-      empty:2,
-      stars: 3,
+      empty:0,
+      stars: 5,
       reviews: 4,
       image: '/Sidharth Kakar.jpg',
     },

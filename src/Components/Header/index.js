@@ -28,6 +28,9 @@ export default function Navbar() {
             const targetOffset = papElement.offsetTop - navbarHeight;
             window.scrollTo({ top: targetOffset, behavior: 'smooth' });
         }
+        else{
+            navigate('/pap')
+        }
     }
 
     return (<>
