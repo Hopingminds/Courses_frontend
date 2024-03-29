@@ -46,13 +46,7 @@ const Login = () => {
                 // getUserDetails()
                 localStorage.setItem('COURSES_USER_TOKEN', res.data.token)
                 setTimeout(() => {
-                    if (res.data.role === 'subadmin') {
-                        navigate('/subadmin-dashboard')
-                    }
-                    else {
-
-                        navigate('/')
-                    }
+                    navigate('/')
                 }, 1000);
 
             } catch (error) {
@@ -70,7 +64,7 @@ const Login = () => {
         <>
             <div className='flex overflow-hidden pb-6'>
                 <div className='w-[50%] flex justify-center relative xsm:hidden'>
-                    <img className='w-[60%] object-cover absolute top-10' src='../login_bg.png'/>
+                    <img className='w-[60%] object-cover absolute top-10' src='../login_bg.png' />
                 </div>
                 <div className='flex flex-col items-center my-16 w-[45%] gap-4 xsm:w-full'>
                     <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p>
@@ -94,7 +88,7 @@ const Login = () => {
                                     <input className='' type="checkbox" />
                                     <p className='text-[12px]'>Rememeber me</p>
                                 </div>
-                                <p className='text-[12px]'>Forgot password?</p>
+                                <Link to={'/forgot-password'}><h6>Forgot password?</h6></Link>
                             </div>
                         </div>
                         <div className='flex flex-col items-center gap-4'>
@@ -102,9 +96,9 @@ const Login = () => {
                                 <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold" onClick={handleLogin}>{btnLoader ? "Loading..." : "Login"}</button>
                             </div>
                             <div className='flex items-center '>
-                                    <p className='font-pop text-[14px]'>New User?  </p>
-                                    {/* Sign up link */}
-                                    <Link to={'/register'}>  <h5 className='text-[#1dbf73]'> Sign Up</h5></Link>
+                                <p className='font-pop text-[14px]'>New Here ?</p>
+                                {/* Sign up link */}
+                                <Link to={'/register'}>  <h5 className='text-[#1dbf73]'>Sign Up</h5></Link>
                                 {/* Social media login buttons */}
                             </div>
                         </div>

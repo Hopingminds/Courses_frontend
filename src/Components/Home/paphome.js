@@ -9,17 +9,17 @@ const PapHome = () => {
             <p className='text-center text-[#696984] text-[20px] mt-4 xsm:text-[7px]'>Hoping Minds is democratising education with a unique Pay After Placement (PAP) Model. <br /> PAP allows you to study the course of your choice at ₹0 upfront fee with our PAP Agreement.</p>
             <div className='flex justify-between my-10 space-x-20 xsm:gap-x-2 xsm:space-x-0 xsm:my-4'>
                 <div className='bg-white py-5 px-8 flex flex-col items-center gap-2 shadow-md shadow-[#b4e6ce] rounded-lg xsm:px-2'>
-                    <img className='xsm:w-[24px] xsm:h-[24px]' src='../Icons/pap1.svg'/>
+                    <img className='xsm:w-[24px] xsm:h-[24px]' src='../Icons/pap1.svg' />
                     <h3 className='text-[#696984] text-center text-[20px] xsm:text-[10px]'>Enroll With Us</h3>
                     <p className='text-[#696984] text-justify text-[14px] xsm:text-[7px] xsm:text-balance'>Get trained with online or offline class with additional to technical of aptitude and personality development classes.</p>
                 </div>
                 <div className='bg-white py-5 px-8 flex flex-col items-center gap-2 shadow-md shadow-[#b4e6ce] rounded-lg xsm:px-2'>
-                    <img className='xsm:w-[24px] xsm:h-[24px]' src='../Icons/pap2.svg'/>
+                    <img className='xsm:w-[24px] xsm:h-[24px]' src='../Icons/pap2.svg' />
                     <h3 className='text-[#696984] text-center text-[20px] xsm:text-[10px]'>Get Training</h3>
                     <p className='text-[#696984] text-justify text-[14px] xsm:text-[7px] xsm:text-balance'>Get trained with online or offline class with additional to technical of aptitude and personality development classes.</p>
                 </div>
                 <div className='bg-white py-5 px-8 flex flex-col items-center gap-2 shadow-md shadow-[#b4e6ce] rounded-lg xsm:px-2'>
-                    <img className='xsm:w-[24px] xsm:h-[24px]' src='../Icons/pap3.svg'/>
+                    <img className='xsm:w-[24px] xsm:h-[24px]' src='../Icons/pap3.svg' />
                     <h3 className='text-[#696984] text-center text-[20px] xsm:text-[10px]'>Get Placed & Pay</h3>
                     <p className='text-[#696984] text-justify text-[14px] xsm:text-[7px] xsm:text-balance'>Get trained with online or offline class with additional to technical of aptitude and personality development classes.</p>
                 </div>
