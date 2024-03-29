@@ -1,9 +1,38 @@
 import { useState } from "react";
 import Img1 from "../../Assets/Images/papheaderbg.png";
+import styled from "styled-components";
 
 export default function Pap(){
 
     const [clicked, setclicked] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [formValues, setFormValues] = useState({
+      name: "",
+      email: "",
+      college: "",
+      degree: "",
+      branch: "",
+      yearOfPassing: "",
+      fieldOfStudy: "",
+    });
+
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormValues({ ...formValues, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log("Form submitted:", formValues);
+    };
+
+    const openModal=()=>{
+      setIsModalOpen(true);
+    }
+    const closeModal=()=>{
+      setIsModalOpen(false);
+    }
 
     // function ClickSection(id) {
     //     if (!clicked) {
@@ -178,13 +207,19 @@ export default function Pap(){
                     </div>
                 </div>
                 {/* Agreement */}
-                <div className="my-12">
+                <div className="my-12 relative">
                     <div className="bg-black rounded-xl px-24 py-14 text-white w-full flex flex-col items-center gap-6">
                         <div>
                             <p className="font-pop font-semibold text-[34px]">Pay After Placement(PAP) Agreement</p>
                         </div>
                         <div>
                             <p className="font-nu text-[16px] leading-8">PAP Agreement is a legal contract that makes education at Masai outcome-based. It is not an education loan, as you do not have to pay any interest & you do not require any collaterals. If you do not get placed within 1 year of course completion, your learning with Masai is completely free.</p>
+                        </div>
+                        <div className="">
+                            <button onClick={openModal} className="bg-white text-black font-pop font-medium text-[18px] px-6 py-2 rounded-full">Export Now</button>
+
+                            
+
                         </div>
                     </div>
                 </div>
@@ -218,6 +253,203 @@ export default function Pap(){
                     </div>
                 </div>
             </div>
+
+            {isModalOpen && (
+                <Wrapper>
+                  <div className="modal ">
+                    <div className="form-container w-[50%] rounded-lg overflow-hidden">
+                      <div className="img">
+                        <img src="../img/papmodalbg.jpg" alt="" />
+                        <p className="button">
+                          Pay After Placement Registration Form{" "}
+                        </p>
+                        <button className="close" onClick={closeModal}>
+                          &times;
+                        </button>
+                      </div>
+                      <div className="content">
+                        <form className="form" onSubmit={handleSubmit}>
+                          <div className="form-group">
+                            <label className="text-black" htmlFor="name">Name</label>
+                            <input
+                              type="text"
+                              id="name"
+                              name="name"
+                              value={formValues.name}
+                              onChange={handleChange}
+                            />
+                          </div>
+                          <div className="form-group">
+                            <label className="text-black" htmlFor="email">Email</label>
+                            <input
+                              type="email"
+                              id="email"
+                              name="email"
+                              value={formValues.email}
+                              onChange={handleChange}
+                            />
+                          </div>
+                          <div className="form-group">
+                            <label className="text-black" htmlFor="college">College</label>
+                            <input
+                              type="text"
+                              id="college"
+                              name="college"
+                              value={formValues.college}
+                              onChange={handleChange}
+                            />
+                          </div>
+                          <div className="form-group">
+                            <label className="text-black" htmlFor="degree">Degree</label>
+                            <input
+                              type="text"
+                              name="yearOfPassing"
+                              value={formValues.degree}
+                              onChange={handleChange}
+                            />
+                          </div>
+                          <div className="form-group">
+                            <label className="text-black" htmlFor="branch">Branch</label>
+                            <input
+                              type="text"
+                              name="yearOfPassing"
+                              value={formValues.branch}
+                              onChange={handleChange}
+                            />
+                          </div>
+                          <div className="form-group">
+                            <label className="text-black" htmlFor="yearOfPassing">Year of Passing</label>
+                            <input
+                              type="text"
+                              id="yearOfPassing"
+                              name="yearOfPassing"
+                              value={formValues.yearOfPassing}
+                              onChange={handleChange}
+                            />
+                          </div>
+                          <div className="form-group">
+                            <label className="text-black" htmlFor="fieldOfStudy">Field of Study</label>
+                            <input
+                              type="text"
+                              name="yearOfPassing"
+                              value={formValues.fieldofStudy}
+                              onChange={handleChange}
+                            />
+                          </div>
+                          <div className="flex justify-center">
+                          <button type="submit" className="btn">
+                            Submit
+                          </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </Wrapper>
+            )}
         </div>
     );
-}
+};
+
+const Wrapper = styled.div`
+  width: 50%;
+  margin: 0 auto;
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .content {
+    padding: 10px 5px;
+  }
+
+  .form-container {
+    position: fixed;
+    top:3%;
+    // left:30%;
+    // padding: 0% 2.2% 2.5% 2.2%;
+    // margin-top: -2.3rem;
+    z-index: 999;
+    background-color: #fffdfd;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.7);
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 5% 10% 5%;
+      margin-top: 1rem;
+      position: relative;
+     
+    }
+  }
+  .img {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+  .img img {
+    width: 110%;
+    margin: 0 auto;
+    // margin-left: -5%;
+    height: 80px;
+  }
+  .img .button {
+    position: absolute;
+    top: 35%;
+    left: 5%;
+  }
+
+  .close {
+    position: absolute;
+    cursor: pointer;
+    right: 1%;
+    top: 4%;
+    font-size: 2rem;
+    color: #e3ebe9;
+    border: none;
+    z-index: 100;
+    background-clip: text;
+  }
+  .button {
+    border: none;
+    background-clip: text;
+    color: #eaf1ea;
+    font-size: 1.5rem;
+    font-weight: bolder;
+  }
+
+  .form-group {
+    margin-bottom: 0.5rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  input {
+    outline: none;
+    background-color: #e2fff1;
+    padding: 0.2rem 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .form-container .btn {
+    // position: absolute;
+    margin-top: 0.4rem;
+    left: 40%;
+    padding: 0.3rem 2rem;
+    font-size: 1rem;
+    background-color: #15f2ac;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .form-container .btn:hover {
+    background-color: #75ebd2;
+    transform: translateY(-10px);
+  }
+`;
