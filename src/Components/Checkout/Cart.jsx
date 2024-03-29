@@ -81,6 +81,14 @@ price+=item.course.base_price
         if(!Payment){
             toast.error("Select payment method")
         }
+        else if (!selectedCountry){
+            toast.error("Select country")
+
+        }
+        else if (!selectedState){
+            toast.error("Select state")
+
+        }
         else{
             try {
                 let url=BASE_URL+'/purchasecourse'
