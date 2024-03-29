@@ -32,7 +32,7 @@ export default function WishList(){
             {
                 Data?.map((item)=>{
                     return(<>
-                    <Link to={`/course/${item?.course?.slug}`} className=" px-4 py-6 mt-2 h-[350px] rounded-xl shadow-xl shadow-[#D9D9D9]">
+                    <Link to={`/detailcourse/${item?.course?.slug}`} className=" px-4 py-6 mt-2 h-[350px] rounded-xl shadow-xl shadow-[#D9D9D9]">
                 <div className="h-[55%]">
                     <img className="w-full h-full" src={item.course.featured_image}/>
                 </div>
