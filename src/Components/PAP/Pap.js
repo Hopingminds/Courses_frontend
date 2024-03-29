@@ -256,8 +256,8 @@ export default function Pap(){
 
             {isModalOpen && (
                 <Wrapper>
-                  <div className="modal ">
-                    <div className="form-container w-[50%] rounded-lg overflow-hidden">
+                  <div className="modal bg-black">
+                    <div className="form-container w-[40%] rounded-lg overflow-hidden">
                       <div className="img">
                         <img src="../img/papmodalbg.jpg" alt="" />
                         <p className="button">
@@ -352,7 +352,12 @@ export default function Pap(){
 };
 
 const Wrapper = styled.div`
-  width: 50%;
+  // width: 50%;
+  position:fixed;
+  top:70%;
+  left:30%;
+  // transform:translate(-50%,-50%)
+  z-index:999;
   margin: 0 auto;
   @media screen and (max-width: 768px) {
     width: 90%;
@@ -360,12 +365,12 @@ const Wrapper = styled.div`
   }
 
   .content {
-    padding: 10px 5px;
+    padding: 10px 100px;
   }
 
   .form-container {
     position: fixed;
-    top:3%;
+    top:12%;
     // left:30%;
     // padding: 0% 2.2% 2.5% 2.2%;
     // margin-top: -2.3rem;
@@ -450,6 +455,6 @@ const Wrapper = styled.div`
 
   .form-container .btn:hover {
     background-color: #75ebd2;
-    transform: translateY(-10px);
+    
   }
 `;
