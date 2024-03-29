@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ReactComponent as Cart } from '../../Assets/Icons/cart.svg'
 import { CiHeart } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Globalinfo } from "../../App";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
@@ -10,60 +10,66 @@ import toast, { Toaster } from "react-hot-toast";
 export default function Commoncard(props) {
     let { Data } = props;
     // console.log(Data);
-    let login=localStorage.getItem('COURSES_USER_TOKEN')
+    let login = localStorage.getItem('COURSES_USER_TOKEN')
+    let navigate = useNavigate()
     // const [Show, setShow] = useState(false)
-    async function Addtocart(courseid){
+    async function Addtocart(courseid) {
         try {
-            if(login){
-                let token=jwtDecode()
-                let email=token.email;
-                let quantity=1;
-                let url=BASE_URL+'/addtocart'
-                let data=await fetch(url,{
+            if (login) {
+                let token = jwtDecode(login)
+                let email = token.email;
+                let quantity = 1;
+                let url = BASE_URL + '/addtocart'
+                let data = await fetch(url, {
                     method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body:JSON.stringify({email,courseid,quantity})
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, courseid, quantity })
                 })
-                let response=await data.json()
+                let response = await data.json()
                 console.log(response);
-                if(response.success){
+                if (response.success) {
                     toast.success(response.msg)
                 }
-                else{
+                else {
                     toast.error(response.msg)
                 }
             }
-            
+            else {
+                navigate('/login')
+            }
         } catch (error) {
             console.log(error);
         }
     }
-    async function Addtowishlist(courseid){
+    async function Addtowishlist(courseid) {
         try {
-           if(login){
-            let token=jwtDecode(login)
-            let email=token.email;
-            let url=BASE_URL+'/addtowishlist'
-            let data=await fetch(url,{
-                method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body:JSON.stringify({email,courseid})
-            })
-            let response=await data.json()
-            console.log(response);
-            if(response.success){
-                toast.success(response.msg)
+            if (login) {
+                let token = jwtDecode(login)
+                let email = token.email;
+                let url = BASE_URL + '/addtowishlist'
+                let data = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, courseid })
+                })
+                let response = await data.json()
+                console.log(response);
+                if (response.success) {
+                    toast.success(response.msg)
+                }
+                else {
+                    toast.error(response.msg)
+                }
             }
-            else{
-                toast.error(response.msg)
+            else {
+                navigate('/login')
             }
-           }
         } catch (error) {
             console.log(error);
         }
@@ -83,27 +89,27 @@ export default function Commoncard(props) {
     console.log(purchasedCourses)
     return (
         <div className="bg-[#E2FFF1] w-[33%] h-max my-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg">
-            <div className="h-[225px] xsm:h-[65px]">
+            <div className="h-[225px] bg-white xsm:h-[65px]">
                 <img className="w-full h-full rounded-xl xsm:rounded-md" src={Data?.featured_image} />
             </div>
             <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1">
                 <p className="font-pop font-semibold xsm:text-[8px]">{Data?.title}</p>
                 <div className="flex justify-between items-center xsm:pb-1">
                     <p className="font-nu text-[16px] font-semibold xsm:text-[8px]">₹{Data?.base_price}</p>
-                 
+
                     <div className="gap-x-4 flex items-center xsm:gap-1">
-                           {
-                        !purchasedCourses.includes(Data?._id)?<div className="space-x-4 flex items-center">
-                            <button className="xsm:w-1 xsm:hidden ">
-                                <CiHeart className=" w-6 h-6 xsm:w-3 xsm:h-3"  onClick={()=>Addtowishlist(Data?._id)}/>
-                            </button>
-                            <button className="xsm:w-1 xsm:hidden">
-                                <Cart onClick={()=>Addtocart(Data?._id)}  className="xsm:w-3 xsm:h-3" />
-                            </button>
-                        </div>:''
-                    }
-                        
-                        {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px]">View Course</Link> : <Link to={login ? '/checkout?slug=' + Data?.slug : '/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px]">Join Now</Link>}
+                        {
+                            !purchasedCourses.includes(Data?._id) ? <div className="space-x-4 flex items-center">
+                                <button className="xsm:w-1 xsm:hidden ">
+                                    <CiHeart className=" w-6 h-6 xsm:w-3 xsm:h-3" onClick={() => Addtowishlist(Data?._id)} />
+                                </button>
+                                <button className="xsm:w-1 xsm:hidden">
+                                    <Cart onClick={() => Addtocart(Data?._id)} className="xsm:w-3 xsm:h-3" />
+                                </button>
+                            </div> : ''
+                        }
+
+                        {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px]">View Course</Link> : <Link to={login ? '/checkout?slug=' + Data?.slug : '/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px]">Buy Now</Link>}
                     </div>
                 </div>
                 <div className="flex flex-col gap-6 my-6 xsm:hidden">
@@ -123,7 +129,7 @@ export default function Commoncard(props) {
                         </div>
                         <hr />
                     </div>
-                    
+
                     <div className="space-y-4">
                         <p className="font-pop font-semibold">Training 5 Or More People</p>
                         <p className="font-pop text-[#555555] text-[12px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -139,7 +145,7 @@ export default function Commoncard(props) {
                     </div>
                 </div>
             </div>
-            <Toaster/>
+            <Toaster />
         </div>
     );
 }

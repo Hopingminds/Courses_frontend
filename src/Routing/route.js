@@ -30,6 +30,9 @@ import Pap from '../Components/PAP/Pap.js'
 import Forgotpassword from '../Components/forgotPassword/forgotPassword.js'
 import CareerServices from '../Components/CareerServices/CareerServices.js'
 import AiMinds from '../Components/AiMinds/AiMinds.jsx'
+import PapModal from '../Components/PAP/PapModal.jsx'
+import ReturnPolicy from '../Components/policies/ReturnPolicy.js'
+import ShippingPolicy from '../Components/policies/ShippingPolicy.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -71,8 +74,11 @@ const Router = () => {
                 <Route path='/subadmin-login' element={<SubAdmin />} />
                 <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
                 <Route path='/pap' element={<Pap />} />
+                <Route path='/papmodal' element={<PapModal />} />
                 <Route path='/career' element={<CareerServices />} />
                 <Route path='/ai' element={<AiMinds />} />
+                <Route path='/privacy' element={<ReturnPolicy />} />
+                <Route path='/terms' element={<ShippingPolicy />} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
