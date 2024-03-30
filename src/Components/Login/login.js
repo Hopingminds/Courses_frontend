@@ -9,6 +9,7 @@ import { BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
 import { IoEyeOffOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
+import { jwtDecode } from 'jwt-decode';
 
 
 
@@ -26,13 +27,20 @@ const Login = () => {
     });
     // console.log(userDetail)
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+
         console.log(user)
         setBtnLoader(true);
 
         if (!validateEmail(user.email)) {
             toast.error('Enter valid Email  Address')
             setBtnLoader(false)
+            return;
+        }
+        else if (!user.password) {
+            toast.error("Enter Your Password")
+            setBtnLoader(false)
+            return;
         }
         else {
             try {
@@ -44,13 +52,26 @@ const Login = () => {
                 console.log(res);
                 getUserDetails()
                 toast.success("Login Successfull")
-                // GetCart()
-                // GetWishList()
-                // getUserDetails()
+                console.log(userDetail)
                 localStorage.setItem('COURSES_USER_TOKEN', res.data.token)
-                setTimeout(() => {
-                    navigate('/')
-                }, 1000);
+                if (res.status) {
+                    const decoded = jwtDecode(res.data.token);
+                    console.log(decoded)
+                    try {
+                        const res = await axios.get(`${BASE_URL}/user/${decoded.email}`)
+                        console.log(res.data.userDetails)
+                        if (res.data.userDetails.purchased_courses.length > 0) {
+                            navigate('/learning')
+                        }
+                        else {
+                            navigate('/')
+                        }
+
+                    } catch (error) {
+                        console.log(error)
+                    }
+                }
+
 
             } catch (error) {
                 console.log(error.response.data.error);
@@ -58,6 +79,13 @@ const Login = () => {
             } finally {
                 setBtnLoader(false)
             }
+        }
+    }
+
+    const handleKeyDown = (e) => {
+        console.log(e.key)
+        if (e.key == 'Enter') {
+            handleLogin()
         }
     }
 
@@ -80,11 +108,11 @@ const Login = () => {
                         <div className='flex flex-col gap-4'>
                             <div>
                                 <p className='text-[14px] font-pop'>Username/Email</p>
-                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="text" placeholder="Enter Your Username/Email" name="email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
+                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="text" placeholder="Enter Your Username/Email" name="email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} onKeyDown={handleKeyDown} />
                             </div>
                             <div style={{ position: "relative" }}>
                                 <p className='text-[14px] font-pop'>Password</p>
-                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type={showPassword ? "text" : "password"} placeholder="Enter Your Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type={showPassword ? "text" : "password"} placeholder="Enter Your Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} onKeyDown={handleKeyDown} />
                                 <span style={{ position: "absolute", bottom: "12px", right: "15px" }}> {
                                     showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />
                                 }
@@ -100,7 +128,7 @@ const Login = () => {
                         </div>
                         <div className='flex flex-col items-center gap-4'>
                             <div className=''>
-                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold" onClick={handleLogin}>{btnLoader ? "Loading..." : "Login"}</button>
+                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold" onClick={handleLogin} >{btnLoader ? "Loading..." : "Login"}</button>
                             </div>
                             <div className='flex items-center '>
                                 <p className='font-pop text-[14px]'>New Here ?</p>

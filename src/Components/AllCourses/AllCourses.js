@@ -20,6 +20,7 @@ const AllCourses = () => {
   const [allCourses, setAllCourses] = useState([]);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [Data, setData] = useState([])
+  const [searchquery, setSearchQuery] = useState('');
   const [SearchedData, setSearchedData] = useState([])
   const [userData, setUserData] = useState({
     [User1]: {
@@ -85,8 +86,10 @@ const AllCourses = () => {
 
     } catch (error) { }
   };
+
   function SearchData(e) {
     let query = e.target.value;
+    // setSearchQuery(e.target.value);
     // console.log(query);
     // console.log(query);
     if (query == '') {
@@ -123,6 +126,8 @@ const AllCourses = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  console.log(SearchedData)
 
   return (
     <>
