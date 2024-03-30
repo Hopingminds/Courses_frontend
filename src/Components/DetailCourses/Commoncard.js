@@ -139,16 +139,16 @@ export default function Commoncard(props) {
                     <div className="space-y-4">
                         <p className="font-pop font-semibold">Share this course</p>
                         <div className="flex space-x-4">
-                        <RWebShare
-        data={{
-          text: "Hoping Minds",
-          url: "http://localhost:3001/",
-          title: "Hoping Minds",
-        }}
-        onClick={() => console.log("shared successfully!")}
-      >
-        <IoIosShareAlt className="h-6 w-6" />
-      </RWebShare>
+                            <RWebShare
+                                data={{
+                                    text: "Hoping Minds",
+                                    url: "http://localhost:3001/",
+                                    title: "Hoping Minds",
+                                }}
+                                onClick={() => console.log("shared successfully!")}
+                            >
+                                <IoIosShareAlt className="h-6 w-6" />
+                            </RWebShare>
                             {/* <Link to={'https://www.facebook.com/share/Z3c1iwpnxsDk3YJH/?mibextid=qi2Omg'}><img className="w-[12px]" src="../Icons/facebook.svg" /></Link> */}
                             {/* <Link to={'https://www.instagram.com/hopingminds_?igsh=MWxvN2F5YmM0aW1lYQ=='}><img className="w-[20px]" src="../Icons/instagram.svg" /></Link> */}
                             {/* <Link to={'https://youtube.com/@HopingMinds?si=t7nBGjhMukWF6aN9'}><img className="w-[24px]" src="../Icons/youtube12.svg" /></Link> */}
@@ -156,7 +156,7 @@ export default function Commoncard(props) {
                     </div>
                 </div>
             </div>
-            <Toaster />
+            <Toaster position="top-right" />
         </div>
     );
 }

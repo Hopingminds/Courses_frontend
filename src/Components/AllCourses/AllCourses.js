@@ -12,6 +12,7 @@ import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import { Link, useSearchParams } from "react-router-dom";
 import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
+import NewTestimonial from "../Testimonial/NewTestimonial";
 
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
@@ -64,45 +65,45 @@ const AllCourses = () => {
     fetchCourses();
   }, []);
 
-  const [params,setparams]=useSearchParams()
+  const [params, setparams] = useSearchParams()
   const fetchCourses = async () => {
     try {
-      let category=params.get('category')
-      
-      if(category){
+      let category = params.get('category')
+
+      if (category) {
         const res = await axios.get(`${BASE_URL}/courses?category=${category}`);
-      // console.log(res);
-      setAllCourses(res.data.courses);
-      setData(res.data.courses)
+        // console.log(res);
+        setAllCourses(res.data.courses);
+        setData(res.data.courses)
       }
-      else{
+      else {
         const res = await axios.get(`${BASE_URL}/courses`);
         // console.log(res);
         setAllCourses(res.data.courses);
         setData(res.data.courses)
       }
-      
+
     } catch (error) { }
   };
-	function SearchData(e){
-		let query=e.target.value;
+  function SearchData(e) {
+    let query = e.target.value;
     // console.log(query);
-        // console.log(query);
-        if(query==''){
-            setSearchedData([])
-			// console.log("query:",Data);
-			setAllCourses(Data)
-        }
-        else{
-       setSearchedData(allCourses.filter((item)=>{
-            const searchitem=query.toLowerCase()
-              const slug=item.slug.toLowerCase()
-            // console.log(slug);
-            // console.log(searchitem && (slug.includes(searchitem)));
-              return searchitem && (slug.includes(searchitem));
-        }))
-      }
-	}
+    // console.log(query);
+    if (query == '') {
+      setSearchedData([])
+      // console.log("query:",Data);
+      setAllCourses(Data)
+    }
+    else {
+      setSearchedData(allCourses.filter((item) => {
+        const searchitem = query.toLowerCase()
+        const slug = item.slug.toLowerCase()
+        // console.log(slug);
+        // console.log(searchitem && (slug.includes(searchitem)));
+        return searchitem && (slug.includes(searchitem));
+      }))
+    }
+  }
   const toggleShowAllCards = () => {
     setShowAllCards((prevShowAllCards) => !prevShowAllCards);
   };
@@ -134,79 +135,30 @@ const AllCourses = () => {
         style={{ backgroundImage: `url(${Img1})`, backgroundSize: "cover" }}
       >
         <div className="flex flex-row rounded-2xl w-[80%] xsm:w-[90%] xsm:rounded-md">
-       <div className="relative w-full">
-       <input
-            type="text"
-            placeholder=""
-            onChange={SearchData}
-            className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] ${!SearchedData.length?"rounded-bl-2xl":'rounded-bl-0'}`}
-          />
-          <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center">
-            {
-              SearchedData.map((item,ind)=>{
-                // console.log(item.);
-return(<>
-<Link key={ind} to={"/detailcourse/" + item.slug} className="text-center py-1 border-b-[2px]" >{item.title}</Link>
+          <div className="relative w-full">
+            <input
+              type="text"
+              placeholder=""
+              onChange={SearchData}
+              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] ${!SearchedData.length ? "rounded-bl-2xl" : 'rounded-bl-0'}`}
+            />
+            <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center">
+              {
+                SearchedData.map((item, ind) => {
+                  // console.log(item.);
+                  return (<>
+                    <Link key={ind} to={"/detailcourse/" + item.slug} className="text-center py-1 border-b-[2px]" >{item.title}</Link>
 
-</>)
-              })
-            }
+                  </>)
+                })
+              }
+            </div>
           </div>
-       </div>
           <button className="text-[#ffffff] text-[22px] font-pop bg-[#1DBF73] rounded-r-2xl py-1 px-10 xsm:rounded-r-md xsm:text-[10px] xsm:py-1 xsm:px-2">
             Search
           </button>
         </div>
-        {/* <div className="grid grid-cols-6 gap-4 w-[80%] font-pop xsm:w-[90%] xsm:gap-2 xsm:grid-cols-4">
-          <select className="w-full p-3 px-1 text-[16px] text-[#000000] font-pop rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
-            <option value="" disabled selected hidden>
-              Subject
-            </option>
-            <option value="math">Math</option>
-            <option value="science">Science</option>
-            <option value="history">History</option>
-          </select> 
-          <select className="w-full p-3 px-1 text-[16px] text-[#000000] rounded-lg outline-none flex text-center xsm:hidden">
-            <option value="" disabled selected hidden>
-              Partner
-            </option>
-            <option value="math">Math</option>
-            <option value="science">Science</option>
-            <option value="history">History</option>
-          </select>
-          <select className="w-full p-3 px-1 text-[16px] text-[#000000] rounded-lg outline-none flex text-center xsm:hidden">
-            <option value="" disabled selected hidden>
-              Program
-            </option>
-            <option value="math">Math</option>
-            <option value="science">Science</option>
-            <option value="history">History</option>
-          </select>
-          <select className="w-full p-3 px-1 text-[16px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
-            <option value="" disabled selected hidden>
-              Language
-            </option>
-            <option value="math">Math</option>
-            <option value="science">Science</option>
-            <option value="history">History</option>
-          </select>
-          <select className="w-full p-3 px-1 text-[16px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
-            <option value="" disabled selected hidden>
-              Ability
-            </option>
-            <option value="math">Math</option>
-            <option value="science">Science</option>
-            <option value="history">History</option>
-          </select>
-          <select className="w-full py-3 text-[16px] text-[#000000] rounded-lg outline-none flex text-center xsm:text-[7px] xsm:py-1 xsm:px-0 xsm:rounded-sm">
-            <option value="" disabled selected hidden>
-              Learning Type
-            </option>
-            <option value="math">Math</option>
-            <option value="science">Science</option>
-            <option value="history">History</option>
-          </select>
-        </div> */}
+
       </div>
 
       {/* cards */}
@@ -249,9 +201,9 @@ return(<>
                     {val?.title}
                   </p>
                   <p className="font-pop text-[14px] text-[#555555] xsm:hidden">
-                 {
-                  val?.overview.slice(0,70)
-                 }..
+                    {
+                      val?.overview.slice(0, 70)
+                    }..
                   </p>
                 </div>
                 <div className=" flex items-center justify-between">
@@ -261,7 +213,7 @@ return(<>
                       src="../img/RCimg2.png"
                     />
                     <p className="font-pop font-medium text-[14px] xsm:text-[6px]">
-                      {val?.instructor.firstName +' '+ val?.instructor.lastName}
+                      {val?.instructor.firstName + ' ' + val?.instructor.lastName}
                     </p>
                   </div>
                   <div>
@@ -278,109 +230,10 @@ return(<>
 
       {/* recommended cards */}
       <RecommendedCourses />
-     
 
-      {/* creater */}
-      {/* <div className="flex flex-col gap-14 px-24 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-6">
-        <p className="text-[#252641] text-[32px] font-pop font-semibold pl-4 xsm:text-[10px] xsm:pl-0">
-          Classes taught by real creators
-        </p>
-        <div className="grid grid-cols-3 gap-16 xsm:gap-6">
-          <div className="h-[40vh] flex justify-center items-end relative xsm:h-[18vh]">
-            <div
-              className="flex flex-col gap-2 h-[65%] justify-end items-center text-center py-6 xsm:py-1 xsm:gap-0 xsm:h-[70%]"
-              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-            >
-              <p className="text-[#252641] text-[22px] font-pop font-semibold xsm:text-[8px]">
-                Adam
-              </p>
-              <p className="text-[#696984] text-[14px] font-pop w-[90%] xsm:text-[6px] xsm:tracking-tight xsm:leading-tight">
-                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                eiusmod tempor
-              </p>
-            </div>
-            <img src={Img2} className="absolute top-0 w-[53%]" />
-          </div>
-          <div className="h-[40vh] flex justify-center items-end relative xsm:h-[18vh]">
-            <div
-              className="flex flex-col gap-2 h-[65%] justify-end items-center text-center py-6 xsm:py-1 xsm:gap-0 xsm:h-[70%]"
-              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-            >
-              <p className="text-[#252641] text-[22px] font-pop font-semibold xsm:text-[8px]">
-                Adam
-              </p>
-              <p className="text-[#696984] text-[14px] font-pop w-[90%] xsm:text-[6px] xsm:tracking-tight xsm:leading-tight">
-                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                eiusmod tempor
-              </p>
-            </div>
-            <img src={Img2} className="absolute top-0 w-[53%]" />
-          </div>
-          <div className="h-[40vh] flex justify-center items-end relative xsm:h-[18vh]">
-            <div
-              className="flex flex-col gap-2 h-[65%] justify-end items-center text-center py-6 xsm:py-1 xsm:gap-0 xsm:h-[70%]"
-              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-            >
-              <p className="text-[#252641] text-[22px] font-pop font-semibold xsm:text-[8px]">
-                Adam
-              </p>
-              <p className="text-[#696984] text-[14px] font-pop w-[90%] xsm:text-[6px] xsm:tracking-tight xsm:leading-tight">
-                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                eiusmod tempor
-              </p>
-            </div>
-            <img src={Img2} className="absolute top-0 w-[53%]" />
-          </div>
-          <div className="h-[40vh] flex justify-center items-end relative xsm:h-[18vh]">
-            <div
-              className="flex flex-col gap-2 h-[65%] justify-end items-center text-center py-6 xsm:py-1 xsm:gap-0 xsm:h-[70%]"
-              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-            >
-              <p className="text-[#252641] text-[22px] font-pop font-semibold xsm:text-[8px]">
-                Adam
-              </p>
-              <p className="text-[#696984] text-[14px] font-pop w-[90%] xsm:text-[6px] xsm:tracking-tight xsm:leading-tight">
-                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                eiusmod tempor
-              </p>
-            </div>
-            <img src={Img2} className="absolute top-0 w-[53%]" />
-          </div>
-          <div className="h-[40vh] flex justify-center items-end relative xsm:h-[18vh]">
-            <div
-              className="flex flex-col gap-2 h-[65%] justify-end items-center text-center py-6 xsm:py-1 xsm:gap-0 xsm:h-[70%]"
-              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-            >
-              <p className="text-[#252641] text-[22px] font-pop font-semibold xsm:text-[8px]">
-                Adam
-              </p>
-              <p className="text-[#696984] text-[14px] font-pop w-[90%] xsm:text-[6px] xsm:tracking-tight xsm:leading-tight">
-                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                eiusmod tempor
-              </p>
-            </div>
-            <img src={Img2} className="absolute top-0 w-[53%]" />
-          </div>
-          <div className="h-[40vh] flex justify-center items-end relative xsm:h-[18vh]">
-            <div
-              className="flex flex-col gap-2 h-[65%] justify-end items-center text-center py-6 xsm:py-1 xsm:gap-0 xsm:h-[70%]"
-              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-            >
-              <p className="text-[#252641] text-[22px] font-pop font-semibold xsm:text-[8px]">
-                Adam
-              </p>
-              <p className="text-[#696984] text-[14px] font-pop w-[90%] xsm:text-[6px] xsm:tracking-tight xsm:leading-tight">
-                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                eiusmod tempor
-              </p>
-            </div>
-            <img src={Img2} className="absolute top-0 w-[53%]" />
-          </div>
-        </div>
-      </div> */}
 
-      {/* review */}
-      <div className="flex flex-col gap-10 bg-[#E2FFF1] px-28 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-2">
+
+      {/* <div className="flex flex-col gap-10 bg-[#E2FFF1] px-28 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-2">
         <p className="text-[#000000] text-[30px] font-pop font-semibold xsm:text-[8px]">
           What our students have to say
         </p>
@@ -410,7 +263,7 @@ return(<>
                   </p>
                   <p className="text-[#696984] text-[16px] font-pop xsm:hidden">
                     {userData[selectedUser]?.description3}
-                  </p> */}
+                  </p> 
                 </div>
                 <div className="flex flex-row gap-6 xsm:gap-2">
                   <img src={Icon1} className="w-[6%] object-contain " />
@@ -443,7 +296,8 @@ return(<>
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <NewTestimonial />
     </>
   );
 };

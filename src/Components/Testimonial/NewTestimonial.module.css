@@ -1,0 +1,60 @@
+.main_container {
+  background-color: black;
+  height: fit-content;
+  padding-block: 5vh;
+  padding-inline: 3vw;
+}
+.main_container h2 {
+  color: white;
+  margin-bottom: 10px;
+}
+.container {
+  width: 100%;
+  display: grid;
+  gap: 2rem;
+  /* border: 1px solid red; */
+}
+.mov_line1,
+.mov_line2 {
+  display: flex;
+  width: fit-content;
+  overflow-x: hidden;
+  /* border: 1px solid red; */
+  gap: 2rem;
+}
+.testimonial {
+  /* border: 1px solid red; */
+  height: 20rem;
+  width: 38rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.testimonial img {
+  height: 40vh;
+  width: auto;
+  border-radius: 15px;
+}
+
+.about {
+  background-color: #4c4646;
+  color: white;
+  height: 40vh;
+  border-radius: 15px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.about p {
+  font-size: 0.82rem;
+  text-align: justify;
+}
+.about span {
+  display: flex;
+  justify-content: space-between;
+}
+.about span img {
+  height: 30px;
+  width: 30px;
+}

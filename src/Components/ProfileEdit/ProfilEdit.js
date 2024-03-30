@@ -256,7 +256,7 @@ const ProfilEdit = () => {
           </button>
         </div>
       </div>
-      <Toaster />
+      <Toaster position="top-right" />
     </>
   );
 };

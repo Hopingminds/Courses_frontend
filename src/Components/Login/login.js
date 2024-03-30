@@ -7,6 +7,8 @@ import { validateEmail } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
+import { IoEyeOffOutline } from "react-icons/io5";
+import { IoEyeOutline } from "react-icons/io5";
 
 
 
@@ -14,6 +16,7 @@ const Login = () => {
     const navigate = useNavigate();
     const { userDetail, getUserDetails, GetCart, GetWishList } = useContext(Globalinfo)
     const [btnLoader, setBtnLoader] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const [switchBtn, setSwitchBtn] = useState(1);
     const [user, setUser] = useState({
 
@@ -50,8 +53,8 @@ const Login = () => {
                 }, 1000);
 
             } catch (error) {
-                console.log(error);
-                toast.error("Some Error Occured while Login")
+                console.log(error.response.data.error);
+                toast.error(error.response.data.error)
             } finally {
                 setBtnLoader(false)
             }
@@ -79,9 +82,13 @@ const Login = () => {
                                 <p className='text-[14px] font-pop'>Username/Email</p>
                                 <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="text" placeholder="Enter Your Username/Email" name="email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
                             </div>
-                            <div>
+                            <div style={{ position: "relative" }}>
                                 <p className='text-[14px] font-pop'>Password</p>
-                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type={showPassword ? "text" : "password"} placeholder="Enter Your Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                                <span style={{ position: "absolute", bottom: "12px", right: "15px" }}> {
+                                    showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />
+                                }
+                                </span>
                             </div>
                             <div className='flex justify-between'>
                                 <div className='flex items-center gap-1'>
@@ -105,7 +112,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <Toaster />
+            <Toaster position="top-right" />
         </>
     );
 };

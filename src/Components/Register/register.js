@@ -3,10 +3,11 @@ import './register.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
-import { validateEmail } from '../../helpers';
+import { validateCollege, validateEmail } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
+import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 
 
 const Register = () => {
@@ -35,6 +36,16 @@ const Register = () => {
 
     const handleRegister = async () => {
         console.log(user)
+
+        if (!validateEmail(user.email)) {
+            toast.error('Enter valid Email')
+            return;
+        }
+        if (!validateCollege(user.college)) {
+            toast.error('Enter valid College Name')
+            return;
+        }
+
         if (!user.password || !user.email || !user.college) {
             toast.error("Enter Valid Credentials")
             return;
@@ -53,7 +64,7 @@ const Register = () => {
 
             console.log(res);
 
-            toast.success("Register Successfull")
+            toast.success("Registered Successfully")
 
             setTimeout(() => {
                 navigate('/login')
@@ -61,8 +72,8 @@ const Register = () => {
 
 
         } catch (error) {
-            console.log(error);
-            toast.error("Some Error Occured while Login")
+            // console.log(error.response.data.error.error);
+            toast.error(error.response.data.error.error)
         } finally {
             setBtnLoader(false)
         }
@@ -93,9 +104,13 @@ const Register = () => {
                                 <p className='text-[14px] font-pop'>College/University</p>
                                 <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="text" placeholder="Enter Your College/University" name="college" value={user.college} onChange={handleChange} />
                             </div>
-                            <div>
+                            <div style={{ position: "relative" }}>
                                 <p className='text-[14px] font-pop'>Password</p>
-                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={handleChange} />
+                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type={showPassword ? "text" : "password"} placeholder="Enter Your Password" name="password" value={user.password} onChange={handleChange} />
+                                <span style={{ position: "absolute", bottom: "12px", right: "15px" }}> {
+                                    showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />
+                                }
+                                </span>
                             </div>
                             {/* set hidden so that we don't get error */}
                             {/* <div className='flex flex-col gap-2 hidden'>
@@ -132,7 +147,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-            <Toaster />
+            <Toaster position="top-right" />
         </>
     );
 };

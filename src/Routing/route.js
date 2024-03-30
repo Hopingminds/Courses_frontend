@@ -33,6 +33,7 @@ import AiMinds from '../Components/AiMinds/AiMinds.jsx'
 import ReturnPolicy from '../Components/policies/ReturnPolicy.js'
 import ShippingPolicy from '../Components/policies/ShippingPolicy.js'
 import Test from '../Components/Test/Test.jsx'
+import HireFromUs from '../Components/HireFromUs/hireFromUs.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -79,6 +80,7 @@ const Router = () => {
                 <Route path='/privacy' element={<ReturnPolicy />} />
                 <Route path='/terms' element={<ShippingPolicy />} />
                 <Route path='/test' element={<Test />} />
+                <Route path='/hire-from-us' element={<HireFromUs />} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 

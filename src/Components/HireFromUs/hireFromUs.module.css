@@ -1,0 +1,90 @@
+.banner_section {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+}
+
+.banner_section h2 {
+  position: absolute;
+  top: 50%;
+  left: 7%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 2rem;
+}
+.main_container {
+  display: grid;
+  grid-template-columns: 0.8fr 2fr;
+  padding-inline: 5vw;
+  margin-block: 5vh;
+  gap: 3rem;
+}
+
+.side_filter {
+  background-color: #e2fff1;
+  border-radius: 20px;
+  height: fit-content;
+  padding: 2rem 2.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.side_filter ul {
+  list-style-type: none;
+  cursor: pointer;
+}
+.side_filter span {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-block: 10px;
+}
+.side_filter li {
+  padding-inline: 10px;
+  display: flex;
+  gap: 20px;
+}
+.dropdown_head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  border-bottom: 1px solid black;
+}
+.dropdown_head svg {
+  height: 20px;
+  width: 20px;
+}
+
+.card_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.hire_bottom {
+  background-color: black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding-inline: 15vw;
+  padding-block: 10vh;
+  gap: 10px;
+}
+.hire_bottom h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+.hire_bottom p {
+  text-align: justify;
+}
+.hire_bottom button {
+  background-color: white;
+  color: black;
+  width: fit-content;
+  justify-self: center;
+  align-self: center;
+  padding: 5px 10px;
+  font-size: 1.1rem;
+  border-radius: 13px;
+}
