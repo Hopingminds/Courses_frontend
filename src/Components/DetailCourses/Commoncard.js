@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ReactComponent as Cart } from '../../Assets/Icons/cart.svg'
+import { ReactComponent as Cart } from '../../Assets/Icons/cartblack.svg'
 import { CiHeart } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
 import { Globalinfo } from "../../App";
