@@ -12,20 +12,22 @@ import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import { BASE_URL } from '../../Api/api';
+import Spinner from '../Spinner';
 
 export default function MyLearning() {
     const navigate = useNavigate()
+    const [show, setshow] = useState(false)
     const [showpage, setshowpage] = useState('courses');
     const [purchasedCourses, setPurchasedCourses] = useState();
 
     const fetchUserData = async (email) => {
-        // setshow(true)
+        setshow(true)
         try {
             const res = await axios.get(`${BASE_URL}/user/${email}`)
             // console.log(res.data[0]?.purchased_courses)
             setPurchasedCourses(res?.data?.userDetails?.purchased_courses)
-            // console.log(res);
-            // setshow(false)
+            setshow(false)
+
         } catch (error) {
             console.log(error)
         }
@@ -66,6 +68,10 @@ export default function MyLearning() {
                     <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px]' onClick={() => setshowpage('stats')} style={{ borderBottom: showpage === 'stats' ? "2px solid white" : "1px solid transparent" }}>My Stats</button>
                 </div>
             </div>
+            {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
+                <Spinner className='' />
+
+            </div> : ''}
             {showpage === 'courses' ? <Mycourse courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses}/> : showpage === 'stats' ? <MyStats courses={purchasedCourses}/> : <Assignment courses={purchasedCourses}/>}
             <RecommendedCourses className={'bg-[#E2FFF1]'} />
         </div>

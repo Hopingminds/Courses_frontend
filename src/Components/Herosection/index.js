@@ -18,7 +18,7 @@ export default function Herosection() {
             <div className='w-[55%] flex justify-center items-center  relative text-[#545567] mb-5 pb-5'>
                 <div className='h-[70%] w-[90%]'>
 
-                    <img src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/1711798459577-homepage.gif " alt="" />
+                    <img src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1711955580289-homepage-small.gif " alt="" />
                     {/* <img src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/1711950517336-homepage-small.gif " alt="" /> */}
 
                 </div>
