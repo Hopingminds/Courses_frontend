@@ -19,6 +19,7 @@ export default function Herosection() {
                 <div className='h-[70%] w-[90%]'>
 
                     <img src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/1711798459577-homepage.gif " alt="" />
+                    {/* <img src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/1711950517336-homepage-small.gif " alt="" /> */}
 
                 </div>
 

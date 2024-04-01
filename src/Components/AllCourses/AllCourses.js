@@ -22,6 +22,7 @@ const AllCourses = () => {
   const [Data, setData] = useState([])
   const [searchquery, setSearchQuery] = useState('');
   const [SearchedData, setSearchedData] = useState([])
+  const [Temp, setTemp] = useState([])
   const [userData, setUserData] = useState({
     [User1]: {
       name: "SAURABH PAL",
@@ -76,12 +77,15 @@ const AllCourses = () => {
         // console.log(res);
         setAllCourses(res.data.courses);
         setData(res.data.courses)
+        setTemp(res.data.courses)
       }
       else {
         const res = await axios.get(`${BASE_URL}/courses`);
         // console.log(res);
         setAllCourses(res.data.courses);
         setData(res.data.courses)
+        setTemp(res.data.courses)
+
       }
 
     } catch (error) { }
@@ -99,6 +103,13 @@ const AllCourses = () => {
     }
     else {
       setSearchedData(allCourses.filter((item) => {
+        const searchitem = query.toLowerCase()
+        const slug = item.slug.toLowerCase()
+        // console.log(slug);
+        // console.log(searchitem && (slug.includes(searchitem)));
+        return searchitem && (slug.includes(searchitem));
+      }))
+      setAllCourses(allCourses.filter((item) => {
         const searchitem = query.toLowerCase()
         const slug = item.slug.toLowerCase()
         // console.log(slug);
@@ -127,7 +138,7 @@ const AllCourses = () => {
     };
   }, []);
 
-  console.log(SearchedData)
+  // console.log(SearchedData)
 
   return (
     <>
@@ -167,6 +178,8 @@ const AllCourses = () => {
       </div>
 
       {/* cards */}
+      {!allCourses?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Found</div></div>:''}
+
       <div className="my-10 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%]">
         {allCourses.map((val, ind) => {
           return (
