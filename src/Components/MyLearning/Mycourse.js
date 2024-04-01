@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Mycourse({ courses }) {
 
     return (
-        <div className="my-5 mx-[5%] grid grid-cols-3 gap-16 gap-y-8 xsm:my-2">
+        <div className="my-5 mx-[5%] grid grid-cols-3 gap-16 gap-y-8 xsm:my-3 xsm:gap-4">
 
             {
                 courses?.map((val, ind) => {
@@ -15,8 +15,8 @@ export default function Mycourse({ courses }) {
                     })
                     return (
                         <Link to={`/course/${val?.course?.slug}`} className="w-full flex flex-col justify-between p-4  mt-2 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm">
-                            <div className="w-full h-[50%] bg-black">
-                                <img className="w-full h-full xsm:rounded-sm xsm:h-[55px]" src={val?.course?.featured_image} />
+                            <div className="w-full h-[50%]">
+                                <img className="w-full h-full xsm:rounded-md xsm:h-[55px]" src={val?.course?.featured_image} />
                             </div>
                             <div className="h-[45%] flex flex-col justify-between mt-2 xsm:space-y-1 xsm:mt-1">
                                 <p className="font-pop font-semibold text-[18px] xsm:text-[6px]">{val?.course?.title}</p>
