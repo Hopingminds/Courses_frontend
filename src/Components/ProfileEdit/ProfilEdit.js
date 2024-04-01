@@ -89,6 +89,7 @@ const ProfilEdit = () => {
         console.log(res);
         if (res.data.success) {
           setUploadLoader(false);
+          toast.success("Profile Picture Updated");
           setUser({ ...user, profile: res.data.url });
         }
       } catch (error) {
@@ -159,8 +160,8 @@ const ProfilEdit = () => {
             </button>
           </div>
           <div className="absolute w-[160px] h-[160px] rounded-full top-28 xsm:h-[80px] xsm:w-[80px] xsm:top-10 bg-[#FFFFFF]">
-            {uploadLoader ? <div className="loader grid items-center">uploading...</div> : <img
-              src={user.profile ? user.profile : User}
+            {uploadLoader ? <div className="grid items-center justify-center h-[100%] w-[100%]"><p>uploading... </p> </div> : <img
+              src={user.profile ? user.profile : 'https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png'}
               className="w-full h-full rounded-full object-fit xsm:h-[80px] xsm:w-[80px] object-contain"
             />}
             <div className="absolute w-[40px] h-[40px] bg-[#E2FFF1] text-[#E2FFF1] shadow-sm rounded-full top-[65%] right-[0%] flex justify-center items-center cursor-pointer
