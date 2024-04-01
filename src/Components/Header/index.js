@@ -12,7 +12,7 @@ export default function Navbar() {
     // console.log(userDetail)
     const location = useLocation();
     console.log(location);
-    let navigate = useNavigate()
+        
 
     function Top() {
         window.scrollTo(0, 0);
