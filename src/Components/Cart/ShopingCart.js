@@ -4,10 +4,12 @@ import { BASE_URL } from '../../Api/api';
 import { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { Link } from 'react-router-dom';
+import Spinner from '../Spinner';
 
 function ShopingCart() {
     const [Data, setData] = useState([])
     const [total, settotal] = useState(0)
+const [show, setshow] = useState(false)
     let token = jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
 
     function Total(data) {
@@ -18,6 +20,7 @@ function ShopingCart() {
         settotal(price)
     }
     async function Removecart(courseid) {
+        setshow(true)
         let url = BASE_URL + '/removefromcart'
         let data = await fetch(url, {
             method: 'POST',
@@ -33,6 +36,8 @@ function ShopingCart() {
             setData(response.data)
             Total(response.data)
             toast.success(response.message)
+            setshow(false)
+
         }
         else {
             toast.error(response.message)
@@ -42,13 +47,15 @@ function ShopingCart() {
     useEffect(() => {
         async function Fetchdata() {
             // console.log(token);
+            setshow(true)
             let url = BASE_URL + '/getcart?email=' + token.email;
-            console.log(url);
+            // console.log(url);
             const data = await fetch(url)
             const response = await data.json()
             setData(response?.cart)
             Total(response?.cart)
-            console.log(response);
+            setshow(false)
+            // console.log(response);
         }
         Fetchdata()
 
@@ -155,6 +162,10 @@ function ShopingCart() {
                     </div>
                 </div>
             </div>
+            {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
+                <Spinner className='' />
+
+            </div> : ''}
             <Toaster position="top-right" />
         </div>
 
