@@ -75,7 +75,7 @@ const Testimonial = () => {
 
   return (
     <>
-      <div className="flex flex-row  justify-between pt-0 px-[5%] pb-32 xsm:px-[5%] xsm:pb-0 xsm:gap-4">
+      <div className="flex flex-row  justify-between pt-0 px-[5%] pb-32 xsm:px-[5%] xsm:pb-8 xsm:gap-4">
         {/* left */}
         <div className="flex flex-col gap-4 w-[50%] xsm:gap-2">
           <div className="flex flex-row gap-4 items-center xsm:gap-2 xsm:pl-2">
@@ -134,12 +134,12 @@ const Testimonial = () => {
                     }`}
                 >
                   <hr className="h-[60%]  border border-[rgb(189,189,209)] absolute top-3 xsm:top-2" />
-                  <div className="flex flex-col justify-between px-4 py-3 xsm:px-2 xsm:py-2">
-                    <p className="text-[#5F5F7E] text-[15px] font-nu leadng-6 text-justify xsm:text-[5px] xsm:leading-[6px]">
+                  <div className="flex flex-col justify-between px-4 py-3 xsm:px-2 xsm:py-2 xsm:gap-1">
+                    <p className="text-[#5F5F7E] text-[15px] font-nu leading-6 text-justify xsm:text-[4px] xsm:leading-none xsm:tracking-tight">
                       {testimonial.text}
                     </p>
                     <div className="flex flex-row justify-between items-center ">
-                      <p className="text-[#5F5F7E] text-[16px] font-nu font-semibold xsm:text-[6px]">
+                      <p className="text-[#5F5F7E] text-[16px] font-nu font-semibold xsm:text-[4px]">
                         {/* Gloria Rose */}
                         {testimonial.author}
                       </p>
@@ -169,7 +169,7 @@ const Testimonial = () => {
 
           {/* arrrow */}
           <div
-            className="w-[70px] h-[70px] absolute bg-[#ffffff] rounded-full right-[20%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[26%]"
+            className="w-[70px] h-[70px] absolute bg-[#ffffff] rounded-full right-[20%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[28%]"
             style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }}
             onClick={handleArrow2Click}
           >

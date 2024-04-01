@@ -103,7 +103,7 @@ export default function MyStats({ courses }) {
           <p className="font-nu font-semibold text-[20px] text-[#243465] xsm:text-[10px]">
             Your Spending
           </p>
-          <div className="xsm:flex xsm:flex-row xsm:gap-40">
+          <div className="xsm:flex xsm:flex-row xsm:gap-40 xsm:items-center">
             <div className=" flex items-center justify-center mt-12 w-full h-[350px] xsm:w-[50%] xsm:h-[60%] xsm:mt-0">
               {/* progressbar of each Course */}
               <AnimatedProgressProvider
@@ -178,42 +178,42 @@ export default function MyStats({ courses }) {
                 }}
               </AnimatedProgressProvider>
             </div>
-            <div className="flex space-x-10 mt-12">
+            <div className="flex space-x-10 mt-12 xsm:flex-col xsm:mt-0 xsm:space-x-0 xsm:gap-3 xsm:items-start">
               <div className="flex flex-col items-center">
                 <div className="flex space-x-2 items-center">
                   <img
-                    className="w-[15px] h-[15px]"
+                    className="w-[15px] h-[15px] xsm:w-3 xsm:h-3"
                     src="../Icons/MSpinkcircle.svg"
                   />
-                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px]">
+                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px]">
                     Completed
                   </p>
                 </div>
-                <p className="font-nu font-semibold text-[20px]">{calculateAverageProgress(selectedCourse?.completed_assignments.length,selectedCourse?.completed_lessons.length)}%</p>
+                <p className="font-nu font-semibold text-[20px] xsm:text-[10px]">{calculateAverageProgress(selectedCourse?.completed_assignments.length,selectedCourse?.completed_lessons.length)}%</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="flex space-x-2 items-center">
                   <img
-                    className="w-[15px] h-[15px]"
+                    className="w-[15px] h-[15px] xsm:w-3 xsm:h-3"
                     src="../Icons/MSorangecircle.svg"
                   />
-                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px]">
+                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px]">
                     Assignment
                   </p>
                 </div>
-                <p className="font-nu font-semibold text-[20px]">{selectedCourse?.completed_assignments.length}%</p>
+                <p className="font-nu font-semibold text-[20px] xsm:text-[10px]">{selectedCourse?.completed_assignments.length}%</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="flex space-x-2 items-center">
                   <img
-                    className="w-[15px] h-[15px]"
+                    className="w-[15px] h-[15px] xsm:w-3 xsm:h-3"
                     src="../Icons/MSbluecircle.svg"
                   />
-                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px]">
+                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px]">
                     Lessons
                   </p>
                 </div>
-                <p className="font-nu font-semibold text-[20px]">{selectedCourse?.completed_lessons.length}%</p>
+                <p className="font-nu font-semibold text-[20px] xsm:text-[10px]">{selectedCourse?.completed_lessons.length}%</p>
               </div>
             </div>
           </div>
