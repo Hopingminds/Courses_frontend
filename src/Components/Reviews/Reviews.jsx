@@ -29,7 +29,7 @@ function Reviews() {
         <>
             <div className="" id="Reviews">
                 <div className="reviews">
-                    <h3>Comments</h3>
+                    <h3 className="xsm:text-[10px]">Comments</h3>
                     <div className="review-head">
                         <span><h2>4.0</h2></span>
                         <div className="img">
