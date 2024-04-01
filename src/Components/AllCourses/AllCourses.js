@@ -13,6 +13,7 @@ import { BASE_URL } from "../../Api/api";
 import { Link, useSearchParams } from "react-router-dom";
 import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
 import NewTestimonial from "../Testimonial/NewTestimonial";
+import Spinner from "../Spinner";
 
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
@@ -20,9 +21,9 @@ const AllCourses = () => {
   const [allCourses, setAllCourses] = useState([]);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [Data, setData] = useState([])
-  const [searchquery, setSearchQuery] = useState('');
   const [SearchedData, setSearchedData] = useState([])
   const [Temp, setTemp] = useState([])
+  const [show, setshow] = useState(false)
   const [userData, setUserData] = useState({
     [User1]: {
       name: "SAURABH PAL",
@@ -73,18 +74,23 @@ const AllCourses = () => {
       let category = params.get('category')
 
       if (category) {
+        setshow(true)
         const res = await axios.get(`${BASE_URL}/courses?category=${category}`);
         // console.log(res);
         setAllCourses(res.data.courses);
         setData(res.data.courses)
         setTemp(res.data.courses)
+        setshow(false)
       }
       else {
+        setshow(true)
+
         const res = await axios.get(`${BASE_URL}/courses`);
         // console.log(res);
         setAllCourses(res.data.courses);
         setData(res.data.courses)
         setTemp(res.data.courses)
+        setshow(false)
 
       }
 
@@ -244,6 +250,7 @@ const AllCourses = () => {
             </Link>
           );
         })}
+          
       </div>
 
       {/* recommended cards */}
@@ -315,7 +322,12 @@ const AllCourses = () => {
           </div>
         </div>
       </div> */}
+       {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
+                <Spinner className='' />
+
+            </div> : ''}
       <NewTestimonial />
+     
     </>
   );
 };

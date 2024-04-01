@@ -83,7 +83,7 @@ const Login = () => {
                 </div>
                 <div className='flex flex-col items-center my-16 w-[45%] gap-4 xsm:w-full'>
                     <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p>
-                    <div className='flex flex-col w-[65%] gap-4 xsm:w-[95%]'>
+                    <div className='flex flex-col w-[65%] gap-4 xsm:w-[90%]'>
                         <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 '>
                             <button className='bg-transparent cursor-pointer Loginactive' >Login</button>
                             <button className='bg-transparent cursor-pointer Logininactive' onClick={() => navigate('/register')}>Register</button>
@@ -105,7 +105,7 @@ const Login = () => {
                                     <input className='' type="checkbox" />
                                     <p className='text-[12px]'>Remember me</p>
                                 </div>
-                                <Link to={'/forgot-password'}><h6>Forgot password?</h6></Link>
+                                <Link to={'/forgot-password'}><h6 className='xsm:text-[12px]'>Forgot password?</h6></Link>
                             </div>
                         </div>
                         <div className='flex flex-col items-center gap-4'>
