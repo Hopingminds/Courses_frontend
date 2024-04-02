@@ -28,6 +28,9 @@ const Footer = () => {
                             {/* <Link className='text-white text-[16px] font-nu xsm:text-[8px]'>Contact Us</p> */}
                             <Link to='/privacy' className='text-white text-[16px] font-nu xsm:text-[8px]'>Privacy Policy</Link>
                             <Link to='/terms' className='text-white text-[16px] font-nu xsm:text-[8px]'>Terms and Conditions</Link>
+                            <Link to='/pap' className='text-white text-[16px] font-nu xsm:text-[8px]'>Pay After Placement</Link>
+                            <Link to='/hire-from-us' className='text-white text-[16px] font-nu xsm:text-[8px]'>Hire From Us</Link>
+                            <Link to='/cv-builder' className='text-white text-[16px] font-nu xsm:text-[8px]'>CV Builder</Link>
                         </div>
                     </div>
                     <div className='flex flex-col gap-4 xsm:gap-2 ' onClick={Top} >

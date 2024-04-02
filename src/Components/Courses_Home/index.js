@@ -95,10 +95,10 @@ const Courses_Home = () => {
             </button>
           ))}
         </div>
-        <div className="flex justify-between w-full items-center">
-          <div className="text-4xl font-semibold mt-3 xsm:text-[8px] xsm:mt-0 xsm:ml-2">
+        <div className="flex justify-end w-full items-center">
+          {/* <div className="text-4xl font-semibold mt-3 xsm:text-[8px] xsm:mt-0 xsm:ml-2">
             {selectedCategory}
-          </div>
+          </div> */}
           <Link
             to={"/course"}
             className="text-[#1DBF73] text-[18px] mr-2 xsm:text-[8px]"
@@ -110,10 +110,11 @@ const Courses_Home = () => {
         <div className="my-10  grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[2%]">
           {" "}
           {/* Changed flex to flex-wrap */}
-          {filteredCourses?.slice(0, cardsToShow)?.map((course) => (
+          {filteredCourses?.slice(0, cardsToShow)?.map((course,ind) => (
             <CourseCard
               key={course.title}
               title={course.title}
+              featured_video={course.featured_video}
               price={course.base_price}
               firstName={course.instructor.firstName}
               lastName={course.instructor.lastName}
@@ -124,6 +125,7 @@ const Courses_Home = () => {
               isSelected={selectedCourse === course.title}
               category={course.category}
               description={course.whatWillILearn}
+              ind={ind}
               // Pass category to CourseCard component
             />
           ))}

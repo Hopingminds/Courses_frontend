@@ -14,6 +14,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
 import NewTestimonial from "../Testimonial/NewTestimonial";
 import Spinner from "../Spinner";
+import ReactPlayer from "react-player";
 
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
@@ -24,6 +25,7 @@ const AllCourses = () => {
   const [SearchedData, setSearchedData] = useState([])
   const [Temp, setTemp] = useState([])
   const [show, setshow] = useState(false)
+  const [mouseHovered, setMouseHovered] = useState(null);
   const [userData, setUserData] = useState({
     [User1]: {
       name: "SAURABH PAL",
@@ -86,7 +88,7 @@ const AllCourses = () => {
         setshow(true)
 
         const res = await axios.get(`${BASE_URL}/courses`);
-        // console.log(res);
+        console.log(res.data.courses);
         setAllCourses(res.data.courses);
         setData(res.data.courses)
         setTemp(res.data.courses)
@@ -145,7 +147,9 @@ const AllCourses = () => {
   }, []);
 
   // console.log(SearchedData)
-
+  const toggleHover = (index) => {
+    setMouseHovered(index);
+  };
   return (
     <>
       <head>
@@ -162,7 +166,7 @@ const AllCourses = () => {
               type="text"
               placeholder=""
               onChange={SearchData}
-              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] ${!SearchedData.length ? "rounded-bl-2xl" : 'rounded-bl-0'}`}
+              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] ${!SearchedData?.length ? "rounded-bl-2xl" : 'rounded-bl-0'}`}
             />
             <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center">
               {
@@ -192,12 +196,27 @@ const AllCourses = () => {
             <Link
               to={"/detailcourse/" + val.slug}
               className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md"
+              onMouseEnter={() => toggleHover(ind)}
+              onMouseLeave={() => toggleHover(null)}
             >
               <div className="h-[45%]">
+              {mouseHovered === ind ? (
+                <ReactPlayer
+                  className="w-full h-full rounded-xl xsm:rounded-md border"
+                  height={'100%'}
+                  width={'100%'}
+                  url={val.featured_video}
+                  controls={false}
+                  playing={true}
+                  muted
+                />
+              ) : (
                 <img
                   className="w-full h-full rounded-xl xsm:rounded-md"
-                  src={val?.featured_image}
+                  src={val.featured_image}
+                  alt={val.title}
                 />
+              )}
               </div>
               <div className="space-y-4 flex flex-col justify-between h-[53%] xsm:space-y-2">
                 <div className="flex flex-col gap-3 xsm:gap-2">
@@ -211,7 +230,13 @@ const AllCourses = () => {
                         {val?.category}
                       </p>
                     </div>
-                    <div className="flex space-x-2 items-center xsm:space-x-0">
+                    <div>
+                    <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[6px]">
+                      ₹ {val?.base_price}
+                    </p>
+                  </div>
+                  </div>
+                  <div className="flex space-x-2 items-center xsm:space-x-0">
                       <img
                         className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px]"
                         src="../Icons/RCClock.svg"
@@ -220,7 +245,6 @@ const AllCourses = () => {
                         {val?.duration}
                       </p>
                     </div>
-                  </div>
                   <p className="font-pop font-semibold text-[16px] text-[#252641] xsm:text-[8px]">
                     {val?.title}
                   </p>
@@ -240,18 +264,71 @@ const AllCourses = () => {
                       {val?.instructor.firstName + ' ' + val?.instructor.lastName}
                     </p>
                   </div>
-                  <div>
-                    <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[6px]">
-                      ₹ {val?.base_price}
-                    </p>
-                  </div>
+                
                 </div>
               </div>
             </Link>
           );
         })}
-          
+       
       </div>
+      <div className="flex flex-col gap-14 px-24 py-20">
+                <p className="text-[#252641] text-[32px] font-poppins font-semibold pl-4">
+                    Classes taught by real creators
+                </p>
+                <div className="grid grid-cols-3 gap-20">
+
+                    <div className="h-[45vh] flex justify-center items-end relative">
+                        <div
+                            className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
+                            style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
+                        >
+                            <p className="text-[#252641] text-[20px] font-poppins font-semibold">
+                                Adam
+                            </p>
+                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
+                                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
+                                eiusmod tempor
+                            </p>
+                        </div>
+                        <img src={Img2} className="absolute top-5 w-[40%]" />
+                    </div>
+                    
+                    <div className="h-[45vh] flex justify-center items-end relative">
+                        <div
+                            className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
+                            style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
+                        >
+                            <p className="text-[#252641] text-[20px] font-poppins font-semibold">
+                                Adam
+                            </p>
+                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
+                                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
+                                eiusmod tempor
+                            </p>
+                        </div>
+                        <img src={Img2} className="absolute top-5 w-[40%]" />
+                    </div>
+                    
+                    <div className="h-[45vh] flex justify-center items-end relative">
+                        <div
+                            className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
+                            style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
+                        >
+                            <p className="text-[#252641] text-[20px] font-poppins font-semibold">
+                                Adam
+                            </p>
+                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
+                                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
+                                eiusmod tempor
+                            </p>
+                        </div>
+                        <img src={Img2} className="absolute top-5 w-[40%]" />
+                    </div>
+                    
+                </div>
+            </div>
+
 
       {/* recommended cards */}
       <RecommendedCourses />
@@ -283,7 +360,7 @@ const AllCourses = () => {
                   <p className="text-[#696984] text-[16px] font-pop xsm:text-[6px]">
                     {userData[selectedUser]?.description1}
                   </p>
-                  {/* <p className="text-[#696984] text-[16px] font-pop xsm:hidden">
+               <p className="text-[#696984] text-[16px] font-pop xsm:hidden">
                     {userData[selectedUser]?.description2}
                   </p>
                   <p className="text-[#696984] text-[16px] font-pop xsm:hidden">

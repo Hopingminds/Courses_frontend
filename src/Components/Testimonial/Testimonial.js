@@ -15,6 +15,7 @@ const Testimonial = () => {
       stars: 5,
       reviews: 12,
       image: '/ajitesh.jpeg',
+      company:'Google',
     },
     // {
     //   text: "It's not often that I come across an Ed-Tech firm as transformative as Hoping Minds. I've had the pleasure of collaborating with them to enhance our educational initiatives. Hoping Minds' commitment to excellence, higher packages and their passion for advancing in the field of education is commendable.",
@@ -31,6 +32,8 @@ const Testimonial = () => {
       stars: 5,
       reviews: 12,
       image: '/Lakshay.jpg',
+      company:'Protiviti',
+
     },
     {
       text: "Their program cultivated skilled and motivated coders who now excel in their roles, driving impressive performance.They have been able to quickly adopt to their roles and outshine.",
@@ -39,6 +42,8 @@ const Testimonial = () => {
       stars: 5,
       reviews: 4,
       image: '/Sidharth Kakar.jpg',
+      company:'Amazon',
+
     },
     {
       text: "HM's students come with a certain level of exposure and practical experience that distinguishes them from the rest.we are able to save critical time as they start delivering early.",
@@ -47,6 +52,8 @@ const Testimonial = () => {
       stars: 5,
       reviews: 12,
       image: '/Tuhina Jain .jpg',
+      company:'Google',
+
     },
     // {
     //   text: "It's not often that I come across an Ed-Tech firm as transformative as Hoping Minds. I've had the pleasure of collaborating with them to enhance our educational initiatives. Hoping Minds' commitment to excellence, higher packages and their passion for advancing in the field of education is commendable.",
@@ -77,7 +84,7 @@ const Testimonial = () => {
     <>
       <div className="flex flex-row  justify-between pt-0 px-[5%] pb-32 xsm:px-[5%] xsm:pb-8 xsm:gap-4">
         {/* left */}
-        <div className="flex flex-col gap-4 w-[50%] xsm:gap-2">
+        <div className="flex flex-col gap-4 w-[40%] xsm:gap-2">
           <div className="flex flex-row gap-4 items-center xsm:gap-2 xsm:pl-2">
             <hr className="border border-[black] w-20 xsm:w-6" />
             <p className=" text-[20px] font-nu xsm:text-[6px]">
@@ -87,11 +94,11 @@ const Testimonial = () => {
           <p className="text-[#1DBF73] text-[42px]  font-pop font-semibold xsm:text-[10px] xsm:pl-2">
             What They Say?
           </p>
-          <div className="flex flex-col gap-4 text-[#696984] text-[18px] font-poppins xsm:text-[6px] xsm:gap-0">
+          <div className="flex flex-col gap-4 text-[#696984] text-[18px] text-justify font-poppins xsm:text-[6px] xsm:gap-0">
             <p className="">
               HopingMinds has earned the trust of over 100 corporations, more than 50 universities, and over 10,000 students based on positive experiences and successful outcomes. {" "}
             </p>
-            <p>
+            <p >
               Our community continues to grow, thanks to the proven results and confidence shared by our partners and learners
             </p>
           </div>
@@ -115,7 +122,7 @@ const Testimonial = () => {
           <div className="relative ">
             <img
               src={testimonials[currentIndex].image}
-              className="w-[350px] h-[420px]  rounded-3xl xsm:rounded-md xsm:w-[95px] xsm:h-[120px]"
+              className="w-[330px] h-[380px]  rounded-3xl xsm:rounded-md xsm:w-[95px] xsm:h-[120px]"
             />
             <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[80%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md xsm:top-[69%]">
               {testimonials.map((testimonial, index) => (
@@ -139,10 +146,16 @@ const Testimonial = () => {
                       {testimonial.text}
                     </p>
                     <div className="flex flex-row justify-between items-center ">
+                      <div className="flex space-x-1">
                       <p className="text-[#5F5F7E] text-[16px] font-nu font-semibold xsm:text-[4px]">
                         {/* Gloria Rose */}
                         {testimonial.author}
                       </p>
+                      <p className="text-[#5F5F7E] text-[16px] font-nu font-semibold xsm:text-[4px]">
+                        {/* Gloria Rose */}
+                        / {testimonial.company}
+                      </p>
+                      </div>
                       <div className="flex flex-col gap-1  xsm:gap-0">
                         <div className="flex justify-center items-center">
                           {[...Array(testimonial.stars)].map((star, index) => (
@@ -169,7 +182,7 @@ const Testimonial = () => {
 
           {/* arrrow */}
           <div
-            className="w-[70px] h-[70px] absolute bg-[#ffffff] rounded-full right-[20%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[28%]"
+            className="w-[70px] h-[70px] absolute bg-[#ffffff] rounded-full right-[22%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[28%]"
             style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }}
             onClick={handleArrow2Click}
           >
