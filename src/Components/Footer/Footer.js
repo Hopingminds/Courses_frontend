@@ -5,9 +5,10 @@ import Icon1 from "../../Assests/Icons/insta.svg";
 import Icon2 from "../../Assests/Icons/fb.svg";
 import Icon3 from "../../Assests/Icons/lkd.svg";
 import Icon4 from "../../Assests/Icons/yt.svg";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Footer = () => {
+    const navigate = useNavigate()
     const { pathname } = useLocation();
     function Top() {
         window.scrollTo(0, 0);
@@ -18,7 +19,7 @@ const Footer = () => {
             <div className='flex flex-col gap-14  pt-10 pb-4 xsm:gap-8 add_gradient'>
                 <div className='flex  justify-between px-[5%] xsm:pl-[5%] xsm:flex xsm:flex-col xsm:gap-8'>
                     <div className='flex flex-col gap-8 w-[220px] xsm:gap-2 xsm:w-[90%]'>
-                        <div onClick={Top}><img src='/logo.png' className='w-auto h-[50px] xsm:w-[40%] xsm:h-[10%] cursor-pointer' /></div>
+                        <div onClick={() => navigate('/')}><img src='/logo.png' className='w-auto h-[50px] xsm:w-[40%] xsm:h-[10%] cursor-pointer' /></div>
                         <p className='text-white text-[16px] font-nu text-balance w-full xsm:text-[10px]'>Empower your future with interactive courses tailored to your goals. Join our dynamic eLearning community and unlock your potential today!</p>
                     </div>
                     <div className='flex flex-col gap-4 xsm:gap-2  '>
@@ -29,7 +30,7 @@ const Footer = () => {
                             <Link to='/terms' className='text-white text-[16px] font-nu xsm:text-[8px]'>Terms and Conditions</Link>
                         </div>
                     </div>
-                    <div className='flex flex-col gap-4 xsm:gap-2  '>
+                    <div className='flex flex-col gap-4 xsm:gap-2 ' onClick={Top} >
                         <p className='text-white text-[20px] font-nu font-semibold xsm:text-[10px]'>PROGRAMS</p>
                         <div className='flex flex-col gap-4 xsm:gap-1'>
                             <Link to='/course?category=Management' className='text-white text-[16px] font-nu xsm:text-[8px]'>Management</Link>
@@ -43,7 +44,7 @@ const Footer = () => {
                     <div className='flex flex-col gap-4 xsm:gap-2  '>
                         <p className='text-white text-[20px] font-nu font-semibold xsm:text-[10px]'>CONTACT US</p>
                         <div className='flex flex-col gap-4 xsm:gap-1'>
-                            <p className='text-white text-[16px] font-nu xsm:text-[8px]'>Tel: + 9779886900</p>
+                            <p className='text-white text-[16px] font-nu xsm:text-[8px]'>Tel: +91 9779886900</p>
                             <Link to='mailto:support@hopingminds.com' target='_blank' className='text-white text-[16px] font-nu xsm:text-[8px]'>Mail: support@hopingminds.com</Link>
                             <div className='flex flex-row gap-2 items-center'>
                                 <Link to='https://www.instagram.com/hopingminds_?igsh=MWxvN2F5YmM0aW1lYQ=='> <img src={Icon1} className='w-[28px] h-[28px] xsm:w-[15px] xsm:h-[15px]' /></Link>

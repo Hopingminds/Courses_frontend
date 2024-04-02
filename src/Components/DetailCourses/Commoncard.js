@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ReactComponent as Cart } from '../../Assets/Icons/cart.svg'
+import { ReactComponent as Cart } from '../../Assets/Icons/cartblack.svg'
 import { CiHeart } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
 import { Globalinfo } from "../../App";
@@ -110,7 +110,7 @@ export default function Commoncard(props) {
                             </div> : ''
                         }
 
-                        {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px]">View Course</Link> : <Link to={login ? '/checkout?slug=' + Data?.slug : '/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px]">Buy Now</Link>}
+                        {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[8px]">View Course</Link> : <Link to={login ? '/checkout?slug=' + Data?.slug : '/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px]">Buy Now</Link>}
                     </div>
                 </div>
                 <div className="flex flex-col gap-6 my-6 xsm:hidden">
@@ -139,16 +139,16 @@ export default function Commoncard(props) {
                     <div className="space-y-4">
                         <p className="font-pop font-semibold">Share this course</p>
                         <div className="flex space-x-4">
-                        <RWebShare
-        data={{
-          text: "Hoping Minds",
-          url: "http://localhost:3001/",
-          title: "Hoping Minds",
-        }}
-        onClick={() => console.log("shared successfully!")}
-      >
-        <IoIosShareAlt className="h-6 w-6" />
-      </RWebShare>
+                            <RWebShare
+                                data={{
+                                    text: "Hoping Minds",
+                                    url: "http://localhost:3001/",
+                                    title: "Hoping Minds",
+                                }}
+                                onClick={() => console.log("shared successfully!")}
+                            >
+                                <IoIosShareAlt className="h-6 w-6" />
+                            </RWebShare>
                             {/* <Link to={'https://www.facebook.com/share/Z3c1iwpnxsDk3YJH/?mibextid=qi2Omg'}><img className="w-[12px]" src="../Icons/facebook.svg" /></Link> */}
                             {/* <Link to={'https://www.instagram.com/hopingminds_?igsh=MWxvN2F5YmM0aW1lYQ=='}><img className="w-[20px]" src="../Icons/instagram.svg" /></Link> */}
                             {/* <Link to={'https://youtube.com/@HopingMinds?si=t7nBGjhMukWF6aN9'}><img className="w-[24px]" src="../Icons/youtube12.svg" /></Link> */}
@@ -156,7 +156,7 @@ export default function Commoncard(props) {
                     </div>
                 </div>
             </div>
-            <Toaster />
+            <Toaster position="top-right" />
         </div>
     );
 }

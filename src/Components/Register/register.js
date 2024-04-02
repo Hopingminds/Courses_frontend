@@ -1,74 +1,83 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import './register.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
-import { validateEmail } from '../../helpers';
+import { validateCollege, validateEmail } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
-
+import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 
 const Register = () => {
-
     const navigate = useNavigate();
-    const { userDetail, getUserDetails, GetCart } = useContext(Globalinfo)
+    const { userDetail, getUserDetails, GetCart } = useContext(Globalinfo);
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);
 
-    const [user, setuser] = useState({
-        // username: "",
+    const emailRef = useRef(null);
+    const collegeRef = useRef(null);
+    const passwordRef = useRef(null);
+
+    const [user, setUser] = useState({
         college: "",
-        // stream: "",
         email: "",
-        // yearofpass: "",
         password: "",
-    })
+    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setuser({
+        setUser({
             ...user,
             [name]: value,
         });
     };
 
+    const handleKeyDown = (e, nextRef) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            if (nextRef) {
+                nextRef.current.focus();
+            } else {
+                handleRegister();
+            }
+        }
+    };
+
     const handleRegister = async () => {
-        console.log(user)
+        if (!validateEmail(user.email)) {
+            toast.error('Enter valid Email');
+            return;
+        }
+        if (!validateCollege(user.college)) {
+            toast.error('Enter valid College Name');
+            return;
+        }
+
         if (!user.password || !user.email || !user.college) {
-            toast.error("Enter Valid Credentials")
+            toast.error("Enter Valid Credentials");
             return;
         }
         setBtnLoader(true);
         try {
             const res = await axios.post(`${BASE_URL}/register`, {
-                // username: user.username,
                 password: user.password,
                 email: user.email,
                 college: user.college,
-                // stream: user.stream,
-                // yearofpass: user.yearofpass
+            });
 
-            })
-
-            console.log(res);
-
-            toast.success("Register Successfull")
+            toast.success("Registered Successfully");
 
             setTimeout(() => {
-                navigate('/login')
+                navigate('/login');
             }, 1000);
 
-
         } catch (error) {
-            console.log(error);
-            toast.error("Some Error Occured while Login")
+            toast.error(error.response.data.error.error);
         } finally {
-            setBtnLoader(false)
+            setBtnLoader(false);
         }
-
     };
-
 
     return (
         <>
@@ -87,36 +96,47 @@ const Register = () => {
                         <div className='flex flex-col gap-4'>
                             <div>
                                 <p className='text-[14px] font-pop'>Email</p>
-                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="text" placeholder="Enter Your Email" name="email" value={user.email} onChange={handleChange} />
+                                <input
+                                    ref={emailRef}
+                                    className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    type="text"
+                                    placeholder="Enter Your Email"
+                                    name="email"
+                                    value={user.email}
+                                    onChange={handleChange}
+                                    onKeyDown={(e) => handleKeyDown(e, collegeRef)}
+                                />
                             </div>
                             <div>
                                 <p className='text-[14px] font-pop'>College/University</p>
-                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="text" placeholder="Enter Your College/University" name="college" value={user.college} onChange={handleChange} />
+                                <input
+                                    ref={collegeRef}
+                                    className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    type="text"
+                                    placeholder="Enter Your College/University"
+                                    name="college"
+                                    value={user.college}
+                                    onChange={handleChange}
+                                    onKeyDown={(e) => handleKeyDown(e, passwordRef)}
+                                />
                             </div>
-                            <div>
+                            <div style={{ position: "relative" }}>
                                 <p className='text-[14px] font-pop'>Password</p>
-                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={handleChange} />
+                                <input
+                                    ref={passwordRef}
+                                    className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="Enter Your Password"
+                                    name="password"
+                                    value={user.password}
+                                    onChange={handleChange}
+                                    onKeyDown={(e) => handleKeyDown(e, null)}
+                                />
+                                <span style={{ position: "absolute", bottom: "12px", right: "15px" }}> {
+                                    showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />
+                                }
+                                </span>
                             </div>
-                            {/* set hidden so that we don't get error */}
-                            {/* <div className='flex flex-col gap-2 hidden'>
-                                <p className='text-[14px] font-pop'>Email</p>
-                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="text" placeholder="Enter Your College/University" />
-                            </div> */}
-                            {/* <div className='flex flex-col gap-2 hidden'>
-                                <p className='text-[14px] font-pop'>Stream</p>
-                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="text" placeholder="Enter Your Stream" name="stream" value={user.stream} onChange={handleChange} />
-                            </div> */}
-                            {/* <div className='flex flex-col gap-2 hidden'>
-                                <p className='text-[14px] font-pop'>Year Of pass</p>
-                                <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type="text" placeholder="Enter Your Year Of Passing" name="yearofpass" value={user.yearofpass} onChange={handleChange} />
-                            </div> */}
-                            {/* <div className='flex justify-end'>
-                                <div className='flex items-center gap-1'>
-                                    <input className='' type="checkbox" />
-                                    <p className='text-[12px]'>Rememeber me</p>
-                                </div>
-                                <p className='text-[12px]'>Forgot password?</p>
-                            </div> */}
                         </div>
                         <div className='flex flex-col items-center gap-4'>
                             <div className=''>
@@ -132,7 +152,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-            <Toaster />
+            <Toaster position="top-right" />
         </>
     );
 };

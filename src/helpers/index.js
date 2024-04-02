@@ -8,4 +8,12 @@ export const validateEmail = (email) => {
         );
 };
 
+const collegeRegex = /^[a-zA-Z\s]+$/;
 
+export const validateCollege = (name) => {
+    if (collegeRegex.test(name)) {
+        return true;
+    } else {
+        return false;
+    }
+}

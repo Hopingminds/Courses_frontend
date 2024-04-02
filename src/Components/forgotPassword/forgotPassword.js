@@ -7,6 +7,7 @@ import { validateEmail } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
+import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 
 
 
@@ -15,6 +16,7 @@ const Forgotpassword = () => {
     const { userDetail, getUserDetails, GetCart, GetWishList } = useContext(Globalinfo)
     const [btnLoader, setBtnLoader] = useState(false);
     const [show, setShow] = useState(1);
+    const [showPassword, setShowPassword] = useState(false);
 
     const [user, setUser] = useState({
 
@@ -66,7 +68,7 @@ const Forgotpassword = () => {
     }
 
     const handleSendOTP = async () => {
-        console.log(user)
+        // console.log(user)
         setBtnLoader(true);
 
         if (!validateEmail(user.email)) {
@@ -77,21 +79,21 @@ const Forgotpassword = () => {
             try {
                 const res = await axios.get(`${BASE_URL}/generateOTP?email=${user.email}`)
 
-                // console.log(res);
-                if (res.data.success) {
+                // console.log(res)
+                if (res?.status) {
                     setShow(2)
                 }
 
             } catch (error) {
                 console.log(error);
-                toast.error("Some Error Occured while Login")
+                toast.error("Unable to Generate OTP")
             } finally {
                 setBtnLoader(false)
             }
         }
     }
     const handleVerifyOTP = async () => {
-        console.log(user)
+        // console.log(user)
         setBtnLoader(true);
 
         if (!validateEmail(user.email)) {
@@ -102,14 +104,14 @@ const Forgotpassword = () => {
             try {
                 const res = await axios.get(`${BASE_URL}/verifyOTP?code=${user.otp}`)
 
-                console.log(res);
+                // console.log(res);
                 if (res.status === 201) {
                     setShow(3)
                 }
 
             } catch (error) {
                 console.log(error);
-                toast.error("Some Error Occured while Login")
+                toast.error(error.response.data.error)
             } finally {
                 setBtnLoader(false)
             }
@@ -179,15 +181,23 @@ const Forgotpassword = () => {
 
                             <div className={styles.inputs}>
 
-                                <div>
+                                <div style={{ position: "relative" }}>
                                     {/* Email input */}
                                     <p>Enter New Password</p>
-                                    <input type="password" placeholder="Enter Your New Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                                    <input type={showPassword ? "text" : "password"} placeholder="Enter Your New Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                                    <span style={{ position: "absolute", bottom: "12px", right: "15px" }}> {
+                                        showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />
+                                    }
+                                    </span>
                                 </div>
-                                <div>
+                                <div style={{ position: "relative" }}>
                                     {/* Email input */}
                                     <p>Confirm New Password</p>
-                                    <input type="password" placeholder="Confirm New Password" name="confirmPassword" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} />
+                                    <input type={showPassword ? "text" : "password"} placeholder="Confirm New Password" name="confirmPassword" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} />
+                                    <span style={{ position: "absolute", bottom: "12px", right: "15px" }}> {
+                                        showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />
+                                    }
+                                    </span>
                                 </div>
 
                             </div>
@@ -203,7 +213,7 @@ const Forgotpassword = () => {
                         </div> </>}
                 </div>
             </div>
-            <Toaster />
+            <Toaster position="top-right" />
         </>
     );
 };

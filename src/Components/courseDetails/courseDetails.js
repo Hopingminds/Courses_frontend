@@ -20,11 +20,6 @@ export default function CDDetails() {
 
     const [url, seturl] = useState()
     const params = useParams()
-    // console.log(params.slug);
-
-    // useEffect(() => {
-    //     ClickSection();
-    // }, [])
     let completed = [];
     let allchapters = []
 

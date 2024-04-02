@@ -9,6 +9,7 @@ import Testimonial from "../Testimonial/Testimonial";
 import WhatHM from "../WhatHM/WhatHM";
 import logo from '../../Assests/Images/hmlogo.png'
 import PapHome from "./paphome";
+import NewTestimonial from "../Testimonial/NewTestimonial";
 
 export default function Home() {
     return (<>
@@ -29,7 +30,7 @@ export default function Home() {
             <Courses_Home />
             <WhatHM />
             <OurFeatures />
-            <PapHome/>
+            <PapHome />
             <Certificate />
             <Testimonial />
         </div>
