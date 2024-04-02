@@ -3,15 +3,21 @@ import Img1 from "../../Assets/Images/papheaderbg.png";
 import styled from "styled-components";
 import Test from "../Test/Test";
 import { useNavigate } from "react-router-dom";
+import PhoneInput from "react-phone-number-input";
+import 'react-phone-number-input/style.css'
+import './pap.css'
 
 export default function Pap() {
 
   const [clicked, setclicked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  let navigate = useNavigate()
+  const [num, setNum] = useState('')
+  let navigate = useNavigate();
+
 
   const [formValues, setFormValues] = useState({
-    name: "",
+    fname: "",
+    lname: "",
     email: "",
     college: "",
     degree: "",
@@ -242,207 +248,74 @@ export default function Pap() {
       </div>
 
       {isModalOpen && (
-        <Wrapper>
-          <div className="modal bg-black">
-            <div className="form-container w-[40%] rounded-lg overflow-hidden">
-              <div className="img">
-                <img src="../img/papmodalbg.jpg" alt="" />
-                <p className="button">
-                  Pay After Placement Registration Form{" "}
-                </p>
-                <button className="close" onClick={closeModal}>
-                  &times;
-                </button>
-              </div>
-              <div className="content">
-                <form className="form" onSubmit={handleSubmit}>
-                  <div className="form-group">
-                    <label className="text-black" htmlFor="name">Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formValues.name}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="text-black" htmlFor="email">Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formValues.email}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="text-black" htmlFor="college">College</label>
-                    <input
-                      type="text"
-                      id="college"
-                      name="college"
-                      value={formValues.college}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="text-black" htmlFor="degree">Degree</label>
-                    <input
-                      type="text"
-                      name="degree"
-                      value={formValues.degree}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="text-black" htmlFor="branch">Branch</label>
-                    <input
-                      type="text"
-                      name="branch"
-                      value={formValues.branch}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="text-black" htmlFor="yearOfPassing">Year of Passing</label>
-                    <input
-                      type="text"
-                      id="yearOfPassing"
-                      name="yearOfPassing"
-                      value={formValues.yearOfPassing}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="text-black" htmlFor="fieldOfStudy">Field of Study</label>
-                    <input
-                      type="text"
-                      name="fieldOfStudy"
-                      value={formValues.fieldOfStudy}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="flex justify-center">
-                    <button onClick={handleForm} type="submit" className="btn">
-                      Submit
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
+        <div className=" w-full ">
+            <div className="fixed top-[20%] left-[30%] z-[9999]">
+              <div className=' bg-white rounded-lg flex flex-col gap-4 border pb-4'>
+                    <div className='border-black border-b-2 px-4 py-1 flex justify-between'>
+                        <p className='font-nu font-extrabold text-[#1DBF73] text-[22px]'>Pay After Placement Form</p>
+                        <button className="text-[25px] text-[#707070]" onClick={closeModal}>
+                          &times;
+                        </button>
+                    </div>
+                    <div className='grid grid-cols-2 gap-6 px-4 py-2'>
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col text-[15px]'>
+                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>First Name</label>
+                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="fname" value={formValues.fname} onChange={handleChange} />
+                            </div>
+                            <div className='flex flex-col text-[15px]'>
+                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Email</label>
+                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="email" name="email" value={formValues.email} onChange={handleChange}/>
+                            </div>
+                            <div className='flex flex-col text-[15px]'>
+                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>College/University</label>
+                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="college" value={formValues.college} onChange={handleChange} />
+                            </div>
+                            <div className='flex flex-col text-[15px]'>
+                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Branch</label>
+                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="branch" value={formValues.branch} onChange={handleChange} />
+                            </div>
+                            <div className='flex flex-col text-[15px]'>
+                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Year Of Passing </label>
+                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="yearOfPassing" value={formValues.yearOfPassing} onChange={handleChange}/>
+                            </div>
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col text-[15px]'>
+                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Last Name</label>
+                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="lname" value={formValues.lname} onChange={handleChange}/>
+                            </div>
+                            <div className='flex flex-col text-[15px]'>
+                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Contact Number</label>
+                                <div className="">
+                                <PhoneInput
+                                defaultCountry="IN"
+                                name="contact"
+                                value={num}
+                                onChange={setNum}
+                                />
+                                </div>
+                                {/* <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" value={formValues.contact} onChange={handleChange}/> */}
+                            </div>
+                            <div className='flex flex-col text-[15px]'>
+                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Degree</label>
+                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="degree" value={formValues.degree} onChange={handleChange}/>
+                            </div>
+                            <div className='flex flex-col text-[15px]'>
+                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Field Of Study</label>
+                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="fieldOfStudy" value={formValues.fieldOfStudy}  onChange={handleChange}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='flex justify-center'>
+                         <button onClick={handleForm} className="bg-[#1DBF73] text-white font-pop font-medium text-[18px] px-6 py-1 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Submit</button>
+                    </div>
+                </div>
           </div>
-        </Wrapper>
+        </div>
 
       )}
     </div>
   );
 };
 
-const Wrapper = styled.div`
-  // width: 50%;
-  position:fixed;
-  top:70%;
-  left:30%;
-  // transform:translate(-50%,-50%)
-  z-index:999;
-  margin: 0 auto;
-  @media screen and (max-width: 768px) {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .content {
-    padding: 10px 100px;
-  }
-
-  .form-container {
-    position: fixed;
-    top:12%;
-    // left:30%;
-    // padding: 0% 2.2% 2.5% 2.2%;
-    // margin-top: -2.3rem;
-    z-index: 999;
-    background-color: #fffdfd;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.7);
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 5% 10% 5%;
-      margin-top: 1rem;
-      position: relative;
-     
-    }
-  }
-  .img {
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-  }
-  .img img {
-    width: 110%;
-    margin: 0 auto;
-    // margin-left: -5%;
-    height: 80px;
-  }
-  .img .button {
-    position: absolute;
-    top: 35%;
-    left: 5%;
-  }
-
-  .close {
-    position: absolute;
-    cursor: pointer;
-    right: 1%;
-    top: 4%;
-    font-size: 2rem;
-    color: #e3ebe9;
-    border: none;
-    z-index: 100;
-    background-clip: text;
-  }
-  .button {
-    border: none;
-    background-clip: text;
-    color: #eaf1ea;
-    font-size: 1.5rem;
-    font-weight: bolder;
-  }
-
-  .form-group {
-    margin-bottom: 0.5rem;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 0.2rem;
-    font-size: 0.8rem;
-  }
-
-  input {
-    outline: none;
-    background-color: #e2fff1;
-    padding: 0.2rem 0.5rem;
-    font-size: 1rem;
-    width: 100%;
-  }
-
-  .form-container .btn {
-    // position: absolute;
-    margin-top: 0.4rem;
-    left: 40%;
-    padding: 0.3rem 2rem;
-    font-size: 1rem;
-    background-color: #15f2ac;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-
-  .form-container .btn:hover {
-    background-color: #75ebd2;
-    
-  }
-`;

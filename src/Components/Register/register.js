@@ -11,7 +11,7 @@ import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { userDetail, getUserDetails, GetCart } = useContext(Globalinfo);
+    const {getUserDetails } = useContext(Globalinfo);
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);
 
@@ -65,17 +65,20 @@ const Register = () => {
                 email: user.email,
                 college: user.college,
             });
-            const res1 = await axios.post(`${BASE_URL}/registerMail`, {
-                username: "",
-                userEmail: user.email,
-                text: "",
-                subject: "",
-            });
+            getUserDetails();
+            localStorage.setItem('COURSES_USER_TOKEN', res.data.token);
             toast.success("Registered Successfully");
-
+            // const res1 = await axios.post(`${BASE_URL}/registerMail`, {
+            //     username: "",
+            //     userEmail: user.email,
+            //     text: "",
+            //     subject: "",
+            // });
+            
             setTimeout(() => {
-                navigate('/login');
+                navigate('/learning');
             }, 1000);
+
 
         } catch (error) {
             toast.error(error.response.data.error.error);

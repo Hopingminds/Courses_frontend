@@ -19,7 +19,8 @@ module.exports = {
         'mons': ['Montserrat', 'sans-serif'],
         'outfit': ['Outfit'],
         'pop': ['Poppins'],
-        'nu': ['Nunito Sans']
+        'nu': ['Nunito Sans'],
+        'int': ['Inter'],
       },
     },
     screens: {
