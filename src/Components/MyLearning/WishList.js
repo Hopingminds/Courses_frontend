@@ -27,7 +27,10 @@ export default function WishList(){
         Fetchdata()
   
       }, [])
-    return (
+    return (<>
+            {!Data?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Found</div></div>:''}
+
+    
         <div className="my-6 mx-[5%] grid grid-cols-4 gap-y-6 gap-x-[20px] xsm:mt-3 xsm:gap-3 xsm:grid-cols-3">
             {
                 Data?.map((item)=>{
@@ -66,5 +69,5 @@ export default function WishList(){
             }
       
         </div>
-    )
+        </>)
 }

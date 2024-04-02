@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 
 export default function Mycourse({ courses }) {
 
-    return (
-        <div className="my-5 mx-[5%] grid grid-cols-3 gap-16 gap-y-8 xsm:my-3 xsm:gap-4">
+    return (<>
+        {!courses?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Purchased</div></div>:''}
 
+        <div className="my-5 mx-[5%] grid grid-cols-3 gap-16 gap-y-8 xsm:my-3 xsm:gap-4">
             {
                 courses?.map((val, ind) => {
                     let totallessons = 0
@@ -34,5 +35,5 @@ export default function Mycourse({ courses }) {
             }
 
         </div>
-    );
+        </>);
 }
