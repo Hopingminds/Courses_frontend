@@ -153,16 +153,16 @@ const AllCourses = () => {
       </head>
       {/* Search */}
       <div
-        className="flex flex-col gap-5 p-20 items-center xsm:py-6 xsm:px-0 xsm:gap-2 bg-[#000000]"
+        className="flex flex-col gap-5 p-20 items-center xsm:py-6 xsm:px-0 xsm:gap-2 md:p-10 bg-[#000000]"
         style={{ backgroundImage: `url(${Img1})`, backgroundSize: "cover" }}
       >
-        <div className="flex flex-row rounded-2xl w-[80%] xsm:w-[90%] xsm:rounded-md">
+        <div className="flex flex-row rounded-2xl w-[80%] xsm:w-[90%] xsm:rounded-md md:rounded-lg">
           <div className="relative w-full">
             <input
               type="text"
               placeholder=""
               onChange={SearchData}
-              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] ${!SearchedData.length ? "rounded-bl-2xl" : 'rounded-bl-0'}`}
+              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : 'rounded-bl-0'}`}
             />
             <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center">
               {
@@ -176,7 +176,7 @@ const AllCourses = () => {
               }
             </div>
           </div>
-          <button className="text-[#ffffff] text-[22px] font-pop bg-[#1DBF73] rounded-r-2xl py-1 px-10 xsm:rounded-r-md xsm:text-[10px] xsm:py-1 xsm:px-2">
+          <button className="text-[#ffffff] text-[22px] font-pop bg-[#1DBF73] rounded-r-2xl py-1 px-10 xsm:rounded-r-md xsm:text-[10px] xsm:py-1 xsm:px-2 md:text-[14px] md:rounded-r-lg">
             Search
           </button>
         </div>

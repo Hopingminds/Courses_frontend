@@ -72,8 +72,8 @@ const Courses_Home = () => {
     <>
       {/* <h1 className='text-[40px] mt-16 font-semibold' style={{ textAlign: 'center' }}> Our Feature Courses</h1> */}
 
-      <div className="h-[100%] w-full px-20 py-8 mt-12 font-pop bg-[#E2FFF180] space-y-5 xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0">
-        <div className="flex w-full space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px]">
+      <div className="h-[100%] w-full px-20 py-8 mt-12 font-pop bg-[#E2FFF180] space-y-5 xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-10 md:space-y-2">
+        <div className="flex w-full space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px] md:text-[12px] md:space-x-6">
           {[
             "All Courses",
             "Full Stack Development",
@@ -96,12 +96,12 @@ const Courses_Home = () => {
           ))}
         </div>
         <div className="flex justify-between w-full items-center">
-          <div className="text-4xl font-semibold mt-3 xsm:text-[8px] xsm:mt-0 xsm:ml-2">
+          <div className="text-4xl font-semibold mt-3 xsm:text-[8px] xsm:mt-0 xsm:ml-2 md:text-[20px]">
             {selectedCategory}
           </div>
           <Link
             to={"/course"}
-            className="text-[#1DBF73] text-[18px] mr-2 xsm:text-[8px]"
+            className="text-[#1DBF73] text-[18px] mr-2 xsm:text-[8px] md:text-[16px]"
           >
             See all
           </Link>
