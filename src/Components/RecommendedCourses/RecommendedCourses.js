@@ -27,7 +27,7 @@ export default function RecommendedCourses(){
                 <p className="font-pop font-semibold text-[30px] xsm:text-[14px]">For Minor Degree</p>
             </div>
             <div className="grid grid-cols-4  space-x-5 justify-between mt-2 flex-wrap 2xl:gap-10 xsm:grid xsm:grid-cols-2 pb-5 xsm:space-x-0 xsm:gap-3 xsm:px-[2%] "> {/* Changed flex to flex-wrap */}
-                    {Data?.map(course => (
+                    {Data?.map((course,ind) => (
                         <CourseCard
                             key={course.title}
                             title={course.title}
@@ -39,6 +39,8 @@ export default function RecommendedCourses(){
                             slug={course.slug}
                             category={course.category}
                             description={course.whatWillILearn}
+                            ind={ind}
+                            featured_video={course.featured_video}
                         // Pass category to CourseCard component
                         />
                     ))
