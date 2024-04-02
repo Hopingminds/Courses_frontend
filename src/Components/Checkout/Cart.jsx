@@ -115,16 +115,16 @@ const CartCheckout = () => {
   return (
     <>
       {/* CheckOut start */}
-      <div className="card-checkout mx-14 my-5 flex gap-40">
+      <div className="card-checkout mx-14 my-5 flex gap-40 xsm:flex-col xsm:mx-5 xsm:gap-8">
         {/* Billing address start */}
-        <div className="w-[55%] min-h-[100vh]">
-          <span className="text-xl font-bold ">Billing Address</span>
+        <div className="w-[55%] min-h-[100vh] xsm:w-[100%]">
+          <span className="text-xl font-bold xsm:text-[12px]">Billing Address</span>
 
           {/* Dropdown buttons start */}
-          <div className="flex gap-14">
+          <div className="flex gap-14 xsm:justify-between xsm:gap-0">
             <div className="relative">
               <select
-                className="w-[308px] mt-3 px-5 py-3 border rounded-md focus:outline-none appearance-none bg-green-100 card-shadow border-none outline-none"
+                className="w-[308px] mt-3 px-5 py-3 border rounded-md focus:outline-none appearance-none bg-green-100 card-shadow border-none outline-none xsm:text-[10px] xsm:w-[40vw]"
                 value={selectedCountry}
                 onChange={handleCountryChange}
               >
@@ -135,9 +135,9 @@ const CartCheckout = () => {
                   </option>
                 ))}
               </select>
-              <div className="absolute inset-y-0  left-[250px] top-3 flex items-center px-2 pointer-events-none">
+              <div className="absolute inset-y-0  left-[250px] top-3 flex items-center px-2 pointer-events-none xsm:left-[30vw]">
                 <svg
-                  className="h-[29px] w-[29px] text-black"
+                  className="h-[29px] w-[29px] text-black xsm:h-5 xsm:w-5"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -155,7 +155,7 @@ const CartCheckout = () => {
 
             <div className="relative ">
               <select
-                className="w-[308px] px-5 py-3 mt-3 p-2 border rounded-md focus:outline-none appearance-none bg-green-100 card-shadow border-none outline-none"
+                className="w-[308px] px-5 py-3 mt-3 p-2 border rounded-md focus:outline-none appearance-none bg-green-100 card-shadow border-none outline-none xsm:text-[10px] xsm:w-[40vw]"
                 value={selectedState}
                 onChange={handleStateChange}
               >
@@ -166,9 +166,9 @@ const CartCheckout = () => {
                   </option>
                 ))}
               </select>
-              <div className="absolute inset-y-0 left-[250px] top-3 flex items-center px-2 pointer-events-none">
+              <div className="absolute inset-y-0 left-[250px] top-3 flex items-center px-2 pointer-events-none xsm:left-[30vw]">
                 <svg
-                  className="h-[29px] w-[29px] text-black"
+                  className="h-[29px] w-[29px] text-black xsm:h-5 xsm:w-5"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -188,13 +188,13 @@ const CartCheckout = () => {
 
           {/* Payment Method */}
           <div>
-            <h1 className="text-xl font-bold mt-6 mb-3">Payment Method</h1>
-            <div className="bg-green-100 rounded-md p-4 card-shadow">
-              <p className="text-base green-color pb-4">
+            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px]">Payment Method</h1>
+            <div className="bg-green-100 rounded-md p-4 card-shadow xsm:py-2">
+              <p className="text-base green-color pb-4 xsm:text-[8px] xsm:pb-2">
                 Select payment method
               </p>
-              <div className="space-y-2">
-                <div className="py-1 cursor-not-allowed">
+              <div className="space-y-2 xsm:space-y-1">
+                <div className="py-1 cursor-not-allowed flex">
                   <input
                     disabled
                     type="radio"
@@ -203,12 +203,12 @@ const CartCheckout = () => {
                     value="creditDebitCard"
                     className="mr-2"
                   />
-                  <label className="text-gray-400" htmlFor="creditDebitCard">
+                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="creditDebitCard">
                     {" "}
                     Credit/ Debit card
                   </label>
                 </div>
-                <div className="py-1 cursor-not-allowed">
+                <div className="py-1 cursor-not-allowed flex">
                   <input
                     disabled
                     type="radio"
@@ -217,12 +217,12 @@ const CartCheckout = () => {
                     value="upi"
                     className="mr-2"
                   />
-                  <label className="text-gray-400" htmlFor="upi">
+                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="upi">
                     {" "}
                     UPI
                   </label>
                 </div>
-                <div className="py-1 cursor-not-allowed">
+                <div className="py-1 cursor-not-allowed flex">
                   <input
                     disabled
                     type="radio"
@@ -231,12 +231,12 @@ const CartCheckout = () => {
                     value="netBanking"
                     className="mr-2"
                   />
-                  <label className="text-gray-400" htmlFor="netBanking">
+                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="netBanking">
                     {" "}
                     Net banking
                   </label>
                 </div>
-                <div className="py-1">
+                <div className="py-1 flex">
                   <input
                     onChange={(e) => setPayment(e.target.value)}
                     type="radio"
@@ -245,12 +245,12 @@ const CartCheckout = () => {
                     value="cashOnDelivery"
                     className="mr-2"
                   />
-                  <label className="" htmlFor="cashOnDelivery">
+                  <label className="xsm:text-[10px]" htmlFor="cashOnDelivery">
                     {" "}
                     Cash on Delivery
                   </label>
                 </div>
-                <div className="py-1 cursor-not-allowed">
+                <div className="py-1 cursor-not-allowed flex">
                   <input
                     disabled
                     type="radio"
@@ -259,7 +259,7 @@ const CartCheckout = () => {
                     value="emi"
                     className="mr-2"
                   />
-                  <label className="text-gray-400" htmlFor="emi">
+                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="emi">
                     {" "}
                     EMI
                   </label>
@@ -304,44 +304,44 @@ const CartCheckout = () => {
                         </div>
                     </div> */}
 
-          <div className="h-auto space-y-7">
-            <h1 className="text-xl font-bold mt-6 mb-3 ">Order Details</h1>
+          <div className="h-auto space-y-7 xsm:space-y-3">
+            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mb-0">Order Details</h1>
             {Data?.map((item) => {
               temp.push(item?.course?._id);
               return (
                 <>
-                  <div className="bg-green-100 rounded-lg flex items-center card-shadow2 w-[100%]">
+                  <div className="bg-green-100 rounded-lg flex items-center card-shadow2 w-[100%] xsm:p-2 xsm:justify-between">
                     <img
                       src={item.course.featured_image}
                       alt="course"
-                      className="w-[230px] h-[140px]  object-cover rounded-lg mt-[-4px] ml-4"
+                      className="w-[230px] h-[140px]  object-cover rounded-lg mt-[-4px] ml-4 xsm:ml-0 xsm:w-[40%] xsm:h-[15vh] xsm:object-fit"
                     />
-                    <div className="ml-[20px] my-3">
-                      <h2 className="text-md font-semibold text-[#252641] text-custom-color ">
+                    <div className="ml-[20px] my-3 xsm:w-[55%] xsm:my-0 xsm:ml-0">
+                      <h2 className="text-md font-semibold text-[#252641] text-custom-color xsm:text-[10px]">
                         {item.course.title}
                       </h2>
                       <p
-                        className="mt-1 text-[13px] text-wrap "
+                        className="mt-1 text-[13px] text-wrap xsm:hidden"
                         style={{ color: "#696984" }}
                       >
                         {item.course.overview.slice(0, 110)}..
                       </p>
 
-                      <div className="flex mt-8 gap-6">
-                        <div className="flex gap-1">
-                          <Design className="w-[15px] h-[15px] " />
+                      <div className="flex mt-8 gap-6 xsm:mt-2">
+                        <div className="flex gap-1 xsm:justify-center xsm:items-center">
+                          <Design className="w-[15px] h-[15px] xsm:h-3 xsm:w-3" />
                           <p
-                            className="mt-[-2px] text-[13px] "
+                            className="mt-[-2px] text-[13px] xsm:text-[8px]"
                             style={{ color: "#696984" }}
                           >
                             {item.course.category}
                           </p>
                         </div>
 
-                        <div className="flex gap-1">
-                          <Clock className="w-[15px] h-[15px] " />
+                        <div className="flex gap-1 xsm:justify-center xsm:items-center">
+                          <Clock className="w-[15px] h-[15px] xsm:h-3 xsm:w-3" />
                           <p
-                            className=" mb-2 mt-[-2px] text-[13px] "
+                            className=" mb-2 mt-[-2px] text-[13px] xsm:text-[8px] xsm:mb-0"
                             style={{ color: "#696984" }}
                           >
                             {item.course.duration}
@@ -351,14 +351,14 @@ const CartCheckout = () => {
                       {/* <img src="src/assets/Group.png" className="w-[590px] h-[1px]" /> */}
                       <div className="flex justify-between items-center">
                         <span className="flex mt-4">
-                          <Star />
-                          <Star />
-                          <Star />
-                          <Star />
-                          <Star />
+                          <Star className="xsm:w-3"/>
+                          <Star className="xsm:w-3" />
+                          <Star className="xsm:w-3" />
+                          <Star className="xsm:w-3" />
+                          <Star className="xsm:w-3" />
                         </span>
                         <span className="mt-3">
-                          <p className="flex justify-end mr-4 text-[18px] mt-[-3px] font-semibold">
+                          <p className="flex justify-end mr-4 text-[18px] mt-[-3px] font-semibold xsm:text-[10px]">
                             ₹{item.course.base_price}
                           </p>
                         </span>
@@ -376,27 +376,27 @@ const CartCheckout = () => {
 
         {/* Summary start */}
         <div className="h-[100vh] w-full">
-          <span className=" text-xl font-bold">Summary</span>
+          <span className=" text-xl font-bold xsm:text-[12px]">Summary</span>
 
           {/* Summary div start*/}
-          <div className="mt-5 mb-4">
-            <h1 className="text-base">Original Price:</h1>
+          <div className="mt-5 mb-4 xsm:my-2">
+            <h1 className="text-base xsm:text-[10px]">Original Price:</h1>
             <div className="flex justify-between">
-              <p className=" green-color text-sm">Including all the taxes</p>
-              <p>₹{total}</p>
+              <p className=" green-color text-sm xsm:text-[10px]">Including all the taxes</p>
+              <p className="xsm:text-[12px]">₹{total}</p>
             </div>
           </div>
           <hr />
-          <div className="mt-5 mb-4">
-            <h1 className="text-base">Total:</h1>
+          <div className="mt-5 mb-4 xsm:my-2">
+            <h1 className="text-base xsm:text-[10px]">Total:</h1>
             <div className="flex justify-between">
-              <p className=" green-color text-sm">Including all the taxes</p>
-              <p>₹{total}</p>
+              <p className=" green-color text-sm xsm:text-[10px]">Including all the taxes</p>
+              <p className="xsm:text-[12px]">₹{total}</p>
             </div>
           </div>
-          <span className="flex justify-center">
+          <span className="flex justify-center xsm:mt-4">
             <button
-              className="bg-green-color px-12 py-3 rounded-full text-white text-[20px]"
+              className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px]"
               onClick={handleContinueCheckout}
             >
               Continue Checkout
