@@ -49,7 +49,7 @@ const CourseCard = ({
         muted
       />:<img
       // style={{ height: "10rem" }}
-      className="w-full  rounded-lg h-[40%] xsm:h-[45%]"
+      className="w-full  rounded-lg h-[40%] xsm:h-[45%] md:h-[35%]"
       src={image}
       alt="Course"
     />
@@ -58,37 +58,37 @@ const CourseCard = ({
       <div className=" h-[55%] xsm:h-[45%]">
         <div className="flex justify-between items-center text-[#696984] mt-2">
           <div className="flex space-x-2 items-center xsm:space-x-1">
-            <Design className="h-4 w-4 xsm:h-2 xsm:w-2"/>
-            <span className="text-[12px] xsm:text-[6px]">{category}</span>
+            <Design className="h-4 w-4 xsm:h-2 xsm:w-2 md:w-3 md:h-3"/>
+            <span className="text-[12px] xsm:text-[6px] md:text-[8px]">{category}</span>
           </div>
           <div
               style={{ color: "#" }}
-              className="text-[18px] font-semibold text-[#1DBF73] xsm:text-[6px]"
+              className="text-[18px] font-semibold text-[#1DBF73] xsm:text-[6px] md:text-[10px]"
             >
               ₹{price}
             </div>
        
         </div>
-        <div className=" flex items-center mt-2 space-x-2 xsm:space-x-1">
-            <Clock className="h-4 w-4 xsm:h-2 xsm:w-2"/>
-            <p className="text-[12px] xsm:text-[6px] text-[#696984]"> {duration}</p>
+        <div className=" flex items-center mt-2 space-x-2 xsm:space-x-1 md:mt-1">
+            <Clock className="h-4 w-4 xsm:h-2 xsm:w-2 md:w-3 md:h-3"/>
+            <p className="text-[12px] xsm:text-[6px] text-[#696984] md:text-[8px]"> {duration}</p>
           </div>
-        <div className="px-2 py-5 mt-2 space-y-2 flex  flex-col h-full xsm:mt-1 xsm:py-1 xsm:px-0 xsm:justify-between xsm:space-y-0">
+        <div className="px-2 py-5 mt-2 space-y-2 flex  flex-col h-full xsm:mt-1 xsm:py-1 xsm:px-0 xsm:justify-between xsm:space-y-0 md:py-2 md:mt-0">
           <div>
             <div
               style={{ color: "#252641" }}
-              className="font-bold text-[16px] mb-2 h-12 xsm:text-[8px] xsm:mb-0 xsm:h-4"
+              className="font-bold text-[16px] mb-2 h-12 xsm:text-[8px] xsm:mb-0 xsm:h-4 md:text-[12px] md:mb-0"
             >
               {cropString(title, 50)}
             </div>
-            <div className="text-[#696984] text-[14px] text-pretty xsm:text-[11px] xsm:text-balance xsm:hidden">
+            <div className="text-[#696984] text-[14px] text-pretty xsm:text-[11px] xsm:text-balance xsm:hidden md:text-[10px]">
               {cropString(description[0], 70)}
             </div>
           </div>
           <div className="flex justify-between items-center ">
             <div className="flex items-center space-x-1">
-              <img src="/lina.png" className="h-10 w-10 xsm:h-4 xsm:w-4" />
-              <div className="font-semibold text-sm xsm:text-[6px]">{firstName} {lastName}</div>
+              <img src="/lina.png" className="h-10 w-10 xsm:h-4 xsm:w-4 md:h-6 md:w-6" />
+              <div className="font-semibold text-sm xsm:text-[6px] md:text-[10px]">{firstName} {lastName}</div>
             </div>
             {/* <div
               style={{ color: "#" }}
