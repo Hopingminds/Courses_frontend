@@ -43,6 +43,8 @@ export default function Assignment({ courses }) {
           {/* <p className="font-pop font-semibold text-center">Deadline</p> */}
           <p className="font-pop font-bold text-center">Status</p>
         </div>
+        {!Data?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Assignment Found</div></div>:''}
+
         {Data?.map((item, ind) => {
           return (
             <>
