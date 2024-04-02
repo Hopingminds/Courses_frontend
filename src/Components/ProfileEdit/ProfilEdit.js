@@ -8,10 +8,12 @@ import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import Spinner from "../Spinner";
 
 const ProfilEdit = () => {
   const navigate = useNavigate();
   const [btnLoader, setbtnLoader] = useState(false);
+  const [show, setshow] = useState(false)
   const [data, setData] = useState([])
   const [uploadLoader, setUploadLoader] = useState(false);
 
@@ -40,6 +42,7 @@ const ProfilEdit = () => {
   useEffect(() => {
     async function Fetchdata() {
       try {
+        setshow(true)
         let url = BASE_URL + '/user/' + token.email;
         const data = await fetch(url)
         const response = await data.json()
@@ -57,6 +60,7 @@ const ProfilEdit = () => {
           bio: response?.userDetails?.bio,
           phone: response?.userDetails?.phone
         })
+        setshow(false)
       } catch (error) {
         console.log(error)
       }
@@ -269,6 +273,10 @@ const ProfilEdit = () => {
             {btnLoader ? "Saving..." : "Save"}
           </button>
         </div>
+        {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
+                <Spinner className='' />
+
+            </div> : ''}
       </div>
       <Toaster position="top-right" />
     </>

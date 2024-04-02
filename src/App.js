@@ -12,6 +12,7 @@ function App() {
   const [wishListData, setWishListData] = useState([])
   const [userDetail, setUserDetail] = useState();
   const [checkoutData, setCheckoutData] = useState();
+  const [adminlogin, setadminlogin] = useState()
 
 
   useEffect(() => {
@@ -55,7 +56,15 @@ function App() {
   //     console.log(error)
   //   }
   // }
-
+function Getadmindetails(){
+let token=localStorage.getItem('token')
+if(token){
+  setadminlogin(true)
+}
+else{
+  setadminlogin(false)
+}
+}
   const getUserDetails = async () => {
     // console.log(localStorage.getItem('GROC_USER_TOKEN'))
     const token = localStorage.getItem('COURSES_USER_TOKEN')
@@ -89,7 +98,7 @@ function App() {
 
 
   return (
-    <Globalinfo.Provider value={{ cartData, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
+    <Globalinfo.Provider value={{ cartData,Getadmindetails,adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
       <div className='2xl:px-[17%] overflow-x-hidden'>
         <Router />
       </div>
