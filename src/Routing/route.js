@@ -27,13 +27,14 @@ import SubAdmin from '../Components/SubAdminDashboard/index.js'
 // subadmin
 // import SubAdmin from '../Components/SubAdminDashboard/index.js'
 import Pap from '../Components/PAP/Pap.js'
+import Modal from '../Components/PAP/modal.jsx'
 import Forgotpassword from '../Components/forgotPassword/forgotPassword.js'
 import CareerServices from '../Components/CareerServices/CareerServices.js'
 import AiMinds from '../Components/AiMinds/AiMinds.jsx'
 import ReturnPolicy from '../Components/policies/ReturnPolicy.js'
 import ShippingPolicy from '../Components/policies/ShippingPolicy.js'
 import Test from '../Components/Test/Test.jsx'
-import HireFromUs from '../Components/HireFromUs/hireFromUs.js'
+import HireFromUs from '../Components/HireFromUs/HireFromUs.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -81,6 +82,7 @@ const Router = () => {
                 <Route path='/terms' element={<ShippingPolicy />} />
                 <Route path='/test' element={<Test />} />
                 <Route path='/hire-from-us' element={<HireFromUs />} />
+                <Route path='/modal' element={<Modal />} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
