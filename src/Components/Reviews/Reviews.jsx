@@ -29,11 +29,11 @@ function Reviews() {
         <>
             <div className="" id="Reviews">
                 <div className="reviews">
-                    <h3 className="xsm:text-[10px]">Comments</h3>
+                    <h3>Comments</h3>
                     <div className="review-head">
                         <span><h2>4.0</h2></span>
                         <div className="img">
-                            <div className="flex mt-5"><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /></div>
+                            <div className="flex mt-5 xsm:mt-0"><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /></div>
                             <p className="review-head-rating">based on 146,951 ratings</p>
                         </div>
 
@@ -66,7 +66,7 @@ function Reviews() {
                     {/* Box-1 */}
                     <div className="person-review-1 ">
                         <img src={profile} alt="profile" />
-                        <div className="person-content space-y-2">
+                        <div className="person-content space-y-2 xsm:space-y-0">
                             <div className="person-review-box">
                                 <span className="h-1">Laura Hipster</span>
                                 <span className="h-2">October 03, 2022</span>
@@ -82,7 +82,7 @@ function Reviews() {
                     {/* Box-2 */}
                     <div className="person-review-1 ">
                         <img src={profile} alt="profile" />
-                        <div className="person-content space-y-2">
+                        <div className="person-content space-y-2 xsm:space-y-0">
                             <div className="person-review-box">
                                 <span className="h-1">Laura Hipster</span>
                                 <span className="h-2">October 03, 2022</span>
