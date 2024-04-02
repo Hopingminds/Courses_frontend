@@ -97,14 +97,14 @@ const Login = () => {
                                 <p className='text-[14px] font-pop'>Password</p>
                                 <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type={showPassword ? "text" : "password"} placeholder="Enter Your Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} onKeyDown={handleKeyDown} />
                                 <span style={{ position: "absolute", bottom: "12px", right: "15px" }}>
-                                    {showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />}
+                                    {showPassword?<IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />}
                                 </span>
                             </div>
-                            <div className='flex justify-between'>
-                                <div className='flex items-center gap-1'>
+                            <div className='flex justify-end'>
+                                {/* <div className='flex items-center gap-1'>
                                     <input className='' type="checkbox" />
                                     <p className='text-[12px]'>Remember me</p>
-                                </div>
+                                </div> */}
                                 <Link to={'/forgot-password'}><h6 className='xsm:text-[12px]'>Forgot password?</h6></Link>
                             </div>
                         </div>

@@ -11,7 +11,7 @@ module.exports = {
         },
         scroll2: {
           '100%': { transform: 'translateX(100%)' },
-          '0%': { transform: 'translateX(0%)' },
+          '0%': { transform: 'translateX(0%)' },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
         },
       },
       fontFamily: {

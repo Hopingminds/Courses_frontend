@@ -40,3 +40,29 @@
     width: 10%;
     height: 8px;
 }
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .ratings-container{
+        gap: 8px;
+    }
+    .ratings-bar{
+        width: 220px;
+        height: 4px;
+    }
+
+    .ratings-fill-1{
+        height: 4px;
+    }
+    .ratings-fill-2{
+        height: 4px;
+    }
+    .ratings-fill-3{
+        height: 4px;
+    }
+    .ratings-fill-4{
+        height: 4px;
+    }
+    .ratings-fill-5{
+        height: 4px;
+    }
+}

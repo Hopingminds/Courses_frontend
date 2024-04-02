@@ -65,7 +65,12 @@ const Register = () => {
                 email: user.email,
                 college: user.college,
             });
-
+            const res1 = await axios.post(`${BASE_URL}/registerMail`, {
+                username: "",
+                userEmail: user.email,
+                text: "",
+                subject: "",
+            });
             toast.success("Registered Successfully");
 
             setTimeout(() => {

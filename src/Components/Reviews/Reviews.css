@@ -184,3 +184,94 @@
     font-weight: 500; */
     font-size: 16px;
 }
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .reviews{
+        gap: 10px;
+        padding: 14px;
+    }
+
+    .reviews h3{
+        font-size: 10px;
+    }
+
+    .review-head h2{
+        font-size: 12px;
+    }
+
+    .review-head-rating{
+        font-size: 8px;
+    }
+
+    .review-head img{
+        width: 10px;
+        height: 10px;
+    }
+
+    .review-head{
+        align-items: start;
+    }
+
+    .ratings img{
+        width: 10px;
+        height: 10px;
+    }
+
+    .ratings span{
+        font-size: 8px;;
+    }
+
+    .person-review-1 img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .person-review-box .h-1{
+        font-size: 10px;
+    }
+
+    .person-review-box .h-2{
+        font-size: 10px;
+    }
+
+    .person-content .content-para1{
+        font-size: 8px;
+    }
+
+    .person-content{
+        gap: 8px;
+    }
+
+    .person-content .h-3{
+        font-size: 8px;
+        color: black;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        gap: 3px;
+    }
+
+    .person-content img{
+        width: 12px;
+        height: 10px;
+    
+    }
+
+    .person-review-1{
+        gap: 14px;
+        height: 140px;
+        padding-top: 15px;
+    }
+
+    .Reviews-pages{
+        margin: 1px 0;
+    }
+
+    .Reviews-pages button{
+        padding: 0 6px;
+        margin: 0 2px;
+        height: 20px;
+        font-size: 6px;
+    }
+}
