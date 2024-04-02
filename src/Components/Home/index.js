@@ -24,7 +24,7 @@ export default function Home() {
             <meta name="description" content="Holistic development programs that place students in specific high growth roles across 150+ Corporate Partners." />
 
         </head>
-        <div className="space-y-24 xsm:space-y-6">
+        <div className="space-y-24 xsm:space-y-6 md:space-y-10">
             <Herosection />
             <Companies />
             <Courses_Home />

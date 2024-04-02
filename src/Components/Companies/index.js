@@ -60,12 +60,12 @@ const Companies = () => {
     }, [alternateCount]);
 
     return (
-        <div className="text-[#696984] flex justify-center mt-12 font-pop">
-            <div className="w-[90%] space-y-8">
-                <div className="text-center text-[24px]">Trusted by 5,000+ Companies Worldwide</div>
-                <div className="flex justify-center">
+        <div className="text-[#696984] flex justify-center mt-12 font-pop xsm:mt-0 md:mt-4">
+            <div className="w-[90%] space-y-8 xsm:space-y-4 md:space-y-6">
+                <div className="text-center text-[24px] text-[#696984] xsm:text-[14px] md:text-[16px]">Trusted by 5,000+ Companies Worldwide</div>
+                <div className="flex justify-center ">
                     {logos.map((row, rowIndex) => (
-                        <div key={rowIndex} className="slider-container w-[20%]">
+                        <div key={rowIndex} className="slider-container w-[20%] md:w-[12%]">
                             {row.map((logo, index) => (
                                 <img
                                     key={index}
