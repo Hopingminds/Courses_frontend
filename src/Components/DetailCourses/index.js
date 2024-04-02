@@ -7,23 +7,25 @@ import { useEffect, useState } from 'react';
 import { COURSESURL } from '../confidential';
 import { BASE_URL } from '../../Api/api';
 import { jwtDecode } from 'jwt-decode';
+import Spinner from '../Spinner';
 
 export default function DetailCourses() {
     const param = useParams()
     const [Data, setData] = useState()
     let slug = param.slug;
+    const [show, setshow] = useState(false)
     
    
     useEffect(() => {
         async function Fetchdata() {
             try {
-                // setshow(true)
+                setshow(true)
                 let url = BASE_URL + '/course/' + slug
                 const data = await fetch(url);
                 const response = await data.json()
                 console.log(response);
                 setData(response.course)
-                // setshow(false)
+                setshow(false)
             } catch (error) {
                 console.log(error);
             }
@@ -67,6 +69,10 @@ export default function DetailCourses() {
                 </div>
                 <Main />
             </div>
+            {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
+                <Spinner className='' />
+
+            </div> : ''}
             <RecommendedCourses />
         </div>
     );

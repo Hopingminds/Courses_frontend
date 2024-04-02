@@ -6,12 +6,12 @@ const Companies = () => {
     const [alternateCount, setAlternateCount] = useState(0);
 
     const logos = [
-        ['/google.png', '/dream11.png', '/ajio.png', '/google.png', '/dream11.png', '/ajio.png'],
-        ['/indmoney.png', '/paytm.png', '/cleartax.png', '/indmoney.png', '/paytm.png', '/cleartax.png'],
-        ['/ajio.png', '/google.png', '/dream11.png', '/ajio.png', '/google.png', '/dream11.png'],
-        ['/cleartax.png', '/indmoney.png', '/paytm.png', '/cleartax.png', '/indmoney.png', '/google.png'],
-        ['/dream11.png', '/ajio.png', '/google.png', '/dream11.png', '/ajio.png', '/cleartax.png'],
-        ['/paytm.png', '/cleartax.png', '/indmoney.png', '/paytm.png', '/cleartax.png', '/indmoney.png']
+        ['/abbott.png', '/accentire.png', '/adept.png', '/adobe.png', '/ajio.png', '/alexa.png'],
+        ['/bosch.png', '/byjus.png', '/capgemini.png', '/cleartax.png', '/cognizant.png', '/dream11.png'],
+        ['/dxc.png', '/ebay.png', '/google.png', '/grammarly.png', '/hcl.png', '/ibm.png'],
+        ['/indmoney.png', '/infosys.png', '/instamojo.png', '/mahindra.png', '/ola.png', '/paytm.png'],
+        ['/revv.png', '/salesforce.png', '/sharechat.png', '/swiggy.png', '/tcs.png', '/techginia.png'],
+        ['/techmatrix.png', '/unity.png', '/uolo.png', '/whatfix.png', '/whitehat.png', '/wipro.png']
     ];
 
     const totalLogos = logos.map(row => row.length);
@@ -24,7 +24,7 @@ const Companies = () => {
                     newIndexes[index] = (newIndexes[index] + 1) % total;
                     return newIndexes;
                 });
-            }, index % 2 === 0 ? 3000 : 6000);
+            }, index % 2 === 0 ? 3000 : 5000);
         });
     
         return () => {
@@ -60,12 +60,12 @@ const Companies = () => {
     }, [alternateCount]);
 
     return (
-        <div className="text-[#696984] flex justify-center mt-12 font-pop xsm:mt-0">
-            <div className="w-[90%] space-y-8 xsm:space-y-4">
-                <div className="text-center text-[24px] text-[#696984] xsm:text-[14px]">Trusted by 5,000+ Companies Worldwide</div>
+        <div className="text-[#696984] flex justify-center mt-12 font-pop xsm:mt-0 md:mt-4">
+            <div className="w-[90%] space-y-8 xsm:space-y-4 md:space-y-6">
+                <div className="text-center text-[24px] text-[#696984] xsm:text-[14px] md:text-[16px]">Trusted by 5,000+ Companies Worldwide</div>
                 <div className="flex justify-center ">
                     {logos.map((row, rowIndex) => (
-                        <div key={rowIndex} className="slider-container w-[20%]">
+                        <div key={rowIndex} className="slider-container w-[20%] md:w-[12%]">
                             {row.map((logo, index) => (
                                 <img
                                     key={index}

@@ -29,13 +29,15 @@ const Faqs = () => {
         if(!clicked){
             setclicked(true);
             let inner = document.getElementById(id);
-            // console.log(inner);
+            let arrow=document.getElementById(`arrow${id}`)
+            arrow.style.transform = 'rotate(0deg)';
             inner.style.display='none';
         }
-        else{
+        else{                       
             setclicked(false)
             let inner = document.getElementById(id);
-
+            let arrow=document.getElementById(`arrow${id}`)
+            arrow.style.transform = 'rotate(180deg)';
             // console.log(inner);
             inner.style.display='flex';
         }
@@ -53,7 +55,7 @@ const Faqs = () => {
                             <div className="faq-box ">
                                 <div className="faq-box-head" onClick={()=>ClickSection(ind)}>
                                     <h3>{item?.question}</h3>
-                                    <Down className="xsm:w-2 xsm:h-2"/>
+                                    <Down className="xsm:w-2 xsm:h-2" id={`arrow${ind}`}/>
                                 </div>
                                 <div id={ind} className="faq-box-descrip" style={{ display: "none" }}>
                                     <p>{item?.answer}</p>

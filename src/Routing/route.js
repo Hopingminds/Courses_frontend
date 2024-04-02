@@ -47,7 +47,7 @@ const Router = () => {
             {pathname.includes('subadmin') ? <div>
 
                 <NavSubAdmin />
-            </div> : <div className='h-20 xsm:h-10'>
+            </div> : <div className='h-20 md:h-14 xsm:h-10'>
 
                 <Navbar />
             </div>}

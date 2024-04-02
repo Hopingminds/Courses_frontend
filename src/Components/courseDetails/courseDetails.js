@@ -149,6 +149,7 @@ export default function CDDetails() {
                 <Coursecontents
                   data={Data?.curriculum}
                   completed_lessons={completed_lessons}
+                  setMenu={setMenu}
                 />
               </div>
             ) : <></>
@@ -157,6 +158,7 @@ export default function CDDetails() {
               <Coursecontents
                 data={Data?.curriculum}
                 completed_lessons={completed_lessons}
+                setMenu={setMenu}
               />
             </div>
           )}
