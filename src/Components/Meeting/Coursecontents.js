@@ -72,7 +72,7 @@ export default function Coursecontents({ data, completed_lessons }) {
         }
     }
     return (
-        <div className="bg-[#E2FFF1] rounded-2xl">
+        <div className="bg-[#E2FFF1] rounded-2xl border border-2 xsm:absolute xsm:top-[3rem] xsm:right-0 xsm:w-[80vw]">
             <div className="px-5 py-8">
                 <div className="space-y-2">
                     <div>

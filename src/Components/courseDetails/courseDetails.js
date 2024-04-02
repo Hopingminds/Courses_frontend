@@ -114,11 +114,11 @@ export default function CDDetails() {
 
   const toggleMenu = () => {
     // if (window.innerWidth <= 480) {
-      setMenu((prevClicked) => !prevClicked);
-      console.log("Menu toggled"); 
+    setMenu((prevClicked) => !prevClicked);
+    // console.log("Menu toggled"); 
     // }
   };
-  
+
 
   return (
     <>
@@ -142,21 +142,25 @@ export default function CDDetails() {
                             </div> */}
             </div>
           </div>
-          <div className="w-[45%]  h-[80vh] overflow-y-auto xsm:hidden">
-            {window.innerWidth <= 480 ? (
-              menu ? (
+
+          {window.innerWidth <= 480 ? (
+            menu ? (
+              <div className="w-[45%]  h-[80vh] overflow-y-auto">
                 <Coursecontents
                   data={Data?.curriculum}
                   completed_lessons={completed_lessons}
                 />
-              ) : null
-            ) : (
+              </div>
+            ) : <></>
+          ) : (
+            <div className="w-[45%]  h-[80vh] overflow-y-auto">
               <Coursecontents
                 data={Data?.curriculum}
                 completed_lessons={completed_lessons}
               />
-            )}
-          </div>
+            </div>
+          )}
+
         </div>
       </div>
       <div className="h-full w-[72vw] px-16 xsm:px-5 xsm:w-full">
