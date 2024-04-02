@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { validateEmail } from '../../helpers';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
@@ -9,7 +9,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 const LoginSubAdmin = () => {
 
   const navigate = useNavigate();
-  const {getAdminDetails } = useContext(Globalinfo)
+  const {Getadmindetails } = useContext(Globalinfo)
 
   const [btnLoader, setBtnLoader] = useState(false);
   const [Admin, setAdmin] = useState({
@@ -26,16 +26,18 @@ const LoginSubAdmin = () => {
     }
     else{
       try{
-        const res = await axios.post(`${BASE_URL}/adminLogin`, {
-          username: Admin.username,
+        const res = await axios.post(`${BASE_URL}/loginAdminWithEmail`, {
+          email: Admin.email,
           password: Admin.password,
         })
 
-        getAdminDetails();
+        // getAdminDetails();
         toast.success("Login Successful")
+       
         localStorage.setItem('token',res.data.token)
+        Getadmindetails()
         setTimeout(() => {
-          navigate('/DashboardSubAdmin')
+          navigate('/subadmin-dashboard')
         }, 1000);
       } catch(error){
         console.log(error);
@@ -55,7 +57,7 @@ const LoginSubAdmin = () => {
         <div className='w-[80%]'>
           <label className='font-pop font-semibold text-[16px]'>Username</label>
           <div>
-            <input className='w-full h-[44px] shadow-lg' type='text' name='username' value={Admin.email} onChange={(e) => setAdmin({...Admin,email:e.target.value})}/>
+            <input className='w-full h-[44px] shadow-lg' type='email' name='username' value={Admin.email} onChange={(e) => setAdmin({...Admin,email:e.target.value})}/>
           </div>
         </div>
         <div className='w-[80%]'>
@@ -68,6 +70,7 @@ const LoginSubAdmin = () => {
           <button onClick={handlelogin} className='bg-black font-pop font-medium text-white px-20 py-4 rounded-3xl'>{btnLoader ? "Loading..." : "LogIn"}</button>
         </div>
       </div>
+      <Toaster/>
     </div>
   )
 }

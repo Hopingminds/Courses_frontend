@@ -37,8 +37,6 @@ export default function Navbar() {
     }
 
     return (<>
-
-
         <div className="w-full flex justify-between px-[5%] h-20 items-center  font-pop fixed top-0 z-20 bg-[#0F2027] xsm:h-12 xsm:px-[2%] text-white">
             <Link to='/' onClick={Top} className=" cursor-pointer">
                 <img src="/logo.png" className="h-[50px] w-auto xsm:w-[50px] xsm:h-[25px]" />
