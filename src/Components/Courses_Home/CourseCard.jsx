@@ -77,18 +77,18 @@ const CourseCard = ({
           <div>
             <div
               style={{ color: "#252641" }}
-              className="font-bold text-[16px] mb-2 h-12 xsm:text-[8px] xsm:mb-0 xsm:h-4 md:text-[12px] md:mb-0"
+              className="font-bold text-[16px] mb-2 h-12 xsm:text-[8px] xsm:mb-0 xsm:h-4 md:text-[10px] md:mb-0"
             >
               {cropString(title, 50)}
             </div>
-            <div className="text-[#696984] text-[14px] text-pretty xsm:text-[11px] xsm:text-balance xsm:hidden md:text-[10px]">
+            <div className="text-[#696984] text-[14px] text-pretty xsm:text-[11px] xsm:text-balance xsm:hidden md:text-[8px]">
               {cropString(description[0], 70)}
             </div>
           </div>
           <div className="flex justify-between items-center ">
             <div className="flex items-center space-x-1">
-              <img src="/lina.png" className="h-10 w-10 xsm:h-4 xsm:w-4 md:h-6 md:w-6" />
-              <div className="font-semibold text-sm xsm:text-[6px] md:text-[10px]">{firstName} {lastName}</div>
+              <img src="/lina.png" className="h-10 w-10 xsm:h-4 xsm:w-4 md:h-4 md:w-4" />
+              <div className="font-semibold text-sm xsm:text-[6px] md:text-[7px]">{firstName} {lastName}</div>
             </div>
             {/* <div
               style={{ color: "#" }}

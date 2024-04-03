@@ -21,10 +21,10 @@ const AllCourses = () => {
   const [selectedUser, setSelectedUser] = useState(User1);
   const [allCourses, setAllCourses] = useState([]);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [Data, setData] = useState([])
-  const [SearchedData, setSearchedData] = useState([])
-  const [Temp, setTemp] = useState([])
-  const [show, setshow] = useState(false)
+  const [Data, setData] = useState([]);
+  const [SearchedData, setSearchedData] = useState([]);
+  const [Temp, setTemp] = useState([]);
+  const [show, setshow] = useState(false);
   const [mouseHovered, setMouseHovered] = useState(null);
   const [userData, setUserData] = useState({
     [User1]: {
@@ -63,40 +63,36 @@ const AllCourses = () => {
       description3:
         "Excepteur sint occaect in culpa qui officia deserunt mollit anim id est laborum.",
     },
-
   });
 
   useEffect(() => {
     fetchCourses();
   }, []);
 
-  const [params, setparams] = useSearchParams()
+  const [params, setparams] = useSearchParams();
   const fetchCourses = async () => {
     try {
-      let category = params.get('category')
+      let category = params.get("category");
 
       if (category) {
-        setshow(true)
+        setshow(true);
         const res = await axios.get(`${BASE_URL}/courses?category=${category}`);
         // console.log(res);
         setAllCourses(res.data.courses);
-        setData(res.data.courses)
-        setTemp(res.data.courses)
-        setshow(false)
-      }
-      else {
-        setshow(true)
+        setData(res.data.courses);
+        setTemp(res.data.courses);
+        setshow(false);
+      } else {
+        setshow(true);
 
         const res = await axios.get(`${BASE_URL}/courses`);
         console.log(res.data.courses);
         setAllCourses(res.data.courses);
-        setData(res.data.courses)
-        setTemp(res.data.courses)
-        setshow(false)
-
+        setData(res.data.courses);
+        setTemp(res.data.courses);
+        setshow(false);
       }
-
-    } catch (error) { }
+    } catch (error) {}
   };
 
   function SearchData(e) {
@@ -104,26 +100,29 @@ const AllCourses = () => {
     // setSearchQuery(e.target.value);
     // console.log(query);
     // console.log(query);
-    if (query == '') {
-      setSearchedData([])
+    if (query == "") {
+      setSearchedData([]);
       // console.log("query:",Data);
-      setAllCourses(Data)
-    }
-    else {
-      setSearchedData(allCourses.filter((item) => {
-        const searchitem = query.toLowerCase()
-        const slug = item.slug.toLowerCase()
-        // console.log(slug);
-        // console.log(searchitem && (slug.includes(searchitem)));
-        return searchitem && (slug.includes(searchitem));
-      }))
-      setAllCourses(allCourses.filter((item) => {
-        const searchitem = query.toLowerCase()
-        const slug = item.slug.toLowerCase()
-        // console.log(slug);
-        // console.log(searchitem && (slug.includes(searchitem)));
-        return searchitem && (slug.includes(searchitem));
-      }))
+      setAllCourses(Data);
+    } else {
+      setSearchedData(
+        allCourses.filter((item) => {
+          const searchitem = query.toLowerCase();
+          const slug = item.slug.toLowerCase();
+          // console.log(slug);
+          // console.log(searchitem && (slug.includes(searchitem)));
+          return searchitem && slug.includes(searchitem);
+        })
+      );
+      setAllCourses(
+        allCourses.filter((item) => {
+          const searchitem = query.toLowerCase();
+          const slug = item.slug.toLowerCase();
+          // console.log(slug);
+          // console.log(searchitem && (slug.includes(searchitem)));
+          return searchitem && slug.includes(searchitem);
+        })
+      );
     }
   }
   const toggleShowAllCards = () => {
@@ -140,9 +139,9 @@ const AllCourses = () => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -166,174 +165,182 @@ const AllCourses = () => {
               type="text"
               placeholder=""
               onChange={SearchData}
-              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : 'rounded-bl-0'}`}
+              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${
+                !SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
+              }`}
             />
             <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center">
-              {
-                SearchedData.map((item, ind) => {
-                  // console.log(item.);
-                  return (<>
-                    <Link key={ind} to={"/detailcourse/" + item.slug} className="text-left pl-2 py-1 border-b-[2px]" >{item.title}</Link>
-
-                  </>)
-                })
-              }
+              {SearchedData.map((item, ind) => {
+                // console.log(item.);
+                return (
+                  <>
+                    <Link
+                      key={ind}
+                      to={"/detailcourse/" + item.slug}
+                      className="text-left pl-2 py-1 border-b-[2px]"
+                    >
+                      {item.title}
+                    </Link>
+                  </>
+                );
+              })}
             </div>
           </div>
           <button className="text-[#ffffff] text-[22px] font-pop bg-[#1DBF73] rounded-r-2xl py-1 px-10 xsm:rounded-r-md xsm:text-[10px] xsm:py-1 xsm:px-2 md:text-[14px] md:rounded-r-lg">
             Search
           </button>
         </div>
-
       </div>
 
       {/* cards */}
-      {!allCourses?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Found</div></div>:''}
+      {!allCourses?.length ? (
+        <div className="flex justify-center  w-full mt-10">
+          <div className="text-center font-semibold text-2xl w-full ">
+            {" "}
+            No Course Found
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
 
-      <div className="my-10 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%]">
+      <div className="my-10 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%]">
         {allCourses.map((val, ind) => {
           return (
             <Link
               to={"/detailcourse/" + val.slug}
-              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md"
+              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md md:p-2 md:gap-2"
               onMouseEnter={() => toggleHover(ind)}
               onMouseLeave={() => toggleHover(null)}
             >
               <div className="h-[45%]">
-              {mouseHovered === ind ? (
-                <ReactPlayer
-                  className="w-full h-full rounded-xl xsm:rounded-md border"
-                  height={'100%'}
-                  width={'100%'}
-                  url={val.featured_video}
-                  controls={false}
-                  playing={true}
-                  muted
-                />
-              ) : (
-                <img
-                  className="w-full h-full rounded-xl xsm:rounded-md"
-                  src={val.featured_image}
-                  alt={val.title}
-                />
-              )}
+                {mouseHovered === ind ? (
+                  <ReactPlayer
+                    className="w-full h-full rounded-xl xsm:rounded-md border"
+                    height={"100%"}
+                    width={"100%"}
+                    url={val.featured_video}
+                    controls={false}
+                    playing={true}
+                    muted
+                  />
+                ) : (
+                  <img
+                    className="w-full h-full rounded-xl xsm:rounded-md"
+                    src={val.featured_image}
+                    alt={val.title}
+                  />
+                )}
               </div>
-              <div className="space-y-4 flex flex-col justify-between h-[53%] xsm:space-y-2">
-                <div className="flex flex-col gap-3 xsm:gap-2">
+              <div className="space-y-4 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2">
+                <div className="flex flex-col gap-3 xsm:gap-2 md:gap-0">
                   <div className="flex justify-between">
                     <div className="flex space-x-2 items-center xsm:space-x-1">
                       <img
-                        className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px]"
+                        className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
                         src="../Icons/RCDesign.svg"
                       />
-                      <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px]">
+                      <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
                         {val?.category}
                       </p>
                     </div>
                     <div>
-                    <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[6px]">
-                      ₹ {val?.base_price}
-                    </p>
-                  </div>
-                  </div>
-                  <div className="flex space-x-2 items-center xsm:space-x-0">
-                      <img
-                        className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px]"
-                        src="../Icons/RCClock.svg"
-                      />
-                      <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px]">
-                        {val?.duration}
+                      <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[6px] md:text-[10px]">
+                        ₹ {val?.base_price}
                       </p>
                     </div>
-                  <p className="font-pop font-semibold text-[16px] text-[#252641] xsm:text-[8px]">
+                  </div>
+                  <div className="flex space-x-2 items-center xsm:space-x-0">
+                    <img
+                      className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
+                      src="../Icons/RCClock.svg"
+                    />
+                    <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
+                      {val?.duration}
+                    </p>
+                  </div>
+                  <p className="font-pop font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px]">
                     {val?.title}
                   </p>
-                  <p className="font-pop text-[14px] text-[#555555] xsm:hidden">
-                    {
-                      val?.overview.slice(0, 70)
-                    }..
+                  <p className="font-pop text-[14px] text-[#555555] xsm:hidden md:text-[8px]">
+                    {val?.overview.slice(0, 70)}..
                   </p>
                 </div>
                 <div className=" flex items-center justify-between">
-                  <div className="flex items-center space-x-3 xsm:space-x-1">
+                  <div className="flex items-center space-x-3 xsm:space-x-1 md:space-x-2">
                     <img
-                      className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px]"
+                      className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4"
                       src="../img/RCimg2.png"
                     />
-                    <p className="font-pop font-medium text-[14px] xsm:text-[6px]">
-                      {val?.instructor.firstName + ' ' + val?.instructor.lastName}
+                    <p className="font-pop font-medium text-[14px] xsm:text-[6px] md:text-[7px]">
+                      {val?.instructor.firstName +
+                        " " +
+                        val?.instructor.lastName}
                     </p>
                   </div>
-                
                 </div>
               </div>
             </Link>
           );
         })}
-       
       </div>
-      <div className="flex flex-col gap-14 px-24 py-20">
-                <p className="text-[#252641] text-[32px] font-poppins font-semibold pl-4">
-                    Classes taught by real creators
-                </p>
-                <div className="grid grid-cols-3 gap-20">
-
-                    <div className="h-[45vh] flex justify-center items-end relative">
-                        <div
-                            className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
-                            style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-                        >
-                            <p className="text-[#252641] text-[20px] font-poppins font-semibold">
-                                Adam
-                            </p>
-                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
-                                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                                eiusmod tempor
-                            </p>
-                        </div>
-                        <img src={Img2} className="absolute top-5 w-[40%]" />
-                    </div>
-                    
-                    <div className="h-[45vh] flex justify-center items-end relative">
-                        <div
-                            className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
-                            style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-                        >
-                            <p className="text-[#252641] text-[20px] font-poppins font-semibold">
-                                Adam
-                            </p>
-                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
-                                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                                eiusmod tempor
-                            </p>
-                        </div>
-                        <img src={Img2} className="absolute top-5 w-[40%]" />
-                    </div>
-                    
-                    <div className="h-[45vh] flex justify-center items-end relative">
-                        <div
-                            className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
-                            style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-                        >
-                            <p className="text-[#252641] text-[20px] font-poppins font-semibold">
-                                Adam
-                            </p>
-                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
-                                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                                eiusmod tempor
-                            </p>
-                        </div>
-                        <img src={Img2} className="absolute top-5 w-[40%]" />
-                    </div>
-                    
-                </div>
+      <div className="flex flex-col gap-14 px-24 py-20 md:px-[5%] md:gap-2 md:py-10">
+        <p className="text-[#252641] text-[32px] font-poppins font-semibold pl-4 md:text-[18px]">
+          Classes taught by real creators
+        </p>
+        <div className="grid grid-cols-3 gap-20">
+          <div className="h-[45vh] flex justify-center items-end relative md:h-[16vh]">
+            <div
+              className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6 md:py-2 md:gap-1 md:h-[60%]"
+              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
+            >
+              <p className="text-[#252641] text-[20px] font-poppins font-semibold md:text-[14px]">
+                Adam
+              </p>
+              <p className="text-[#696984] text-[16px] font-poppins w-[70%] md:text-[8px]">
+                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
+                eiusmod tempor
+              </p>
             </div>
+            <img src={Img2} className="absolute top-5 w-[40%]" />
+          </div>
 
+          <div className="h-[45vh] flex justify-center items-end relative md:h-[16vh]">
+            <div
+              className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6 md:py-2 md:gap-1 md:h-[60%]"
+              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
+            >
+              <p className="text-[#252641] text-[20px] font-poppins font-semibold md:text-[14px]">
+                Adam
+              </p>
+              <p className="text-[#696984] text-[16px] font-poppins w-[70%] md:text-[8px]">
+                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
+                eiusmod tempor
+              </p>
+            </div>
+            <img src={Img2} className="absolute top-5 w-[40%]" />
+          </div>
+
+          <div className="h-[45vh] flex justify-center items-end relative md:h-[16vh]">
+            <div
+              className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6 md:py-2 md:gap-1 md:h-[60%]"
+              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
+            >
+              <p className="text-[#252641] text-[20px] font-poppins font-semibold md:text-[14px]">
+                Adam
+              </p>
+              <p className="text-[#696984] text-[16px] font-poppins w-[70%] md:text-[8px]">
+                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
+                eiusmod tempor
+              </p>
+            </div>
+            <img src={Img2} className="absolute top-5 w-[40%]" />
+          </div>
+        </div>
+      </div>
 
       {/* recommended cards */}
       <RecommendedCourses />
-
-
 
       {/* <div className="flex flex-col gap-10 bg-[#E2FFF1] px-28 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-2">
         <p className="text-[#000000] text-[30px] font-pop font-semibold xsm:text-[8px]">
@@ -399,12 +406,14 @@ const AllCourses = () => {
           </div>
         </div>
       </div> */}
-       {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
-                <Spinner className='' />
-
-            </div> : ''}
+      {show ? (
+        <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
+          <Spinner className="" />
+        </div>
+      ) : (
+        ""
+      )}
       <NewTestimonial />
-     
     </>
   );
 };
