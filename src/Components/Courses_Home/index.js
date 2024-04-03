@@ -103,7 +103,7 @@ const Courses_Home = () => {
           </div> */}
           <Link
             to={"/course"}
-            className="text-[#1DBF73] text-[18px] mr-2 xsm:text-[8px] md:text-[16px]"
+            className="text-[#1DBF73] text-[16px] font-bold xsm:text-[8px] md:text-[16px]"
           >
             See all
           </Link>
