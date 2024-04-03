@@ -10,209 +10,133 @@ const ShippingPolicy = () => {
   return (
     <Wrapper>
       <div className="container">
-        <h2>Shipping Information</h2>
+        <h2 className="py-8 font-extrabold">Terms and Conditions</h2>
         <p>
-          <strong>What are the delivery charges?</strong>
+          {/* <strong>What are the delivery charges?</strong> */}
         </p>
-        <p>Delivery charge varies with each Seller.</p>
-        <p>
-          Sellers incur relatively higher shipping costs on low value items. In
-          such cases, charging a nominal delivery charge helps them offset
-          logistics costs. Please check your order summary to understand the
-          delivery charges for individual products.
-        </p>
-        <p>
-          For Products listed as Grocify Plus, a Rs 40 charge for delivery per
-          item may be applied if the order value is less than Rs 500. While,
-          orders of Rs 500 or above are delivered free.
-        </p>
+        <p>These Terms and Conditions govern your use of the Hoping Minds eLearning website. By accessing or using the Platform, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use the Platform.</p>
 
-        <p>
+        <p className="py-4">
           <strong>
-            Why does the delivery date not correspond to the delivery timeline
-            of X-Y business days?
+          1. Use of the Platform
           </strong>
         </p>
-        <p>
-          It is possible that the Seller or our courier partners have a holiday
-          between the day your placed your order and the date of delivery, which
-          is based on the timelines shown on the product page. In this case, we
-          add a day to the estimated date. Some courier partners and Sellers do
-          not work on Sundays and this is factored in to the delivery dates.
+        <p className="py-2">
+          <strong>a. License: </strong>
+        Subject to these Terms, Hoping Minds grants you a limited, non-exclusive, non-transferable license to access and use the Platform for your personal and non-commercial use.
         </p>
-        <strong>What is the estimated delivery time?</strong>
-        <p>
-          Sellers generally procure and ship the items within the time specified
-          on the product page. Business days exclude public holidays and
-          Sundays.
+        <p className="py-2">
+          <strong>b. User Account: </strong>
+          You may be required to create an account to access certain features of the Platform. You are responsible for maintaining the confidentiality of your account credentials and for any activities that occur under your account.
         </p>
-        <p>Estimated delivery time depends on the following factors:</p>
-        <ul>
-          <li>The Seller offering the product</li>
-          <li>Product's availability with the Seller</li>
+        <p  className="py-2">
+          <strong>c. Prohibited Activities: </strong> <br/>
+        You agree not to engage in any of the following prohibited activities:
+        </p>
+        <ul className="ml-5 pt-4">
+          <li>Violating any applicable laws or regulations.</li>
+          <li>Interfering with or disrupting the integrity or performance of the Platform.</li>
           <li>
-            The destination to which you want the order shipped to and location
-            of the Seller.
+          Attempting to gain unauthorized access to any portion of the Platform.
           </li>
+          <li>Uploading, posting, or transmitting any content that is unlawful, harmful, or infringes upon the rights of others.</li>
         </ul>
 
-        <strong>
-          Are there any hidden costs on items sold by Sellers on Grocify?
-        </strong>
-        <p>
-          There are NO hidden charges when you make a purchase on Grocify. List
-          prices are final and all-inclusive. The price you see on the product
-          page is exactly what you would pay.
+        <p className="pt-4"><strong>
+        2. Content
+        </strong></p>
+        <p className="py-2">
+          <strong>a. Ownership: </strong>
+          All content available on the Platform, including courses, videos, text, and graphics, is the property of Hoping Minds or its licensors and is protected by copyright and other intellectual property laws.
         </p>
-        <p>
-          Delivery charges are not hidden charges and are charged (if at all)
-          extra depending on the Seller's shipping policy.
-        </p>
-
-        <strong>
-          Why does the estimated delivery time vary for each seller?
-        </strong>
-        <p>
-          You have probably noticed varying estimated delivery times for sellers
-          of the product you are interested in. Delivery times are influenced by
-          product availability, geographic location of the Seller, your shipping
-          destination and the courier partner's time-to-deliver in your
-          location.
-        </p>
-        <p>
-          Please enter your default pin code on the product page (you don't have
-          to enter it every single time) to know more accurate delivery times on
-          the product page itself.
+        <p className="py-2">
+          <strong>b. User-Generated Content: </strong>
+          By uploading or posting any content on the Platform, you grant Hoping Minds a perpetual, irrevocable, worldwide, royalty-free license to use, modify, adapt, reproduce, distribute, and display such content for any purpose.
         </p>
 
-        <strong>Seller does not/cannot ship to my area. Why?</strong>
-        <p>
-          Please enter your pincode on the product page (you don't have to enter
-          it every single time) to know whether the product can be delivered to
-          your location.
+        <div className="py-2">
+        <p ><strong>
+        3. Payments
+        </strong></p>
+        <p className="py-2">
+          <strong>a. Fees: </strong>
+          Some features or content on the Platform may require payment of fees. You agree to pay all fees associated with your use of such features or content.
         </p>
-        <p>
-          If you haven't provided your pincode until the checkout stage, the
-          pincode in your shipping address will be used to check for
-          serviceability.
+        <p className="py-2">
+          <strong>b. Payment Processing: </strong>
+          Payments made through the Platform are processed by third-party payment processors. By making a payment, you agree to abide by the terms and conditions of the payment processor.
         </p>
-        <p>Whether your location can be serviced or not depends on:</p>
-        <ul>
-          <li>Whether the Seller ships to your location</li>
-          <li>
-            Legal restrictions, if any, in shipping particular products to your
-            location
-          </li>
-          <li>
-            The availability of reliable courier partners in your location
-          </li>
-        </ul>
-        <p>
-          At times Sellers prefer not to ship to certain locations. This is
-          entirely at their discretion.
-        </p>
-
-        <strong>Why is the CoD option not offered in my location?</strong>
-        <p>
-          Availability of CoD depends on the ability of our courier partner
-          servicing your location to accept cash as payment at the time of
-          delivery.
-        </p>
-        <p>
-          Our courier partners have limits on the cash amount payable on
-          delivery depending on the destination and your order value might have
-          exceeded this limit. Please enter your pin code on the product page to
-          check if CoD is available in your location.
-        </p>
+        </div>
+        <div>
+          <p  className="py-2"><strong>
+          4. Privacy
+          </strong></p>
+          <p  className="py-2">
+          Your privacy is important to us. Please refer to our Privacy Policy for information about how we collect, use, and disclose your personal information.
+          </p>
+        </div>
+        <div  className="py-2">
+        <div className="py-2">
         <strong>
-          I need to return an item, how do I arrange for a pick-up?
+        5. Disclaimer of Warranties
         </strong>
-        <p>
-          Returns are easy. <strong>Contact Us</strong> to initiate a return.
-          You will receive a call explaining the process, once you have
-          initiated a return.
+        </div>
+        <p className="py-2">
+        The Platform is provided on an "as-is" and "as-available" basis, without any warranties of any kind, express or implied. Hoping Minds does not warrant that the Platform will be uninterrupted, error-free, or free of viruses or other harmful components.
         </p>
-        <p>
-          Wherever possible Ekart Logistics will facilitate the pick-up of the
-          item. In case, the pick-up cannot be arranged through Ekart, you can
-          return the item through a third-party courier service. Return fees are
-          borne by the Seller.
-        </p>
-
+        </div>
+        <div className="py-2">
+        <div className="py-2">
         <strong>
-          I did not receive my order but got a delivery confirmation SMS/Email.
+        6. Limitation of Liability
         </strong>
-        <p>
-          In case the product was not delivered and you received a delivery
-          confirmation email/SMS, report the issue within 7 days from the date
-          of delivery confirmation for the seller to investigate.
+        </div>
+        <p className="py-2">
+        In no event shall Hoping Minds be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with your use of the Platform.
         </p>
-
+        </div>
+        <div className="py-2">
+        <p className="py-2">
         <strong>
-          What do the different tags like "In Stock", "Available" mean?
+        7. Indemnification
         </strong>
-        <p>
-          <strong>'In Stock'</strong>: For items listed as "In Stock", Sellers
-          will mention the delivery time based on your location pincode (usually
-          2-3 business days, 4-5 business days or 4-6 business days in areas
-          where standard courier service is available). For other areas, orders
-          will be sent by Registered Post through the Indian Postal Service
-          which may take 1-2 weeks depending on the location.
         </p>
-        <p>
-          <strong>'Available'</strong>: The Seller might not have the item in
-          stock but can procure it when an order is placed for the item. The
-          delivery time will depend on the estimated procurement time and the
-          estimated shipping time to your location.
+        <p className="py-2">
+        You agree to indemnify and hold harmless Hoping Minds, its affiliates, and their respective officers, directors, employees, and agents from any claims, damages, liabilities, costs, or expenses arising out of your use of the Platform or violation of these Terms.
         </p>
-        <p>
-          <strong>'Preorder' or 'Forthcoming'</strong>: Such items are expected
-          to be released soon and can be pre-booked for you. The item will be
-          shipped to you on the day of it's official release launch and will
-          reach you in 2 to 6 business days. The Preorder duration varies from
-          item to item. Once known, release time and date is mentioned. (Eg. 5th
-          May, August 3rd week)
+        </div>
+        <div className="py-2">
+        <p className="py-2">
+        <strong>
+        8. Governing Law
+        </strong>
         </p>
-        <p>
-          <strong>'Out of Stock'</strong>: Currently, the item is not available
-          for sale. Use the 'Notify Me' feature to know once it is available for
-          purchase.
+        <p className="py-2">
+          These Terms shall be governed by and construed in accordance with the laws of India, without regard to its conflict of laws principles.
         </p>
-        <p>
-          <strong>'Imported'</strong>: Sometimes, items have to be sourced by
-          Sellers from outside India. These items are mentioned as 'Imported' on
-          the product page and can take at least 10 days or more to be delivered
-          to you.
+        </div>
+        <div className="py-2">
+        <p className="py-2">
+        <strong>
+        9. Changes to Terms
+        </strong>
         </p>
-        <p>
-          <strong>'Back In Stock Soon'</strong>: The item is popular and is sold
-          out. You can however 'book' an order for the product and it will be
-          shipped according to the timelines mentioned by the Seller.
+        <p className="py-2">
+        Hoping Minds reserves the right to modify or update these Terms at any time. We will notify you of any material changes by posting the updated Terms on the Platform or through other means of communication. Your continued use of the Platform after such changes will constitute your acceptance of the revised Terms.
         </p>
-        <p>
-          <strong>'Temporarily Unavailable'</strong>: The product is currently
-          out of stock and is not available for purchase. The product could to
-          be in stock soon. Use the 'Notify Me' feature to know when it is
-          available for purchase.
+        </div>
+        <div className="py-2">
+        <p className="py-2">
+        <strong>
+        10. Contact Us
+        </strong>
         </p>
-        <p>
-          <strong>'Permanently Discontinued'</strong>: This product is no longer
-          available because it is obsolete and/or its production has been
-          discontinued.
+        <p className="py-2">
+        If you have any questions or concerns about these Terms, please contact us at +91 7717667030 or at support@hopingminds.com
         </p>
-        <p>
-          <strong>'Out of Print'</strong>: This product is not available because
-          it is no longer being published and has been permanently discontinued.
-        </p>
-        <p>
-          <strong>Does Grocify deliver internationally?</strong>
-        </p>
-        <p>As of now, Grocify doesn't deliver items internationally.</p>
-        <p>
-          You will be able to make your purchases on our site from anywhere in
-          the world with credit/debit cards issued in India and 21 other
-          countries, but please ensure the delivery address is in India.
-        </p>
+        </div>
+
+        
       </div>
     </Wrapper>
   );
