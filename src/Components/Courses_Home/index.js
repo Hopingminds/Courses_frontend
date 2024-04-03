@@ -72,8 +72,13 @@ const Courses_Home = () => {
     <>
       {/* <h1 className='text-[40px] mt-16 font-semibold' style={{ textAlign: 'center' }}> Our Feature Courses</h1> */}
 
+<<<<<<< HEAD
       <div className="h-[100%] w-full px-20 py-8 mt-12 font-pop bg-[#E2FFF1] xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-10 md:space-y-2">
         <div className="flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px] md:text-[12px] md:space-x-6">
+=======
+      <div className="h-[100%] w-full px-20 py-8 mt-12 font-pop bg-[#E2FFF1] space-y-5 xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-10 md:space-y-2">
+        <div className="flex w-full space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px] md:text-[12px] md:space-x-6">
+>>>>>>> 34ef42c789681fdc53cb967c191bdb5263486141
           {[
             "All Courses",
             "Full Stack Development",
@@ -109,7 +114,11 @@ const Courses_Home = () => {
           </Link>
         </div>
         {/* <div className="text-[#333333] text-[20px] mt-1">Our training covers everything you need for a successful career, from basic job skills to advanced tech know-how.</div> */}
+<<<<<<< HEAD
         <div className="my-4 grid grid-cols-4 gap-4 xsm:grid-cols-3 xsm:gap-3 xsm:my-[2%]">
+=======
+        <div className="my-10  grid grid-cols-4 gap-4 xsm:grid-cols-3 xsm:gap-3 xsm:my-[2%]">
+>>>>>>> 34ef42c789681fdc53cb967c191bdb5263486141
           {" "}
           {/* Changed flex to flex-wrap */}
           {filteredCourses?.slice(0, cardsToShow)?.map((course,ind) => (
