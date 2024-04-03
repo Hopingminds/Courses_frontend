@@ -13,7 +13,7 @@ export default function Pap() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [num, setNum] = useState('')
   let navigate = useNavigate();
-
+  
 
   const [formValues, setFormValues] = useState({
     fname: "",
@@ -373,11 +373,13 @@ export default function Pap() {
                                 <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Contact Number</label>
                                 <div className="">
                                 <PhoneInput
-                                defaultCountry="IN"
-                                name="contact"
-                                value={num}
-                                onChange={setNum}
-                                />
+                                className="papphone"
+                                    
+                                    defaultCountry="IN"
+                                    name="contact"
+                                    value={num}
+                                    onChange={setNum}
+                                    />
                                 </div>
                                 {/* <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" value={formValues.contact} onChange={handleChange}/> */}
                             </div>

@@ -47,7 +47,7 @@ export default function CDDetails() {
             val?.lessons?.map((it) => {
               // console.log("it",val);
               allchapters.push({
-                video: AWS_S3_LINK + "/" + it?.video,
+                video: it?.video,
                 _id: it?._id,
               });
             });
