@@ -26,6 +26,7 @@ const AllCourses = () => {
   const [Temp, setTemp] = useState([]);
   const [show, setshow] = useState(false);
   const [mouseHovered, setMouseHovered] = useState(null);
+  const [countvalue, setcountvalue] = useState(0)
   const [userData, setUserData] = useState({
     [User1]: {
       name: "SAURABH PAL",
@@ -149,17 +150,39 @@ const AllCourses = () => {
   const toggleHover = (index) => {
     setMouseHovered(index);
   };
+  function Count(num){
+    for (let index = 0; index < num; index++) {
+      // setTimeout(() => {
+        // console.log(index);
+        setTimeout(() => {
+        setcountvalue(index)
+          }, index*10);
+
+        // }
+      // }, index*1000);
+         
+      
+    }
+  }
+  useEffect(() => {
+   Count(1001)
+  }, [])
+  
   return (
     <>
       <head>
         <title>Courses | HopingMinds</title>
       </head>
       {/* Search */}
-      <div
+      {/* <div
         className="flex flex-col gap-5 p-20 items-center xsm:py-6 xsm:px-0 xsm:gap-2 md:p-10 bg-[#000000]"
         style={{ backgroundImage: `url(${Img1})`, backgroundSize: "cover" }}
-      >
-        <div className="flex flex-row rounded-2xl w-[80%] xsm:w-[90%] xsm:rounded-md md:rounded-lg">
+      > */}
+       
+      {/* </div> */}
+
+<div className="relative h-auto w-full">
+<div className="flex flex-row rounded-2xl w-[60%] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] left-[17%]">
           <div className="relative w-full">
             <input
               type="text"
@@ -190,8 +213,35 @@ const AllCourses = () => {
             Search
           </button>
         </div>
+
+      <div className="h-full w-full bg-black">
+      <ReactPlayer 
+      
+        url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
+        height="100%"
+        width={'100%'}
+        playing={true}
+        loop={true}
+        controls={false}
+        />
       </div>
 
+      <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-20 text-white  absolute bottom-0 items-center">
+                <div className="text-white ">
+                  <div>Courses to choose from</div>
+                  <div className="text-center text-xl font-semibold">{countvalue}+</div>
+                
+                </div>
+                <div>
+                  <div>Courses to choose from</div>
+                  <div className="text-center text-xl font-semibold">{countvalue}+</div>
+                </div>
+                <div>
+                  <div>Courses to choose from</div>
+                  <div className="text-center text-xl font-semibold">{countvalue}+</div>
+                </div>
+      </div>
+</div>
       {/* cards */}
       {!allCourses?.length ? (
         <div className="flex justify-center  w-full mt-10">

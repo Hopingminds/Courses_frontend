@@ -13,17 +13,24 @@ import {
 } from 'volkeno-react-country-state-city'
 import 'volkeno-react-country-state-city/dist/index.css'
 import toast, { Toaster } from "react-hot-toast";
+import { useContext } from "react";
+import { Globalinfo } from "../../App";
 
 const CartCheckout = () => {
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [selectedState, setSelectedState] = useState("");
+  const [country, setcountry] = useState("");
+  const [state, setstate] = useState("");
   const [query, setquery] = useSearchParams();
-  const countries = ["India"];
-  const states = ["Punjab"];
+const [name, setname] = useState("")
+const [address, setaddress] = useState("")
+const [zip, setzip] = useState("")
+const [gstnumber, setgstnumber] = useState("")
   const [Payment, setPayment] = useState();
   const [courseId, setcourseId] = useState();
   const [Data, setData] = useState([]);
   const [total, settotal] = useState(0);
+
+  const {userDetail} = useContext(Globalinfo);
+
 
   let login = localStorage.getItem("COURSES_USER_TOKEN");
   let temp = [];
@@ -68,28 +75,33 @@ const CartCheckout = () => {
     Fetchdata();
   }, []);
   const handleCountryChange = (e) => {
-    setSelectedCountry(e);
+    setcountry(e);
   };
 
   const handleStateChange = (e) => {
-    setSelectedState(e);
+    setstate(e);
   };
 
   // Navigate page
   const navigate = useNavigate();
 
   const handleContinueCheckout = async () => {
-    if (!Payment) {
-      toast.error("Select payment method");
-    } else if (!selectedCountry) {
-      toast.error("Select country");
-    } else if (!selectedState) {
-      toast.error("Select state");
-    } else {
+    // if (!Payment) {
+    //   toast.error("Select payment method");
+    // } else if (!country) {
+    //   toast.error("Select country");
+    // } else if (!state) {
+    //   toast.error("Select state");
+    // } else {
       try {
         let url = BASE_URL + "/purchasecourse";
+        let url1 = BASE_URL + "/deletecart";
+        let orderDetails={name:userDetail.name,zip,gstnumber,country:country.capital,state:state.label,address}
+        // console.log(userDetail);
+          // console.log(orderDetails);
+
         // console.log(courseId);
-        // setcourseId(temp)
+        setcourseId(temp)
         // console.log(temp);
         let data = await fetch(url, {
           method: "PUT",
@@ -98,15 +110,31 @@ const CartCheckout = () => {
             "Content-Type": "application/json",
             Authorization: "Bearer " + login,
           },
-          body: JSON.stringify({ courses: temp }),
+          body: JSON.stringify({ courses: temp ,orderDetails:orderDetails}),
         });
         let response = await data.json();
         // console.log(response);
         if (response.success) {
-          toast.success(response.message);
-          setTimeout(() => {
-            navigate("/success");
-          }, 1000);
+          let data1 = await fetch(url1, {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + login,
+            },
+            body: JSON.stringify({ email: userDetail.email}),
+          });
+          let response1 = await data1.json();
+          if(response1.success){
+            toast.success(response.message);
+            setTimeout(() => {
+              navigate("/success");
+            }, 1000);
+          }
+          else{
+            toast.error(response.message);
+          }
+          
         } else {
           toast.error(response.message);
         }
@@ -115,7 +143,7 @@ const CartCheckout = () => {
       }
 
       // console.log(response);
-    }
+    // }
   };
 
   return (
@@ -132,26 +160,26 @@ const CartCheckout = () => {
         onChange={handleCountryChange}
         name='country'
         placeholder='Select a country'
-        value={selectedCountry}
+        value={country}
         className=""
         styleContainer={{padding:'0px !important'}}
       />
 
           <StateSelector
-        country={selectedCountry}
+        country={country}
    
-        value={selectedState}
+        value={state}
         countryPlaceholder="Select state"
         onChange={handleStateChange}
       />
           </div>
           <div className="flex space-x-10 xsm:justify-between xsm:gap-0">
-              <input placeholder="Name" className="w-[180px] py-[6px] outline-none border rounded pl-2"/>
-              <input placeholder="GST No.(optional)" className="w-[180px] py-[6px] outline-none border rounded pl-2"/>
+              <input value={name} onChange={(e)=>setname(e.target.value)} placeholder="Name" className="w-[180px] py-[6px] outline-none border rounded pl-2"/>
+              <input value={gstnumber} onChange={(e)=>setgstnumber(e.target.value)}  placeholder="GST No.(optional)" className="w-[180px] py-[6px] outline-none border rounded pl-2"/>
           </div>
           <div className="flex space-x-10 xsm:justify-between xsm:gap-0">
-              <input placeholder="Address" className="w-[180px] py-[6px] outline-none border rounded pl-2"/>
-              <input type="number" placeholder="ZIP Code" className="w-[180px] py-[6px] outline-none border rounded pl-2"/>
+              <input value={address} onChange={(e)=>setaddress(e.target.value)} placeholder="Address" className="w-[180px] py-[6px] outline-none border rounded pl-2"/>
+              <input value={zip} onChange={(e)=>setzip(e.target.value)} type="number" placeholder="ZIP Code" className="w-[180px] py-[6px] outline-none border rounded pl-2"/>
           </div>
          
 
