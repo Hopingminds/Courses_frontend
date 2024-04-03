@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Img1 from "../../Assests/Images/searchbanner.png";
 import Img2 from "../../Assests/Images/creator.png";
 import Icon1 from "../../Assests/Icons/twitter.svg";
@@ -15,6 +15,10 @@ import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
 import NewTestimonial from "../Testimonial/NewTestimonial";
 import Spinner from "../Spinner";
 import ReactPlayer from "react-player";
+import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
+import { IoIosLock } from "react-icons/io";
+import { GoUnmute } from "react-icons/go";
+import { Globalinfo } from "../../App";
 
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
@@ -65,12 +69,19 @@ const AllCourses = () => {
     },
 
   });
+  const { userDetail, getUserDetails } = useContext(Globalinfo);
+
+  // console.log(userDetail.blocked_courses)
+  const [IsMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     fetchCourses();
   }, []);
 
   const [params, setparams] = useSearchParams()
+
+
   const fetchCourses = async () => {
     try {
       let category = params.get('category')
@@ -88,8 +99,12 @@ const AllCourses = () => {
         setshow(true)
 
         const res = await axios.get(`${BASE_URL}/courses`);
-        console.log(res.data.courses);
-        setAllCourses(res.data.courses);
+        // console.log(res.data.courses);
+
+        const newCourses = moveBlockedCoursesToEnd(res.data.courses, userDetail.blocked_courses)
+        // setAllCourses(res.data.courses);
+        setAllCourses(newCourses)
+
         setData(res.data.courses)
         setTemp(res.data.courses)
         setshow(false)
@@ -99,14 +114,18 @@ const AllCourses = () => {
     } catch (error) { }
   };
 
+  const handleMute = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+    setIsMuted((prev) => !prev);
+
+  };
+
   function SearchData(e) {
     let query = e.target.value;
-    // setSearchQuery(e.target.value);
-    // console.log(query);
-    // console.log(query);
-    if (query == '') {
+
+    if (query === '') {
       setSearchedData([])
-      // console.log("query:",Data);
       setAllCourses(Data)
     }
     else {
@@ -126,15 +145,17 @@ const AllCourses = () => {
       }))
     }
   }
-  const toggleShowAllCards = () => {
-    setShowAllCards((prevShowAllCards) => !prevShowAllCards);
+
+  const moveBlockedCoursesToEnd = (courses, blockedCourses) => {
+
+    const filteredCourses = courses.filter(course => !blockedCourses.includes(course._id));
+    const blockedCoursesList = courses.filter(course => blockedCourses.includes(course._id));
+    const updatedCourses = filteredCourses.concat(blockedCoursesList);
+
+    return updatedCourses;
   };
 
-  const toggleUserImage = (user) => {
-    setSelectedUser((prevUser) => {
-      return prevUser !== user ? user : prevUser;
-    });
-  };
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -188,35 +209,72 @@ const AllCourses = () => {
       </div>
 
       {/* cards */}
-      {!allCourses?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Found</div></div>:''}
+      {!allCourses?.length ? <div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Found</div></div> : ''}
 
       <div className="my-10 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%]">
-        {allCourses.map((val, ind) => {
+        {allCourses?.map((val, ind) => {
           return (
             <Link
               to={"/detailcourse/" + val.slug}
-              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md"
+              className="border px-4 py-6 h-full flex flex-col gap-4 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md relative"
               onMouseEnter={() => toggleHover(ind)}
               onMouseLeave={() => toggleHover(null)}
+              key={ind}
+              style={{ pointerEvents: userDetail?.blocked_courses?.includes(val._id) ? 'none' : 'auto' }}
             >
+              {
+                userDetail?.blocked_courses?.includes(val._id)
+                &&
+                <span className="absolute top-0 left-0 h-[100%] w-[100%] z-[99999] bg-[rgba(0,0,0,0.6)] rounded-xl grid place-items-center">
+                  <IoIosLock size={"60"} color={"white"} />
+                </span>
+              }
+
+              {mouseHovered === ind &&
+                <span className="bg-transparent p-4 absolute top-6 left-4 z-[9999]" >
+                  {IsMuted ? (
+                    <IoVolumeMuteOutline
+                      size={"20"}
+                      style={{
+                        cursor: "pointer",
+                        color: "black",
+
+                        zIndex: "999999",
+                      }}
+                      onClick={handleMute}
+                    />
+                  ) : (
+                    <IoVolumeMediumOutline
+                      size={"20"}
+                      style={{
+                        cursor: "pointer",
+                        color: "black",
+
+                        zIndex: "999999",
+                      }}
+                      onClick={handleMute}
+                    />
+                  )}
+                </span>}
               <div className="h-[45%]">
-              {mouseHovered === ind ? (
-                <ReactPlayer
-                  className="w-full h-full rounded-xl xsm:rounded-md border"
-                  height={'100%'}
-                  width={'100%'}
-                  url={val.featured_video}
-                  controls={false}
-                  playing={true}
-                  muted
-                />
-              ) : (
-                <img
-                  className="w-full h-full rounded-xl xsm:rounded-md"
-                  src={val.featured_image}
-                  alt={val.title}
-                />
-              )}
+                {mouseHovered === ind ? (
+                  <ReactPlayer
+                    className="w-full h-full rounded-xl xsm:rounded-md border"
+                    height={'100%'}
+                    width={'100%'}
+                    url={val.featured_video}
+                    controls={false}
+                    playing={true}
+                    ref={videoRef}
+                    muted={IsMuted}
+                  />
+                ) : (
+                  <img
+                    className="w-full h-full rounded-xl xsm:rounded-md"
+                    src={val.featured_image}
+                    alt={val.title}
+                  />
+                )}
               </div>
               <div className="space-y-4 flex flex-col justify-between h-[53%] xsm:space-y-2">
                 <div className="flex flex-col gap-3 xsm:gap-2">
@@ -231,20 +289,20 @@ const AllCourses = () => {
                       </p>
                     </div>
                     <div>
-                    <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[6px]">
-                      ₹ {val?.base_price}
-                    </p>
-                  </div>
-                  </div>
-                  <div className="flex space-x-2 items-center xsm:space-x-0">
-                      <img
-                        className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px]"
-                        src="../Icons/RCClock.svg"
-                      />
-                      <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px]">
-                        {val?.duration}
+                      <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[6px]">
+                        ₹ {val?.base_price}
                       </p>
                     </div>
+                  </div>
+                  <div className="flex space-x-2 items-center xsm:space-x-0">
+                    <img
+                      className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px]"
+                      src="../Icons/RCClock.svg"
+                    />
+                    <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px]">
+                      {val?.duration}
+                    </p>
+                  </div>
                   <p className="font-pop font-semibold text-[16px] text-[#252641] xsm:text-[8px]">
                     {val?.title}
                   </p>
@@ -264,70 +322,70 @@ const AllCourses = () => {
                       {val?.instructor.firstName + ' ' + val?.instructor.lastName}
                     </p>
                   </div>
-                
+
                 </div>
               </div>
             </Link>
           );
         })}
-       
+
       </div>
       <div className="flex flex-col gap-14 px-24 py-20">
-                <p className="text-[#252641] text-[32px] font-poppins font-semibold pl-4">
-                    Classes taught by real creators
-                </p>
-                <div className="grid grid-cols-3 gap-20">
+        <p className="text-[#252641] text-[32px] font-poppins font-semibold pl-4">
+          Classes taught by real creators
+        </p>
+        <div className="grid grid-cols-3 gap-20">
 
-                    <div className="h-[45vh] flex justify-center items-end relative">
-                        <div
-                            className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
-                            style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-                        >
-                            <p className="text-[#252641] text-[20px] font-poppins font-semibold">
-                                Adam
-                            </p>
-                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
-                                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                                eiusmod tempor
-                            </p>
-                        </div>
-                        <img src={Img2} className="absolute top-5 w-[40%]" />
-                    </div>
-                    
-                    <div className="h-[45vh] flex justify-center items-end relative">
-                        <div
-                            className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
-                            style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-                        >
-                            <p className="text-[#252641] text-[20px] font-poppins font-semibold">
-                                Adam
-                            </p>
-                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
-                                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                                eiusmod tempor
-                            </p>
-                        </div>
-                        <img src={Img2} className="absolute top-5 w-[40%]" />
-                    </div>
-                    
-                    <div className="h-[45vh] flex justify-center items-end relative">
-                        <div
-                            className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
-                            style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
-                        >
-                            <p className="text-[#252641] text-[20px] font-poppins font-semibold">
-                                Adam
-                            </p>
-                            <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
-                                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
-                                eiusmod tempor
-                            </p>
-                        </div>
-                        <img src={Img2} className="absolute top-5 w-[40%]" />
-                    </div>
-                    
-                </div>
+          <div className="h-[45vh] flex justify-center items-end relative">
+            <div
+              className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
+              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
+            >
+              <p className="text-[#252641] text-[20px] font-poppins font-semibold">
+                Adam
+              </p>
+              <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
+                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
+                eiusmod tempor
+              </p>
             </div>
+            <img src={Img2} className="absolute top-5 w-[40%]" />
+          </div>
+
+          <div className="h-[45vh] flex justify-center items-end relative">
+            <div
+              className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
+              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
+            >
+              <p className="text-[#252641] text-[20px] font-poppins font-semibold">
+                Adam
+              </p>
+              <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
+                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
+                eiusmod tempor
+              </p>
+            </div>
+            <img src={Img2} className="absolute top-5 w-[40%]" />
+          </div>
+
+          <div className="h-[45vh] flex justify-center items-end relative">
+            <div
+              className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6"
+              style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
+            >
+              <p className="text-[#252641] text-[20px] font-poppins font-semibold">
+                Adam
+              </p>
+              <p className="text-[#696984] text-[16px] font-poppins w-[70%]">
+                Lorem ipsum dolor sit amet, consectetur adipising elit, sed do
+                eiusmod tempor
+              </p>
+            </div>
+            <img src={Img2} className="absolute top-5 w-[40%]" />
+          </div>
+
+        </div>
+      </div>
 
 
       {/* recommended cards */}
@@ -335,76 +393,13 @@ const AllCourses = () => {
 
 
 
-      {/* <div className="flex flex-col gap-10 bg-[#E2FFF1] px-28 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-2">
-        <p className="text-[#000000] text-[30px] font-pop font-semibold xsm:text-[8px]">
-          What our students have to say
-        </p>
-        <div className="bg-[#ffffff] rounded-xl flex flex-row gap-20 py-10 pt-20 px-14 xsm:py-2 xsm:px-2 xsm:gap-0">
-          <div className="flex w-[65%] justify-center xsm:items-center">
-            <img
-              src={selectedUser === User1 ? User1 : selectedUser}
-              className="h-[300px] w-[300px] rounded-full object-cover"
-              onClick={() => toggleUserImage("")}
-            />
-          </div>
-          <div className="flex flex-col gap-5 w-full justify-end pl-4 xsm:gap-1 xsm:justify-center">
-            <p className="text-[#252641] text-[30px] font-pop font-semibold xsm:text-[8px]">
-              {userData[selectedUser]?.name}
-            </p>
-            <div className="flex flex-row justify-between">
-              <div className="flex flex-col gap-8 w-[65%] xsm:gap-2">
-                <div className="flex flex-col gap-3 xsm:gap-0">
-                  <p className="text-[#252641] text-[24px] font-pop font-semibold xsm:text-[6px]">
-                    {userData[selectedUser]?.email}
-                  </p>
-                  <p className="text-[#696984] text-[16px] font-pop xsm:text-[6px]">
-                    {userData[selectedUser]?.description1}
-                  </p>
-               <p className="text-[#696984] text-[16px] font-pop xsm:hidden">
-                    {userData[selectedUser]?.description2}
-                  </p>
-                  <p className="text-[#696984] text-[16px] font-pop xsm:hidden">
-                    {userData[selectedUser]?.description3}
-                  </p> 
-                </div>
-                <div className="flex flex-row gap-6 xsm:gap-2">
-                  <img src={Icon1} className="w-[6%] object-contain " />
-                  <img src={Icon2} className="w-[6%] object-contain" />
-                  <img src={Icon3} className="w-[6%] object-contain" />
-                </div>
-              </div>
-              <div className="flex flex-col gap-4 justify-between xsm:gap-1">
-                <img
-                  src={User1}
-                  className="w-[50px] h-[50px] object-cover cursor-pointer xsm:w-[15px] rounded-full"
-                  onClick={() => toggleUserImage(User1)}
-                />
-                <img
-                  src={User2}
-                  className="w-[50px] h-[50px] object-cover cursor-pointer xsm:w-[15px] rounded-full"
-                  onClick={() => toggleUserImage(User2)}
-                />
-                <img
-                  src={User3}
-                  className="w-[50px] h-[50px] object-cover cursor-pointer xsm:w-[15px] rounded-full"
-                  onClick={() => toggleUserImage(User3)}
-                />
-                <img
-                  src={User4}
-                  className="w-[50px] h-[50px] object-cover cursor-pointer xsm:w-[15px] rounded-full"
-                  onClick={() => toggleUserImage(User4)}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-       {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
-                <Spinner className='' />
 
-            </div> : ''}
+      {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
+        <Spinner className='' />
+
+      </div> : ''}
       <NewTestimonial />
-     
+
     </>
   );
 };

@@ -13,7 +13,7 @@ export default function Pap() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [num, setNum] = useState('')
   let navigate = useNavigate();
-  
+
 
   const [formValues, setFormValues] = useState({
     fname: "",
@@ -56,6 +56,15 @@ export default function Pap() {
     } else {
       setclicked(false);
       toggleContent.style.display = "none";
+    }
+  }
+
+  const checkUserAuth = () => {
+    if (localStorage.getItem('COURSES_USER_TOKEN')) {
+      navigate('/test')
+    }
+    else {
+      navigate('/login')
     }
   }
 
@@ -211,7 +220,7 @@ export default function Pap() {
               <p className="font-nu text-[16px] leading-8 xsm:text-[7px] xsm:leading-normal xsm:tracking-wider">PAP Agreement is a legal contract that makes education at Masai outcome-based. It is not an education loan, as you do not have to pay any interest & you do not require any collaterals. If you do not get placed within 1 year of course completion, your learning with Masai is completely free.</p>
             </div>
             <div className="">
-              <button onClick={openModal} className="bg-white text-black font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Explore Now</button>
+              <button onClick={checkUserAuth} className="bg-white text-black font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Explore Now</button>
 
             </div>
           </div>
@@ -249,70 +258,70 @@ export default function Pap() {
 
       {isModalOpen && (
         <div className=" w-full ">
-            <div className="fixed top-[20%] left-[30%] z-[9999]">
-              <div className=' bg-white rounded-lg flex flex-col gap-4 border pb-4'>
-                    <div className='border-black border-b-2 px-4 py-1 flex justify-between'>
-                        <p className='font-nu font-extrabold text-[#1DBF73] text-[22px]'>Pay After Placement Form</p>
-                        <button className="text-[25px] text-[#707070]" onClick={closeModal}>
-                          &times;
-                        </button>
-                    </div>
-                    <div className='grid grid-cols-2 gap-6 px-4 py-2'>
-                        <div className='flex flex-col gap-2'>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>First Name</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="fname" value={formValues.fname} onChange={handleChange} />
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Email</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="email" name="email" value={formValues.email} onChange={handleChange}/>
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>College/University</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="college" value={formValues.college} onChange={handleChange} />
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Branch</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="branch" value={formValues.branch} onChange={handleChange} />
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Year Of Passing </label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="yearOfPassing" value={formValues.yearOfPassing} onChange={handleChange}/>
-                            </div>
-                        </div>
-                        <div className='flex flex-col gap-2'>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Last Name</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="lname" value={formValues.lname} onChange={handleChange}/>
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Contact Number</label>
-                                <div className="">
-                                <PhoneInput
-                                className="papphone"
-                                    
-                                    defaultCountry="IN"
-                                    name="contact"
-                                    value={num}
-                                    onChange={setNum}
-                                    />
-                                </div>
-                                {/* <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" value={formValues.contact} onChange={handleChange}/> */}
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Degree</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="degree" value={formValues.degree} onChange={handleChange}/>
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Field Of Study</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="fieldOfStudy" value={formValues.fieldOfStudy}  onChange={handleChange}/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='flex justify-center'>
-                         <button onClick={handleForm} className="bg-[#1DBF73] text-white font-pop font-medium text-[18px] px-6 py-1 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Submit</button>
-                    </div>
+          <div className="fixed top-[20%] left-[30%] z-[9999]">
+            <div className=' bg-white rounded-lg flex flex-col gap-4 border pb-4'>
+              <div className='border-black border-b-2 px-4 py-1 flex justify-between'>
+                <p className='font-nu font-extrabold text-[#1DBF73] text-[22px]'>Pay After Placement Form</p>
+                <button className="text-[25px] text-[#707070]" onClick={closeModal}>
+                  &times;
+                </button>
+              </div>
+              <div className='grid grid-cols-2 gap-6 px-4 py-2'>
+                <div className='flex flex-col gap-2'>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>First Name</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="fname" value={formValues.fname} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Email</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="email" name="email" value={formValues.email} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>College/University</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="college" value={formValues.college} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Branch</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="branch" value={formValues.branch} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Year Of Passing </label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="yearOfPassing" value={formValues.yearOfPassing} onChange={handleChange} />
+                  </div>
                 </div>
+                <div className='flex flex-col gap-2'>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Last Name</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="lname" value={formValues.lname} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Contact Number</label>
+                    <div className="">
+                      <PhoneInput
+                        className="papphone"
+
+                        defaultCountry="IN"
+                        name="contact"
+                        value={num}
+                        onChange={setNum}
+                      />
+                    </div>
+                    {/* <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" value={formValues.contact} onChange={handleChange}/> */}
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Degree</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="degree" value={formValues.degree} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Field Of Study</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="fieldOfStudy" value={formValues.fieldOfStudy} onChange={handleChange} />
+                  </div>
+                </div>
+              </div>
+              <div className='flex justify-center'>
+                <button onClick={handleForm} className="bg-[#1DBF73] text-white font-pop font-medium text-[18px] px-6 py-1 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Submit</button>
+              </div>
+            </div>
           </div>
         </div>
 

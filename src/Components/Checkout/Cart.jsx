@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./Cart.css";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { ReactComponent as Clock } from "../../Assets/Icons/clock.svg";
@@ -7,6 +7,7 @@ import { ReactComponent as Star } from "../../Assets/Icons/Star.svg";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import toast, { Toaster } from "react-hot-toast";
+import { authenticateUser } from "../../helpers/helperapi";
 
 const CartCheckout = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
@@ -18,6 +19,20 @@ const CartCheckout = () => {
   const [courseId, setcourseId] = useState();
   const [Data, setData] = useState([]);
   const [total, settotal] = useState(0);
+
+  const checkUserValidation = async () => {
+    const isValidUser = await authenticateUser();
+    console.log(isValidUser);
+    if (isValidUser !== 200) {
+      localStorage.removeItem("COURSES_USER_TOKEN");
+      navigate("/login");
+      toast.error("You have been Logged Out");
+    }
+  };
+
+  useLayoutEffect(() => {
+    checkUserValidation();
+  }, []);
 
   let login = localStorage.getItem("COURSES_USER_TOKEN");
   let temp = [];
@@ -118,7 +133,9 @@ const CartCheckout = () => {
       <div className="card-checkout mx-14 my-5 flex gap-40 xsm:flex-col xsm:mx-5 xsm:gap-8">
         {/* Billing address start */}
         <div className="w-[55%] min-h-[100vh] xsm:w-[100%]">
-          <span className="text-xl font-bold xsm:text-[12px]">Billing Address</span>
+          <span className="text-xl font-bold xsm:text-[12px]">
+            Billing Address
+          </span>
 
           {/* Dropdown buttons start */}
           <div className="flex gap-14 xsm:justify-between xsm:gap-0">
@@ -188,7 +205,9 @@ const CartCheckout = () => {
 
           {/* Payment Method */}
           <div>
-            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px]">Payment Method</h1>
+            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px]">
+              Payment Method
+            </h1>
             <div className="bg-green-100 rounded-md p-4 card-shadow xsm:py-2">
               <p className="text-base green-color pb-4 xsm:text-[8px] xsm:pb-2">
                 Select payment method
@@ -203,7 +222,10 @@ const CartCheckout = () => {
                     value="creditDebitCard"
                     className="mr-2"
                   />
-                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="creditDebitCard">
+                  <label
+                    className="text-gray-400 xsm:text-[10px]"
+                    htmlFor="creditDebitCard"
+                  >
                     {" "}
                     Credit/ Debit card
                   </label>
@@ -217,7 +239,10 @@ const CartCheckout = () => {
                     value="upi"
                     className="mr-2"
                   />
-                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="upi">
+                  <label
+                    className="text-gray-400 xsm:text-[10px]"
+                    htmlFor="upi"
+                  >
                     {" "}
                     UPI
                   </label>
@@ -231,7 +256,10 @@ const CartCheckout = () => {
                     value="netBanking"
                     className="mr-2"
                   />
-                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="netBanking">
+                  <label
+                    className="text-gray-400 xsm:text-[10px]"
+                    htmlFor="netBanking"
+                  >
                     {" "}
                     Net banking
                   </label>
@@ -259,7 +287,10 @@ const CartCheckout = () => {
                     value="emi"
                     className="mr-2"
                   />
-                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="emi">
+                  <label
+                    className="text-gray-400 xsm:text-[10px]"
+                    htmlFor="emi"
+                  >
                     {" "}
                     EMI
                   </label>
@@ -305,7 +336,9 @@ const CartCheckout = () => {
                     </div> */}
 
           <div className="h-auto space-y-7 xsm:space-y-3">
-            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mb-0">Order Details</h1>
+            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mb-0">
+              Order Details
+            </h1>
             {Data?.map((item) => {
               temp.push(item?.course?._id);
               return (
@@ -351,7 +384,7 @@ const CartCheckout = () => {
                       {/* <img src="src/assets/Group.png" className="w-[590px] h-[1px]" /> */}
                       <div className="flex justify-between items-center">
                         <span className="flex mt-4">
-                          <Star className="xsm:w-3"/>
+                          <Star className="xsm:w-3" />
                           <Star className="xsm:w-3" />
                           <Star className="xsm:w-3" />
                           <Star className="xsm:w-3" />
@@ -382,7 +415,9 @@ const CartCheckout = () => {
           <div className="mt-5 mb-4 xsm:my-2">
             <h1 className="text-base xsm:text-[10px]">Original Price:</h1>
             <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px]">Including all the taxes</p>
+              <p className=" green-color text-sm xsm:text-[10px]">
+                Including all the taxes
+              </p>
               <p className="xsm:text-[12px]">₹{total}</p>
             </div>
           </div>
@@ -390,7 +425,9 @@ const CartCheckout = () => {
           <div className="mt-5 mb-4 xsm:my-2">
             <h1 className="text-base xsm:text-[10px]">Total:</h1>
             <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px]">Including all the taxes</p>
+              <p className=" green-color text-sm xsm:text-[10px]">
+                Including all the taxes
+              </p>
               <p className="xsm:text-[12px]">₹{total}</p>
             </div>
           </div>
