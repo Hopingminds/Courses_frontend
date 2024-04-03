@@ -20,7 +20,7 @@ const Footer = () => {
                 <div className='flex  justify-between px-[5%] xsm:pl-[5%] xsm:flex xsm:flex-col xsm:gap-8'>
                     <div className='flex flex-col gap-5 w-[260px] xsm:gap-2 xsm:w-[90%] md:gap-6'>
                         <div onClick={() => navigate('/')}><img src='/logo.png' className='w-auto h-[50px] xsm:w-[40%] xsm:h-[10%] md:w-[60%]  cursor-pointer' /></div>
-                        <p className='text-white text-[16px] font-pop text-justify w-[90%] xsm:text-[10px] md:text-[12px] md:w-[90%] md:pl-2'>HopingMinds offers holistic development programs designed to position students in high-growth roles through our network of over 150+ corporate partners. Our tailored approach ensures you're not just prepared, but primed for success in your chosen field.</p>
+                        <p className='text-white text-[16px] font-pop text-balance w-[90%] xsm:text-[10px] md:text-[12px] md:w-[90%] md:pl-2'>HopingMinds offers holistic development programs designed to position students in high-growth roles through our network of over 150+ corporate partners. Our tailored approach ensures you're not just prepared, but primed for success in your chosen field.</p>
                     </div>
                     <div className='flex flex-col gap-8 xsm:gap-2  '>
                         <p className='text-white text-[20px] font-pop font-semibold xsm:text-[10px] md:text-[14px]'>GET HELP</p>
