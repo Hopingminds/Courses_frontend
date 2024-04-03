@@ -4,7 +4,7 @@ import Img3 from "../../Assests/Icons/ourfeatures3.svg";
 
 const FeatureTexts = [
   <>
-    <p className="text-[34px] text-white font-pop font-semibold xsm:text-[8px] md:text-[20px]">
+    <p className="text-[36px] text-white font-pop font-semibold xsm:text-[8px] md:text-[20px]">
             <span style={{ color: "#33EFA0", fontWeight: "bold" }}>
             MNC
       </span>{" "}
@@ -46,7 +46,7 @@ const FeatureTexts = [
     </div>
   </>,
   <>
-    <p className="text-[34px] text-white font-pop font-semibold xsm:text-[10px] md:text-[20px]">
+    <p className="text-[36px] text-white font-pop font-semibold xsm:text-[10px] md:text-[20px]">
       <span style={{ color: "#33EFA0", fontWeight: "bold" }}>Industry Oriented </span> Curriculum
     </p>
     <div className="flex flex-col gap-4">
@@ -59,7 +59,7 @@ const FeatureTexts = [
     </div>
   </>,
   <>
-    <p className="text-[34px] text-white font-pop font-semibold xsm:text-[10px] md:text-[20px]">
+    <p className="text-[36px] text-white font-pop font-semibold xsm:text-[10px] md:text-[20px]">
       <span style={{ color: "#33EFA0", fontWeight: "bold" }}>
       Placement
       </span>{" "}

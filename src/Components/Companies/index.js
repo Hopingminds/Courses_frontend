@@ -61,9 +61,9 @@ const Companies = () => {
 
     return (
         <div className="text-[#696984] flex justify-center mt-12 font-pop xsm:mt-0 md:mt-4">
-            <div className="w-[90%] space-y-8 xsm:space-y-4 md:space-y-6">
-                <div className="text-center text-[24px] text-[#696984] xsm:text-[14px] md:text-[16px]">Trusted by 5,000+ Companies Worldwide</div>
-                <div className="flex justify-center ">
+            <div className="w-[90%] space-y-10 xsm:space-y-4 md:space-y-6 flex flex-col items-center justify-center">
+                <div className="text-center font-semibold font-pop text-[36px] text-[#3C3C3C] xsm:text-[14px] md:text-[16px]">Trusted by 5,000+ Companies Worldwide</div>
+                <div className="flex justify-center w-[80%]">
                     {logos.map((row, rowIndex) => (
                         <div key={rowIndex} className="slider-container w-[20%] md:w-[12%]">
                             {row.map((logo, index) => (

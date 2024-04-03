@@ -26,7 +26,7 @@ const Testimonial = () => {
     //   image: Img2,
     // },
     {
-      text: "Right from the recruitment and interview process,we were able to see a different level of professionalism in Hm's candidates.It is great to see freshers demonstrating corperate manually.",
+      text: "Right from the recruitment and interview process,we were able to see a different level of professionalism in Hm's candidates.It is great to see freshers demonstrating corperate mapopally.",
       author: "Lakshay S",
       empty: 0,
       stars: 5,
@@ -152,16 +152,16 @@ const Testimonial = () => {
 
   return (
     <>
-      <div className="flex flex-row  justify-between pt-0 px-[5%] pb-32 xsm:px-[5%] xsm:pb-8 xsm:gap-4">
+      <div className="flex flex-row justify-between pt-0 px-[10%] pb-28 xsm:px-[5%] xsm:pb-8 xsm:gap-4">
         {/* left */}
-        <div className="flex flex-col gap-4 w-[40%] xsm:gap-2">
+        <div className="flex flex-col gap-4 w-[45%] xsm:gap-2">
           <div className="flex flex-row gap-4 items-center xsm:gap-2 xsm:pl-2">
-            <hr className="border border-[black] w-20 xsm:w-6 md:w-12" />
-            <p className=" text-[20px] font-nu xsm:text-[6px] md:text-[10px]">
+            <hr className="border border-[black] w-16 xsm:w-6 md:w-12" />
+            <p className=" text-[18px] font-pop xsm:text-[6px] md:text-[10px]">
               TESTIMONIAL
             </p>
           </div>
-          <p className="text-[#1DBF73] text-[42px]  font-pop font-semibold xsm:text-[10px] xsm:pl-2 md:text-[30px]">
+          <p className="text-[#1DBF73] text-[36px]  font-pop font-semibold xsm:text-[10px] xsm:pl-2 md:text-[30px]">
             What They Say?
           </p>
           <div className="flex flex-col gap-4 text-[#696984] text-[18px] text-justify font-poppins xsm:text-[6px] xsm:gap-0 md:text-[12px]">
@@ -170,7 +170,7 @@ const Testimonial = () => {
                 HopingMinds has earned the trust of over 100 corporations, more than 50 universities, and over 10,000 students based on positive experiences and successful outcomes. {" "}
               </p>
               <p >
-                Our community continues to grow, thanks to the proven results and confidence shared by our partners and learners
+                Our community contipopes to grow, thanks to the proven results and confidence shared by our partners and learners
               </p>
               <p>
               Having worked in the ed-tech space, I understand the challenges of creating products that are both innovative and practical. HM excels in this, offering solutions that are forward-thinking yet grounded in real classroom needs. They're a model for how ed-tech firms should operate.
@@ -192,17 +192,19 @@ const Testimonial = () => {
           </div>
 
           {/* right */}
-          <div className="relative w-[40%]">
+          <div className="relative w-[45%]">
             <div className="relative ">
+              <div className="w-[70%] h-[54vh] rounded-3xl">
               <img
                 src={testimonials[currentIndex].image}
-                className="w-[330px] h-[380px]  rounded-3xl xsm:rounded-md xsm:w-[95px] xsm:h-[120px] md:h-[280px] md:w-[80%]"
+                className="w-[100%] h-[100%]  rounded-3xl xsm:rounded-md xsm:w-[95px] xsm:h-[120px] md:h-[280px] md:w-[80%]"
               />
-              <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[80%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md xsm:top-[69%] md:">
+              </div>
+              <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[95%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md xsm:top-[69%] md:">
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={index}
-                    className={`bg-[#1DBF73] text-[rgb(29,191,115)] w-14 rounded-l-xl xsm:w-6 md:w-10 ${index === currentIndex ? "" : "hidden"
+                    className={`bg-[#1DBF73] text-[rgb(29,191,115)] w-12 rounded-l-xl xsm:w-6 md:w-10 ${index === currentIndex ? "" : "hidden"
                       }`}
                   >
                     .
@@ -215,20 +217,18 @@ const Testimonial = () => {
                       }`}
                   >
                     <hr className="h-[60%]  border border-[rgb(189,189,209)] absolute top-3 xsm:top-2" />
-                    <div className="flex flex-col justify-between px-4 py-3 xsm:px-2 xsm:py-2 xsm:gap-1 md:gap-2">
-                      <p className="text-[#5F5F7E] text-[15px] font-nu leading-6 text-justify xsm:text-[4px] xsm:leading-none xsm:tracking-tight md:text-[10px] md:leading-tight">
+                    <div className="flex flex-col justify-between gap-4 px-4 py-3 xsm:px-2 xsm:py-2 xsm:gap-1 md:gap-2">
+                      <p className="text-[#5F5F7E] text-[16px] font-pop leading-6 text-justify xsm:text-[4px] xsm:leading-none xsm:tracking-tight md:text-[10px] md:leading-tight">
                         {testimonial.text}
                       </p>
+                      <div className="flex flex-col ">
                       <div className="flex flex-row justify-between items-center ">
                         <div className="flex space-x-1">
-                          <p className="text-[#5F5F7E] text-[16px] font-nu font-semibold xsm:text-[4px] md:text-[8px]">
+                          <p className="text-[#5F5F7E] text-[18px] font-pop font-semibold xsm:text-[4px] md:text-[8px]">
                             {/* Gloria Rose */}
                             {testimonial.author}
                           </p>
-                          <p className="text-[#5F5F7E] text-[16px] font-nu font-semibold xsm:text-[4px] md:text-[8px]">
-                            {/* Gloria Rose */}
-                            / {testimonial.company}
-                          </p>
+                          
                         </div>
                         <div className="flex flex-col gap-1  xsm:gap-0">
                           <div className="flex justify-center items-center">
@@ -243,11 +243,16 @@ const Testimonial = () => {
                               </svg>
                             ))}
                           </div>
-                          {/* <p className="text-[#80819A] text-[14px] font-nu xsm:text-[5px]">
+                          {/* <p className="text-[#80819A] text-[14px] font-pop xsm:text-[5px]">
                           {testimonial.reviews} reviews at Yelp
                         </p> */}
                         </div>
                       </div>
+                      <p className="text-[#5F5F7E] text-[16px] font-pop xsm:text-[4px] md:text-[8px]">
+                            {/* Gloria Rose */}
+                            {testimonial.company}
+                          </p>
+                          </div>
                     </div>
                   </div>
                 ))}
@@ -256,11 +261,11 @@ const Testimonial = () => {
 
             {/* arrrow */}
             <div
-              className="w-[70px] h-[70px] absolute bg-[#ffffff] rounded-full right-[22%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[28%] md:w-[40px] md:h-[40px] md:right-[14%]"
+              className="w-[60px] h-[60px] absolute bg-[#ffffff] rounded-full right-[22%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[28%] md:w-[40px] md:h-[40px] md:right-[14%]"
               style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }}
               onClick={handleArrow2Click}
             >
-              <img src={Arrow2} className="self-center xsm:w-[8px] xsm:h-[8px] md:w-[12px] md:h-[12px]" />
+              <img src={Arrow2} className="self-center w-5 h-5 xsm:w-[8px] xsm:h-[8px] md:w-[12px] md:h-[12px]" />
             </div>
           </div>
         </div>
