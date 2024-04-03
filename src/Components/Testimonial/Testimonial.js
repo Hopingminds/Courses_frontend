@@ -55,6 +55,76 @@ const Testimonial = () => {
       company: 'Google',
 
     },
+    {
+      text: "HM's students come with a certain level of exposure and practical experience that distinguishes them from the rest. We are able to save critical time as they start delivering early.",
+      author: "Priyanka Ashok",
+      empty: 0,
+      stars: 5,
+      reviews: 12,
+      image: '/priyanka-ashok.jpeg',
+      company: 'Barclay',
+
+    },
+    {
+      text: "HM's curated talent pool and industry exposure ensure our confidence in the talent we recruit. In other words, if there are any surprises then they are only pleasant.",
+      author: "Amit Gupta",
+      empty: 0,
+      stars: 5,
+      reviews: 12,
+      image: '/amit-gupta.jpeg',
+      company: 'Techginia',
+
+    },
+    {
+      text: "Recruiting from HM, I can be sure of the candidate's skill set and experience with a visibility of the modules they have completed and the main development projects they have done.",
+      author: "Dr. Paras Chawla",
+      empty: 0,
+      stars: 5,
+      reviews: 12,
+      image: '/paras-chawala.jpeg',
+      company: 'Zonal',
+
+    },
+    {
+      text: "I love HM and their app! Great features and engaging programs. You can really tell that there is a motivated training and planning team behind HM who have fresh ideas. Keep it up!",
+      author: "Sachin Arora",
+      empty: 0,
+      stars: 5,
+      reviews: 12,
+      image: '/sachin-arora.jpeg',
+      company: 'TCS',
+
+    },
+    {
+      text: "HM practically accelerates what we do in the first year with our fresh hires. Their talent has great communication skills and professionalism because of their holistic approach to development.",
+      author: "Abhinav Bansal",
+      empty: 0,
+      stars: 5,
+      reviews: 12,
+      image: '/abhinav-bansal.jpeg',
+      company: 'Whatsapp Business',
+
+    },
+    {
+      text: "There is no trial and miss with HM's hires - We tell them of our requirements and they deliver. Revolutionizing the concept of talent development and recruitment.",
+      author: "Prabhjot Singh",
+      empty: 0,
+      stars: 5,
+      reviews: 12,
+      image: '/probhjot-singh.jpeg',
+      company: 'KPMG',
+
+    },
+    {
+      text: "Elated to hear about the great concept this will help to reduce onboard training time and efforts of the executives. Great! go ahead.",
+      author: "Bhawna Thapliyal",
+      empty: 0,
+      stars: 5,
+      reviews: 12,
+      image: '/bhawna-thapiyal.jpeg',
+      company: 'Nagarro',
+
+    },
     // {
     //   text: "It's not often that I come across an Ed-Tech firm as transformative as Hoping Minds. I've had the pleasure of collaborating with them to enhance our educational initiatives. Hoping Minds' commitment to excellence, higher packages and their passion for advancing in the field of education is commendable.",
     //   author: "Navdeepak Sandhu",
@@ -102,6 +172,9 @@ const Testimonial = () => {
               <p >
                 Our community continues to grow, thanks to the proven results and confidence shared by our partners and learners
               </p>
+              <p>
+              Having worked in the ed-tech space, I understand the challenges of creating products that are both innovative and practical. HM excels in this, offering solutions that are forward-thinking yet grounded in real classroom needs. They're a model for how ed-tech firms should operate.
+              </p>
             </div>
             {/* <p className="text-[#696984] text-[18px] font-pop xsm:text-[6px]">
             Are you too? Please give your assessment
@@ -123,7 +196,7 @@ const Testimonial = () => {
             <div className="relative ">
               <img
                 src={testimonials[currentIndex].image}
-                className="w-[330px] h-[380px]  rounded-3xl xsm:rounded-md xsm:w-[95px] xsm:h-[120px]"
+                className="w-[330px] h-[380px]  rounded-3xl xsm:rounded-md xsm:w-[95px] xsm:h-[120px] md:h-[280px] md:w-[80%]"
               />
               <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[80%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md xsm:top-[69%] md:">
                 {testimonials.map((testimonial, index) => (
@@ -148,11 +221,11 @@ const Testimonial = () => {
                       </p>
                       <div className="flex flex-row justify-between items-center ">
                         <div className="flex space-x-1">
-                          <p className="text-[#5F5F7E] text-[16px] font-nu font-semibold xsm:text-[4px]">
+                          <p className="text-[#5F5F7E] text-[16px] font-nu font-semibold xsm:text-[4px] md:text-[8px]">
                             {/* Gloria Rose */}
                             {testimonial.author}
                           </p>
-                          <p className="text-[#5F5F7E] text-[16px] font-nu font-semibold xsm:text-[4px]">
+                          <p className="text-[#5F5F7E] text-[16px] font-nu font-semibold xsm:text-[4px] md:text-[8px]">
                             {/* Gloria Rose */}
                             / {testimonial.company}
                           </p>
@@ -183,11 +256,11 @@ const Testimonial = () => {
 
             {/* arrrow */}
             <div
-              className="w-[70px] h-[70px] absolute bg-[#ffffff] rounded-full right-[22%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[28%]"
+              className="w-[70px] h-[70px] absolute bg-[#ffffff] rounded-full right-[22%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[28%] md:w-[40px] md:h-[40px] md:right-[14%]"
               style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }}
               onClick={handleArrow2Click}
             >
-              <img src={Arrow2} className="self-center xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]" />
+              <img src={Arrow2} className="self-center xsm:w-[8px] xsm:h-[8px] md:w-[12px] md:h-[12px]" />
             </div>
           </div>
         </div>
