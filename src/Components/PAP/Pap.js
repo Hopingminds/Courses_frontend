@@ -374,14 +374,12 @@ export default function Pap() {
                                 <div className="">
                                 <PhoneInput
                                 className="papphone"
-                                    
                                     defaultCountry="IN"
                                     name="contact"
                                     value={num}
                                     onChange={setNum}
                                     />
                                 </div>
-                                {/* <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" value={formValues.contact} onChange={handleChange}/> */}
                             </div>
                             <div className='flex flex-col text-[15px]'>
                                 <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Degree</label>
