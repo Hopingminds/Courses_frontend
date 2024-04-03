@@ -173,7 +173,7 @@ const AllCourses = () => {
                 SearchedData.map((item, ind) => {
                   // console.log(item.);
                   return (<>
-                    <Link key={ind} to={"/detailcourse/" + item.slug} className="text-center py-1 border-b-[2px]" >{item.title}</Link>
+                    <Link key={ind} to={"/detailcourse/" + item.slug} className="text-left pl-2 py-1 border-b-[2px]" >{item.title}</Link>
 
                   </>)
                 })
