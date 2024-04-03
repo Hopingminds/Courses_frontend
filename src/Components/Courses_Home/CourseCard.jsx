@@ -59,7 +59,7 @@ const CourseCard = ({
         <div className="px-2 flex justify-between items-center h-[15%] text-[#474747] mt-4">
           <div className="flex items-center gap-2">
               <img src="/lina.png" className="h-10 w-10 bg-[#0000001A] rounded-full xsm:h-4 xsm:w-4 md:h-6 md:w-6" />
-              <div className="font-medium text-[16px] xsm:text-[6px] md:text-[10px]">{firstName} {lastName}</div>
+              <div className="font-medium text-[16px] xsm:text-[6px] md:text-[8px]">{firstName} {lastName}</div>
             </div>
           {/* <div className="flex space-x-2 items-center xsm:space-x-1">
             <Design className="h-4 w-4 xsm:h-2 xsm:w-2 md:w-3 md:h-3"/>
@@ -67,7 +67,7 @@ const CourseCard = ({
           </div> */}
           <div
               style={{ color: "#" }}
-              className="text-[22px] font-bold text-[#1DBF73] xsm:text-[6px] md:text-[10px]"
+              className="text-[22px] font-bold text-[#1DBF73] xsm:text-[6px] md:text-[8px]"
             >
               ₹{price}
             </div>
@@ -81,7 +81,7 @@ const CourseCard = ({
           <div>
             <div
               style={{ color: "#3C3C3C" }}
-              className="font-bold text-[16px] mb-2 h-12 xsm:text-[8px] xsm:mb-0 xsm:h-4 md:text-[12px] md:mb-0"
+              className="font-bold text-[16px] mb-2 h-12 xsm:text-[8px] xsm:mb-0 xsm:h-4 md:text-[10px] md:mb-0"
             >
               {cropString(title, 50)}
             </div>
