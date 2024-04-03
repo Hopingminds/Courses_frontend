@@ -4,6 +4,8 @@ import Img5 from "../../Assests/Images/ourfeatures2.png";
 import Img6 from "../../Assests/Images/ourfeatures3.png";
 import FeatureTexts from "./FeatureText";
 
+// add 4th image also
+
 const OurFeatures = () => {
   const [displayImage, setDisplayImage] = useState(Img4);
   const [displayText, setDisplayText] = useState(FeatureTexts[0]);
