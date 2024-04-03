@@ -1,6 +1,6 @@
 .slider-container {
     position: relative;
-    height: 60px    ; /* Adjust height as needed */
+    height: 100px; /* Adjust height as needed */
     overflow: hidden;
 }
 
@@ -14,19 +14,4 @@
 
 .logo.active {
     transform: translateX(-50%) translateY(0);
-}
-
-
-@media screen and (min-width: 320px) and (max-width: 480px) {
-
-    .slider-container{
-        height: 20px;
-    }
-}
-
-@media screen and (min-width: 721px) and (max-width: 1023px) {
-
-    .slider-container{
-        height: 40px;
-    }
 }

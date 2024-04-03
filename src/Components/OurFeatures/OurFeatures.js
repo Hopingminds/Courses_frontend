@@ -4,6 +4,8 @@ import Img5 from "../../Assests/Images/ourfeatures2.png";
 import Img6 from "../../Assests/Images/ourfeatures3.png";
 import FeatureTexts from "./FeatureText";
 
+// add 4th image also
+
 const OurFeatures = () => {
   const [displayImage, setDisplayImage] = useState(Img4);
   const [displayText, setDisplayText] = useState(FeatureTexts[0]);
@@ -107,7 +109,7 @@ const OurFeatures = () => {
       <div className="">
         <div className="add_gradient flex flex-col gap-12  py-10 pb-20 px-28 xsm:px-[5%] xsm:gap-2 xsm:pb-[3%] xsm:py-[5%] md:px-[5%] md:gap-6 md:pb-10">
           <div className="flex flex-col gap-4 justify-center items-center xsm:gap-2">
-            <p className="text-[42px] text-white font-pop font-semibold xsm:text-[12px] md:text-[30px]">
+            <p className="text-[36px] text-white font-pop font-semibold xsm:text-[12px] md:text-[30px]">
               Our <span className="text-[#33EFA0]"> Features </span>{" "}
             </p>
             {/* <p className="text-[#696984] text-[20px] font-pop text-center xsm:text-[7px]">Unleash Your Potential</p> */}

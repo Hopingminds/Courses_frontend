@@ -46,7 +46,7 @@ const WhatHM = () => {
     <div className="">
       <div className="flex flex-col gap-3 xsm:gap-5" ref={sectionRef}>
         <div className="flex justify-center">
-          <p className="text-[#1DBF73] text-[42px] font-pop font-semibold xsm:text-[12px] md:text-[30px]">
+          <p className="text-[#1DBF73] text-[36px] font-pop font-semibold xsm:text-[12px] md:text-[30px]">
             What is Hoping Minds?
           </p>
         </div>

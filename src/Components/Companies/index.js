@@ -1,77 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import './companies.css';
+import './companies.css'; // Import CSS file for styling (you need to create this file)
 
 const Companies = () => {
-    const [currentLogoIndexes, setCurrentLogoIndexes] = useState([0, 0, 0, 0, 0, 0]);
-    const [alternateCount, setAlternateCount] = useState(0);
+    const [currentLogoIndexes, setCurrentLogoIndexes] = useState([0, 0, 0, 0, 0, 0]); // Initialize with 6 sets of logos
 
-    const logos = [
-        ['/abbott.png', '/accentire.png', '/adept.png', '/adobe.png', '/ajio.png', '/alexa.png'],
-        ['/bosch.png', '/byjus.png', '/capgemini.png', '/cleartax.png', '/cognizant.png', '/dream11.png'],
-        ['/dxc.png', '/ebay.png', '/google.png', '/grammarly.png', '/hcl.png', '/ibm.png'],
-        ['/indmoney.png', '/infosys.png', '/instamojo.png', '/mahindra.png', '/ola.png', '/paytm.png'],
-        ['/revv.png', '/salesforce.png', '/sharechat.png', '/swiggy.png', '/tcs.png', '/techginia.png'],
-        ['/techmatrix.png', '/unity.png', '/uolo.png', '/whatfix.png', '/whitehat.png', '/wipro.png']
-    ];
 
-    const totalLogos = logos.map(row => row.length);
+    const logosSets = [
+        ['/animationLogos/abbott.png', '/animationLogos/accentire.png', '/animationLogos/adept.png', '/animationLogos/adobe.png', '/animationLogos/ajio.png', '/animationLogos/alexa.png'],
+        ['/animationLogos/bosch.png', '/animationLogos/byjus.png', '/animationLogos/capgemini.png', '/animationLogos/cleartax.png', '/animationLogos/cognizant.png', '/animationLogos/dream11.png'],
+        ['/animationLogos/dxc.png', '/animationLogos/ebay.png', '/animationLogos/google.png', '/animationLogos/grammarly.png', '/animationLogos/hcl.png', '/animationLogos/ibm.png'],
+        ['/animationLogos/indmoney.png', '/animationLogos/infosys.png', '/animationLogos/instamojo.png', '/animationLogos/mahindra.png', '/animationLogos/ola.png', '/animationLogos/paytm.png'],
+        ['/animationLogos/revv.png', '/animationLogos/salesforce.png', '/animationLogos/sharechat.png', '/animationLogos/swiggy.png', '/animationLogos/tcs.png', '/animationLogos/techginia.png'],
+        ['/animationLogos/techmatrix.png', '/animationLogos/unity.png', '/animationLogos/uolo.png', '/animationLogos/whatfix.png', '/animationLogos/whitehat.png', '/animationLogos/wipro.png']
+    ];
+
+    const totalLogosSets = logosSets.length;
 
     useEffect(() => {
-        const intervals = totalLogos.map((total, index) => {
+        const intervals = logosSets.map((logos, setIndex) => {
+            const totalLogos = logos.length;
+            const intervalDuration = (setIndex % 2 === 0) ? 3000 : 4000; // Adjust interval duration for different sets
             return setInterval(() => {
                 setCurrentLogoIndexes(prevIndexes => {
-                    const newIndexes = [...prevIndexes];
-                    newIndexes[index] = (newIndexes[index] + 1) % total;
-                    return newIndexes;
+                    const updatedIndexes = [...prevIndexes];
+                    updatedIndexes[setIndex] = (updatedIndexes[setIndex] + 1) % totalLogos;
+                    return updatedIndexes;
                 });
-            }, index % 2 === 0 ? 3000 : 5000);
+            }, intervalDuration);
         });
-    
-        return () => {
-            intervals.forEach(clearInterval);
-        };
-    }, [totalLogos]);
 
-    useEffect(() => {
-        const intervals = totalLogos.map((total, index) => {
-            return setInterval(() => {
-                setCurrentLogoIndexes(prevIndexes => {
-                    const newIndexes = [...prevIndexes];
-                    newIndexes[index] = (newIndexes[index] + 1) % total;
-                    return newIndexes;
-                });
-            }, index % 2 === 1 ? 3000 : 5000);
-        });
-    
-        return () => {
-            intervals.forEach(clearInterval);
-        };
-    }, [totalLogos]);
-    
-
-    useEffect(() => {
-        if (alternateCount >= 2) return;
-
-        const timer = setTimeout(() => {
-            setAlternateCount(prevCount => prevCount + 1);
-        }, 3000);
-
-        return () => clearTimeout(timer);
-    }, [alternateCount]);
+        return () => intervals.forEach(interval => clearInterval(interval));
+    }, []);
 
     return (
-        <div className="text-[#696984] flex justify-center mt-12 font-pop xsm:mt-0 md:mt-4">
-            <div className="w-[90%] space-y-8 xsm:space-y-4 md:space-y-6">
-                <div className="text-center text-[24px] text-[#696984] xsm:text-[14px] md:text-[16px]">Trusted by 5,000+ Companies Worldwide</div>
-                <div className="flex justify-center ">
-                    {logos.map((row, rowIndex) => (
-                        <div key={rowIndex} className="slider-container w-[20%] md:w-[12%]">
-                            {row.map((logo, index) => (
+        <div className="text-[#696984] flex justify-center mt-12 font-pop">
+            <div className="w-[90%] space-y-8">
+                <div className="text-center text-[24px]">Trusted by 5,000+ Companies Worldwide</div>
+                <div className="flex justify-center">
+                    {logosSets.map((logos, setIndex) => (
+                        <div key={setIndex} className="slider-container w-[20%]">
+                            {logos.map((logo, index) => (
                                 <img
                                     key={index}
                                     src={logo}
                                     alt={`Company Logo ${index}`}
-                                    className={index === currentLogoIndexes[rowIndex] ? 'logo active' : 'logo'}
+                                    className={index === currentLogoIndexes[setIndex] ? 'logo active' : 'logo'}
                                 />
                             ))}
                         </div>

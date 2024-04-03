@@ -83,13 +83,13 @@ export default function Pap() {
       {/* Main */}
       <div className="px-[8%] my-6 xsm:px-[3%]">
         <div>
-          <p className="font-pop font-semibold text-[32px] xsm:text-[14px]">How this works ? </p>
+          <p className="font-pop font-semibold text-[32px] xsm:text-[14px]">From Learning To Earning </p>
         </div>
         {/* Agreement */}
         <div className="flex justify-between">
           <div className="w-[55%] mt-10 flex flex-col gap-4 xsm:mt-5">
             <div>
-              <p className="font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px]">Pay After Placement Agreement</p>
+              <p className="font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px]">How This Works ?</p>
             </div>
             <div className="flex items-center gap-4 xsm:gap-2">
               <div className="w-[7%]">
@@ -109,7 +109,7 @@ export default function Pap() {
               <div className="w-[90%]">
                 <div>
                   <p className="font-nu font-semibold text-[22px] xsm:text-[10px]">1 Year</p>
-                  <p className="font-nu font-medium text-[16px] xsm:text-[7px]">If you don’t get a job offer within 1 year of course  you pay nothing for your learning at  Hoping Minds.</p>
+                  <p className="font-nu font-medium text-[16px] xsm:text-[7px]">If you don’t get a job offer within 1 year of the course, you pay nothing for your learning at  Hoping Minds.</p>
                 </div>
               </div>
             </div>
@@ -152,24 +152,24 @@ export default function Pap() {
               <div className="flex flex-col gap-6 ml-6 xsm:gap-2 xsm:ml-4">
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
-                  <p className="font-nu text-[17px] xsm:text-[7px]">Your Salary range   :  &gt; 5Lpa</p>
+                  <p className="font-nu text-[17px] xsm:text-[7px]">Average CTC  :  &gt; 8Lpa</p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
-                  <p className="font-nu text-[17px] xsm:text-[7px]">Monthly Payable   :  ₹ 6,944</p>
+                  <p className="font-nu text-[17px] xsm:text-[7px]">Monthly Payable   :  ₹ 2,500</p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
-                  <p className="font-nu text-[17px] xsm:text-[7px]">Tenure   :  ₹ 6,944</p>
+                  <p className="font-nu text-[17px] xsm:text-[7px]">Training Tenure   :  4 Months</p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
-                  <p className="font-nu text-[17px] xsm:text-[7px]">Total Payable Fee   :  ₹2,50,00</p>
+                  <p className="font-nu text-[17px] xsm:text-[7px]">Total Payable Fee   :  ₹ 1,50,000</p>
                 </div>
               </div>
             </div>
             <div>
-              <p className="font-nu text-[17px] xsm:text-[7px]">CTC (Cost to Company) is defined as the total gross income earned, including but not pmited, to variable pay, compensations and ESOPs. Find out more in the FAQ section.</p>
+              <p className="font-nu text-[17px] xsm:text-[7px]">CTC (Cost to Company) is defined as the total gross income earned, including but not permitted, to variable pay, compensations and Employee Stock Ownership Plan (ESOP). Find out more in the FAQ section.</p>
             </div>
           </div>
         </div>
@@ -180,7 +180,7 @@ export default function Pap() {
               <p className="font-pop font-semibold text-[24px] text-[#2D3436] xsm:text-[10px] xsm:font-bold">Dropout Clauses</p>
             </div>
             <div>
-              <p className="font-nu text-[17px] xsm:text-[8px]">If you realise that Masai is not for you, you may withdraw from our courses at anytime. Here is how the fee works in case you drop-out</p>
+              <p className="font-nu text-[17px] xsm:text-[8px]">If you realise that Hoping Minds is not for you, you may withdraw from our courses at anytime. Here is how the fee works in case you drop-out</p>
             </div>
             <div className="flex flex-col gap-4 ml-6 xsm:gap-2">
               <div className="flex items-center gap-4">
@@ -217,7 +217,7 @@ export default function Pap() {
               <p className="font-pop font-semibold text-[34px] xsm:text-[10px]">Pay After Placement(PAP) Agreement</p>
             </div>
             <div>
-              <p className="font-nu text-[16px] leading-8 xsm:text-[7px] xsm:leading-normal xsm:tracking-wider">PAP Agreement is a legal contract that makes education at Masai outcome-based. It is not an education loan, as you do not have to pay any interest & you do not require any collaterals. If you do not get placed within 1 year of course completion, your learning with Masai is completely free.</p>
+              <p className="font-nu text-[16px] leading-8 xsm:text-[7px] xsm:leading-normal xsm:tracking-wider">PAP Agreement is a legal contract that makes education at Hoping Minds outcome-based. It is not an education loan, as you do not have to pay any interest & you do not require any collaterals. If you do not get placed within 1 year of course completion, your learning with Hoping Minds is completely free.</p>
             </div>
             <div className="">
               <button onClick={checkUserAuth} className="bg-white text-black font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Explore Now</button>
@@ -240,14 +240,98 @@ export default function Pap() {
                 >
                   <div className="flex items-center gap-2">
                     <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
-                    <p className="xsm:text-[8px]">Lorem ipsum dolor sit amet</p>
+                    <p className="xsm:text-[8px]">How does the Pay after Placement model work?</p>
                   </div>
                   <div>
                     <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
                   </div>
                 </div>
                 <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={1 + 'content'}>
-                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempos Lorem ipsum dolor sitamet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempos Lorem ipsum dolor sitamet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempos Lorem ipsum dolor sitamet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempos Lorem ipsum dolor sitamet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Participants undergo training without upfront payment, only paying fees upon securing a job through the program.</p>
+                </div>
+              </div>
+              <hr className="border-[1px]" />
+            </div>
+            <div className="faq2 w-full">
+              <div className=" w-full">
+                <div
+                  onClick={() => ClickSection(2)}
+                  id={2 + 'ind'}
+                  className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
+                    <p className="xsm:text-[8px]">Is there a risk involved for participants in the Pay after Placement model?</p>
+                  </div>
+                  <div>
+                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
+                  </div>
+                </div>
+                <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={2 + 'content'}>
+                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Risk is minimal as payment is contingent on job placement; participants typically aren't obligated to pay if unsuccessful.</p>
+                </div>
+              </div>
+              <hr className="border-[1px]" />
+            </div>
+            <div className="faq3 w-full">
+              <div className=" w-full">
+                <div
+                  onClick={() => ClickSection(3)}
+                  id={3 + 'ind'}
+                  className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
+                    <p className="xsm:text-[8px]">What are the advantages of the Pay after Placement model?</p>
+                  </div>
+                  <div>
+                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
+                  </div>
+                </div>
+                <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={3 + 'content'}>
+                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">It reduces financial barriers and aligns interests, with providers invested in participants' success.</p>
+                </div>
+              </div>
+              <hr className="border-[1px]" />
+            </div>
+            <div className="faq4 w-full">
+              <div className=" w-full">
+                <div
+                  onClick={() => ClickSection(4)}
+                  id={4 + 'ind'}
+                  className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
+                    <p className="xsm:text-[8px]">What happens if a participant secures a job but can't pay immediately?</p>
+                  </div>
+                  <div>
+                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
+                  </div>
+                </div>
+                <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={4 + 'content'}>
+                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Flexible payment options, such as installment plans, are often provided to accommodate financial situations.</p>
+                </div>
+              </div>
+              <hr className="border-[1px]" />
+            </div>
+            <div className="faq5 w-full">
+              <div className=" w-full">
+                <div
+                  onClick={() => ClickSection(5)}
+                  id={5 + 'ind'}
+                  className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
+                    <p className="xsm:text-[8px]"> How do program providers ensure quality job placements?</p>
+                  </div>
+                  <div>
+                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
+                  </div>
+                </div>
+                <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={5 + 'content'}>
+                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Providers establish employer partnerships and offer career support to ensure placements align with participants' goals.</p>
                 </div>
               </div>
               <hr className="border-[1px]" />
