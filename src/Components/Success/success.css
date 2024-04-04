@@ -1,8 +1,8 @@
 .thankpage {
   width: 80%;
   max-width: 800px;
-  margin: 0 auto;
-  height: 80%;
+  margin: 10px auto;
+  /* height: 60%; */
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -37,19 +37,20 @@
 .thank-you .button-container button {
   padding: 1rem 2rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 9999px;
   cursor: pointer;
 }
 
 .thank-you .button-container .view-order {
-  background-color: #007bff;
+  background-color: #1DBF73;
   color: #fff;
 }
 
 .thank-you .button-container .continue-shopping {
   background-color: #fff;
-  border: 1px solid #007bff;
-  color: #007bff;
+  border: 1px solid #1DBF73;
+  color: #1DBF73;
+  font-weight: 600px;
 }
 
 @media only screen and (max-width: 768px) {

@@ -10,7 +10,7 @@ import User3 from "../../Assests/Images/Khushpreet Kaur-Delta IT.jpeg";
 import User4 from "../../Assests/Images/Amritpal Protiviti GDU 5.7.png";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
 import NewTestimonial from "../Testimonial/NewTestimonial";
 import Spinner from "../Spinner";
@@ -75,20 +75,22 @@ const AllCourses = () => {
   const [IsMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
 
+  // console.log(pat);
+
+let {pathname}=useLocation()
+  const [params, setparams] = useSearchParams()
   useEffect(() => {
     fetchCourses();
-  }, []);
-
-  const [params, setparams] = useSearchParams()
-
+  }, [params.get("category"),pathname]);
 
   const fetchCourses = async () => {
     try {
-      let category = params.get("category");
+      console.log("yes");
+     let category = params.get("category");
      
       // console.log(category);
       if (category) {
-        
+        category=category.replace(/%20/g, " ");
         setshow(true);
         const res = await axios.get(`${BASE_URL}/courses?category=${category}`);
         // console.log(res);
@@ -325,10 +327,10 @@ const AllCourses = () => {
                     />
                   )}
                 </span>}
-              <div className="h-[45%]">
+              <div className="min-h-[45%]">
                 {mouseHovered === ind ? (
                   <ReactPlayer
-                    className="w-full h-full rounded-xl xsm:rounded-md border"
+                    className="w-full h-full rounded-xl xsm:rounded-md border "
                     height={'100%'}
                     width={'100%'}
                     url={val.featured_video}
@@ -415,7 +417,7 @@ const AllCourses = () => {
                 eiusmod tempor
               </p>
             </div>
-            <img src={Img2} className="absolute top-5 w-[40%]" />
+            <img src={Img2} className="absolute top-5 w-[35%]" />
           </div>
 
           <div className="h-[45vh] flex justify-center items-end relative md:h-[16vh]">
@@ -431,7 +433,7 @@ const AllCourses = () => {
                 eiusmod tempor
               </p>
             </div>
-            <img src={Img2} className="absolute top-5 w-[40%]" />
+            <img src={Img2} className="absolute top-5 w-[35%]" />
           </div>
 
           <div className="h-[45vh] flex justify-center items-end relative md:h-[16vh]">
@@ -447,7 +449,7 @@ const AllCourses = () => {
                 eiusmod tempor
               </p>
             </div>
-            <img src={Img2} className="absolute top-5 w-[40%]" />
+            <img src={Img2} className="absolute top-5 w-[35%]" />
           </div>
         </div>
       </div>

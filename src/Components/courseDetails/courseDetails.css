@@ -35,7 +35,7 @@
   border-bottom: none;
 }
 
-.CCDetails-Header-content-right-list-course {
+.CCDetails-Header-content-right-list-course { 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
