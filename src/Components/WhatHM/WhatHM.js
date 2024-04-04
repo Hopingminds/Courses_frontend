@@ -69,14 +69,15 @@ const WhatHM = () => {
               url="/Corporate1.mp4"
               playing={playingIndex === 0}
               loop={true}
-              controls={false}
+              controls={playingIndex === 0}
+
               onPlay={() => handlePlay(0)}
               width="100%"
               height="100%"
               style={{ objectFit: "cover" }}
             />
             {playingIndex !== 0 && (
-              <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9999999]">
+              <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9]">
                 {true && (
                   <IoPlayCircle
                     size={"60"}
@@ -86,6 +87,7 @@ const WhatHM = () => {
                       color: "#1DBF73",
 
                       zIndex: "999999",
+
                     }}
 
                   />
@@ -102,14 +104,14 @@ const WhatHM = () => {
               url="/Corporate2.mp4"
               playing={playingIndex === 1}
               loop={true}
-              controls={false}
+              controls={playingIndex === 1}
               onPlay={() => handlePlay(1)}
               width="100%"
               height="100%"
               style={{ objectFit: "cover" }}
             />
             {playingIndex !== 1 && (
-              <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9999999]">
+              <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9]">
                 {true && (
                   <IoPlayCircle
                     size={"60"}
