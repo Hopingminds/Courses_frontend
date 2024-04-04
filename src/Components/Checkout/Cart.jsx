@@ -99,7 +99,6 @@ const CartCheckout = () => {
   const navigate = useNavigate();
 
   const handleContinueCheckout = async () => {
-<<<<<<< HEAD
     if (!Payment) {
       toast.error("Select payment method");
     } else if (!country) {
@@ -115,28 +114,6 @@ const CartCheckout = () => {
         let orderDetails={name:userDetail.name,zip,gstnumber,country:country.capital,state:state.label,address}
         // console.log(userDetail);
           // console.log(orderDetails);
-=======
-    // if (!Payment) {
-    //   toast.error("Select payment method");
-    // } else if (!country) {
-    //   toast.error("Select country");
-    // } else if (!state) {
-    //   toast.error("Select state");
-    // } else {
-    try {
-      let url = BASE_URL + "/purchasecourse";
-      let url1 = BASE_URL + "/deletecart";
-      let orderDetails = {
-        name: userDetail.name,
-        zip,
-        gstnumber,
-        country: country.capital,
-        state: state.label,
-        address,
-      };
-      // console.log(userDetail);
-      // console.log(orderDetails);
->>>>>>> 8f54cc894762936a61e66bbe77a02a52b8278695
 
       // console.log(courseId);
       setcourseId(temp);
@@ -178,13 +155,8 @@ const CartCheckout = () => {
       console.log(error);
     }
 
-<<<<<<< HEAD
       // console.log(response);
     }
-=======
-    // console.log(response);
-    // }
->>>>>>> 8f54cc894762936a61e66bbe77a02a52b8278695
   };
 
   return (
