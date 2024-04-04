@@ -102,9 +102,9 @@ const AllCourses = () => {
         const res = await axios.get(`${BASE_URL}/courses`);
         console.log(res);
 
-        const newCourses = moveBlockedCoursesToEnd(res.data.courses, userDetail.blocked_courses)
-        // setAllCourses(res.data.courses);
-        setAllCourses(newCourses)
+
+        setAllCourses(res.data.courses);
+        // setAllCourses(newCourses)
 
         setData(res.data.courses)
         setTemp(res.data.courses)
@@ -152,14 +152,14 @@ const AllCourses = () => {
     }
   }
 
-  const moveBlockedCoursesToEnd = (courses, blockedCourses) => {
+  // const moveBlockedCoursesToEnd = (courses, blockedCourses) => {
 
-    const filteredCourses = courses.filter(course => !blockedCourses.includes(course._id));
-    const blockedCoursesList = courses.filter(course => blockedCourses.includes(course._id));
-    const updatedCourses = filteredCourses.concat(blockedCoursesList);
+  //   const filteredCourses = courses.filter(course => !blockedCourses.includes(course._id));
+  //   const blockedCoursesList = courses.filter(course => blockedCourses.includes(course._id));
+  //   const updatedCourses = filteredCourses.concat(blockedCoursesList);
 
-    return updatedCourses;
-  };
+  //   return updatedCourses;
+  // };
 
 
 
@@ -285,7 +285,7 @@ const AllCourses = () => {
           return (
             <Link
               to={"/detailcourse/" + val.slug}
-              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md md:p-2 md:gap-2"
+              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md md:p-2 md:gap-2 relative"
               onMouseEnter={() => toggleHover(ind)}
               onMouseLeave={() => toggleHover(null)}
               key={ind}
