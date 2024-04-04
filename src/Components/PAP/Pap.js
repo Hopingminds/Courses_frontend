@@ -16,24 +16,24 @@ export default function Pap() {
   let navigate = useNavigate();
 let faqs=[
 {
-"question":"a",
-"answer":"a1"
+"question":"How does the Pay after Placement model work?",
+"answer":"Participants undergo training without upfront payment, only paying fees upon securing a job through the program."
 },
 {
-"question":"a",
-"answer":"a1"
+"question":"How does the Pay after Placement model work?",
+"answer":"Participants undergo training without upfront payment, only paying fees upon securing a job through the program."
 },
 {
-"question":"a",
-"answer":"a1"
+"question":"How does the Pay after Placement model work?",
+"answer":"Participants undergo training without upfront payment, only paying fees upon securing a job through the program."
 },
 {
-"question":"a",
-"answer":"a1"
+"question":"How does the Pay after Placement model work?",
+"answer":"Participants undergo training without upfront payment, only paying fees upon securing a job through the program."
 },
 {
-"question":"a",
-"answer":"a1"
+"question":"How does the Pay after Placement model work?",
+"answer":"Participants undergo training without upfront payment, only paying fees upon securing a job through the program."
 },
 ]
 
@@ -282,7 +282,7 @@ return(<>
                 >
                   <div className="flex items-center gap-2">
                     <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
-                    <p className="xsm:text-[8px]">How does the Pay after Placement model work?</p>
+                    <p className="xsm:text-[8px]">{item.question}</p>
                   </div>
                   <div>
                     <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" id={index+'img'}/>
@@ -290,7 +290,7 @@ return(<>
                 </div>
                 {
                   Activeid==index?<div className="px-6 py-4  xsm:py-2 xsm:px-4" id={index + 'content'}>
-                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Participants undergo training without upfront payment, only paying fees upon securing a job through the program.</p>
+                  <p className="font-nu text-[#696984] text-[16px] xsm:text-[7px] xsm:text-justify">{item.answer}</p>
                 </div>:''
                 }
               </div>
