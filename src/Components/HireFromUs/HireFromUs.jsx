@@ -19,6 +19,7 @@ const HireFromUs = () => {
             </div>
 
             {/* set the color of the border in gradient */}
+            {/* set the color of the border in gradient */}
 
             <div className="grid grid-cols-2 gap-16 text-white w-[90%]">
               <div className="bg-[#00000033] flex flex-col gap-6 rounded-xl pb-4 bw-border">
@@ -195,4 +196,4 @@ const HireFromUs = () => {
   );
 };
 
-export default HireFromUs;
+export default HireFromUs;
