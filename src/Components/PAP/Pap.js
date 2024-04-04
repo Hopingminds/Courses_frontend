@@ -70,18 +70,30 @@ let faqs=[
 
 
   function ClickSection(id) {
-    // const toggleContent = document.getElementById(id + 'content');
     const imgrotate = document.getElementById(id + 'img');
 
     if (!clicked) {
       setclicked(true);
-      setActiveid(id)
-      imgrotate.style.transform = 'rotate(180deg)';
+     
+      if(id==Activeid){
+        setActiveid(-1)
+// toggleContent.style.display = "block";
+
+imgrotate.style.transform = 'rotate(0deg)';
+
+      }
+      else{
+        setActiveid(id)
+        // const toggleContent = document.getElementById(Activeid + 'img');
+        // toggleContent.style.transform = 'rotate(0deg)'
+        imgrotate.style.transform = 'rotate(180deg)';
+      }
+      
       // toggleContent.style.display = "block";
     } else {
       setclicked(false);
       setActiveid(id)
-      imgrotate.style.transform = 'rotate(0deg)';
+      imgrotate.style.transform = 'rotate(180deg)';
       // toggleContent.style.display = "none";
     }
   }
