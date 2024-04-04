@@ -34,18 +34,19 @@ const ProfilEdit = () => {
 
 
   const [user, setUser] = useState({
-    username: "",
+
     email: "",
-    firstName: "",
-    lastName: "",
+    name: "",
+    phone: "",
     profile: "",
     college: "",
+    degree: "",
     stream: "",
     yearofpass: "",
     bio: "",
   })
 
-  console.log(user)
+  // console.log(user)
   const { userDetail, getUserDetails, clearCart, clearWishList } = useContext(Globalinfo)
 
   const fileInputRef = useRef(null);
@@ -64,12 +65,13 @@ const ProfilEdit = () => {
         // console.log(response.userDetails);
         setData(response?.userDetails)
         setUser({
-          username: response?.userDetails?.username,
+
           email: response?.userDetails.email,
-          firstName: response?.userDetails?.firstName,
-          lastName: response?.userDetails?.lastName,
+          name: response?.userDetails.name,
+
           profile: response?.userDetails?.profile,
           college: response?.userDetails?.college,
+          degree: response?.userDetails?.degree,
           stream: response?.userDetails?.stream,
           yearofpass: response?.userDetails?.yearofpass,
           bio: response?.userDetails?.bio,
@@ -122,7 +124,7 @@ const ProfilEdit = () => {
 
   const handleSaveClick = async () => {
     setbtnLoader(true)
-    if (!user.email || !user?.username) {
+    if (!user.email) {
       toast.error("Enter valid Credentials")
 
     }
@@ -206,22 +208,13 @@ const ProfilEdit = () => {
               <input
                 type="text"
                 className="outline-none w-full bg-transparent placeholder-[#000000]"
-                name="firstName"
+                name="name"
                 placeholder="First Name"
-                value={user.firstName}
+                value={user.name}
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
-              <input
-                type="text"
-                className="outline-none w-full bg-transparent placeholder-[#000000]"
-                placeholder="Last Name"
-                name="lastName"
-                value={user.lastName}
-                onChange={handleChange}
-              />
-            </div>
+
             <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
               <input
                 type="email"
@@ -229,6 +222,7 @@ const ProfilEdit = () => {
                 placeholder="Email"
                 value={user.email}
                 onChange={handleChange}
+                disabled
               />
             </div>
             <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
@@ -238,15 +232,6 @@ const ProfilEdit = () => {
                 placeholder="Phone Number"
                 name="phone"
                 value={user.phone}
-              />
-            </div>
-
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
-              <input
-                type="text"
-                className="outline-none w-full bg-transparent placeholder-[#000000]"
-                placeholder="Stream"
-                value={user.stream}
                 onChange={handleChange}
               />
             </div>
@@ -260,6 +245,28 @@ const ProfilEdit = () => {
                 onChange={handleChange}
               />
             </div>
+            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
+              <input
+                type="text"
+                className="outline-none w-full bg-transparent placeholder-[#000000]"
+                placeholder="Degree"
+                value={user.degree}
+                name="degree"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
+              <input
+                type="text"
+                className="outline-none w-full bg-transparent placeholder-[#000000]"
+                placeholder="stream"
+                name="stream"
+                value={user.stream}
+                onChange={handleChange}
+              />
+            </div>
+
             <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
               <input
                 type="text"
