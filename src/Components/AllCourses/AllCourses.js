@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Img1 from "../../Assests/Images/searchbanner.png";
 import Img2 from "../../Assests/Images/creator.png";
 import Icon1 from "../../Assests/Icons/twitter.svg";
@@ -15,6 +15,10 @@ import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
 import NewTestimonial from "../Testimonial/NewTestimonial";
 import Spinner from "../Spinner";
 import ReactPlayer from "react-player";
+import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
+import { IoIosLock } from "react-icons/io";
+import { GoUnmute } from "react-icons/go";
+import { Globalinfo } from "../../App";
 
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
@@ -65,12 +69,19 @@ const AllCourses = () => {
         "Excepteur sint occaect in culpa qui officia deserunt mollit anim id est laborum.",
     },
   });
+  const { userDetail, getUserDetails } = useContext(Globalinfo);
+
+  // console.log(userDetail.blocked_courses)
+  const [IsMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     fetchCourses();
   }, []);
 
-  const [params, setparams] = useSearchParams();
+  const [params, setparams] = useSearchParams()
+
+
   const fetchCourses = async () => {
     try {
       let category = params.get("category");
@@ -88,13 +99,25 @@ const AllCourses = () => {
         setshow(true);
 
         const res = await axios.get(`${BASE_URL}/courses`);
-        console.log(res.data.courses);
-        setAllCourses(res.data.courses);
-        setData(res.data.courses);
-        setTemp(res.data.courses);
-        setshow(false);
+        // console.log(res.data.courses);
+
+        const newCourses = moveBlockedCoursesToEnd(res.data.courses, userDetail.blocked_courses)
+        // setAllCourses(res.data.courses);
+        setAllCourses(newCourses)
+
+        setData(res.data.courses)
+        setTemp(res.data.courses)
+        setshow(false)
+
       }
-    } catch (error) {}
+    } catch (error) { }
+  };
+
+  const handleMute = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+    setIsMuted((prev) => !prev);
+
   };
 
   function SearchData(e) {
@@ -127,15 +150,17 @@ const AllCourses = () => {
       );
     }
   }
-  const toggleShowAllCards = () => {
-    setShowAllCards((prevShowAllCards) => !prevShowAllCards);
+
+  const moveBlockedCoursesToEnd = (courses, blockedCourses) => {
+
+    const filteredCourses = courses.filter(course => !blockedCourses.includes(course._id));
+    const blockedCoursesList = courses.filter(course => blockedCourses.includes(course._id));
+    const updatedCourses = filteredCourses.concat(blockedCoursesList);
+
+    return updatedCourses;
   };
 
-  const toggleUserImage = (user) => {
-    setSelectedUser((prevUser) => {
-      return prevUser !== user ? user : prevUser;
-    });
-  };
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -151,24 +176,24 @@ const AllCourses = () => {
   const toggleHover = (index) => {
     setMouseHovered(index);
   };
-  function Count(num){
+  function Count(num) {
     for (let index = 0; index < num; index++) {
       // setTimeout(() => {
-        // console.log(index);
-        setTimeout(() => {
+      // console.log(index);
+      setTimeout(() => {
         setcountvalue(index)
-          }, index*10);
+      }, index * 10);
 
-        // }
+      // }
       // }, index*1000);
-         
-      
+
+
     }
   }
   useEffect(() => {
-   Count(1001)
+    Count(1001)
   }, [])
-  
+
   return (
     <>
       <head>
@@ -179,19 +204,18 @@ const AllCourses = () => {
         className="flex flex-col gap-5 p-20 items-center xsm:py-6 xsm:px-0 xsm:gap-2 md:p-10 bg-[#000000]"
         style={{ backgroundImage: `url(${Img1})`, backgroundSize: "cover" }}
       > */}
-       
+
       {/* </div> */}
 
-<div className="relative h-auto w-full">
-<div className="flex flex-row rounded-2xl w-[60%] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] left-[17%]">
+      <div className="relative h-auto w-full">
+        <div className="flex flex-row rounded-2xl w-[60%] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] left-[17%]">
           <div className="relative w-full">
             <input
               type="text"
               placeholder=""
               onChange={SearchData}
-              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${
-                !SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
-              }`}
+              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
+                }`}
             />
             <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center">
               {SearchedData.map((item, ind) => {
@@ -215,34 +239,34 @@ const AllCourses = () => {
           </button>
         </div>
 
-      <div className="h-full w-full bg-black">
-      <ReactPlayer 
-      
-        url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
-        height="100%"
-        width={'100%'}
-        playing={true}
-        loop={true}
-        controls={false}
-        />
-      </div>
+        <div className="h-full w-full bg-black">
+          <ReactPlayer
 
-      <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-20 text-white  absolute bottom-0 items-center">
-                <div className="text-white ">
-                  <div>Courses to choose from</div>
-                  <div className="text-center text-xl font-semibold">{countvalue}+</div>
-                
-                </div>
-                <div>
-                  <div>Courses to choose from</div>
-                  <div className="text-center text-xl font-semibold">{countvalue}+</div>
-                </div>
-                <div>
-                  <div>Courses to choose from</div>
-                  <div className="text-center text-xl font-semibold">{countvalue}+</div>
-                </div>
+            url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
+            height="100%"
+            width={'100%'}
+            playing={true}
+            loop={true}
+            controls={false}
+          />
+        </div>
+
+        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-20 text-white  absolute bottom-0 items-center">
+          <div className="text-white ">
+            <div>Courses to choose from</div>
+            <div className="text-center text-xl font-semibold">{countvalue}+</div>
+
+          </div>
+          <div>
+            <div>Courses to choose from</div>
+            <div className="text-center text-xl font-semibold">{countvalue}+</div>
+          </div>
+          <div>
+            <div>Courses to choose from</div>
+            <div className="text-center text-xl font-semibold">{countvalue}+</div>
+          </div>
+        </div>
       </div>
-</div>
       {/* cards */}
       {!allCourses?.length ? (
         <div className="flex justify-center  w-full mt-10">
@@ -263,17 +287,54 @@ const AllCourses = () => {
               className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md md:p-2 md:gap-2"
               onMouseEnter={() => toggleHover(ind)}
               onMouseLeave={() => toggleHover(null)}
+              key={ind}
+              style={{ pointerEvents: userDetail?.blocked_courses?.includes(val._id) ? 'none' : 'auto' }}
             >
+              {
+                userDetail?.blocked_courses?.includes(val._id)
+                &&
+                <span className="absolute top-0 left-0 h-[100%] w-[100%] z-[99999] bg-[rgba(0,0,0,0.6)] rounded-xl grid place-items-center">
+                  <IoIosLock size={"60"} color={"white"} />
+                </span>
+              }
+
+              {mouseHovered === ind &&
+                <span className="bg-transparent p-4 absolute top-6 left-4 z-[9999]" >
+                  {IsMuted ? (
+                    <IoVolumeMuteOutline
+                      size={"20"}
+                      style={{
+                        cursor: "pointer",
+                        color: "black",
+
+                        zIndex: "999999",
+                      }}
+                      onClick={handleMute}
+                    />
+                  ) : (
+                    <IoVolumeMediumOutline
+                      size={"20"}
+                      style={{
+                        cursor: "pointer",
+                        color: "black",
+
+                        zIndex: "999999",
+                      }}
+                      onClick={handleMute}
+                    />
+                  )}
+                </span>}
               <div className="h-[45%]">
                 {mouseHovered === ind ? (
                   <ReactPlayer
                     className="w-full h-full rounded-xl xsm:rounded-md border"
-                    height={"100%"}
-                    width={"100%"}
+                    height={'100%'}
+                    width={'100%'}
                     url={val.featured_video}
                     controls={false}
                     playing={true}
-                    muted
+                    ref={videoRef}
+                    muted={IsMuted}
                   />
                 ) : (
                   <img
