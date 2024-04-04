@@ -3,7 +3,7 @@ import './hirefromus.css'
 
 const Resume = () => {
   return (
-    <div className='px-[5%] mt-[4%] py-[4%] bg-gradient-to-r from-[#0F2027] to-[#203A43] bottomsvg '>
+    <div className='py-[4%] '>
         <div className='py-[4%] text-white font-pop font-semibold text-[40px] text-center relative'>
             <p><span className='text-[#1DBF73]'>Thousands</span> of successful tech</p>
             <div className='absolute left-[30%] top-[43%]'>
