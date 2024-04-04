@@ -47,7 +47,7 @@ const CareerServices = () => {
                 <div className='w-[30%]'>
                     <div className='bg-[#00000033] border-2 rounded-xl p-6 text-white flex flex-col gap-4'>
                         <div>
-                            <p className='font-int font-bold'>Connect With Us</p>
+                            <p className='font-int font-bold'>Build Your Resume</p>
                         </div>
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-1'>

@@ -19,6 +19,7 @@ import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import { IoIosLock } from "react-icons/io";
 import { GoUnmute } from "react-icons/go";
 import { Globalinfo } from "../../App";
+import HireTestimonial from "../HireFromUs/HireTestimonial";
 
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
@@ -531,7 +532,10 @@ let {pathname}=useLocation()
       ) : (
         ""
       )}
-      <NewTestimonial />
+      <div className="px-[5%] py-[4%] bg-[#111F25]">
+        <HireTestimonial/>
+      </div>
+      {/* <NewTestimonial /> */}
     </>
   );
 };

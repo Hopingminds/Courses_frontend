@@ -55,3 +55,7 @@
     border-bottom-right-radius: var(--border-radius);
     border-left-color: transparent;
   }
+
+  .hire-icon-color-invert{
+    filter: brightness(1) invert(1);
+  }

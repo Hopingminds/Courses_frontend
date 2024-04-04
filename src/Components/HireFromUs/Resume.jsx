@@ -45,9 +45,9 @@ const Resume = () => {
                         <p className='font-int font-medium text-justify text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
                     </div>
                 </div>
-                <div className='flex justify-center'>
+                {/* <div className='flex justify-center'>
                     <button className='text-white font-int font-bold bg-black px-4 py-1 rounded-lg'>View Resume</button>
-                </div>
+                </div> */}
             </div>
             <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 '>
                 <div className='flex justify-between'>
@@ -78,9 +78,9 @@ const Resume = () => {
                         <p className='font-int font-medium text-justify text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
                     </div>
                 </div>
-                <div className='flex justify-center'>
+                {/* <div className='flex justify-center'>
                     <button className='text-white font-int font-bold bg-black px-4 py-1 rounded-lg'>View Resume</button>
-                </div>
+                </div> */}
             </div>
             <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 '>
                 <div className='flex justify-between'>
@@ -111,9 +111,9 @@ const Resume = () => {
                         <p className='font-int font-medium text-justify text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
                     </div>
                 </div>
-                <div className='flex justify-center'>
+                {/* <div className='flex justify-center'>
                     <button className='text-white font-int font-bold bg-black px-4 py-1 rounded-lg'>View Resume</button>
-                </div>
+                </div> */}
             </div>
         </div>
     </div>
