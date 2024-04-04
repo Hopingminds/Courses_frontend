@@ -70,18 +70,19 @@ let faqs=[
 
 
   function ClickSection(id) {
-    const toggleContent = document.getElementById(id + 'content');
+    // const toggleContent = document.getElementById(id + 'content');
     const imgrotate = document.getElementById(id + 'img');
 
     if (!clicked) {
       setclicked(true);
       setActiveid(id)
       imgrotate.style.transform = 'rotate(180deg)';
-      toggleContent.style.display = "block";
+      // toggleContent.style.display = "block";
     } else {
       setclicked(false);
+      setActiveid(id)
       imgrotate.style.transform = 'rotate(0deg)';
-      toggleContent.style.display = "none";
+      // toggleContent.style.display = "none";
     }
   }
 
@@ -276,11 +277,9 @@ return(<>
                   </div>
                 </div>
                 {
-                  Activeid===index?<div className="px-6 py-4  xsm:py-2 xsm:px-4" id={index + 'content'}>
+                  Activeid==index?<div className="px-6 py-4  xsm:py-2 xsm:px-4" id={index + 'content'}>
                   <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Participants undergo training without upfront payment, only paying fees upon securing a job through the program.</p>
-                </div>:<div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={index + 'content'}>
-                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Participants undergo training without upfront payment, only paying fees upon securing a job through the program.</p>
-                </div>
+                </div>:''
                 }
               </div>
               <hr className="border-[1px]" />
