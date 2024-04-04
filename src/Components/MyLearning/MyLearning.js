@@ -24,8 +24,9 @@ export default function MyLearning() {
     const [showpage, setshowpage] = useState('courses');
     const [purchasedCourses, setPurchasedCourses] = useState();
     const { userDetail, getUserDetails } = useContext(Globalinfo);
+    console.log(userDetail)
 
-    console.log(userDetail.name.split(" ")[0])
+    // console.log(userDetail?.name?.split(" ")[0])
     const checkUserValidation = async () => {
         const isValidUser = await authenticateUser()
         console.log(isValidUser)
@@ -79,7 +80,7 @@ export default function MyLearning() {
             </head>
             <div className='MLheader px-[5%] pt-14 flex flex-col space-y-8 xsm:pt-0 xsm:space-y-3 xsm:justify-end xsm:py-1'>
                 <div>
-                    <p className='font-pop text-white font-semibold text-[44px] xsm:text-[10px] capitalize'>{`${userDetail.name.split(" ")[0]}'s Learning`}</p>
+                    <p className='font-pop text-white font-semibold text-[44px] xsm:text-[10px] capitalize'>{`${userDetail?.name?.split(" ")[0]}'s Learning`}</p>
                 </div>
                 <div className='flex space-x-14 xsm:space-x-4'>
                     <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px]' onClick={() => setshowpage('courses')} style={{ borderBottom: showpage === 'courses' ? "2px solid white" : "1px solid transparent" }}>My Courses</button>
@@ -89,7 +90,7 @@ export default function MyLearning() {
                     <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px]' onClick={() => setshowpage('stats')} style={{ borderBottom: showpage === 'stats' ? "2px solid white" : "1px solid transparent" }}>My Stats</button>
                 </div>
             </div>
-            {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
+            {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1]'>
                 <Spinner className='' />
 
             </div> : ''}
