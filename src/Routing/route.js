@@ -29,12 +29,13 @@ import SubAdmin from '../Components/SubAdminDashboard/index.js'
 import Pap from '../Components/PAP/Pap.js'
 import Modal from '../Components/PAP/modal.jsx'
 import Forgotpassword from '../Components/forgotPassword/forgotPassword.js'
-import CareerServices from '../Components/CareerServices/CareerServices.js'
+import CareerServices from '../Components/HireFromUs/CarrerServices.jsx'
 import AiMinds from '../Components/AiMinds/AiMinds.jsx'
 import ReturnPolicy from '../Components/policies/ReturnPolicy.js'
 import ShippingPolicy from '../Components/policies/ShippingPolicy.js'
 import Test from '../Components/Test/Test.jsx'
 import HireFromUs from '../Components/HireFromUs/HireFromUs.jsx'
+import Temp from '../Components/temp.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -76,13 +77,15 @@ const Router = () => {
                 {/* <Route path='/subadmin-login' element={<SubAdmin />} /> */}
                 {/* <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} /> */}
                 <Route path='/pap' element={<Pap />} />
-                <Route path='/career' element={<CareerServices />} />
+                {/* <Route path='/career' element={<CareerServices />} /> */}
                 <Route path='/ai' element={<AiMinds />} />
                 <Route path='/privacy' element={<ReturnPolicy />} />
                 <Route path='/terms' element={<ShippingPolicy />} />
                 <Route path='/test' element={<Test />} />
                 <Route path='/hire-from-us' element={<HireFromUs />} />
+                <Route path='/career' element={<CareerServices />} />
                 <Route path='/modal' element={<Modal />} />
+                <Route path='/temp' element={<Temp />} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 

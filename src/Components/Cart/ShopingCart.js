@@ -9,12 +9,12 @@ import Spinner from '../Spinner';
 function ShopingCart() {
     const [Data, setData] = useState([])
     const [total, settotal] = useState(0)
-const [show, setshow] = useState(false)
+    const [show, setshow] = useState(false)
     let token = jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
 
     function Total(data) {
         let price = 0;
-        data.map((item) => {
+        data?.map((item) => {
             price += item.course.base_price
         })
         settotal(price)
@@ -64,11 +64,7 @@ const [show, setshow] = useState(false)
     return (
         <div className='SC-container font-pop'>
             <div className=' w-[100%] h-[20vh] flex flex-row items-center  px-[4%] cartbg xsm:h-[12vh]'>
-                {/* <div className='inline-block ml-[1vw]'>
-                    <button className='bg-white border border-[#EAEAEA] rounded-2xl px-[7px] h-[2vw] mx-[7px] cursor-pointer' type='submit' >
-                        <img className='w-[1vw]' src="../Icons/leftsidearrow.svg" alt="left-arrow"></img>
-                    </button>
-                </div> */}
+
                 <div className=''>
                     <h2 className='font-outfit font-semibold text-4xl text-white xsm:text-[14px]'>My Cart</h2>
                 </div>
@@ -142,12 +138,12 @@ const [show, setshow] = useState(false)
                                 </div>
                             </div>
                         </>)
-                    }) : <div className='text-center mt-20 font-semibold'>No course found</div>
+                    }) : <div className='text-2xl w-[95vw] text-center mt-20 font-semibold'>Your Cart is Empty</div>
                     }
                 </div>
 
 
-                <div className='w-[20%] h-max flex flex-col justify-around space-y-4 font-pop xsm:w-[100%] xsm:px-3 xsm:space-y-1'>
+                {Data?.length > 0 && <div className='w-[20%] h-max flex flex-col justify-around space-y-4 font-pop xsm:w-[100%] xsm:px-3 xsm:space-y-1'>
                     <div className='space-y-4 xsm:space-y-0 xsm:flex xsm:flex-row xsm:justify-between'>
                         <p className='font-outfit font-semibold text-[2vw] 2xl:text-[24px] xsm:text-[12px] xsm:font-bold'>Total :</p>
                         <p className='font-Inter font-semibold text-[1.7vw] 2xl:text-[20px] xsm:text-[12px] xsm:font-bold'>₹{total}</p>
@@ -158,7 +154,7 @@ const [show, setshow] = useState(false)
                     <div className='flex justify-center'>
                         <Link to='/checkout' className='mt-[1.6vw] font-[jost] text-[1.7vw] px-[4vw] py-[0.5vw] bg-[#1DBF73] text-[#fff] border-none rounded-full 2xl:text-[24px] xsm:text-[10px] xsm:py-2 xsm:px-8' type="">CHECKOUT</Link>
                     </div>
-                </div>
+                </div>}
             </div>
             {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
                 <Spinner className='' />

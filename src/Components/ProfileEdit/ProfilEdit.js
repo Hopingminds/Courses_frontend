@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Banner from "../../Assests/Images/profileedit-banner.png";
 import User from "../../Assests/Images/profile-user.png";
 import Edit from "../../Assests/Icons/edit.svg";
@@ -9,6 +9,7 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import Spinner from "../Spinner";
+import { authenticateUser } from "../../helpers/helperapi";
 
 const ProfilEdit = () => {
   const navigate = useNavigate();
@@ -16,6 +17,20 @@ const ProfilEdit = () => {
   const [show, setshow] = useState(false)
   const [data, setData] = useState([])
   const [uploadLoader, setUploadLoader] = useState(false);
+
+  const checkUserValidation = async () => {
+    const isValidUser = await authenticateUser()
+    console.log(isValidUser)
+    if (isValidUser !== 200) {
+      localStorage.removeItem('COURSES_USER_TOKEN');
+      navigate('/login')
+      toast.error('You have been Logged Out')
+    }
+  }
+
+  useLayoutEffect(() => {
+    checkUserValidation()
+  }, [])
 
 
   const [user, setUser] = useState({
@@ -274,9 +289,9 @@ const ProfilEdit = () => {
           </button>
         </div>
         {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
-                <Spinner className='' />
+          <Spinner className='' />
 
-            </div> : ''}
+        </div> : ''}
       </div>
       <Toaster position="top-right" />
     </>

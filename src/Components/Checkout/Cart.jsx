@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./Cart.css";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { ReactComponent as Clock } from "../../Assets/Icons/clock.svg";
@@ -6,18 +6,44 @@ import { ReactComponent as Design } from "../../Assets/Icons/design.svg";
 import { ReactComponent as Star } from "../../Assets/Icons/Star.svg";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
+import {
+  CountrySelector,
+  StateSelector,
+  CitySelector,
+} from "volkeno-react-country-state-city";
+import "volkeno-react-country-state-city/dist/index.css";
 import toast, { Toaster } from "react-hot-toast";
+import { authenticateUser } from "../../helpers/helperapi";
+import { useContext } from "react";
+import { Globalinfo } from "../../App";
 
 const CartCheckout = () => {
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [selectedState, setSelectedState] = useState("");
+  const [country, setcountry] = useState("");
+  const [state, setstate] = useState("");
+  const { userDetail } = useContext(Globalinfo);
   const [query, setquery] = useSearchParams();
-  const countries = ["India"];
-  const states = ["Punjab"];
+  const [name, setname] = useState("");
+  const [address, setaddress] = useState("");
+  const [zip, setzip] = useState("");
+  const [gstnumber, setgstnumber] = useState("");
   const [Payment, setPayment] = useState();
   const [courseId, setcourseId] = useState();
   const [Data, setData] = useState([]);
   const [total, settotal] = useState(0);
+
+  const checkUserValidation = async () => {
+    const isValidUser = await authenticateUser();
+    console.log(isValidUser);
+    if (isValidUser !== 200) {
+      localStorage.removeItem("COURSES_USER_TOKEN");
+      navigate("/login");
+      toast.error("You have been Logged Out");
+    }
+  };
+
+  useLayoutEffect(() => {
+    checkUserValidation();
+  }, []);
 
   let login = localStorage.getItem("COURSES_USER_TOKEN");
   let temp = [];
@@ -62,11 +88,11 @@ const CartCheckout = () => {
     Fetchdata();
   }, []);
   const handleCountryChange = (e) => {
-    setSelectedCountry(e.target.value);
+    setcountry(e);
   };
 
   const handleStateChange = (e) => {
-    setSelectedState(e.target.value);
+    setstate(e);
   };
 
   // Navigate page
@@ -75,28 +101,46 @@ const CartCheckout = () => {
   const handleContinueCheckout = async () => {
     if (!Payment) {
       toast.error("Select payment method");
-    } else if (!selectedCountry) {
+    } else if (!country) {
       toast.error("Select country");
-    } else if (!selectedState) {
+    } else if (!state) {
       toast.error("Select state");
+    } else if (!address || !zip ) {
+      toast.error("Every input must be filled");
     } else {
       try {
         let url = BASE_URL + "/purchasecourse";
-        // console.log(courseId);
-        // setcourseId(temp)
-        // console.log(temp);
-        let data = await fetch(url, {
-          method: "PUT",
+        let url1 = BASE_URL + "/deletecart";
+        let orderDetails={name:userDetail.name,zip,gstnumber,country:country.capital,state:state.label,address}
+        // console.log(userDetail);
+          // console.log(orderDetails);
+
+      // console.log(courseId);
+      setcourseId(temp);
+      // console.log(temp);
+      let data = await fetch(url, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + login,
+        },
+        body: JSON.stringify({ courses: temp, orderDetails: orderDetails }),
+      });
+      let response = await data.json();
+      // console.log(response);
+      if (response.success) {
+        let data1 = await fetch(url1, {
+          method: "POST",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
             Authorization: "Bearer " + login,
           },
-          body: JSON.stringify({ courses: temp }),
+          body: JSON.stringify({ email: userDetail.email }),
         });
-        let response = await data.json();
-        // console.log(response);
-        if (response.success) {
+        let response1 = await data1.json();
+        if (response1.success) {
           toast.success(response.message);
           setTimeout(() => {
             navigate("/success");
@@ -104,9 +148,12 @@ const CartCheckout = () => {
         } else {
           toast.error(response.message);
         }
-      } catch (error) {
-        console.log(error);
+      } else {
+        toast.error(response.message);
       }
+    } catch (error) {
+      console.log(error);
+    }
 
       // console.log(response);
     }
@@ -115,80 +162,66 @@ const CartCheckout = () => {
   return (
     <>
       {/* CheckOut start */}
-      <div className="card-checkout mx-14 my-5 flex gap-40 xsm:flex-col xsm:mx-5 xsm:gap-8">
+      <div className="card-checkout mx-14 my-5 flex  gap-20 xsm:flex-col xsm:mx-5 xsm:gap-8 px-[3%]">
         {/* Billing address start */}
-        <div className="w-[55%] min-h-[100vh] xsm:w-[100%]">
-          <span className="text-xl font-bold xsm:text-[12px]">Billing Address</span>
+        <div className="w-[55%] min-h-[100vh] xsm:w-[100%] space-y-5">
+          <span className="text-xl font-bold xsm:text-[12px]">
+            Billing Address
+          </span>
 
           {/* Dropdown buttons start */}
-          <div className="flex gap-14 xsm:justify-between xsm:gap-0">
-            <div className="relative">
-              <select
-                className="w-[308px] mt-3 px-5 py-3 border rounded-md focus:outline-none appearance-none bg-green-100 card-shadow border-none outline-none xsm:text-[10px] xsm:w-[40vw]"
-                value={selectedCountry}
-                onChange={handleCountryChange}
-              >
-                <option value="">Country</option>
-                {countries.map((country) => (
-                  <option key={country} value={country}>
-                    {country}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute inset-y-0  left-[250px] top-3 flex items-center px-2 pointer-events-none xsm:left-[30vw]">
-                <svg
-                  className="h-[29px] w-[29px] text-black xsm:h-5 xsm:w-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-            </div>
+          <div className="flex space-x-10  xsm:justify-between xsm:gap-0">
+            <CountrySelector
+              onChange={handleCountryChange}
+              name="country"
+              placeholder="Select a country"
+              value={country}
+              className=""
+              styleContainer={{ padding: "0px !important" }}
+            />
 
-            <div className="relative ">
-              <select
-                className="w-[308px] px-5 py-3 mt-3 p-2 border rounded-md focus:outline-none appearance-none bg-green-100 card-shadow border-none outline-none xsm:text-[10px] xsm:w-[40vw]"
-                value={selectedState}
-                onChange={handleStateChange}
-              >
-                <option value="">State</option>
-                {states.map((state) => (
-                  <option key={state} value={state}>
-                    {state}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute inset-y-0 left-[250px] top-3 flex items-center px-2 pointer-events-none xsm:left-[30vw]">
-                <svg
-                  className="h-[29px] w-[29px] text-black xsm:h-5 xsm:w-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-            </div>
+            <StateSelector
+              country={country}
+              value={state}
+              countryPlaceholder="Select state"
+              onChange={handleStateChange}
+            />
           </div>
-          {/* Dropdown buttons end */}
+          <div className="flex space-x-10 xsm:justify-between xsm:gap-0">
+            <input
+              value={name}
+              onChange={(e) => setname(e.target.value)}
+              placeholder="Name"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2"
+            />
+            <input
+              value={gstnumber}
+              onChange={(e) => setgstnumber(e.target.value)}
+              placeholder="GST No.(optional)"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2"
+            />
+          </div>
+          <div className="flex space-x-10 xsm:justify-between xsm:gap-0">
+            <input
+              value={address}
+              onChange={(e) => setaddress(e.target.value)}
+              placeholder="Address"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2"
+            />
+            <input
+              value={zip}
+              onChange={(e) => setzip(e.target.value)}
+              type="number"
+              placeholder="ZIP Code"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2"
+            />
+          </div>
 
           {/* Payment Method */}
           <div>
-            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px]">Payment Method</h1>
+            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px]">
+              Payment Method
+            </h1>
             <div className="bg-green-100 rounded-md p-4 card-shadow xsm:py-2">
               <p className="text-base green-color pb-4 xsm:text-[8px] xsm:pb-2">
                 Select payment method
@@ -203,7 +236,10 @@ const CartCheckout = () => {
                     value="creditDebitCard"
                     className="mr-2"
                   />
-                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="creditDebitCard">
+                  <label
+                    className="text-gray-400 xsm:text-[10px]"
+                    htmlFor="creditDebitCard"
+                  >
                     {" "}
                     Credit/ Debit card
                   </label>
@@ -217,7 +253,10 @@ const CartCheckout = () => {
                     value="upi"
                     className="mr-2"
                   />
-                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="upi">
+                  <label
+                    className="text-gray-400 xsm:text-[10px]"
+                    htmlFor="upi"
+                  >
                     {" "}
                     UPI
                   </label>
@@ -231,14 +270,17 @@ const CartCheckout = () => {
                     value="netBanking"
                     className="mr-2"
                   />
-                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="netBanking">
+                  <label
+                    className="text-gray-400 xsm:text-[10px]"
+                    htmlFor="netBanking"
+                  >
                     {" "}
                     Net banking
                   </label>
                 </div>
                 <div className="py-1 flex">
                   <input
-                    onChange={(e) => setPayment(e.target.value)}
+                    onChange={(e) => setPayment(e)}
                     type="radio"
                     id="cashOnDelivery"
                     name="paymentMethod"
@@ -259,7 +301,10 @@ const CartCheckout = () => {
                     value="emi"
                     className="mr-2"
                   />
-                  <label className="text-gray-400 xsm:text-[10px]" htmlFor="emi">
+                  <label
+                    className="text-gray-400 xsm:text-[10px]"
+                    htmlFor="emi"
+                  >
                     {" "}
                     EMI
                   </label>
@@ -305,7 +350,9 @@ const CartCheckout = () => {
                     </div> */}
 
           <div className="h-auto space-y-7 xsm:space-y-3">
-            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mb-0">Order Details</h1>
+            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mb-0">
+              Order Details
+            </h1>
             {Data?.map((item) => {
               temp.push(item?.course?._id);
               return (
@@ -351,7 +398,7 @@ const CartCheckout = () => {
                       {/* <img src="src/assets/Group.png" className="w-[590px] h-[1px]" /> */}
                       <div className="flex justify-between items-center">
                         <span className="flex mt-4">
-                          <Star className="xsm:w-3"/>
+                          <Star className="xsm:w-3" />
                           <Star className="xsm:w-3" />
                           <Star className="xsm:w-3" />
                           <Star className="xsm:w-3" />
@@ -375,14 +422,16 @@ const CartCheckout = () => {
         {/* Billing address end */}
 
         {/* Summary start */}
-        <div className="h-[100vh] w-full">
+        <div className="h-[100vh] w-[40%]">
           <span className=" text-xl font-bold xsm:text-[12px]">Summary</span>
 
           {/* Summary div start*/}
           <div className="mt-5 mb-4 xsm:my-2">
             <h1 className="text-base xsm:text-[10px]">Original Price:</h1>
             <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px]">Including all the taxes</p>
+              <p className=" green-color text-sm xsm:text-[10px]">
+                Including all the taxes
+              </p>
               <p className="xsm:text-[12px]">₹{total}</p>
             </div>
           </div>
@@ -390,7 +439,9 @@ const CartCheckout = () => {
           <div className="mt-5 mb-4 xsm:my-2">
             <h1 className="text-base xsm:text-[10px]">Total:</h1>
             <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px]">Including all the taxes</p>
+              <p className=" green-color text-sm xsm:text-[10px]">
+                Including all the taxes
+              </p>
               <p className="xsm:text-[12px]">₹{total}</p>
             </div>
           </div>
