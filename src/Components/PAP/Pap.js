@@ -12,8 +12,30 @@ export default function Pap() {
   const [clicked, setclicked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [num, setNum] = useState('')
+  const [Activeid, setActiveid] = useState()
   let navigate = useNavigate();
-
+let faqs=[
+{
+"question":"a",
+"answer":"a1"
+},
+{
+"question":"a",
+"answer":"a1"
+},
+{
+"question":"a",
+"answer":"a1"
+},
+{
+"question":"a",
+"answer":"a1"
+},
+{
+"question":"a",
+"answer":"a1"
+},
+]
 
   const [formValues, setFormValues] = useState({
     fname: "",
@@ -49,12 +71,16 @@ export default function Pap() {
 
   function ClickSection(id) {
     const toggleContent = document.getElementById(id + 'content');
+    const imgrotate = document.getElementById(id + 'img');
 
     if (!clicked) {
       setclicked(true);
+      setActiveid(id)
+      imgrotate.style.transform = 'rotate(180deg)';
       toggleContent.style.display = "block";
     } else {
       setclicked(false);
+      imgrotate.style.transform = 'rotate(0deg)';
       toggleContent.style.display = "none";
     }
   }
@@ -231,11 +257,14 @@ export default function Pap() {
             <p className="font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px]">Frequently Asked Questions</p>
           </div>
           <div className=" w-full">
-            <div className="faq1 w-full">
+            {
+              faqs.map((item,index)=>{
+return(<>
+<div className="faq1 w-full">
               <div className=" w-full">
                 <div
-                  onClick={() => ClickSection(1)}
-                  id={1 + 'ind'}
+                  onClick={() => ClickSection(index)}
+                  id={index}
                   className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
                 >
                   <div className="flex items-center gap-2">
@@ -243,20 +272,28 @@ export default function Pap() {
                     <p className="xsm:text-[8px]">How does the Pay after Placement model work?</p>
                   </div>
                   <div>
-                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
+                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" id={index+'img'}/>
                   </div>
                 </div>
-                <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={1 + 'content'}>
+                {
+                  Activeid===index?<div className="px-6 py-4  xsm:py-2 xsm:px-4" id={index + 'content'}>
+                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Participants undergo training without upfront payment, only paying fees upon securing a job through the program.</p>
+                </div>:<div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={index + 'content'}>
                   <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Participants undergo training without upfront payment, only paying fees upon securing a job through the program.</p>
                 </div>
+                }
               </div>
               <hr className="border-[1px]" />
             </div>
-            <div className="faq2 w-full">
+</>)
+              })
+            }
+            
+            {/* <div className="faq2 w-full">
               <div className=" w-full">
                 <div
                   onClick={() => ClickSection(2)}
-                  id={2 + 'ind'}
+                  id={2}
                   className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
                 >
                   <div className="flex items-center gap-2">
@@ -267,6 +304,9 @@ export default function Pap() {
                     <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
                   </div>
                 </div>
+                {
+                  // Activeid===2
+                }
                 <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={2 + 'content'}>
                   <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Risk is minimal as payment is contingent on job placement; participants typically aren't obligated to pay if unsuccessful.</p>
                 </div>
@@ -277,7 +317,7 @@ export default function Pap() {
               <div className=" w-full">
                 <div
                   onClick={() => ClickSection(3)}
-                  id={3 + 'ind'}
+                  id={3}
                   className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
                 >
                   <div className="flex items-center gap-2">
@@ -298,7 +338,7 @@ export default function Pap() {
               <div className=" w-full">
                 <div
                   onClick={() => ClickSection(4)}
-                  id={4 + 'ind'}
+                  id={4}
                   className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
                 >
                   <div className="flex items-center gap-2">
@@ -319,7 +359,7 @@ export default function Pap() {
               <div className=" w-full">
                 <div
                   onClick={() => ClickSection(5)}
-                  id={5 + 'ind'}
+                  id={5}
                   className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
                 >
                   <div className="flex items-center gap-2">
@@ -335,7 +375,7 @@ export default function Pap() {
                 </div>
               </div>
               <hr className="border-[1px]" />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

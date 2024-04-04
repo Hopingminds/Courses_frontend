@@ -22,7 +22,7 @@ export const cropString = (str, num) => {
         } else {
             newstr = str.slice(0, num + 5);
         }
-        console.log(newstr);
+        // console.log(newstr);
         const result = newstr.concat("...");
 
         return result;

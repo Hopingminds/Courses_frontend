@@ -10,7 +10,7 @@ import User3 from "../../Assests/Images/Khushpreet Kaur-Delta IT.jpeg";
 import User4 from "../../Assests/Images/Amritpal Protiviti GDU 5.7.png";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
 import NewTestimonial from "../Testimonial/NewTestimonial";
 import Spinner from "../Spinner";
@@ -31,6 +31,7 @@ const AllCourses = () => {
   const [show, setshow] = useState(false);
   const [mouseHovered, setMouseHovered] = useState(null);
   const [countvalue, setcountvalue] = useState(0)
+  const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
     [User1]: {
       name: "SAURABH PAL",
@@ -75,18 +76,23 @@ const AllCourses = () => {
   const [IsMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
 
+  // console.log(pat);
+
+let {pathname}=useLocation()
+  const [params, setparams] = useSearchParams()
   useEffect(() => {
     fetchCourses();
-  }, []);
-
-  const [params, setparams] = useSearchParams()
-
-
+  }, [params.get("category"),pathname]);
+  let category=""
   const fetchCourses = async () => {
     try {
-      let category = params.get("category");
-
+      // console.log("yes");
+     let category = params.get("category");
+     
+      // console.log(category);
       if (category) {
+        category=category.replace(/%20/g, " ");
+        setcat(category)
         setshow(true);
         const res = await axios.get(`${BASE_URL}/courses?category=${category}`);
         // console.log(res);
@@ -98,7 +104,7 @@ const AllCourses = () => {
         setshow(true);
 
         const res = await axios.get(`${BASE_URL}/courses`);
-        // console.log(res.data.courses);
+        // console.log(res);
 
 
         setAllCourses(res.data.courses);
@@ -277,13 +283,14 @@ const AllCourses = () => {
       ) : (
         ""
       )}
+        <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
-      <div className="my-10 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%]">
+      <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%]">
         {allCourses.map((val, ind) => {
           return (
             <Link
               to={"/detailcourse/" + val.slug}
-              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md md:p-2 md:gap-2 relative"
+              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl  shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md md:p-2 md:gap-2 relative"
               onMouseEnter={() => toggleHover(ind)}
               onMouseLeave={() => toggleHover(null)}
               key={ind}
@@ -323,10 +330,10 @@ const AllCourses = () => {
                     />
                   )}
                 </span>}
-              <div className="h-[45%]">
+              <div className="min-h-[45%]">
                 {mouseHovered === ind ? (
                   <ReactPlayer
-                    className="w-full h-full rounded-xl xsm:rounded-md border"
+                    className="w-full h-full rounded-xl xsm:rounded-md border "
                     height={'100%'}
                     width={'100%'}
                     url={val.featured_video}
@@ -370,10 +377,10 @@ const AllCourses = () => {
                       {val?.duration}
                     </p>
                   </div>
-                  <p className="font-pop font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px]">
+                  <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px]">
                     {val?.title}
                   </p>
-                  <p className="font-pop text-[14px] text-[#555555] xsm:hidden md:text-[8px]">
+                  <p className="font-pop text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px]">
                     {val?.overview.slice(0, 70)}..
                   </p>
                 </div>
@@ -413,7 +420,7 @@ const AllCourses = () => {
                 eiusmod tempor
               </p>
             </div>
-            <img src={Img2} className="absolute top-5 w-[40%]" />
+            <img src={Img2} className="absolute top-5 w-[35%]" />
           </div>
 
           <div className="h-[45vh] flex justify-center items-end relative md:h-[16vh]">
@@ -429,7 +436,7 @@ const AllCourses = () => {
                 eiusmod tempor
               </p>
             </div>
-            <img src={Img2} className="absolute top-5 w-[40%]" />
+            <img src={Img2} className="absolute top-5 w-[35%]" />
           </div>
 
           <div className="h-[45vh] flex justify-center items-end relative md:h-[16vh]">
@@ -445,7 +452,7 @@ const AllCourses = () => {
                 eiusmod tempor
               </p>
             </div>
-            <img src={Img2} className="absolute top-5 w-[40%]" />
+            <img src={Img2} className="absolute top-5 w-[35%]" />
           </div>
         </div>
       </div>
