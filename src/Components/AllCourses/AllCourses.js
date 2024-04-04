@@ -19,6 +19,8 @@ import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import { IoIosLock } from "react-icons/io";
 import { GoUnmute } from "react-icons/go";
 import { Globalinfo } from "../../App";
+import Newinstructor from "../Newinstructor";
+import HireTestimonial from "../HireFromUs/HireTestimonial";
 import CourseCard from "../Courses_Home/CourseCard";
 
 const AllCourses = () => {
@@ -302,7 +304,7 @@ const AllCourses = () => {
       )}
       <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
-      <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%]">
+      <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
         {allCourses.map((val, ind) => {
           return (
             <CourseCard
@@ -326,7 +328,8 @@ const AllCourses = () => {
           );
         })}
       </div>
-      <div className="flex flex-col gap-14 px-24 py-20 md:px-[5%] md:gap-2 md:py-10">
+      <Newinstructor />
+      {/* <div className="flex flex-col gap-14 px-24 py-20 md:px-[5%] md:gap-2 md:py-10">
         <p className="text-[#252641] text-[32px] font-poppins font-semibold pl-4 md:text-[18px]">
           Classes taught by real creators
         </p>
@@ -379,7 +382,7 @@ const AllCourses = () => {
             <img src={Img2} className="absolute top-5 w-[35%]" />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* recommended cards */}
       <RecommendedCourses />
@@ -455,7 +458,10 @@ const AllCourses = () => {
       ) : (
         ""
       )}
-      <NewTestimonial />
+      <div className="px-[5%] py-[4%] bg-[#111F25]">
+        <HireTestimonial />
+      </div>
+      {/* <NewTestimonial /> */}
     </>
   );
 };

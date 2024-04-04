@@ -7,9 +7,9 @@ import WhyHM from "./WhyHM";
 const HireFromUs = () => {
   return (
     <>
-      <div className=" px-[5%] pt-[4%] bg-gradient-to-r from-[#0F2027] to-[#203A43] backgroundsvg2"  style={{ height: "125vh" , width: "100%" }}>
+      <div className=" px-[5%] pt-[4%]  bg-gradient-to-r from-[#0F2027] to-[#203A43] backgroundsvg2"  style={{ width: "100%" }}>
         {/* Mainsection */}
-        <div className=" flex justify-between">
+        <div className=" flex justify-between pb-[18%]">
           <div className="flex flex-col gap-16 w-[70%]">
             <div>
               <p className="font-pop font-semibold text-[50px] text-white">
