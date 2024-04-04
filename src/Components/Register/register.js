@@ -9,6 +9,7 @@ import { BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { ReactComponent as Google } from '../../Assests/Icons/google.svg';
+import { jwtDecode } from 'jwt-decode';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -77,6 +78,19 @@ const Register = () => {
             getUserDetails();
             localStorage.setItem('COURSES_USER_TOKEN', res.data.token);
             toast.success("Registered Successfully");
+            if (res.status) {
+                const decoded = jwtDecode(res.data.token);
+                try {
+                    const res = await axios.get(`${BASE_URL}/user/${decoded.email}`);
+                    if (res.data.userDetails.purchased_courses.length > 0) {
+                        navigate('/learning');
+                    } else {
+                        navigate('/course');
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            }
 
 
 
