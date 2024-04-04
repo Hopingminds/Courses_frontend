@@ -36,6 +36,7 @@ import ShippingPolicy from '../Components/policies/ShippingPolicy.js'
 import Test from '../Components/Test/Test.jsx'
 import HireFromUs from '../Components/HireFromUs/HireFromUs.jsx'
 import Temp from '../Components/temp.js'
+import Newinstructor from '../Components/Newinstructor/index.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -86,6 +87,7 @@ const Router = () => {
                 <Route path='/career' element={<CareerServices />} />
                 <Route path='/modal' element={<Modal />} />
                 <Route path='/temp' element={<Temp />} />
+                <Route path='/new' element={<Newinstructor />} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
