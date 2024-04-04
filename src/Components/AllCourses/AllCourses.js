@@ -74,7 +74,8 @@ const AllCourses = () => {
   const fetchCourses = async () => {
     try {
       let category = params.get("category");
-
+      category=category.replace(/%20/g, " ");
+      console.log(category);
       if (category) {
         setshow(true);
         const res = await axios.get(`${BASE_URL}/courses?category=${category}`);

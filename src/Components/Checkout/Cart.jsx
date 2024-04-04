@@ -86,13 +86,15 @@ const [gstnumber, setgstnumber] = useState("")
   const navigate = useNavigate();
 
   const handleContinueCheckout = async () => {
-    // if (!Payment) {
-    //   toast.error("Select payment method");
-    // } else if (!country) {
-    //   toast.error("Select country");
-    // } else if (!state) {
-    //   toast.error("Select state");
-    // } else {
+    if (!Payment) {
+      toast.error("Select payment method");
+    } else if (!country) {
+      toast.error("Select country");
+    } else if (!state) {
+      toast.error("Select state");
+    } else if (!address || !zip ) {
+      toast.error("Every input must be filled");
+    } else {
       try {
         let url = BASE_URL + "/purchasecourse";
         let url1 = BASE_URL + "/deletecart";
@@ -143,13 +145,13 @@ const [gstnumber, setgstnumber] = useState("")
       }
 
       // console.log(response);
-    // }
+    }
   };
 
   return (
     <>
       {/* CheckOut start */}
-      <div className="card-checkout mx-14 my-5 flex gap-20 xsm:flex-col xsm:mx-5 xsm:gap-8">
+      <div className="card-checkout mx-14 my-5 flex  gap-20 xsm:flex-col xsm:mx-5 xsm:gap-8 px-[3%]">
         {/* Billing address start */}
         <div className="w-[55%] min-h-[100vh] xsm:w-[100%] space-y-5">
           <span className="text-xl font-bold xsm:text-[12px]">Billing Address</span>
