@@ -31,6 +31,7 @@ const AllCourses = () => {
   const [show, setshow] = useState(false);
   const [mouseHovered, setMouseHovered] = useState(null);
   const [countvalue, setcountvalue] = useState(0)
+  const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
     [User1]: {
       name: "SAURABH PAL",
@@ -82,15 +83,16 @@ let {pathname}=useLocation()
   useEffect(() => {
     fetchCourses();
   }, [params.get("category"),pathname]);
-
+  let category=""
   const fetchCourses = async () => {
     try {
-      console.log("yes");
+      // console.log("yes");
      let category = params.get("category");
      
       // console.log(category);
       if (category) {
         category=category.replace(/%20/g, " ");
+        setcat(category)
         setshow(true);
         const res = await axios.get(`${BASE_URL}/courses?category=${category}`);
         // console.log(res);
@@ -102,7 +104,7 @@ let {pathname}=useLocation()
         setshow(true);
 
         const res = await axios.get(`${BASE_URL}/courses`);
-        console.log(res);
+        // console.log(res);
 
 
         setAllCourses(res.data.courses);
@@ -281,13 +283,14 @@ let {pathname}=useLocation()
       ) : (
         ""
       )}
+        <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
-      <div className="my-10 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%]">
+      <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%]">
         {allCourses.map((val, ind) => {
           return (
             <Link
               to={"/detailcourse/" + val.slug}
-              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md md:p-2 md:gap-2 relative"
+              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl  shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md md:p-2 md:gap-2 relative"
               onMouseEnter={() => toggleHover(ind)}
               onMouseLeave={() => toggleHover(null)}
               key={ind}
@@ -374,10 +377,10 @@ let {pathname}=useLocation()
                       {val?.duration}
                     </p>
                   </div>
-                  <p className="font-pop font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px]">
+                  <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px]">
                     {val?.title}
                   </p>
-                  <p className="font-pop text-[14px] text-[#555555] xsm:hidden md:text-[8px]">
+                  <p className="font-pop text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px]">
                     {val?.overview.slice(0, 70)}..
                   </p>
                 </div>
