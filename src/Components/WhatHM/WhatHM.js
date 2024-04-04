@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from "react-player";
+import { IoPlayCircle } from "react-icons/io5";
+import { IoPauseCircle } from "react-icons/io5";
 
 const WhatHM = () => {
   const [playingIndex, setPlayingIndex] = useState(null);
@@ -31,10 +33,13 @@ const WhatHM = () => {
   }, [playingIndex]);
 
   const handlePlay = (index) => {
+
     if (playingIndex !== null && playingIndex !== index) {
       setPlayingIndex(null);
     }
     setPlayingIndex(index);
+
+
   };
 
   return (
@@ -56,7 +61,7 @@ const WhatHM = () => {
         </div>
         <div className="flex flex-row gap-20 justify-center xsm:gap-4 mt-8 xsm:mt-2 md:mt-4 md:gap-10">
           <div
-            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[15vh] xsm:rounded-lg md:w-[35%] md:h-[35%]"
+            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[15vh] xsm:rounded-lg md:w-[35%] md:h-[35%] relative"
             onClick={() => handlePlay(0)}
           >
             <ReactPlayer
@@ -64,15 +69,34 @@ const WhatHM = () => {
               url="/Corporate1.mp4"
               playing={playingIndex === 0}
               loop={true}
-              controls={true}
+              controls={playingIndex === 0}
+
               onPlay={() => handlePlay(0)}
               width="100%"
               height="100%"
               style={{ objectFit: "cover" }}
             />
+            {playingIndex !== 0 && (
+              <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9]">
+                {true && (
+                  <IoPlayCircle
+                    size={"60"}
+                    onClick={() => handlePlay(0)}
+                    style={{
+                      cursor: "pointer",
+                      color: "#1DBF73",
+
+                      zIndex: "999999",
+
+                    }}
+
+                  />
+                )}
+              </span>
+            )}
           </div>
           <div
-            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[15vh] xsm:rounded-lg md:w-[35%] md:h-[35%]"
+            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[15vh] xsm:rounded-lg md:w-[35%] md:h-[35%] relative"
             onClick={() => handlePlay(1)}
           >
             <ReactPlayer
@@ -80,12 +104,29 @@ const WhatHM = () => {
               url="/Corporate2.mp4"
               playing={playingIndex === 1}
               loop={true}
-              controls={true}
+              controls={playingIndex === 1}
               onPlay={() => handlePlay(1)}
               width="100%"
               height="100%"
               style={{ objectFit: "cover" }}
             />
+            {playingIndex !== 1 && (
+              <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9]">
+                {true && (
+                  <IoPlayCircle
+                    size={"60"}
+                    onClick={() => handlePlay(1)}
+                    style={{
+                      cursor: "pointer",
+                      color: "#1DBF73",
+
+                      zIndex: "999999",
+                    }}
+
+                  />
+                )}
+              </span>
+            )}
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import './login.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -10,16 +10,24 @@ import { Globalinfo } from '../../App';
 import { IoEyeOffOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
 import { jwtDecode } from 'jwt-decode';
+import { ReactComponent as Google } from '../../Assests/Icons/google.svg';
+import { useSearchParams } from 'react-router-dom';
 
 const Login = () => {
     const navigate = useNavigate();
+
     const { userDetail, getUserDetails, GetCart, GetWishList } = useContext(Globalinfo);
     const [btnLoader, setBtnLoader] = useState(false);
+    const [loader, setLoader] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [user, setUser] = useState({
         email: "",
         password: ""
     });
+
+
+    const [searchParams, setSearchParams] = useSearchParams()
+
 
     const handleLogin = async () => {
         setBtnLoader(true);
@@ -47,7 +55,7 @@ const Login = () => {
                         if (res.data.userDetails.purchased_courses.length > 0) {
                             navigate('/learning');
                         } else {
-                            navigate('/');
+                            navigate('/course');
                         }
                     } catch (error) {
                         console.log(error);
@@ -75,6 +83,70 @@ const Login = () => {
         }
     };
 
+
+    const handleGoogleLogin = () => {
+
+        window.location.replace('https://courses-api.up.railway.app/auth/google')
+        if (searchParams.get('token')) {
+            setLoader(true);
+            console.log(searchParams.get('token'))
+
+        }
+    }
+    const authenticateUser = async (token) => {
+
+        try {
+            const res = await axios.post(`${BASE_URL}/authenticate`, null, {
+                headers: {
+
+                    Authorization: "Bearer " + token,
+                },
+            })
+            if (res.status === 200) {
+                localStorage.setItem('COURSES_USER_TOKEN', token);
+                // getUserDetails();
+                toast.success("Login Successful");
+
+                const decoded = jwtDecode(token);
+                try {
+                    const res = await axios.get(`${BASE_URL}/user/${decoded.email}`);
+                    console.log(res.data)
+                    getUserDetails()
+                    if (res.data.userDetails.purchased_courses.length > 0) {
+                        navigate('/learning');
+                    } else {
+                        navigate('/course');
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+
+
+            }
+            else {
+                navigate('/login');
+
+
+            }
+        } catch (error) {
+            console.log(error)
+            navigate('/login');
+            toast.error('Invalid Token')
+
+        }
+    }
+
+
+    useLayoutEffect(() => {
+        if (searchParams.get('token')) {
+            const token = searchParams.get('token');
+            authenticateUser(token)
+
+        }
+
+    }, [searchParams.get('token')])
+
+
     return (
         <>
             <div className='flex overflow-hidden pb-6'>
@@ -97,7 +169,7 @@ const Login = () => {
                                 <p className='text-[14px] font-pop'>Password</p>
                                 <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none' type={showPassword ? "text" : "password"} placeholder="Enter Your Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} onKeyDown={handleKeyDown} />
                                 <span style={{ position: "absolute", bottom: "12px", right: "15px" }}>
-                                    {showPassword?<IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />}
+                                    {showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />}
                                 </span>
                             </div>
                             <div className='flex justify-end'>
@@ -115,6 +187,15 @@ const Login = () => {
                             <div className='flex items-center '>
                                 <p className='font-pop text-[14px]'>New Here ?</p>
                                 <Link to={'/register'}><h5 className='text-[#1dbf73]'>Sign Up</h5></Link>
+                            </div>
+                            <div className='flex flex-col gap-2 items-center'>
+
+
+                                <div >
+
+                                    <span onClick={handleGoogleLogin} className='cursor-pointer'><Google /></span>
+
+                                </div>
                             </div>
                         </div>
                     </div>

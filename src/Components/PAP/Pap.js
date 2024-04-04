@@ -12,8 +12,30 @@ export default function Pap() {
   const [clicked, setclicked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [num, setNum] = useState('')
+  const [Activeid, setActiveid] = useState()
   let navigate = useNavigate();
-  
+let faqs=[
+{
+"question":"a",
+"answer":"a1"
+},
+{
+"question":"a",
+"answer":"a1"
+},
+{
+"question":"a",
+"answer":"a1"
+},
+{
+"question":"a",
+"answer":"a1"
+},
+{
+"question":"a",
+"answer":"a1"
+},
+]
 
   const [formValues, setFormValues] = useState({
     fname: "",
@@ -48,14 +70,40 @@ export default function Pap() {
 
 
   function ClickSection(id) {
-    const toggleContent = document.getElementById(id + 'content');
+    const imgrotate = document.getElementById(id + 'img');
 
     if (!clicked) {
       setclicked(true);
-      toggleContent.style.display = "block";
+     
+      if(id==Activeid){
+        setActiveid(-1)
+// toggleContent.style.display = "block";
+
+imgrotate.style.transform = 'rotate(0deg)';
+
+      }
+      else{
+        setActiveid(id)
+        // const toggleContent = document.getElementById(Activeid + 'img');
+        // toggleContent.style.transform = 'rotate(0deg)'
+        imgrotate.style.transform = 'rotate(180deg)';
+      }
+      
+      // toggleContent.style.display = "block";
     } else {
       setclicked(false);
-      toggleContent.style.display = "none";
+      setActiveid(id)
+      imgrotate.style.transform = 'rotate(180deg)';
+      // toggleContent.style.display = "none";
+    }
+  }
+
+  const checkUserAuth = () => {
+    if (localStorage.getItem('COURSES_USER_TOKEN')) {
+      navigate('/test')
+    }
+    else {
+      navigate('/login')
     }
   }
 
@@ -211,7 +259,7 @@ export default function Pap() {
               <p className="font-nu text-[16px] leading-8 xsm:text-[7px] xsm:leading-normal xsm:tracking-wider">PAP Agreement is a legal contract that makes education at Hoping Minds outcome-based. It is not an education loan, as you do not have to pay any interest & you do not require any collaterals. If you do not get placed within 1 year of course completion, your learning with Hoping Minds is completely free.</p>
             </div>
             <div className="">
-              <button onClick={openModal} className="bg-white text-black font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Take A Tour</button>
+              <button onClick={checkUserAuth} className="bg-white text-black font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Explore Now</button>
 
             </div>
           </div>
@@ -222,11 +270,14 @@ export default function Pap() {
             <p className="font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px]">Frequently Asked Questions</p>
           </div>
           <div className=" w-full">
-            <div className="faq1 w-full">
+            {
+              faqs.map((item,index)=>{
+return(<>
+<div className="faq1 w-full">
               <div className=" w-full">
                 <div
-                  onClick={() => ClickSection(1)}
-                  id={1 + 'ind'}
+                  onClick={() => ClickSection(index)}
+                  id={index}
                   className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
                 >
                   <div className="flex items-center gap-2">
@@ -234,20 +285,26 @@ export default function Pap() {
                     <p className="xsm:text-[8px]">How does the Pay after Placement model work?</p>
                   </div>
                   <div>
-                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
+                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" id={index+'img'}/>
                   </div>
                 </div>
-                <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={1 + 'content'}>
+                {
+                  Activeid==index?<div className="px-6 py-4  xsm:py-2 xsm:px-4" id={index + 'content'}>
                   <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Participants undergo training without upfront payment, only paying fees upon securing a job through the program.</p>
-                </div>
+                </div>:''
+                }
               </div>
               <hr className="border-[1px]" />
             </div>
-            <div className="faq2 w-full">
+</>)
+              })
+            }
+            
+            {/* <div className="faq2 w-full">
               <div className=" w-full">
                 <div
                   onClick={() => ClickSection(2)}
-                  id={2 + 'ind'}
+                  id={2}
                   className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
                 >
                   <div className="flex items-center gap-2">
@@ -258,6 +315,9 @@ export default function Pap() {
                     <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
                   </div>
                 </div>
+                {
+                  // Activeid===2
+                }
                 <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={2 + 'content'}>
                   <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Risk is minimal as payment is contingent on job placement; participants typically aren't obligated to pay if unsuccessful.</p>
                 </div>
@@ -268,7 +328,7 @@ export default function Pap() {
               <div className=" w-full">
                 <div
                   onClick={() => ClickSection(3)}
-                  id={3 + 'ind'}
+                  id={3}
                   className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
                 >
                   <div className="flex items-center gap-2">
@@ -289,7 +349,7 @@ export default function Pap() {
               <div className=" w-full">
                 <div
                   onClick={() => ClickSection(4)}
-                  id={4 + 'ind'}
+                  id={4}
                   className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
                 >
                   <div className="flex items-center gap-2">
@@ -310,7 +370,7 @@ export default function Pap() {
               <div className=" w-full">
                 <div
                   onClick={() => ClickSection(5)}
-                  id={5 + 'ind'}
+                  id={5}
                   className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
                 >
                   <div className="flex items-center gap-2">
@@ -326,75 +386,77 @@ export default function Pap() {
                 </div>
               </div>
               <hr className="border-[1px]" />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
 
       {isModalOpen && (
         <div className=" w-full ">
-            <div className="fixed top-[20%] left-[30%] z-[9999]">
-              <div className=' bg-white rounded-lg flex flex-col gap-4 border pb-4'>
-                    <div className='border-black border-b-2 px-4 py-1 flex justify-between'>
-                        <p className='font-nu font-extrabold text-[#1DBF73] text-[22px]'>Pay After Placement Form</p>
-                        <button className="text-[25px] text-[#707070]" onClick={closeModal}>
-                          &times;
-                        </button>
-                    </div>
-                    <div className='grid grid-cols-2 gap-6 px-4 py-2'>
-                        <div className='flex flex-col gap-2'>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>First Name</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="fname" value={formValues.fname} onChange={handleChange} />
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Email</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="email" name="email" value={formValues.email} onChange={handleChange}/>
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>College/University</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="college" value={formValues.college} onChange={handleChange} />
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Branch</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="branch" value={formValues.branch} onChange={handleChange} />
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Year Of Passing </label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="yearOfPassing" value={formValues.yearOfPassing} onChange={handleChange}/>
-                            </div>
-                        </div>
-                        <div className='flex flex-col gap-2'>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Last Name</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="lname" value={formValues.lname} onChange={handleChange}/>
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Contact Number</label>
-                                <div className="">
-                                <PhoneInput
-                                className="papphone"
-                                    defaultCountry="IN"
-                                    name="contact"
-                                    value={num}
-                                    onChange={setNum}
-                                    />
-                                </div>
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Degree</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="degree" value={formValues.degree} onChange={handleChange}/>
-                            </div>
-                            <div className='flex flex-col text-[15px]'>
-                                <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Field Of Study</label>
-                                <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text"  name="fieldOfStudy" value={formValues.fieldOfStudy}  onChange={handleChange}/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='flex justify-center'>
-                         <button onClick={handleForm} className="bg-[#1DBF73] text-white font-pop font-medium text-[18px] px-6 py-1 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Submit</button>
-                    </div>
+          <div className="fixed top-[20%] left-[30%] z-[9999]">
+            <div className=' bg-white rounded-lg flex flex-col gap-4 border pb-4'>
+              <div className='border-black border-b-2 px-4 py-1 flex justify-between'>
+                <p className='font-nu font-extrabold text-[#1DBF73] text-[22px]'>Pay After Placement Form</p>
+                <button className="text-[25px] text-[#707070]" onClick={closeModal}>
+                  &times;
+                </button>
+              </div>
+              <div className='grid grid-cols-2 gap-6 px-4 py-2'>
+                <div className='flex flex-col gap-2'>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>First Name</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="fname" value={formValues.fname} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Email</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="email" name="email" value={formValues.email} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>College/University</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="college" value={formValues.college} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Branch</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="branch" value={formValues.branch} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Year Of Passing </label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="yearOfPassing" value={formValues.yearOfPassing} onChange={handleChange} />
+                  </div>
                 </div>
+                <div className='flex flex-col gap-2'>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Last Name</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="lname" value={formValues.lname} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Contact Number</label>
+                    <div className="">
+                      <PhoneInput
+                        className="papphone"
+
+                        defaultCountry="IN"
+                        name="contact"
+                        value={num}
+                        onChange={setNum}
+                      />
+                    </div>
+                    {/* <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" value={formValues.contact} onChange={handleChange}/> */}
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Degree</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="degree" value={formValues.degree} onChange={handleChange} />
+                  </div>
+                  <div className='flex flex-col text-[15px]'>
+                    <label htmlFor="name" className='font-nu font-semibold text-[#707070]'>Field Of Study</label>
+                    <input className='bg-[#00000014] py-1 px-2 rounded-md shadow-md' type="text" name="fieldOfStudy" value={formValues.fieldOfStudy} onChange={handleChange} />
+                  </div>
+                </div>
+              </div>
+              <div className='flex justify-center'>
+                <button onClick={handleForm} className="bg-[#1DBF73] text-white font-pop font-medium text-[18px] px-6 py-1 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Submit</button>
+              </div>
+            </div>
           </div>
         </div>
 

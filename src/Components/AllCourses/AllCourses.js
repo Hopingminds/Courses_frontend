@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Img1 from "../../Assests/Images/searchbanner.png";
 import Img2 from "../../Assests/Images/creator.png";
 import Icon1 from "../../Assests/Icons/twitter.svg";
@@ -10,11 +10,15 @@ import User3 from "../../Assests/Images/Khushpreet Kaur-Delta IT.jpeg";
 import User4 from "../../Assests/Images/Amritpal Protiviti GDU 5.7.png";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
 import NewTestimonial from "../Testimonial/NewTestimonial";
 import Spinner from "../Spinner";
 import ReactPlayer from "react-player";
+import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
+import { IoIosLock } from "react-icons/io";
+import { GoUnmute } from "react-icons/go";
+import { Globalinfo } from "../../App";
 
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
@@ -27,6 +31,7 @@ const AllCourses = () => {
   const [show, setshow] = useState(false);
   const [mouseHovered, setMouseHovered] = useState(null);
   const [countvalue, setcountvalue] = useState(0)
+  const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
     [User1]: {
       name: "SAURABH PAL",
@@ -65,17 +70,29 @@ const AllCourses = () => {
         "Excepteur sint occaect in culpa qui officia deserunt mollit anim id est laborum.",
     },
   });
+  const { userDetail, getUserDetails } = useContext(Globalinfo);
 
+  // console.log(userDetail.blocked_courses)
+  const [IsMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
+
+  // console.log(pat);
+
+let {pathname}=useLocation()
+  const [params, setparams] = useSearchParams()
   useEffect(() => {
     fetchCourses();
-  }, []);
-
-  const [params, setparams] = useSearchParams();
+  }, [params.get("category"),pathname]);
+  let category=""
   const fetchCourses = async () => {
     try {
-      let category = params.get("category");
-
+      // console.log("yes");
+     let category = params.get("category");
+     
+      // console.log(category);
       if (category) {
+        category=category.replace(/%20/g, " ");
+        setcat(category)
         setshow(true);
         const res = await axios.get(`${BASE_URL}/courses?category=${category}`);
         // console.log(res);
@@ -87,13 +104,25 @@ const AllCourses = () => {
         setshow(true);
 
         const res = await axios.get(`${BASE_URL}/courses`);
-        console.log(res.data.courses);
+        // console.log(res);
+
+
         setAllCourses(res.data.courses);
-        setData(res.data.courses);
-        setTemp(res.data.courses);
-        setshow(false);
+        // setAllCourses(newCourses)
+
+        setData(res.data.courses)
+        setTemp(res.data.courses)
+        setshow(false)
+
       }
-    } catch (error) {}
+    } catch (error) { }
+  };
+
+  const handleMute = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+    setIsMuted((prev) => !prev);
+
   };
 
   function SearchData(e) {
@@ -126,15 +155,17 @@ const AllCourses = () => {
       );
     }
   }
-  const toggleShowAllCards = () => {
-    setShowAllCards((prevShowAllCards) => !prevShowAllCards);
-  };
 
-  const toggleUserImage = (user) => {
-    setSelectedUser((prevUser) => {
-      return prevUser !== user ? user : prevUser;
-    });
-  };
+  // const moveBlockedCoursesToEnd = (courses, blockedCourses) => {
+
+  //   const filteredCourses = courses.filter(course => !blockedCourses.includes(course._id));
+  //   const blockedCoursesList = courses.filter(course => blockedCourses.includes(course._id));
+  //   const updatedCourses = filteredCourses.concat(blockedCoursesList);
+
+  //   return updatedCourses;
+  // };
+
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -150,24 +181,24 @@ const AllCourses = () => {
   const toggleHover = (index) => {
     setMouseHovered(index);
   };
-  function Count(num){
+  function Count(num) {
     for (let index = 0; index < num; index++) {
       // setTimeout(() => {
-        // console.log(index);
-        setTimeout(() => {
+      // console.log(index);
+      setTimeout(() => {
         setcountvalue(index)
-          }, index*10);
+      }, index * 10);
 
-        // }
+      // }
       // }, index*1000);
-         
-      
+
+
     }
   }
   useEffect(() => {
-   Count(1001)
+    Count(1001)
   }, [])
-  
+
   return (
     <>
       <head>
@@ -178,19 +209,18 @@ const AllCourses = () => {
         className="flex flex-col gap-5 p-20 items-center xsm:py-6 xsm:px-0 xsm:gap-2 md:p-10 bg-[#000000]"
         style={{ backgroundImage: `url(${Img1})`, backgroundSize: "cover" }}
       > */}
-       
+
       {/* </div> */}
 
-<div className="relative h-auto w-full">
-<div className="flex flex-row rounded-2xl w-[60%] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] left-[17%]">
+      <div className="relative h-auto w-full">
+        <div className="flex flex-row rounded-2xl w-[60%] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] left-[17%]">
           <div className="relative w-full">
             <input
               type="text"
               placeholder=""
               onChange={SearchData}
-              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${
-                !SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
-              }`}
+              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
+                }`}
             />
             <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center">
               {SearchedData.map((item, ind) => {
@@ -214,34 +244,34 @@ const AllCourses = () => {
           </button>
         </div>
 
-      <div className="h-full w-full bg-black">
-      <ReactPlayer 
-      
-        url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
-        height="100%"
-        width={'100%'}
-        playing={true}
-        loop={true}
-        controls={false}
-        />
-      </div>
+        <div className="h-full w-full bg-black">
+          <ReactPlayer
 
-      <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-20 text-white  absolute bottom-0 items-center">
-                <div className="text-white ">
-                  <div>Courses to choose from</div>
-                  <div className="text-center text-xl font-semibold">{countvalue}+</div>
-                
-                </div>
-                <div>
-                  <div>Courses to choose from</div>
-                  <div className="text-center text-xl font-semibold">{countvalue}+</div>
-                </div>
-                <div>
-                  <div>Courses to choose from</div>
-                  <div className="text-center text-xl font-semibold">{countvalue}+</div>
-                </div>
+            url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
+            height="100%"
+            width={'100%'}
+            playing={true}
+            loop={true}
+            controls={false}
+          />
+        </div>
+
+        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-20 text-white  absolute bottom-0 items-center">
+          <div className="text-white ">
+            <div>Courses to choose from</div>
+            <div className="text-center text-xl font-semibold">{countvalue}+</div>
+
+          </div>
+          <div>
+            <div>Courses to choose from</div>
+            <div className="text-center text-xl font-semibold">{countvalue}+</div>
+          </div>
+          <div>
+            <div>Courses to choose from</div>
+            <div className="text-center text-xl font-semibold">{countvalue}+</div>
+          </div>
+        </div>
       </div>
-</div>
       {/* cards */}
       {!allCourses?.length ? (
         <div className="flex justify-center  w-full mt-10">
@@ -253,26 +283,64 @@ const AllCourses = () => {
       ) : (
         ""
       )}
+        <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
-      <div className="my-10 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%]">
+      <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%]">
         {allCourses.map((val, ind) => {
           return (
             <Link
               to={"/detailcourse/" + val.slug}
-              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md md:p-2 md:gap-2"
+              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl  shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md md:p-2 md:gap-2 relative"
               onMouseEnter={() => toggleHover(ind)}
               onMouseLeave={() => toggleHover(null)}
+              key={ind}
+              style={{ pointerEvents: userDetail?.blocked_courses?.includes(val._id) ? 'none' : 'auto' }}
             >
-              <div className="h-[45%]">
+              {
+                userDetail?.blocked_courses?.includes(val._id)
+                &&
+                <span className="absolute top-0 left-0 h-[100%] w-[100%] z-[99999] bg-[rgba(0,0,0,0.6)] rounded-xl grid place-items-center">
+                  <IoIosLock size={"60"} color={"white"} />
+                </span>
+              }
+
+              {mouseHovered === ind &&
+                <span className="bg-transparent p-4 absolute top-6 left-4 z-[9999]" >
+                  {IsMuted ? (
+                    <IoVolumeMuteOutline
+                      size={"20"}
+                      style={{
+                        cursor: "pointer",
+                        color: "black",
+
+                        zIndex: "999999",
+                      }}
+                      onClick={handleMute}
+                    />
+                  ) : (
+                    <IoVolumeMediumOutline
+                      size={"20"}
+                      style={{
+                        cursor: "pointer",
+                        color: "black",
+
+                        zIndex: "999999",
+                      }}
+                      onClick={handleMute}
+                    />
+                  )}
+                </span>}
+              <div className="min-h-[45%]">
                 {mouseHovered === ind ? (
                   <ReactPlayer
-                    className="w-full h-full rounded-xl xsm:rounded-md border"
-                    height={"100%"}
-                    width={"100%"}
+                    className="w-full h-full rounded-xl xsm:rounded-md border "
+                    height={'100%'}
+                    width={'100%'}
                     url={val.featured_video}
                     controls={false}
                     playing={true}
-                    muted
+                    ref={videoRef}
+                    muted={IsMuted}
                   />
                 ) : (
                   <img
@@ -309,10 +377,10 @@ const AllCourses = () => {
                       {val?.duration}
                     </p>
                   </div>
-                  <p className="font-pop font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px]">
+                  <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px]">
                     {val?.title}
                   </p>
-                  <p className="font-pop text-[14px] text-[#555555] xsm:hidden md:text-[8px]">
+                  <p className="font-pop text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px]">
                     {val?.overview.slice(0, 70)}..
                   </p>
                 </div>
@@ -352,7 +420,7 @@ const AllCourses = () => {
                 eiusmod tempor
               </p>
             </div>
-            <img src={Img2} className="absolute top-5 w-[40%]" />
+            <img src={Img2} className="absolute top-5 w-[35%]" />
           </div>
 
           <div className="h-[45vh] flex justify-center items-end relative md:h-[16vh]">
@@ -368,7 +436,7 @@ const AllCourses = () => {
                 eiusmod tempor
               </p>
             </div>
-            <img src={Img2} className="absolute top-5 w-[40%]" />
+            <img src={Img2} className="absolute top-5 w-[35%]" />
           </div>
 
           <div className="h-[45vh] flex justify-center items-end relative md:h-[16vh]">
@@ -384,7 +452,7 @@ const AllCourses = () => {
                 eiusmod tempor
               </p>
             </div>
-            <img src={Img2} className="absolute top-5 w-[40%]" />
+            <img src={Img2} className="absolute top-5 w-[35%]" />
           </div>
         </div>
       </div>

@@ -8,20 +8,30 @@ import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
+import { ReactComponent as Google } from '../../Assests/Icons/google.svg';
+import { jwtDecode } from 'jwt-decode';
 
 const Register = () => {
     const navigate = useNavigate();
-    const {getUserDetails } = useContext(Globalinfo);
+    const { getUserDetails } = useContext(Globalinfo);
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);
 
+    const nameRef = useRef(null);
     const emailRef = useRef(null);
+    const phoneRef = useRef(null);
     const collegeRef = useRef(null);
+    const degreeRef = useRef(null);
+    const branchRef = useRef(null);
     const passwordRef = useRef(null);
 
     const [user, setUser] = useState({
-        college: "",
+        name: "",
         email: "",
+        phone: "",
+        college: "",
+        degree: "",
+        branch: "",
         password: "",
     });
 
@@ -54,7 +64,7 @@ const Register = () => {
             return;
         }
 
-        if (!user.password || !user.email || !user.college) {
+        if (!user.name || !user.degree || !user.password || !user.email || !user.college) {
             toast.error("Enter Valid Credentials");
             return;
         }
@@ -68,16 +78,20 @@ const Register = () => {
             getUserDetails();
             localStorage.setItem('COURSES_USER_TOKEN', res.data.token);
             toast.success("Registered Successfully");
-            // const res1 = await axios.post(`${BASE_URL}/registerMail`, {
-            //     username: "",
-            //     userEmail: user.email,
-            //     text: "",
-            //     subject: "",
-            // });
-            
-            setTimeout(() => {
-                navigate('/learning');
-            }, 1000);
+            if (res.status) {
+                const decoded = jwtDecode(res.data.token);
+                try {
+                    const res = await axios.get(`${BASE_URL}/user/${decoded.email}`);
+                    if (res.data.userDetails.purchased_courses.length > 0) {
+                        navigate('/learning');
+                    } else {
+                        navigate('/course');
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+
 
 
         } catch (error) {
@@ -90,27 +104,66 @@ const Register = () => {
     return (
         <>
             <div className='flex overflow-hidden'>
-                <div className='w-[50%] flex items-center justify-center relative xsm:hidden'>
-                    <img className='w-[60%] object-cover absolute top-10' src='../login_bg.png' />
+                <div className='w-[40%] flex items-center justify-end relative xsm:hidden '>
+                    <img className='w-[75%] object-cover absolute top-10 ' src='../login_bg.png' />
                 </div>
-                <div className='flex flex-col items-center my-16 w-[45%] gap-4 xsm:w-full'>
+                <div className='flex flex-col items-center my-16 w-[60%] gap-4 xsm:w-full '>
                     <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p>
-                    <div className='flex flex-col w-[65%] gap-4 xsm:w-[95%]'>
-                        <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 '>
+                    <div className='flex flex-col w-[75%] gap-4 xsm:w-[95%] items-center'>
+                        <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 w-[40%] '>
                             <button className='bg-transparent cursor-pointer Logininactive' onClick={() => navigate('/login')} >Login</button>
                             <button className='bg-transparent cursor-pointer Loginactive' >Register</button>
                         </div>
                         {/* inputs */}
-                        <div className='flex flex-col gap-4'>
+                        <div className='flex flex-col gap-4 grid grid-cols-2 gap-4'>
+                            <div>
+                                <p className='text-[14px] font-pop'>Name</p>
+                                <input
+                                    ref={nameRef}
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    type="text"
+                                    placeholder="Enter Your Name"
+                                    name="name"
+                                    value={user.name}
+                                    onChange={handleChange}
+                                    onKeyDown={(e) => handleKeyDown(e, emailRef)}
+                                />
+                            </div>
                             <div>
                                 <p className='text-[14px] font-pop'>Email</p>
                                 <input
                                     ref={emailRef}
-                                    className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
                                     type="text"
                                     placeholder="Enter Your Email"
                                     name="email"
                                     value={user.email}
+                                    onChange={handleChange}
+                                    onKeyDown={(e) => handleKeyDown(e, phoneRef)}
+                                />
+                            </div>
+                            <div>
+                                <p className='text-[14px] font-pop'>Contact Number</p>
+                                <input
+                                    ref={phoneRef}
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    type="text"
+                                    placeholder="Enter Your Contact No."
+                                    name="phone"
+                                    value={user.phone}
+                                    onChange={handleChange}
+                                    onKeyDown={(e) => handleKeyDown(e, degreeRef)}
+                                />
+                            </div>
+                            <div>
+                                <p className='text-[14px] font-pop'>Degree</p>
+                                <input
+                                    ref={degreeRef}
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    type="text"
+                                    placeholder="Enter Your Degree"
+                                    name="degree"
+                                    value={user.degree}
                                     onChange={handleChange}
                                     onKeyDown={(e) => handleKeyDown(e, collegeRef)}
                                 />
@@ -119,7 +172,7 @@ const Register = () => {
                                 <p className='text-[14px] font-pop'>College/University</p>
                                 <input
                                     ref={collegeRef}
-                                    className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
                                     type="text"
                                     placeholder="Enter Your College/University"
                                     name="college"
@@ -132,7 +185,7 @@ const Register = () => {
                                 <p className='text-[14px] font-pop'>Password</p>
                                 <input
                                     ref={passwordRef}
-                                    className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Enter Your Password"
                                     name="password"
@@ -155,6 +208,15 @@ const Register = () => {
                                 {/* Sign up link */}
                                 <Link to={'/login'}>  <h5 className='text-[#1dbf73]'>Login</h5></Link>
                                 {/* Social media login buttons */}
+                            </div>
+                            <div className='flex flex-col gap-2 items-center'>
+
+
+                                <div >
+
+                                    <span><Google /></span>
+
+                                </div>
                             </div>
                         </div>
                     </div>
