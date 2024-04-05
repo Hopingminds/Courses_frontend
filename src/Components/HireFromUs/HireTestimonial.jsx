@@ -1,52 +1,105 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import React from 'react'
 import './hirefromus.css'
+import User11 from "../../Assests/Images/Aditya Sharma.jpg";
+import User7 from "../../Assests/Images/Tanisha Sharma.jpg";
+import User8 from "../../Assests/Images/Simran Singh.jpeg";
+import User9 from "../../Assests/Images/Poonam Saliya.jpg";
+import User10 from "../../Assests/Images/Loveneet Kaur.jpg";
+import User1 from "../../Assests/Images/Saurabh Pal-Data Resolve.png";
+import User2 from "../../Assests/Images/Sumit.jpg";
+import User3 from "../../Assests/Images/Khushpreet Kaur-Delta IT.jpeg";
+import User4 from "../../Assests/Images/Amritpal Protiviti GDU 5.7.png";
+import User5 from "../../Assests/Images/Ravinder Singh.jpg";
+import User6 from "../../Assests/Images/Rupak Yadav.jpg";
+
 
 const HireTestimonial = () => {
     
     const tempdata = [
         {
-            text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimnisi ut aliquip ex ea commodo consequat.ptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            name:'Anna Hathway',
+            text:'Joined Hoping Minds for semester training in January, swiftly placed at Bellboy as a backend engineer in Python with a 5 LPA package. Improved coding and problem- solving skills significantly with their thorough guidance and training.',
+            name:'Aditya Sharma ',
             star:3,
             emptystar:2,
+            image: User11,
         },
         {
-            text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimnisi ut aliquip ex ea commodo consequat.ptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            name:'Anna ',
+            text:'Placed at Virtuos Digital via Hoping Minds. Transitioned from tech novice to adept with insights into corporate culture. Grateful for guidance from teachers and placement coordinators, fostering a valuable learning journey.',
+            name:'LOVNEET KAUR ',
             star:4,
             emptystar:1,
+            image: User10,
         },
         {
-            text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimnisi ut aliquip ex ea commodo consequat.ptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            name:'Anna Hathway',
+            text:'Placed in Dubai startup, 5 LPA as backend engineer. Grateful to Hoping Minds via college for training, support, and preparation. Their guidance aligned me with industry demands, aiding in the pursuit of my dreams.',
+            name:'Poonam Saliya ',
             star:3,
             emptystar:2,
+            image: User9,
         },
         {
-            text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimnisi ut aliquip ex ea commodo consequat.ptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            name:'Anna ',
+            text:'Joining Hoping Minds for cyber security training was pivotal. The supportive environment, dedicated placement team, and excellent teachers facilitated my journey to a job at Cyber Assure Company. Grateful for the growth, friendships, and opportunities gained.',
+            name:'Simran Singh',
             star:4,
             emptystar:1,
+            image: User8,
         },
         {
-            text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimnisi ut aliquip ex ea commodo consequat.ptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            name:'Anna Hathway',
+            text:'Underwent 6-month industrial training in Data Science at Hoping Minds, leading to a rewarding placement as a software developer at WLTH company. Grateful for their support and guidance, instrumental in realizing full potential.',
+            name:'Tanisha Sharma',
             star:3,
             emptystar:2,
+            image: User7,
         },
         {
-            text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimnisi ut aliquip ex ea commodo consequat.ptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            name:'Anna ',
+            text:' Hoping Minds transformed my naive knowledge, providing a roadmap and problem- solving approach. Guidance from teachers and placement coordinators, including mock tests, prepared me for interviews. Grateful for the learning journey.',
+            name:'Rupak Yadav',
             star:4,
             emptystar:1,
+            image: User6,
+        },
+        {
+            text:'Six-month internship at Hoping Minds, Mohali, offered dynamic growth environment. Mentorship in Cybersecurity, practical applications honed problem-solving. Emphasis on continuous learning, supportive culture. Grateful for guidance shaping confident professional.',
+            name:'Ravinder Singh',
+            star:4,
+            emptystar:1,
+            image: User5,
+        },
+        {
+            text:"Thrilled to join Protiviti, thanks to Hoping Minds' fantastic support. The journey was challenging, but their assistance and opportunities for growth were invaluable. Grateful to family, teachers, and friends. Excited and determined for this new career chapter!",
+            name:'AMRITPAL SINGH',
+            star:4,
+            emptystar:1,
+            image: User4,
+        },
+        {
+            text:"Hoping Minds' dedicated efforts and comprehensive job assistance program transformed me from a hopeful job seeker to a proud employee. Their personalized approach, insightful counseling, and invaluable support led to securing my first job and equipped me for future career success.",
+            name:'KHUSHPREET KAUR',
+            star:4,
+            emptystar:1,
+            image: User3,
+        },
+        {
+            text:'HopingMinds played a crucial role in securing my first job, providing unwavering support, essential skills, and invaluable guidance. Their exceptional job placement assistance led me to a role aligned with my aspirations, illuminating my path to success.',
+            name:'SUMIT VERMA',
+            star:4,
+            emptystar:1,
+            image: User2,
+        },
+        {
+            text:'Being a recent Computer Science graduate from Jaypee University, MP,I faced job challenges post-college. Enrolling in Hoping Minds for personal development and placement training, I swiftly secured a System Developer role at Data Resolve, grateful for their transformative assistance in my professional journey.',
+            name:'SAURABH PAL',
+            star:4,
+            emptystar:1,
+            image: User1,
         },
     ]
 
   return (
     <div>
         <div className='py-[4%] text-white font-pop font-semibold text-[40px] text-center'>
-            <p>What <span className='text-[#1DBF73]'>Our Students</span> Have To Say</p>
+            <p>Hear directly from <span className='text-[#1DBF73]'>our students.</span> </p>
         </div>
         {/* splide */}
         <div className='flex flex-col gap-8'>
@@ -72,16 +125,16 @@ const HireTestimonial = () => {
                     <SplideSlide>
                         <div
                             key={index}
-                            className={`w-full p-4 rounded-lg flex flex-col gap-2  ${index%2 === 0 ?'bg-[#FFFFFF] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
+                            className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#FFFFFF] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
                             <div>
                                 <img className={`w-4 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
                             <div>
                                 <p className='text-[12px] font-pop'>{data.text}</p>
                             </div>
-                            <div className='flex items-center'>
-                                <div className='rounded-full w-[22%]'>
-                                    <img className='w-full' src="../img/hireprofileimg.png" alt="" />
+                            <div className='flex items-center gap-2'>
+                                <div className='rounded-full'>
+                                    <img className='rounded-full w-16 h-16 object-fit' src={data.image} alt="" />
                                 </div>
                                 <div>
                                     <div>
@@ -126,16 +179,16 @@ const HireTestimonial = () => {
                     <SplideSlide>
                         <div
                             key={index}
-                            className={`w-full p-4 rounded-lg flex flex-col gap-2  ${index%2 === 0 ?'bg-[#FFFFFF] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
+                            className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#FFFFFF] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
                             <div className='flex justify-end'>
                                 <img className={`w-4 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
                             <div>
                                 <p className='text-[12px] font-pop text-left'>{data.text}</p>
                             </div>
-                            <div className='flex flex-row-reverse items-center'>
-                                <div className='rounded-full w-[22%]'>
-                                    <img className='w-full' src="../img/hireprofileimg.png" alt="" />
+                            <div className='flex flex-row-reverse items-center gap-2'>
+                                <div className='rounded-full'>
+                                    <img className='rounded-full w-16 h-16 object-fit' src={data.image} alt="" />
                                 </div>
                                 <div>
                                     <div>
