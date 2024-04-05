@@ -180,7 +180,7 @@ const HireTestimonial = () => {
                         <div
                             key={index}
                             className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#FFFFFF] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
-                            <div>
+                            <div className='flex justify-end'>
                                 <img className={`w-4 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
                             <div>

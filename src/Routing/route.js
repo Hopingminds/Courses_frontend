@@ -37,6 +37,8 @@ import Test from '../Components/Test/Test.jsx'
 import HireFromUs from '../Components/HireFromUs/HireFromUs.jsx'
 import Temp from '../Components/temp.js'
 import Newinstructor from '../Components/Newinstructor/index.js'
+import Button from '../Components/ResumeBuilder/Button.jsx'
+import ResumeBuilder from '../Components/ResumeBuilder/ResumeBuilder.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -88,6 +90,8 @@ const Router = () => {
                 <Route path='/modal' element={<Modal />} />
                 <Route path='/temp' element={<Temp />} />
                 <Route path='/new' element={<Newinstructor />} />
+                <Route path='/button' element={<Button />} />
+                <Route path='/resumebuilder' element={<ResumeBuilder />} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 

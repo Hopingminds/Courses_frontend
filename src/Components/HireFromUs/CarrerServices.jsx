@@ -3,6 +3,7 @@ import Resume from './Resume'
 import Companies from '../Companies'
 import './hirefromus.css'
 import HireTestimonial from './HireTestimonial'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
 
 const CareerServices = () => {
   return (
@@ -17,6 +18,7 @@ const CareerServices = () => {
 
                     {/* set the color of the border in gradient */}
 
+<<<<<<< HEAD
                     <div className='grid grid-cols-3 gap-16 text-white pl-8'>
                         <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl border-2'>
                             <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
@@ -46,10 +48,60 @@ const CareerServices = () => {
                         Industry Partnerships
                         Continuous Support
                         Flexible Learning Options */}
+=======
+                        <div className='text-white pl-8'>
+                        <Splide
+                            options={{
+                                type: "loop",
+                                perPage: 3,
+                                pagination: false,
+                                perMove: 1,
+                                wheel: false,
+                                arrows: false,
+                                autoplay: true,
+                                interval: 2000,
+                                speed: 1500,
+                                delay: 4,
+                                pauseOnHover: false,
+                                drag: true,
+                                gap:'4rem',
+                            }}>
+                            <SplideSlide>
+                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border'>
+                                    <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
+                                        <img className='w-10 h-10' src="../Icons/hireheadicon1.svg" alt="" />
+                                    </div>
+                                    <div>
+                                        <p className='font-pop font-semibold text-center text-[14px]'>Lifetime Career Support</p>
+                                    </div>
+                                </div>
+                            </SplideSlide>
+                            <SplideSlide>
+                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border'>
+                                    <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
+                                        <img className='w-10 h-10' src="../Icons/hireheadicon2.svg" alt="" />
+                                    </div>
+                                    <div>
+                                        <p className='font-pop font-semibold text-center text-[14px]'>Exclusive Mentor Session</p>
+                                    </div>
+                                </div>
+                            </SplideSlide>
+                            <SplideSlide>
+                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border'>
+                                    <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
+                                        <img className='w-10 h-10' src="../Icons/hireheadicon3.png" alt="" />
+                                    </div>
+                                    <div>
+                                        <p className='font-pop font-semibold text-center text-[14px]'>CV & Interview Preparation</p>
+                                    </div>
+                                </div>
+                            </SplideSlide>
+                        </Splide>
+>>>>>>> 3d2a6cb2b243109abe93bb3c7da845034ee1e0cc
                     </div>
                 </div>
                 <div className='w-[30%]'>
-                    <div className='bg-[#00000033] border-2 rounded-xl p-6 text-white flex flex-col gap-4'>
+                    <div className='bg-[#00000033] bw-border rounded-xl p-6 text-white flex flex-col gap-4'>
                         <div>
                             <p className='font-int font-bold'>Connect with us!</p>
                         </div>
