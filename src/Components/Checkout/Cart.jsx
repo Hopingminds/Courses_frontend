@@ -130,27 +130,37 @@ const CartCheckout = () => {
       let response = await data.json();
       // console.log(response);
       if (response.success) {
-        let data1 = await fetch(url1, {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + login,
-          },
-          body: JSON.stringify({ email: userDetail.email }),
-        });
-        let response1 = await data1.json();
-        if (response.success) {
-          toast.success(response.message);
+     if(query.get("slug")){
+      let data1 = await fetch(url1, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + login,
+        },
+        body: JSON.stringify({ email: userDetail.email }),
+      });
+      let response1 = await data1.json();
+      toast.success(response.message);
           setTimeout(() => {
             navigate("/success");
           }, 1000);
-        } else {
-          toast.error(response.message);
-        }
-      } else {
-        toast.error(response.message);
-      }
+     }
+    }
+     else{
+      toast.error(response.message);
+     }
+      //   if (response.success) {
+      //     toast.success(response.message);
+      //     setTimeout(() => {
+      //       navigate("/success");
+      //     }, 1000);
+      //   } else {
+      //     toast.error(response.message);
+      //   }
+      // } else {
+      //   toast.error(response.message);
+      // }
     } catch (error) {
       console.log(error);
     }
