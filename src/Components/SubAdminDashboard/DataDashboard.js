@@ -12,9 +12,10 @@ import {
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { easeQuadInOut } from "d3-ease";
+import Temp from "../temp";
 
-const DataDashboard = () => {
-
+const DataDashboard = ({data}) => {
+// console.log(data);
   // const data = [10,0,2.5,5];
   return (
     <div className="flex flex-col gap-12 px-[4%] pt-[2%] mb-2 w-full">
@@ -22,7 +23,7 @@ const DataDashboard = () => {
         <div className="bg-white rounded-lg shadow-lg flex flex-row gap-6 justify-between items-center px-2 py-6 w-[30%]">
           <img src={Img1} className="w-[30%]" />
           <div className="flex flex-col gap-1 w-[70%]">
-            <p className="font-pop font-semibold text-[26px]">24</p>
+            <p className="font-pop font-semibold text-[26px]">{data?.enrolled_students}</p>
             <p className="font-pop font-semibold text-[14px]">
               Enrolled Students
             </p>
@@ -31,7 +32,7 @@ const DataDashboard = () => {
         <div className="bg-white rounded-lg shadow-lg flex flex-row gap-8 justify-between items-center px-2 py-6 w-[30%]">
           <img src={Img2} className="w-[28%]" />
           <div className="flex flex-col gap-1">
-            <p className="font-pop font-semibold text-[26px]">14</p>
+            <p className="font-pop font-semibold text-[26px]">{data?.enrolled_courses}</p>
             <p className="font-pop font-semibold text-[14px]">
               Enrolled courses
             </p>
@@ -40,7 +41,7 @@ const DataDashboard = () => {
         <div className="bg-white rounded-lg shadow-lg flex flex-row gap-8 justify-between items-center px-2 py-6 w-[30%]">
           <img src={Img3} className="w-[28%]" />
           <div className="flex flex-col gap-1">
-            <p className="font-pop font-semibold text-[26px]">14</p>
+            <p className="font-pop font-semibold text-[26px]">{data?.enrolled_courses/2}</p>
             <p className="font-pop font-semibold text-[14px]">
               Completed Course
             </p>
@@ -48,10 +49,10 @@ const DataDashboard = () => {
         </div>
       </div>
       <div className="flex flex-row justify-between">
-        <div className="bg-white rounded-xl shadow-lg flex flex-col gap-2 p-4 w-[45%]">
+        <div className="bg-white rounded-xl shadow-lg flex flex-col  gap-2 p-4 w-[45%]">
           <p className="font-pop font-semibold text-[18px]">Completed Course</p>
-          <div className="flex flex-row justify-between">
-            <div className="w-[60%] border-[6px] rounded-full p-2 border-[#36AE8F] font-semibold "
+          <div className="flex flex-row justify-between items-center  my-auto">
+            <div className="w-[60%] border-[6px] rounded-full p-2 border-[#36AE8F] font-semibold  "
               style={{borderImage:'linear-gradient(toright,#36AE8F,#1A35DD47,#32AF8B)1'}}
             >
               <CircularProgressbar
@@ -102,10 +103,11 @@ const DataDashboard = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-xl shadow-lg flex flex-col gap-2 p-4 w-[45%]">
+        <div className="bg-white rounded-xl shadow-lg flex flex-col gap-2 p-4 w-[50%]">
           <p className="font-pop font-semibold text-[18px]">Attendance</p>
           <div>
           {/* <LineGraph data={[12,34,12]}/> */}
+          <Temp/>
           </div>
         </div>
       </div>
