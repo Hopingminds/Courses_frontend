@@ -41,7 +41,7 @@ const CareerServices = () => {
                                         <img className='w-10 h-10' src="../Icons/hireheadicon1.svg" alt="" />
                                     </div>
                                     <div>
-                                        <p className='font-pop font-semibold text-center text-[14px]'>Lifetime Career Support</p>
+                                        <p className='font-pop font-semibold text-center text-[14px]'>Job Placement Guarantee</p>
                                     </div>
                                 </div>
                             </SplideSlide>
@@ -51,7 +51,7 @@ const CareerServices = () => {
                                         <img className='w-10 h-10' src="../Icons/hireheadicon2.svg" alt="" />
                                     </div>
                                     <div>
-                                        <p className='font-pop font-semibold text-center text-[14px]'>Exclusive Mentor Session</p>
+                                        <p className='font-pop font-semibold text-center text-[14px]'>Tailored Curriculum</p>
                                     </div>
                                 </div>
                             </SplideSlide>
@@ -61,7 +61,47 @@ const CareerServices = () => {
                                         <img className='w-10 h-10' src="../Icons/hireheadicon3.png" alt="" />
                                     </div>
                                     <div>
-                                        <p className='font-pop font-semibold text-center text-[14px]'>CV & Interview Preparation</p>
+                                        <p className='font-pop font-semibold text-center text-[14px]'>Experienced Instructors</p>
+                                    </div>
+                                </div>
+                            </SplideSlide>
+                            <SplideSlide>
+                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border'>
+                                    <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
+                                        <img className='w-10 h-10' src="../Icons/hireheadicon3.png" alt="" />
+                                    </div>
+                                    <div>
+                                        <p className='font-pop font-semibold text-center text-[14px]'>Hands-on Projects</p>
+                                    </div>
+                                </div>
+                            </SplideSlide>
+                            <SplideSlide>
+                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border'>
+                                    <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
+                                        <img className='w-10 h-10' src="../Icons/hireheadicon3.png" alt="" />
+                                    </div>
+                                    <div>
+                                        <p className='font-pop font-semibold text-center text-[14px]'>Industry Partnerships</p>
+                                    </div>
+                                </div>
+                            </SplideSlide>
+                            <SplideSlide>
+                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border'>
+                                    <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
+                                        <img className='w-10 h-10' src="../Icons/hireheadicon3.png" alt="" />
+                                    </div>
+                                    <div>
+                                        <p className='font-pop font-semibold text-center text-[14px]'>Continuous Support</p>
+                                    </div>
+                                </div>
+                            </SplideSlide>
+                            <SplideSlide>
+                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border'>
+                                    <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
+                                        <img className='w-10 h-10' src="../Icons/hireheadicon3.png" alt="" />
+                                    </div>
+                                    <div>
+                                        <p className='font-pop font-semibold text-center text-[14px]'>Flexible Learning Options</p>
                                     </div>
                                 </div>
                             </SplideSlide>

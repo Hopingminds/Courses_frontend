@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@canvasjs/react-charts": "^1.0.2",
     "@mui/x-charts": "^6.19.8",
     "@ramonak/react-progress-bar": "^5.2.0",
     "@splidejs/react-splide": "^0.7.12",
@@ -15,6 +16,7 @@
     "d3-ease": "^3.0.1",
     "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.4.1",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
