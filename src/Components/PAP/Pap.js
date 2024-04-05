@@ -129,7 +129,7 @@ export default function Pap() {
               <div className="w-[90%]">
                 <div>
                   <p className="font-nu font-semibold text-[22px] xsm:text-[10px]">Minimum CTC</p>
-                  <p className="font-nu font-medium text-[16px] xsm:text-[7px]">If your salary is above the CTC of ₹3,50,000/-, the PAP monthly payments come into effect.</p>
+                  <p className="font-nu font-medium text-[16px] xsm:text-[7px]">If your salary is above the CTC of ₹5,00,000/-, the PAP monthly payments come into effect.</p>
                 </div>
               </div>
             </div>
