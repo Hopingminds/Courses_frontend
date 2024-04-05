@@ -86,7 +86,7 @@ const Login = () => {
 
     const handleGoogleLogin = () => {
 
-        window.location.replace('https://courses-api.up.railway.app/auth/google')
+        window.location = 'https://courses-api.up.railway.app/auth/google'
         if (searchParams.get('token')) {
             setLoader(true);
             console.log(searchParams.get('token'))
