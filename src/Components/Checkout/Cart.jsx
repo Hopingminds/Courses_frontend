@@ -140,7 +140,7 @@ const CartCheckout = () => {
           body: JSON.stringify({ email: userDetail.email }),
         });
         let response1 = await data1.json();
-        if (response1.success) {
+        if (response.success) {
           toast.success(response.message);
           setTimeout(() => {
             navigate("/success");
