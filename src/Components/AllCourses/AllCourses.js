@@ -20,6 +20,8 @@ import { IoIosLock } from "react-icons/io";
 import { GoUnmute } from "react-icons/go";
 import { Globalinfo } from "../../App";
 import Newinstructor from "../Newinstructor";
+import HireTestimonial from "../HireFromUs/HireTestimonial";
+import CourseCard from "../Courses_Home/CourseCard";
 
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
@@ -76,23 +78,23 @@ const AllCourses = () => {
   // console.log(userDetail.blocked_courses)
   const [IsMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
-
+  const [selectedCourse, setSelectedCourse] = useState("");
   // console.log(pat);
 
-let {pathname}=useLocation()
+  let { pathname } = useLocation()
   const [params, setparams] = useSearchParams()
   useEffect(() => {
     fetchCourses();
-  }, [params.get("category"),pathname]);
-  let category=""
+  }, [params.get("category"), pathname]);
+  let category = ""
   const fetchCourses = async () => {
     try {
       // console.log("yes");
-     let category = params.get("category");
-     
+      let category = params.get("category");
+
       // console.log(category);
       if (category) {
-        category=category.replace(/%20/g, " ");
+        category = category.replace(/%20/g, " ");
         setcat(category)
         setshow(true);
         const res = await axios.get(`${BASE_URL}/courses?category=${category}`);
@@ -157,14 +159,9 @@ let {pathname}=useLocation()
     }
   }
 
-  // const moveBlockedCoursesToEnd = (courses, blockedCourses) => {
-
-  //   const filteredCourses = courses.filter(course => !blockedCourses.includes(course._id));
-  //   const blockedCoursesList = courses.filter(course => blockedCourses.includes(course._id));
-  //   const updatedCourses = filteredCourses.concat(blockedCoursesList);
-
-  //   return updatedCourses;
-  // };
+  const handleCourseClick = (courseTitle) => {
+    setSelectedCourse(courseTitle);
+  };
 
 
 
@@ -179,9 +176,7 @@ let {pathname}=useLocation()
   }, []);
 
   // console.log(SearchedData)
-  const toggleHover = (index) => {
-    setMouseHovered(index);
-  };
+
   function Count(num) {
     for (let index = 0; index < num; index++) {
       // setTimeout(() => {
@@ -200,6 +195,28 @@ let {pathname}=useLocation()
     Count(1001)
   }, [])
 
+  const searchBarRef = useRef(null);
+  const searchResultsRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      console.log(event)
+      // Check if the clicked element is not inside the search bar or search results popup
+      if (searchBarRef.current && !searchBarRef.current.contains(event.target) &&
+        searchResultsRef.current && !searchResultsRef.current.contains(event.target)) {
+        setSearchedData([])
+      }
+    };
+
+    // Attach the event listener when the component mounts
+    document.addEventListener('click', handleClickOutside);
+
+    // Detach the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [searchBarRef, searchResultsRef]);
+
   return (
     <>
       <head>
@@ -214,16 +231,17 @@ let {pathname}=useLocation()
       {/* </div> */}
 
       <div className="relative h-auto w-full">
-        <div className="flex flex-row rounded-2xl w-[60%] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] left-[17%]">
-          <div className="relative w-full">
+        <div className="flex flex-row rounded-2xl w-[60%] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] left-[50%] translate-x-[-50%]">
+          <div className="relative w-full ">
             <input
               type="text"
               placeholder=""
+              ref={searchBarRef}
               onChange={SearchData}
               className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
                 }`}
             />
-            <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center">
+            <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center" ref={searchResultsRef}>
               {SearchedData.map((item, ind) => {
                 // console.log(item.);
                 return (
@@ -284,126 +302,33 @@ let {pathname}=useLocation()
       ) : (
         ""
       )}
-        <div className="text-2xl font-bold pl-[5%]">{cat}</div>
+      <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
       <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
         {allCourses.map((val, ind) => {
           return (
-            <Link
-              to={"/detailcourse/" + val.slug}
-              className="px-4 py-6 h-full flex flex-col gap-4 rounded-xl  shadow-xl shadow-[#D9D9D9] xsm:gap-2 xsm:py-2 xsm:px-1 xsm:rounded-md md:p-2 md:gap-2 relative"
-              onMouseEnter={() => toggleHover(ind)}
-              onMouseLeave={() => toggleHover(null)}
-              key={ind}
-              style={{ pointerEvents: userDetail?.blocked_courses?.includes(val._id) ? 'none' : 'auto' }}
-            >
-              {
-                userDetail?.blocked_courses?.includes(val._id)
-                &&
-                <span className="absolute top-0 left-0 h-[100%] w-[100%] z-[99999] bg-[rgba(0,0,0,0.6)] rounded-xl grid place-items-center">
-                  <IoIosLock size={"60"} color={"white"} />
-                </span>
-              }
-
-              {mouseHovered === ind &&
-                <span className="bg-transparent p-4 absolute top-6 left-4 z-[9999]" >
-                  {IsMuted ? (
-                    <IoVolumeMuteOutline
-                      size={"20"}
-                      style={{
-                        cursor: "pointer",
-                        color: "black",
-
-                        zIndex: "999999",
-                      }}
-                      onClick={handleMute}
-                    />
-                  ) : (
-                    <IoVolumeMediumOutline
-                      size={"20"}
-                      style={{
-                        cursor: "pointer",
-                        color: "black",
-
-                        zIndex: "999999",
-                      }}
-                      onClick={handleMute}
-                    />
-                  )}
-                </span>}
-              <div className="min-h-[45%]">
-                {mouseHovered === ind ? (
-                  <ReactPlayer
-                    className="w-full h-full rounded-xl xsm:rounded-md border "
-                    height={'100%'}
-                    width={'100%'}
-                    url={val.featured_video}
-                    controls={false}
-                    playing={true}
-                    ref={videoRef}
-                    muted={IsMuted}
-                  />
-                ) : (
-                  <img
-                    className="w-full h-full rounded-xl xsm:rounded-md"
-                    src={val.featured_image}
-                    alt={val.title}
-                  />
-                )}
-              </div>
-              <div className="space-y-4 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2">
-                <div className="flex flex-col gap-3 xsm:gap-2 md:gap-0">
-                  <div className="flex justify-between">
-                    <div className="flex space-x-2 items-center xsm:space-x-1">
-                      <img
-                        className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
-                        src="../Icons/RCDesign.svg"
-                      />
-                      <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
-                        {val?.category}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[6px] md:text-[10px]">
-                        ₹ {val?.base_price}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex space-x-2 items-center xsm:space-x-0">
-                    <img
-                      className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
-                      src="../Icons/RCClock.svg"
-                    />
-                    <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
-                      {val?.duration}
-                    </p>
-                  </div>
-                  <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px]">
-                    {val?.title}
-                  </p>
-                  <p className="font-pop text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px]">
-                    {val?.overview.slice(0, 70)}..
-                  </p>
-                </div>
-                <div className=" flex items-center justify-between">
-                  <div className="flex items-center space-x-3 xsm:space-x-1 md:space-x-2">
-                    <img
-                      className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4"
-                      src="../img/RCimg2.png"
-                    />
-                    <p className="font-pop font-medium text-[14px] xsm:text-[6px] md:text-[7px]">
-                      {val?.instructor.firstName +
-                        " " +
-                        val?.instructor.lastName}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Link>
+            <CourseCard
+              key={val.title}
+              title={val.title}
+              featured_video={val.featured_video}
+              price={val.base_price}
+              firstName={val.instructor.firstName}
+              lastName={val.instructor.lastName}
+              duration={val.duration}
+              image={val.featured_image}
+              slug={val.slug}
+              onClick={() => handleCourseClick(val.title)}
+              isSelected={selectedCourse === val.title}
+              category={val.category}
+              description={val.overview}
+              ind={ind}
+              _id={val._id}
+            // Pass category to CourseCard component
+            />
           );
         })}
       </div>
-      <Newinstructor/>
+      <Newinstructor />
       {/* <div className="flex flex-col gap-14 px-24 py-20 md:px-[5%] md:gap-2 md:py-10">
         <p className="text-[#252641] text-[32px] font-poppins font-semibold pl-4 md:text-[18px]">
           Classes taught by real creators
@@ -533,7 +458,10 @@ let {pathname}=useLocation()
       ) : (
         ""
       )}
-      <NewTestimonial />
+      <div className="px-[5%] py-[4%] bg-[#111F25]">
+        <HireTestimonial />
+      </div>
+      {/* <NewTestimonial /> */}
     </>
   );
 };

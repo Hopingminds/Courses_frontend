@@ -5,3 +5,11 @@
     overflow: hidden;
     padding: 6px;
 }
+.rotate-up {
+    transform: rotate(180deg);
+  }
+  
+  .rotate-down {
+    transform: rotate(0deg);
+  }
+  

@@ -14,28 +14,38 @@ export default function Pap() {
   const [num, setNum] = useState('')
   const [Activeid, setActiveid] = useState()
   let navigate = useNavigate();
-let faqs=[
-{
-"question":"How does the Pay after Placement model work?",
-"answer":"Participants undergo training without upfront payment, only paying fees upon securing a job through the program."
-},
-{
-"question":"How does the Pay after Placement model work?",
-"answer":"Participants undergo training without upfront payment, only paying fees upon securing a job through the program."
-},
-{
-"question":"How does the Pay after Placement model work?",
-"answer":"Participants undergo training without upfront payment, only paying fees upon securing a job through the program."
-},
-{
-"question":"How does the Pay after Placement model work?",
-"answer":"Participants undergo training without upfront payment, only paying fees upon securing a job through the program."
-},
-{
-"question":"How does the Pay after Placement model work?",
-"answer":"Participants undergo training without upfront payment, only paying fees upon securing a job through the program."
-},
-]
+  const [faqs, setFaqs] = useState([
+    {
+      question: "How does the Pay after Placement model work?",
+      answer:
+        "Participants undergo training without upfront payment, only paying fees upon securing a job through the program.",
+      isOpen: false,
+    },
+    {
+      question: "How does the Pay after Placement model work?",
+      answer:
+        "Participants undergo training without upfront payment, only paying fees upon securing a job through the program.",
+      isOpen: false,
+    },
+    {
+      question: "How does the Pay after Placement model work?",
+      answer:
+        "Participants undergo training without upfront payment, only paying fees upon securing a job through the program.",
+      isOpen: false,
+    },
+    {
+      question: "How does the Pay after Placement model work?",
+      answer:
+        "Participants undergo training without upfront payment, only paying fees upon securing a job through the program.",
+      isOpen: false,
+    },
+    {
+      question: "How does the Pay after Placement model work?",
+      answer:
+        "Participants undergo training without upfront payment, only paying fees upon securing a job through the program.",
+      isOpen: false,
+    },
+  ]);
 
   const [formValues, setFormValues] = useState({
     fname: "",
@@ -70,32 +80,14 @@ let faqs=[
 
 
   function ClickSection(id) {
-    const imgrotate = document.getElementById(id + 'img');
-
-    if (!clicked) {
-      setclicked(true);
-     
-      if(id==Activeid){
-        setActiveid(-1)
-// toggleContent.style.display = "block";
-
-imgrotate.style.transform = 'rotate(0deg)';
-
+    const updatedFaqs = faqs.map((faq, index) => {
+      if (index === id) {
+        return { ...faq, isOpen: !faq.isOpen };
+      } else {
+        return { ...faq, isOpen: false };
       }
-      else{
-        setActiveid(id)
-        // const toggleContent = document.getElementById(Activeid + 'img');
-        // toggleContent.style.transform = 'rotate(0deg)'
-        imgrotate.style.transform = 'rotate(180deg)';
-      }
-      
-      // toggleContent.style.display = "block";
-    } else {
-      setclicked(false);
-      setActiveid(id)
-      imgrotate.style.transform = 'rotate(180deg)';
-      // toggleContent.style.display = "none";
-    }
+    });
+    setFaqs(updatedFaqs);
   }
 
   const checkUserAuth = () => {
@@ -270,123 +262,36 @@ imgrotate.style.transform = 'rotate(0deg)';
             <p className="font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px]">Frequently Asked Questions</p>
           </div>
           <div className=" w-full">
-            {
-              faqs.map((item,index)=>{
-return(<>
-<div className="faq1 w-full">
-              <div className=" w-full">
-                <div
-                  onClick={() => ClickSection(index)}
-                  id={index}
-                  className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
-                    <p className="xsm:text-[8px]">{item.question}</p>
+            {faqs.map((item, index) => (
+              <div key={index} className="faq1 w-full">
+                <div className=" w-full">
+                  <div
+                    onClick={() => ClickSection(index)}
+                    className="drop-top flex justify-between items-center w-full py-4 cursor-pointer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-[#1DBF73]"></div>
+                      <p>{item.question}</p>
+                    </div>
+                    <div>
+                      <img
+                        src="../Icons/papdropdown.svg"
+                        alt=""
+                        className={`arrow-icon ${
+                          item.isOpen ? "rotate-up" : "rotate-down"
+                        }`}
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" id={index+'img'}/>
-                  </div>
+                  {item.isOpen && (
+                    <div className="px-6 py-4">
+                      <p>{item.answer}</p>
+                    </div>
+                  )}
                 </div>
-                {
-                  Activeid==index?<div className="px-6 py-4  xsm:py-2 xsm:px-4" id={index + 'content'}>
-                  <p className="font-nu text-[#696984] text-[16px] xsm:text-[7px] xsm:text-justify">{item.answer}</p>
-                </div>:''
-                }
+                <hr className="border-[1px]" />
               </div>
-              <hr className="border-[1px]" />
-            </div>
-</>)
-              })
-            }
-            
-            {/* <div className="faq2 w-full">
-              <div className=" w-full">
-                <div
-                  onClick={() => ClickSection(2)}
-                  id={2}
-                  className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
-                    <p className="xsm:text-[8px]">Is there a risk involved for participants in the Pay after Placement model?</p>
-                  </div>
-                  <div>
-                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
-                  </div>
-                </div>
-                {
-                  // Activeid===2
-                }
-                <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={2 + 'content'}>
-                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Risk is minimal as payment is contingent on job placement; participants typically aren't obligated to pay if unsuccessful.</p>
-                </div>
-              </div>
-              <hr className="border-[1px]" />
-            </div>
-            <div className="faq3 w-full">
-              <div className=" w-full">
-                <div
-                  onClick={() => ClickSection(3)}
-                  id={3}
-                  className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
-                    <p className="xsm:text-[8px]">What are the advantages of the Pay after Placement model?</p>
-                  </div>
-                  <div>
-                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
-                  </div>
-                </div>
-                <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={3 + 'content'}>
-                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">It reduces financial barriers and aligns interests, with providers invested in participants' success.</p>
-                </div>
-              </div>
-              <hr className="border-[1px]" />
-            </div>
-            <div className="faq4 w-full">
-              <div className=" w-full">
-                <div
-                  onClick={() => ClickSection(4)}
-                  id={4}
-                  className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
-                    <p className="xsm:text-[8px]">What happens if a participant secures a job but can't pay immediately?</p>
-                  </div>
-                  <div>
-                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
-                  </div>
-                </div>
-                <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={4 + 'content'}>
-                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Flexible payment options, such as installment plans, are often provided to accommodate financial situations.</p>
-                </div>
-              </div>
-              <hr className="border-[1px]" />
-            </div>
-            <div className="faq5 w-full">
-              <div className=" w-full">
-                <div
-                  onClick={() => ClickSection(5)}
-                  id={5}
-                  className="drop-top flex justify-between items-center w-full py-4 cursor-pointer xsm:py-2"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2"></div>
-                    <p className="xsm:text-[8px]"> How do program providers ensure quality job placements?</p>
-                  </div>
-                  <div>
-                    <img src="../Icons/papdropdown.svg" alt="" className="xsm:w-2 xsm:h-2" />
-                  </div>
-                </div>
-                <div className="px-6 py-4 hidden xsm:py-2 xsm:px-4" id={5 + 'content'}>
-                  <p className="font-nu text-[#696984] text-[11px] xsm:text-[7px] xsm:text-justify">Providers establish employer partnerships and offer career support to ensure placements align with participants' goals.</p>
-                </div>
-              </div>
-              <hr className="border-[1px]" />
-            </div> */}
+            ))}
           </div>
         </div>
       </div>
@@ -464,4 +369,3 @@ return(<>
     </div>
   );
 };
-

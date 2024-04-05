@@ -29,25 +29,25 @@ const Courses_Home = () => {
       ? courses
       : courses.filter((course) => course.category === selectedCategory);
 
-      useEffect(() => {
-        function handleResize() {
-          // Check screen size and set the number of cards to show
-          if (window.innerWidth <= 480) {
-            setCardsToShow(3); // For screens smaller than 480px, show only 4 cards
-          } else {
-            setCardsToShow(4); // For larger screens, show 4 cards
-          }
-        }
-    
-        // Call handleResize initially and add event listener for resize
-        handleResize();
-        window.addEventListener("resize", handleResize);
-    
-        // Remove event listener on cleanup
-        return () => {
-          window.removeEventListener("resize", handleResize);
-        };
-      }, []);
+  useEffect(() => {
+    function handleResize() {
+      // Check screen size and set the number of cards to show
+      if (window.innerWidth <= 480) {
+        setCardsToShow(3); // For screens smaller than 480px, show only 4 cards
+      } else {
+        setCardsToShow(4); // For larger screens, show 4 cards
+      }
+    }
+
+    // Call handleResize initially and add event listener for resize
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    // Remove event listener on cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -112,7 +112,7 @@ const Courses_Home = () => {
         <div className="my-4 grid grid-cols-4 gap-4 xsm:grid-cols-3 xsm:gap-3 xsm:my-[2%]">
           {" "}
           {/* Changed flex to flex-wrap */}
-          {filteredCourses?.slice(0, cardsToShow)?.map((course,ind) => (
+          {filteredCourses?.slice(0, cardsToShow)?.map((course, ind) => (
             <CourseCard
               key={course.title}
               title={course.title}
@@ -126,9 +126,10 @@ const Courses_Home = () => {
               onClick={() => handleCourseClick(course.title)}
               isSelected={selectedCourse === course.title}
               category={course.category}
-              description={course.whatWillILearn}
+              description={course.overview}
               ind={ind}
-              // Pass category to CourseCard component
+              _id={course._id}
+            // Pass category to CourseCard component
             />
           ))}
           {/* {filteredCourses.length === 1 && ( // Render additional cards if there is only one course
