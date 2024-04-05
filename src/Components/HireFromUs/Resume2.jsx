@@ -3,8 +3,8 @@ import './hirefromus.css'
 
 const Resume2 = () => {
   return (
-    <div className='px-[5%] pt-[12%] pb-[10%] bg-gradient-to-r from-[#0F2027] to-[#203A43] bottomsvg2 ' style={{  width: "100%" }}>
-        <div className='text-white font-pop font-semibold text-[40px] text-center relative'>
+    <div className='px-[5%] py-[21%] bg-gradient-to-r from-[#0F2027] to-[#203A43] resumebg md:py-[16%]' style={{  width: "100%" }}>
+        <div className='text-white font-pop font-semibold text-[40px] text-center relative md:text-[32px]'>
             <p><span className='text-[#1DBF73]'>Thousands</span> of successful tech</p>
             <div className='absolute left-[30%] top-[43%]'>
                 <img className='w-[70%]' src="../Icons/yellowcurve.svg" alt="" />
@@ -13,28 +13,28 @@ const Resume2 = () => {
             <p>careers, fuelled by Hoping minds</p>
         </div>
         <div className='flex justify-end'>
-            <p className='font-pop font-bold text-[#1DBF73] mt-4'>See All</p>
+            <p className='font-pop font-bold text-[#1DBF73] mt-4 md::text-[16px]'>See All</p>
         </div>
-        <div className='grid grid-cols-3 gap-8 mt-8'>
-            <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 '>
+        <div className='grid grid-cols-3 gap-8 mt-8 md:mt-4'>
+            <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 md:rounded-xl md:p-4'>
                 <div className='flex justify-between'>
-                    <div className='font-int w-[60%] flex flex-col justify-between'>
-                        <p className='font-medium text-[18px]'>Anchal</p>
-                        <p className='font-bold'>Graphic Designer</p>
+                    <div className='font-int w-[60%] flex flex-col justify-between md:w-full'>
+                        <p className='font-medium text-[18px] md:text-[14px]'>Anchal</p>
+                        <p className='font-bold md:text-[12px]'>Graphic Designer</p>
                         <div className='flex items-center justify-between'>
                             <div className='flex items-center gap-1'>
-                                <img className='w-5' src="../Icons/Briefcase.svg" alt="" />
-                                <p className='font-bold text-[14px]'>2-7 Yrs</p>
+                                <img className='w-5 md:w-3' src="../Icons/Briefcase.svg" alt="" />
+                                <p className='font-bold text-[14px] md:text-[10px]'>2-7 Yrs</p>
                             </div>
                             <p className='font-medium text-[18px]'>|</p>
                             <div className='flex items-center gap-1'>
-                                <img className='w-5' src="../Icons/location.svg" alt="" />
-                                <p className='font-medium text-[14px]'>Chandigarh</p>
+                                <img className='w-5 md:w-3' src="../Icons/location.svg" alt="" />
+                                <p className='font-medium text-[14px] md:text-[10px]'>Chandigarh</p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <img className='w-24' src="../img/hireprofile.png" alt="" />
+                        <img className='w-24 md:w-16' src="../img/hireprofile.png" alt="" />
                     </div>
                 </div>
                 <div className='flex pr-6'>
@@ -42,32 +42,32 @@ const Resume2 = () => {
                         <img className='w-5 h-5' src="../Icons/fileempty.svg" alt="" />
                     </div>
                     <div>
-                        <p className='font-int font-medium text-justify text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
+                        <p className='font-int font-medium text-justify text-[14px] md:text-[12px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
                     </div>
                 </div>
                 {/* <div className='flex justify-center'>
                     <button className='text-white font-int font-bold bg-black px-4 py-1 rounded-lg'>View Resume</button>
                 </div> */}
             </div>
-            <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 '>
+            <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 md:rounded-xl md:p-4'>
                 <div className='flex justify-between'>
-                    <div className='font-int w-[60%] flex flex-col justify-between'>
-                        <p className='font-medium text-[18px]'>Anchal</p>
-                        <p className='font-bold'>Graphic Designer</p>
+                    <div className='font-int w-[60%] flex flex-col justify-between md:w-full'>
+                        <p className='font-medium text-[18px] md:text-[14px]'>Anchal</p>
+                        <p className='font-bold md:text-[12px]'>Graphic Designer</p>
                         <div className='flex items-center justify-between'>
                             <div className='flex items-center gap-1'>
-                                <img className='w-5' src="../Icons/Briefcase.svg" alt="" />
-                                <p className='font-bold text-[14px]'>2-7 Yrs</p>
+                                <img className='w-5 md:w-3' src="../Icons/Briefcase.svg" alt="" />
+                                <p className='font-bold text-[14px] md:text-[10px]'>2-7 Yrs</p>
                             </div>
                             <p className='font-medium text-[18px]'>|</p>
                             <div className='flex items-center gap-1'>
-                                <img className='w-5' src="../Icons/location.svg" alt="" />
-                                <p className='font-medium text-[14px]'>Chandigarh</p>
+                                <img className='w-5 md:w-3' src="../Icons/location.svg" alt="" />
+                                <p className='font-medium text-[14px] md:text-[10px]'>Chandigarh</p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <img className='w-24' src="../img/hireprofile.png" alt="" />
+                        <img className='w-24 md:w-16' src="../img/hireprofile.png" alt="" />
                     </div>
                 </div>
                 <div className='flex pr-6'>
@@ -75,32 +75,32 @@ const Resume2 = () => {
                         <img className='w-5 h-5' src="../Icons/fileempty.svg" alt="" />
                     </div>
                     <div>
-                        <p className='font-int font-medium text-justify text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
+                        <p className='font-int font-medium text-justify text-[14px] md:text-[12px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
                     </div>
                 </div>
                 {/* <div className='flex justify-center'>
                     <button className='text-white font-int font-bold bg-black px-4 py-1 rounded-lg'>View Resume</button>
                 </div> */}
             </div>
-            <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 '>
+            <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 md:rounded-xl md:p-4'>
                 <div className='flex justify-between'>
-                    <div className='font-int w-[60%] flex flex-col justify-between'>
-                        <p className='font-medium text-[18px]'>Anchal</p>
-                        <p className='font-bold'>Graphic Designer</p>
+                    <div className='font-int w-[60%] flex flex-col justify-between md:w-full'>
+                        <p className='font-medium text-[18px] md:text-[14px]'>Anchal</p>
+                        <p className='font-bold md:text-[12px]'>Graphic Designer</p>
                         <div className='flex items-center justify-between'>
                             <div className='flex items-center gap-1'>
-                                <img className='w-5' src="../Icons/Briefcase.svg" alt="" />
-                                <p className='font-bold text-[14px]'>2-7 Yrs</p>
+                                <img className='w-5 md:w-3' src="../Icons/Briefcase.svg" alt="" />
+                                <p className='font-bold text-[14px] md:text-[10px]'>2-7 Yrs</p>
                             </div>
                             <p className='font-medium text-[18px]'>|</p>
                             <div className='flex items-center gap-1'>
-                                <img className='w-5' src="../Icons/location.svg" alt="" />
-                                <p className='font-medium text-[14px]'>Chandigarh</p>
+                                <img className='w-5 md:w-3' src="../Icons/location.svg" alt="" />
+                                <p className='font-medium text-[14px] md:text-[10px]'>Chandigarh</p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <img className='w-24' src="../img/hireprofile.png" alt="" />
+                        <img className='w-24 md:w-16' src="../img/hireprofile.png" alt="" />
                     </div>
                 </div>
                 <div className='flex pr-6'>
@@ -108,7 +108,7 @@ const Resume2 = () => {
                         <img className='w-5 h-5' src="../Icons/fileempty.svg" alt="" />
                     </div>
                     <div>
-                        <p className='font-int font-medium text-justify text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
+                        <p className='font-int font-medium text-justify text-[14px] md:text-[12px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
                     </div>
                 </div>
                 {/* <div className='flex justify-center'>
