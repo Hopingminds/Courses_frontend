@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Technical = () => {
+const Technical = ({fun}) => {
   const [trainings, setTrainings] = useState([{ companyName: '', postName: '', location: '', fromDate: '', toDate: '' }]);
   const [projects, setProjects] = useState([{ projectName: '', projectRole: '', projectDescription: '' }]);
   const [certifications, setCertifications] = useState([{ certificateName: '', certifiedBy: '' }]);
@@ -46,8 +46,17 @@ const Technical = () => {
     setSkills(newSkills);
   };
 
+    function handleNext(){
+        fun('otherinfo');
+    }
+
+    function handlePrev(){
+        fun('education')
+    }
+
+
   return (
-    <div className='flex flex-col py-4 px-4 h-[70vh] overflow-auto scroll-m-0'>
+    <div className='flex flex-col justify-between  py-4 px-4 h-[70vh] overflow-auto scroll-m-0'>
       {/* Trainings or Internships Section */}
       <div className='flex flex-col gap-4'>
         <div>
@@ -63,7 +72,7 @@ const Technical = () => {
                     name="companyName"
                     value={training.companyName}
                     onChange={(e) => handleChangeTraining(index, e)}
-                    className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                    className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md outline-none'
                     type="text"
                   />
                 </div>
@@ -74,7 +83,7 @@ const Technical = () => {
                     name="postName"
                     value={training.postName}
                     onChange={(e) => handleChangeTraining(index, e)}
-                    className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                    className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md  outline-none'
                     type="text"
                   />
                 </div>
@@ -87,7 +96,7 @@ const Technical = () => {
                     name="location"
                     value={training.location}
                     onChange={(e) => handleChangeTraining(index, e)}
-                    className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                    className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md outline-none'
                     type="text"
                   />
                 </div>
@@ -99,7 +108,7 @@ const Technical = () => {
                       name="fromDate"
                       value={training.fromDate}
                       onChange={(e) => handleChangeTraining(index, e)}
-                      className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                      className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md outline-none'
                       type="date"
                     />
                     <p className='font-nu font-light text-[20px]'>To</p>
@@ -108,7 +117,7 @@ const Technical = () => {
                       name="toDate"
                       value={training.toDate}
                       onChange={(e) => handleChangeTraining(index, e)}
-                      className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                      className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md outline-none'
                       type="date"
                     />
                   </div>
@@ -136,7 +145,7 @@ const Technical = () => {
                   name="projectName"
                   value={project.projectName}
                   onChange={(e) => handleChangeProject(index, e)}
-                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md outline-none'
                   type="text"
                 />
               </div>
@@ -147,7 +156,7 @@ const Technical = () => {
                   name="projectRole"
                   value={project.projectRole}
                   onChange={(e) => handleChangeProject(index, e)}
-                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md outline-none'
                   type="text"
                 />
               </div>
@@ -159,7 +168,7 @@ const Technical = () => {
                 name="projectDescription"
                 value={project.projectDescription}
                 onChange={(e) => handleChangeProject(index, e)}
-                className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md outline-none'
                 placeholder='Project Information'
               />
             </div>
@@ -186,7 +195,7 @@ const Technical = () => {
                   name="certificateName"
                   value={certification.certificateName}
                   onChange={(e) => handleChangeCertification(index, e)}
-                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md outline-none'
                   type="text"
                 />
               </div>
@@ -197,7 +206,7 @@ const Technical = () => {
                   name="certifiedBy"
                   value={certification.certifiedBy}
                   onChange={(e) => handleChangeCertification(index, e)}
-                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md outline-none'
                   type="text"
                 />
               </div>
@@ -224,7 +233,7 @@ const Technical = () => {
                   name="skill"
                   value={skill.skill}
                   onChange={(e) => handleChangeSkill(index, e)}
-                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md outline-none'
                   type="text"
                 />
               </div>
@@ -235,7 +244,7 @@ const Technical = () => {
                   name="skillLevel"
                   value={skill.skillLevel}
                   onChange={(e) => handleChangeSkill(index, e)}
-                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md'
+                  className='bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md outline-none'
                   type="text"
                 />
               </div>
@@ -249,11 +258,11 @@ const Technical = () => {
 
       {/* Buttons Section */}
       <div className='flex justify-between mt-6'>
-        <div className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4'>
+        <div onClick={handlePrev} className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4 cursor-pointer'>
           <img className='w-7' src="../Icons/resumeleftarrow.svg" alt="" />
-          <button className="text-white font-pop font-medium text-[18px] xsm:text-[10px] xsm:py-1 xsm:px-4">Previous</button>
+          <button  className="text-white font-pop font-medium text-[18px] xsm:text-[10px] xsm:py-1 xsm:px-4">Previous</button>
         </div>
-        <div className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4'>
+        <div onClick={handleNext}  className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4 cursor-pointer'>
           <button className="text-white font-pop font-medium text-[18px] xsm:text-[10px] xsm:py-1 xsm:px-4">Submit</button>
           <img className='w-7' src="../Icons/resumerightarrow.svg" alt="" />
         </div>

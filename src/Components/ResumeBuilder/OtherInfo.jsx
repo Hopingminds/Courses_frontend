@@ -1,8 +1,12 @@
 import React from 'react'
 
-const OtherInfo = () => {
+const OtherInfo = ({fun}) => {
+
+    function handlePrev(){
+        fun('education')
+    }
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col justify-between gap-4 h-[70vh]'>
         <div className='flex flex-col gap-4 px-4 py-2'>
             <div className='grid grid-cols-2  gap-8'>
                 <div className='flex flex-col text-[15px]'>
@@ -36,11 +40,11 @@ const OtherInfo = () => {
             </div>
         </div>
         <div className='flex justify-between'>
-            <div className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4'>
+            <div onClick={handlePrev} className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4 cursor-pointer'>
                 <img className='w-7' src="../Icons/resumeleftarrow.svg" alt="" />
                 <button className=" text-white font-pop font-medium text-[18px]  xsm:text-[10px] xsm:py-1 xsm:px-4">Previous</button>
             </div>
-            <div className='bg-[#1DBF73] flex items-center rounded-full px-8 py-2 gap-4'>
+            <div className='bg-[#1DBF73] flex items-center rounded-full px-8 py-2 gap-4 cursor-pointer'>
                 <button className=" text-white font-pop font-medium text-[18px]  xsm:text-[10px] xsm:py-1 xsm:px-4">Submit</button>
             </div>
         </div>

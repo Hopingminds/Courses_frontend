@@ -13,6 +13,10 @@ const ResumeBuilder = () => {
       setActiveComponent(componentName);
     };
 
+    function MoveCompo(val){
+        setActiveComponent(val);
+    }
+
     return (
         <div className='w-[60vw] bg-white rounded-xl'>
             <div className='grid grid-cols-4'>
@@ -22,10 +26,10 @@ const ResumeBuilder = () => {
                 <button className={`border border-[#EAEAEA] rounded-e-2xl rounded-b-none py-2 font-pop font-semibold text-[18px] ${activeComponent === 'otherinfo' ? 'resumebutton' : ''}`} onClick={() => renderComponent('otherinfo')}>Other Info</button>
             </div>
             <div className='px-10 py-6 border border-[#EAEAEA] rounded-b-xl '>
-                {activeComponent === 'basic' && <Basic />}
-                {activeComponent === 'education' && <Education />}
-                {activeComponent === 'technical' && <Technical />}
-                {activeComponent === 'otherinfo' && <OtherInfo />}
+                {activeComponent === 'basic' && <Basic fun={MoveCompo}/>}
+                {activeComponent === 'education' && <Education fun={MoveCompo}/>}
+                {activeComponent === 'technical' && <Technical fun={MoveCompo}/>}
+                {activeComponent === 'otherinfo' && <OtherInfo fun={MoveCompo}/>}
             </div>
         </div>
   )
