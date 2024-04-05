@@ -47,7 +47,7 @@ const Technical = () => {
   };
 
   return (
-    <div className='flex flex-col py-4 px-4'>
+    <div className='flex flex-col py-4 px-4 h-[70vh] overflow-auto scroll-m-0'>
       {/* Trainings or Internships Section */}
       <div className='flex flex-col gap-4'>
         <div>

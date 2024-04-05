@@ -16,7 +16,7 @@ const Education = () => {
   };
 
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-4 max-h-[70vh] overflow-auto'>
       {educationFields.map((field, index) => (
         <div key={index} className='flex flex-col gap-4 px-4 py-2'>
           <div className='grid grid-cols-2  gap-8'>
