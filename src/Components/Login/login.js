@@ -86,7 +86,7 @@ const Login = () => {
 
     const handleGoogleLogin = () => {
 
-        window.location.replace('https://courses-api.up.railway.app/auth/google')
+        window.location = 'https://courses-api.up.railway.app/auth/google'
         if (searchParams.get('token')) {
             setLoader(true);
             console.log(searchParams.get('token'))
@@ -154,7 +154,7 @@ const Login = () => {
                     <img className='w-[60%] object-cover absolute top-10' src='../login_bg.png' alt="Login Background" />
                 </div>
                 <div className='flex flex-col items-center my-16 w-[45%] gap-4 xsm:w-full'>
-                    <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p>
+                    {/* <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p> */}
                     <div className='flex flex-col w-[65%] gap-4 xsm:w-[90%]'>
                         <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 '>
                             <button className='bg-transparent cursor-pointer Loginactive' >Login</button>

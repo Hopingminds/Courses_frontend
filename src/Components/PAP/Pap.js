@@ -22,27 +22,27 @@ export default function Pap() {
       isOpen: false,
     },
     {
-      question: "How does the Pay after Placement model work?",
+      question: "Is there a risk involved for participants in the Pay after Placement model?",
       answer:
-        "Participants undergo training without upfront payment, only paying fees upon securing a job through the program.",
+        "Risk is minimal as payment is contingent on job placement; participants typically aren't obligated to pay if unsuccessful.",
       isOpen: false,
     },
     {
-      question: "How does the Pay after Placement model work?",
+      question: "What are the advantages of the Pay after Placement model?",
       answer:
-        "Participants undergo training without upfront payment, only paying fees upon securing a job through the program.",
+        "It reduces financial barriers and aligns interests, with providers invested in participants' success.",
       isOpen: false,
     },
     {
-      question: "How does the Pay after Placement model work?",
+      question: "What happens if a participant secures a job but can't pay immediately?",
       answer:
-        "Participants undergo training without upfront payment, only paying fees upon securing a job through the program.",
+        "Flexible payment options, such as installment plans, are often provided to accommodate financial situations.",
       isOpen: false,
     },
     {
-      question: "How does the Pay after Placement model work?",
+      question: "How do program providers ensure quality job placements?",
       answer:
-        "Participants undergo training without upfront payment, only paying fees upon securing a job through the program.",
+        "Providers establish employer partnerships and offer career support to ensure placements align with participants' goals.",
       isOpen: false,
     },
   ]);
@@ -129,7 +129,7 @@ export default function Pap() {
               <div className="w-[90%]">
                 <div>
                   <p className="font-nu font-semibold text-[22px] xsm:text-[10px]">Minimum CTC</p>
-                  <p className="font-nu font-medium text-[16px] xsm:text-[7px]">If your salary is above the CTC of ₹3,50,000/-, the PAP monthly payments come into effect.</p>
+                  <p className="font-nu font-medium text-[16px] xsm:text-[7px]">If your salary is above the CTC of ₹5,00,000/-, the PAP monthly payments come into effect.</p>
                 </div>
               </div>
             </div>
@@ -251,7 +251,7 @@ export default function Pap() {
               <p className="font-nu text-[16px] leading-8 xsm:text-[7px] xsm:leading-normal xsm:tracking-wider">PAP Agreement is a legal contract that makes education at Hoping Minds outcome-based. It is not an education loan, as you do not have to pay any interest & you do not require any collaterals. If you do not get placed within 1 year of course completion, your learning with Hoping Minds is completely free.</p>
             </div>
             <div className="">
-              <button onClick={checkUserAuth} className="bg-white text-black font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Explore Now</button>
+              <button onClick={checkUserAuth} className="bg-white text-black font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4">Take A Tour</button>
 
             </div>
           </div>

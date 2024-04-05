@@ -21,7 +21,7 @@ const PapHome = () => {
                 <div className='bg-[#E2FFF1] py-5 px-8 flex flex-col items-center gap-2 shadow-md shadow-[#0000001C] rounded-lg xsm:px-2 w-[90%]'>
                     <img className='xsm:w-[24px] xsm:h-[24px] md:w-[35px] md:h-[25px] w-[50px] h-[50px]' src='../Icons/pap3.svg' />
                     <h3 className='text-[#595959] text-center text-[26px] font-semibold xsm:text-[10px] md:text-[14px] font-pop'>Work Now, Worry Later</h3>
-                    <p className='text-[##3C3C3CE5] text-center text-[18px] xsm:text-[7px] xsm:text-balance md:text-[8px] font-pop'>With HopingMinds, you get a job before you pay any fees. It's a simple, stress-free, and risk-free approach. No job means no charges, ensuring peace of mind and security.</p>
+                    <p className='text-[##3C3C3CE5] text-center text-[18px] xsm:text-[7px] xsm:text-balance md:text-[8px] font-pop'>With HopingMinds, you get a job before you pay any fees. It's a simple, stress-free, and risk-free approach. No job means no charges, ensuring peace of mind.</p>
                 </div>
             </div>
             <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full xsm:mt-2 xsm:text-[8px] xsm:py-1 xsm:px-3 md:mt-0 md:text-[12px] md:py-2 md:px-4 font-pop' onClick={() => navigate('/pap')}>Kick Start</button>

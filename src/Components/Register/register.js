@@ -1,7 +1,7 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState, useRef, useLayoutEffect } from 'react';
 import './register.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { validateCollege, validateEmail } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
@@ -10,12 +10,14 @@ import { Globalinfo } from '../../App';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { ReactComponent as Google } from '../../Assests/Icons/google.svg';
 import { jwtDecode } from 'jwt-decode';
+import { authenticateUser } from '../../helpers/helperapi';
 
 const Register = () => {
     const navigate = useNavigate();
     const { getUserDetails } = useContext(Globalinfo);
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const nameRef = useRef(null);
     const emailRef = useRef(null);
@@ -100,6 +102,22 @@ const Register = () => {
             setBtnLoader(false);
         }
     };
+
+
+    const handleGoogleRegister = () => {
+        window.location = 'https://courses-api.up.railway.app/auth/google'
+
+    }
+
+    useLayoutEffect(() => {
+        if (searchParams.get('name') && searchParams.get('email')) {
+            toast.success("Fill all the details");
+            user.name = searchParams.get('name');
+            user.email = searchParams.get('email')
+
+        }
+
+    }, [searchParams.get('name'), searchParams.get('email')])
 
     return (
         <>
@@ -214,7 +232,7 @@ const Register = () => {
 
                                 <div >
 
-                                    <span><Google /></span>
+                                    <span onClick={handleGoogleRegister} className='cursor-pointer'><Google /></span>
 
                                 </div>
                             </div>

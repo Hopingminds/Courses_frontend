@@ -19,17 +19,17 @@ const Resume = () => {
             <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 '>
                 <div className='flex justify-between'>
                     <div className='font-int w-[60%] flex flex-col justify-between'>
-                        <p className='font-medium text-[18px]'>Anchal</p>
-                        <p className='font-bold'>Graphic Designer</p>
+                        <p className='font-medium text-[18px]'>Arjit Dixit</p>
+                        <p className='font-bold'>Full Stack Developer</p>
                         <div className='flex items-center justify-between'>
                             <div className='flex items-center gap-1'>
                                 <img className='w-5' src="../Icons/Briefcase.svg" alt="" />
-                                <p className='font-bold text-[14px]'>2-7 Yrs</p>
+                                <p className='font-bold text-[14px]'>1-2 Yrs</p>
                             </div>
                             <p className='font-medium text-[18px]'>|</p>
                             <div className='flex items-center gap-1'>
                                 <img className='w-5' src="../Icons/location.svg" alt="" />
-                                <p className='font-medium text-[14px]'>Chandigarh</p>
+                                <p className='font-medium text-[14px]'>Mohali</p>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,9 @@ const Resume = () => {
                         <img className='w-5 h-5' src="../Icons/fileempty.svg" alt="" />
                     </div>
                     <div>
-                        <p className='font-int font-medium text-justify text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
+                        <p className='font-int font-medium text-justify text-[14px]'>Currently honing problem-solving skills through coursework and hands-on projects. Demonstrated ability to
+grasp complex concepts and apply them effectively. Eager to contribute a dedicated and proactive approach
+to coding challenges and collaborative projects.</p>
                     </div>
                 </div>
                 {/* <div className='flex justify-center'>
@@ -52,17 +54,17 @@ const Resume = () => {
             <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 '>
                 <div className='flex justify-between'>
                     <div className='font-int w-[60%] flex flex-col justify-between'>
-                        <p className='font-medium text-[18px]'>Anchal</p>
-                        <p className='font-bold'>Graphic Designer</p>
+                        <p className='font-medium text-[18px]'>Drishti</p>
+                        <p className='font-bold'>Data Science</p>
                         <div className='flex items-center justify-between'>
                             <div className='flex items-center gap-1'>
                                 <img className='w-5' src="../Icons/Briefcase.svg" alt="" />
-                                <p className='font-bold text-[14px]'>2-7 Yrs</p>
+                                <p className='font-bold text-[14px]'>2-3 Yrs</p>
                             </div>
                             <p className='font-medium text-[18px]'>|</p>
                             <div className='flex items-center gap-1'>
                                 <img className='w-5' src="../Icons/location.svg" alt="" />
-                                <p className='font-medium text-[14px]'>Chandigarh</p>
+                                <p className='font-medium text-[14px]'>Punjab</p>
                             </div>
                         </div>
                     </div>
@@ -75,7 +77,9 @@ const Resume = () => {
                         <img className='w-5 h-5' src="../Icons/fileempty.svg" alt="" />
                     </div>
                     <div>
-                        <p className='font-int font-medium text-justify text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
+                        <p className='font-int font-medium text-justify text-[14px]'>Proficient in Python and Data analysis tools with a strong foundation in Data Structures and Algorithms, enabling
+effective problem solving in diverse scenarios. Strong teamwork skills with excellent communication and interpersonal
+skills , Committed to delivering results while promoting quality work.</p>
                     </div>
                 </div>
                 {/* <div className='flex justify-center'>
@@ -85,17 +89,17 @@ const Resume = () => {
             <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 '>
                 <div className='flex justify-between'>
                     <div className='font-int w-[60%] flex flex-col justify-between'>
-                        <p className='font-medium text-[18px]'>Anchal</p>
-                        <p className='font-bold'>Graphic Designer</p>
+                        <p className='font-medium text-[18px]'>Dupesh Malhan</p>
+                        <p className='font-bold'>Full Stack Developer</p>
                         <div className='flex items-center justify-between'>
                             <div className='flex items-center gap-1'>
                                 <img className='w-5' src="../Icons/Briefcase.svg" alt="" />
-                                <p className='font-bold text-[14px]'>2-7 Yrs</p>
+                                <p className='font-bold text-[14px]'>6 months</p>
                             </div>
                             <p className='font-medium text-[18px]'>|</p>
                             <div className='flex items-center gap-1'>
                                 <img className='w-5' src="../Icons/location.svg" alt="" />
-                                <p className='font-medium text-[14px]'>Chandigarh</p>
+                                <p className='font-medium text-[14px]'>Mohali</p>
                             </div>
                         </div>
                     </div>
@@ -108,7 +112,11 @@ const Resume = () => {
                         <img className='w-5 h-5' src="../Icons/fileempty.svg" alt="" />
                     </div>
                     <div>
-                        <p className='font-int font-medium text-justify text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci....</p>
+                        <p className='font-int font-medium text-justify text-[14px]'>Highly motivated and passionate Computer Science student proficient in web development and problem-
+solving. Demonstrated ability to approach challenges with a logical and strategic mindset. Dedicated team
+
+player with excellent communication skills who fosters collaborative environments and contributes to
+successful project outcomes.</p>
                     </div>
                 </div>
                 {/* <div className='flex justify-center'>

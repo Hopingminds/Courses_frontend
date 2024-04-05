@@ -38,7 +38,7 @@ const WhyHM = () => {
   };
 
   return (
-    <div className=" pb-[6%] pt-[2%]">
+    <div className=" pb-[6%] pt-[2%] md:pt-0">
       <div className="flex flex-col gap-3 xsm:gap-5" ref={sectionRef}>
         <div className="flex justify-center">
           <p className="text-[#1DBF73] text-[36px] font-pop font-semibold xsm:text-[12px] md:text-[30px]">
