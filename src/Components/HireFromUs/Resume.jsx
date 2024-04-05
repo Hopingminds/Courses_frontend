@@ -54,7 +54,7 @@ to coding challenges and collaborative projects.</p>
             <div className='bg-[#E2FFF1] p-8 rounded-3xl flex flex-col gap-4 '>
                 <div className='flex justify-between'>
                     <div className='font-int w-[60%] flex flex-col justify-between'>
-                        <p className='font-medium text-[18px]'>DRISHTI</p>
+                        <p className='font-medium text-[18px]'>Drishti</p>
                         <p className='font-bold'>Data Science</p>
                         <div className='flex items-center justify-between'>
                             <div className='flex items-center gap-1'>

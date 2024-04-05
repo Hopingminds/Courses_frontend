@@ -23,7 +23,7 @@ const CareerServices = () => {
                                 <img className='w-10 h-10' src="../Icons/hireheadicon1.svg" alt="" />
                             </div>
                             <div>
-                                <p className='font-pop font-semibold text-center text-[14px]'>Lifetime Career Support</p>
+                                <p className='font-pop font-semibold text-center text-[14px]'>Job Placement Guarantee</p>
                             </div>
                         </div>
                         <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl border-2'>
@@ -31,7 +31,7 @@ const CareerServices = () => {
                                 <img className='w-10 h-10' src="../Icons/hireheadicon2.svg" alt="" />
                             </div>
                             <div>
-                                <p className='font-pop font-semibold text-center text-[14px]'>Exclusive Mentor Session</p>
+                                <p className='font-pop font-semibold text-center text-[14px]'>Tailored Curriculum</p>
                             </div>
                         </div>
                         <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl border-2'>
@@ -39,9 +39,13 @@ const CareerServices = () => {
                                 <img className='w-10 h-10' src="../Icons/hireheadicon3.png" alt="" />
                             </div>
                             <div>
-                                <p className='font-pop font-semibold text-center text-[14px]'>CV & Interview Preparation</p>
+                                <p className='font-pop font-semibold text-center text-[14px]'>Experienced Instructors:</p>
                             </div>
                         </div>
+                        {/* Hands-on Projects: 
+                        Industry Partnerships
+                        Continuous Support
+                        Flexible Learning Options */}
                     </div>
                 </div>
                 <div className='w-[30%]'>
