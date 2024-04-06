@@ -31,7 +31,7 @@ const CartCheckout = () => {
   const [courseId, setcourseId] = useState();
   const [Data, setData] = useState([]);
   const [total, settotal] = useState(0);
-  const [show, setshow] = useState(true)
+  const [show, setshow] = useState(false)
   const checkUserValidation = async () => {
     const isValidUser = await authenticateUser();
     
@@ -111,6 +111,7 @@ const CartCheckout = () => {
       toast.error("Every input must be filled");
     } else {
       try {
+        setshow(true)
         let url = BASE_URL + "/purchasecourse";
         let url1 = BASE_URL + "/deletecart";
         let orderDetails={name:userDetail.name,zip,gstnumber,country:country.capital,state:state.label,address}
@@ -145,6 +146,7 @@ const CartCheckout = () => {
       let response1 = await data1.json();
      }
      toast.success(response.message);
+     setshow(false)
      setTimeout(() => {
        navigate("/success");
      }, 1000);
@@ -173,7 +175,7 @@ const CartCheckout = () => {
 
   return (
     <>
-         {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
+         {show ? <div className='w-full h-screen z-20 fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
                 <Spinner className='' />
 
             </div> : ''}

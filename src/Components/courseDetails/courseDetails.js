@@ -53,11 +53,31 @@ export default function CDDetails() {
             });
           });
         }
-        console.log("all", allchapters[0]?.video);
+        // console.log("all", allchapters[0]?.video);
+        try {
+          let login = localStorage.getItem("COURSES_USER_TOKEN");
+          if (login) {
+            let url = BASE_URL + "/lessoncompleted";
+            let bodydata = { courseId:response?.data?.course?._id, lessonId: allchapters[0]?._id };
+            const data1 = await fetch(url, {
+              method: "PUT",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + login,
+              },
+              body: JSON.stringify(bodydata),
+            });
+            const response1 = await data1.json();
+            // setcompleted_lessons(response1?.data?.completed_lessons);
+            console.log(response1);
+          }
+        } catch (error) {
+          console.log(error);
+        }
         setALLCHAPTER(allchapters);
         seturl(allchapters[0]?.video);
         setData(response?.data?.course);
-        setcompleted_lessons(response?.data?.completed_lessons);
         setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
       }
@@ -65,7 +85,7 @@ export default function CDDetails() {
     Fetchdata();
   }, []);
 
-  console.log(allchapters);
+  // console.log(allchapters);
   const handleVideoEnded = async () => {
     setcount(count + 1);
     seturl(ALLCHAPTER[count + 1]?.video);
@@ -86,7 +106,7 @@ export default function CDDetails() {
           body: JSON.stringify(bodydata),
         });
         const response = await data1.json();
-        console.log(response);
+        // console.log(response);
       }
     } catch (error) {
       console.log(error);
