@@ -107,8 +107,8 @@ const OurFeatures = () => {
       `}
       </style>
       <div className="">
-        <div className="add_gradient flex flex-col gap-12  py-10 pb-20 px-28 xsm:px-[5%] xsm:gap-2 xsm:pb-[3%] xsm:py-[5%] md:px-[5%] md:gap-6 md:pb-10">
-          <div className="flex flex-col gap-4 justify-center items-center xsm:gap-2">
+        <div className="add_gradient flex flex-col gap-12  py-10 pb-20 px-28 xsm:px-[5%] xsm:gap-2 xsm:pb-[3%] xsm:py-[5%] md:px-[5%] md:gap-4 md:pb-10">
+          <div className="flex flex-col gap-4 justify-center items-center xsm:gap-2 md:gap-3">
             <p className="text-[36px] text-white font-pop font-semibold xsm:text-[12px] md:text-[30px]">
               Our <span className="text-[#33EFA0]"> Features </span>{" "}
             </p>
@@ -122,13 +122,13 @@ const OurFeatures = () => {
               <img
                 key={displayImage}
                 src={displayImage}
-                className={`w-[90%] h-[60vh] object-contain slide-in-left xsm:h-[25vh] md:h-[40vh] ${applyZoomOutImage ? "zoom-out" : ""
+                className={`w-[90%] h-[60vh] object-contain slide-in-left xsm:h-[20vh] md:h-[30vh] ${applyZoomOutImage ? "zoom-out" : ""
                   }`}
               />
             </div>
             <div className="relative overflow-hidden w-[45%] flex justify-left items-center h-auto">
               <div
-                className={`flex flex-col gap-6 w-[90%] h-auto slide-in-right xsm:gap-2 xsm:w-[95%] ${applyZoomOutText ? "zoom-out" : ""
+                className={`flex flex-col gap-6 w-[90%] h-auto slide-in-right xsm:gap-2 xsm:w-[95%] md:gap-3 ${applyZoomOutText ? "zoom-out" : ""
                   }`}
               >
                 {displayText}
