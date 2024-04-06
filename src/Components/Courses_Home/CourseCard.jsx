@@ -89,11 +89,11 @@ const CourseCard = ({
           )}
         </span>
       )}
-      <div className="min-h-[45%]">
+      <div className="h-[40%] xsm:h-[45%] md:h-[35%]">
         {mouseHovered === ind ? (
           <ReactPlayer
             className=" rounded-xl xsm:rounded-md border"
-            height={"40%"}
+            height={"100%"}
             width={"100%"}
             url={featured_video}
             controls={false}
@@ -104,7 +104,7 @@ const CourseCard = ({
         ) : (
           <img
             // style={{ height: "10rem" }}
-            className="w-full  rounded-lg h-[40%] xsm:h-[45%] md:h-[35%]"
+            className="w-full  rounded-lg h-full "
             src={image}
             alt="Course"
           />
