@@ -9,7 +9,8 @@ import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
 export default function MyStats({ courses }) {
-  console.log(courses);
+  // console.log(courses);
+  const [completed, setcompleted] = useState(0)
   const [maxValues, setMaxValues] = useState({
     first: 0,
     second: 0,
@@ -28,9 +29,11 @@ export default function MyStats({ courses }) {
     }; // Cleanup function to clear timeout on unmount or state change
   }, []);
 
-  const handleCourseClick = (course) => {
-    console.log(course);
+
+  const handleCourseClick = (course,total) => {
+    // console.log(course);
     setSelectedCourse(course);
+    setcompleted(total)
   };
 
   const calculateAverageProgress = (completedAssignments, completedLessons) => {
@@ -42,6 +45,7 @@ export default function MyStats({ courses }) {
 
   return (
     <div className="px-[8%] mt-20 mb-24 xsm:px-[5%] xsm:m-[6%]">
+      {!courses?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Stats</div></div>:
       <div className="flex flex-row justify-between xsm:flex-col-reverse xsm:gap-10">
         <div className="w-[43%] xsm:w-full">
           <p className="font-nu font-semibold text-[20px] text-[#243465] xsm:text-[10px]">
@@ -49,23 +53,29 @@ export default function MyStats({ courses }) {
           </p>
           <div className="">
             {courses?.map((val, ind) => {
+              let total=0;
+             val?.course?.curriculum?.map((it)=>{
+total+=it.lessons.length;
+              })
+              // console.log(total);
               return (
-                <div key={ind} onClick={() => handleCourseClick(val)}>
+                <div key={ind} onClick={() => handleCourseClick(val,((val?.completed_lessons?.length*100)/total).toFixed(2))}>
                   {/* Course Item */}
                   <div className="flex justify-evenly py-6 cursor-pointer xsm:justify-between xsm:py-2 xsm:pt-4">
                     <div className="w-[17%] font-nu font-semibold xsm:w-[14%]">
                       <AnimatedProgressProvider
                         valueStart={0}
-                        valueEnd={val?.completed_lessons.length}
+                        valueEnd={((val?.completed_lessons?.length*100)/total).toFixed(2)}
                         duration={1.4}
                         easingFunction={easeQuadInOut}
                       >
                         {(value) => {
-                          const roundedValue = Math.round(value);
+                          // const roundedValue = Math.round(value);
+                          // console.log(total,val?.completed_lessons?.length*100);
                           return (
                             <CircularProgressbar
-                              value={val?.completed_lessons.length}
-                              text={`${val?.completed_lessons.length}%`}
+                              value={((val?.completed_lessons?.length*100)/total).toFixed(2)}
+                              text={`${((val?.completed_lessons?.length*100)/total).toFixed(2)}%`}
                               styles={buildStyles({
                                 pathTransition:
                                   "stroke-dashoffset 1s ease 0s",
@@ -108,7 +118,7 @@ export default function MyStats({ courses }) {
               {/* progressbar of each Course */}
               <AnimatedProgressProvider
                 valueStart={0}
-                valueEnd={calculateAverageProgress(selectedCourse?.completed_assignments.length || 0,selectedCourse?.completed_lessons.length || 0)}
+                valueEnd={calculateAverageProgress(selectedCourse?.completed_assignments.length || 0,completed || 0)}
                 duration={1.4}
                 easingFunction={easeQuadInOut}
               >
@@ -116,7 +126,7 @@ export default function MyStats({ courses }) {
                   const roundedValue = Math.round(value);
                   return (
                     <CircularProgressbarWithChildren
-                      value={calculateAverageProgress(selectedCourse?.completed_assignments.length || 0,selectedCourse?.completed_lessons.length || 0)}
+                      value={calculateAverageProgress(selectedCourse?.completed_assignments.length || 0,completed || 0)}
                       strokeWidth={3}
                       styles={buildStyles({
                         pathColor: "#FB67CA",
@@ -147,7 +157,7 @@ export default function MyStats({ courses }) {
                                 <div style={{ width: "80%" }}>
                                   <AnimatedProgressProvider
                                     valueStart={0}
-                                    valueEnd={selectedCourse?.completed_lessons.length || 0}
+                                    valueEnd={completed || 0}
                                     duration={1.4}
                                     easingFunction={easeQuadInOut}
                                   >
@@ -155,7 +165,7 @@ export default function MyStats({ courses }) {
                                       const roundedValue = Math.round(value);
                                       return (
                                         <CircularProgressbarWithChildren
-                                          value={selectedCourse?.completed_lessons.length || 0}
+                                          value={completed || 0}
                                           strokeWidth={5}
                                           styles={buildStyles({
                                             pathColor: "#04BFDA",
@@ -189,7 +199,7 @@ export default function MyStats({ courses }) {
                     Completed
                   </p>
                 </div>
-                <p className="font-nu font-semibold text-[20px] xsm:text-[10px]">{calculateAverageProgress(selectedCourse?.completed_assignments.length,selectedCourse?.completed_lessons.length)}%</p>
+                <p className="font-nu font-semibold text-[20px] xsm:text-[10px]">{calculateAverageProgress(selectedCourse?.completed_assignments.length,completed)}%</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="flex space-x-2 items-center">
@@ -213,12 +223,13 @@ export default function MyStats({ courses }) {
                     Lessons
                   </p>
                 </div>
-                <p className="font-nu font-semibold text-[20px] xsm:text-[10px]">{selectedCourse?.completed_lessons.length}%</p>
+                <p className="font-nu font-semibold text-[20px] xsm:text-[10px]">{completed}%</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+}
     </div>
   );
 }

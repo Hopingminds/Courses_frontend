@@ -129,12 +129,12 @@ const HireTestimonial = () => {
                             <div>
                                 <img className={`w-4 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
-                            <div>
+                            <div className='h-[70%]'>
                                 <p className='text-[12px] font-pop'>{data.text}</p>
                             </div>
                             <div className='flex items-center gap-2'>
                                 <div className='rounded-full'>
-                                    <img className='rounded-full w-16 h-16 object-fit' src={data.image} alt="" />
+                                    <img className='rounded-full w-16 h-16 ' src={data.image} alt="" />
                                 </div>
                                 <div>
                                     <div>
@@ -183,12 +183,12 @@ const HireTestimonial = () => {
                             <div className='flex justify-end'>
                                 <img className={`w-4 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
-                            <div>
+                            <div className='h-[70%]'>
                                 <p className='text-[12px] font-pop text-left'>{data.text}</p>
                             </div>
                             <div className='flex flex-row-reverse items-center gap-2'>
                                 <div className='rounded-full'>
-                                    <img className='rounded-full w-16 h-16 object-fit' src={data.image} alt="" />
+                                    <img className='rounded-full w-16 h-16 ' src={data.image} alt="" />
                                 </div>
                                 <div>
                                     <div>

@@ -1,5 +1,5 @@
 import "./AiMinds.css";
-// import Typewriter from 'typewriter-effect';
+import Typewriter from 'typewriter-effect';
 
 export default function AiHead() {
   const handleDownloadPdf = () => {
@@ -29,14 +29,14 @@ export default function AiHead() {
         </p>
         <div>
           <p className="font-mons font-bold text-[70px] text-[#169f63] leading-none flex">
-            {/* <Typewriter
+            <Typewriter
                           options={{
                             strings: ['AI & Data Science'],
                             cursor: '',
                             autoStart: true,
                             loop: true,
                           }}
-                        /> */}
+                        /> 
             <span className="text-white text-[80px]">|</span>
           </p>
         </div>
