@@ -77,10 +77,10 @@ const Courses_Home = () => {
           {[
             "All Courses",
             "Full Stack Development",
-            "AI & ML",
-            "Data science",
-            "Cyber Security",
+            "AI/ML",
+            "Data Science",
             "Management",
+            "Networking",
           ].map((category) => (
             <button
               key={category}

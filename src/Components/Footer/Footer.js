@@ -39,9 +39,9 @@ const Footer = () => {
                             <Link to='/course?category=Management' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Management</Link>
                             <Link to='/course?category=Finance' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Finance</Link>
                             <Link to='/course?category=Full Stack Development' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Full Stack Development</Link>
-                            <Link to='/course?category=AI' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>AI/ML</Link>
-                            <Link to='/course?category=Cyber Security' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Cyber Security</Link>
-                            <Link to='/course?category=Electric Vehicle Design' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Electric Vehicle Design</Link>
+                            <Link to='/course?category=AI/ML' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>AI/ML</Link>
+                            <Link to='/course?category=Networking' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Networking</Link>
+                            <Link to='/course?category=Data Science' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Data Science</Link>
                         </div>
                     </div>
                     <div className='flex flex-col gap-8 xsm:gap-2  '>
