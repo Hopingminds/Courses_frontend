@@ -130,7 +130,7 @@ const CartCheckout = () => {
       let response = await data.json();
       // console.log(response);
       if (response.success) {
-     if(query.get("slug")){
+     if(!query.get("slug")){
       let data1 = await fetch(url1, {
         method: "POST",
         headers: {
@@ -141,11 +141,11 @@ const CartCheckout = () => {
         body: JSON.stringify({ email: userDetail.email }),
       });
       let response1 = await data1.json();
-      toast.success(response.message);
-          setTimeout(() => {
-            navigate("/success");
-          }, 1000);
      }
+     toast.success(response.message);
+     setTimeout(() => {
+       navigate("/success");
+     }, 1000);
     }
      else{
       toast.error(response.message);

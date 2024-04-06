@@ -2,10 +2,14 @@ import React, { useState } from 'react'
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
 
-const Basic = () => {
-    const [num, setNum] = useState('')
+const Basic = ({fun}) => {
+    const [num, setNum] = useState('');
+
+    function handleSubmit(){
+        fun('education');
+    }
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-4 h-[70vh]'>
         <div className='flex flex-col gap-4 px-4 py-2'>
             <div className='grid grid-cols-2  gap-8'>
                 <div className='flex flex-col text-[15px]'>
@@ -57,8 +61,8 @@ const Basic = () => {
             </div>
         </div>
         <div className='flex justify-end'>
-            <div className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4'>
-                <button className=" text-white font-pop font-medium text-[18px]  xsm:text-[10px] xsm:py-1 xsm:px-4">Submit</button>
+            <div onClick={handleSubmit} className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4 cursor-pointer'>
+                <button  className=" text-white font-pop font-medium text-[18px]  xsm:text-[10px] xsm:py-1 xsm:px-4">Submit</button>
                 <img className='w-7' src="../Icons/resumerightarrow.svg" alt="" />
             </div>
         </div>
