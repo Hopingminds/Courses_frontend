@@ -35,7 +35,7 @@ const Resume2 = () => {
         <Splide
           options={{
             type: "loop",
-            perPage: window.innerWidth <= 480 ? 5/3 : (window.innerWidth >= 721 || window.innerWidth <= 1024) ? 3 : 3,
+            perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : 3,
             pagination: false,
             perMove: 1,
             wheel: false,
@@ -52,10 +52,10 @@ const Resume2 = () => {
             <SplideSlide><div className="bg-[#E2FFF1] p-8 px-6 rounded-3xl flex flex-col gap-4 md:rounded-xl md:p-4 md:gap-2 xsm:p-2 xsm:rounded-xl xsm:gap-2 w-[90%] md:w-full xsm:w-full">
           <div className="flex justify-between">
             <div className="font-int w-[60%] flex flex-col justify-between">
-              <p className="font-medium text-[18px] md:text-[14px] xsm:text-[12px]">
+              <p className="font-medium text-[18px] md:text-[14px] xsm:text-[10px]">
                 Anchal
               </p>
-              <p className="font-bold md:text-[12px] xsm:text-[10px]">
+              <p className="font-bold md:text-[12px] xsm:text-[8px]">
                 Graphic Designer
               </p>
               <div className="flex items-center justify-between">
@@ -112,10 +112,10 @@ const Resume2 = () => {
             <SplideSlide><div className="bg-[#E2FFF1] p-8 px-6 rounded-3xl flex flex-col gap-4 md:rounded-xl md:p-4 md:gap-2 xsm:p-2 xsm:rounded-xl xsm:gap-2 w-[90%] md:w-full xsm:w-full">
           <div className="flex justify-between">
             <div className="font-int w-[60%] flex flex-col justify-between">
-              <p className="font-medium text-[18px] md:text-[14px] xsm:text-[12px]">
+              <p className="font-medium text-[18px] md:text-[14px] xsm:text-[10px]">
                 Anchal
               </p>
-              <p className="font-bold md:text-[12px] xsm:text-[10px]">
+              <p className="font-bold md:text-[12px] xsm:text-[8px]">
                 Graphic Designer
               </p>
               <div className="flex items-center justify-between">
@@ -172,10 +172,10 @@ const Resume2 = () => {
             <SplideSlide><div className="bg-[#E2FFF1] p-8 px-6 rounded-3xl flex flex-col gap-4 md:rounded-xl md:p-4 md:gap-2 xsm:p-2 xsm:rounded-xl  xsm:gap-2 w-[90%] md:w-full xsm:w-full">
           <div className="flex justify-between">
             <div className="font-int w-[60%] flex flex-col justify-between">
-              <p className="font-medium text-[18px] md:text-[14px] xsm:text-[12px]">
+              <p className="font-medium text-[18px] md:text-[14px] xsm:text-[10px]">
                 Anchal
               </p>
-              <p className="font-bold md:text-[12px] xsm:text-[10px]">
+              <p className="font-bold md:text-[12px] xsm:text-[8px]">
                 Graphic Designer
               </p>
               <div className="flex items-center justify-between">

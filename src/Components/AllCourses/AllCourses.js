@@ -231,7 +231,7 @@ const AllCourses = () => {
       {/* </div> */}
 
       <div className="relative h-auto w-full">
-        <div className="flex flex-row rounded-2xl w-[60%] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] left-[50%] translate-x-[-50%]">
+        <div className="flex flex-row rounded-2xl w-[60%] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] left-[50%] translate-x-[-50%] md:w-[70%]">
           <div className="relative w-full ">
             <input
               type="text"
@@ -282,19 +282,18 @@ const AllCourses = () => {
           />
         </div>
 
-        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-20 text-white  absolute bottom-0 items-center">
-          <div className="text-white ">
-            <div>Courses to choose from</div>
-            <div className="text-center text-xl font-semibold">{countvalue}+</div>
-
+        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-20 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16">
+          <div className="text-white xsm:flex xsm:flex-col">
+            <div className="xsm:text-[8px] md:text-[14px]">Courses to choose from</div>
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
           </div>
-          <div>
-            <div>Courses to choose from</div>
-            <div className="text-center text-xl font-semibold">{countvalue}+</div>
+          <div className="xsm:flex xsm:flex-col">
+            <div className="xsm:text-[8px] md:text-[14px]">Courses to choose from</div>
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
           </div>
-          <div>
-            <div>Courses to choose from</div>
-            <div className="text-center text-xl font-semibold">{countvalue}+</div>
+          <div className="xsm:flex xsm:flex-col">
+            <div className="xsm:text-[8px] md:text-[14px]">Courses to choose from</div>
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
           </div>
         </div>
       </div>
