@@ -35,7 +35,7 @@ const Resume2 = () => {
         <Splide
           options={{
             type: "loop",
-            perPage: window.innerWidth <= 480 ? 2 : 3,
+            perPage: window.innerWidth <= 480 ? 5/3 : (window.innerWidth >= 721 || window.innerWidth <= 1024) ? 3 : 3,
             pagination: false,
             perMove: 1,
             wheel: false,
