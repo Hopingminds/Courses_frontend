@@ -136,6 +136,13 @@ export default function CDDetails() {
                 url={url}
                 onDuration={handleDuration}
                 onEnded={handleVideoEnded}
+                config={{
+                  file: {
+                    attributes: {
+                      controlsList: "nodownload" // Disable download option
+                    }
+                  }
+                }}
               />
               {/* <div className="absolute right-0 bottom-10">
                                 <ChatBot className="w-fit" />

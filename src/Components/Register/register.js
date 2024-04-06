@@ -33,7 +33,7 @@ const Register = () => {
         phone: "",
         college: "",
         degree: "",
-        branch: "",
+        stream: "",
         password: "",
     });
 
@@ -72,11 +72,7 @@ const Register = () => {
         }
         setBtnLoader(true);
         try {
-            const res = await axios.post(`${BASE_URL}/register`, {
-                password: user.password,
-                email: user.email,
-                college: user.college,
-            });
+            const res = await axios.post(`${BASE_URL}/register`, user);
             getUserDetails();
             localStorage.setItem('COURSES_USER_TOKEN', res.data.token);
             toast.success("Registered Successfully");
