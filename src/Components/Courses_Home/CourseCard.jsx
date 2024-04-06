@@ -48,7 +48,7 @@ const CourseCard = ({
       onMouseEnter={() => toggleHover(ind)}
       onMouseLeave={() => toggleHover(null)}
       href={`/detailcourse/${slug}`}
-      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative coursecardhome   bg-white p-2 xsm:rounded-lg w-[283px] h-[443px] ${
+      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative coursecardhome   bg-white p-2 xsm:rounded-lg w-[283px] h-[443px] md:w-[100%] md:h-[100%] xsm:h-[100%] xsm:w-[100%] ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
       style={{
@@ -117,8 +117,8 @@ const CourseCard = ({
           />
         )}
       </div>
-      <div className="space-y-4 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2">
-        <div className="flex flex-col gap-3 xsm:gap-2 md:gap-0">
+      <div className="space-y-4 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2 md:mt-2 xsm:mt-1">
+        <div className="flex flex-col gap-3 xsm:gap-0 md:gap-0">
           <div className="flex justify-between">
             <div className="flex space-x-2 items-center xsm:space-x-1">
               <img
@@ -144,7 +144,7 @@ const CourseCard = ({
               {duration}
             </p>
           </div>
-          <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px]">
+          <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px] xsm:mt-2 xsm:h-6">
             {title}
           </p>
           <p className="font-pop text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px]">

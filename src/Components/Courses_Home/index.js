@@ -109,7 +109,7 @@ const Courses_Home = () => {
           </Link>
         </div>
         {/* <div className="text-[#333333] text-[20px] mt-1">Our training covers everything you need for a successful career, from basic job skills to advanced tech know-how.</div> */}
-        <div className="my-4 grid grid-cols-4 gap-4 xsm:grid-cols-3 xsm:gap-3 xsm:my-[2%]">
+        <div className="my-4 grid grid-cols-4 gap-4 xsm:grid-cols-3 xsm:gap-3 xsm:my-[2%] md:gap-3">
           {" "}
           {/* Changed flex to flex-wrap */}
           {filteredCourses?.slice(0, cardsToShow)?.map((course, ind) => (
