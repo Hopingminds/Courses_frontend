@@ -100,6 +100,13 @@ const CourseCard = ({
             playing={true}
             ref={videoRef}
             muted={IsMuted}
+            config={{
+              file: {
+                attributes: {
+                  controlsList: "nodownload", // Disable download option
+                },
+              },
+            }}
           />
         ) : (
           <img

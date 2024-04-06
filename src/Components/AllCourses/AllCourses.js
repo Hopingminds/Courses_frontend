@@ -272,6 +272,13 @@ const AllCourses = () => {
             playing={true}
             loop={true}
             controls={false}
+            config={{
+              file: {
+                attributes: {
+                  controlsList: "nodownload" // Disable download option
+                }
+              }
+            }}
           />
         </div>
 

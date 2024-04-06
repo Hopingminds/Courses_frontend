@@ -44,7 +44,7 @@ const WhyHM = () => {
       <div className="flex flex-col gap-3 xsm:gap-5" ref={sectionRef}>
         <div className="flex justify-center">
           <p className="text-[#1DBF73] text-[36px] font-pop font-semibold xsm:text-[24px] md:text-[30px]">
-          Why Hoping Minds
+            Why Hoping Minds
           </p>
         </div>
         <div className="flex justify-center">
@@ -71,21 +71,26 @@ const WhyHM = () => {
               width="100%"
               height="100%"
               style={{ objectFit: "cover" }}
+              config={{
+                file: {
+                  attributes: {
+                    controlsList: "nodownload", // Disable download option
+                  },
+                },
+              }}
             />
             {playingIndex !== 0 && (
               <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9]">
                 {true && (
                   <IoPlayCircle
-                  size={window.innerWidth <= 480 ? 30 : 60}
+                    size={window.innerWidth <= 480 ? 30 : 60}
                     onClick={() => handlePlay(0)}
                     style={{
                       cursor: "pointer",
                       color: "#1DBF73",
 
                       zIndex: "999999",
-
                     }}
-
                   />
                 )}
               </span>
@@ -105,12 +110,19 @@ const WhyHM = () => {
               width="100%"
               height="100%"
               style={{ objectFit: "cover" }}
+              config={{
+                file: {
+                  attributes: {
+                    controlsList: "nodownload", // Disable download option
+                  },
+                },
+              }}
             />
             {playingIndex !== 1 && (
               <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9]">
                 {true && (
                   <IoPlayCircle
-                  size={window.innerWidth <= 480 ? 30 : 60}
+                    size={window.innerWidth <= 480 ? 30 : 60}
                     onClick={() => handlePlay(1)}
                     style={{
                       cursor: "pointer",
@@ -118,7 +130,6 @@ const WhyHM = () => {
 
                       zIndex: "999999",
                     }}
-
                   />
                 )}
               </span>
