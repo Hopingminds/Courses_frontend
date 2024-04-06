@@ -267,25 +267,25 @@ export default function Pap() {
                 <div className=" w-full">
                   <div
                     onClick={() => ClickSection(index)}
-                    className="drop-top flex justify-between items-center w-full py-4 cursor-pointer"
+                    className="drop-top flex justify-between items-center w-full py-4 cursor-pointe xsm:py-3"
                   >
                     <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-full bg-[#1DBF73]"></div>
-                      <p>{item.question}</p>
+                      <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:w-2 xsm:h-2"></div>
+                      <p className="xsm:text-[8px]">{item.question}</p>
                     </div>
                     <div>
                       <img
                         src="../Icons/papdropdown.svg"
                         alt=""
-                        className={`arrow-icon ${
+                        className={`arrow-icon xsm:h-3 xsm:w-3 ${
                           item.isOpen ? "rotate-up" : "rotate-down"
                         }`}
                       />
                     </div>
                   </div>
                   {item.isOpen && (
-                    <div className="px-6 py-4">
-                      <p>{item.answer}</p>
+                    <div className="px-6 py-4 xsm:px-4 xsm:py-3">
+                      <p className="xsm:text-[8px]">{item.answer}</p>
                     </div>
                   )}
                 </div>

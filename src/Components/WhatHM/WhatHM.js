@@ -80,7 +80,7 @@ const WhatHM = () => {
               <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9]">
                 {true && (
                   <IoPlayCircle
-                    size={"60"}
+                  size={window.innerWidth <= 480 ? 30 : 60}
                     onClick={() => handlePlay(0)}
                     style={{
                       cursor: "pointer",
@@ -114,7 +114,7 @@ const WhatHM = () => {
               <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9]">
                 {true && (
                   <IoPlayCircle
-                    size={"60"}
+                  size={window.innerWidth <= 480 ? 30 : 60}
                     onClick={() => handlePlay(1)}
                     style={{
                       cursor: "pointer",

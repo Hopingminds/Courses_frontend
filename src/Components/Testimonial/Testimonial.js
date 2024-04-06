@@ -194,7 +194,7 @@ const Testimonial = () => {
           {/* right */}
           <div className="relative w-[45%]">
             <div className="relative ">
-              <div className="w-[70%] h-[54vh] rounded-3xl">
+              <div className="w-[70%] h-[54vh] rounded-3xl xsm:h-[16vh]">
               <img
                 src={testimonials[currentIndex].image}
                 className="w-[100%] h-[100%]  rounded-3xl xsm:rounded-md xsm:w-[95px] xsm:h-[120px] md:h-[280px] md:w-[80%]"
@@ -261,7 +261,7 @@ const Testimonial = () => {
 
             {/* arrrow */}
             <div
-              className="w-[60px] h-[60px] absolute bg-[#ffffff] rounded-full right-[22%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[28%] md:w-[40px] md:h-[40px] md:right-[14%]"
+              className="w-[60px] h-[60px] absolute bg-[#ffffff] rounded-full right-[22%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[30%] md:w-[40px] md:h-[40px] md:right-[14%]"
               style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }}
               onClick={handleArrow2Click}
             >
