@@ -57,9 +57,9 @@ export default function Navbar() {
                     <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px]" />
 
 
-                </span> </Link> : <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-2">
-                    <Link to={"/login"} className="bg-[#1DBF73] px-7 rounded-full text-white py-1 xsm:text-[10px] xsm:px-2 font-pop">Log in</Link>
-                    <Link to={"/register"} className="bg-white px-7 rounded-full text-black py-1 xsm:text-[10px] xsm:px-2 font-pop">Sign Up</Link>
+                </span> </Link> : <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-1">
+                    <Link to={"/login"} className="bg-[#1DBF73] px-7 rounded-full text-white py-1 xsm:text-[8px] xsm:px-2 font-pop md:text-[14px] md:px-4">Log in</Link>
+                    <Link to={"/register"} className="bg-white px-7 rounded-full text-black py-1 xsm:text-[8px] xsm:px-2 font-pop md:text-[14px] md:px-4">Sign Up</Link>
                 </div>}
             </div>
         </div>
