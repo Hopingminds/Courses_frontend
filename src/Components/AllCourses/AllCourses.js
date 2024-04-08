@@ -183,7 +183,7 @@ const AllCourses = () => {
       // console.log(index);
       setTimeout(() => {
         setcountvalue(index)
-      }, index * 10);
+      }, index * 1);
 
       // }
       // }, index*1000);
@@ -192,7 +192,7 @@ const AllCourses = () => {
     }
   }
   useEffect(() => {
-    Count(1001)
+    Count(10001)
   }, [])
 
   const searchBarRef = useRef(null);
@@ -284,16 +284,16 @@ const AllCourses = () => {
 
         <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-20 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16">
           <div className="text-white xsm:flex xsm:flex-col">
-            <div className="xsm:text-[8px] md:text-[14px]">Courses to choose from</div>
-            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
+          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
+            <div className="xsm:text-[8px] md:text-[14px]">Students Enrolled</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
-            <div className="xsm:text-[8px] md:text-[14px]">Courses to choose from</div>
-            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
+          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
+            <div className="xsm:text-[8px] md:text-[14px]">Students Placed</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
+          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Courses to choose from</div>
-            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
           </div>
         </div>
       </div>
