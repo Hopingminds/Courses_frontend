@@ -180,10 +180,10 @@ const CartCheckout = () => {
 
             </div> : ''}
       {/* CheckOut start */}
-      <div className="card-checkout mx-14 my-5 flex  gap-20 xsm:flex-col xsm:mx-3 xsm:px-0 xsm:gap-8 px-[3%]">
+      <div className="card-checkout mx-14 my-5 flex  gap-20 xsm:flex-col xsm:mx-0 xsm:px-[5%] xsm:gap-8 px-[3%] md:mx-[2%]">
         {/* Billing address start */}
         <div className="w-[55%] min-h-[100vh] xsm:w-[100%] space-y-5 xsm:space-y-2 xsm:min-h-full">
-          <span className="text-xl font-bold xsm:text-[12px]">
+          <span className="text-xl font-bold xsm:text-[12px] md:text-[18px]">
             Billing Address
           </span>
 
@@ -211,13 +211,13 @@ const CartCheckout = () => {
               value={name}
               onChange={(e) => setname(e.target.value)}
               placeholder="Name"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
             />
             <input
               value={gstnumber}
               onChange={(e) => setgstnumber(e.target.value)}
               placeholder="GST No.(optional)"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
             />
           </div>
           <div className="flex space-x-10 xsm:justify-between xsm:gap-0 xsm:space-x-2">
@@ -225,24 +225,24 @@ const CartCheckout = () => {
               value={address}
               onChange={(e) => setaddress(e.target.value)}
               placeholder="Address"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
             />
             <input
               value={zip}
               onChange={(e) => setzip(e.target.value)}
               type="number"
               placeholder="ZIP Code"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
             />
           </div>
 
           {/* Payment Method */}
           <div>
-            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mt-4 xsm:mb-1">
+            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mt-4 xsm:mb-1 md:text-[18px]">
               Payment Method
             </h1>
             <div className="bg-green-100 rounded-md p-4 card-shadow xsm:py-2">
-              <p className="text-base green-color pb-4 xsm:text-[10px] xsm:pb-2">
+              <p className="text-base green-color pb-4 xsm:text-[10px] xsm:pb-2 md:text-[14px]">
                 Select payment method
               </p>
               <div className="space-y-2 xsm:space-y-1 xsm:grid xsm:grid-cols-2">
@@ -256,7 +256,7 @@ const CartCheckout = () => {
                     className="mr-2 xsm:w-2"
                   />
                   <label
-                    className="text-gray-400 xsm:text-[8px]"
+                    className="text-gray-400 xsm:text-[8px] md:text-[14px]"
                     htmlFor="creditDebitCard"
                   >
                     {" "}
@@ -273,7 +273,7 @@ const CartCheckout = () => {
                     className="mr-2 xsm:w-2"
                   />
                   <label
-                    className="text-gray-400 xsm:text-[8px]"
+                    className="text-gray-400 xsm:text-[8px] md:text-[14px]"
                     htmlFor="upi"
                   >
                     {" "}
@@ -290,7 +290,7 @@ const CartCheckout = () => {
                     className="mr-2 xsm:w-2"
                   />
                   <label
-                    className="text-gray-400 xsm:text-[8px]"
+                    className="text-gray-400 xsm:text-[8px] md:text-[14px]"
                     htmlFor="netBanking"
                   >
                     {" "}
@@ -306,7 +306,7 @@ const CartCheckout = () => {
                     value="cashOnDelivery"
                     className="mr-2 xsm:w-2"
                   />
-                  <label className="xsm:text-[8px]" htmlFor="cashOnDelivery">
+                  <label className="xsm:text-[8px] md:text-[14px]" htmlFor="cashOnDelivery">
                     {" "}
                     Cash on Delivery
                   </label>
@@ -321,7 +321,7 @@ const CartCheckout = () => {
                     className="mr-2 xsm:w-2"
                   />
                   <label
-                    className="text-gray-400 xsm:text-[8px]"
+                    className="text-gray-400 xsm:text-[8px] md:text-[14px]"
                     htmlFor="emi"
                   >
                     {" "}
@@ -369,38 +369,38 @@ const CartCheckout = () => {
                     </div> */}
 
           <div className="h-auto space-y-7 xsm:space-y-3">
-            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mb-0 xsm:mt-4">
+            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mb-0 xsm:mt-4 md:text-[18px]">
               Order Details
             </h1>
             {Data?.map((item) => {
               temp.push(item?.course?._id);
               return (
                 <>
-                  <div className="bg-green-100 h-[200px] rounded-lg flex items-center card-shadow2 w-full xsm:p-2 xsm:justify-between xsm:h-[100px]">
+                  <div className="bg-green-100 h-[200px] rounded-lg flex items-center card-shadow2 w-full xsm:p-2 xsm:justify-between xsm:h-[100px] md:p-2 md:h-[140px]">
                     <div className="w-[40%] h-full ">
                       <img
                         src={item.course.featured_image}
                         alt="course"
-                        className="w-full h-full object-cover rounded-lg ml-4 xsm:ml-0 xsm:w-full xsm:h-full xsm:object-fit"
+                        className="w-full h-full object-cover rounded-lg ml-4 xsm:ml-0 xsm:w-full xsm:h-full xsm:object-fit md:ml-0"
                       />
                     </div>
-                    <div className="ml-[20px] h-full flex flex-col justify-between my-3 xsm:w-[55%] xsm:my-0 xsm:ml-0">
+                    <div className="ml-[20px] h-full flex flex-col justify-between my-3 xsm:w-[55%] xsm:my-0 xsm:ml-0 md:ml-2">
                       <div>
-                        <h2 className="text-md font-semibold text-[#252641] text-custom-color xsm:text-[10px]">
+                        <h2 className="text-md font-semibold text-[#252641] text-custom-color xsm:text-[10px] md:text-[16px]">
                           {item.course.title}
                         </h2>
                         <p
-                          className="mt-1 text-[13px] text-wrap xsm:hidden"
+                          className="mt-1 text-[13px] text-wrap xsm:hidden md:text-[10px]"
                           style={{ color: "#696984" }}
                         >
                           {item.course.overview.slice(0, 110)}..
                         </p>
 
-                        <div className="flex mt-8 gap-6 xsm:mt-2">
+                        <div className="flex mt-8 gap-6 xsm:mt-2 md:mt-3">
                           <div className="flex gap-1 xsm:justify-center xsm:items-center">
-                            <Design className="w-[15px] h-[15px] xsm:h-3 xsm:w-3" />
+                            <Design className="w-[15px] h-[15px] xsm:h-3 xsm:w-3 md:h-3 md:w-3" />
                             <p
-                              className="mt-[-2px] text-[13px] xsm:text-[8px]"
+                              className="mt-[-2px] text-[13px] xsm:text-[8px] md:text-[10px]"
                               style={{ color: "#696984" }}
                             >
                               {item.course.category}
@@ -408,9 +408,9 @@ const CartCheckout = () => {
                           </div>
 
                           <div className="flex gap-1 xsm:justify-center xsm:items-center">
-                            <Clock className="w-[15px] h-[15px] xsm:h-3 xsm:w-3" />
+                            <Clock className="w-[15px] h-[15px] xsm:h-3 xsm:w-3 md:h-3 md:w-3" />
                             <p
-                              className=" mb-2 mt-[-2px] text-[13px] xsm:text-[8px] xsm:mb-0"
+                              className=" mb-2 mt-[-2px] text-[13px] xsm:text-[8px] xsm:mb-0 md:text-[10px]"
                               style={{ color: "#696984" }}
                             >
                               {item.course.duration}
@@ -420,15 +420,15 @@ const CartCheckout = () => {
                       </div>
                       {/* <img src="src/assets/Group.png" className="w-[590px] h-[1px]" /> */}
                       <div className="flex justify-between items-center">
-                        <span className="flex mt-4">
-                          <Star className="xsm:w-3" />
-                          <Star className="xsm:w-3" />
-                          <Star className="xsm:w-3" />
-                          <Star className="xsm:w-3" />
-                          <Star className="xsm:w-3" />
+                        <span className="flex mt-4 md:mt-0">
+                          <Star className="xsm:w-3 md:w-4" />
+                          <Star className="xsm:w-3 md:w-4" />
+                          <Star className="xsm:w-3 md:w-4" />
+                          <Star className="xsm:w-3 md:w-4" />
+                          <Star className="xsm:w-3 md:w-4" />
                         </span>
-                        <span className="mt-3">
-                          <p className="flex justify-end mr-4 text-[18px] mt-[-3px] font-semibold xsm:text-[10px]">
+                        <span className="mt-3 md:mt-0">
+                          <p className="flex justify-end mr-4 text-[18px] mt-[-3px] font-semibold xsm:text-[10px] md:text-[14px]">
                             ₹{item.course.base_price}
                           </p>
                         </span>
@@ -446,31 +446,31 @@ const CartCheckout = () => {
 
         {/* Summary start */}
         <div className="h-[100vh] w-[40%] xsm:w-full">
-          <span className=" text-xl font-bold xsm:text-[12px]">Summary</span>
+          <span className=" text-xl font-bold xsm:text-[12px] md:text-[18px]">Summary</span>
 
           {/* Summary div start*/}
           <div className="mt-5 mb-4 xsm:my-0">
-            <h1 className="text-base xsm:text-[10px]">Original Price:</h1>
+            <h1 className="text-base xsm:text-[10px] md:text-[14px]">Original Price:</h1>
             <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px]">
+              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
                 Including all the taxes
               </p>
-              <p className="xsm:text-[12px]">₹{total}</p>
+              <p className="xsm:text-[12px] md:text-[14px]">₹{total}</p>
             </div>
           </div>
           <hr />
           <div className="mt-5 mb-4 xsm:my-0">
-            <h1 className="text-base xsm:text-[10px]">Total:</h1>
+            <h1 className="text-base xsm:text-[10px] md:text-[14px]">Total:</h1>
             <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px]">
+              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
                 Including all the taxes
               </p>
-              <p className="xsm:text-[12px]">₹{total}</p>
+              <p className="xsm:text-[12px] md:text-[14px]">₹{total}</p>
             </div>
           </div>
-          <span className="flex justify-center xsm:mt-4">
+          <span className="flex justify-center xsm:mt-4 md:mt-4">
             <button
-              className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px]"
+              className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px] md:text-[16px] md:px-8"
               onClick={handleContinueCheckout}
             >
               Continue Checkout

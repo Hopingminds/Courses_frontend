@@ -93,12 +93,34 @@
 
 @media (min-width: 320px) and (max-width: 480px){
   .thankpage  {
-    width: 95%;
-    margin-inline: 10px;
+    width: 80%;
+    margin: 20px auto;
   }
   .thank-you{
     justify-content: center;
-    min-height: 90vh;
+    min-height: 65vh;
+  }
+  .thank-you p {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .thank-you .button-container {
+    align-items: center;
+  }
+  .thank-you .button-container button{
+    padding: 6px 20px;
+    margin: 0;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 1024px){
+  .thankpage  {
+    width: 60%;
+    margin: 20px auto;
+  }
+  .thank-you{
+    justify-content: center;
+    min-height: 50vh;
   }
   .thank-you p {
     margin-bottom: 1rem;

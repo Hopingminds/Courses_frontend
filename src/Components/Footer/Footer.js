@@ -28,9 +28,9 @@ const Footer = () => {
                             {/* <Link className='text-white text-[16px] font-pop xsm:text-[8px]'>Contact Us</p> */}
                             <Link to='/privacy' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Privacy Policy</Link>
                             <Link to='/terms' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Terms and Conditions</Link>
-                            <Link to='/pap' className='text-white text-[16px] font-pop xsm:text-[8px]'>Pay After Placement</Link>
-                            <Link to='/hire-from-us' className='text-white text-[16px] font-pop xsm:text-[8px]'>Hire From Us</Link>
-                            <Link to='/cv-builder' className='text-white text-[16px] font-pop xsm:text-[8px]'>CV Builder</Link>
+                            <Link to='/pap' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Pay After Placement</Link>
+                            <Link to='/hire-from-us' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Hire From Us</Link>
+                            <Link to='/cv-builder' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>CV Builder</Link>
                         </div>
                     </div>
                     <div className='flex flex-col gap-8 xsm:gap-2 ' onClick={Top} >

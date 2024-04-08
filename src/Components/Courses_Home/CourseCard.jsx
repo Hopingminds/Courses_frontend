@@ -89,7 +89,7 @@ const CourseCard = ({
           )}
         </span>
       )}
-      <div className="h-[40%] xsm:h-[45%] md:h-[35%]">
+      <div className="h-[40%] md:h-[35%]">
         {mouseHovered === ind ? (
           <ReactPlayer
             className=" rounded-xl xsm:rounded-md border"
