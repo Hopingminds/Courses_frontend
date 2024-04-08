@@ -56,25 +56,25 @@ export default function AiTools(){
     ];
 
     return (
-        <div id="tools" className=" px-[5%] py-[4%] pl-[24%] flex flex-col gap-2">
-            <p className="font-mons font-extrabold text-[30px] text-[#169f63]">Lanuguages & Tools You Will Learn</p>
-            <p className="font-mons font-extrabold text-[20px] text-[#100101]">15+ Programming Languages, Tools and Libraries Covered</p>
+        <div id="tools" className=" px-[5%] py-[4%] pl-[24%] flex flex-col gap-2 xsm:px-[2%] xsm:py-[2%] xsm:gap-1">
+            <p className="font-mons font-extrabold text-[30px] text-[#169f63] xsm:text-[14px]">Lanuguages & Tools You Will Learn</p>
+            <p className="font-mons font-extrabold text-[20px] text-[#100101] xsm:text-[10px]">15+ Programming Languages, Tools and Libraries Covered</p>
             {/* Tools cards */}
-            <div className="grid grid-cols-4 gap-4 gap-y-6 my-6">
+            <div className="grid grid-cols-4 gap-4 gap-y-6 my-6 xsm:my-2 xsm:gap-y-2 xsm:gap-2">
                 {tools.map((tool,index)=>(
                 <div
                     key={index}
-                    className="flex flex-col items-center justify-between h-[160px] rounded-xl fullshadow p-[10px]">
+                    className="flex flex-col items-center justify-between h-[160px] rounded-xl fullshadow p-[10px] xsm:h-[70px]">
                     <div className='h-[85%] flex justify-center items-center'>
                         <img className='w-full h-full' src={tool.img} alt="" />
                     </div>
-                    <p className="font-outfit font-semibold py-2 text-[14px]">{tool.name}</p>
+                    <p className="font-outfit font-semibold py-2 text-[14px] xsm:text-[7px]">{tool.name}</p>
                 </div>
                 ))}
             </div>
-            <p className="font-mons font-extrabold text-[20px] text-[#100101]">Generative AI Tools Covered</p>
+            <p className="font-mons font-extrabold text-[20px] text-[#100101] xsm:text-[10px]">Generative AI Tools Covered</p>
             {/* splide */}
-            <div className='px-[6%] mt-4'>
+            <div className='px-[6%] mt-4 xsm:px-[3%] xsm:mt-2'>
                 <Splide
                     options={{
                         type: "loop",
@@ -93,16 +93,16 @@ export default function AiTools(){
 
                     }}>
                     <SplideSlide>
-                        <img className='border border-black rounded-xl' src='../img/chatgpt.png' alt="banner  not found" />
+                        <img className='border border-black rounded-xl xsm:rounded-md xsm:border-[1px]' src='../img/chatgpt.png' alt="banner  not found" />
                     </SplideSlide>
                     <SplideSlide>
-                        <img className='border border-black rounded-xl' src='../img/huggingFace.png' alt="banner  not found" />
+                        <img className='border border-black rounded-xl xsm:rounded-md xsm:border-[1px]' src='../img/huggingFace.png' alt="banner  not found" />
                     </SplideSlide>
                     <SplideSlide>
-                        <img className='border border-black rounded-xl' src='../img/dalle.png' alt="banner  not found" />
+                        <img className='border border-black rounded-xl xsm:rounded-md xsm:border-[1px]' src='../img/dalle.png' alt="banner  not found" />
                     </SplideSlide>
                     <SplideSlide>
-                        <img className='border border-black rounded-xl' src='../img/MidJourney.png' alt="banner not found" />
+                        <img className='border border-black rounded-xl xsm:rounded-md xsm:border-[1px]' src='../img/MidJourney.png' alt="banner not found" />
                     </SplideSlide>
                 </Splide>
             </div>

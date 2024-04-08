@@ -180,15 +180,15 @@ const CartCheckout = () => {
 
             </div> : ''}
       {/* CheckOut start */}
-      <div className="card-checkout mx-14 my-5 flex  gap-20 xsm:flex-col xsm:mx-5 xsm:gap-8 px-[3%]">
+      <div className="card-checkout mx-14 my-5 flex  gap-20 xsm:flex-col xsm:mx-3 xsm:px-0 xsm:gap-8 px-[3%]">
         {/* Billing address start */}
-        <div className="w-[55%] min-h-[100vh] xsm:w-[100%] space-y-5">
+        <div className="w-[55%] min-h-[100vh] xsm:w-[100%] space-y-5 xsm:space-y-2 xsm:min-h-full">
           <span className="text-xl font-bold xsm:text-[12px]">
             Billing Address
           </span>
 
           {/* Dropdown buttons start */}
-          <div className="flex space-x-10  xsm:justify-between xsm:gap-0">
+          <div className="flex space-x-10  xsm:justify-between xsm:gap-0 xsm:space-x-0">
             <CountrySelector
               onChange={handleCountryChange}
               name="country"
@@ -203,124 +203,125 @@ const CartCheckout = () => {
               value={state}
               countryPlaceholder="Select state"
               onChange={handleStateChange}
+              styleContainer={{ width: "400px !important" }}
             />
           </div>
-          <div className="flex space-x-10 xsm:justify-between xsm:gap-0">
+          <div className="flex space-x-10 xsm:justify-between xsm:gap-0 xsm:space-x-2">
             <input
               value={name}
               onChange={(e) => setname(e.target.value)}
               placeholder="Name"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1"
             />
             <input
               value={gstnumber}
               onChange={(e) => setgstnumber(e.target.value)}
               placeholder="GST No.(optional)"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1"
             />
           </div>
-          <div className="flex space-x-10 xsm:justify-between xsm:gap-0">
+          <div className="flex space-x-10 xsm:justify-between xsm:gap-0 xsm:space-x-2">
             <input
               value={address}
               onChange={(e) => setaddress(e.target.value)}
               placeholder="Address"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1"
             />
             <input
               value={zip}
               onChange={(e) => setzip(e.target.value)}
               type="number"
               placeholder="ZIP Code"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2"
+              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1"
             />
           </div>
 
           {/* Payment Method */}
           <div>
-            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px]">
+            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mt-4 xsm:mb-1">
               Payment Method
             </h1>
             <div className="bg-green-100 rounded-md p-4 card-shadow xsm:py-2">
-              <p className="text-base green-color pb-4 xsm:text-[8px] xsm:pb-2">
+              <p className="text-base green-color pb-4 xsm:text-[10px] xsm:pb-2">
                 Select payment method
               </p>
-              <div className="space-y-2 xsm:space-y-1">
-                <div className="py-1 cursor-not-allowed flex">
+              <div className="space-y-2 xsm:space-y-1 xsm:grid xsm:grid-cols-2">
+                <div className="py-1 cursor-not-allowed flex items-center">
                   <input
                     disabled
                     type="radio"
                     id="creditDebitCard"
                     name="paymentMethod"
                     value="creditDebitCard"
-                    className="mr-2"
+                    className="mr-2 xsm:w-2"
                   />
                   <label
-                    className="text-gray-400 xsm:text-[10px]"
+                    className="text-gray-400 xsm:text-[8px]"
                     htmlFor="creditDebitCard"
                   >
                     {" "}
                     Credit/ Debit card
                   </label>
                 </div>
-                <div className="py-1 cursor-not-allowed flex">
+                <div className="py-1 cursor-not-allowed flex items-center">
                   <input
                     disabled
                     type="radio"
                     id="upi"
                     name="paymentMethod"
                     value="upi"
-                    className="mr-2"
+                    className="mr-2 xsm:w-2"
                   />
                   <label
-                    className="text-gray-400 xsm:text-[10px]"
+                    className="text-gray-400 xsm:text-[8px]"
                     htmlFor="upi"
                   >
                     {" "}
                     UPI
                   </label>
                 </div>
-                <div className="py-1 cursor-not-allowed flex">
+                <div className="py-1 cursor-not-allowed flex items-center">
                   <input
                     disabled
                     type="radio"
                     id="netBanking"
                     name="paymentMethod"
                     value="netBanking"
-                    className="mr-2"
+                    className="mr-2 xsm:w-2"
                   />
                   <label
-                    className="text-gray-400 xsm:text-[10px]"
+                    className="text-gray-400 xsm:text-[8px]"
                     htmlFor="netBanking"
                   >
                     {" "}
                     Net banking
                   </label>
                 </div>
-                <div className="py-1 flex">
+                <div className="py-1 flex items-center">
                   <input
                     onChange={(e) => setPayment(e)}
                     type="radio"
                     id="cashOnDelivery"
                     name="paymentMethod"
                     value="cashOnDelivery"
-                    className="mr-2"
+                    className="mr-2 xsm:w-2"
                   />
-                  <label className="xsm:text-[10px]" htmlFor="cashOnDelivery">
+                  <label className="xsm:text-[8px]" htmlFor="cashOnDelivery">
                     {" "}
                     Cash on Delivery
                   </label>
                 </div>
-                <div className="py-1 cursor-not-allowed flex">
+                <div className="py-1 cursor-not-allowed flex items-center">
                   <input
                     disabled
                     type="radio"
                     id="emi"
                     name="paymentMethod"
                     value="emi"
-                    className="mr-2"
+                    className="mr-2 xsm:w-2"
                   />
                   <label
-                    className="text-gray-400 xsm:text-[10px]"
+                    className="text-gray-400 xsm:text-[8px]"
                     htmlFor="emi"
                   >
                     {" "}
@@ -368,49 +369,53 @@ const CartCheckout = () => {
                     </div> */}
 
           <div className="h-auto space-y-7 xsm:space-y-3">
-            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mb-0">
+            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mb-0 xsm:mt-4">
               Order Details
             </h1>
             {Data?.map((item) => {
               temp.push(item?.course?._id);
               return (
                 <>
-                  <div className="bg-green-100 rounded-lg flex items-center card-shadow2 w-[100%] xsm:p-2 xsm:justify-between">
-                    <img
-                      src={item.course.featured_image}
-                      alt="course"
-                      className="w-[230px] h-[140px]  object-cover rounded-lg mt-[-4px] ml-4 xsm:ml-0 xsm:w-[40%] xsm:h-[15vh] xsm:object-fit"
-                    />
-                    <div className="ml-[20px] my-3 xsm:w-[55%] xsm:my-0 xsm:ml-0">
-                      <h2 className="text-md font-semibold text-[#252641] text-custom-color xsm:text-[10px]">
-                        {item.course.title}
-                      </h2>
-                      <p
-                        className="mt-1 text-[13px] text-wrap xsm:hidden"
-                        style={{ color: "#696984" }}
-                      >
-                        {item.course.overview.slice(0, 110)}..
-                      </p>
+                  <div className="bg-green-100 rounded-lg flex items-center card-shadow2 w-full xsm:p-2 xsm:justify-between xsm:h-[100px]">
+                    <div className="w-[40%] h-full ">
+                      <img
+                        src={item.course.featured_image}
+                        alt="course"
+                        className="w-full h-full object-cover rounded-lg ml-4 xsm:ml-0 xsm:w-full xsm:h-full xsm:object-fit"
+                      />
+                    </div>
+                    <div className="ml-[20px] h-full flex flex-col justify-between my-3 xsm:w-[55%] xsm:my-0 xsm:ml-0">
+                      <div>
+                        <h2 className="text-md font-semibold text-[#252641] text-custom-color xsm:text-[10px]">
+                          {item.course.title}
+                        </h2>
+                        <p
+                          className="mt-1 text-[13px] text-wrap xsm:hidden"
+                          style={{ color: "#696984" }}
+                        >
+                          {item.course.overview.slice(0, 110)}..
+                        </p>
 
-                      <div className="flex mt-8 gap-6 xsm:mt-2">
-                        <div className="flex gap-1 xsm:justify-center xsm:items-center">
-                          <Design className="w-[15px] h-[15px] xsm:h-3 xsm:w-3" />
-                          <p
-                            className="mt-[-2px] text-[13px] xsm:text-[8px]"
-                            style={{ color: "#696984" }}
-                          >
-                            {item.course.category}
-                          </p>
-                        </div>
+                        <div className="flex mt-8 gap-6 xsm:mt-2">
+                          <div className="flex gap-1 xsm:justify-center xsm:items-center">
+                            <Design className="w-[15px] h-[15px] xsm:h-3 xsm:w-3" />
+                            <p
+                              className="mt-[-2px] text-[13px] xsm:text-[8px]"
+                              style={{ color: "#696984" }}
+                            >
+                              {item.course.category}
+                            </p>
+                          </div>
 
-                        <div className="flex gap-1 xsm:justify-center xsm:items-center">
-                          <Clock className="w-[15px] h-[15px] xsm:h-3 xsm:w-3" />
-                          <p
-                            className=" mb-2 mt-[-2px] text-[13px] xsm:text-[8px] xsm:mb-0"
-                            style={{ color: "#696984" }}
-                          >
-                            {item.course.duration}
-                          </p>
+                          <div className="flex gap-1 xsm:justify-center xsm:items-center">
+                            <Clock className="w-[15px] h-[15px] xsm:h-3 xsm:w-3" />
+                            <p
+                              className=" mb-2 mt-[-2px] text-[13px] xsm:text-[8px] xsm:mb-0"
+                              style={{ color: "#696984" }}
+                            >
+                              {item.course.duration}
+                            </p>
+                          </div>
                         </div>
                       </div>
                       {/* <img src="src/assets/Group.png" className="w-[590px] h-[1px]" /> */}
@@ -440,11 +445,11 @@ const CartCheckout = () => {
         {/* Billing address end */}
 
         {/* Summary start */}
-        <div className="h-[100vh] w-[40%]">
+        <div className="h-[100vh] w-[40%] xsm:w-full">
           <span className=" text-xl font-bold xsm:text-[12px]">Summary</span>
 
           {/* Summary div start*/}
-          <div className="mt-5 mb-4 xsm:my-2">
+          <div className="mt-5 mb-4 xsm:my-0">
             <h1 className="text-base xsm:text-[10px]">Original Price:</h1>
             <div className="flex justify-between">
               <p className=" green-color text-sm xsm:text-[10px]">
@@ -454,7 +459,7 @@ const CartCheckout = () => {
             </div>
           </div>
           <hr />
-          <div className="mt-5 mb-4 xsm:my-2">
+          <div className="mt-5 mb-4 xsm:my-0">
             <h1 className="text-base xsm:text-[10px]">Total:</h1>
             <div className="flex justify-between">
               <p className=" green-color text-sm xsm:text-[10px]">

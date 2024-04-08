@@ -86,7 +86,7 @@ export default function AiMinds() {
         <div className="">
             <AiHead />
             <div className="relative">
-                <div id="sidebar" className={`bg-[#169F63] text-white flex flex-col py-4 shadow-xl full-shadow ${sidebarVisible ?'fixed top-[30%] left-[6%] 2xl:left-[22%]' :'hidden' }`}>
+                <div id="sidebar" className={`bg-[#169F63] text-white flex flex-col py-4 shadow-xl full-shadow xsm:hidden ${sidebarVisible ?'fixed top-[30%] left-[6%] 2xl:left-[22%]' :'hidden' }`}>
                     <a href="#overview" className={`text-[15px] font-mons px-4 py-1 ${activeSection === 'overview' ? 'border-l-4 border-white' : ''}`}>Program Overview</a>
                     <a href="#tools" className={`text-[15px] font-mons px-4 py-1 ${activeSection === 'tools' ? 'border-l-4 border-white' : ''}`}>Languages & Tools</a>
                     <a href="#journey" className={`text-[15px] font-mons px-4 py-1 ${activeSection === 'journey' ? 'border-l-4 border-white' : ''}`}>Career Journey</a>
