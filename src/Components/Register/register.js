@@ -11,13 +11,15 @@ import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { ReactComponent as Google } from '../../Assests/Icons/google.svg';
 import { jwtDecode } from 'jwt-decode';
 import { authenticateUser } from '../../helpers/helperapi';
-
+import PhoneInput from "react-phone-number-input";
+import 'react-phone-number-input/style.css'
 const Register = () => {
     const navigate = useNavigate();
     const { getUserDetails } = useContext(Globalinfo);
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams()
+    const [countrycode, setcountrycode] = useState()
 
     const nameRef = useRef(null);
     const emailRef = useRef(null);
@@ -42,6 +44,7 @@ const Register = () => {
         setUser({
             ...user,
             [name]: value,
+            
         });
     };
 
@@ -57,8 +60,18 @@ const Register = () => {
     };
 
     const handleRegister = async () => {
+        // console.log(user);
+        countrycode.replace(/\D/g, '')
+        console.log(countrycode.length);
+       
+    //    console.log( countrycode.replace(/\D/g, ''));
+    
         if (!validateEmail(user.email)) {
             toast.error('Enter valid Email');
+            return;
+        }
+        if(!(countrycode.length>8 && countrycode.length<15)){
+            toast.error('Enter valid Phone Number');
             return;
         }
         if (!validateCollege(user.college)) {
@@ -66,13 +79,21 @@ const Register = () => {
             return;
         }
 
-        if (!user.name || !user.degree || !user.password || !user.email || !user.college) {
+        if (!user.name || !user.degree || !user.password || !user.email || !user.college ) {
             toast.error("Enter Valid Credentials");
             return;
         }
         setBtnLoader(true);
         try {
-            const res = await axios.post(`${BASE_URL}/register`, user);
+            const res = await axios.post(`${BASE_URL}/register`, {
+                name: user.name,
+                email: user.email,
+                phone: countrycode,
+                college: user.college,
+                degree: user.degree,
+                stream: user.stream,
+                password: user.password,
+            });
             getUserDetails();
             localStorage.setItem('COURSES_USER_TOKEN', res.data.token);
             toast.success("Registered Successfully");
@@ -158,7 +179,15 @@ const Register = () => {
                             </div>
                             <div>
                                 <p className='text-[14px] font-pop'>Contact Number</p>
-                                <input
+                              <PhoneInput
+                        className='phonenumbercountrycode mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                        defaultCountry="IN"
+                        name="phone"
+                        placeholder="Enter phone number"
+                        value={countrycode}
+                        onChange={setcountrycode}
+                        />
+                                {/* <input
                                     ref={phoneRef}
                                     className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
                                     type="text"
@@ -167,7 +196,7 @@ const Register = () => {
                                     value={user.phone}
                                     onChange={handleChange}
                                     onKeyDown={(e) => handleKeyDown(e, degreeRef)}
-                                />
+                                /> */}
                             </div>
                             <div>
                                 <p className='text-[14px] font-pop'>Degree</p>
