@@ -114,7 +114,7 @@
   color: #9d9d9d;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+@media only screen and (min-width: 20px) and (max-width: 480px) {
 
   .page-header {
     height: 100px;
@@ -158,5 +158,39 @@
 
   .CCDetails-Header-content-row2-faq p {
     font-size: 6px !important;
+  }
+}
+
+@media only screen and (min-width: 720px) and (max-width: 1024px) {
+  .page-header {
+    height: 250px;
+  }
+
+  .CCDetails-Header-main {
+    height: 250px;
+  }
+
+  .CCDetails-Header-content-row1qw h2 {
+    font-size: 28px;
+  }
+
+  .CCDetails-Header-content-row2-clock p {
+    font-size: 6px !important;
+  }
+
+  .CCDetails-Header-content-row2-hat p {
+    font-size: 10px !important;
+  }
+
+  .CCDetails-Header-content-row2-level p {
+    font-size: 10px !important;
+  }
+
+  .CCDetails-Header-content-row2-files p {
+    font-size: 10px !important;
+  }
+
+  .CCDetails-Header-content-row2-faq p {
+    font-size: 10px !important;
   }
 }

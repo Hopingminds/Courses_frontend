@@ -61,3 +61,17 @@
         padding: 2px 0;
     }
 }
+
+@media (min-width: 720px) and (max-width: 1024px){
+    .container1{
+        width: 65%;
+        margin-top: 20px;
+    }
+    .nav-buttons{
+        width: 100%;
+    }
+    .nav-buttons button{
+        font-size: 12px;
+        padding: 2px 0;
+    }
+}

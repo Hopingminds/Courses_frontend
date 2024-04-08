@@ -89,55 +89,55 @@ export default function Commoncard(props) {
     // console.log(Data)
     console.log(purchasedCourses)
     return (
-        <div className="bg-[#E2FFF1] w-[33%] h-max my-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg">
-            <div className="h-[225px] bg-white xsm:h-[65px]">
+        <div className="bg-[#E2FFF1] w-[33%] h-max my-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3">
+            <div className="h-[225px] bg-white xsm:h-[65px] md:h-[35%]">
                 <img className="w-full h-full rounded-xl xsm:rounded-md" src={Data?.featured_image} />
             </div>
-            <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1">
-                <p className="font-pop font-semibold xsm:text-[8px]">{Data?.title}</p>
+            <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1 md:gap-3 md:mt-4">
+                <p className="font-pop font-semibold xsm:text-[8px] md:text-[14px]">{Data?.title}</p>
                 <div className="flex justify-between items-center xsm:pb-1">
-                    <p className="font-nu text-[16px] font-semibold xsm:text-[8px]">₹{Data?.base_price}</p>
+                    <p className="font-nu text-[16px] font-semibold xsm:text-[8px] md:text-[12px]">₹{Data?.base_price}</p>
 
-                    <div className="gap-x-4 flex items-center xsm:gap-1">
+                    <div className="gap-x-4 flex items-center xsm:gap-1 md:gap-x-2">
                         {
-                            !purchasedCourses.includes(Data?._id) ? <div className="space-x-4 flex items-center">
+                            !purchasedCourses.includes(Data?._id) ? <div className="space-x-4 flex items-center md:space-x-2">
                                 <button className="xsm:w-1 xsm:hidden ">
-                                    <CiHeart className=" w-6 h-6 xsm:w-3 xsm:h-3" onClick={() => Addtowishlist(Data?._id)} />
+                                    <CiHeart className=" w-6 h-6 xsm:w-3 xsm:h-3 md:w-5 md:h-5" onClick={() => Addtowishlist(Data?._id)} />
                                 </button>
                                 <button className="xsm:w-1 xsm:hidden">
-                                    <Cart onClick={() => Addtocart(Data?._id)} className="xsm:w-3 xsm:h-3" />
+                                    <Cart onClick={() => Addtocart(Data?._id)} className="xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
                                 </button>
                             </div> : ''
                         }
 
-                        {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[8px]">View Course</Link> : <Link to={login ? '/checkout?slug=' + Data?.slug : '/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px]">Buy Now</Link>}
+                        {purchasedCourses.includes(Data?._id) ? <Link to={'/course/' + Data?.slug} className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[8px] md:text-[14px] md:px-[8px] md:py-1">View Course</Link> : <Link to={login ? '/checkout?slug=' + Data?.slug : '/login'} className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1">Buy Now</Link>}
                     </div>
                 </div>
-                <div className="flex flex-col gap-6 my-6 xsm:hidden">
-                    <div className="space-y-4">
-                        <p className="font-pop font-semibold">This Course Includes</p>
-                        <div className="flex items-center space-x-4">
+                <div className="flex flex-col gap-6 my-6 xsm:hidden md:gap-4 md:my-4">
+                    <div className="space-y-4 md:space-y-2">
+                        <p className="font-pop font-semibold md:text-[14px]">This Course Includes</p>
+                        <div className="flex items-center space-x-4 md:space-x-2">
                             <img className="w-[16px]" src="../Icons/certificate.svg" />
-                            <p className="font-nu text-[#555555] text-[12px]">Certifications Of completion</p>
+                            <p className="font-nu text-[#555555] text-[12px] md:text-[10px]">Certifications Of completion</p>
                         </div>
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-4 md:space-x-2">
                             <img className="w-[16px]" src="../Icons/graph.svg" />
-                            <p className="font-nu text-[#555555] text-[12px]">32 modules</p>
+                            <p className="font-nu text-[#555555] text-[12px] md:text-[10px]">32 modules</p>
                         </div>
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-4 md:space-x-2">
                             <img className="w-[16px]" src="../Icons/camera.svg" />
-                            <p className="font-nu text-[#555555] text-[12px]">Access on all device</p>
+                            <p className="font-nu text-[#555555] text-[12px] md:text-[10px]">Access on all device</p>
                         </div>
                         <hr />
                     </div>
 
-                    <div className="space-y-4">
-                        <p className="font-pop font-semibold">Training 5 Or More People</p>
-                        <p className="font-pop text-[#555555] text-[12px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div className="space-y-4 md:space-y-2">
+                        <p className="font-pop font-semibold md:text-[14px]">Training 5 Or More People</p>
+                        <p className="font-pop text-[#555555] text-[12px] md:text-[10px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         <hr />
                     </div>
-                    <div className="space-y-4">
-                        <p className="font-pop font-semibold">Share this course</p>
+                    <div className="space-y-4 md:space-y-2">
+                        <p className="font-pop font-semibold md:text-[14px]">Share this course</p>
                         <div className="flex space-x-4 " >
                             <RWebShare
                                 data={{
@@ -147,7 +147,7 @@ export default function Commoncard(props) {
                                 }}
                                 onClick={() => console.log("shared successfully!")}
                             >
-                                <IoIosShareAlt className="h-6 w-6 cursor-pointer" />
+                                <IoIosShareAlt className="h-6 w-6 cursor-pointer md:h-4 w-4" />
                             </RWebShare>
                             {/* <Link to={'https://www.facebook.com/share/Z3c1iwpnxsDk3YJH/?mibextid=qi2Omg'}><img className="w-[12px]" src="../Icons/facebook.svg" /></Link> */}
                             {/* <Link to={'https://www.instagram.com/hopingminds_?igsh=MWxvN2F5YmM0aW1lYQ=='}><img className="w-[20px]" src="../Icons/instagram.svg" /></Link> */}

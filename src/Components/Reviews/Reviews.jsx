@@ -33,7 +33,7 @@ function Reviews() {
                     <div className="review-head">
                         <span><h2>4.0</h2></span>
                         <div className="img">
-                            <div className="flex mt-5 xsm:mt-0"><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /></div>
+                            <div className="flex mt-5 xsm:mt-0 md:mt-0"><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /><img src={ratings} alt="ratings" /></div>
                             <p className="review-head-rating">based on 146,951 ratings</p>
                         </div>
 

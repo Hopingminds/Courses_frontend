@@ -178,3 +178,44 @@
         gap: 5px;
     }
 }
+
+@media (min-width: 720px) and (max-width: 1024px){
+    .curriculum-content{
+        font-size: 12px;
+    }
+
+    .lesson-container{
+        padding: 14px 10px;
+    }
+
+    .lesson-container-title-left p{
+        font-size: 10px;
+    }
+
+    .lesson-container-title-right p:first-child{
+        font-size: 10px;
+    }
+    .lesson-container-title-right p:last-child{
+        font-size: 10px;
+    }
+    .lesson-container-content-left p{
+        font-size: 10px;
+    }
+    .lesson-container-content-right p{
+        font-size: 10px;
+    }
+    .lesson-container-content-left{
+        gap: 5px;
+    }
+    .lesson-container-title-left{
+        gap: 5px;
+    }
+
+    .lesson-container-content{
+        padding-left: 24px;
+    }
+
+    .lesson-container-title-right{
+        gap: 10px;
+    }
+}
