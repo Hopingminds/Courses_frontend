@@ -48,7 +48,7 @@ const CourseCard = ({
       onMouseEnter={() => toggleHover(ind)}
       onMouseLeave={() => toggleHover(null)}
       href={`/detailcourse/${slug}`}
-      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative coursecardhome   bg-white p-2 xsm:rounded-lg w-[283px] h-[443px] ${
+      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative coursecardhome  bg-white p-2 xsm:rounded-lg w-[283px] h-[443px] md:w-[95%] md:h-[100%] xsm:h-[100%] xsm:w-[100%] ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
       style={{
@@ -89,29 +89,36 @@ const CourseCard = ({
           )}
         </span>
       )}
-      <div className="min-h-[45%]">
+      <div className="h-[40%] xsm:h-[45%] md:h-[35%]">
         {mouseHovered === ind ? (
           <ReactPlayer
             className=" rounded-xl xsm:rounded-md border"
-            height={"40%"}
+            height={"100%"}
             width={"100%"}
             url={featured_video}
             controls={false}
             playing={true}
             ref={videoRef}
             muted={IsMuted}
+            config={{
+              file: {
+                attributes: {
+                  controlsList: "nodownload", // Disable download option
+                },
+              },
+            }}
           />
         ) : (
           <img
             // style={{ height: "10rem" }}
-            className="w-full  rounded-lg h-[40%] xsm:h-[45%] md:h-[35%]"
+            className="w-full  rounded-lg h-full "
             src={image}
             alt="Course"
           />
         )}
       </div>
-      <div className="space-y-4 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2">
-        <div className="flex flex-col gap-3 xsm:gap-2 md:gap-0">
+      <div className="space-y-4 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2 md:mt-2 xsm:mt-1">
+        <div className="flex flex-col gap-3 xsm:gap-0 md:gap-0">
           <div className="flex justify-between">
             <div className="flex space-x-2 items-center xsm:space-x-1">
               <img
@@ -130,14 +137,14 @@ const CourseCard = ({
           </div>
           <div className="flex space-x-2 items-center xsm:space-x-0">
             <img
-              className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
+              className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
               src="../Icons/RCClock.svg"
             />
             <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
               {duration}
             </p>
           </div>
-          <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px]">
+          <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px] md:h-12 xsm:mt-2 xsm:h-6">
             {title}
           </p>
           <p className="font-pop text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px]">

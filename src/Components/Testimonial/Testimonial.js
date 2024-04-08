@@ -152,7 +152,7 @@ const Testimonial = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between pt-0 px-[10%] pb-28 xsm:px-[5%] xsm:pb-8 xsm:gap-4">
+      <div className="flex flex-row justify-between pt-0 px-[10%] pb-28 xsm:px-[5%] xsm:pb-8 xsm:gap-4 md:pb-14">
         {/* left */}
         <div className="flex flex-col gap-4 w-[45%] xsm:gap-2">
           <div className="flex flex-row gap-4 items-center xsm:gap-2 xsm:pl-2">
@@ -194,7 +194,7 @@ const Testimonial = () => {
           {/* right */}
           <div className="relative w-[45%]">
             <div className="relative ">
-              <div className="w-[70%] h-[54vh] rounded-3xl">
+              <div className="w-[70%] h-[54vh] rounded-3xl xsm:h-[16vh] md:h-[40%]">
               <img
                 src={testimonials[currentIndex].image}
                 className="w-[100%] h-[100%]  rounded-3xl xsm:rounded-md xsm:w-[95px] xsm:h-[120px] md:h-[280px] md:w-[80%]"
@@ -204,7 +204,7 @@ const Testimonial = () => {
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={index}
-                    className={`bg-[#1DBF73] text-[rgb(29,191,115)] w-12 rounded-l-xl xsm:w-6 md:w-10 ${index === currentIndex ? "" : "hidden"
+                    className={`bg-[#1DBF73] text-[rgb(29,191,115)] w-12 rounded-l-xl xsm:w-4 md:w-8 ${index === currentIndex ? "" : "hidden"
                       }`}
                   >
                     .
@@ -216,7 +216,7 @@ const Testimonial = () => {
                     className={`flex relative ${index === currentIndex ? "" : "hidden"
                       }`}
                   >
-                    <hr className="h-[60%]  border border-[rgb(189,189,209)] absolute top-3 xsm:top-2" />
+                    <hr className="h-[60%]  border border-[rgb(189,189,209)] absolute top-3 xsm:top-2 xsm:h-[30%]" />
                     <div className="flex flex-col justify-between gap-4 px-4 py-3 xsm:px-2 xsm:py-2 xsm:gap-1 md:gap-2">
                       <p className="text-[#5F5F7E] text-[16px] font-pop leading-6 text-justify xsm:text-[4px] xsm:leading-none xsm:tracking-tight md:text-[10px] md:leading-tight">
                         {testimonial.text}
@@ -261,7 +261,7 @@ const Testimonial = () => {
 
             {/* arrrow */}
             <div
-              className="w-[60px] h-[60px] absolute bg-[#ffffff] rounded-full right-[22%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[28%] md:w-[40px] md:h-[40px] md:right-[14%]"
+              className="w-[60px] h-[60px] absolute bg-[#ffffff] rounded-full right-[22%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[36%] md:w-[40px] md:h-[40px] md:right-[36%]"
               style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }}
               onClick={handleArrow2Click}
             >

@@ -16,6 +16,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { authenticateUser } from "../../helpers/helperapi";
 import { useContext } from "react";
 import { Globalinfo } from "../../App";
+import Spinner from "../Spinner";
 
 const CartCheckout = () => {
   const [country, setcountry] = useState("");
@@ -30,9 +31,10 @@ const CartCheckout = () => {
   const [courseId, setcourseId] = useState();
   const [Data, setData] = useState([]);
   const [total, settotal] = useState(0);
-
+  const [show, setshow] = useState(false)
   const checkUserValidation = async () => {
     const isValidUser = await authenticateUser();
+    
     console.log(isValidUser);
     if (isValidUser !== 200) {
       localStorage.removeItem("COURSES_USER_TOKEN");
@@ -109,6 +111,7 @@ const CartCheckout = () => {
       toast.error("Every input must be filled");
     } else {
       try {
+        setshow(true)
         let url = BASE_URL + "/purchasecourse";
         let url1 = BASE_URL + "/deletecart";
         let orderDetails={name:userDetail.name,zip,gstnumber,country:country.capital,state:state.label,address}
@@ -130,7 +133,7 @@ const CartCheckout = () => {
       let response = await data.json();
       // console.log(response);
       if (response.success) {
-     if(query.get("slug")){
+     if(!query.get("slug")){
       let data1 = await fetch(url1, {
         method: "POST",
         headers: {
@@ -141,11 +144,12 @@ const CartCheckout = () => {
         body: JSON.stringify({ email: userDetail.email }),
       });
       let response1 = await data1.json();
-      toast.success(response.message);
-          setTimeout(() => {
-            navigate("/success");
-          }, 1000);
      }
+     toast.success(response.message);
+     setshow(false)
+     setTimeout(() => {
+       navigate("/success");
+     }, 1000);
     }
      else{
       toast.error(response.message);
@@ -171,6 +175,10 @@ const CartCheckout = () => {
 
   return (
     <>
+         {show ? <div className='w-full h-screen z-20 fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
+                <Spinner className='' />
+
+            </div> : ''}
       {/* CheckOut start */}
       <div className="card-checkout mx-14 my-5 flex  gap-20 xsm:flex-col xsm:mx-5 xsm:gap-8 px-[3%]">
         {/* Billing address start */}

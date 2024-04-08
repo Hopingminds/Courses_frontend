@@ -3,7 +3,7 @@ import "./courseDetails.css";
 import ReactPlayer from "react-player";
 import ChatBot from "../chatbot/chatbot";
 import { useParams, useSearchParams } from "react-router-dom";
-import { AWS_S3_LINK, BASE_URL } from "../../Api/api";
+import { BASE_URL } from "../../Api/api";
 import { CiSettings } from "react-icons/ci";
 import Coursecontents from "../Meeting/Coursecontents";
 import { jwtDecode } from "jwt-decode";
@@ -136,6 +136,13 @@ export default function CDDetails() {
                 url={url}
                 onDuration={handleDuration}
                 onEnded={handleVideoEnded}
+                config={{
+                  file: {
+                    attributes: {
+                      controlsList: "nodownload" // Disable download option
+                    }
+                  }
+                }}
               />
               {/* <div className="absolute right-0 bottom-10">
                                 <ChatBot className="w-fit" />

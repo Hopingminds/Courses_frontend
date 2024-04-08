@@ -22,7 +22,7 @@ export default function Coursecontents({ data, completed_lessons,setMenu }) {
     let completed = [];
 
     if (completed_lessons) {
-        completed_lessons?.forEach((val) => {
+       completed_lessons?.map((val) => {
             completed.push(val)
 
         })
@@ -41,7 +41,7 @@ export default function Coursecontents({ data, completed_lessons,setMenu }) {
         countLessons();
     }, [data])
 
-    console.log(totallessons)
+    // console.log(totallessons)
 
     function ClickSection(id) {
         if (!clicked) {
@@ -59,7 +59,7 @@ export default function Coursecontents({ data, completed_lessons,setMenu }) {
         }
     }
 
-    console.log(openDropDown)
+    // console.log(openDropDown)
 
 
     const handleDropDown = (id) => {

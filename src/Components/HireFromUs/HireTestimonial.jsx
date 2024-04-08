@@ -98,7 +98,7 @@ const HireTestimonial = () => {
 
   return (
     <div>
-        <div className='py-[4%] text-white font-pop font-semibold text-[40px] text-center'>
+        <div className='py-[4%] text-white font-pop font-semibold text-[40px] text-center md:text-[20px] xsm:text-[14px]'>
             <p>Hear directly from <span className='text-[#1DBF73]'>our students.</span> </p>
         </div>
         {/* splide */}
@@ -108,7 +108,7 @@ const HireTestimonial = () => {
                 <Splide
                     options={{
                         type: "loop",
-                        perPage: 4,
+                        perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : 4,
                         pagination: false,
                         perMove: 1,
                         wheel: false,
@@ -127,18 +127,18 @@ const HireTestimonial = () => {
                             key={index}
                             className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#FFFFFF] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
                             <div>
-                                <img className={`w-4 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
+                                <img className={`w-4 md:w-3 xsm:w2 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
-                            <div>
-                                <p className='text-[12px] font-pop'>{data.text}</p>
+                            <div className='h-[70%]'>
+                                <p className='text-[12px] font-pop md:text-[10px] xsm:text-[8px]'>{data.text}</p>
                             </div>
                             <div className='flex items-center gap-2'>
                                 <div className='rounded-full'>
-                                    <img className='rounded-full w-16 h-16 object-fit' src={data.image} alt="" />
+                                    <img className='rounded-full w-16 h-16 md:w-12 md:h-12 xsm:w-8 xsm:h-8' src={data.image} alt="" />
                                 </div>
                                 <div>
                                     <div>
-                                        <p className='font-pop font-semibold text-[12px]'>{data.name}</p>
+                                        <p className='font-pop font-semibold text-[12px] md:text-[10px] xsm:text-[8px]'>{data.name}</p>
                                     </div>
                                     <div className='flex gap-1'>
                                         {[...Array(data.star)].map( () => {
@@ -161,7 +161,7 @@ const HireTestimonial = () => {
                 <Splide
                     options={{
                         type: "loop",
-                        perPage: 4,
+                        perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : 4,
                         pagination: false,
                         perMove: 1,
                         wheel: false,
@@ -181,18 +181,18 @@ const HireTestimonial = () => {
                             key={index}
                             className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#FFFFFF] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
                             <div className='flex justify-end'>
-                                <img className={`w-4 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
+                                <img className={`w-4 md:w-3 xsm:w-2 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
-                            <div>
-                                <p className='text-[12px] font-pop text-left'>{data.text}</p>
+                            <div className='h-[70%]'>
+                                <p className='text-[12px] font-pop text-left md:text-[10px] xsm:text-[8px]'>{data.text}</p>
                             </div>
                             <div className='flex flex-row-reverse items-center gap-2'>
                                 <div className='rounded-full'>
-                                    <img className='rounded-full w-16 h-16 object-fit' src={data.image} alt="" />
+                                    <img className='rounded-full w-16 h-16 md:w-12 md:h-12 xsm:w-8 xsm:h-8' src={data.image} alt="" />
                                 </div>
                                 <div>
                                     <div>
-                                        <p className='font-pop font-semibold text-left text-[12px]'>{data.name}</p>
+                                        <p className='font-pop font-semibold text-left text-[12px] md:text-[10px] xsm:text-[8px]'>{data.name}</p>
                                     </div>
                                     <div className='flex flex-row-reverse gap-1'>
                                         {[...Array(data.star)].map( () => {

@@ -8,7 +8,7 @@ function Success() {
             <div className="thank-you">
                 <img width="188" height="188" src="/ok.gif" alt="ok" />
                 <h1 className='text-[#1DBF73] font-semibold font-pop'>Payment Successful</h1>
-                <h2 className='font-bold mb-2'>Course Placed Succesfully</h2>
+                <h2 className='font-bold mb-2'>Course Purchased Succesfully</h2>
                 <p>Order ID: OD429878791602739100
                     Order Date: {Date()}
                     Invoice Date: {Date()}</p>

@@ -33,7 +33,7 @@ const Register = () => {
         phone: "",
         college: "",
         degree: "",
-        branch: "",
+        stream: "",
         password: "",
     });
 
@@ -72,11 +72,7 @@ const Register = () => {
         }
         setBtnLoader(true);
         try {
-            const res = await axios.post(`${BASE_URL}/register`, {
-                password: user.password,
-                email: user.email,
-                college: user.college,
-            });
+            const res = await axios.post(`${BASE_URL}/register`, user);
             getUserDetails();
             localStorage.setItem('COURSES_USER_TOKEN', res.data.token);
             toast.success("Registered Successfully");
@@ -126,7 +122,7 @@ const Register = () => {
                     <img className='w-[75%] object-cover absolute top-10 ' src='../login_bg.png' />
                 </div>
                 <div className='flex flex-col items-center my-16 w-[60%] gap-4 xsm:w-full '>
-                    <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p>
+                    {/* <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p> */}
                     <div className='flex flex-col w-[75%] gap-4 xsm:w-[95%] items-center'>
                         <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 w-[40%] '>
                             <button className='bg-transparent cursor-pointer Logininactive' onClick={() => navigate('/login')} >Login</button>

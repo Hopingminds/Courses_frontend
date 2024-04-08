@@ -2,21 +2,25 @@ import { useEffect, useState } from "react";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import { Link } from "react-router-dom";
+import Spinner from "../Spinner";
 
 export default function WishList(){
     const [Data, setData] = useState([])
+    const [show, setshow] = useState(false)
     let login=localStorage.getItem('COURSES_USER_TOKEN')
 
     useEffect(() => {
         async function Fetchdata(){
          try {
             if(login){
+                setshow(true)
                 let token=jwtDecode(login)
                 let url=BASE_URL+'/getwishlist?email='+token.email;
                 //   console.log(url);
                   const data=await fetch(url)
                   const response=await data.json()
                   setData(response?.wishlist)
+                  setshow(false)
              }
          } catch (error) {
             console.log(error);
@@ -28,6 +32,10 @@ export default function WishList(){
   
       }, [])
     return (<>
+     {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
+                <Spinner className='' />
+
+            </div> : ''}
             {!Data?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Found</div></div>:''}
 
     
@@ -63,11 +71,11 @@ export default function WishList(){
                     
                 </div>
             </Link>
-                    
+           
                     </>)
                 })
             }
-      
+        
         </div>
         </>)
 }

@@ -36,7 +36,7 @@ export default function AiHead() {
                             autoStart: true,
                             loop: true,
                           }}
-                        />
+                        /> 
             <span className="text-white text-[80px]">|</span>
           </p>
         </div>

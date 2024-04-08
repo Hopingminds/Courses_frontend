@@ -46,6 +46,8 @@ export default function Navbar() {
                     <Link to={'/'} onClick={Top} className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/' ? ' font-bold text-[#1DBF73]' : ''}`}>Home</Link>
                     <Link to={'/course'} onClick={Top} className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] md:text-[14px] font-pop  ${location.pathname === '/course' ? ' font-bold text-[#1DBF73]' : ''}`}>Courses</Link>
                     <Link to={'/career'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Career</Link>
+                    <Link to={'/ai'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Ai Minds</Link>
+                    <Link to={'/hire-from-us'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Hire From Us</Link>
                     <a href={location.pathname == '/' ? '#' : '/pap'} onClick={ScrollToPap} className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] cursor-pointer md:text-[14px] font-pop ${location.pathname === '#pap' ? ' font-bold text-[#1DBF73]' : ''}`}>PAP</a>
                     {/* <Link>Search</Link> */}
                     {userDetail?._id && <Link to={'/learning'} className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/learning' ? ' font-bold text-[#1DBF73]' : ''}`}>My Learning</Link>}
@@ -55,9 +57,9 @@ export default function Navbar() {
                     <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px]" />
 
 
-                </span> </Link> : <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-2">
-                    <Link to={"/login"} className="bg-[#1DBF73] px-7 rounded-full text-white py-1 xsm:text-[10px] xsm:px-2 font-pop">Log in</Link>
-                    <Link to={"/register"} className="bg-white px-7 rounded-full text-black py-1 xsm:text-[10px] xsm:px-2 font-pop">Sign Up</Link>
+                </span> </Link> : <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-1">
+                    <Link to={"/login"} className="bg-[#1DBF73] px-7 rounded-full text-white py-1 xsm:text-[8px] xsm:px-2 font-pop md:text-[14px] md:px-4">Log in</Link>
+                    <Link to={"/register"} className="bg-white px-7 rounded-full text-black py-1 xsm:text-[8px] xsm:px-2 font-pop md:text-[14px] md:px-4">Sign Up</Link>
                 </div>}
             </div>
         </div>
