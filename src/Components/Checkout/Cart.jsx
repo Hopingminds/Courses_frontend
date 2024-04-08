@@ -376,7 +376,7 @@ const CartCheckout = () => {
               temp.push(item?.course?._id);
               return (
                 <>
-                  <div className="bg-green-100 rounded-lg flex items-center card-shadow2 w-full xsm:p-2 xsm:justify-between xsm:h-[100px]">
+                  <div className="bg-green-100 h-[200px] rounded-lg flex items-center card-shadow2 w-full xsm:p-2 xsm:justify-between xsm:h-[100px]">
                     <div className="w-[40%] h-full ">
                       <img
                         src={item.course.featured_image}
