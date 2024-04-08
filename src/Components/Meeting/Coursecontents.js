@@ -77,15 +77,15 @@ export default function Coursecontents({ data, completed_lessons,setMenu }) {
 
     return (
         <div className="bg-[#E2FFF1] rounded-2xl border border-2 xsm:absolute xsm:top-[3rem] xsm:right-0 xsm:w-[80vw]">
-            <div className="px-5 py-8 xsm:py-4 xsm:px-2">
+            <div className="px-5 py-8 xsm:py-4 xsm:px-2 md:px-3 md:py-5">
                 <div className="space-y-2 xsm:space-y-1">
                     <div className='flex flex-row justify-between'>
-                        <p className="font-pop font-semibold text-[21px] text-[#1DBF73] xsm:text-[12px]">Course Contents</p>
+                        <p className="font-pop font-semibold text-[21px] text-[#1DBF73] xsm:text-[12px] md:text-[16px]">Course Contents</p>
                         {window.innerWidth <= 480 && (<MdClose className='cursor-pointer' onClick={toggleMenu} />)}
                     </div>
                     <div className="flex justify-between items-center">
-                        <p className="font-pop text-[12px] text-[#1DBF73] xsm:text-[10px]">{completed_lessons?.length}/{totallessons}  COMPLETED</p>
-                        <img className="w-[19px] h-[19px] xsm:w-4 xsm:h-4" src="../Icons/Calender.svg" />
+                        <p className="font-pop text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px]">{completed_lessons?.length}/{totallessons}  COMPLETED</p>
+                        <img className="w-[19px] h-[19px] xsm:w-4 xsm:h-4 md:w-4 md:h-4" src="../Icons/Calender.svg" />
                     </div>
                     <div>
                         {/* progressbar */}
@@ -95,12 +95,12 @@ export default function Coursecontents({ data, completed_lessons,setMenu }) {
                 {data?.map((val, ind) => {
                     return (
                         <>
-                            <div className='mt-3 py-2 border border-[#1DBF73] px-4 bg-white rounded-xl cursor-pointer' key={ind}>
+                            <div className='mt-3 py-2 border border-[#1DBF73] px-4 bg-white rounded-xl cursor-pointer md:p-1' key={ind}>
                                 <div className=''>
                                     <div>
                                         <div className='' onClick={() => ClickSection(ind + 1)} >
                                             <div className='flex justify-between '>
-                                                <p className='font-pop font-medium text-[12px] text-[#1DBF73] xsm:text-[10px]'>{val?.chapter_name}</p>
+                                                <p className='font-pop font-medium text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px]'>{val?.chapter_name}</p>
                                                 <Down />
                                             </div>
                                             <div className='flex justify-between'>
@@ -109,8 +109,8 @@ export default function Coursecontents({ data, completed_lessons,setMenu }) {
                                                     <p className='text-[#252641CC] text-[11px] font-pop font-medium'></p>
                                                 </div>
                                                 <div className='flex items-center space-x-1'>
-                                                    <IoBookOutline className='text-[#252641CC] xsm:h-3 xsm:w-3' />
-                                                    <p className='text-[#252641CC] text-[11px] font-pop font-medium xsm:text-[8px]'>{val?.lessons?.length} Lessons</p>
+                                                    <IoBookOutline className='text-[#252641CC] xsm:h-3 xsm:w-3 md:h-3 md:w-3' />
+                                                    <p className='text-[#252641CC] text-[11px] font-pop font-medium xsm:text-[8px] md:text-[10px]'>{val?.lessons?.length} Lessons</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -122,17 +122,17 @@ export default function Coursecontents({ data, completed_lessons,setMenu }) {
                                                     return (
                                                         <div className={`flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id) ? 'cursor-not-allowed text-gray-300' : ''}`} key={index}>
                                                             <span className='flex justify-between'>
-                                                                <p className="font-pop font-bold text-[11px] xsm:text-[8px]">{index + 1}. {chapter?.lesson_name}</p>
-                                                                <p className='font-pop font-bold text-[11px] xsm:text-[8px]'>{chapter?.duration}</p>
+                                                                <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">{index + 1}. {chapter?.lesson_name}</p>
+                                                                <p className='font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]'>{chapter?.duration}</p>
                                                             </span>
 
                                                             {(chapter?.notes || chapter?.assignment) && <div className='relative'>
-                                                                <button className='flex gap-2 align-middle justify-self-end border w-fit items-center px-2 mt-3 realtive xsm:mt-2' onClick={() => handleDropDown(chapter._id)}> <TiFolderOpen className='xsm:w-3 xsm:h-3' /> <p className='text-[12px] xsm:text-[6px]'> Resouces</p>  </button>
+                                                                <button className='flex gap-2 align-middle justify-self-end border w-fit items-center px-2 mt-3 realtive xsm:mt-2' onClick={() => handleDropDown(chapter._id)}> <TiFolderOpen className='xsm:w-3 xsm:h-3 md:w-4 md:h-4' /> <p className='text-[12px] xsm:text-[6px] md:text-[10px]'> Resouces</p>  </button>
                                                                 {openDropDown === chapter._id &&
                                                                     <ul className='list-none absolute top-10 left-0 bg-white text-sm  shadow-xl py-1 z-40 w-[11rem]'>
-                                                                        {chapter?.notes && <span className=' flex justify-between items-center px-5 border-b-[1px] py-1'> <li className=' px-5' > Notes</li> <span className='flex gap-2'> <a href={chapter?.notes} target='_blank' ><MdOutlineFileDownload size={16} /></a></span> </span>}
+                                                                        {chapter?.notes && <span className=' flex justify-between items-center px-5 border-b-[1px] py-1'> <li className=' px-5 md:text-[10px]' > Notes</li> <span className='flex gap-2'> <a href={chapter?.notes} target='_blank' ><MdOutlineFileDownload size={16} /></a></span> </span>}
 
-                                                                        {chapter?.assignment && <span className='flex justify-between items-center px-5 py-1'> <li > Assignment</li> <span className='flex gap-2'> <a href={chapter?.assignment} target='_blank' ><MdOutlineFileDownload size={16} /></a>  <MdOutlineFileUpload size={16} />  </span> </span>}
+                                                                        {chapter?.assignment && <span className='flex justify-between items-center px-5 py-1'> <li className='md:text-[10px]'> Assignment</li> <span className='flex gap-2'> <a href={chapter?.assignment} target='_blank' ><MdOutlineFileDownload size={16} /></a>  <MdOutlineFileUpload size={16} />  </span> </span>}
                                                                     </ul>}
                                                             </div>}
 

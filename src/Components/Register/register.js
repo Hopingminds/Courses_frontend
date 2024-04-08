@@ -121,20 +121,20 @@ const Register = () => {
                 <div className='w-[40%] flex items-center justify-end relative xsm:hidden '>
                     <img className='w-[75%] object-cover absolute top-10 ' src='../login_bg.png' />
                 </div>
-                <div className='flex flex-col items-center my-16 w-[60%] gap-4 xsm:w-full '>
+                <div className='flex flex-col items-center my-16 w-[60%] gap-4 xsm:w-full md:my-12'>
                     {/* <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p> */}
-                    <div className='flex flex-col w-[75%] gap-4 xsm:w-[95%] items-center'>
-                        <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 w-[40%] '>
+                    <div className='flex flex-col w-[75%] gap-4 xsm:w-[95%] items-center md:w-[90%]'>
+                        <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 w-[40%] md:w-[50%] xsm:w-[50%]'>
                             <button className='bg-transparent cursor-pointer Logininactive' onClick={() => navigate('/login')} >Login</button>
                             <button className='bg-transparent cursor-pointer Loginactive' >Register</button>
                         </div>
                         {/* inputs */}
-                        <div className='flex flex-col gap-4 grid grid-cols-2 gap-4'>
+                        <div className='flex flex-col gap-4 grid grid-cols-2 gap-4 xsm:px-[5%]'>
                             <div>
-                                <p className='text-[14px] font-pop'>Name</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Name</p>
                                 <input
                                     ref={nameRef}
-                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
                                     type="text"
                                     placeholder="Enter Your Name"
                                     name="name"
@@ -144,10 +144,10 @@ const Register = () => {
                                 />
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop'>Email</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Email</p>
                                 <input
                                     ref={emailRef}
-                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
                                     type="text"
                                     placeholder="Enter Your Email"
                                     name="email"
@@ -157,10 +157,10 @@ const Register = () => {
                                 />
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop'>Contact Number</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Contact Number</p>
                                 <input
                                     ref={phoneRef}
-                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
                                     type="text"
                                     placeholder="Enter Your Contact No."
                                     name="phone"
@@ -170,10 +170,10 @@ const Register = () => {
                                 />
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop'>Degree</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Degree</p>
                                 <input
                                     ref={degreeRef}
-                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
                                     type="text"
                                     placeholder="Enter Your Degree"
                                     name="degree"
@@ -183,10 +183,10 @@ const Register = () => {
                                 />
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop'>College/University</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>College/University</p>
                                 <input
                                     ref={collegeRef}
-                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
                                     type="text"
                                     placeholder="Enter Your College/University"
                                     name="college"
@@ -196,10 +196,10 @@ const Register = () => {
                                 />
                             </div>
                             <div style={{ position: "relative" }}>
-                                <p className='text-[14px] font-pop'>Password</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Password</p>
                                 <input
                                     ref={passwordRef}
-                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
+                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Enter Your Password"
                                     name="password"
@@ -213,14 +213,14 @@ const Register = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className='flex flex-col items-center gap-4'>
+                        <div className='flex flex-col items-center gap-4 md:gap-3 xsm:gap-3'>
                             <div className=''>
-                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold" onClick={handleRegister}>{btnLoader ? "Loading..." : "Sign Up"}</button>
+                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold md:text-[14px] md:py-1 xsm:text-[12px] xsm:py-1" onClick={handleRegister}>{btnLoader ? "Loading..." : "Sign Up"}</button>
                             </div>
-                            <div className='flex items-center '>
-                                <p className='font-pop text-[14px]'>Already registered ?</p>
+                            <div className='flex items-center gap-1'>
+                                <p className='font-pop text-[14px] md:text-[10px] xsm:text-[10px]'>Already registered ? </p>
                                 {/* Sign up link */}
-                                <Link to={'/login'}>  <h5 className='text-[#1dbf73]'>Login</h5></Link>
+                                <Link to={'/login'}>  <h5 className='text-[#1dbf73] md:text-[12px] xsm:text-[12px]'>Login</h5></Link>
                                 {/* Social media login buttons */}
                             </div>
                             <div className='flex flex-col gap-2 items-center'>

@@ -171,16 +171,16 @@ const ProfilEdit = () => {
     <>
       <div className="flex flex-col gap-14 pb-60 xsm:gap-6 xsm:pb-20">
 
-        <div className="relative flex justify-center h-[36vh] xsm:h-[20vh]">
-          <img src={Banner} className="w-full h-[200px] object-fit xsm:h-[80px] " />
+        <div className="relative flex justify-center h-[36vh] xsm:h-[14vh] md:h-[24vh]">
+          <img src={Banner} className="w-full h-[200px] object-fit xsm:h-[80px] md:h-[150px]" />
 
-          <div className="absolute top-4 right-16 flex justify-center pt-6 xsm:pt-0 xsm:right-4">
-            <button className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-10 py-1 xsm:text-[8px] xsm:px-4"
+          <div className="absolute top-4 right-16 flex justify-center pt-6 xsm:pt-0 xsm:right-4 md:right-8 md:top-2">
+            <button className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-10 py-1 xsm:text-[8px] xsm:px-4 md:text-[16px] md:px-6"
               onClick={handleLogOut}>
               Log Out {" "}
             </button>
           </div>
-          <div className="absolute w-[160px] h-[160px] rounded-full top-28 xsm:h-[80px] xsm:w-[80px] xsm:top-10 bg-[#FFFFFF]">
+          <div className="absolute w-[160px] h-[160px] rounded-full top-28 xsm:h-[80px] xsm:w-[80px] xsm:top-10 bg-[#FFFFFF] md:w-[120px] md:h-[120px] md:top-24">
             {uploadLoader ? <div className="grid items-center justify-center h-[100%] w-[100%]"><p>uploading... </p> </div> : <img
               src={user.profile ? user.profile : 'https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png'}
               className="w-full h-full rounded-full object-fit xsm:h-[80px] xsm:w-[80px] object-contain"
@@ -202,9 +202,9 @@ const ProfilEdit = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center mt-16 xsm:mt-0">
-          <div className="grid grid-cols-2 justify-between gap-x-40 gap-y-8 w-[80%] xsm:gap-x-8 xsm:gap-y-3">
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
+        <div className="flex justify-center mt-16 xsm:mt-0 md:mt-0">
+          <div className="grid grid-cols-2 justify-between gap-x-40 gap-y-8 w-[80%] xsm:gap-x-8 xsm:gap-y-3 md:gap-x-28 md:gap-y-6">
+            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="text"
                 className="outline-none w-full bg-transparent placeholder-[#000000]"
@@ -215,7 +215,7 @@ const ProfilEdit = () => {
               />
             </div>
 
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
+            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="email"
                 className="outline-none w-full bg-transparent placeholder-[#000000]"
@@ -225,7 +225,7 @@ const ProfilEdit = () => {
                 disabled
               />
             </div>
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
+            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="text"
                 className="outline-none w-full bg-transparent placeholder-[#000000]"
@@ -235,7 +235,7 @@ const ProfilEdit = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
+            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="text"
                 className="outline-none w-full bg-transparent placeholder-[#000000]"
@@ -245,7 +245,7 @@ const ProfilEdit = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
+            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="text"
                 className="outline-none w-full bg-transparent placeholder-[#000000]"
@@ -256,7 +256,7 @@ const ProfilEdit = () => {
               />
             </div>
 
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
+            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="text"
                 className="outline-none w-full bg-transparent placeholder-[#000000]"
@@ -267,7 +267,7 @@ const ProfilEdit = () => {
               />
             </div>
 
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
+            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="text"
                 className="outline-none w-full bg-transparent placeholder-[#000000]"
@@ -277,7 +277,7 @@ const ProfilEdit = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2">
+            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="text"
                 className="outline-none w-full bg-transparent placeholder-[#000000]"
@@ -289,8 +289,8 @@ const ProfilEdit = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center pt-6 xsm:pt-0">
-          <button className="text-[#FFFFFF] text-[22px] font-nu bg-[#1DBF73] rounded-full px-12 py-1 xsm:text-[10px] xsm:px-8"
+        <div className="flex justify-center pt-6 xsm:pt-0 md:pt-0">
+          <button className="text-[#FFFFFF] text-[22px] font-nu bg-[#1DBF73] rounded-full px-12 py-1 xsm:text-[10px] xsm:px-8 md:text-[16px]"
             onClick={handleSaveClick}>
             {btnLoader ? "Saving..." : "Save"}
           </button>

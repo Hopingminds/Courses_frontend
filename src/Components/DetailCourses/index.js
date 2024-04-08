@@ -44,23 +44,23 @@ export default function DetailCourses() {
                         </div>
                         <div className='CCDetails-Header-content-row2 w-[90%] xsm:mt-1 '>
                             <div className='CCDetails-Header-content-row2-clock gap-1'>
-                                <img src="../Icons/clockfilled.svg" className=' xsm:w-[6px] xsm:h-[6px]' alt="clock"></img>
+                                <img src="../Icons/clockfilled.svg" className=' xsm:w-[6px] xsm:h-[6px] md:w-[10px] md:h-[10px]' alt="clock"></img>
                                 <p className='font-nu text-white' > 2 Weeks</p>
                             </div>
                             <div className='CCDetails-Header-content-row2-hat gap-1'>
-                                <img src="../Icons/hat.svg" className=' xsm:w-[8px] xsm:h-[8px]' alt="hat"></img>
+                                <img src="../Icons/hat.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="hat"></img>
                                 <p className='font-nu'> 156 Students</p>
                             </div>
                             <div className='CCDetails-Header-content-row2-level gap-1'>
-                                <img src="../Icons/barchartgreen.svg" className=' xsm:w-[8px] xsm:h-[8px]' alt="bar-chart"></img>
+                                <img src="../Icons/barchartgreen.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="bar-chart"></img>
                                 <p className='font-nu'> All levels</p>
                             </div>
                             <div className='CCDetails-Header-content-row2-files gap-1'>
-                                <img src="../Icons/files.svg" className=' xsm:w-[8px] xsm:h-[8px]' alt="files"></img>
+                                <img src="../Icons/files.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="files"></img>
                                 <p className='font-nu'> 20 Lessons</p>
                             </div>
                             <div className='CCDetails-Header-content-row2-faq gap-1'>
-                                <img src="../Icons/faq.svg" className=' xsm:w-[8px] xsm:h-[8px]' alt="faq"></img>
+                                <img src="../Icons/faq.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="faq"></img>
                                 <p className='font-nu'> 3 Quizzes</p>
                             </div>
                         </div>
