@@ -78,4 +78,28 @@
     .faq-box h3{
         font-size: 8px;
     }
+    .faq-box-descrip p{
+        font-size: 8px;
+    }
+}
+
+@media (min-width: 720px) and (max-width: 1024px){
+    .faq-main-container{
+        padding: 16px 12px;
+        min-height: 0;
+    }
+    .faq-container{
+        padding: 0;
+        gap: 10px;
+    }
+    .faq-box{
+        padding: 5px 8px;
+        border-radius: 3px;
+    }
+    .faq-box h3{
+        font-size: 12px;
+    }
+    .faq-box-descrip p{
+        font-size: 12px;
+    }
 }

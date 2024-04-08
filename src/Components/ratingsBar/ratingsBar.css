@@ -66,3 +66,29 @@
         height: 4px;
     }
 }
+
+@media screen and (min-width: 720px) and (max-width: 1024px) {
+    .ratings-container{
+        gap: 9px;
+    }
+    .ratings-bar{
+        width: 320px;
+        height: 6px;
+    }
+
+    .ratings-fill-1{
+        height: 4px;
+    }
+    .ratings-fill-2{
+        height: 4px;
+    }
+    .ratings-fill-3{
+        height: 4px;
+    }
+    .ratings-fill-4{
+        height: 4px;
+    }
+    .ratings-fill-5{
+        height: 4px;
+    }
+}

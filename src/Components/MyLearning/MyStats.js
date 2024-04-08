@@ -48,7 +48,7 @@ export default function MyStats({ courses }) {
       {!courses?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Stats</div></div>:
       <div className="flex flex-row justify-between xsm:flex-col-reverse xsm:gap-10">
         <div className="w-[43%] xsm:w-full">
-          <p className="font-nu font-semibold text-[20px] text-[#243465] xsm:text-[10px]">
+          <p className="font-nu font-semibold text-[20px] text-[#243465] xsm:text-[10px] md:text-[16px]">
             TOTAL COURSES
           </p>
           <div className="">
@@ -61,8 +61,8 @@ total+=it.lessons.length;
               return (
                 <div key={ind} onClick={() => handleCourseClick(val,((val?.completed_lessons?.length*100)/total).toFixed(2))}>
                   {/* Course Item */}
-                  <div className="flex justify-evenly py-6 cursor-pointer xsm:justify-between xsm:py-2 xsm:pt-4">
-                    <div className="w-[17%] font-nu font-semibold xsm:w-[14%]">
+                  <div className="flex justify-evenly py-6 cursor-pointer xsm:justify-between xsm:py-2 xsm:pt-4 md:py-4">
+                    <div className="w-[17%] font-nu font-semibold xsm:w-[14%] md:w-[15%]">
                       <AnimatedProgressProvider
                         valueStart={0}
                         valueEnd={((val?.completed_lessons?.length*100)/total).toFixed(2)}
@@ -89,13 +89,13 @@ total+=it.lessons.length;
                     </div>
                     <div className="flex items-center justify-between w-[60%]">
                       <div>
-                        <p className="font-nu font-semibold text-[#243465] text-[22px] xsm:text-[10px] xsm:pb-1">
+                        <p className="font-nu font-semibold text-[#243465] text-[22px] xsm:text-[10px] xsm:pb-1 md:text-[18px]">
                           {val?.course.title}
                         </p>
                       </div>
                       <div>
                         <img
-                          className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px]"
+                          className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:w-[12px] md:h-[12px]"
                           src="../Icons/MSarrow.svg"
                           alt="arrow"
                         />
@@ -110,11 +110,11 @@ total+=it.lessons.length;
         </div>
         <div className="w-[45%] xsm:w-full xsm:flex xsm:flex-col xsm:gap-2">
           {/* Right Side Progress Bars */}
-          <p className="font-nu font-semibold text-[20px] text-[#243465] xsm:text-[10px]">
+          <p className="font-nu font-semibold text-[20px] text-[#243465] xsm:text-[10px] md:text-[16px]">
             Your Spending
           </p>
           <div className="xsm:flex xsm:flex-row xsm:gap-40 xsm:items-center">
-            <div className=" flex items-center justify-center mt-12 w-full h-[350px] xsm:w-[50%] xsm:h-[60%] xsm:mt-0">
+            <div className=" flex items-center justify-center mt-12 w-full h-[350px] xsm:w-[50%] xsm:h-[60%] xsm:mt-0 md:mt-8 md:w-[70%] md:h-[70%] md:items-center">
               {/* progressbar of each Course */}
               <AnimatedProgressProvider
                 valueStart={0}
@@ -188,42 +188,42 @@ total+=it.lessons.length;
                 }}
               </AnimatedProgressProvider>
             </div>
-            <div className="flex space-x-10 mt-12 xsm:flex-col xsm:mt-0 xsm:space-x-0 xsm:gap-3 xsm:items-start">
+            <div className="flex space-x-10 mt-12 xsm:flex-col xsm:mt-0 xsm:space-x-0 xsm:gap-3 xsm:items-start md:mt-6 md:space-x-8">
               <div className="flex flex-col items-center">
-                <div className="flex space-x-2 items-center">
+                <div className="flex space-x-2 items-center md:space-x-1">
                   <img
-                    className="w-[15px] h-[15px] xsm:w-3 xsm:h-3"
+                    className="w-[15px] h-[15px] xsm:w-3 xsm:h-3 md:w-3 md:h-3"
                     src="../Icons/MSpinkcircle.svg"
                   />
-                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px]">
+                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px]">
                     Completed
                   </p>
                 </div>
-                <p className="font-nu font-semibold text-[20px] xsm:text-[10px]">{calculateAverageProgress(selectedCourse?.completed_assignments.length,completed)}%</p>
+                <p className="font-nu font-semibold text-[20px] xsm:text-[10px] md:text-[14px]">{calculateAverageProgress(selectedCourse?.completed_assignments.length,completed)}%</p>
               </div>
               <div className="flex flex-col items-center">
-                <div className="flex space-x-2 items-center">
+                <div className="flex space-x-2 items-center md:space-x-1">
                   <img
-                    className="w-[15px] h-[15px] xsm:w-3 xsm:h-3"
+                    className="w-[15px] h-[15px] xsm:w-3 xsm:h-3 md:w-3 md:h-3"
                     src="../Icons/MSorangecircle.svg"
                   />
-                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px]">
+                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px]">
                     Assignment
                   </p>
                 </div>
-                <p className="font-nu font-semibold text-[20px] xsm:text-[10px]">{selectedCourse?.completed_assignments.length}%</p>
+                <p className="font-nu font-semibold text-[20px] xsm:text-[10px] md:text-[14px]">{selectedCourse?.completed_assignments.length}%</p>
               </div>
               <div className="flex flex-col items-center">
-                <div className="flex space-x-2 items-center">
+                <div className="flex space-x-2 items-center md:space-x-1">
                   <img
-                    className="w-[15px] h-[15px] xsm:w-3 xsm:h-3"
+                    className="w-[15px] h-[15px] xsm:w-3 xsm:h-3 md:w-3 md:h-3"
                     src="../Icons/MSbluecircle.svg"
                   />
-                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px]">
+                  <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px]">
                     Lessons
                   </p>
                 </div>
-                <p className="font-nu font-semibold text-[20px] xsm:text-[10px]">{completed}%</p>
+                <p className="font-nu font-semibold text-[20px] xsm:text-[10px] md:text-[14px]">{completed}%</p>
               </div>
             </div>
           </div>

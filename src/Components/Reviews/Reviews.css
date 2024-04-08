@@ -275,3 +275,94 @@
         font-size: 6px;
     }
 }
+
+@media screen and (min-width: 720px) and (max-width: 1024px) {
+    .reviews{
+        gap: 10px;
+        padding: 14px;
+    }
+
+    .reviews h3{
+        font-size: 14px;
+    }
+
+    .review-head h2{
+        font-size: 14px;
+    }
+
+    .review-head-rating{
+        font-size: 10px;
+    }
+
+    .review-head img{
+        width: 12px;
+        height: 12px;
+    }
+
+    .review-head{
+        align-items: start;
+    }
+
+    .ratings img{
+        width: 12px;
+        height: 12px;
+    }
+
+    .ratings span{
+        font-size: 10px;;
+    }
+
+    .person-review-1 img{
+        width: 35px;
+        height: 35px;
+    }
+
+    .person-review-box .h-1{
+        font-size: 14px;
+    }
+
+    .person-review-box .h-2{
+        font-size: 14px;
+    }
+
+    .person-content .content-para1{
+        font-size: 12px;
+    }
+
+    .person-content{
+        gap: 8px;
+    }
+
+    .person-content .h-3{
+        font-size: 10px;
+        color: black;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        gap: 3px;
+    }
+
+    .person-content img{
+        width: 14px;
+        height: 12px;
+    
+    }
+
+    .person-review-1{
+        gap: 14px;
+        height: 100%;
+        padding-top: 15px;
+    }
+
+    .Reviews-pages{
+        margin: 2px 0;
+    }
+
+    .Reviews-pages button{
+        padding: 0 6px;
+        margin: 0 4px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+}

@@ -122,10 +122,10 @@ export default function CDDetails() {
 
   return (
     <>
-      <div className="CCD-container py-10 px-16 xsm:p-[5%] xsm:h-[42vh]">
+      <div className="CCD-container py-10 px-16 xsm:p-[5%] xsm:h-[42vh] md:px-[5%] md:h-[50vh]">
         <div className="CCD-content flex gap-5">
           <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
-            <div className="relative h-[100%] shadow-lg xsm:h-[35vh]">
+            <div className="relative h-[100%] shadow-lg xsm:h-[35vh] md:h-[40vh]">
               <ReactPlayer
                 height="100%"
                 width="100%"
@@ -152,7 +152,7 @@ export default function CDDetails() {
 
           {window.innerWidth <= 480 ? (
             menu ? (
-              <div className="w-[45%]  h-[80vh] overflow-y-auto">
+              <div className="w-[45%] h-[80vh] overflow-y-auto">
                 <Coursecontents
                   data={Data?.curriculum}
                   completed_lessons={completed_lessons}
@@ -161,7 +161,7 @@ export default function CDDetails() {
               </div>
             ) : <></>
           ) : (
-            <div className="w-[45%]  h-[80vh] overflow-y-auto">
+            <div className="w-[45%]  h-[80vh] overflow-y-auto md:h-[40vh]">
               <Coursecontents
                 data={Data?.curriculum}
                 completed_lessons={completed_lessons}
@@ -172,22 +172,22 @@ export default function CDDetails() {
 
         </div>
       </div>
-      <div className="h-full w-[72vw] px-16 xsm:px-5 xsm:w-full">
+      <div className="h-full w-[72vw] px-16 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]">
         <div className="CCD-Header-container flex justify-evenly">
           <div className="w-[100%] xsm:mb-10">
-            <div className=" mt-8 xsm:mt-0">
-              <div className="bg-[#E2FFF1] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 xsm:px-5 xsm:rounded-md">
-                <div className="space-y-2 xsm:space-y-0">
+            <div className=" mt-8 xsm:mt-0 md:mt-0">
+              <div className="bg-[#E2FFF1] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 xsm:px-5 xsm:rounded-md md:px-8 md:py-4">
+                <div className="space-y-2 xsm:space-y-0 md:space-y-1">
                   <p
-                    className={`font-pop font-semibold text-[22px] text-[#1DBF73] xsm:text-[10px]`}
+                    className={`font-pop font-semibold text-[22px] text-[#1DBF73] xsm:text-[10px] md:text-[18px]`}
                   >
                     {Data?.title}{" "}
                   </p>
                   <div className="flex space-x-4">
-                    <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px]">
+                    <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px] md:text-[12px]">
                       {Data?.curriculum[0]?.lessons?.length} Lesson
                     </p>
-                    <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px]">
+                    <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px] md:text-[12px]">
                       6h 30min
                     </p>
                   </div>
@@ -201,9 +201,9 @@ export default function CDDetails() {
               </div>
             </div>
 
-            <div className="CCD-Main-container mt-10 px-2 text-justify xsm:mt-0 xsm:py-3 xsm:px-1">
+            <div className="CCD-Main-container mt-10 px-2 text-justify xsm:mt-0 xsm:py-3 xsm:px-1 md:mt-4">
               <div className="CCD-Main-container-content">
-                <p className="xsm:text-[8px]">{Data?.overview}</p>
+                <p className="xsm:text-[8px] md:text-[14px]">{Data?.overview}</p>
               </div>
             </div>
           </div>

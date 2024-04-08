@@ -35,7 +35,7 @@ export default function Assignment({ courses }) {
   return (
     <div className="px-[5%] my-6 mb-24 xsm:my-4">
       <div className="flex flex-col w-full space-y-1">
-        <div className="grid grid-cols-[1fr,1.5fr,3fr,2fr,2fr] w-full bg-[#E2FFF1] py-4 px-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm">
+        <div className="grid grid-cols-[1fr,1.5fr,3fr,2fr,2fr] w-full bg-[#E2FFF1] py-4 px-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
           <p className="font-pop font-bold text-center grid">Section</p>
           <p className="font-pop font-bold text-center">Assignment No</p>
           <p className="font-pop font-bold text-center">Course</p>
@@ -48,7 +48,7 @@ export default function Assignment({ courses }) {
         {Data?.map((item, ind) => {
           return (
             <>
-              <div className="grid grid-cols-[1fr,1.5fr,3fr,2fr,2fr] w-full bg-[#E2FFF1] py-4 px-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm">
+              <div className="grid grid-cols-[1fr,1.5fr,3fr,2fr,2fr] w-full bg-[#E2FFF1] py-4 px-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
                 <p className="font-nu font-semibold text-center">{ind + 1}</p>
                 <p className="font-nu font-semibold text-center">{ind + 1}</p>
                 <p className="font-nu font-semibold text-center">

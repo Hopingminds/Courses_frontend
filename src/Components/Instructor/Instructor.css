@@ -150,3 +150,37 @@
         height: 10px
     }
 }
+
+@media (min-width: 720px) and (max-width: 1024px){
+    .instructor{
+        padding: 16px 20px;
+        min-height: 0;
+    }
+    .instructor-content > :nth-child(1) {
+        font-size: 16px;
+    }
+    .instructor-content .students p{
+        font-size: 12px;
+    }
+    .instructor-content .lessons p{
+        font-size: 12px;
+    }
+    .instructor-content .students img{
+        height: 14px;
+        width: 14px;
+    }
+    .instructor-content .lessons img{
+        height: 14px;
+        width: 14px;
+    }
+    .instructor > p{
+        font-size: 12px;
+    }
+    .instructor .links p{
+        font-size: 10px;
+    }
+    .instructor .links img{
+        width: 10px;
+        height: 10px
+    }
+}
