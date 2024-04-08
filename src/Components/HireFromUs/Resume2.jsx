@@ -5,14 +5,14 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 const Resume2 = () => {
   return (
     <div
-      className="px-[5%] py-[22%] bg-gradient-to-r from-[#0F2027] to-[#203A43] resumebg w-full"
+      className="px-[5%] py-[15%] bg-gradient-to-r from-[#0F2027] to-[#203A43] curvedbg w-full"
       style={{ width: "100%" }}
     >
       <div className="text-white font-pop font-semibold text-[40px] text-center relative md:text-[32px] xsm:text-[20px]">
         <p>
-          <span className="text-[#1DBF73]">Thousands</span> of successful tech
+          <span className="text-[#1DBF73]">Roles</span> You Can Hire  From Us
         </p>
-        <div className="absolute left-[30%] top-[43%] md:left-[25%] xsm:left-[18%]">
+        <div className="absolute left-[25%] top-[85%] md:left-[25%] xsm:left-[18%]">
           <img
             className="w-[70%] md:w-[50%] xsm:w-[30%]"
             src="../Icons/yellowcurve.svg"
@@ -24,15 +24,77 @@ const Resume2 = () => {
             alt=""
           />
         </div>
-        <p>careers, fuelled by Hoping minds</p>
+        {/* <p>careers, fuelled by Hoping minds</p> */}
       </div>
-      <div className="flex justify-end">
-        {/* <p className="font-pop font-bold text-[#1DBF73] mt-4 md::text-[14px] xsm:hidden">
-          See All
-        </p> */}
-      </div>
-      <div className="xsm:mt-2 md:mt-8 mt-16">
-        <Splide
+      
+      <div className="grid grid-cols-4 xsm:mt-2 md:mt-8 mt-16 gap-8 ">
+        <div className="bw-border  ">
+        <div className=" flex flex-col py-[15%]  ">
+           <div className="flex justify-around items-center">
+           <img src="/node.png"/>
+            <img src="/mongodb.png"/>
+            <img src="/express.png"/>
+           </div>
+           <div className="text-[25px] text-[#FFFFFF] text-center mt-5">Backend Developers</div>
+            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight">
+              <div>Mongo DB database</div>
+              <div>Setting up Express JS setup</div>
+              <div>Backend development in NodeJS</div>
+              <div>Frontend development in ReactJS</div>
+            </div>
+        </div>
+        </div>
+        <div className="bw-border ">
+        <div className=" flex flex-col py-[15%] ">
+           <div className="flex justify-around items-center">
+           <img src="/html.png"/>
+            <img src="/css.png"/>
+            <img src="/js.png"/>
+           </div>
+           <div className="text-[25px] text-[#FFFFFF] text-center mt-5">Frontend Developers</div>
+            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight">
+              <div>HTML and advanced CSS</div>
+              <div>Javascript and ES6</div>
+              <div>Redux in React and using Crud</div>
+              <div>ReactJS and using Webpack</div>
+            </div>
+        </div>
+        </div>
+        <div className="bw-border ">
+        <div className=" flex flex-col py-[15%] ">
+           <div className="flex justify-around items-center">
+           <img src="/figma.png"/>
+            <img src="/xd.png"/>
+            <img src="/diamond.png"/>
+           </div>
+           <div className="text-[25px] text-[#FFFFFF] text-center mt-5">UI/UX Designer</div>
+            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight">
+              <div>Setting up Express JS set up</div>
+              <div>2-3 mini projects in NodeJS</div>
+              <div>Using MongoDB database</div>
+              <div>WebAPIs and basics of AWS server</div>
+            </div>
+        </div>
+        </div>
+        <div className="bw-border ">
+        <div className=" flex flex-col py-[15%] ">
+           <div className="flex justify-around items-center">
+           <img src="/node.png"/>
+            <img src="/mongodb.png"/>
+            {/* <img src="/express.png"/> */}
+            <img src="/react.png"/>
+           </div>
+           <div className="text-[25px] text-[#FFFFFF] text-center mt-5">FullStack Developers</div>
+            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight">
+              <div>Mongo DB database</div>
+              <div>Setting up Express JS setup</div>
+              <div>Backend development in NodeJS</div>
+              <div>Frontend development in ReactJS</div>
+            </div>
+        </div>
+        </div>
+        
+        {/* <Splide
           options={{
             type: "loop",
             perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : 3,
@@ -105,9 +167,7 @@ const Resume2 = () => {
               </p>
             </div>
           </div>
-          {/* <div className='flex justify-center'>
-                    <button className='text-white font-int font-bold bg-black px-4 py-1 rounded-lg'>View Resume</button>
-                </div> */}
+        
         </div></SplideSlide>
             <SplideSlide><div className="bg-[#E2FFF1] p-8 px-6 rounded-3xl flex flex-col gap-4 md:rounded-xl md:p-4 md:gap-2 xsm:p-2 xsm:rounded-xl xsm:gap-2 w-[90%] md:w-full xsm:w-full">
           <div className="flex justify-between">
@@ -165,9 +225,7 @@ const Resume2 = () => {
               </p>
             </div>
           </div>
-          {/* <div className='flex justify-center'>
-                    <button className='text-white font-int font-bold bg-black px-4 py-1 rounded-lg'>View Resume</button>
-                </div> */}
+          
         </div></SplideSlide>
             <SplideSlide><div className="bg-[#E2FFF1] p-8 px-6 rounded-3xl flex flex-col gap-4 md:rounded-xl md:p-4 md:gap-2 xsm:p-2 xsm:rounded-xl  xsm:gap-2 w-[90%] md:w-full xsm:w-full">
           <div className="flex justify-between">
@@ -225,11 +283,9 @@ const Resume2 = () => {
               </p>
             </div>
           </div>
-          {/* <div className='flex justify-center'>
-                    <button className='text-white font-int font-bold bg-black px-4 py-1 rounded-lg'>View Resume</button>
-                </div> */}
+         
         </div></SplideSlide>
-        </Splide>
+        </Splide> */}
 
         
         

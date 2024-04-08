@@ -20,6 +20,7 @@ const Register = () => {
     const [btnLoader, setBtnLoader] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams()
     const [countrycode, setcountrycode] = useState()
+    const [SearchedData, setSearchedData] = useState([])
 
     const nameRef = useRef(null);
     const emailRef = useRef(null);
@@ -47,6 +48,27 @@ const Register = () => {
             
         });
     };
+
+    // function SearchData(e) {
+    //     let query = e.target.value;
+    //     if (query == "") {
+    //       setSearchedData([]);
+         
+         
+    //     } else {
+    //       setSearchedData(
+    //         Collegs.filter((item) => {
+    //           const searchitem = query.toLowerCase();
+    //           const slug = item.college.toLowerCase();
+    //           // console.log(slug);
+    //           // console.log(searchitem && (slug.includes(searchitem)));
+    //           return searchitem && slug.includes(searchitem);
+    //         })
+    //       );
+          
+    //     }
+    //   }
+
 
     const handleKeyDown = (e, nextRef) => {
         if (e.key === "Enter") {
@@ -213,7 +235,8 @@ const Register = () => {
                             </div>
                             <div>
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>College/University</p>
-                                <input
+                               {/* <div className='relative'> */}
+                               <input
                                     ref={collegeRef}
                                     className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
                                     type="text"
@@ -223,6 +246,17 @@ const Register = () => {
                                     onChange={handleChange}
                                     onKeyDown={(e) => handleKeyDown(e, passwordRef)}
                                 />
+                                {/* <div className='w-full h-auto absolute  -bottom-[4px]'>
+                                    {
+                                        SearchedData.map((it)=>{
+                                            return(<>
+                                            <div className='text-center'>{it.college}</div>
+                                            </>)
+                                        })
+                                    }
+                                    {/* <div className='text-center'>dfdasf</div> */}
+                                {/* </div> */}
+                               {/* </div>  */}
                             </div>
                             <div style={{ position: "relative" }}>
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Password</p>

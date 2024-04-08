@@ -2,7 +2,11 @@ import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { IoPlayCircle } from "react-icons/io5";
 import { IoPauseCircle } from "react-icons/io5";
-
+import {ReactComponent as Hm1} from '../../Assets/Icons/hm1.svg'
+import {ReactComponent as Hm2} from '../../Assets/Icons/hm2.svg'
+import {ReactComponent as Hm3} from '../../Assets/Icons/hm3.svg'
+import {ReactComponent as Hm4} from '../../Assets/Icons/hm4.svg'
+import {ReactComponent as Correct} from '../../Assets/Icons/correct.svg'
 const WhyHM = () => {
   const [playingIndex, setPlayingIndex] = useState(null);
   const sectionRef = useRef(null);
@@ -56,7 +60,90 @@ const WhyHM = () => {
             innovators.
           </p>
         </div>
-        <div className="flex flex-row gap-20 justify-center xsm:gap-4 mt-8 xsm:mt-0 md:mt-4 md:gap-10 xsm:flex-col xsm:items-center">
+
+        <div className="grid grid-cols-4 py-10 px-[5%] gap-x-6" >
+            <div className="gap-y-3 flex flex-col">
+            <Hm1 className="mx-auto h-14 w-14"/>
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl">Immediate Joining</div>
+            <div className="flex gap-x-2 ">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            </div>
+            <div className="gap-y-3 flex flex-col">
+            <Hm2 className="mx-auto h-14 w-14"/>
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl">No Offer Dropouts</div>
+            <div className="flex gap-x-2 ">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            </div>
+            <div className="gap-y-3 flex flex-col">
+            <Hm3 className="mx-auto h-14 w-14"/>
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl">Hiring In 1 day</div>
+            <div className="flex gap-x-2 ">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            </div>
+            <div className="gap-y-3 flex flex-col">
+            <Hm4 className="mx-auto h-14 w-14"/>
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl">PAN India Availabilitiy</div>
+            <div className="flex gap-x-2 ">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            <div className="flex gap-x-2">
+              <Correct className="h-5 w-5"/>
+              <div className="text-sm">We have pretrained developers.</div>
+            </div>
+            </div>
+        </div>
+        {/* <div className="flex flex-row gap-20 justify-center xsm:gap-4 mt-8 xsm:mt-0 md:mt-4 md:gap-10 xsm:flex-col xsm:items-center">
           <div
             className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[80%] xsm:h-[70%] xsm:rounded-lg md:w-[35%] md:h-[35%] relative"
             onClick={() => handlePlay(0)}
@@ -135,7 +222,7 @@ const WhyHM = () => {
               </span>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
