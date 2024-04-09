@@ -6,6 +6,8 @@ import WhyHM from "./WhyHM";
 import {ReactComponent as Ok} from '../../Assets/Icons/ok.svg'
 import HireTestimonial from "./HireTestimonial";
 import NewHireTestimonial from "./newhiretestimonials";
+import { RiWhatsappFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 const HireFromUs = () => {
   return (
     <>
@@ -206,9 +208,9 @@ const HireFromUs = () => {
                 </button>
               </div>
               <div className="flex justify-center px-6">
-                <p className="font-int font-medium text-[14px] md:text-[10px]">
-                  Have Questions?
-                </p>
+                <Link target="_blank" to='https://wa.me/qr/CQHWJUUFQHFQN1' className="font-int font-medium text-[40px] md:text-[30px]">
+                <RiWhatsappFill />
+                </Link>
               </div>
             </div>
           </div>
