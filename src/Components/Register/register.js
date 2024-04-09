@@ -236,17 +236,16 @@ const Register = () => {
                             <div>
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>College/University</p>
                                <div className='relative'>
-                               <input
-                                    ref={collegeRef}
-                                    className={`mt-2 w-full rounded-t-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light  outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${SearchData.length?'rounded-b-full':'rounded-b-0'}`}
-                                    type="text"
-                                    placeholder="Enter Your College/University"
-                                    name="college"
-                                    // value={user.college}
-                                    onChange={SearchData}
-                                    onKeyDown={(e) => handleKeyDown(e, passwordRef)}
-                                />
-                                <div className='w-full  min-h-0 absolute  z-20 bg-[#eafff5]  border-[1px] border-[#1dbf73]'>
+    <input
+    ref={collegeRef}
+    className={`mt-2 w-full rounded-t-[20px]  border-t-[1px] border-l-[1px] border-r-[1px]    border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${!SearchData.length>0 ? 'border-b-[1px] rounded-b-[20px]' : 'border-b-[0px] rounded-b-[0px]'}`}
+    type="text"
+    placeholder="Enter Your College/University"
+    name="college"
+    onChange={SearchData}
+    onKeyDown={(e) => handleKeyDown(e, passwordRef)}
+/>
+                                <div className='w-full  min-h-[0px] absolute  z-20 bg-[#eafff5]  '>
                                     {
                                         SearchedData.map((it)=>{
                                             return(<>
