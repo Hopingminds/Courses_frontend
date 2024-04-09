@@ -49,25 +49,25 @@ const Register = () => {
         });
     };
 
-    // function SearchData(e) {
-    //     let query = e.target.value;
-    //     if (query == "") {
-    //       setSearchedData([]);
+  async function SearchData(e) {
+        let query = e.target.value;
+        if (query == "") {
+          setSearchedData([]);
          
          
-    //     } else {
-    //       setSearchedData(
-    //         Collegs.filter((item) => {
-    //           const searchitem = query.toLowerCase();
-    //           const slug = item.college.toLowerCase();
-    //           // console.log(slug);
-    //           // console.log(searchitem && (slug.includes(searchitem)));
-    //           return searchitem && slug.includes(searchitem);
-    //         })
-    //       );
+        } else {
+          try {
+            let url1=BASE_URL+'/getcolleges?search='+query
+            const data=await fetch(url1)
+            const response=await data.json()
+            // console.log(response);
+            setSearchedData(response)
+          } catch (error) {
+            console.log(error);
+          }
           
-    //     }
-    //   }
+        }
+      }
 
 
     const handleKeyDown = (e, nextRef) => {
@@ -235,28 +235,27 @@ const Register = () => {
                             </div>
                             <div>
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>College/University</p>
-                               {/* <div className='relative'> */}
-                               <input
-                                    ref={collegeRef}
-                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
-                                    type="text"
-                                    placeholder="Enter Your College/University"
-                                    name="college"
-                                    value={user.college}
-                                    onChange={handleChange}
-                                    onKeyDown={(e) => handleKeyDown(e, passwordRef)}
-                                />
-                                {/* <div className='w-full h-auto absolute  -bottom-[4px]'>
+                               <div className='relative'>
+    <input
+    ref={collegeRef}
+    className={`mt-2 w-full rounded-t-[20px]  border-t-[1px] border-l-[1px] border-r-[1px]    border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${!SearchData.length>0 ? 'border-b-[1px] rounded-b-[20px]' : 'border-b-[0px] rounded-b-[0px]'}`}
+    type="text"
+    placeholder="Enter Your College/University"
+    name="college"
+    onChange={SearchData}
+    onKeyDown={(e) => handleKeyDown(e, passwordRef)}
+/>
+                                <div className='w-full  min-h-[0px] absolute  z-20 bg-[#eafff5]  '>
                                     {
                                         SearchedData.map((it)=>{
                                             return(<>
-                                            <div className='text-center'>{it.college}</div>
+                                            <div className='text-center text-[8px] border py-1'>{it.college}</div>
                                             </>)
                                         })
                                     }
                                     {/* <div className='text-center'>dfdasf</div> */}
-                                {/* </div> */}
-                               {/* </div>  */}
+                                </div>
+                               </div> 
                             </div>
                             <div style={{ position: "relative" }}>
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Password</p>
