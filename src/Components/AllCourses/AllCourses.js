@@ -34,6 +34,8 @@ const AllCourses = () => {
   const [show, setshow] = useState(false);
   const [mouseHovered, setMouseHovered] = useState(null);
   const [countvalue, setcountvalue] = useState(0)
+  const [studentplaced, setstudentplaced] = useState()
+  const [coursesenrolled, setcoursesenrolled] = useState()
   const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
     [User1]: {
@@ -130,12 +132,10 @@ const AllCourses = () => {
 
   function SearchData(e) {
     let query = e.target.value;
-    // setSearchQuery(e.target.value);
-    // console.log(query);
-    // console.log(query);
+   
     if (query == "") {
       setSearchedData([]);
-      // console.log("query:",Data);
+
       setAllCourses(Data);
     } else {
       setSearchedData(
@@ -178,21 +178,45 @@ const AllCourses = () => {
   // console.log(SearchedData)
 
   function Count(num) {
-    for (let index = 0; index < num; index++) {
+    for (let index = 0; index <=num; index+=100) {
       // setTimeout(() => {
       // console.log(index);
       setTimeout(() => {
         setcountvalue(index)
-      }, index * 1);
+      }, 2000);
 
-      // }
-      // }, index*1000);
+
+
+    }
+  }
+  function Studentplaced(num) {
+    for (let index = 0; index <=num; index+=100) {
+      // setTimeout(() => {
+      // console.log(index);
+      setTimeout(() => {
+        setstudentplaced(index)
+      }, 2000);
+
+
+
+    }
+  }
+  function Coursesenrolled(num) {
+    for (let index = 0; index <=num; index+=1) {
+      // setTimeout(() => {
+      // console.log(index);
+      setTimeout(() => {
+      setcoursesenrolled(index)
+      }, 2000);
+
 
 
     }
   }
   useEffect(() => {
-    Count(10001)
+    Count(30000)
+    Studentplaced(10000)
+    Coursesenrolled(250)
   }, [])
 
   const searchBarRef = useRef(null);
@@ -288,12 +312,12 @@ const AllCourses = () => {
             <div className="xsm:text-[8px] md:text-[14px]">Students Enrolled</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
-          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
+          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{studentplaced}+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Students Placed</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
-          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
-            <div className="xsm:text-[8px] md:text-[14px]">Courses to choose from</div>
+          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{coursesenrolled}+</div>
+            <div className="xsm:text-[8px] md:text-[14px]">Courses enrolled</div>
           </div>
         </div>
       </div>
