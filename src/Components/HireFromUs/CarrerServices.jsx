@@ -1,15 +1,69 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Resume from './Resume'
 import Companies from '../Companies'
 import './hirefromus.css'
 import HireTestimonial from './HireTestimonial'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
+import toast, { Toaster } from 'react-hot-toast';
+import { BASE_URL } from '../../Api/api'
 
 const CareerServices = () => {
+    const [carreer, setcarreer] = useState({
+        "name": "",
+        "email": "",
+        "phone": "",
+        "degree": ""
+    })
+    
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setcarreer({
+            ...carreer,
+            [name]: value,
+            
+        });
+    };
+    async function handleRegister(){
+        if(!carreer.degree || !carreer.email || !carreer.name|| !carreer.phone ){
+            toast.error('Every input must be filled')
+            return;
+        }
+        else{
+            try {
+                let url=BASE_URL+'/addcareerfrom'
+                const data=await fetch(url,{
+                    method:'POST',
+                    headers: {
+                        'Accept': 'application.json',
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify(carreer),
+                })
+                const response=await data.json()
+                if(response.success){
+                    toast.success(response.message)
+                    // setcarreer({
+                    //     "name": "",
+                    //     "email": "",
+                    //     "phone": "",
+                    //     "degree": ""
+                    // })
+                }
+                else{
+toast.error(response.message)
+                }
+            } catch (error) {
+                
+            }
+        }
+    }
   return (
     <>
+                <Toaster position="top-right" />
+
         <div className=' px-[5%] py-[5%] bg-gradient-to-r from-[#0F2027] to-[#203A43] backgroundsvg md:mb-6 xsm:pb-[14%]'>
             {/* Mainsection */}
+
             <div className=' flex justify-between pr-[12%] md:pr-[0%] xsm:flex-col xsm:pr-[0%] xsm:gap-4'>
                 <div className='w-[55%] flex flex-col gap-16 xsm:w-full xsm:gap-6'>
                     <div>
@@ -116,23 +170,23 @@ const CareerServices = () => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-1'>
                                 <label className='text-[13px] font-medium md:text-[12px] xsm:text-[10px]' htmlFor="name">Name</label>
-                                <input id='name' className='bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[15px] md:text-[12px] xsm:text-[10px]' type="text" placeholder='Enter Your name' />
+                                <input onChange={handleChange} value={carreer.name} name="name"  id='name' className='bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[15px] md:text-[12px] xsm:text-[10px]' type="text" placeholder='Enter Your name' />
                             </div>
                             <div className='flex flex-col gap-1'>
-                                <label className='text-[13px] font-medium md:text-[12px] xsm:text-[10px]' htmlFor="pass">Email</label>
-                                <input id='pass' className='bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[15px] md:text-[12px] xsm:text-[10px]' type="email" placeholder='Enter Your Email' />
+                                <label className='text-[13px] font-medium md:text-[12px] xsm:text-[10px]' htmlFor="email">Email</label>
+                                <input onChange={handleChange} value={carreer.email} name="email" id='email' className='bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[15px] md:text-[12px] xsm:text-[10px]' type="email" placeholder='Enter Your Email' />
                             </div>
                             <div className='flex flex-col gap-1'>
                                 <label className='text-[13px] font-medium md:text-[12px] xsm:text-[10px]' htmlFor="study">Phone No.</label>
-                                <input id='study' className='bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[15px] md:text-[12px] xsm:text-[10px]' type="text" placeholder='Enter Your Phone No.' />
+                                <input onChange={handleChange} value={carreer.phone} name='phone' id='phone' className='bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[15px] md:text-[12px] xsm:text-[10px]' type="number" placeholder='Enter Your Phone No.' />
                             </div>
                             <div className='flex flex-col gap-1'>
                                 <label className='text-[13px] font-medium md:text-[12px] xsm:text-[10px]' htmlFor="time">Degree</label>
-                                <input id='time' className='bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[15px] md:text-[12px] xsm:text-[10px]' type="text" placeholder='Enter Your Degree' />
+                                <input onChange={handleChange} value={carreer.degree} id='degree' name="degree" className='bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[15px] md:text-[12px] xsm:text-[10px]' type="text" placeholder='Enter Your Degree' />
                             </div>
                         </div>
                         <div>
-                            <button className='bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[10px]'>Submit</button>
+                            <button className='bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[10px]' onClick={handleRegister}>Submit</button>
                         </div>
                         <div className='flex justify-center'>
                             <p className='font-int font-medium text-[14px] md:text-[10px] xsm:text-[10px]'>Have Questions?</p>
