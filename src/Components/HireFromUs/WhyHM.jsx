@@ -2,11 +2,11 @@ import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { IoPlayCircle } from "react-icons/io5";
 import { IoPauseCircle } from "react-icons/io5";
-import {ReactComponent as Hm1} from '../../Assets/Icons/hm1.svg'
-import {ReactComponent as Hm2} from '../../Assets/Icons/hm2.svg'
-import {ReactComponent as Hm3} from '../../Assets/Icons/hm3.svg'
-import {ReactComponent as Hm4} from '../../Assets/Icons/hm4.svg'
-import {ReactComponent as Correct} from '../../Assets/Icons/correct.svg'
+import { ReactComponent as Hm1 } from "../../Assets/Icons/hm1.svg";
+import { ReactComponent as Hm2 } from "../../Assets/Icons/hm2.svg";
+import { ReactComponent as Hm3 } from "../../Assets/Icons/hm3.svg";
+import { ReactComponent as Hm4 } from "../../Assets/Icons/hm4.svg";
+import { ReactComponent as Correct } from "../../Assets/Icons/correct.svg";
 const WhyHM = () => {
   const [playingIndex, setPlayingIndex] = useState(null);
   const sectionRef = useRef(null);
@@ -44,7 +44,7 @@ const WhyHM = () => {
   };
 
   return (
-    <div className=" pb-[6%] pt-[2%] md:pt-12">
+    <div className=" pb-[6%] pt-[5%] md:pt-12">
       <div className="flex flex-col gap-3 xsm:gap-5" ref={sectionRef}>
         <div className="flex justify-center">
           <p className="text-[#1DBF73] text-[36px] font-pop font-semibold xsm:text-[24px] md:text-[30px]">
@@ -61,87 +61,127 @@ const WhyHM = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-4 py-10 px-[5%] gap-x-6 md:py-6 xsm:grid-cols-2 xsm:gap-y-10" >
-            <div className="gap-y-3 flex flex-col">
-            <Hm1 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
-            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">Immediate Joining</div>
+        <div className="grid grid-cols-4 py-10 px-[5%] gap-x-6 md:py-6 xsm:grid-cols-2 xsm:gap-y-10">
+          <div className="gap-y-3 flex flex-col">
+            <Hm1 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10" />
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">
+              Immediate Joining
+            </div>
             <div className="flex gap-x-2 ">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
+          </div>
+          <div className="gap-y-3 flex flex-col">
+            <Hm2 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10" />
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">
+              No Offer Dropouts
             </div>
-            <div className="gap-y-3 flex flex-col">
-            <Hm2 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
-            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">No Offer Dropouts</div>
             <div className="flex gap-x-2 ">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
+          </div>
+          <div className="gap-y-3 flex flex-col">
+            <Hm3 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10" />
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">
+              Hiring In 1 day
             </div>
-            <div className="gap-y-3 flex flex-col">
-            <Hm3 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
-            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">Hiring In 1 day</div>
             <div className="flex gap-x-2 ">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
+          </div>
+          <div className="gap-y-3 flex flex-col">
+            <Hm4 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10" />
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">
+              PAN India Availabilitiy
             </div>
-            <div className="gap-y-3 flex flex-col">
-            <Hm4 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
-            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">PAN India Availabilitiy</div>
             <div className="flex gap-x-2 ">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
             <div className="flex gap-x-2">
-              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3" />
+              <div className="text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">
+                We have pretrained developers.
+              </div>
             </div>
-            </div>
+          </div>
         </div>
         {/* <div className="flex flex-row gap-20 justify-center xsm:gap-4 mt-8 xsm:mt-0 md:mt-4 md:gap-10 xsm:flex-col xsm:items-center">
           <div

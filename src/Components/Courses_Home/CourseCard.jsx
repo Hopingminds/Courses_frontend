@@ -117,8 +117,8 @@ const CourseCard = ({
           />
         )}
       </div>
-      <div className="space-y-4 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2 md:mt-2 xsm:mt-1">
-        <div className="flex flex-col gap-3 xsm:gap-0 md:gap-0">
+      <div className="space-y-3 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2 md:mt-2 xsm:mt-1">
+        <div className="flex flex-col gap-2 xsm:gap-0 md:gap-0">
           <div className="flex justify-between">
             <div className="flex space-x-2 items-center xsm:space-x-1">
               <img
