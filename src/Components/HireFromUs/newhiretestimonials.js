@@ -15,7 +15,7 @@ import User5 from "../../Assests/Images/Ravinder Singh.jpg";
 import User6 from "../../Assests/Images/Rupak Yadav.jpg";
 
 
-const HireTestimonial = () => {
+const NewHireTestimonial = () => {
 
     const tempdata = [
         {
@@ -98,9 +98,9 @@ const HireTestimonial = () => {
     ]
 
   return (
-    <div>
-        <div className='py-[4%] text-white font-pop font-semibold text-[40px] text-center md:text-[20px] xsm:text-[14px]'>
-            <p>Hear directly from <span className='text-[#1DBF73]'>our students.</span> </p>
+    <div className='pb-[5%]'>
+        <div className='py-[4%] text-[#1DBF73] font-pop font-semibold text-[42px] text-center md:text-[20px] xsm:text-[14px]'>
+            <p>Success<span className='text-white ml-3'>Stories</span> </p>
          
         </div>
         {/* splide */}
@@ -159,7 +159,7 @@ const HireTestimonial = () => {
                 </Splide>
             </div>
             {/* row2 */}
-            <div className=' '>
+            {/* <div className=' '>
                 <Splide
                     options={{
                         type: "loop",
@@ -211,10 +211,10 @@ const HireTestimonial = () => {
                 </SplideSlide>
                     ))}
                 </Splide>
-            </div>
+            </div> */}
         </div>
     </div>
   )
 }
 
-export default HireTestimonial
+export default NewHireTestimonial

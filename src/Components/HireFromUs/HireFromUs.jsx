@@ -4,6 +4,8 @@ import Companies from "../Companies";
 import "./hirefromus.css";
 import WhyHM from "./WhyHM";
 import {ReactComponent as Ok} from '../../Assets/Icons/ok.svg'
+import HireTestimonial from "./HireTestimonial";
+import NewHireTestimonial from "./newhiretestimonials";
 const HireFromUs = () => {
   return (
     <>
@@ -148,7 +150,7 @@ const HireFromUs = () => {
             </div> */}
           </div>
           <div className="w-[30%] self-end xsm:w-full">
-            <div className="bg-[#00000033] backdrop-blur rounded-xl py-6 text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
+            <div className="bg-[#00000033]   rounded-xl py-6 text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
               <div className="flex justify-center text-center">
                 <p className="font-pop font-semibold text-[20px] md:text-[14px] xsm:text-[16px]">Share Your Hiring Requirements</p>
               </div>
@@ -215,6 +217,9 @@ const HireFromUs = () => {
       <Companies />
       <Resume2 />
       <WhyHM />
+      <div  className='px-[5%] bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43]'>
+      <NewHireTestimonial/>
+      </div>
     </>
   );
 };
