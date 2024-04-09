@@ -51,6 +51,11 @@ const Register = () => {
 
   async function SearchData(e) {
         let query = e.target.value;
+        setUser({
+            ...user,
+            college:query,
+            
+        })
         if (query == "") {
           setSearchedData([]);
          
@@ -157,7 +162,14 @@ const Register = () => {
         }
 
     }, [searchParams.get('name'), searchParams.get('email')])
-
+function handleSearch(clg){
+    setUser({
+        ...user,
+        college:clg,
+        
+    })
+    setSearchedData([])
+}
     return (
         <>
             <div className='flex overflow-hidden'>
@@ -242,6 +254,7 @@ const Register = () => {
     type="text"
     placeholder="Enter Your College/University"
     name="college"
+    value={user.college}
     onChange={SearchData}
     onKeyDown={(e) => handleKeyDown(e, passwordRef)}
 />
@@ -249,7 +262,7 @@ const Register = () => {
                                     {
                                         SearchedData.map((it)=>{
                                             return(<>
-                                            <div className='text-center text-[8px] border py-1'>{it.college}</div>
+                                            <div onClick={(e)=> handleSearch(it.college)} className='text-center text-[8px] border py-1 cursor-pointer'>{it.college}</div>
                                             </>)
                                         })
                                     }

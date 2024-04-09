@@ -20,7 +20,7 @@ const DetailTableDashboard = ({data}) => {
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{item?._id.slice(0,10)}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{item?.name}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>64%</p>
-            <p className='text-[#000] text-[16px] font-pop font-semibold'>{item?.stream}</p>
+            <p className='text-[#000] text-[16px] font-pop font-semibold'>{item?.degree}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>Data Science</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>64%</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>Pending</p>
