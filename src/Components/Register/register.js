@@ -250,7 +250,7 @@ function handleSearch(clg){
                                <div className='relative'>
     <input
     ref={collegeRef}
-    className={`mt-2 w-full rounded-t-[20px]  border-t-[1px] border-l-[1px] border-r-[1px]    border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${!SearchData.length>0 ? 'border-b-[1px] rounded-b-[20px]' : 'border-b-[0px] rounded-b-[0px]'}`}
+    className={`mt-2 w-full  border border-[#1dbf73] rounded-[25px] py-[10px] px-[24px] text-[14px] font-pop font-light outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${SearchedData.length? 'border-b-[0px] rounded-b-none' : 'border-b-[1px]'}`}
     type="text"
     placeholder="Enter Your College/University"
     name="college"
@@ -258,11 +258,11 @@ function handleSearch(clg){
     onChange={SearchData}
     onKeyDown={(e) => handleKeyDown(e, passwordRef)}
 />
-                                <div className='w-full  min-h-[0px] absolute  z-20 bg-[#eafff5]  '>
+                                <div className='w-full collegescroll min-h-[0px] max-h-[200px] overflow-y-auto absolute  z-20 bg-[#eafff5]  '>
                                     {
                                         SearchedData.map((it)=>{
                                             return(<>
-                                            <div onClick={(e)=> handleSearch(it.college)} className='text-center text-[8px] border py-1 cursor-pointer'>{it.college}</div>
+                                            <div onClick={(e)=> handleSearch(it.college)} className='text-center text-[12px] border py-1 cursor-pointer'>{it.college}</div>
                                             </>)
                                         })
                                     }

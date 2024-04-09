@@ -17,3 +17,6 @@
   width: 125px;
   margin: 0 ;
 }
+.collegescroll::-webkit-scrollbar{
+  width: 0px;
+}
