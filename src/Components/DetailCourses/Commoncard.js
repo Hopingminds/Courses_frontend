@@ -8,6 +8,8 @@ import { jwtDecode } from "jwt-decode";
 import toast, { Toaster } from "react-hot-toast";
 import { IoIosShareAlt } from "react-icons/io";
 import { RWebShare } from "react-web-share";
+import ReactPlayer from "react-player";
+
 export default function Commoncard(props) {
     let { Data } = props;
     // console.log(Data);
@@ -60,7 +62,7 @@ export default function Commoncard(props) {
                     body: JSON.stringify({ email, courseid })
                 })
                 let response = await data.json()
-                console.log(response);
+                // console.log(response);
                 if (response.success) {
                     toast.success(response.msg)
                 }
@@ -87,11 +89,21 @@ export default function Commoncard(props) {
 
     }
     // console.log(Data)
-    console.log(purchasedCourses)
+    // console.log(purchasedCourses)
     return (
         <div className="bg-[#E2FFF1] w-[33%] h-max my-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3">
             <div className="h-[225px] bg-white xsm:h-[65px] md:h-[35%]">
-                <img className="w-full h-full rounded-xl xsm:rounded-md" src={Data?.featured_image} />
+                {/* <img className="w-full h-full rounded-xl xsm:rounded-md" src={Data?.featured_image} /> */}
+                <ReactPlayer
+                height='100%'
+                width='100%'
+                url={Data?.featured_video}
+                playing={true}
+                loop={true}
+                muted={true}
+                controls={false}
+                className="mix-blend-multiply"
+                />
             </div>
             <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1 md:gap-3 md:mt-4">
                 <p className="font-pop font-semibold xsm:text-[8px] md:text-[14px]">{Data?.title}</p>
