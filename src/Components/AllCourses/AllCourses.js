@@ -255,15 +255,15 @@ const AllCourses = () => {
 
       {/* </div> */}
 
-      <div className="relative h-auto w-full mb-14">
-        <div className="flex flex-row rounded-md w-[50%] p-1 bg-[#f3fffa] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] left-[50%] translate-x-[-50%] md:w-[70%]">
+      <div className="relative h-auto w-full mb-14 xsm:mb-8">
+        <div className="flex flex-row rounded-md w-[50%] p-1 bg-[#f3fffa] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] xsm:top-[25%] left-[50%] translate-x-[-50%] md:w-[70%]">
           <div className="relative w-full rounded-md">
             <input
               type="text"
-              placeholder=""
+              placeholder="Search for course"
               ref={searchBarRef}
               onChange={SearchData}
-              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
+              className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
                 }`}
             />
             <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center" ref={searchResultsRef}>
@@ -283,8 +283,8 @@ const AllCourses = () => {
               })}
             </div>
           </div>
-          <button className="text-[#ffffff] text-[22px] flex flex-row gap-2 justify-center items-center font-pop bg-[#1DBF73] rounded-md py-1 px-4 xsm:rounded-r-md xsm:text-[10px] xsm:py-1 xsm:px-2 md:text-[14px] md:rounded-r-lg">
-            <span> <img src={Search} className="w-12 h-8" /></span>Search
+          <button className="text-[#ffffff] text-[22px] flex flex-row gap-2 justify-center items-center font-pop bg-[#1DBF73] rounded-md py-1 px-4 xsm:rounded-r-md xsm:text-[10px] xsm:py-0 xsm:px-2 md:text-[14px] md:rounded-r-lg">
+            <span> <img src={Search} className="w-12 h-8 md:w-10 md:h-6 xsm:w-6 xsm:h-2" /> </span>Search
           </button>
         </div>
 
