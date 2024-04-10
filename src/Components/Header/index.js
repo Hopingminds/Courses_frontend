@@ -37,7 +37,7 @@ export default function Navbar() {
     }
 
     return (<>
-        <div className="w-full flex justify-between px-[5%] h-20 items-center  font-pop fixed top-0 z-40 bg-[#0F2027] xsm:h-12 xsm:px-[2%] text-white md:h-14 2xl:w-[66%]">
+        <div className="w-full flex justify-between px-[5%] h-20 items-center  font-pop fixed top-0 z-[9999] bg-[#0F2027] xsm:h-12 xsm:px-[2%] text-white md:h-14 2xl:w-[66%]">
             <Link to='/' onClick={Top} className=" cursor-pointer">
                 <img src="/logo.png" className="h-[50px] w-auto xsm:w-[50px] xsm:h-[25px] md:w-[70px] md:h-[30px]" />
             </Link>
@@ -45,7 +45,7 @@ export default function Navbar() {
                 {userDetail?.role != 'subadmin' && <>
                     <Link to={'/'} onClick={Top} className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/' ? ' font-bold text-[#1DBF73]' : ''}`}>Home</Link>
                     <Link to={'/course'} onClick={Top} className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] md:text-[14px] font-pop  ${location.pathname === '/course' ? ' font-bold text-[#1DBF73]' : ''}`}>Courses</Link>
-                    <Link to={'/career'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Career</Link>
+                    <Link to={'/hire-from-us'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/hire-from-us' ? ' font-bold text-[#1DBF73]' : ''}`}>Hire From Us</Link>
                     {/* <Link to={'/ai'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Ai Minds</Link> */}
                     {/* <Link to={'/hire-from-us'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Hire From Us</Link> */}
                     <a href={location.pathname == '/' ? '#' : '/pap'} onClick={ScrollToPap} className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] cursor-pointer md:text-[14px] font-pop ${location.pathname === '#pap' ? ' font-bold text-[#1DBF73]' : ''}`}>PAP</a>

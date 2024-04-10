@@ -4,13 +4,17 @@ import Companies from "../Companies";
 import "./hirefromus.css";
 import WhyHM from "./WhyHM";
 import {ReactComponent as Ok} from '../../Assets/Icons/ok.svg'
+import HireTestimonial from "./HireTestimonial";
+import NewHireTestimonial from "./newhiretestimonials";
+import { RiWhatsappFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 const HireFromUs = () => {
   return (
     <>
       <div className=" px-[5%] pt-[4%]  bg-gradient-to-r from-[#0F2027] to-[#203A43] wavebg"  style={{ width: "100%" }}>
         {/* Mainsection */}
-        <div className=" flex justify-between pb-[18%] xsm:flex-col xsm:gap-2 xsm:pb-[35%] ">
-          <div className="flex flex-col gap-16 w-[70%] md:gap-10 xsm:w-full xsm:gap-6 ">
+        <div className=" flex justify-between pb-[18%] xsm:flex-col xsm:gap-6 xsm:pb-[35%] ">
+          <div className="flex flex-col gap-16 w-[70%] md:gap-10 xsm:w-full xsm:gap-6 md:w-[65%]">
             <div>
               <p className="font-pop font-semibold text-[50px] text-white md:text-[32px] xsm:text-[24px]">
                 Hire Tech Talent That Delivers{" "}
@@ -19,26 +23,26 @@ const HireFromUs = () => {
             </div>
 
 
-            <div className="flex flex-col gap-y-7">
-              <div className="flex items-center gap-x-4">
-                <Ok/>
-                <div className="text-[#FFFFFF] font-semibold text-lg">Hire from our Pan-India Talent pool, across 100+ colleges</div>
+            <div className="flex flex-col gap-y-7 md:gap-y-5 xsm:gap-y-3">
+              <div className="flex items-center gap-x-4 xsm:gap-x-2">
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5"/>
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">Hire from our Pan-India Talent pool, across 100+ colleges</div>
               </div>
-              <div className="flex items-center gap-x-4">
-                <Ok/>
-                <div className="text-[#FFFFFF] font-semibold text-lg">Pre-Trained Developers available across 10 profiles</div>
+              <div className="flex items-center gap-x-4 xsm:gap-x-2">
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5"/>
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">Pre-Trained Developers available across 10 profiles</div>
               </div>
-              <div className="flex items-center gap-x-4">
-                <Ok/>
-                <div className="text-[#FFFFFF] font-semibold text-lg">Experience ranging from 0 to 3 years</div>
+              <div className="flex items-center gap-x-4 xsm:gap-x-2">
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5"/>
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">Experience ranging from 0 to 3 years</div>
               </div>
-              <div className="flex items-center gap-x-4">
-                <Ok/>
-                <div className="text-[#FFFFFF] font-semibold text-lg">Available for Full-Time as well as for Internships</div>
+              <div className="flex items-center gap-x-4 xsm:gap-x-2">
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5"/>
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">Available for Full-Time as well as for Internships</div>
               </div>
-              <div className="flex items-center gap-x-4">
-                <Ok/>
-                <div className="text-[#FFFFFF] font-semibold text-lg">Solve your long-term Entry-Level Tech recruitment needs</div>
+              <div className="flex items-center gap-x-4 xsm:gap-x-2">
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5"/>
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">Solve your long-term Entry-Level Tech recruitment needs</div>
               </div>
             </div>
 
@@ -148,7 +152,7 @@ const HireFromUs = () => {
             </div> */}
           </div>
           <div className="w-[30%] self-end xsm:w-full">
-            <div className="bg-[#00000033] backdrop-blur rounded-xl py-6 text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
+            <div className="bg-[#00000033]   rounded-xl py-6 text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
               <div className="flex justify-center text-center">
                 <p className="font-pop font-semibold text-[20px] md:text-[14px] xsm:text-[16px]">Share Your Hiring Requirements</p>
               </div>
@@ -204,9 +208,9 @@ const HireFromUs = () => {
                 </button>
               </div>
               <div className="flex justify-center px-6">
-                <p className="font-int font-medium text-[14px] md:text-[10px]">
-                  Have Questions?
-                </p>
+                <Link target="_blank" to='https://wa.me/qr/CQHWJUUFQHFQN1' className="font-int font-medium text-[40px] md:text-[30px]">
+                <RiWhatsappFill className="md:w-6 md:h-6"/>
+                </Link>
               </div>
             </div>
           </div>
@@ -215,6 +219,9 @@ const HireFromUs = () => {
       <Companies />
       <Resume2 />
       <WhyHM />
+      <div  className='px-[5%] bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43]'>
+      <NewHireTestimonial/>
+      </div>
     </>
   );
 };

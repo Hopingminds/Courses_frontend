@@ -16,7 +16,7 @@ const Footer = () => {
     // console.log(pathname)
     return (
         <>
-            <div className='flex flex-col gap-14  pt-10 pb-4 xsm:gap-8 add_gradient md:gap-10 md:pt-8'>
+            <div className='flex flex-col gap-14  pt-10 pb-4 xsm:gap-8 bg-[#0F2027] md:gap-10 md:pt-8'>
                 <div className='flex  justify-between px-[5%] xsm:pl-[5%] xsm:flex xsm:flex-col xsm:gap-8'>
                     <div className='flex flex-col gap-5 w-[260px] xsm:gap-2 xsm:w-[90%] md:gap-6'>
                         <div onClick={() => navigate('/')}><img src='/logo.png' className='w-auto h-[50px] xsm:w-[40%] xsm:h-[10%] md:w-[60%]  cursor-pointer' /></div>
@@ -29,6 +29,7 @@ const Footer = () => {
                             <Link to='/privacy' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Privacy Policy</Link>
                             <Link to='/terms' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Terms and Conditions</Link>
                             <Link to='/pap' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Pay After Placement</Link>
+                            <Link to='/career' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Career</Link>
                             <Link to='/hire-from-us' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Hire From Us</Link>
                             <Link to='/cv-builder' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>CV Builder</Link>
                         </div>

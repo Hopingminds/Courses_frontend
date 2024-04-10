@@ -5,7 +5,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 const Resume2 = () => {
   return (
     <div
-      className="px-[5%] py-[15%] bg-gradient-to-r from-[#0F2027] to-[#203A43] curvedbg w-full"
+      className="px-[5%] py-[15%] pb-[10%] bg-gradient-to-r from-[#0F2027] to-[#203A43] curvedbg w-full xsm:pt-[30%]"
       style={{ width: "100%" }}
     >
       <div className="text-white font-pop font-semibold text-[40px] text-center relative md:text-[32px] xsm:text-[20px]">
@@ -27,16 +27,16 @@ const Resume2 = () => {
         {/* <p>careers, fuelled by Hoping minds</p> */}
       </div>
       
-      <div className="grid grid-cols-4 xsm:mt-2 md:mt-8 mt-16 gap-8 ">
+      <div className="grid grid-cols-4 md:mt-8 mt-16 gap-8 xsm:grid-cols-2 xsm:mt-8">
         <div className="bw-border  ">
         <div className=" flex flex-col py-[15%]  ">
            <div className="flex justify-around items-center">
-           <img src="/node.png"/>
-            <img src="/mongodb.png"/>
-            <img src="/express.png"/>
+           <img src="/node.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+            <img src="/mongodb.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+            <img src="/express.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
            </div>
-           <div className="text-[25px] text-[#FFFFFF] text-center mt-5">Backend Developers</div>
-            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight">
+           <div className="text-[25px] text-[#FFFFFF] text-center mt-5 md:text-[16px] xsm:text-[12px]">Backend Developers</div>
+            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight md:text-[12px] md:gap-y-3 xsm:text-[8px] xsm:gap-y-2">
               <div>Mongo DB database</div>
               <div>Setting up Express JS setup</div>
               <div>Backend development in NodeJS</div>
@@ -47,12 +47,12 @@ const Resume2 = () => {
         <div className="bw-border ">
         <div className=" flex flex-col py-[15%] ">
            <div className="flex justify-around items-center">
-           <img src="/html.png"/>
-            <img src="/css.png"/>
-            <img src="/js.png"/>
+           <img src="/html.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+            <img src="/css.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+            <img src="/js.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
            </div>
-           <div className="text-[25px] text-[#FFFFFF] text-center mt-5">Frontend Developers</div>
-            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight">
+           <div className="text-[25px] text-[#FFFFFF] text-center mt-5 md:text-[16px] xsm:text-[12px]">Frontend Developers</div>
+            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight md:text-[12px] md:gap-y-3 xsm:text-[8px] xsm:gap-y-2">
               <div>HTML and advanced CSS</div>
               <div>Javascript and ES6</div>
               <div>Redux in React and using Crud</div>
@@ -63,12 +63,12 @@ const Resume2 = () => {
         <div className="bw-border ">
         <div className=" flex flex-col py-[15%] ">
            <div className="flex justify-around items-center">
-           <img src="/figma.png"/>
-            <img src="/xd.png"/>
-            <img src="/diamond.png"/>
+           <img src="/figma.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+            <img src="/xd.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+            <img src="/diamond.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
            </div>
-           <div className="text-[25px] text-[#FFFFFF] text-center mt-5">UI/UX Designer</div>
-            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight">
+           <div className="text-[25px] text-[#FFFFFF] text-center mt-5 md:text-[16px] md:px-4 xsm:text-[12px]">UI/UX Designer</div>
+            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight md:text-[12px] md:gap-y-3 xsm:text-[8px] xsm:gap-y-2">
               <div>Setting up Express JS set up</div>
               <div>2-3 mini projects in NodeJS</div>
               <div>Using MongoDB database</div>
@@ -79,13 +79,13 @@ const Resume2 = () => {
         <div className="bw-border ">
         <div className=" flex flex-col py-[15%] ">
            <div className="flex justify-around items-center">
-           <img src="/node.png"/>
-            <img src="/mongodb.png"/>
+           <img src="/node.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+            <img src="/mongodb.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
             {/* <img src="/express.png"/> */}
-            <img src="/react.png"/>
+            <img src="/react.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
            </div>
-           <div className="text-[25px] text-[#FFFFFF] text-center mt-5">FullStack Developers</div>
-            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight">
+           <div className="text-[25px] text-[#FFFFFF] text-center mt-5 md:text-[16px] xsm:text-[12px]">FullStack Developers</div>
+            <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight md:text-[12px] md:gap-y-3 xsm:text-[8px] xsm:gap-y-2">
               <div>Mongo DB database</div>
               <div>Setting up Express JS setup</div>
               <div>Backend development in NodeJS</div>

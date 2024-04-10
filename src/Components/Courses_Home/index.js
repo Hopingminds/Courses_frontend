@@ -34,7 +34,10 @@ const Courses_Home = () => {
       // Check screen size and set the number of cards to show
       if (window.innerWidth <= 480) {
         setCardsToShow(3); // For screens smaller than 480px, show only 4 cards
-      } else {
+      } else if (window.innerWidth >= 1500 && window.innerWidth <= 1999) {
+        setCardsToShow(5);
+      }
+       else {
         setCardsToShow(4); // For larger screens, show 4 cards
       }
     }
@@ -72,7 +75,7 @@ const Courses_Home = () => {
     <>
       {/* <h1 className='text-[40px] mt-16 font-semibold' style={{ textAlign: 'center' }}> Our Feature Courses</h1> */}
 
-      <div className="h-[100%] w-full px-20 py-8 mt-12 font-pop bg-[#E2FFF1] xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-10 md:space-y-2">
+      <div className="h-[100%] w-full px-16 py-8 font-pop bg-[#E2FFF1] xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-10 md:space-y-2">
         <div className="flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px] md:text-[12px] md:space-x-6">
           {[
             "All Courses",
@@ -103,13 +106,13 @@ const Courses_Home = () => {
           </div> */}
           <Link
             to={"/course"}
-            className="text-[#1DBF73] text-[16px] font-bold xsm:text-[8px] md:text-[16px]"
+            className="text-[#1DBF73] text-[16px] font-bold xsm:text-[8px] md:text-[14px] md:pr-3"
           >
             See all
           </Link>
         </div>
         {/* <div className="text-[#333333] text-[20px] mt-1">Our training covers everything you need for a successful career, from basic job skills to advanced tech know-how.</div> */}
-        <div className="my-4 grid grid-cols-4 gap-4 xsm:grid-cols-3 xsm:gap-3 xsm:my-[2%] md:gap-3">
+        <div className="my-4 grid grid-cols-4 gap-4 xsm:grid-cols-3 xsm:gap-3 xsm:my-[2%] md:gap-3 xl:grid-cols-5">
           {" "}
           {/* Changed flex to flex-wrap */}
           {filteredCourses?.slice(0, cardsToShow)?.map((course, ind) => (

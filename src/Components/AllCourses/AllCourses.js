@@ -4,6 +4,7 @@ import Img2 from "../../Assests/Images/creator.png";
 import Icon1 from "../../Assests/Icons/twitter.svg";
 import Icon2 from "../../Assests/Icons/facebook.svg";
 import Icon3 from "../../Assests/Icons/instagram.svg";
+import Search from "../../Assests/Icons/search.svg";
 import User1 from "../../Assests/Images/Saurabh Pal-Data Resolve.png";
 import User2 from "../../Assests/Images/Sumit.jpg";
 import User3 from "../../Assests/Images/Khushpreet Kaur-Delta IT.jpeg";
@@ -34,6 +35,8 @@ const AllCourses = () => {
   const [show, setshow] = useState(false);
   const [mouseHovered, setMouseHovered] = useState(null);
   const [countvalue, setcountvalue] = useState(0)
+  const [studentplaced, setstudentplaced] = useState()
+  const [coursesenrolled, setcoursesenrolled] = useState()
   const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
     [User1]: {
@@ -130,12 +133,10 @@ const AllCourses = () => {
 
   function SearchData(e) {
     let query = e.target.value;
-    // setSearchQuery(e.target.value);
-    // console.log(query);
-    // console.log(query);
+   
     if (query == "") {
       setSearchedData([]);
-      // console.log("query:",Data);
+
       setAllCourses(Data);
     } else {
       setSearchedData(
@@ -178,21 +179,45 @@ const AllCourses = () => {
   // console.log(SearchedData)
 
   function Count(num) {
-    for (let index = 0; index < num; index++) {
+    for (let index = 0; index <=num; index+=100) {
       // setTimeout(() => {
       // console.log(index);
       setTimeout(() => {
         setcountvalue(index)
-      }, index * 1);
+      }, 2000);
 
-      // }
-      // }, index*1000);
+
+
+    }
+  }
+  function Studentplaced(num) {
+    for (let index = 0; index <=num; index+=100) {
+      // setTimeout(() => {
+      // console.log(index);
+      setTimeout(() => {
+        setstudentplaced(index)
+      }, 2000);
+
+
+
+    }
+  }
+  function Coursesenrolled(num) {
+    for (let index = 0; index <=num; index+=1) {
+      // setTimeout(() => {
+      // console.log(index);
+      setTimeout(() => {
+      setcoursesenrolled(index)
+      }, 2000);
+
 
 
     }
   }
   useEffect(() => {
-    Count(10001)
+    Count(30000)
+    Studentplaced(10000)
+    Coursesenrolled(250)
   }, [])
 
   const searchBarRef = useRef(null);
@@ -230,15 +255,15 @@ const AllCourses = () => {
 
       {/* </div> */}
 
-      <div className="relative h-auto w-full">
-        <div className="flex flex-row rounded-2xl w-[60%] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] left-[50%] translate-x-[-50%] md:w-[70%]">
-          <div className="relative w-full ">
+      <div className="relative h-auto w-full mb-14 xsm:mb-8">
+        <div className="flex flex-row rounded-md w-[50%] p-1 bg-[#f3fffa] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] xsm:top-[25%] left-[50%] translate-x-[-50%] md:w-[70%]">
+          <div className="relative w-full rounded-md">
             <input
               type="text"
-              placeholder=""
+              placeholder="Search for course"
               ref={searchBarRef}
               onChange={SearchData}
-              className={`flex-1 w-full outline-none placeholder-gray-500 text-[16px] font-pop rounded-tl-2xl py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
+              className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
                 }`}
             />
             <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center" ref={searchResultsRef}>
@@ -258,8 +283,8 @@ const AllCourses = () => {
               })}
             </div>
           </div>
-          <button className="text-[#ffffff] text-[22px] font-pop bg-[#1DBF73] rounded-r-2xl py-1 px-10 xsm:rounded-r-md xsm:text-[10px] xsm:py-1 xsm:px-2 md:text-[14px] md:rounded-r-lg">
-            Search
+          <button className="text-[#ffffff] text-[22px] flex flex-row gap-2 justify-center items-center font-pop bg-[#1DBF73] rounded-md py-1 px-4 xsm:rounded-r-md xsm:text-[10px] xsm:py-0 xsm:px-2 md:text-[14px] md:rounded-r-lg">
+            <span> <img src={Search} className="w-12 h-8 md:w-10 md:h-6 xsm:w-6 xsm:h-2" /> </span>Search
           </button>
         </div>
 
@@ -282,18 +307,18 @@ const AllCourses = () => {
           />
         </div>
 
-        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-20 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16">
+        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-36 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16">
           <div className="text-white xsm:flex xsm:flex-col">
           <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Students Enrolled</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
-          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
+          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{studentplaced}+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Students Placed</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
-          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
-            <div className="xsm:text-[8px] md:text-[14px]">Courses to choose from</div>
+          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{coursesenrolled}+</div>
+            <div className="xsm:text-[8px] md:text-[14px]">Courses enrolled</div>
           </div>
         </div>
       </div>

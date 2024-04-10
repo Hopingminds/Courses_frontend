@@ -18,7 +18,7 @@ useEffect(() => {
 useEffect(() => {
   async function FetchData(){
     try {
-      let url=BASE_URL+'/getadmindashdata?university=cu'
+      let url=BASE_URL+'/getadmindashdata?university=Chandigarh University(CU) - Punjab'
       const data=await fetch(url);
       const response=await data.json()
       setdata(response?.data)
