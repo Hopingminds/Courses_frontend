@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./pap.css";
 import curve from "../../Assets/Images/half.png";
 import { ReactComponent as FPlanning } from "../../Assets/Icons/financialPlanning.svg";
@@ -7,8 +7,9 @@ import { ReactComponent as FRisk } from "../../Assets/Icons/financialRisk.svg";
 import { ReactComponent as QualityEdu } from "../../Assets/Icons/qualityEducation.svg";
 
 const PAPBenefit = () => {
+  const [content, setcontent] = useState("I understand, ma'am, that you are in a non-technical field, but our courses are going to cater to both technical and non-technical fields because both are equally important")
   return (
-    <div className="pap_curve_bg border border-red-600 h-[110vh] w-full grid ">
+    <div className="pap_curve_bg  h-[110vh] w-full grid ">
       <div className="grid grid-cols-[70%_30%] h-[90vh] mt-[15vh] place-items-center">
         <div className=" h-[80vh] py-[10vh] relative">
           <img
@@ -16,57 +17,55 @@ const PAPBenefit = () => {
             alt="..."
             className="h-[100%] w-[100%] object-contain"
           />
-          <div className="border-[30px] border-[#615f5f] rounded-full absolute top-[50%] translate-y-[-50%] left-[0%] bg-[#D9D9D9] h-[40vh] aspect-square p-[1rem] grid place-items-center">
-            <p className="text-[25px] text-center"> Benefits of PAP</p>
+          <div onClick={()=>setcontent("I understand, ma'am, that you are in a non-technical field, but our courses are going to cater to both technical and non-technical fields because both are equally important")} className="border-[30px] cursor-pointer border-[#615f5f] rounded-full absolute top-[50%] translate-y-[-50%] left-[0%] bg-[#D9D9D9] h-[40vh] aspect-square p-[1rem] grid place-items-center">
+            <p className="text-[25px] text-center">No Upfront Fees</p>
           </div>
-          <div className="flex gap-[1rem] max-w-[15vw] border rounded-[3rem] p-2 px-4 place-items-center absolute top-[5%] right-[0%] bg-black">
+          <div onClick={()=>setcontent("Securing your future is our promise. With our 100% Placement Guarantee, embark on your journey knowing we're committed to your success every step of the way.")} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] border rounded-[3rem] p-2 px-4 place-items-center absolute top-[5%] right-[0%] bg-black">
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
               <FRisk className="h-[20px] w-[20px]" />
             </span>
-            <p className="text-white text-[14px]">Reduced Financial Risk</p>
+            <p className="text-white text-[14px]">100% Placement Guarantee</p>
           </div>
-          <div className="flex gap-[1rem] max-w-[15vw] border rounded-[3rem] p-2 px-4 place-items-center absolute top-[25%] right-[-25%] bg-black">
+          <div onClick={()=>setcontent('Our comprehensive support system ensures your success. Gain access to resources, mentorship, and networking opportunities to secure your desired placement effortlessly')} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] border rounded-[3rem] p-2 px-4 place-items-center absolute top-[25%] right-[-25%] bg-black">
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
               <QualityEdu className="h-[20px] w-[20px]" />
             </span>
             <p className="text-white text-[14px]">
-              Access to quality education
+            Placement Assistance
             </p>
           </div>
-          <div className="flex gap-[1rem] max-w-[15vw] border rounded-[3rem] p-2 px-4 place-items-center absolute top-[45%] right-[-40%] bg-black">
+          <div onClick={()=>setcontent("Flexible financing options tailored to your needs. Pay After Placement ensures you can pursue your goals without financial stress. Empower your journey with our adaptable payment solutions")} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] border rounded-[3rem] p-2 px-4 place-items-center absolute top-[45%] right-[-40%] bg-black">
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
               <Guide className="h-[20px] w-[20px]" />
             </span>
             <p className="text-white text-[14px]">
-              Personalised Career Guidance
+            Financial Flexibility
             </p>
           </div>
-          <div className="flex gap-[1rem] max-w-[15vw] border rounded-[3rem] p-2 px-4 place-items-center absolute top-[65%] right-[-25%] bg-black">
+          <div onClick={()=>setcontent("Ensuring student success is our priority. Our program incorporates comprehensive risk mitigation strategies, safeguarding students' investments and paving the way for a secure educational journey")} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] border rounded-[3rem] p-2 px-4 place-items-center absolute top-[65%] right-[-25%] bg-black">
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
               <FPlanning className="h-[20px] w-[20px]" />
             </span>
-            <p className="text-white text-[14px]">Motivation & Commitment</p>
+            <p className="text-white text-[14px]">Risk Mitigation for Students</p>
           </div>
-          <div className="flex gap-[1rem] max-w-[15vw] border rounded-[3rem] p-2 px-4 place-items-center absolute top-[85%] right-[-5%] bg-black">
+          <div onClick={()=>setcontent('Empowering students with the mindset of lifelong learning. Our program fosters continuous growth, equipping learners with skills to thrive in an ever-evolving world.')} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] border rounded-[3rem] p-2 px-4 place-items-center absolute top-[85%] right-[-5%] bg-black">
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
               <FPlanning className="h-[20px] w-[20px]" />
             </span>
             <p className="text-white text-[14px]">
-              Financial Planning & Stability
+            Encourages life long learning
             </p>
           </div>
         </div>
-        <div className="border grid justify-self-start rounded-xl">
+        <div  className="border grid justify-self-start rounded-xl">
           <div className="h-[40vh] aspect-square p-5 text-white grid place-items-center text-balance">
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Provident pariatur cum consectetur eum mollitia tempore inventore
-              reprehenderit obcaecati corporis maiores.
+             {content}
             </p>
           </div>
         </div>
