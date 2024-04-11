@@ -101,7 +101,7 @@ const AllCourses = () => {
         setcat(category)
         setshow(true);
         const res = await axios.get(`${BASE_URL}/courses?category=${category}`);
-        // console.log(res);
+        console.log(res.data.courses);
         setAllCourses(res.data.courses);
         setData(res.data.courses);
         setTemp(res.data.courses);
@@ -133,7 +133,7 @@ const AllCourses = () => {
 
   function SearchData(e) {
     let query = e.target.value;
-   
+
     if (query == "") {
       setSearchedData([]);
 
@@ -179,7 +179,7 @@ const AllCourses = () => {
   // console.log(SearchedData)
 
   function Count(num) {
-    for (let index = 0; index <=num; index+=100) {
+    for (let index = 0; index <= num; index += 100) {
       // setTimeout(() => {
       // console.log(index);
       setTimeout(() => {
@@ -191,7 +191,7 @@ const AllCourses = () => {
     }
   }
   function Studentplaced(num) {
-    for (let index = 0; index <=num; index+=100) {
+    for (let index = 0; index <= num; index += 100) {
       // setTimeout(() => {
       // console.log(index);
       setTimeout(() => {
@@ -203,11 +203,11 @@ const AllCourses = () => {
     }
   }
   function Coursesenrolled(num) {
-    for (let index = 0; index <=num; index+=1) {
+    for (let index = 0; index <= num; index += 1) {
       // setTimeout(() => {
       // console.log(index);
       setTimeout(() => {
-      setcoursesenrolled(index)
+        setcoursesenrolled(index)
       }, 2000);
 
 
@@ -309,15 +309,15 @@ const AllCourses = () => {
 
         <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-36 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16">
           <div className="text-white xsm:flex xsm:flex-col">
-          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Students Enrolled</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
-          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{studentplaced}+</div>
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{studentplaced}+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Students Placed</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
-          <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{coursesenrolled}+</div>
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{coursesenrolled}+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Courses enrolled</div>
           </div>
         </div>
@@ -354,6 +354,7 @@ const AllCourses = () => {
               description={val.overview}
               ind={ind}
               _id={val._id}
+              display={val.display}
             // Pass category to CourseCard component
             />
           );

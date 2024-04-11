@@ -24,6 +24,7 @@ const CourseCard = ({
   description,
   ind,
   _id,
+  display,
 }) => {
   console.log(_id);
   const [mouseHovered, setMouseHovered] = useState(null);
@@ -52,12 +53,13 @@ const CourseCard = ({
         isSelected ? "border-2 border-blue-500" : ""
       }`}
       style={{
-        pointerEvents: userDetail?.blocked_courses?.includes(_id)
-          ? "none"
-          : "auto",
+        pointerEvents:
+          userDetail?.blocked_courses?.includes(_id) || !display
+            ? "none"
+            : "auto",
       }}
     >
-      {userDetail?.blocked_courses?.includes(_id) && (
+      {(userDetail?.blocked_courses?.includes(_id) || !display) && (
         <span className="absolute top-0 left-0 h-[100%] w-[100%] z-[99999] bg-[rgba(0,0,0,0.6)] rounded-xl grid place-items-center">
           <IoIosLock size={"60"} color={"white"} />
         </span>
