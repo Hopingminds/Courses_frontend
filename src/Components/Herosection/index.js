@@ -1,4 +1,4 @@
-// import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player'
 // import './hero.css'
 // import { ReactComponent as Cal } from '../../Assets/Icons/cal.svg'
 // import { ReactComponent as Email } from '../../Assets/Icons/email.svg'
@@ -44,12 +44,12 @@ export default function Herosection() {
         <div className=" bg-gradient-to-r from-[#0F2027] to-[#203A43] h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%]">
             <div className='w-[45%] space-y-5'>
                 <div className='text-[45px] font-semibold text-white leading-[60px] font-pop text-wrap'>Master In-Demand Skills for Dream Placements
-High Impact Courses that Earn you College Credits</div>
+    High Impact Courses that Earn you College Credits</div>
             </div>
             <div className='w-[45%] h-[80%] flex justify-center items-center  relative text-[#545567] '>
                 <div className='h-[90%] w-[90%] herobox bg-white'>
-                    {/* <ReactPlayer width='100%' height='100%' url='/home_video.mp4' playing={true} loop={true} controls={false} /> */}
-                <img src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1711955580289-homepage-small.gif" alt="video" />
+                    <ReactPlayer width='100%' height='100%' url='/home_video.mp4' playing={true} loop={true} controls={false} />
+                {/* <img src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1711955580289-homepage-small.gif" alt="video" /> */}
 
                 </div>
                 <div className='flex w-[15vw] h-[20vh] backdrop-blur-[2px] absolute -top-6 left-10  py-2 px-4 space-x-3 items-center  rounded-lg bgcurvehome'>
