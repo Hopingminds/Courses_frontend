@@ -46,21 +46,21 @@ export default function Herosection() {
                 <div className='text-[45px] font-semibold text-white leading-[60px] font-pop text-wrap'>Master In-Demand Skills for Dream Placements
     High Impact Courses that Earn you College Credits</div>
             </div>
-            <div className='w-[45%] h-[80%] flex justify-center items-center  relative text-[#545567] '>
-                <div className='h-[90%] w-[90%] herobox bg-white'>
-                    <ReactPlayer width='100%' height='100%' url='/home_video.mp4' playing={true} loop={true} controls={false} />
+            <div className='w-[40%] h-[75%] flex justify-center items-center  relative text-[#545567] '>
+                <div className='h-[100%] w-[100%] herobox bg-white  '>
+                    <ReactPlayer className='-translate-x-28' width='150%' height='100%'  url='/home_video.mp4'  playing={true}  loop={true} controls={false} />
                 {/* <img src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1711955580289-homepage-small.gif" alt="video" /> */}
 
                 </div>
                 <div className='flex w-[15vw] h-[20vh] backdrop-blur-[2px] absolute -top-6 left-10  py-2 px-4 space-x-3 items-center  rounded-lg bgcurvehome'>
                     <Certificate/>
-                    <div className='flex flex-col w-[60%] text-[#E2B7AA]'>
+                    <div className='flex flex-col text-white w-[60%] '>
                         <div>NSDC Partner with Course Certifications</div>
                     </div>
                 </div>
-                <div className='flex absolute w-[15vw] h-[15vh] backdrop-blur-[2px] text-[#E2B7AA] top-[60%] -left-10   space-x-2 items-center py-2 px-3 bgcurvehome'>
+                <div className='flex absolute w-[12vw] h-[15vh] backdrop-blur-[4px] backdrop-brightness-50 rounded-xl top-[60%] -left-10   space-x-2 items-center py-2 px-3 bgcurvehome'>
                     <Ai/>
-                    <div className='flex flex-col '>
+                    <div className='flex flex-col text-white '>
                         <div className=''>AI driven Learning Experience</div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@ export default function Herosection() {
                     <div className='flex justify-center items-center h-11 w-11  rounded' >
                         <Cashback/>
                     </div>
-                    <div className='flex flex-col text-[#E2B7AA]'>
+                    <div className='flex flex-col text-white '>
                         <div>Earn College Credits for Each Course</div>
                     </div>
                 </div>

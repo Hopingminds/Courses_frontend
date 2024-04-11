@@ -114,11 +114,11 @@ export default function Pap() {
       </div>
       {/* Main */}
       <div className=" my-6 xsm:px-[3%] md:px-[5%]">
-        <div className="px-[8%]">
+        <div className="px-[5%]">
           <p className="font-pop font-semibold text-[32px] xsm:text-[14px] md:text-[26px]">From Learning To Earning </p>
         </div>
         {/* Agreement */}
-        <div className="flex justify-between px-[8%]">
+        <div className="flex justify-between px-[5%]">
           <div className="w-[55%] mt-10 flex flex-col gap-4 xsm:mt-5 md:mt-8">
             <div>
               <p className="font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px] md:text-[22px]">How This Works ?</p>
@@ -158,7 +158,7 @@ export default function Pap() {
             </div>
           </div>
           <div className="w-[40%] relative">
-            <div className="absolute left-[37%] top-[8%] z-10 xsm:left-[14%] xsm:top-[15%]">
+            <div className="absolute left-[37%] top-[5%] z-10 xsm:left-[14%] xsm:top-[15%]">
               <img className="w-[310px] h-[180px] xsm:w-[110px] xsm:h-[85px] md:w-[210px] md:h-[120px]" src="../img/papagreeimg1.png" />
             </div>
             <div className="absolute top-[60%] z-10 md:top-[52%]">
@@ -168,7 +168,7 @@ export default function Pap() {
           </div>
         </div>
         {/* course fee */}
-        <div className=" px-[8%] flex my-24 justify-between xsm:my-10 md:my-18">
+        <div className=" px-[5%] flex my-24 justify-between xsm:my-10 md:my-18">
           <div className="w-[40%] relative mt-12 xsm:mt-4 md:mt-8">
             <div className="bg-[#E2FFF1] rounded-xl w-[75%] h-full absolute top-[-12%] left-[10%] z-[-2]"></div>
             <div className="z-10 h-full">
@@ -207,7 +207,7 @@ export default function Pap() {
         </div>
         {/* Dropout clauses */}
         {/* will be changed first */}
-        <div className="px-[8%] flex  justify-between my-36 xsm:my-10">
+        <div className="px-[5%] flex  justify-between my-36 xsm:my-10">
           <div className="w-[65%]  flex flex-col gap-6 xsm:gap-2">
             <div>
               <p className="font-pop font-semibold text-[24px] text-[#2D3436] xsm:text-[10px] xsm:font-bold">Dropout Clauses</p>
@@ -240,13 +240,13 @@ export default function Pap() {
             <div className="absolute top-[64%] z-10  translate-x-[-15%] xsm:translate-x-[-0%] xsm:top-[55%]">
               <img className="rounded-xl w-[85%] h-full z-10" src="../img/papclausesimg1.png" alt="image" />
             </div>
-            <div className="bg-gradient-to-outside w-[70%] h-[70%] absolute top-[30%] left-[18%] opacity-55"></div>
+            <div className="bg-gradient-to-outside w-[70%] h-[70%] absolute top-[30%] left-[15%] opacity-55"></div>
           </div>
         </div>
 
         <PAPBenefit />
         {/* Agreement */}
-        <div className="px-[8%] my-12 relative xsm:my-8">
+        <div className="px-[5%] my-12 relative xsm:my-8">
           <div className="bg-black rounded-xl px-24 py-14 text-white w-full flex flex-col items-center gap-6 xsm:gap-4 xsm:px-8 xsm:py-3 md:px-14 md:py-8 md:gap-4">
             <div>
               <p className="font-pop font-semibold text-[34px] xsm:text-[10px] md:text-[26px]">Pay After Placement(PAP) Agreement</p>
@@ -261,11 +261,11 @@ export default function Pap() {
           </div>
         </div>
         {/* FAQ */}
-        <div className="px-[8%] my-12 flex flex-col items-center xsm:gap-2 xsm:my-8">
+        <div className="px-[5%] my-12 flex flex-col items-center xsm:gap-2 xsm:my-8">
           <div>
-            <p className="px-[8%] font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px] md:text-[22px]">Frequently Asked Questions</p>
+            <p className=" font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px] md:text-[22px]">Frequently Asked Questions</p>
           </div>
-          <div className="px-[8%] w-full">
+          <div className=" w-full">
             {faqs.map((item, index) => (
               <div key={index} className="faq1 w-full">
                 <div className=" w-full">
