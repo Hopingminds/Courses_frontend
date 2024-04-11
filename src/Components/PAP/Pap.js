@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
 import './pap.css'
+import PAPBenefit from "./PAPBenefit";
 
 export default function Pap() {
 
@@ -112,12 +113,12 @@ export default function Pap() {
         <div className="font-pop font-semibold text-white text-[44px] pl-20 xsm:text-[20px] xsm:pl-4 md:text-[30px] md:pl-14">Pay After Placement</div>
       </div>
       {/* Main */}
-      <div className="px-[8%] my-6 xsm:px-[3%] md:px-[5%]">
-        <div>
+      <div className=" my-6 xsm:px-[3%] md:px-[5%]">
+        <div className="px-[8%]">
           <p className="font-pop font-semibold text-[32px] xsm:text-[14px] md:text-[26px]">From Learning To Earning </p>
         </div>
         {/* Agreement */}
-        <div className="flex justify-between">
+        <div className="flex justify-between px-[8%]">
           <div className="w-[55%] mt-10 flex flex-col gap-4 xsm:mt-5 md:mt-8">
             <div>
               <p className="font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px] md:text-[22px]">How This Works ?</p>
@@ -167,7 +168,7 @@ export default function Pap() {
           </div>
         </div>
         {/* course fee */}
-        <div className="flex my-24 justify-between xsm:my-10 md:my-18">
+        <div className=" px-[8%] flex my-24 justify-between xsm:my-10 md:my-18">
           <div className="w-[40%] relative mt-12 xsm:mt-4 md:mt-8">
             <div className="bg-[#E2FFF1] rounded-xl w-[75%] h-full absolute top-[-12%] left-[10%] z-[-2]"></div>
             <div className="z-10 h-full">
@@ -206,7 +207,7 @@ export default function Pap() {
         </div>
         {/* Dropout clauses */}
         {/* will be changed first */}
-        <div className="flex  justify-between my-36 xsm:my-10">
+        <div className="px-[8%] flex  justify-between my-36 xsm:my-10">
           <div className="w-[65%]  flex flex-col gap-6 xsm:gap-2">
             <div>
               <p className="font-pop font-semibold text-[24px] text-[#2D3436] xsm:text-[10px] xsm:font-bold">Dropout Clauses</p>
@@ -242,8 +243,10 @@ export default function Pap() {
             <div className="bg-gradient-to-outside w-[70%] h-[70%] absolute top-[30%] left-[18%] opacity-55"></div>
           </div>
         </div>
+
+        <PAPBenefit />
         {/* Agreement */}
-        <div className="my-12 relative xsm:my-8">
+        <div className="px-[8%] my-12 relative xsm:my-8">
           <div className="bg-black rounded-xl px-24 py-14 text-white w-full flex flex-col items-center gap-6 xsm:gap-4 xsm:px-8 xsm:py-3 md:px-14 md:py-8 md:gap-4">
             <div>
               <p className="font-pop font-semibold text-[34px] xsm:text-[10px] md:text-[26px]">Pay After Placement(PAP) Agreement</p>
@@ -258,11 +261,11 @@ export default function Pap() {
           </div>
         </div>
         {/* FAQ */}
-        <div className="my-12 flex flex-col items-center xsm:gap-2 xsm:my-8">
+        <div className="px-[8%] my-12 flex flex-col items-center xsm:gap-2 xsm:my-8">
           <div>
-            <p className="font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px] md:text-[22px]">Frequently Asked Questions</p>
+            <p className="px-[8%] font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px] md:text-[22px]">Frequently Asked Questions</p>
           </div>
-          <div className=" w-full">
+          <div className="px-[8%] w-full">
             {faqs.map((item, index) => (
               <div key={index} className="faq1 w-full">
                 <div className=" w-full">
@@ -278,9 +281,8 @@ export default function Pap() {
                       <img
                         src="../Icons/papdropdown.svg"
                         alt=""
-                        className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 ${
-                          item.isOpen ? "rotate-up" : "rotate-down"
-                        }`}
+                        className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 ${item.isOpen ? "rotate-up" : "rotate-down"
+                          }`}
                       />
                     </div>
                   </div>

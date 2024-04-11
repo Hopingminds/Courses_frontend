@@ -39,6 +39,7 @@ import Temp from '../Components/temp.js'
 import Newinstructor from '../Components/Newinstructor/index.js'
 import Button from '../Components/ResumeBuilder/Button.jsx'
 import ResumeBuilder from '../Components/ResumeBuilder/ResumeBuilder.jsx'
+import MinorCourse from '../Components/MinorCourses/minorCourses.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -92,6 +93,7 @@ const Router = () => {
                 <Route path='/new' element={<Newinstructor />} />
                 <Route path='/button' element={<Button />} />
                 <Route path='/resumebuilder' element={<ResumeBuilder />} />
+                <Route path='/minorCourse' element={<MinorCourse />} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
