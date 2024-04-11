@@ -60,7 +60,7 @@ const CourseCard = ({
       }}
     >
       {(userDetail?.blocked_courses?.includes(_id) || !display) && (
-        <span className="absolute top-0 left-0 h-[100%] w-[100%] z-[99999] bg-[rgba(0,0,0,0.6)] rounded-xl grid place-items-center">
+        <span className="absolute top-0 left-0 h-[100%] w-[100%] z-[9] bg-[rgba(0,0,0,0.6)] rounded-xl grid place-items-center">
           <IoIosLock size={"60"} color={"white"} />
         </span>
       )}
