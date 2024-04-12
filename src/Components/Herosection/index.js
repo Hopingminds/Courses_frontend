@@ -49,7 +49,7 @@ useEffect(() => {
         else{
             setactive(active+1)
         }
-    }, 3000);
+    }, 2000);
 }, [active])
 
     return (<>
@@ -59,7 +59,7 @@ useEffect(() => {
     High Impact Courses that Earn you College Credits</div>
             </div>
             <div className='w-[40%] h-[75%] flex justify-center items-center  relative text-[#545567] '>
-                <div className='h-[100%] w-[100%] herobox bg-white  flex items-center '>
+                <div className='h-[80%] w-[100%] herobox bg-white  flex items-center '>
                     {/* <ReactPlayer className='-translate-x-28' width='150%' height='100%'  url='/home_video.mp4'  playing={true}  loop={true} controls={false} /> */}
                 <img  className=' h-full w-full'  src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712906243859-home_video.gif" alt="video" />
 

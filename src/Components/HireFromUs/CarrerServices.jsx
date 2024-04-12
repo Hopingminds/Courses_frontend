@@ -30,7 +30,7 @@ const CareerServices = () => {
         }
         else{
             try {
-                let url=BASE_URL+'/addcareerfrom'
+                let url=BASE_URL+'/addcareerform'
                 const data=await fetch(url,{
                     method:'POST',
                     headers: {

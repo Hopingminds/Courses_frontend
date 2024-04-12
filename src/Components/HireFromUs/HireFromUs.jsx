@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Resume2 from "./Resume2";
 import Companies from "../Companies";
 import "./hirefromus.css";
@@ -8,9 +8,60 @@ import HireTestimonial from "./HireTestimonial";
 import NewHireTestimonial from "./newhiretestimonials";
 import { RiWhatsappFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { BASE_URL } from "../../Api/api";
 const HireFromUs = () => {
+  const [hiredata, sethiredata] = useState({
+    name:"",
+    email:"",
+    phone:"",
+    company:""
+  })
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    sethiredata({
+        ...hiredata,
+        [name]: value,
+        
+    });
+};
+async function handleRegister(){
+  if(!hiredata.name || !hiredata.email || !hiredata.company|| !hiredata.phone ){
+      toast.error('Every input must be filled')
+      return;
+  }
+  else{
+      try {
+          let url=BASE_URL+'/addhirefromusform'
+          const data=await fetch(url,{
+              method:'POST',
+              headers: {
+                  'Accept': 'application.json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(hiredata),
+          })
+          const response=await data.json()
+          if(response.success){
+              toast.success(response.message)
+              // sethiredata({
+              //     "name": "",
+              //     "email": "",
+              //     "phone": "",
+              //     "degree": ""
+              // })
+          }
+          else{
+toast.error(response.message)
+          }
+      } catch (error) {
+          
+      }
+  }
+}
   return (
     <>
+      <Toaster position="top-right" />
       <div className=" px-[5%] pt-[4%]  bg-gradient-to-r from-[#0F2027] to-[#203A43] wavebg"  style={{ width: "100%" }}>
         {/* Mainsection */}
         <div className=" flex justify-between pb-[18%] xsm:flex-col xsm:gap-6 xsm:pb-[35%] ">
@@ -163,7 +214,10 @@ const HireFromUs = () => {
                   </label>
                   <input
                     id="name"
+                    name="name"
                     className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
+                    onChange={handleChange}
+                    value={hiredata.name}
                     type="text"
                     placeholder="Enter Your name"
                   />
@@ -174,8 +228,11 @@ const HireFromUs = () => {
                   </label>
                   <input
                     id="pass"
+                    name="company"
+                    onChange={handleChange}
+                    value={hiredata.company}
                     className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
-                    type="password"
+                    type="text"
                     placeholder="Enter Your Company"
                   />
                 </div>
@@ -184,6 +241,9 @@ const HireFromUs = () => {
                   Work E-mail
                   </label>
                   <input
+                  onChange={handleChange}
+                  value={hiredata.email}
+                  name="email"
                     id="study"
                     className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
                     type="text"
@@ -195,7 +255,10 @@ const HireFromUs = () => {
                   Phone number
                   </label>
                   <input
+                   onChange={handleChange}
+                   value={hiredata.phone}
                     id="time"
+                    name="phone"
                     className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
                     type="text"
                     placeholder="Enter Your Mobile number"
@@ -203,12 +266,12 @@ const HireFromUs = () => {
                 </div>
               </div>
               <div className="px-6">
-                <button className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]">
+                <button onClick={handleRegister} className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]">
                 Submit
                 </button>
               </div>
               <div className="flex justify-center px-6">
-                <Link target="_blank" to='https://wa.me/qr/CQHWJUUFQHFQN1' className="font-int font-medium text-[40px] md:text-[30px]">
+                <Link target="_blank" to='https://wa.me/qr/S3LVDB3Y3SB3H1' className="font-int font-medium text-[40px] md:text-[30px]">
                 <RiWhatsappFill className="md:w-6 md:h-6"/>
                 </Link>
               </div>
