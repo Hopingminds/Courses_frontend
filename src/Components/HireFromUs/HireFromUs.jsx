@@ -55,7 +55,7 @@ async function handleRegister(){
 toast.error(response.message)
           }
       } catch (error) {
-          
+          console.log(error);
       }
   }
 }
