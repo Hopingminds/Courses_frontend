@@ -188,7 +188,7 @@ const CartCheckout = () => {
           </span>
 
           {/* Dropdown buttons start */}
-          <div className="flex space-x-10  xsm:justify-between xsm:gap-0 xsm:space-x-0">
+          <div className="flex space-x-10 grid grid-cols-2 xsm:justify-between xsm:gap-0 xsm:space-x-2">
             <CountrySelector
               onChange={handleCountryChange}
               name="country"
@@ -206,33 +206,33 @@ const CartCheckout = () => {
               styleContainer={{ width: "400px !important" }}
             />
           </div>
-          <div className="flex space-x-10 xsm:justify-between xsm:gap-0 xsm:space-x-2">
+          <div className="flex space-x-10 grid grid-cols-2 xsm:justify-between xsm:gap-0 xsm:space-x-2">
             <input
               value={name}
               onChange={(e) => setname(e.target.value)}
               placeholder="Name"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
+              className="w-full py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
             />
             <input
               value={gstnumber}
               onChange={(e) => setgstnumber(e.target.value)}
               placeholder="GST No.(optional)"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
+              className="w-[88%] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 xsm:w-[95%] md:text-[14px] md:w-[80%]"
             />
           </div>
-          <div className="flex space-x-10 xsm:justify-between xsm:gap-0 xsm:space-x-2">
+          <div className="flex space-x-10 grid grid-cols-2 xsm:justify-between xsm:gap-0 xsm:space-x-2">
             <input
               value={address}
               onChange={(e) => setaddress(e.target.value)}
               placeholder="Address"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
+              className="w-full py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
             />
             <input
               value={zip}
               onChange={(e) => setzip(e.target.value)}
               type="number"
               placeholder="ZIP Code"
-              className="w-[180px] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
+              className="w-[88%] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 xsm:w-[95%] md:text-[14px] md:w-[80%]"
             />
           </div>
 
