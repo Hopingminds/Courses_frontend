@@ -52,20 +52,20 @@ export default function Herosection() {
                 {/* <img src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1711955580289-homepage-small.gif" alt="video" /> */}
 
                 </div>
-                <div className='flex w-[15vw] h-[20vh] backdrop-blur-[2px] absolute -top-6 left-10  py-2 px-4 space-x-3 items-center  rounded-lg bgcurvehome'>
+                <div className='scale-in-center flex w-[15vw] h-[20vh] backdrop-blur-[2px] absolute -top-6 left-10  py-2 px-4 space-x-3 items-center  rounded-lg bgcurvehome'>
                     <Certificate/>
                     <div className='flex flex-col text-white w-[60%] '>
                         <div>NSDC Partner with Course Certifications</div>
                     </div>
                 </div>
-                <div className='flex absolute w-[12vw] h-[15vh] backdrop-blur-[4px] backdrop-brightness-50 rounded-xl top-[60%] -left-10   space-x-2 items-center py-2 px-3 bgcurvehome'>
+                <div className='flex absolute w-[12vw] h-[15vh] backdrop-blur-[4px]  top-[60%] -left-10   space-x-2 items-center py-2 px-3 bgcurvehome'>
                     <Ai/>
                     <div className='flex flex-col text-white '>
                         <div className=''>AI driven Learning Experience</div>
                     </div>
                 </div>
 
-                <div className='flex absolute bottom-10 right-3 w-[15vw] h-[20vh] backdrop-blur-[2px]    p-2 space-x-2 items-center   bgcurvehome'>
+                <div className='flex absolute bottom-10 -right-5 w-[15vw] h-[20vh] backdrop-blur-[2px]    p-2 space-x-2 items-center   bgcurvehome'>
                     <div className='flex justify-center items-center h-11 w-11  rounded' >
                         <Cashback/>
                     </div>
