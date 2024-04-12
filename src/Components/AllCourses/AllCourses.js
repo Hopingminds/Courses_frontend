@@ -35,8 +35,9 @@ const AllCourses = () => {
   const [show, setshow] = useState(false);
   const [mouseHovered, setMouseHovered] = useState(null);
   const [countvalue, setcountvalue] = useState(0)
-  const [studentplaced, setstudentplaced] = useState()
-  const [coursesenrolled, setcoursesenrolled] = useState()
+  const [studentplaced, setstudentplaced] = useState(0)
+  const [corporatepartners, setcorporatepartners] = useState(0)
+  const [coursesenrolled, setcoursesenrolled] = useState(0)
   const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
     [User1]: {
@@ -179,7 +180,7 @@ const AllCourses = () => {
   // console.log(SearchedData)
 
   function Count(num) {
-    for (let index = 0; index <= num; index += 100) {
+    for (let index = 0; index <= num; index += 125) {
       // setTimeout(() => {
       // console.log(index);
       setTimeout(() => {
@@ -214,10 +215,23 @@ const AllCourses = () => {
 
     }
   }
+  function Corporate(num) {
+    for (let index = 0; index <= num; index += 2) {
+      // setTimeout(() => {
+      // console.log(index);
+      setTimeout(() => {
+        setcorporatepartners(index)
+      }, 2000);
+
+
+
+    }
+  }
   useEffect(() => {
-    Count(30000)
-    Studentplaced(10000)
-    Coursesenrolled(250)
+    Count(28725)
+    Studentplaced(5000)
+    Coursesenrolled(175)
+    Corporate(626)
   }, [])
 
   const searchBarRef = useRef(null);
@@ -318,7 +332,11 @@ const AllCourses = () => {
           </div>
           <div className="xsm:flex xsm:flex-col">
             <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{coursesenrolled}+</div>
-            <div className="xsm:text-[8px] md:text-[14px]">Courses enrolled</div>
+            <div className="xsm:text-[8px] md:text-[14px]">Industry Experts</div>
+          </div>
+          <div className="xsm:flex xsm:flex-col">
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{corporatepartners}+</div>
+            <div className="xsm:text-[8px] md:text-[14px]">Corporate Partners</div>
           </div>
         </div>
       </div>
