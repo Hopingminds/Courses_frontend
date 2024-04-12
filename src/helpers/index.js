@@ -8,7 +8,7 @@ export const validateEmail = (email) => {
         );
 };
 
-const collegeRegex = /^[a-zA-Z0-9\s():-]+$/;
+const collegeRegex = /^[a-zA-Z0-9\s(),:-]+$/;
 
 export const validateCollege = (name) => {
     if (collegeRegex.test(name)) {

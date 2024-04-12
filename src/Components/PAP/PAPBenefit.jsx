@@ -10,15 +10,15 @@ const PAPBenefit = () => {
   const [content, setcontent] = useState("I understand, ma'am, that you are in a non-technical field, but our courses are going to cater to both technical and non-technical fields because both are equally important")
   return (
     <div className="pap_curve_bg  h-[110vh] w-full grid ">
-      <div className="grid grid-cols-[70%_30%] h-[90vh] mt-[15vh] place-items-center">
-        <div className=" h-[80vh] py-[10vh] relative">
+      <div className="flex h-[90vh] justify-around mt-[15vh] place-items-center  ">
+        <div className=" h-[80vh] py-[10vh] relative ">
           <img
             src={curve}
             alt="..."
             className="h-[100%] w-[100%] object-contain"
           />
-          <div onClick={()=>setcontent("I understand, ma'am, that you are in a non-technical field, but our courses are going to cater to both technical and non-technical fields because both are equally important")} className="border-[30px] cursor-pointer border-[#615f5f] rounded-full absolute top-[50%] translate-y-[-50%] left-[0%] bg-[#D9D9D9] h-[40vh] aspect-square p-[1rem] grid place-items-center">
-            <p className="text-[25px] text-center">No Upfront Fees</p>
+          <div className="border-[30px] cursor-pointer border-[#615f5f] rounded-full absolute top-[50%] translate-y-[-50%] left-[0%] bg-[#D9D9D9] h-[40vh] aspect-square p-[1rem] grid place-items-center">
+            <p className="text-[25px] text-center">Banefits of Pap</p>
           </div>
           <div onClick={()=>setcontent("Securing your future is our promise. With our 100% Placement Guarantee, embark on your journey knowing we're committed to your success every step of the way.")} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] border rounded-[3rem] p-2 px-4 place-items-center absolute top-[5%] right-[0%] bg-black">
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
@@ -62,7 +62,7 @@ const PAPBenefit = () => {
             </p>
           </div>
         </div>
-        <div  className="border grid justify-self-start rounded-xl">
+        <div  className="border grid justify-self-start rounded-2xl">
           <div className="h-[40vh] aspect-square p-5 text-white grid place-items-center text-balance">
             <p>
              {content}

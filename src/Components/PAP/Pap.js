@@ -229,9 +229,9 @@ export default function Pap() {
                 <p className="font-nu text-[17px] xsm:text-[7px]">Week 21 - 30/35  :  100% PAP Amount</p>
               </div>
             </div>
-            <div>
+            {/* <div>
               <p className="font-nu text-[17px] xsm:text-[8px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
-            </div>
+            </div> */}
           </div>
           <div className="w-[30%] relative">
             <div className="absolute z-10 translate-x-32 xsm:translate-x-6">
