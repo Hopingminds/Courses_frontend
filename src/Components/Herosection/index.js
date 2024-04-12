@@ -37,8 +37,20 @@ import './hero.css'
 import { ReactComponent as Cashback } from '../../Assets/Icons/Cashback.svg'
 import { ReactComponent as Ai} from '../../Assets/Icons/ai.svg'
 import { ReactComponent as Certificate } from '../../Assets/Icons/Certificate.svg'
+import { useEffect, useState } from 'react'
 
 export default function Herosection() {
+const [active, setactive] = useState(1)
+useEffect(() => {
+    setTimeout(() => {
+        if(active>=3){
+            setactive(1)
+        }
+        else{
+            setactive(active+1)
+        }
+    }, 3000);
+}, [active])
 
     return (<>
         <div className=" bg-gradient-to-r from-[#0F2027] to-[#203A43] h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%]">
@@ -47,25 +59,25 @@ export default function Herosection() {
     High Impact Courses that Earn you College Credits</div>
             </div>
             <div className='w-[40%] h-[75%] flex justify-center items-center  relative text-[#545567] '>
-                <div className='h-[100%] w-[100%] herobox bg-white  '>
-                    <ReactPlayer className='-translate-x-28' width='150%' height='100%'  url='/home_video.mp4'  playing={true}  loop={true} controls={false} />
-                {/* <img src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1711955580289-homepage-small.gif" alt="video" /> */}
+                <div className='h-[100%] w-[100%] herobox bg-white  flex items-center '>
+                    {/* <ReactPlayer className='-translate-x-28' width='150%' height='100%'  url='/home_video.mp4'  playing={true}  loop={true} controls={false} /> */}
+                <img  className=' h-full w-full'  src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712906243859-home_video.gif" alt="video" />
 
                 </div>
-                <div className='scale-in-center flex w-[15vw] h-[20vh] backdrop-blur-[2px] absolute -top-6 left-10  py-2 px-4 space-x-3 items-center  rounded-lg bgcurvehome'>
+                <div className={`${active==1?'scale-in-center':''} flex w-[15vw] h-[20vh] backdrop-blur-[2px] absolute -top-6 left-10  py-2 px-4 space-x-3 items-center  rounded-lg bgcurvehome`}>
                     <Certificate/>
                     <div className='flex flex-col text-white w-[60%] '>
                         <div>NSDC Partner with Course Certifications</div>
                     </div>
                 </div>
-                <div className='flex absolute w-[12vw] h-[15vh] backdrop-blur-[4px]  top-[60%] -left-10   space-x-2 items-center py-2 px-3 bgcurvehome'>
+                <div className={`${active==2?'scale-in-center':''} flex absolute w-[12vw] h-[15vh] backdrop-blur-[4px]  top-[60%] -left-10   space-x-2 items-center py-2 px-3 bgcurvehome`}>
                     <Ai/>
                     <div className='flex flex-col text-white '>
                         <div className=''>AI driven Learning Experience</div>
                     </div>
                 </div>
 
-                <div className='flex absolute bottom-10 -right-5 w-[15vw] h-[20vh] backdrop-blur-[2px]    p-2 space-x-2 items-center   bgcurvehome'>
+                <div className={` ${active==3?'scale-in-center':''} flex absolute bottom-10 -right-5 w-[15vw] h-[20vh] backdrop-blur-[2px]    p-2 space-x-2 items-center   bgcurvehome`}>
                     <div className='flex justify-center items-center h-11 w-11  rounded' >
                         <Cashback/>
                     </div>
