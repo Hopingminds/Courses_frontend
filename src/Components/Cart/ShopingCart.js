@@ -69,7 +69,7 @@ function ShopingCart() {
                     <h2 className='font-outfit font-semibold text-4xl text-white xsm:text-[14px]'>My Cart</h2>
                 </div>
             </div>
-            <div className='flex justify-between items-start mt-[10px] lg:flex-col lg:items-center h-auto  px-[3%] xsm:flex-col xsm:h-auto xsm:gap-8 xsm:mb-10 md:h-auto md:my-10'>
+            <div className='flex justify-between items-start mt-10 min-h-[70vh] lg:flex-col lg:items-center h-auto  px-[3%] xsm:flex-col xsm:justify-start xsm:h-auto xsm:gap-8 xsm:my-6 md:h-auto md:my-10'>
                 <div className='w-[75%] space-y-10 xsm:w-[100%] xsm:space-y-4 md:space-y-8'>
 
                     {Data?.length > 0 ? Data?.map((item) => {
