@@ -38,6 +38,7 @@ const AllCourses = () => {
   const [studentplaced, setstudentplaced] = useState(0)
   const [corporatepartners, setcorporatepartners] = useState(0)
   const [coursesenrolled, setcoursesenrolled] = useState(0)
+const [coursestotal, setcoursestotal] = useState(0)
   const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
     [User1]: {
@@ -203,6 +204,18 @@ const AllCourses = () => {
 
     }
   }
+  function Totalcourses(num) {
+    for (let index = 0; index <= num; index += 2) {
+      // setTimeout(() => {
+      // console.log(index);
+      setTimeout(() => {
+        setcoursestotal(index)
+      }, 2000);
+
+
+
+    }
+  }
   function Coursesenrolled(num) {
     for (let index = 0; index <= num; index += 1) {
       // setTimeout(() => {
@@ -232,6 +245,7 @@ const AllCourses = () => {
     Studentplaced(5000)
     Coursesenrolled(175)
     Corporate(626)
+    Totalcourses(256)
   }, [])
 
   const searchBarRef = useRef(null);
@@ -321,7 +335,7 @@ const AllCourses = () => {
           />
         </div>
 
-        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-36 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16">
+        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-28 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16">
           <div className="text-white xsm:flex xsm:flex-col">
             <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Students Enrolled</div>
@@ -329,6 +343,10 @@ const AllCourses = () => {
           <div className="xsm:flex xsm:flex-col">
             <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{studentplaced}+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Students Placed</div>
+          </div>
+          <div className="xsm:flex xsm:flex-col">
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{coursestotal}+</div>
+            <div className="xsm:text-[8px] md:text-[14px]">Courses Enrolled</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
             <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{coursesenrolled}+</div>
