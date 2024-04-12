@@ -61,7 +61,7 @@ useEffect(() => {
             <div className='w-[40%] h-[75%] flex justify-center items-center  relative text-[#545567] '>
                 <div className='h-[80%] w-[100%] herobox bg-white  flex items-center '>
                     {/* <ReactPlayer className='-translate-x-28' width='150%' height='100%'  url='/home_video.mp4'  playing={true}  loop={true} controls={false} /> */}
-                <img  className=' h-full w-full'  src="https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712906243859-home_video.gif" alt="video" />
+                <img  className=' h-full w-full'  src="/homegif.gif" alt="video" />
 
                 </div>
                 <div className={`${active==1?'scale-in-center':''} flex w-[15vw] h-[20vh] backdrop-blur-[2px] absolute -top-6 left-10  py-2 px-4 space-x-3 items-center  rounded-lg bgcurvehome`}>
