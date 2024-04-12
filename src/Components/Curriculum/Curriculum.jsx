@@ -4,6 +4,8 @@ import arrowIcon from "../../Assets/arrow.png";
 import folderIcon from "../../Assets/folder.png";
 import { BASE_URL } from "../../Api/api";
 import { useParams } from "react-router-dom";
+import { RiVideoLine } from "react-icons/ri";
+import { getVideoDuration } from "../../helpers/helper_function";
 
 function Curriculum() {
   const [clicked, setclicked] = useState(false);
@@ -14,19 +16,19 @@ function Curriculum() {
     if (!clicked) {
       setclicked(true);
       let inner = document.getElementById(id);
-      let arrow=document.getElementById(`arrow${id}`)
+      let arrow = document.getElementById(`arrow${id}`);
       // console.log(inner);
       // inner.style
-      arrow.style.transform = 'rotate(0deg)';
+      arrow.style.transform = "rotate(0deg)";
       // console.log(inner);
       inner.style.display = "none";
     } else {
       setclicked(false);
       let inner = document.getElementById(id);
-let arrow=document.getElementById(`arrow${id}`)
+      let arrow = document.getElementById(`arrow${id}`);
       // console.log(inner);
       // inner.style
-      arrow.style.transform = 'rotate(180deg)';
+      arrow.style.transform = "rotate(180deg)";
       inner.style.display = "flex";
     }
   }
@@ -46,6 +48,16 @@ let arrow=document.getElementById(`arrow${id}`)
       // setVideoUrl(response?.course?.curriculum[0]?.lessons[0]?.video);
     }
     Fetchdata();
+
+    getVideoDuration(
+      "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1711955663670-001.mp4"
+    )
+      .then((duration) => {
+        console.log("Video duration:", duration);
+      })
+      .catch((error) => {
+        console.error("Error fetching video duration:", error);
+      });
   }, []);
 
   return (
@@ -60,14 +72,14 @@ let arrow=document.getElementById(`arrow${id}`)
         {Data?.curriculum?.map((val, ind) => {
           return (
             <>
-              <div className="lesson-container">
+              <div className="lesson-container" key={ind}>
                 <div
                   className="lesson-container-title"
                   onClick={() => ClickSection(ind + 1)}
                 >
                   <div className="lesson-container-title-left">
-                    <div className="icon-arrow" >
-                      <img src={arrowIcon} id={`arrow${ind+1}`}/>
+                    <div className="icon-arrow">
+                      <img src={arrowIcon} id={`arrow${ind + 1}`} />
                     </div>
                     <p>{val.chapter_name}</p>
                   </div>
@@ -85,11 +97,12 @@ let arrow=document.getElementById(`arrow${id}`)
                         <div className="lesson-container-content">
                           <div className="lesson-container-content-left">
                             <div className="icon-file">
-                              <img className="xsm:w-3" src={folderIcon} />
+                              <RiVideoLine />
                             </div>
                             <p className="font-nu text-[14px]">
                               {chapter?.lesson_name}
                             </p>
+                            <h5></h5>
                           </div>
                           <div className="lesson-container-content-right">
                             {/* <button>Preview</button> */}
