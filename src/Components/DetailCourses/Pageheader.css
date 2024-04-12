@@ -1,14 +1,20 @@
 .page-header {
-  background-image: url("https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png");
+  background-image: url("../../../public//react_bg.png");
   background-size: cover;
+  background-position: center;
   height: 325px;
+  /* opacity: 0.8; */
+  /* background-color: linea; */
 }
 
 .CCDetails-Header-main {
   display: flex;
-  background-image: url("https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png");
+  background-image: url("../../../public//react_bg.png");
+  background-position: center;
   background-size: cover;
   height: 325px;
+  /* background-color: black;
+  opacity: 0.9; */
 }
 
 .CCDetails-Header-content-leftqw {
