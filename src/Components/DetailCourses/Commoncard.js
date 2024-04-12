@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ReactComponent as Cart } from '../../Assets/Icons/cartblack.svg'
 import { CiHeart } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,10 +9,13 @@ import toast, { Toaster } from "react-hot-toast";
 import { IoIosShareAlt } from "react-icons/io";
 import { RWebShare } from "react-web-share";
 import ReactPlayer from "react-player";
+import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
 
 export default function Commoncard(props) {
     let { Data } = props;
     // console.log(Data);
+    const [IsMuted, setIsMuted] = useState(true);
+
     let login = localStorage.getItem('COURSES_USER_TOKEN')
     let navigate = useNavigate()
     // const [Show, setShow] = useState(false)
@@ -88,21 +91,51 @@ export default function Commoncard(props) {
         })
 
     }
-    // console.log(Data)
-    // console.log(purchasedCourses)
+
+    const handleMute = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        setIsMuted((prev) => !prev);
+    };
     return (
         <div className="bg-[#E2FFF1] w-[33%] h-max my-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3">
-            <div className="h-[225px] bg-white xsm:h-[65px] md:h-[35%]">
-                {/* <img className="w-full h-full rounded-xl xsm:rounded-md" src={Data?.featured_image} /> */}
+            <div className="h-[225px] bg-white xsm:h-[65px] md:h-[35%] relative">
+                {(
+                    <span className="bg-transparent p-4 absolute top-6 left-2 z-[99]">
+                        {IsMuted ? (
+                            <IoVolumeMuteOutline
+                                size={"20"}
+                                style={{
+                                    cursor: "pointer",
+                                    color: "black",
+
+                                    zIndex: "999999",
+                                }}
+                                onClick={handleMute}
+                            />
+                        ) : (
+                            <IoVolumeMediumOutline
+                                size={"20"}
+                                style={{
+                                    cursor: "pointer",
+                                    color: "black",
+
+                                    zIndex: "999999",
+                                }}
+                                onClick={handleMute}
+                            />
+                        )}
+                    </span>
+                )}
                 <ReactPlayer
-                height='100%'
-                width='100%'
-                url={Data?.featured_video}
-                playing={true}
-                loop={true}
-                muted={true}
-                controls={false}
-                className="mix-blend-multiply"
+                    height='100%'
+                    width='100%'
+                    url={Data?.featured_video}
+                    playing={true}
+                    loop={true}
+                    muted={IsMuted}
+                    controls={false}
+                    className="mix-blend-multiply"
                 />
             </div>
             <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1 md:gap-3 md:mt-4">

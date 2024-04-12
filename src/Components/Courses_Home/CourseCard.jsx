@@ -8,6 +8,7 @@ import ReactPlayer from "react-player";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import { Globalinfo } from "../../App";
 import { IoIosLock } from "react-icons/io";
+import abhishek from "../../Assets/Images/abhishek.jpeg";
 
 const CourseCard = ({
   title,
@@ -143,7 +144,7 @@ const CourseCard = ({
               src="../Icons/RCClock.svg"
             />
             <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
-              {duration}
+              45 Hours
             </p>
           </div>
           <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px] md:h-12 xsm:mt-2 xsm:h-6">
@@ -156,8 +157,8 @@ const CourseCard = ({
         <div className=" flex items-center justify-between">
           <div className="flex items-center space-x-3 xsm:space-x-1 md:space-x-2">
             <img
-              className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4"
-              src="../img/RCimg2.png"
+              className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"
+              src={abhishek}
             />
             <p className="font-pop font-medium text-[14px] xsm:text-[6px] md:text-[7px]">
               {firstName + " " + lastName}

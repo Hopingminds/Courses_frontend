@@ -37,7 +37,7 @@ const Courses_Home = () => {
       } else if (window.innerWidth >= 1500 && window.innerWidth <= 1999) {
         setCardsToShow(5);
       }
-       else {
+      else {
         setCardsToShow(4); // For larger screens, show 4 cards
       }
     }
@@ -99,11 +99,7 @@ const Courses_Home = () => {
           ))}
         </div>
         <div className="flex justify-end w-full items-center">
-          {/* <div className="text-4xl font-semibold mt-3 xsm:text-[8px] xsm:mt-0 xsm:ml-2">
-        <div className="flex justify-between w-full items-center">
-          <div className="text-4xl font-semibold mt-3 xsm:text-[8px] xsm:mt-0 xsm:ml-2 md:text-[20px]">
-            {selectedCategory}
-          </div> */}
+
           <Link
             to={"/course"}
             className="text-[#1DBF73] text-[16px] font-bold xsm:text-[8px] md:text-[14px] md:pr-3"
@@ -132,6 +128,7 @@ const Courses_Home = () => {
               description={course.overview}
               ind={ind}
               _id={course._id}
+              display={course.display}
             // Pass category to CourseCard component
             />
           ))}

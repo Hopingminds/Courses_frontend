@@ -1,12 +1,12 @@
 .page-header {
-  background-image: url("../../../public/img/Detailcoursesheaderbgimg.png");
+  background-image: url("https://letecode.com/storage/articles/September2021/fKFlgB6K1b9IwjcgwtGl.png");
   background-size: cover;
   height: 325px;
 }
 
 .CCDetails-Header-main {
   display: flex;
-  background-image: url("../../../public/img/Detailcoursesheaderbgimg.png");
+  background-image: url("https://letecode.com/storage/articles/September2021/fKFlgB6K1b9IwjcgwtGl.png");
   background-size: cover;
   height: 325px;
 }
@@ -115,7 +115,6 @@
 }
 
 @media only screen and (min-width: 20px) and (max-width: 480px) {
-
   .page-header {
     height: 100px;
   }
