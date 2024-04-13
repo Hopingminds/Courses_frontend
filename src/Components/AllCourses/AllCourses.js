@@ -115,11 +115,11 @@ const [coursestotal, setcoursestotal] = useState(0)
         // console.log(res);
 
 
-        setAllCourses(res.data.courses);
+        setAllCourses(res?.data?.courses);
         // setAllCourses(newCourses)
 
-        setData(res.data.courses)
-        setTemp(res.data.courses)
+        setData(res?.data?.courses)
+        setTemp(res?.data?.courses)
         setshow(false)
 
       }
@@ -181,7 +181,7 @@ const [coursestotal, setcoursestotal] = useState(0)
   // console.log(SearchedData)
 
   function Count(num) {
-    for (let index = 0; index <= num; index += 125) {
+    for (let index = 0; index <= num; index += 25) {
       // setTimeout(() => {
       // console.log(index);
       setTimeout(() => {
@@ -198,14 +198,14 @@ const [coursestotal, setcoursestotal] = useState(0)
       // console.log(index);
       setTimeout(() => {
         setstudentplaced(index)
-      }, 2000);
+      }, 1000);
 
 
 
     }
   }
   function Totalcourses(num) {
-    for (let index = 0; index <= num; index += 2) {
+    for (let index = 0; index <= num; index += 1) {
       // setTimeout(() => {
       // console.log(index);
       setTimeout(() => {
@@ -229,7 +229,7 @@ const [coursestotal, setcoursestotal] = useState(0)
     }
   }
   function Corporate(num) {
-    for (let index = 0; index <= num; index += 2) {
+    for (let index = 0; index <= num; index += 1) {
       // setTimeout(() => {
       // console.log(index);
       setTimeout(() => {
