@@ -23,7 +23,8 @@ import { Globalinfo } from "../../App";
 import Newinstructor from "../Newinstructor";
 import HireTestimonial from "../HireFromUs/HireTestimonial";
 import CourseCard from "../Courses_Home/CourseCard";
-
+import MinorDegree from "../MinorCourses/minordegree";
+import CountUp from 'react-countup';
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
   const [selectedUser, setSelectedUser] = useState(User1);
@@ -33,12 +34,7 @@ const AllCourses = () => {
   const [SearchedData, setSearchedData] = useState([]);
   const [Temp, setTemp] = useState([]);
   const [show, setshow] = useState(false);
-  const [mouseHovered, setMouseHovered] = useState(null);
-  const [countvalue, setcountvalue] = useState(0)
-  const [studentplaced, setstudentplaced] = useState(0)
-  const [corporatepartners, setcorporatepartners] = useState(0)
-  const [coursesenrolled, setcoursesenrolled] = useState(0)
-const [coursestotal, setcoursestotal] = useState(0)
+
   const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
     [User1]: {
@@ -91,7 +87,6 @@ const [coursestotal, setcoursestotal] = useState(0)
   useEffect(() => {
     fetchCourses();
   }, [params.get("category"), pathname]);
-  let category = ""
   const fetchCourses = async () => {
     try {
       // console.log("yes");
@@ -103,7 +98,7 @@ const [coursestotal, setcoursestotal] = useState(0)
         setcat(category)
         setshow(true);
         const res = await axios.get(`${BASE_URL}/courses?category=${category}`);
-        console.log(res.data.courses);
+        // console.log(res.data.courses);
         setAllCourses(res.data.courses);
         setData(res.data.courses);
         setTemp(res.data.courses);
@@ -142,7 +137,7 @@ const [coursestotal, setcoursestotal] = useState(0)
       setAllCourses(Data);
     } else {
       setSearchedData(
-        allCourses.filter((item) => {
+        allCourses?.filter((item) => {
           const searchitem = query.toLowerCase();
           const slug = item.slug.toLowerCase();
           // console.log(slug);
@@ -151,7 +146,7 @@ const [coursestotal, setcoursestotal] = useState(0)
         })
       );
       setAllCourses(
-        allCourses.filter((item) => {
+        allCourses?.filter((item) => {
           const searchitem = query.toLowerCase();
           const slug = item.slug.toLowerCase();
           // console.log(slug);
@@ -180,80 +175,14 @@ const [coursestotal, setcoursestotal] = useState(0)
 
   // console.log(SearchedData)
 
-  function Count(num) {
-    for (let index = 0; index <= num; index += 25) {
-      // setTimeout(() => {
-      // console.log(index);
-      setTimeout(() => {
-        setcountvalue(index)
-      }, 2000);
 
-
-
-    }
-  }
-  function Studentplaced(num) {
-    for (let index = 0; index <= num; index += 100) {
-      // setTimeout(() => {
-      // console.log(index);
-      setTimeout(() => {
-        setstudentplaced(index)
-      }, 1000);
-
-
-
-    }
-  }
-  function Totalcourses(num) {
-    for (let index = 0; index <= num; index += 1) {
-      // setTimeout(() => {
-      // console.log(index);
-      setTimeout(() => {
-        setcoursestotal(index)
-      }, 2000);
-
-
-
-    }
-  }
-  function Coursesenrolled(num) {
-    for (let index = 0; index <= num; index += 1) {
-      // setTimeout(() => {
-      // console.log(index);
-      setTimeout(() => {
-        setcoursesenrolled(index)
-      }, 2000);
-
-
-
-    }
-  }
-  function Corporate(num) {
-    for (let index = 0; index <= num; index += 1) {
-      // setTimeout(() => {
-      // console.log(index);
-      setTimeout(() => {
-        setcorporatepartners(index)
-      }, 2000);
-
-
-
-    }
-  }
-  useEffect(() => {
-    Count(28725)
-    Studentplaced(5000)
-    Coursesenrolled(175)
-    Corporate(626)
-    Totalcourses(256)
-  }, [])
 
   const searchBarRef = useRef(null);
   const searchResultsRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      console.log(event)
+      // console.log(event)
       // Check if the clicked element is not inside the search bar or search results popup
       if (searchBarRef.current && !searchBarRef.current.contains(event.target) &&
         searchResultsRef.current && !searchResultsRef.current.contains(event.target)) {
@@ -337,23 +266,24 @@ const [coursestotal, setcoursestotal] = useState(0)
 
         <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-28 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16">
           <div className="text-white xsm:flex xsm:flex-col">
-            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{countvalue}+</div>
+          
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={28725} />+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Students Enrolled</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
-            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{studentplaced}+</div>
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={5000} />+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Students Placed</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
-            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{coursestotal}+</div>
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={175} />+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Courses Enrolled</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
-            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{coursesenrolled}+</div>
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={626} />+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Industry Experts</div>
           </div>
           <div className="xsm:flex xsm:flex-col">
-            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]">{corporatepartners}+</div>
+            <div className="text-center text-xl font-semibold xsm:text-[8px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={256} />+</div>
             <div className="xsm:text-[8px] md:text-[14px]">Corporate Partners</div>
           </div>
         </div>
@@ -454,7 +384,7 @@ const [coursestotal, setcoursestotal] = useState(0)
 
       {/* recommended cards */}
       <RecommendedCourses />
-
+<MinorDegree/>
       {/* <div className="flex flex-col gap-10 bg-[#E2FFF1] px-28 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-2">
         <p className="text-[#000000] text-[30px] font-pop font-semibold xsm:text-[8px]">
           What our students have to say
