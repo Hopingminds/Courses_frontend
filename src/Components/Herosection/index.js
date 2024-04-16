@@ -53,10 +53,10 @@ useEffect(() => {
 }, [active])
 
     return (<>
-        <div className=" bg-gradient-to-r from-[#0F2027] to-[#203A43] h-[87.5vh] hero w-full flex font-pop justify-center items-center px-[3%]">
-            <div className='w-[45%] space-y-5'>
-                <div className='text-[45px] font-semibold text-white leading-[60px] font-pop text-wrap'>Master In-Demand Skills for Dream Placements
-    High Impact Courses that Earn you College Credits</div>
+        <div className=" bg-gradient-to-r from-[#0F2027] to-[#203A43] h-[80vh] hero w-full flex font-pop justify-center items-center px-[3%]">
+            <div className='w-[45%] space-y-8'>
+                <div className='text-[45px] font-semibold text-white leading-[60px] font-pop text-wrap'>Master In-Demand Skills for Dream Placements</div>
+                <div className='text-[28px] font-medium text-white leading-[40px] font-pop text-wrap'>High Impact Courses that Earn you College Credits</div>
             </div>
             <div className='w-[40%] h-[75%] flex justify-center items-center  relative text-[#545567] '>
                 <div className='h-[80%] w-[100%] herobox bg-white  flex items-center '>
@@ -64,24 +64,24 @@ useEffect(() => {
                 <img  className=' h-full w-full'  src="/homegif.gif" alt="video" />
 
                 </div>
-                <div className={`${active==1?'scale-in-center':''} flex w-[15vw] h-[20vh] backdrop-blur-[2px] absolute -top-6 left-10  py-2 px-4 space-x-3 items-center  rounded-lg bgcurvehome`}>
-                    <Certificate/>
+                <div className={`${active==1?'scale-in-center':''} flex justify-center w-[15vw] h-[16vh] backdrop-blur-[2px] absolute -top-6 left-10 px-2 space-x-2 items-center  rounded-lg bgcurvehome`}>
+                    <Certificate className='w-16 h-14'/>
                     <div className='flex flex-col text-white w-[60%] '>
                         <div>NSDC Partner with Course Certifications</div>
                     </div>
                 </div>
-                <div className={`${active==2?'scale-in-center':''} flex absolute w-[12vw] h-[15vh] backdrop-blur-[4px]  top-[60%] -left-10   space-x-2 items-center py-2 px-3 bgcurvehome`}>
-                    <Ai/>
-                    <div className='flex flex-col text-white '>
+                <div className={`${active==2?'scale-in-center':''} flex justify-center absolute w-[12vw] h-[14vh] backdrop-blur-[2px]  top-[70%] -left-10 px-2  space-x-2 items-center bgcurvehome`}>
+                    <Ai className='w-12 h-12'/>
+                    <div className='flex flex-col text-white  w-[60%] '>
                         <div className=''>AI driven Learning Experience</div>
                     </div>
                 </div>
 
-                <div className={` ${active==3?'scale-in-center':''} flex absolute bottom-10 -right-5 w-[15vw] h-[20vh] backdrop-blur-[2px]    p-2 space-x-2 items-center   bgcurvehome`}>
+                <div className={` ${active==3?'scale-in-center':''} flex justify-center absolute bottom-10 -right-5 w-[15vw] h-[16vh] backdrop-blur-[2px] px-2 space-x-2 items-center   bgcurvehome`}>
                     <div className='flex justify-center items-center h-11 w-11  rounded' >
-                        <Cashback/>
+                        <Cashback className='w-16 h-14'/>
                     </div>
-                    <div className='flex flex-col text-white '>
+                    <div className='flex flex-col text-white  w-[60%] '>
                         <div>Earn College Credits for Each Course</div>
                     </div>
                 </div>

@@ -16,7 +16,16 @@ const Footer = () => {
     // console.log(pathname)
     return (
         <>
-            <div className='flex flex-col gap-14  pt-10 pb-4 xsm:gap-8 bg-[#0F2027] md:gap-10 md:pt-8'>
+        <style>
+            {`
+            @layer utilities {
+                .bg-radial-gradient {
+                  background-image: radial-gradient(circle, #0F2027 0%, #0B1418 100%, #203A43 100%);
+                }
+              }
+            `}
+        </style>
+            <div className='flex flex-col gap-14  pt-10 pb-4 xsm:gap-8 bg-radial-gradient md:gap-10 md:pt-8'>
                 <div className='flex  justify-between px-[5%] xsm:pl-[5%] xsm:flex xsm:flex-col xsm:gap-8'>
                     <div className='flex flex-col gap-5 w-[260px] xsm:gap-2 xsm:w-[90%] md:gap-6'>
                         <div onClick={() => navigate('/')}><img src='/logo.png' className='w-auto h-[50px] xsm:w-[40%] xsm:h-[10%] md:w-[60%]  cursor-pointer' /></div>

@@ -1,9 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import "./hirefromus.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 const Resume2 = () => {
+
+  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered2, setIsHovered2] = useState(false);
+  const [isHovered3, setIsHovered3] = useState(false);
+  const [isHovered4, setIsHovered4] = useState(false);
+
+
   return (
+    <>
+    <style>
+      {`
+      /* Custom CSS */
+      .img-item {
+          transition: transform 0.3s ease;
+      }
+    
+      
+      `}
+    </style>
     <div
       className="px-[5%] py-[15%] pb-[10%] bg-gradient-to-r from-[#0F2027] to-[#203A43] curvedbg w-full xsm:pt-[30%]"
       style={{ width: "100%" }}
@@ -28,12 +46,32 @@ const Resume2 = () => {
       </div>
       
       <div className="grid grid-cols-4 md:mt-8 mt-16 gap-8 xsm:grid-cols-2 xsm:mt-8">
-        <div className="bw-border  ">
-        <div className=" flex flex-col py-[15%]  ">
+        <div className="bw-border "  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}>
+        <div className=" flex flex-col py-[15%]  relative">
            <div className="flex justify-around items-center">
-           <img src="/node.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
-            <img src="/mongodb.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
-            <img src="/express.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+           <img
+                  src="/node.png"
+                  className="md:w-8 md:h-8 xsm:w-6 xsm:h-6 img-item"
+                  style={{
+                    transform: isHovered ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                />
+            <img src="/mongodb.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6 img-item" style={{
+                    transform: isHovered ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}/>
+            <img src="/express.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6 img-item" style={{
+                    transform: isHovered ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}/>
            </div>
            <div className="text-[25px] text-[#FFFFFF] text-center mt-5 md:text-[16px] xsm:text-[12px]">Backend Developers</div>
             <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight md:text-[12px] md:gap-y-3 xsm:text-[8px] xsm:gap-y-2">
@@ -44,12 +82,28 @@ const Resume2 = () => {
             </div>
         </div>
         </div>
-        <div className="bw-border ">
+        <div className="bw-border " onMouseEnter={() => setIsHovered2(true)}
+                  onMouseLeave={() => setIsHovered2(false)}>
         <div className=" flex flex-col py-[15%] ">
            <div className="flex justify-around items-center">
-           <img src="/html.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
-            <img src="/css.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
-            <img src="/js.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+           <img src="/html.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6  img-item"  style={{
+                    transform: isHovered2 ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered2(true)}
+                  onMouseLeave={() => setIsHovered2(false)}/>
+            <img src="/css.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6  img-item"  style={{
+                    transform: isHovered2 ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered2(true)}
+                  onMouseLeave={() => setIsHovered2(false)}/>
+            <img src="/js.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6  img-item"  style={{
+                    transform: isHovered2 ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered2(true)}
+                  onMouseLeave={() => setIsHovered2(false)}/>
            </div>
            <div className="text-[25px] text-[#FFFFFF] text-center mt-5 md:text-[16px] xsm:text-[12px]">Frontend Developers</div>
             <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight md:text-[12px] md:gap-y-3 xsm:text-[8px] xsm:gap-y-2">
@@ -60,12 +114,28 @@ const Resume2 = () => {
             </div>
         </div>
         </div>
-        <div className="bw-border ">
+        <div className="bw-border " onMouseEnter={() => setIsHovered3(true)}
+                  onMouseLeave={() => setIsHovered3(false)}>
         <div className=" flex flex-col py-[15%] ">
            <div className="flex justify-around items-center">
-           <img src="/figma.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
-            <img src="/xd.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
-            <img src="/diamond.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+           <img src="/figma.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6  img-item"  style={{
+                    transform: isHovered3 ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered3(true)}
+                  onMouseLeave={() => setIsHovered3(false)}/>
+            <img src="/xd.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6  img-item"  style={{
+                    transform: isHovered3 ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered3(true)}
+                  onMouseLeave={() => setIsHovered3(false)}/>
+            <img src="/diamond.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6  img-item"  style={{
+                    transform: isHovered3 ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered3(true)}
+                  onMouseLeave={() => setIsHovered3(false)}/>
            </div>
            <div className="text-[25px] text-[#FFFFFF] text-center mt-5 md:text-[16px] md:px-4 xsm:text-[12px]">UI/UX Designer</div>
             <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight md:text-[12px] md:gap-y-3 xsm:text-[8px] xsm:gap-y-2">
@@ -76,13 +146,29 @@ const Resume2 = () => {
             </div>
         </div>
         </div>
-        <div className="bw-border ">
+        <div className="bw-border " onMouseEnter={() => setIsHovered4(true)}
+                  onMouseLeave={() => setIsHovered4(false)}>
         <div className=" flex flex-col py-[15%] ">
            <div className="flex justify-around items-center">
-           <img src="/node.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
-            <img src="/mongodb.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+           <img src="/node.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6  img-item"  style={{
+                    transform: isHovered4 ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered4(true)}
+                  onMouseLeave={() => setIsHovered4(false)}/>
+            <img src="/mongodb.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6  img-item"  style={{
+                    transform: isHovered4 ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered4(true)}
+                  onMouseLeave={() => setIsHovered4(false)}/>
             {/* <img src="/express.png"/> */}
-            <img src="/react.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6"/>
+            <img src="/react.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6  img-item"  style={{
+                    transform: isHovered4 ? 'scale(1.25)' : 'scale(1)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  onMouseEnter={() => setIsHovered4(true)}
+                  onMouseLeave={() => setIsHovered4(false)}/>
            </div>
            <div className="text-[25px] text-[#FFFFFF] text-center mt-5 md:text-[16px] xsm:text-[12px]">FullStack Developers</div>
             <div className="flex flex-col gap-y-4 text-[#FFFFFF] pl-[5%] mt-3 font-extralight md:text-[12px] md:gap-y-3 xsm:text-[8px] xsm:gap-y-2">
@@ -292,6 +378,7 @@ const Resume2 = () => {
         
       </div>
     </div>
+    </>
   );
 };
 

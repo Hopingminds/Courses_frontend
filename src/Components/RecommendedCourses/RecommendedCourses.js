@@ -22,8 +22,8 @@ export default function RecommendedCourses() {
         Fetchdata()
     }, [])
     return (
-        <div className="my-6 px-[5%] bg-[#E2FFF1] py-5 xsm:px-[2%] md:pt-2">
-            <div className="my-6 xsm:my-0 xsm:px-[2%] md:my-4">
+        <div className="px-[5%] bg-[#E2FFF1] py-12 xsm:px-[2%] md:pt-2">
+            <div className="my-6 pb-1 xsm:my-0 xsm:px-[2%] md:my-4">
                 <p className="font-pop font-semibold text-[30px] xsm:text-[14px] md:text-[20px]">For Minor Degree</p>
             </div>
             <div className="grid grid-cols-4  space-x-5 justify-between mt-2 flex-wrap 2xl:gap-10 xsm:grid xsm:grid-cols-2 pb-5 xsm:space-x-0 xsm:gap-3 xsm:px-[2%] md:space-x-2"> {/* Changed flex to flex-wrap */}

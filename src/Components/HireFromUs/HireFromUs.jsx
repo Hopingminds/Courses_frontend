@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Resume2 from "./Resume2";
-import Companies from "../Companies";
+import Companies2 from "../Companies/Companies2";
 import "./hirefromus.css";
 import WhyHM from "./WhyHM";
 import {ReactComponent as Ok} from '../../Assets/Icons/ok.svg'
@@ -279,7 +279,7 @@ toast.error(response.message)
           </div>
         </div>
       </div>
-      <Companies />
+      <Companies2 />
       <Resume2 />
       <WhyHM />
       <div  className='px-[5%] bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43]'>

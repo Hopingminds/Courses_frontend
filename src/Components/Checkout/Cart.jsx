@@ -1,8 +1,8 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./Cart.css";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { ReactComponent as Clock } from "../../Assets/Icons/clock.svg";
-import { ReactComponent as Design } from "../../Assets/Icons/design.svg";
+import { ReactComponent as Clock } from "../../Assets/Icons/clock2.svg";
+import { ReactComponent as Design } from "../../Assets/Icons/design2.svg";
 import { ReactComponent as Star } from "../../Assets/Icons/Star.svg";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
@@ -304,7 +304,7 @@ const CartCheckout = () => {
                     id="cashOnDelivery"
                     name="paymentMethod"
                     value="cashOnDelivery"
-                    className="mr-2 xsm:w-2"
+                    className="mr-2 xsm:w-2 outline-none"
                   />
                   <label className="xsm:text-[8px] md:text-[14px]" htmlFor="cashOnDelivery">
                     {" "}
@@ -376,27 +376,27 @@ const CartCheckout = () => {
               temp.push(item?.course?._id);
               return (
                 <>
-                  <div className="bg-green-100 h-[200px] rounded-lg flex items-center card-shadow2 w-full xsm:p-2 xsm:justify-between xsm:h-[100px] md:p-2 md:h-[140px]">
+                  <div className="bg-green-100 h-[200px] p-4 rounded-lg flex items-center card-shadow2 w-full xsm:p-2 xsm:justify-between xsm:h-[100px] md:p-2 md:h-[140px]">
                     <div className="w-[40%] h-full ">
                       <img
                         src={item.course.featured_image}
                         alt="course"
-                        className="w-full h-full object-cover rounded-lg ml-4 xsm:ml-0 xsm:w-full xsm:h-full xsm:object-fit md:ml-0"
+                        className="w-full h-full object-cover rounded-lg xsm:ml-0 xsm:w-full xsm:h-full xsm:object-fit md:ml-0"
                       />
                     </div>
                     <div className="ml-[20px] h-full flex flex-col justify-between my-3 xsm:w-[55%] xsm:my-0 xsm:ml-0 md:ml-2">
                       <div>
-                        <h2 className="text-md font-semibold text-[#252641] text-custom-color xsm:text-[10px] md:text-[16px]">
+                        <h2 className="text-[20px] font-semibold text-[#252641] text-custom-color xsm:text-[10px] md:text-[16px]">
                           {item.course.title}
                         </h2>
                         <p
-                          className="mt-1 text-[13px] text-wrap xsm:hidden md:text-[10px]"
+                          className="mt-1 text-[16px] text-wrap xsm:hidden md:text-[10px]"
                           style={{ color: "#696984" }}
                         >
-                          {item.course.overview.slice(0, 110)}..
+                          {item.course.overview.slice(0, 63)}..
                         </p>
 
-                        <div className="flex mt-8 gap-6 xsm:mt-2 md:mt-3">
+                        <div className="flex mt-4 gap-6 xsm:mt-2 md:mt-3">
                           <div className="flex gap-1 xsm:justify-center xsm:items-center">
                             <Design className="w-[15px] h-[15px] xsm:h-3 xsm:w-3 md:h-3 md:w-3" />
                             <p
@@ -417,15 +417,16 @@ const CartCheckout = () => {
                             </p>
                           </div>
                         </div>
+                        <hr className="mt-3" />
                       </div>
                       {/* <img src="src/assets/Group.png" className="w-[590px] h-[1px]" /> */}
                       <div className="flex justify-between items-center">
                         <span className="flex mt-4 md:mt-0">
-                          <Star className="xsm:w-3 md:w-4" />
-                          <Star className="xsm:w-3 md:w-4" />
-                          <Star className="xsm:w-3 md:w-4" />
-                          <Star className="xsm:w-3 md:w-4" />
-                          <Star className="xsm:w-3 md:w-4" />
+                          <Star className="xsm:w-3 md:w-4 w-5" />
+                          <Star className="xsm:w-3 md:w-4 w-5" />
+                          <Star className="xsm:w-3 md:w-4 w-5" />
+                          <Star className="xsm:w-3 md:w-4 w-5" />
+                          <Star className="xsm:w-3 md:w-4 w-5" />
                         </span>
                         <span className="mt-3 md:mt-0">
                           <p className="flex justify-end mr-4 text-[18px] mt-[-3px] font-semibold xsm:text-[10px] md:text-[14px]">

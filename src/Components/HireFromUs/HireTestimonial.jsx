@@ -116,8 +116,8 @@ const HireTestimonial = () => {
                         wheel: false,
                         arrows: false,
                         autoplay: true,
-                        interval: 2000,
-                        speed: 1500,
+                        interval: 4000,
+                        speed: 5500,
                         delay: 4,
                         pauseOnHover: false,
                         drag: true,
@@ -127,7 +127,7 @@ const HireTestimonial = () => {
                     <SplideSlide>
                         <div
                             key={index}
-                            className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#FFFFFF] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
+                            className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#e2dfdf] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
                             <div>
                                 <img className={`w-4 md:w-3 xsm:w2 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
@@ -169,8 +169,8 @@ const HireTestimonial = () => {
                         wheel: false,
                         arrows: false,
                         autoplay: true,
-                        interval: 2000,
-                        speed: 1500,
+                        interval: 4000,
+                        speed: 5500,
                         direction:'rtl',
                         right: true, // Set rtl option to true to move from left to right
                         pauseOnHover: false,
@@ -181,7 +181,7 @@ const HireTestimonial = () => {
                     <SplideSlide>
                         <div
                             key={index}
-                            className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#FFFFFF] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
+                            className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#e2dfdf] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
                             <div className='flex justify-end'>
                                 <img className={`w-4 md:w-3 xsm:w-2 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
