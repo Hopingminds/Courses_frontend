@@ -27,7 +27,7 @@ const CourseCard = ({
   _id,
   display,
 }) => {
-  console.log(_id);
+  // console.log(_id);
   const [mouseHovered, setMouseHovered] = useState(null);
   const [IsMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);

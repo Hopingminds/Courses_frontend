@@ -4,12 +4,16 @@ import complete_bg from "../../Assets/Images/completion_bg.png";
 import CourseCard from "../Courses_Home/CourseCard";
 import { BASE_URL } from "../../Api/api";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 
 const MinorCourse = () => {
   const [allCourses, setAllCourses] = useState([])
+  const [params,setparams]=useSearchParams()
   useEffect(() => {
    async function Fetchdata(){
-    const res = await axios.get(`${BASE_URL}/courses`);
+    let category=params.get('category')
+    category = category.replace(/%20/g, " ");
+    const res = await axios.get(`${BASE_URL}/courses?minordegree=true&category=${category}`);
         // console.log(res);
 
 
@@ -45,7 +49,7 @@ Fetchdata()
       </div>
     </div>
     <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
-    {allCourses.map((val, ind) => {
+    {allCourses?.map((val, ind) => {
       return (
         <CourseCard
           key={val.title}
