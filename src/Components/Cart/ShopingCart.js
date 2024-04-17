@@ -73,7 +73,7 @@ function ShopingCart() {
             Data?.map((item) => {
               return (
                 <>
-                  <div className="w-full bg-[#E2FFF1] p-3 shadow-xl rounded-xl xsm:p-2">
+                  <div className="w-full bg-[#E2FFF1] p-3 shadow-xl rounded-xl xsm:p-2 md:p-2">
                     <div className="flex  h-[15vw] rounded-[1.2vw] 2xl:w-[900px] 2xl:h-[240px]">
                       <div className="w-[50%] 2xl:w-[600px]">
                         <img
@@ -87,11 +87,11 @@ function ShopingCart() {
                                 <p className='font-mons text-[0.8vw] 2xl:text-[14px]'><span className='text-[#555555]'>by</span> Determined-instructure</p>
                             </div> */}
                         <div className="flex flex-nowrap justify-between items-center">
-                          <div className="space-y-2">
+                          <div className="space-y-2 md:space-y-1">
                             <p className="font-mons text-[1.5vw] font-semibold  2xl:text-[18px] xsm:text-[10px]">
                               {item.course.title}
                             </p>
-                            <p className="text-[#696984] text-md w-[100%] xsm:hidden">
+                            <p className="text-[#696984] text-md w-[100%] xsm:hidden md:text-[10px]">
                               {item.course.overview.slice(0, 60)}..{" "}
                             </p>
                           </div>
@@ -205,8 +205,8 @@ function ShopingCart() {
         </div>
 
         {Data?.length > 0 && (
-          <div className="w-[20%] h-max flex flex-col justify-around space-y-4 font-pop xsm:w-[100%] xsm:px-3 xsm:space-y-1">
-            <div className="space-y-4 xsm:space-y-0 xsm:flex xsm:flex-row xsm:justify-between">
+          <div className="w-[20%] h-max flex flex-col justify-around space-y-4 font-pop xsm:w-[100%] xsm:px-3 xsm:space-y-1 md:space-y-2">
+            <div className="space-y-4 xsm:space-y-0 xsm:flex xsm:flex-row xsm:justify-between md:space-y-2">
               <p className="font-outfit font-semibold text-[2vw] 2xl:text-[24px] xsm:text-[12px] xsm:font-bold">
                 Total :
               </p>

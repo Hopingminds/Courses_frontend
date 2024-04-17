@@ -113,7 +113,7 @@ export default function Pap() {
         <div className="font-pop font-semibold text-white text-[44px] pl-20 xsm:text-[20px] xsm:pl-4 md:text-[30px] md:pl-14">Pay After Placement</div>
       </div>
       {/* Main */}
-      <div className=" my-6 xsm:px-[3%] md:px-[5%]">
+      <div className=" my-6">
         <div className="px-[5%]">
           <p className="font-pop font-semibold text-[32px] xsm:text-[14px] md:text-[26px]">From Learning To Earning </p>
         </div>
@@ -168,7 +168,7 @@ export default function Pap() {
           </div>
         </div>
         {/* course fee */}
-        <div className=" px-[5%] flex mt-24 justify-between xsm:my-10 md:my-18">
+        <div className=" px-[5%] flex mt-24 justify-between xsm:mt-10 md:my-18">
           <div className="w-[40%] relative mt-12 xsm:mt-4 md:mt-8">
             <div className="bg-[#E2FFF1] rounded-xl w-[75%] h-full absolute top-[-12%] left-[10%] z-[-2]"></div>
             <div className="z-10 h-full">
