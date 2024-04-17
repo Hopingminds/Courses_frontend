@@ -53,36 +53,36 @@ useEffect(() => {
 }, [active])
 
     return (<>
-        <div className=" bg-gradient-to-r from-[#0F2027] to-[#203A43] h-[80vh] hero w-full flex font-pop justify-center items-center px-[3%] xsm:h-[50vh] md:h-[70vh]">
+        <div className=" bg-gradient-to-r from-[#0F2027] to-[#203A43] h-[80vh] hero w-full flex font-pop justify-center items-center px-[3%] xsm:h-[40vh] md:h-[65vh]">
             <div className='w-[45%] space-y-8'>
                 <div className='text-[45px] font-semibold text-white leading-[60px] font-pop text-wrap text-5xl xsm:text-[20px] xsm:leading-[28px] md:text-[34px] md:leading-[50px]'>Master In-Demand Skills for Dream Placements</div>
                 <div className='text-[28px] font-medium text-white leading-[40px] font-pop text-wrap xsm:text-[14px] xsm:leading-[18px] md:text-[18px] md:leading-[30px]'>High Impact Courses that Earn you College Credits</div>
             </div>
             <div className='w-[40%] h-[75%] flex justify-center items-center  relative text-[#545567] '>
-                <div className='h-[80%] w-[100%] herobox bg-white  flex items-center xsm:h-[50%]'>
+                <div className='h-[80%] w-[100%] herobox bg-white  flex items-center xsm:h-[50%] md:h-[70%]'>
                     {/* <ReactPlayer className='-translate-x-28' width='150%' height='100%'  url='/home_video.mp4'  playing={true}  loop={true} controls={false} /> */}
                 <img  className=' h-full w-full'  src="/homegif.gif" alt="video" />
 
                 </div>
-                <div className={`${active==1?'scale-in-center':''} flex justify-between w-[16vw] h-[16vh] backdrop-blur-[2px] absolute -top-6 left-10 px-5 items-center  rounded-lg bgcurvehome xsm:space-x-0 xsm:w-[20vw] xsm:h-[7vh] xsm:top-4 xsm:left-6`}>
-                    <Certificate className='w-14 h-14 xsm:w-6 xsm:h-4'/>
+                <div className={`${active==1?'scale-in-center':''} flex justify-between w-[16vw] h-[16vh] backdrop-blur-[2px] absolute -top-6 left-10 px-5 items-center  rounded-lg bgcurvehome xsm:space-x-0 xsm:w-[20vw] xsm:h-[7vh] xsm:top-4 xsm:left-6 md:h-[10vh]`}>
+                    <Certificate className='w-14 h-14 xsm:w-6 xsm:h-4 md:w-8 md:h-8'/>
                     <div className='flex flex-col text-white w-[60%]'>
-                        <div className='xsm:text-[5px] w-full text-wrap text-[12px] pr-5'>NSDC Partner with Course Certifications</div>
+                        <div className='xsm:text-[5px] w-full text-wrap text-[12px] pr-5 md:text-[8px]'>NSDC Partner with Course Certifications</div>
                     </div>
                 </div>
-                <div className={`${active==2?'scale-in-center':''} flex justify-center absolute w-[12vw] h-[14vh] backdrop-blur-[2px]  top-[70%] -left-10 px-2  space-x-2 items-center bgcurvehome xsm:space-x-1 xsm:w-[22vw] xsm:h-[7vh] xsm:-left-1`}>
-                    <Ai className='w-12 h-12 xsm:w-5 xsm:h-5'/>
+                <div className={`${active==2?'scale-in-center':''} flex justify-center absolute w-[12vw] h-[14vh] backdrop-blur-[2px]  top-[70%] -left-10 px-2  space-x-2 items-center bgcurvehome xsm:space-x-1 xsm:w-[22vw] xsm:h-[7vh] xsm:left-1 md:h-[8vh] md:top-[75%]`}>
+                    <Ai className='w-12 h-12 xsm:w-5 xsm:h-5 md:w-10 md:h-10'/>
                     <div className='flex flex-col text-white  w-[60%] '>
-                        <div className='xsm:text-[5px] text-[14px]'>AI driven Learning Experience</div>
+                        <div className='xsm:text-[5px] text-[14px] md:text-[8px]'>AI driven Learning Experience</div>
                     </div>
                 </div>
 
-                <div className={` ${active==3?'scale-in-center':''} flex justify-center absolute bottom-10 -right-5 w-[15vw] h-[16vh] backdrop-blur-[2px] px-2 space-x-2 items-center   bgcurvehome xsm:px-0 xsm:pr-2 xsm:space-x-0 xsm:w-[20vw] xsm:h-[7vh]`}>
+                <div className={` ${active==3?'scale-in-center':''} flex justify-center absolute bottom-10 -right-5 w-[15vw] h-[16vh] backdrop-blur-[2px] px-2 space-x-2 items-center   bgcurvehome xsm:px-0 xsm:pr-2 xsm:space-x-0 xsm:w-[20vw] xsm:h-[7vh] md:h-[10vh]`}>
                     <div className='flex justify-center items-center h-11 w-11  rounded' >
-                        <Cashback className='w-16 h-14 xsm:w-6 xsm:h-4'/>
+                        <Cashback className='w-16 h-14 xsm:w-6 xsm:h-4 md:w-8 md:h-6'/>
                     </div>
                     <div className='flex flex-col text-white  w-[60%] xsm:w-[70%]'>
-                        <div className='xsm:text-[5px] text-[14px] pr-2'>Earn College Credits for Each Course</div>
+                        <div className='xsm:text-[5px] text-[14px] pr-2 md:text-[8px]'>Earn College Credits for Each Course</div>
                     </div>
                 </div>
             </div>
