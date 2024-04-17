@@ -106,7 +106,7 @@ const OurFeatures = () => {
       
       `}
       </style>
-      <div className="pb-8 pt-6">
+      <div className="pb-8 pt-6 xsm:pt-4 xsm:pb-3 md:pb-3">
         <div className="add_gradient flex flex-col gap-12  py-10 pb-20 px-28 xsm:px-[5%] xsm:gap-2 xsm:pb-[3%] xsm:py-[5%] md:px-[5%] md:gap-4 md:pb-10">
           <div className="flex flex-col gap-4 justify-center items-center xsm:gap-2 md:gap-3">
             <p className="text-[36px] text-white font-pop font-semibold xsm:text-[12px] md:text-[30px]">

@@ -44,7 +44,7 @@ const WhyHM = () => {
   };
 
   return (
-    <div className=" pb-[6%] pt-[2%] md:pt-12">
+    <div className=" pb-[6%] pt-[2%] xsm:pt-8 md:pt-12">
       <div className="flex flex-col gap-3 xsm:gap-5" ref={sectionRef}>
         <div className="flex justify-center">
           <p className="text-[#1DBF73] text-[36px] font-pop font-semibold xsm:text-[24px] md:text-[30px]">
@@ -61,7 +61,7 @@ const WhyHM = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-4 py-10 px-[5%] gap-x-6 md:py-6 xsm:grid-cols-2 xsm:gap-y-10" >
+        <div className="grid grid-cols-4 py-10 px-[5%] gap-x-6 md:py-6 xsm:grid-cols-2 xsm:gap-y-10 xsm:pt-6" >
             <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500">
             <Hm1 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
             <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">Immediate Joining</div>

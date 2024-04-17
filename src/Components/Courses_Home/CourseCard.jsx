@@ -92,7 +92,7 @@ const CourseCard = ({
           )}
         </span>
       )}
-      <div className="h-[45%] md:h-[35%]">
+      <div className="h-[45%] md:h-[40%]">
         {mouseHovered === ind ? (
           <ReactPlayer
             className=" rounded-xl xsm:rounded-md border"
@@ -120,10 +120,10 @@ const CourseCard = ({
           />
         )}
       </div>
-      <div className="space-y-2 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2 md:mt-2 xsm:mt-1">
-        <div className="flex flex-col gap-2 mt-2 xsm:gap-0 md:gap-0">
+      <div className="space-y-2 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2 md:mt-0 xsm:mt-0">
+        <div className="flex flex-col gap-2 mt-2 xsm:mt-1 xsm:gap-0 md:gap-0">
           <div className="flex justify-between items-center min-h-[30%]">
-            <div className="flex items-center space-x-3 max-w-[80%] xsm:space-x-1 md:space-x-2">
+            <div className="flex items-center space-x-3 max-w-[80%] xsm:max-w-[70%] xsm:space-x-1 md:space-x-2 md:max-w-[70%]">
               <img
                 className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"
                 src={abhishek}

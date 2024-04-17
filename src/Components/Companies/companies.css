@@ -22,10 +22,20 @@
     .slider-container {
         height: 40px;
     }
+
+    .logo {
+        height: 30px;
+        width: 100px;
+    }
 }
 
 @media screen and (min-width: 720px) and (max-width: 1024px) {
     .slider-container {
         height: 60px;
+    }
+
+    .logo {
+        height: 50px;
+        width: 120px;
     }
 }

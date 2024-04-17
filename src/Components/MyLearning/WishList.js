@@ -65,11 +65,11 @@ export default function WishList() {
                   />
                 </div>
                 <div className="flex flex-col gap-3 justify-between h-[45%]">
-                <div className="space-y-2 mt-2 xsm:mt-0">
-                  <div className="flex justify-between mt-3 min-h-[30%] xsm:mt-2 md:mt-4">
-                    <div className="flex items-center space-x-3 max-w-[80%] md:space-x-1">
+                <div className="space-y-2 mt-2 xsm:mt-0 xsm:space-y-1">
+                  <div className="flex justify-between mt-3 min-h-[30%] xsm:mt-1 md:mt-0 items-center">
+                    <div className="flex items-center space-x-3 max-w-[80%] xsm:space-x-1 md:space-x-1">
                       <img
-                        className="w-[32px] h-[32px] xsm:w-5 xsm:h-5 md:w-5 md:h-5"
+                        className="w-[32px] h-[32px] xsm:w-4 xsm:h-4 md:w-5 md:h-5"
                         src="../img/RCimg2.png"
                       />
                       <p className="font-pop font-medium text-[14px] flex flex-wrap xsm:text-[5px] md:text-[10px]">
@@ -88,7 +88,7 @@ export default function WishList() {
                   </p>
                   </div>
                   <div className=" flex flex-row items-center justify-between">
-                    <div className="flex space-x-2 items-center xsm:space-x-0">
+                    <div className="flex space-x-2 items-center xsm:space-x-0 md:space-x-1">
                       <img
                         className="w-[16px] h-[16px] xsm:w-2 xsm:h-2 md:w-3 md:h-3"
                         src="../Icons/RCDesign.svg"
@@ -97,7 +97,7 @@ export default function WishList() {
                         {item.course.category}
                       </p>
                     </div>
-                    <div className="flex space-x-2 items-center xsm:space-x-0">
+                    <div className="flex space-x-2 items-center xsm:space-x-0 md:space-x-1">
                       <img
                         className="w-[16px] h-[16px] text-[#555555] xsm:w-2 xsm:h-2 md:w-3 md:h-3"
                         src="../Icons/RCClock.svg"
