@@ -61,7 +61,7 @@ toast.error(response.message)
     <>
                 <Toaster position="top-right" />
 
-        <div className=' px-[5%] py-[5%] bg-gradient-to-r from-[#0F2027] to-[#203A43] backgroundsvg md:mb-6 xsm:pb-[14%]'>
+        <div className=' px-[5%] py-[5%] mb-10 bg-gradient-to-r from-[#0F2027] to-[#203A43] backgroundsvg md:mb-6 xsm:pb-[14%]'>
             {/* Mainsection */}
 
             <div className=' flex justify-between pr-[12%] md:pr-[0%] xsm:flex-col xsm:pr-[0%] xsm:gap-4'>
@@ -125,7 +125,7 @@ toast.error(response.message)
                                         <img className='w-10 h-10 md:w-6 md:h-6 xsm:w-4 xsm:h-4' src="../Icons/hireheadicon3.png" alt="" />
                                     </div>
                                     <div>
-                                        <p className='font-pop font-semibold text-center text-[14px] md:text-[12px] xsm:text-[10px]'>Hands-on Projects</p>
+                                        <p className='font-pop font-semibold text-center text-[14px] px-4 md:text-[12px] xsm:text-[10px]'>Hands-on Projects</p>
                                     </div>
                                 </div>
                             </SplideSlide>
@@ -197,7 +197,7 @@ toast.error(response.message)
 
         </div>
             <Companies />
-        <div className='px-[5%] py-[4%] bg-gradient-to-r from-[#0F2027] to-[#203A43] bottomsvg md:mt-6'>
+        <div className='px-[5%] py-[4%] mt-10 bg-gradient-to-r from-[#0F2027] to-[#203A43] bottomsvg md:mt-6'>
             <Resume/> 
             <HireTestimonial/>
         </div>

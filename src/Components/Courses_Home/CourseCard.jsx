@@ -27,7 +27,7 @@ const CourseCard = ({
   _id,
   display,
 }) => {
-  console.log(_id);
+  // console.log(_id);
   const [mouseHovered, setMouseHovered] = useState(null);
   const [IsMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
@@ -92,7 +92,7 @@ const CourseCard = ({
           )}
         </span>
       )}
-      <div className="h-[40%] md:h-[35%]">
+      <div className="h-[45%] md:h-[40%]">
         {mouseHovered === ind ? (
           <ReactPlayer
             className=" rounded-xl xsm:rounded-md border"
@@ -120,16 +120,16 @@ const CourseCard = ({
           />
         )}
       </div>
-      <div className="space-y-3 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2 md:mt-2 xsm:mt-1">
-        <div className="flex flex-col gap-2 xsm:gap-0 md:gap-0">
-          <div className="flex justify-between">
-            <div className="flex space-x-2 items-center xsm:space-x-1">
+      <div className="space-y-2 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2 md:mt-0 xsm:mt-0">
+        <div className="flex flex-col gap-2 mt-2 xsm:mt-1 xsm:gap-0 md:gap-0">
+          <div className="flex justify-between items-center min-h-[30%]">
+            <div className="flex items-center space-x-3 max-w-[80%] xsm:max-w-[70%] xsm:space-x-1 md:space-x-2 md:max-w-[70%]">
               <img
-                className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
-                src="../Icons/RCDesign.svg"
+                className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"
+                src={abhishek}
               />
-              <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
-                {category}
+              <p className="font-pop font-medium text-[14px] flex-wrap xsm:text-[6px] md:text-[7px]">
+                {firstName + " " + lastName}
               </p>
             </div>
             <div>
@@ -137,15 +137,6 @@ const CourseCard = ({
                 ₹ {price}
               </p>
             </div>
-          </div>
-          <div className="flex space-x-2 items-center xsm:space-x-0">
-            <img
-              className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
-              src="../Icons/RCClock.svg"
-            />
-            <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
-              45 Hours
-            </p>
           </div>
           <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px] md:h-12 xsm:mt-2 xsm:h-6">
             {title}
@@ -155,13 +146,22 @@ const CourseCard = ({
           </p>
         </div>
         <div className=" flex items-center justify-between">
-          <div className="flex items-center space-x-3 xsm:space-x-1 md:space-x-2">
+          <div className="flex space-x-2 items-center xsm:space-x-1">
             <img
-              className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"
-              src={abhishek}
+              className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
+              src="../Icons/RCDesign.svg"
             />
-            <p className="font-pop font-medium text-[14px] xsm:text-[6px] md:text-[7px]">
-              {firstName + " " + lastName}
+            <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
+              {category}
+            </p>
+          </div>
+          <div className="flex space-x-2 items-center xsm:space-x-0">
+            <img
+              className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
+              src="../Icons/RCClock.svg"
+            />
+            <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
+              45 Hours
             </p>
           </div>
         </div>

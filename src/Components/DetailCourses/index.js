@@ -36,7 +36,7 @@ export default function DetailCourses() {
 
     return (
         <div className="  h-auto min-h-screen overflow-x-visible ">
-            <div className=" px-[5%] xsm:mx-0">
+            <div className=" px-[5%] mb-5 xsm:mx-0">
                 <div className='CCDetails-Header-main flex justify-between px-[5%] w-full'>
                     <div className='CCDetails-Header-content-leftqw xsm:text-[14px]'>
                         <div className='CCDetails-Header-content-row1qw'>

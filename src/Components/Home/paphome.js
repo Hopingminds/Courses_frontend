@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const PapHome = () => {
     const navigate = useNavigate();
     return (
-        <div id='pap' className='px-20 flex flex-col items-center xsm:px-[5%] md:px-[5%] pb-10' >
+        <div id='pap' className='px-20 flex flex-col items-center xsm:px-[5%] md:px-[5%] pb-10 xsm:pb-3 md:pb-5' >
             <h1 className='text-center text-[#1DBF73] text-[36px] font-pop font-semibold xsm:text-[12px] md:text-[28px]' > Pay After Placement</h1>
             <p className='text-center text-[#696984] text-[20px] font-pop mt-4 xsm:mt-2 xsm:text-[7px] md:text-[10px] md:mt-3'>Hoping Minds is democratising education with a unique Pay After Placement (PAP) Model. <br /> PAP allows you to study the course of your choice at ₹0 upfront fee with our PAP Agreement.</p>
             <div className='flex justify-between my-10 space-x-10 xsm:gap-x-2 xsm:space-x-0 xsm:my-4 md:space-x-8 md:my-6'>
@@ -24,7 +24,7 @@ const PapHome = () => {
                     <p className='text-[##3C3C3CE5] text-center text-[18px] xsm:text-[7px] xsm:text-balance md:text-[8px] font-pop'>With HopingMinds, you get a job before you pay any fees. It's a simple, stress-free, and risk-free approach. No job means no charges, ensuring peace of mind.</p>
                 </div>
             </div>
-            <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full xsm:text-[8px] xsm:py-1 xsm:px-3 md:text-[12px] md:py-2 md:px-4 font-pop mt-4' onClick={() => navigate('/pap')}>Kick Start</button>
+            <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full xsm:text-[8px] xsm:py-1 xsm:px-3 md:text-[12px] md:py-2 md:px-4 font-pop mt-4 xsm:mt-0' onClick={() => navigate('/pap')}>Kick Start</button>
         </div>
     )
 }

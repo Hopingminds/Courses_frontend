@@ -113,7 +113,7 @@ export default function Pap() {
         <div className="font-pop font-semibold text-white text-[44px] pl-20 xsm:text-[20px] xsm:pl-4 md:text-[30px] md:pl-14">Pay After Placement</div>
       </div>
       {/* Main */}
-      <div className=" my-6 xsm:px-[3%] md:px-[5%]">
+      <div className=" my-6">
         <div className="px-[5%]">
           <p className="font-pop font-semibold text-[32px] xsm:text-[14px] md:text-[26px]">From Learning To Earning </p>
         </div>
@@ -168,14 +168,14 @@ export default function Pap() {
           </div>
         </div>
         {/* course fee */}
-        <div className=" px-[5%] flex my-24 justify-between xsm:my-10 md:my-18">
+        <div className=" px-[5%] flex mt-24 justify-between xsm:mt-10 md:my-18">
           <div className="w-[40%] relative mt-12 xsm:mt-4 md:mt-8">
             <div className="bg-[#E2FFF1] rounded-xl w-[75%] h-full absolute top-[-12%] left-[10%] z-[-2]"></div>
             <div className="z-10 h-full">
               <img className="w-[75%] h-full" src="../img/papcoursefeeimg1.png" />
             </div>
           </div>
-          <div className="w-[55%] flex flex-col gap-6 xsm:gap-2 md:gap-4">
+          <div className="w-[55%] flex flex-col gap-3 mt-4 xsm:gap-2 md:gap-4">
             <div>
               <p className="font-pop font-semibold text-[28px] text-[#2D3436] xsm:text-[10px] xsm:font-bold md:text-[24px]">Course Fee</p>
             </div>
@@ -207,7 +207,7 @@ export default function Pap() {
         </div>
         {/* Dropout clauses */}
         {/* will be changed first */}
-        <div className="px-[5%] flex  justify-between my-36 xsm:my-10">
+        {/* <div className="px-[5%] flex  justify-between my-36 xsm:my-10">
           <div className="w-[65%]  flex flex-col gap-6 xsm:gap-2">
             <div>
               <p className="font-pop font-semibold text-[24px] text-[#2D3436] xsm:text-[10px] xsm:font-bold">Dropout Clauses</p>
@@ -229,9 +229,9 @@ export default function Pap() {
                 <p className="font-nu text-[17px] xsm:text-[7px]">Week 21 - 30/35  :  100% PAP Amount</p>
               </div>
             </div>
-            {/* <div>
+            <div>
               <p className="font-nu text-[17px] xsm:text-[8px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
-            </div> */}
+            </div>
           </div>
           <div className="w-[30%] relative">
             <div className="absolute z-10 translate-x-32 xsm:translate-x-6">
@@ -242,7 +242,7 @@ export default function Pap() {
             </div>
             <div className="bg-gradient-to-outside w-[70%] h-[70%] absolute top-[30%] left-[15%] opacity-55"></div>
           </div>
-        </div>
+        </div> */}
 
         <PAPBenefit />
         {/* Agreement */}

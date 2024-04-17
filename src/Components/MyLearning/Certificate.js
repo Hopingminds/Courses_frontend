@@ -13,8 +13,8 @@ export default function Certificate(props){
     //     document.body.removeChild(link);
     // }
     return (
-        <div className="px-[5%] mt-8 flex space-y-8 justify-between xsm:flex-col-reverse xsm:mt-3">
-            <div className="flex flex-col w-[60%] justify-between xsm:w-[100%]">
+        <div className="px-[5%] my-[3%] flex space-y-8 justify-between xsm:flex-col-reverse xsm:mt-3">
+            <div className="flex flex-col w-[70%] justify-between xsm:w-[100%] md:w-[65%] md:gap-3">
             {!courses?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Certificate Found</div></div>:''}
 
                 {
