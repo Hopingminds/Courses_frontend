@@ -55,7 +55,7 @@ useEffect(() => {
     return (<>
         <div className=" bg-gradient-to-r from-[#0F2027] to-[#203A43] h-[80vh] hero w-full flex font-pop justify-center items-center px-[3%] xsm:h-[50vh] md:h-[70vh]">
             <div className='w-[45%] space-y-8'>
-                <div className='text-[45px] font-semibold text-white leading-[60px] font-pop text-wrap xsm:text-[20px] xsm:leading-[28px] md:text-[34px] md:leading-[50px]'>Master In-Demand Skills for Dream Placements</div>
+                <div className='text-[45px] font-semibold text-white leading-[60px] font-pop text-wrap text-5xl xsm:text-[20px] xsm:leading-[28px] md:text-[34px] md:leading-[50px]'>Master In-Demand Skills for Dream Placements</div>
                 <div className='text-[28px] font-medium text-white leading-[40px] font-pop text-wrap xsm:text-[14px] xsm:leading-[18px] md:text-[18px] md:leading-[30px]'>High Impact Courses that Earn you College Credits</div>
             </div>
             <div className='w-[40%] h-[75%] flex justify-center items-center  relative text-[#545567] '>
