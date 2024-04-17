@@ -64,16 +64,16 @@ useEffect(() => {
                 <img  className=' h-full w-full'  src="/homegif.gif" alt="video" />
 
                 </div>
-                <div className={`${active==1?'scale-in-center':''} flex justify-center w-[15vw] h-[16vh] backdrop-blur-[2px] absolute -top-6 left-10 px-2 space-x-2 items-center  rounded-lg bgcurvehome xsm:space-x-0 xsm:w-[20vw] xsm:h-[7vh] xsm:top-4 xsm:left-6`}>
-                    <Certificate className='w-16 h-14 xsm:w-6 xsm:h-4'/>
-                    <div className='flex flex-col text-white w-[60%] '>
-                        <div className='xsm:text-[5px]'>NSDC Partner with Course Certifications</div>
+                <div className={`${active==1?'scale-in-center':''} flex justify-between w-[16vw] h-[16vh] backdrop-blur-[2px] absolute -top-6 left-10 px-5 items-center  rounded-lg bgcurvehome xsm:space-x-0 xsm:w-[20vw] xsm:h-[7vh] xsm:top-4 xsm:left-6`}>
+                    <Certificate className='w-14 h-14 xsm:w-6 xsm:h-4'/>
+                    <div className='flex flex-col text-white w-[60%]'>
+                        <div className='xsm:text-[5px] w-full text-wrap text-[12px] pr-5'>NSDC Partner with Course Certifications</div>
                     </div>
                 </div>
                 <div className={`${active==2?'scale-in-center':''} flex justify-center absolute w-[12vw] h-[14vh] backdrop-blur-[2px]  top-[70%] -left-10 px-2  space-x-2 items-center bgcurvehome xsm:space-x-1 xsm:w-[22vw] xsm:h-[7vh] xsm:-left-1`}>
                     <Ai className='w-12 h-12 xsm:w-5 xsm:h-5'/>
                     <div className='flex flex-col text-white  w-[60%] '>
-                        <div className='xsm:text-[5px]'>AI driven Learning Experience</div>
+                        <div className='xsm:text-[5px] text-[14px]'>AI driven Learning Experience</div>
                     </div>
                 </div>
 
@@ -82,7 +82,7 @@ useEffect(() => {
                         <Cashback className='w-16 h-14 xsm:w-6 xsm:h-4'/>
                     </div>
                     <div className='flex flex-col text-white  w-[60%] xsm:w-[70%]'>
-                        <div className='xsm:text-[5px]'>Earn College Credits for Each Course</div>
+                        <div className='xsm:text-[5px] text-[14px] pr-2'>Earn College Credits for Each Course</div>
                     </div>
                 </div>
             </div>
