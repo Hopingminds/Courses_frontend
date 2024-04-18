@@ -26,7 +26,7 @@ const Basic = ({changeComponent,setFinalData}) => {
         if(basicFormData.fname === "" || basicFormData.lname === "" || basicFormData.email === "" || basicFormData.num === "" || basicFormData.address === "" || basicFormData.city === "" || basicFormData.state === "" || basicFormData.objective === "" ){
             toast.error("Fill all the field");
         }else{
-            setFinalData(finalBasicData);
+            setFinalData(prevData => ({...prevData, finalBasicData}));
             changeComponent('education');
         }
 

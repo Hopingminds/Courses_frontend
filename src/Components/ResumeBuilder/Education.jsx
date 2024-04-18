@@ -30,7 +30,7 @@ const Education = ({changeComponent,setFinalData}) => {
       toast.error("Fill all field to move forward");
     } else {
       console.log(educationFields);
-      setFinalData(educationFields);
+      setFinalData(prevData => ({...prevData,educationFields}));
       changeComponent('technical');
     }
   }

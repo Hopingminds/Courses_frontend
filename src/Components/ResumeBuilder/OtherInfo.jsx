@@ -16,7 +16,7 @@ const OtherInfo = ({changeComponent,finalData,setFinalData}) => {
     function submitHandler(e) {
         e.preventDefault();
         console.log(otherFormData);
-        setFinalData(otherFormData);
+        setFinalData(prevData => ({...prevData,otherFormData}));
         console.log(finalData);
         setOtherFormData({
           hackerrank: "",
@@ -26,7 +26,7 @@ const OtherInfo = ({changeComponent,finalData,setFinalData}) => {
           leetcode: "",
           gfg: "",
         });
-      }
+    }
       
 
     function handlePrev(){

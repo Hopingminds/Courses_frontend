@@ -110,7 +110,7 @@ const Technical = ({changeComponent,setFinalData}) => {
     if (isAnyTrainingFieldEmpty || isAnyProjectsFieldEmpty || isAnyCertificationsFieldEmpty || isAnySkillsFieldEmpty) {
       toast.error("Please fill out all fields.");
     } else {
-      setFinalData(finalTechnicalData);
+      setFinalData(prevData => ({...prevData,finalTechnicalData}));
       changeComponent('otherinfo');
     }
   }
