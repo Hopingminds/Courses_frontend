@@ -33,7 +33,6 @@ import CareerServices from '../Components/HireFromUs/CarrerServices.jsx'
 import AiMinds from '../Components/AiMinds/AiMinds.jsx'
 import ReturnPolicy from '../Components/policies/ReturnPolicy.js'
 import ShippingPolicy from '../Components/policies/ShippingPolicy.js'
-import Test from '../Components/Test/Test.jsx'
 import HireFromUs from '../Components/HireFromUs/HireFromUs.jsx'
 import Temp from '../Components/temp.js'
 import Newinstructor from '../Components/Newinstructor/index.js'
@@ -42,6 +41,9 @@ import ResumeBuilder from '../Components/ResumeBuilder/ResumeBuilder.jsx'
 import MinorCourse from '../Components/MinorCourses/minorCourses.jsx'
 import MinorDegree from '../Components/MinorCourses/minordegree.js'
 import CodeEditor from '../Components/CodeEditor/index.js'
+import Enterance from '../Components/Assignments/Entrancepage/Entrance.jsx'
+import Modules from '../Components/Assignments/Modules/index.js'
+import Question from '../Components/Assignments/Questions/index.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -87,7 +89,7 @@ const Router = () => {
                 <Route path='/ai' element={<AiMinds />} />
                 <Route path='/privacy' element={<ReturnPolicy />} />
                 <Route path='/terms' element={<ShippingPolicy />} />
-                <Route path='/test' element={<Test />} />
+                <Route path='/enterance' element={<Enterance />} />
                 <Route path='/hire-from-us' element={<HireFromUs />} />
                 <Route path='/career' element={<CareerServices />} />
                 <Route path='/modal' element={<Modal />} />
@@ -98,6 +100,8 @@ const Router = () => {
                 <Route path='/minorCourse' element={<MinorCourse />} />
                 <Route path='/m' element={<MinorDegree/>} />
                 <Route path='/code' element={<CodeEditor/>} />
+                <Route path='/modules' element={<Modules/>} />
+                <Route path='/questions' element={<Question/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
