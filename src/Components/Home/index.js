@@ -10,8 +10,40 @@ import WhatHM from "../WhatHM/WhatHM";
 import logo from '../../Assests/Images/hmlogo.png'
 import PapHome from "./paphome";
 import NewTestimonial from "../Testimonial/NewTestimonial";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
+
+    const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Calculate the scroll position
+      const scrollPosition = window.scrollY;
+
+      // Define the threshold position to show the pop-up
+      const thresholdPosition = 500; // Adjust this value as needed
+
+      // Check if the scroll position exceeds the threshold
+      if (scrollPosition > thresholdPosition) {
+        // Show the pop-up
+        setShowPopup(true);
+      } else {
+        // Hide the pop-up
+        setShowPopup(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Remove event listener when component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+
     return (<>
         <head>
             <title>Hoping Minds</title>
@@ -34,5 +66,14 @@ export default function Home() {
             <Certificate />
             <Testimonial />
         </div>
+
+        {showPopup && (
+        <div className="fixed bottom-16 right-0 bg-white p-4 shadow-lg">
+            <Link to={"/resumebuilder"}>
+          <button>CV Builder</button>
+          </Link>
+        </div>
+      )}
+
     </>)
 }
