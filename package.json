@@ -5,6 +5,10 @@
   "dependencies": {
     "@canvasjs/react-charts": "^1.0.2",
     "@codemirror/lang-javascript": "^6.2.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.15",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "@mui/x-charts": "^6.19.8",
     "@ramonak/react-progress-bar": "^5.2.0",
     "@splidejs/react-splide": "^0.7.12",
