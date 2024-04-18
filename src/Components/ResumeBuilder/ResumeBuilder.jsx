@@ -9,12 +9,13 @@ import { useLocation } from 'react-router-dom';
 const ResumeBuilder = () => {
     const location = useLocation();
     const[activeComponent, setActiveComponent] = useState('basic');
+    const[finalData, setFinalData] = useState(null);
 
     const renderComponent = (componentName) => {
       setActiveComponent(componentName);
     };
 
-    function MoveCompo(val){
+    function changeComponent(val){
         setActiveComponent(val);
     }
 
@@ -27,10 +28,10 @@ const ResumeBuilder = () => {
                 <button className={`border border-[#EAEAEA] rounded-r-2xl rounded-br-none py-2 font-pop font-semibold text-[18px] md:text-[16px] xsm:text-[12px] ${activeComponent === 'otherinfo' ? 'resumebutton' : ''}`} onClick={() => renderComponent('otherinfo')}>Other Info</button>
             </div>
             <div className='px-10 py-6 border border-[#EAEAEA] rounded-b-xl xsm:px-5'>
-                {activeComponent === 'basic' && <Basic fun={MoveCompo}/>}
-                {activeComponent === 'education' && <Education fun={MoveCompo}/>}
-                {activeComponent === 'technical' && <Technical fun={MoveCompo}/>}
-                {activeComponent === 'otherinfo' && <OtherInfo fun={MoveCompo}/>}
+                {activeComponent === 'basic' && <Basic changeComponent={changeComponent} setFinalData={setFinalData}/>}
+                {activeComponent === 'education' && <Education changeComponent={changeComponent} setFinalData={setFinalData} />}
+                {activeComponent === 'technical' && <Technical changeComponent={changeComponent} setFinalData={setFinalData}/>}
+                {activeComponent === 'otherinfo' && <OtherInfo finalData={finalData} setFinalData={setFinalData} changeComponent={changeComponent}/>}
             </div>
         </div>
   )

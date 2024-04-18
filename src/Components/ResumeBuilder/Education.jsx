@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
-const Education = ({fun}) => {
+const Education = ({changeComponent,setFinalData}) => {
   const [educationFields, setEducationFields] = useState([
     { degree: '', university: '', passingYear: '', percentage: '' }
   ]);
@@ -16,12 +17,26 @@ const Education = ({fun}) => {
   };
 
 
-    function handleNext(){
-        fun('technical');
+  function handleNext() {
+    const isAnyFieldEmpty = educationFields.some(
+      (field) =>
+        field.degree.trim() === '' ||
+        field.university.trim() === '' ||
+        field.passingYear.trim() === '' ||
+        field.percentage.trim() === ''
+    );
+  
+    if (isAnyFieldEmpty) {
+      toast.error("Fill all field to move forward");
+    } else {
+      console.log(educationFields);
+      setFinalData(educationFields);
+      changeComponent('technical');
     }
+  }
 
     function handlePrev(){
-        fun('basic')
+      changeComponent('basic')
     }
 
   return (
@@ -93,6 +108,7 @@ const Education = ({fun}) => {
           <img className='w-7 md:w-6 xsm:w-5' src="../Icons/resumerightarrow.svg" alt="" />
         </div>
       </div>
+      <Toaster position="top-center" />
     </div>
   );
 };

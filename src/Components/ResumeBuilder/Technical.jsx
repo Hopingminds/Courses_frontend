@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
-const Technical = ({fun}) => {
+const Technical = ({changeComponent,setFinalData}) => {
   const [trainings, setTrainings] = useState([{ companyName: '', postName: '', location: '', fromDate: '', toDate: '' }]);
   const [projects, setProjects] = useState([{ projectName: '', projectRole: '', projectDescription: '' }]);
   const [certifications, setCertifications] = useState([{ certificateName: '', certifiedBy: '' }]);
@@ -46,12 +47,77 @@ const Technical = ({fun}) => {
     setSkills(newSkills);
   };
 
-    function handleNext(){
-        fun('otherinfo');
+  function handleNext() {
+
+    const allTrainings = trainings.map((training) => ({
+      companyName: training.companyName.trim(),
+      postName: training.postName.trim(),
+      location: training.location.trim(),
+      fromDate: training.fromDate.trim(),
+      toDate: training.toDate.trim(),
+    }));
+  
+    const allProjects = projects.map((project) => ({
+      projectName: project.projectName.trim(),
+      projectRole: project.projectRole.trim(),
+      projectDescription: project.projectDescription.trim(),
+    }));
+  
+    const allCertifications = certifications.map((certification) => ({
+      certificateName: certification.certificateName.trim(),
+      certifiedBy: certification.certifiedBy.trim(),
+    }));
+  
+    const allSkills = skills.map((skill) => ({
+      skill: skill.skill.trim(),
+      skillLevel: skill.skillLevel.trim(),
+    }));
+  
+    const finalTechnicalData = {
+      trainings: allTrainings,
+      projects: allProjects,
+      certifications: allCertifications,
+      skills: allSkills,
+    };
+  
+    console.log(finalTechnicalData);
+  
+    const isAnyTrainingFieldEmpty = trainings.some(
+      (field) =>
+        field.companyName.trim() === '' ||
+        field.postName.trim() === '' ||
+        field.location.trim() === '' ||
+        field.fromDate.trim() === '' ||
+        field.toDate.trim() === ''
+    );
+    const isAnyProjectsFieldEmpty = projects.some(
+      (field) =>
+        field.projectName.trim() === '' ||
+        field.projectRole.trim() === '' ||
+        field.projectDescription.trim() === ''
+    );
+    const isAnyCertificationsFieldEmpty = certifications.some(
+      (field) =>
+        field.certificateName.trim() === '' ||
+        field.certifiedBy.trim() === ''
+    );
+    const isAnySkillsFieldEmpty = skills.some(
+      (field) =>
+        field.skill.trim() === '' ||
+        field.skillLevel.trim() === ''
+    );
+  
+    if (isAnyTrainingFieldEmpty || isAnyProjectsFieldEmpty || isAnyCertificationsFieldEmpty || isAnySkillsFieldEmpty) {
+      toast.error("Please fill out all fields.");
+    } else {
+      setFinalData(finalTechnicalData);
+      changeComponent('otherinfo');
     }
+  }
+  
 
     function handlePrev(){
-        fun('education')
+        changeComponent('education')
     }
 
 
@@ -267,6 +333,7 @@ const Technical = ({fun}) => {
           <img className='w-7 md:w-6 xsm:w-5' src="../Icons/resumerightarrow.svg" alt="" />
         </div>
       </div>
+      <Toaster position="top-center" />
     </div>
   );
 };
