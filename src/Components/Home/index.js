@@ -19,25 +19,17 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Calculate the scroll position
       const scrollPosition = window.scrollY;
+      const thresholdPosition = 500;
 
-      // Define the threshold position to show the pop-up
-      const thresholdPosition = 500; // Adjust this value as needed
-
-      // Check if the scroll position exceeds the threshold
       if (scrollPosition > thresholdPosition) {
-        // Show the pop-up
         setShowPopup(true);
       } else {
-        // Hide the pop-up
         setShowPopup(false);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    // Remove event listener when component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
