@@ -9,7 +9,7 @@ const Basic = ({fun}) => {
         fun('education');
     }
   return (
-    <div className='flex flex-col gap-4 h-[70vh]'>
+    <div className='flex flex-col gap-4 min-h-[70vh]'>
         <div className='flex flex-col gap-4 px-4 py-2'>
             <div className='grid grid-cols-2  gap-8'>
                 <div className='flex flex-col text-[15px]'>

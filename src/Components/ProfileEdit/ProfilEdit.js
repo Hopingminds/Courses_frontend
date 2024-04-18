@@ -3,7 +3,7 @@ import Banner from "../../Assests/Images/profileedit-banner.png";
 import User from "../../Assests/Images/profile-user.png";
 import Edit from "../../Assests/Icons/edit.svg";
 import { Globalinfo } from "../../App";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
@@ -202,7 +202,8 @@ const ProfilEdit = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center mt-16 xsm:mt-6 md:mt-0">
+        <Link to={'/resumebuilder'} className="cursor-pointer text-center mt-4  text-red-500">Complete Your Profile</Link>
+        <div className="flex justify-center mt-6 xsm:mt-6 md:mt-0">
           <div className="grid grid-cols-2 justify-between gap-x-40 gap-y-8 w-[80%] xsm:gap-x-8 xsm:gap-y-3 md:gap-x-28 md:gap-y-6">
             <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
