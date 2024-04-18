@@ -138,8 +138,8 @@ bottom: 0;
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-  left: 0.45em;
-  top: 0.25em;
+  left: 0.5em;
+  top: 0.35em;
   width: 0.25em;
   height: 0.5em;
   border: solid #E0E0E2;

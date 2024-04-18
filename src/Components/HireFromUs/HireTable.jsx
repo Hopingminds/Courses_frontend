@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import "./hirefromus.css";
 
 const HireTable = () => {
-    const [checkedMark, setCheckedMark] = useState(false);
-    function checkHandler(e){
-        setCheckedMark(() => e.target.checked);
+    const [checkedMark, setCheckedMark] = useState(true);
+
+    function checkHandler() {
+        setCheckedMark(!checkedMark);
+        console.log(checkedMark);
     }
   return (
     <div className='bg-[#E2FFF1] py-[1%] w-full'>
@@ -47,7 +49,7 @@ const HireTable = () => {
                         <p className='font-pop font-medium text-[#292D32] text-[17px]'>(225) 555-0118</p>
                         <p className='font-pop font-medium text-[#292D32] text-[17px]'>jane@microsoft.com</p>
                         <p className='font-pop font-medium text-[#292D32] text-[17px]'>United States</p>
-                        <label htmlFor="" className='container'>
+                        <label className='container'>
                             <input type="checkbox" checked={checkedMark} onChange={checkHandler} />
                             <div className='checkmark'></div>
                         </label>
@@ -62,7 +64,7 @@ const HireTable = () => {
                         <p className='font-pop font-medium text-[#292D32] text-[17px]'>(225) 555-0118</p>
                         <p className='font-pop font-medium text-[#292D32] text-[17px]'>jane@microsoft.com</p>
                         <p className='font-pop font-medium text-[#292D32] text-[17px]'>United States</p>
-                        <label htmlFor="" className='container'>
+                        <label className='container'>
                             <input type="checkbox" checked={checkedMark} onChange={checkHandler} />
                             <div className='checkmark'></div>
                         </label>
