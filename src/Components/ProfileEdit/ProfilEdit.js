@@ -169,9 +169,9 @@ const ProfilEdit = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-14 pb-60 xsm:gap-6 xsm:pb-20">
+      <div className="flex flex-col gap-0 pb-60 xsm:gap-6 xsm:pb-20">
 
-        <div className="relative flex justify-center h-[36vh] xsm:h-[14vh] md:h-[24vh]">
+        <div className="relative flex justify-center h-[280px] xsm:h-[100px] md:h-[220px]">
           <img src={Banner} className="w-full h-[200px] object-fit xsm:h-[80px] md:h-[150px]" />
 
           <div className="absolute top-4 right-16 flex justify-center pt-6 xsm:pt-0 xsm:right-4 md:right-8 md:top-2">
@@ -202,8 +202,10 @@ const ProfilEdit = () => {
             </div>
           </div>
         </div>
-        <Link to={'/resumebuilder'} className="cursor-pointer text-center mt-4  text-red-500">Complete Your Profile</Link>
-        <div className="flex justify-center mt-6 xsm:mt-6 md:mt-0">
+        <div className="flex justify-center">
+        <Link to={'/resumebuilder'} className="cursor-pointer text-center mt-0 w-max text-red-500 xsm:text-[12px] md:text-[16px]">Complete Your Profile</Link>
+        </div>
+        <div className="flex justify-center mt-20 xsm:mt-6 md:mt-16">
           <div className="grid grid-cols-2 justify-between gap-x-40 gap-y-8 w-[80%] xsm:gap-x-8 xsm:gap-y-3 md:gap-x-28 md:gap-y-6">
             <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
@@ -290,7 +292,7 @@ const ProfilEdit = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center pt-6 xsm:pt-0 md:pt-0">
+        <div className="flex justify-center pt-10 xsm:pt-0 ">
           <button className="text-[#FFFFFF] text-[22px] font-nu bg-[#1DBF73] rounded-full px-12 py-1 xsm:text-[10px] xsm:px-8 md:text-[16px]"
             onClick={handleSaveClick}>
             {btnLoader ? "Saving..." : "Save"}
