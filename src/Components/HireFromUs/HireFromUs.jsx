@@ -10,6 +10,7 @@ import { RiWhatsappFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { BASE_URL } from "../../Api/api";
+import HireTable from "./HireTable";
 const HireFromUs = () => {
   const [hiredata, sethiredata] = useState({
     name:"",
@@ -282,8 +283,9 @@ toast.error(response.message)
       <Companies2 />
       <Resume2 />
       <WhyHM />
+      <HireTable/>
       <div  className='px-[5%] bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43]'>
-      <NewHireTestimonial/>
+        <NewHireTestimonial/>
       </div>
     </>
   );

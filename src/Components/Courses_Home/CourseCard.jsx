@@ -50,7 +50,7 @@ const CourseCard = ({
       onMouseEnter={() => toggleHover(ind)}
       onMouseLeave={() => toggleHover(null)}
       href={`/detailcourse/${slug}`}
-      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative coursecardhome  bg-white p-2 xsm:rounded-lg  md:w-[95%] md:h-[100%] xsm:h-[100%] xsm:w-[100%] ${
+      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative h-[480px] coursecardhome  bg-white p-2 xsm:rounded-lg  md:w-[95%] md:h-[300px] xsm:h-[200px] xsm:w-[100%] ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
       style={{
