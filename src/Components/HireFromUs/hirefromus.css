@@ -168,6 +168,48 @@ bottom: 0;
 }
 
 
+.button-mail {
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #292D32;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 17px;
+  padding: 4px ;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+ }
+ 
+ .button-mail span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+ }
+ 
+ .button-mail span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+ }
+ 
+ .button-mail:hover span {
+  padding-right: 15px;
+ }
+ 
+ .button-mail:hover span:after {
+  opacity: 1;
+  right: 0;
+ }
+
+ 
+
+
 @media screen and (max-width: 480px) {
   .checkmark {
     height: 1rem;
@@ -183,5 +225,34 @@ bottom: 0;
   top: 0.05em;
   width: 0.25em;
   height: 0.5em;
+  }
+
+  .button-mail {
+    font-size: 8px;
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: 720px) and (max-width: 1024px) {
+
+  .checkmark {
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+
+  .container input:checked ~ .checkmark {
+    border-radius: 20%;
+  }
+
+  .container .checkmark:after {
+    left: 0.3em;
+  top: 0.08em;
+  width: 0.25em;
+  height: 0.5em;
+  }
+
+  .button-mail {
+    font-size: 14px;
+    width: 15%;
   }
 }

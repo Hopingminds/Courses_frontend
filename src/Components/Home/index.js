@@ -63,7 +63,9 @@ export default function Home() {
       {showPopup && (
         <Link to={"/resumebuilder"}>
           <div className="fixed bottom-10 right-0 bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] text-white py-4 px-6 drop-shadow-xl rounded-l-md ">
-            <button className="italic">Build Your CV</button>
+            <button className="italic">
+              <span className="">Build Your CV</span>
+            </button>
           </div>
         </Link>
       )}
