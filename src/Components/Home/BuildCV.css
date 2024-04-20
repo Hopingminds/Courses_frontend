@@ -1,0 +1,106 @@
+
+.button-resume {
+    display: inline-block;
+    border-radius: 50px;
+    background-color: #1DBF73;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 16px 24px;
+    transition: transform 0.7s ease-in-out;
+    cursor: pointer;
+    position: relative; 
+    overflow: hidden;
+   }
+
+   @keyframes shine {
+    0% {
+        background-position: -200px;
+    }
+    100% {
+        background-position: calc(200px + 100%) ;
+    }
+}
+
+@keyframes shine-alt1 {
+    0% {
+      opacity: 0.5;
+      transform: translateX(-100px) skewX(-15deg);
+      transition-property: opacity, transform;
+    }
+    50%,
+    100% {
+      opacity: 0.6;
+      transform: translateX(500px) skewX(-15deg);
+      transition-property: opacity, transform;
+    }
+  }
+
+.button-resume::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: -200px; 
+    width: 200px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)); /* Gradient for the shine effect */
+    transition: left 1.5s ease-out; 
+    pointer-events: none; 
+    animation: shine 1.5s ease-out infinite;
+    animation: shine-alt1 2s ease-in-out infinite;
+}
+
+
+.button-resume:hover::before {
+    left: calc(100% + 200px); 
+}
+
+   .button-resume:hover {
+    transform: scale(1.1) ;
+    
+   }
+
+   .button-resume span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+   }
+   
+   .button-resume span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -15px;
+    transition: 0.5s;
+   }
+   
+   .button-resume:hover span {
+    padding-right: 15px;
+   }
+   
+   .button-resume:hover span:after {
+    opacity: 1;
+    right: 0;
+   }
+
+   
+  
+
+   @media screen and (min-width: 720px) and (max-width: 1024px) {
+    .button-resume {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+   }
+
+   @media screen and (max-width: 480px) {
+    .button-resume {
+        font-size: 8px;
+        padding: 8px 10px;
+    }
+   }
+
+
