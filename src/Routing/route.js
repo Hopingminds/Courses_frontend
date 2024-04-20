@@ -44,6 +44,7 @@ import CodeEditor from '../Components/CodeEditor/index.js'
 import Enterance from '../Components/Assignments/Entrancepage/Entrance.jsx'
 import Modules from '../Components/Assignments/Modules/index.js'
 import Question from '../Components/Assignments/Questions/index.js'
+import SubmittedSuccess from '../Components/Assignments/Submittedpage/submitted.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -102,6 +103,7 @@ const Router = () => {
                 <Route path='/code' element={<CodeEditor/>} />
                 <Route path='/modules' element={<Modules/>} />
                 <Route path='/questions' element={<Question/>} />
+                <Route path='/submitted' element={<SubmittedSuccess/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
