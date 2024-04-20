@@ -21,7 +21,7 @@ const BuildCV = () => {
         </p>
       </div>
       <Link to={"/resumebuilder"} className="flex justify-center items-center">
-        <button className="button-resume font-pop">
+        <button className="button-resume font-pop shadow-xl">
               <span>Build Your Resume</span>
         </button>
       </Link>
