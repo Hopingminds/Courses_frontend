@@ -14,6 +14,7 @@ export default function Modules(){
     const [show, setshow] = useState(false)
     const [Completed, setCompleted] = useState(false)
     const [index, setindex] = useState(1)
+    const [testreport, settestreport] = useState()
     useEffect(() => {
      async function Fetchdata(){
         try {
@@ -27,7 +28,7 @@ export default function Modules(){
                 }
             });
             const response=await data.json();
-            console.log(response);
+            // console.log(response);
             setCompleted(response?.isTestCompleted)
             if(response.success){
                 setshow(false)
@@ -42,6 +43,32 @@ export default function Modules(){
      }
      Fetchdata()
     }, [])
+    useEffect(() => {
+        async function Fetchscores(){
+            try {
+                let token=localStorage.getItem('COURSES_USER_TOKEN')
+                setshow(true)
+                let url=BASE_URL+'/gettestreport'
+                const data = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                const response=await data.json();
+                settestreport(response?.testReport)
+                // console.log(response);
+                // setCompleted(response?.isTestCompleted)
+                if(response.success){
+                    setshow(false)
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        Fetchscores()
+    }, [])
+    
     
     const handleStartButtonClick = () => {
         // Scroll the modules container to the top
@@ -78,24 +105,52 @@ export default function Modules(){
         <div className="w-[62%] h-[85vh]  p-2 space-y-5 overflow-y-auto modules" ref={modulesContainerRef}>
             <div className="flex justify-between items-center">
                 <div className="text-xl font-semibold text-gray-700">Modules</div>
-                {Completed?<Link to='/result' className="bg-[#1DBF73] text-white p-2 rounded">View result</Link>:''}
+                {/* {Completed?<Link to='/result' className="bg-[#1DBF73] text-white p-2 rounded">View result</Link>:''} */}
 
             </div>
             <div className="flex flex-col space-y-5">
                 <div className="w-full border bg-gray-200 p-5  rounded-xl space-y-3">
                     <div className="font-semibold">Assignments Score Tracker</div>
                     <div className="h-8 bg-white text-[#1DBF73] flex pl-5 items-center rounded-lg">
-                    Your current score is 25
+                    Your current score is {testreport?.obtainedMarks}
                     </div>
                     <div className="flex justify-between text-sm">
-                        <div>You need to score 550 by solving assignments to be eligible for the coding test.</div>
-                        <div>Max Score : 550</div>
+                        <div>You need to score {testreport?.totalMarks} by solving assignments to be eligible for the coding test.</div>
+                        <div>Max Score : {testreport?.totalMarks}</div>
                     </div>
                 </div>
                 {
                     modulesdata?.map((item,ind)=>{
                         return(<>
-                         <Link to={`/questions?module_id=${item._id}&index=1`} className="w-full p-5 border  flex justify-between items-center rounded-xl">
+                        {
+                            item?.isModuleCompleted?<div className="w-full p-5 border  flex justify-between items-center rounded-xl">
+                            <div className="space-y-1 w-full">
+                                <div className="flex justify-between w-full">
+                                    <div className="font-[500]">Module {ind+1}</div>
+                                    {
+                                        item?.isModuleCompleted?<div className="flex items-center space-x-2">
+                                        <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white"/>
+                                        <p>Completed</p>
+                                        </div>:<div className="flex items-center space-x-2">
+                                    <PiWarningOctagonBold  className="bg-red-500 rounded-full text-2xl text-white"/>
+                                    <p>Incomplete</p>
+                                    </div>
+                                      }
+                                    
+                                </div>
+                                <div className="font-semibold text-xl">{item.module_name}</div>
+                                <div className="flex  items-center  space-x-2">
+                                <div style={{ width: "25px" }}>
+                                 <CircularProgressbar  value={item?.progress} maxValue={100} />
+                                </div>
+                                    <div className="text-sm text-gray-500">Progress : {item?.progress}%</div>
+                                </div>
+                                <div className="text-gray-400">{item.module_description}</div>
+        
+                            </div>
+        
+                            <FaGreaterThan className="text-3xl text-gray-500 font-extralight"/>
+                        </div>:<Link to={`/questions?module_id=${item._id}&index=1`} className="w-full p-5 border  flex justify-between items-center rounded-xl">
                     <div className="space-y-1 w-full">
                         <div className="flex justify-between w-full">
                             <div className="font-[500]">Module {ind+1}</div>
@@ -123,6 +178,7 @@ export default function Modules(){
 
                     <FaGreaterThan className="text-3xl text-gray-500 font-extralight"/>
                 </Link>
+                        }
                         </>)
                     })
                 }
