@@ -113,10 +113,34 @@ export default function Herosection() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const staticText = "High Impact"; // Static text
+  const staticText = "High Impact"; 
   const remainingText = " Courses that Earn you  <br/> College Credits";
   const [displayText, setDisplayText] = useState(staticText);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [circlePosition, setCirclePosition] = useState({ x: 0, y: 0 });
+  const [squarePosition, setSquarePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setCirclePosition({ x: e.clientX, y: e.clientY });
+    };
+  
+    window.addEventListener('mousemove', handleMouseMove);
+  
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newX = Math.random() * (window.innerWidth - 200); 
+      const newY = Math.random() * (window.innerHeight - 200); 
+      setSquarePosition({ x: newX, y: newY });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -135,17 +159,17 @@ export default function Herosection() {
 
   return (
     <>
-      <div className=" bg-gradient-to-l hero from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[5%] xsm:h-[40vh] md:h-[65vh]">
+      <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[5%] xsm:h-[40vh] md:h-[65vh]">
         <div className="flex flex-col gap-12">
           <div className="pl-3">
-            <img src={Circle} className="w-10 h-10 animate-bounce" />
+            <img src={Circle} className="w-10 h-10 animate-bounce" style={{ position: 'absolute', top: circlePosition.y, left: circlePosition.x }}/>
           </div>
           <div className="text-[44px] font-bold text-white font-pop text-wrap text-5xl xsm:text-[20px] xsm:leading-[28px] md:text-[34px] md:leading-[50px]">
             {" "}
             <span className="text-[60px]"> Master In-Demand </span> <br />{" "}
             Skills for Dream Placements
           </div>
-          <div className="text-[25px] text-white font-pop text-wrap xsm:text-[14px] xsm:leading-[18px] md:text-[18px] md:leading-[30px]" dangerouslySetInnerHTML={{ __html: displayText }}>
+          <div className="text-[25px] text-white h-16 font-pop text-wrap xsm:text-[14px] xsm:leading-[18px] md:text-[18px] md:leading-[30px]" dangerouslySetInnerHTML={{ __html: displayText }}>
           </div>
           <div className="flex place-content-start">
             <button className="text-white text-[16px] font-nu font-bold bg-[#1DBF73] rounded-full py-2 px-10">
@@ -157,7 +181,7 @@ export default function Herosection() {
         <div className="flex flex-col gap-6 w-[50%]">
           <div className="flex flex-row gap-2 justify-end">
             <div className="flex flex-col justify-end pb-6">
-              <img src={Square} className="w-16 h-16 animate-spin" />
+              <img src={Square} className="square w-16 h-16 animate-ping" style={{ position: 'absolute', top: squarePosition.y, left: squarePosition.x }} />
             </div>
 
             <div className="flex flex-row gap-8">
