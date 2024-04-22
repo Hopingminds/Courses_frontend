@@ -1,4 +1,4 @@
-import ReactPlayer from 'react-player'
+import ReactPlayer from "react-player";
 // import './hero.css'
 // import { ReactComponent as Cal } from '../../Assets/Icons/cal.svg'
 // import { ReactComponent as Email } from '../../Assets/Icons/email.svg'
@@ -28,64 +28,209 @@ import ReactPlayer from 'react-player'
 //             </div>
 //         </div>
 
-
 //     </>)
 
-
 // }
+
+// import './hero.css'
+// import { ReactComponent as Cashback } from '../../Assets/Icons/Cashback.svg'
+// import { ReactComponent as Ai} from '../../Assets/Icons/ai.svg'
+// import { ReactComponent as Certificate } from '../../Assets/Icons/Certificate.svg'
+// import { useEffect, useState } from 'react'
+
+// export default function Herosection() {
+// const [active, setactive] = useState(1)
+// useEffect(() => {
+//     setTimeout(() => {
+//         if(active>=3){
+//             setactive(1)
+//         }
+//         else{
+//             setactive(active+1)
+//         }
+//     }, 2000);
+// }, [active])
+
+//     return (<>
+//         <div className=" bg-gradient-to-r from-[#0F2027] to-[#203A43] h-[80vh] hero w-full flex font-pop justify-center items-center px-[3%] xsm:h-[40vh] md:h-[65vh]">
+//             <div className='w-[45%] space-y-8'>
+//                 <div className='text-[45px] font-semibold text-white leading-[60px] font-pop text-wrap text-5xl xsm:text-[20px] xsm:leading-[28px] md:text-[34px] md:leading-[50px]'>Master In-Demand Skills for Dream Placements</div>
+//                 <div className='text-[28px] font-medium text-white leading-[40px] font-pop text-wrap xsm:text-[14px] xsm:leading-[18px] md:text-[18px] md:leading-[30px]'>High Impact Courses that Earn you College Credits</div>
+//             </div>
+//             <div className='w-[40%] h-[75%] flex justify-center items-center  relative text-[#545567] '>
+//                 <div className='h-[80%] w-[100%] herobox bg-white  flex items-center xsm:h-[50%] md:h-[70%]'>
+//                     {/* <ReactPlayer className='-translate-x-28' width='150%' height='100%'  url='/home_video.mp4'  playing={true}  loop={true} controls={false} /> */}
+//                 <img  className=' h-full w-full'  src="/homegif.gif" alt="video" />
+
+//                 </div>
+//                 <div className={`${active==1?'scale-in-center':''} flex justify-between w-[16vw] h-[16vh] backdrop-blur-[2px] absolute -top-6 left-10 px-5 items-center  rounded-lg bgcurvehome xsm:space-x-0 xsm:w-[20vw] xsm:h-[7vh] xsm:top-4 xsm:left-6 md:h-[10vh]`}>
+//                     <Certificate className='w-14 h-14 xsm:w-6 xsm:h-4 md:w-8 md:h-8'/>
+//                     <div className='flex flex-col text-white w-[60%]'>
+//                         <div className='xsm:text-[5px] w-full text-wrap text-[12px] pr-5 md:text-[8px]'>NSDC Partner with Course Certifications</div>
+//                     </div>
+//                 </div>
+//                 <div className={`${active==2?'scale-in-center':''} flex justify-center absolute w-[12vw] h-[14vh] backdrop-blur-[2px]  top-[70%] -left-10 px-2  space-x-2 items-center bgcurvehome xsm:space-x-1 xsm:w-[22vw] xsm:h-[7vh] xsm:left-1 md:h-[8vh] md:top-[75%]`}>
+//                     <Ai className='w-12 h-12 xsm:w-5 xsm:h-5 md:w-10 md:h-10'/>
+//                     <div className='flex flex-col text-white  w-[60%] '>
+//                         <div className='xsm:text-[5px] text-[14px] md:text-[8px]'>AI driven Learning Experience</div>
+//                     </div>
+//                 </div>
+
+//                 <div className={` ${active==3?'scale-in-center':''} flex justify-center absolute bottom-10 -right-5 w-[15vw] h-[16vh] backdrop-blur-[2px] px-2 space-x-2 items-center   bgcurvehome xsm:px-0 xsm:pr-2 xsm:space-x-0 xsm:w-[20vw] xsm:h-[7vh] md:h-[10vh]`}>
+//                     <div className='flex justify-center items-center h-11 w-11  rounded' >
+//                         <Cashback className='w-16 h-14 xsm:w-6 xsm:h-4 md:w-8 md:h-6'/>
+//                     </div>
+//                     <div className='flex flex-col text-white  w-[60%] xsm:w-[70%]'>
+//                         <div className='xsm:text-[5px] text-[14px] pr-2 md:text-[8px]'>Earn College Credits for Each Course</div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </>)
+// }
+
+import { useEffect, useState } from "react";
 import './hero.css'
-import { ReactComponent as Cashback } from '../../Assets/Icons/Cashback.svg'
-import { ReactComponent as Ai} from '../../Assets/Icons/ai.svg'
-import { ReactComponent as Certificate } from '../../Assets/Icons/Certificate.svg'
-import { useEffect, useState } from 'react'
+import Circle from "../../Assests/Images/home-circle.png";
+import Square from "../../Assests/Images/home-square.png";
+import Img1 from "../../Assests/Images/home-img1.png";
+import Img2 from "../../Assests/Images/home-img2.png";
+import Img3 from "../../Assests/Images/home-img3.png";
+import Img4 from "../../Assests/Images/home-img-4.png";
+import Img5 from "../../Assests/Images/home-img-5.png";
+import Img6 from "../../Assests/Images/home-img-6.png";
 
 export default function Herosection() {
-const [active, setactive] = useState(1)
-useEffect(() => {
-    setTimeout(() => {
-        if(active>=3){
-            setactive(1)
-        }
-        else{
-            setactive(active+1)
-        }
-    }, 2000);
-}, [active])
 
-    return (<>
-        <div className=" bg-gradient-to-r from-[#0F2027] to-[#203A43] h-[80vh] hero w-full flex font-pop justify-center items-center px-[3%] xsm:h-[40vh] md:h-[65vh]">
-            <div className='w-[45%] space-y-8'>
-                <div className='text-[45px] font-semibold text-white leading-[60px] font-pop text-wrap text-5xl xsm:text-[20px] xsm:leading-[28px] md:text-[34px] md:leading-[50px]'>Master In-Demand Skills for Dream Placements</div>
-                <div className='text-[28px] font-medium text-white leading-[40px] font-pop text-wrap xsm:text-[14px] xsm:leading-[18px] md:text-[18px] md:leading-[30px]'>High Impact Courses that Earn you College Credits</div>
-            </div>
-            <div className='w-[40%] h-[75%] flex justify-center items-center  relative text-[#545567] '>
-                <div className='h-[80%] w-[100%] herobox bg-white  flex items-center xsm:h-[50%] md:h-[70%]'>
-                    {/* <ReactPlayer className='-translate-x-28' width='150%' height='100%'  url='/home_video.mp4'  playing={true}  loop={true} controls={false} /> */}
-                <img  className=' h-full w-full'  src="/homegif.gif" alt="video" />
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const images = [Img1, Img2, Img3, Img4, Img5, Img6];
 
-                </div>
-                <div className={`${active==1?'scale-in-center':''} flex justify-between w-[16vw] h-[16vh] backdrop-blur-[2px] absolute -top-6 left-10 px-5 items-center  rounded-lg bgcurvehome xsm:space-x-0 xsm:w-[20vw] xsm:h-[7vh] xsm:top-4 xsm:left-6 md:h-[10vh]`}>
-                    <Certificate className='w-14 h-14 xsm:w-6 xsm:h-4 md:w-8 md:h-8'/>
-                    <div className='flex flex-col text-white w-[60%]'>
-                        <div className='xsm:text-[5px] w-full text-wrap text-[12px] pr-5 md:text-[8px]'>NSDC Partner with Course Certifications</div>
-                    </div>
-                </div>
-                <div className={`${active==2?'scale-in-center':''} flex justify-center absolute w-[12vw] h-[14vh] backdrop-blur-[2px]  top-[70%] -left-10 px-2  space-x-2 items-center bgcurvehome xsm:space-x-1 xsm:w-[22vw] xsm:h-[7vh] xsm:left-1 md:h-[8vh] md:top-[75%]`}>
-                    <Ai className='w-12 h-12 xsm:w-5 xsm:h-5 md:w-10 md:h-10'/>
-                    <div className='flex flex-col text-white  w-[60%] '>
-                        <div className='xsm:text-[5px] text-[14px] md:text-[8px]'>AI driven Learning Experience</div>
-                    </div>
-                </div>
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 6);
+    }, 3000);
 
-                <div className={` ${active==3?'scale-in-center':''} flex justify-center absolute bottom-10 -right-5 w-[15vw] h-[16vh] backdrop-blur-[2px] px-2 space-x-2 items-center   bgcurvehome xsm:px-0 xsm:pr-2 xsm:space-x-0 xsm:w-[20vw] xsm:h-[7vh] md:h-[10vh]`}>
-                    <div className='flex justify-center items-center h-11 w-11  rounded' >
-                        <Cashback className='w-16 h-14 xsm:w-6 xsm:h-4 md:w-8 md:h-6'/>
-                    </div>
-                    <div className='flex flex-col text-white  w-[60%] xsm:w-[70%]'>
-                        <div className='xsm:text-[5px] text-[14px] pr-2 md:text-[8px]'>Earn College Credits for Each Course</div>
-                    </div>
-                </div>
-            </div>
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const staticText = "High Impact"; 
+  const remainingText = " Courses that Earn you  <br/> College Credits";
+  const [displayText, setDisplayText] = useState(staticText);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [circlePosition, setCirclePosition] = useState({ x: 0, y: 0 });
+  const [squarePosition, setSquarePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setCirclePosition({ x: e.clientX, y: e.clientY });
+    };
+  
+    window.addEventListener('mousemove', handleMouseMove);
+  
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newX = Math.random() * (window.innerWidth - 200); 
+      const newY = Math.random() * (window.innerHeight - 200); 
+      setSquarePosition({ x: newX, y: newY });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (currentIndex < remainingText.length) {
+        setDisplayText((prevText) => prevText + remainingText[currentIndex]);
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+      } else {
+        setDisplayText(staticText);
+        setCurrentIndex(0); 
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, remainingText.length, staticText]);
+
+
+  return (
+    <>
+      <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[5%] xsm:h-[40vh] md:h-[65vh]">
+        <div className="flex flex-col gap-12">
+          <div className="pl-3">
+            <img src={Circle} className="w-10 h-10 animate-bounce" style={{ position: 'absolute', top: circlePosition.y, left: circlePosition.x }}/>
+          </div>
+          <div className="text-[44px] font-bold text-white font-pop text-wrap text-5xl xsm:text-[20px] xsm:leading-[28px] md:text-[34px] md:leading-[50px]">
+            {" "}
+            <span className="text-[60px]"> Master In-Demand </span> <br />{" "}
+            Skills for Dream Placements
+          </div>
+          <div className="text-[25px] text-white h-16 font-pop text-wrap xsm:text-[14px] xsm:leading-[18px] md:text-[18px] md:leading-[30px]" dangerouslySetInnerHTML={{ __html: displayText }}>
+          </div>
+          <div className="flex place-content-start">
+            <button className="text-white text-[16px] font-nu font-bold bg-[#1DBF73] rounded-full py-2 px-10">
+              Join Now
+            </button>
+          </div>
         </div>
-    </>)
+
+        <div className="flex flex-col gap-6 w-[50%]">
+          <div className="flex flex-row gap-2 justify-end">
+            <div className="flex flex-col justify-end pb-6">
+              <img src={Square} className="square w-16 h-16 animate-ping" style={{ position: 'absolute', top: squarePosition.y, left: squarePosition.x }} />
+            </div>
+
+            <div className="flex flex-row gap-8">
+              <div className="flex flex-col gap-5 items-end">
+                <div className="h-64 w-56 rounded-t-[4rem] rounded-br-[4rem] rounded-bl-[12rem] overflow-hidden scale-in-center">
+                  <img
+                    src={images[currentImageIndex]}
+                    className="h-64 w-56 object-cover object-center "
+                  />
+                </div>
+                <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center">
+                  <img
+                    src={images[(currentImageIndex + 1) % 6]}
+                    className="h-36 w-36 object-cover object-center"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col gap-5">
+                <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center">
+                  <img
+                    src={images[(currentImageIndex + 2) % 6]}
+                    className="h-36 w-36 object-cover object-center"
+                  />
+                </div>
+                <div className="rounded-[4rem] h-72 w-36 overflow-hidden scale-in-center">
+                  <img
+                    src={images[(currentImageIndex + 3) % 6]}
+                    className="h-72 w-36 object-cover object-center"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <div className="flex flex-row gap-4 justify-end">
+            <div className="rounded-full h-40 w-40 overflow-hidden scale-in-center">
+              <img
+                src={images[(currentImageIndex + 4) % 6]}
+                className="h-40 w-40 object-cover object-center"
+              />
+            </div>
+            <div className="rounded-[3.5rem] h-40 w-80 overflow-hidden scale-in-center">
+              <img
+                src={images[(currentImageIndex + 5) % 6]}
+                className="h-40 w-80 object-cover object-center"
+              />
+            </div>
+          </div> */}
+        </div>
+      </div>
+    </>
+  );
 }
