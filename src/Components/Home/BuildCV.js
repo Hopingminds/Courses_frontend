@@ -14,10 +14,7 @@ const BuildCV = () => {
           Create your professional Resume with our designs
         </p>
         <p className="text-[20px] text-center md:text-[14px] md:leading-tight xsm:text-[8px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+        You can pick one of our handcrafted resume templates.You can start building your resume in less than 5 minutes, using predefined sections approved by recruiters worldwide. You can also customize it to your own needs and personality and hit 'Download'. 
         </p>
       </div>
       <Link to={"/resumebuilder"} className="flex justify-center items-center">
