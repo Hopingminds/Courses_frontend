@@ -5,6 +5,7 @@ import { ReactComponent as Account } from '../../Assets/Icons/account.svg'
 import { ReactComponent as Cart } from '../../Assets/Icons/cart.svg'
 import ScrollToTop from "../ScrollToTop";
 import { func } from "prop-types";
+import { Tooltip } from "@mui/material";
 
 export default function Navbar() {
 
@@ -37,6 +38,15 @@ export default function Navbar() {
     }
 
     return (<>
+    <style>
+        {`
+        .tooltip-title {
+            /* Your styles here */
+            font-size: 16px;
+            color: blue;
+          }
+        `}
+    </style>
         <div className="w-full flex justify-between px-[5%] h-20 items-center  font-pop fixed top-0 z-[9999] bg-[#0F2027] xsm:h-12 xsm:px-[2%] text-white md:h-14 2xl:w-[66%]">
             <Link to='/' onClick={Top} className=" cursor-pointer">
                 <img src="/logo.png" className="h-[50px] w-auto xsm:w-[50px] xsm:h-[25px] md:w-[70px] md:h-[30px]" />
@@ -54,8 +64,9 @@ export default function Navbar() {
                     {userDetail?._id && <Link to={'/cart'} className={` rounded-full hover:text-[#1DBF73] ${location.pathname === '/cart' ? ' font-bold text-[#1DBF73]' : ''}`}> <Cart style={{ color: 'white' }} className=" text-white xsm:h-[15px] xsm:w-[15px] md:h-[20px] md:w-[20px]" /> </Link>}
                 </>}
                 {userDetail?._id ? < Link to="/profile" className="pl-4 xsm:pl-2 md:pl-1" style={{ cursor: "pointer" }}>  <span>
-                    <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px]" />
-
+                <Tooltip  title="Complete Your Profile" arrow className="z-20 " placement="bottom">
+                    <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" />
+                </Tooltip>
 
                 </span> </Link> : <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-1">
                     <Link to={"/login"} className="bg-[#1DBF73] px-7 rounded-full text-white py-1 xsm:text-[8px] xsm:px-2 font-pop md:text-[14px] md:px-4">Log in</Link>
