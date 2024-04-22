@@ -165,15 +165,15 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
-.scale-in-center
+/* .scale-in-center
 {
-  animation:scale-in-center 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both ;
+  animation:scale-in-center 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both infinite;
 
-}
+} */
 
-  
+/*   
   @keyframes scale-in-center{
-    0%{transform:scale(-0.5);opacity:0.5}
+    0%{transform:scale(0.7);opacity:0.5}
   100%{transform:scale(1);opacity:1}}
 
 
@@ -182,4 +182,4 @@
       height: 50px;
       width: 80px;
     }
-  }
+  } */
