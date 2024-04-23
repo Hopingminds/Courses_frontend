@@ -93,12 +93,13 @@ import { useEffect, useState } from "react";
 import './hero.css'
 import Circle from "../../Assests/Images/home-circle.png";
 import Square from "../../Assests/Images/home-square.png";
-import Img1 from "../../Assests/Images/home-img1.png";
-import Img2 from "../../Assests/Images/home-img2.png";
-import Img3 from "../../Assests/Images/home-img3.png";
-import Img4 from "../../Assests/Images/home-img-4.png";
-import Img5 from "../../Assests/Images/home-img-5.png";
-import Img6 from "../../Assests/Images/home-img-6.png";
+import Img1 from "../../Assests/Images/hero2.jpeg";
+import Img2 from "../../Assests/Images/hero1.jpeg";
+import Img3 from "../../Assests/Images/hero3.jpeg";
+import Img4 from "../../Assests/Images/hero4.jpeg";
+import Img5 from "../../Assests/Images/hero5.jpeg";
+import Img6 from "../../Assests/Images/hero6.jpeg";
+import { Link } from "react-router-dom";
 
 export default function Herosection() {
 
@@ -113,10 +114,34 @@ export default function Herosection() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const staticText = "High Impact"; // Static text
-  const remainingText = " Courses that Earn you  <br/> College Credits";
+  const staticText = ""; 
+  const remainingText = ` Courses that Earn you College Credits`;
   const [displayText, setDisplayText] = useState(staticText);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [circlePosition, setCirclePosition] = useState({ x: 0, y: 0 });
+  const [squarePosition, setSquarePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setCirclePosition({ x: e.clientX, y: e.clientY });
+    };
+  
+    window.addEventListener('mousemove', handleMouseMove);
+  
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newX = Math.random() * (window.innerWidth - 200); 
+      const newY = Math.random() * (window.innerHeight - 200); 
+      setSquarePosition({ x: newX, y: newY });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (currentIndex < remainingText.length) {
@@ -137,29 +162,34 @@ export default function Herosection() {
 
   return (
     <>
-      <div className=" bg-gradient-to-l hero from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[5%] xsm:h-[40vh] md:h-[65vh]">
+      <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%]">
         <div className="flex flex-col gap-12">
-          <div className="pl-3">
-            <img src={Circle} className="w-10 h-10 animate-bounce" />
+          <div className="">
+            <img src={Circle} className="w-10 h-10 animate-bounce z-0 md:w-8 md:h-8" style={{ position: 'absolute', top: circlePosition.y, left: circlePosition.x }}/>
           </div>
-          <div className="text-[44px] font-bold text-white font-pop text-wrap text-5xl xsm:text-[20px] xsm:leading-[28px] md:text-[34px] md:leading-[50px]">
+          <div className="text-[44px] font-bold text-white font-pop text-wrap text-5xl ">
             {" "}
             <span className="text-[60px]"> Master In-Demand </span> <br />{" "}
             Skills for Dream Placements
           </div>
-          <div className="text-[25px] text-white font-pop text-wrap xsm:text-[14px] xsm:leading-[18px] md:text-[18px] md:leading-[30px]" dangerouslySetInnerHTML={{ __html: displayText }}>
+          <div className="text-[25px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap " >
+            <span className="text-white">Hign Impact</span>
+            {displayText}
           </div>
           <div className="flex place-content-start">
-            <button className="text-white text-[16px] font-nu font-bold bg-[#1DBF73] rounded-full py-2 px-10">
-              Join Now
-            </button>
+            {
+                localStorage.getItem('COURSES_USER_TOKEN')?'':<Link to='/login' className="text-white z-20 text-[16px] font-nu font-bold bg-[#1DBF73] rounded-full py-2 px-10">
+                Join Now
+              </Link>
+            }
+            
           </div>
         </div>
 
         <div className="flex flex-col gap-6 w-[50%]">
           <div className="flex flex-row gap-2 justify-end">
             <div className="flex flex-col justify-end pb-6">
-              <img src={Square} className="w-16 h-16 animate-spin" />
+              <img src={Square} className="square w-16 h-16 animate-ping" style={{ position: 'absolute', top: squarePosition.y, left: squarePosition.x }} />
             </div>
 
             <div className="flex flex-row gap-8">
@@ -187,6 +217,20 @@ export default function Herosection() {
                 <div className="rounded-[4rem] h-72 w-36 overflow-hidden scale-in-center">
                   <img
                     src={images[(currentImageIndex + 3) % 6]}
+                    className="h-72 w-36 object-cover object-center"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col-reverse gap-5">
+                <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center">
+                  <img
+                    src={images[(currentImageIndex + 4) % 6]}
+                    className="h-36 w-36 object-cover object-center"
+                  />
+                </div>
+                <div className="rounded-[4rem] h-72 w-36 overflow-hidden scale-in-center">
+                  <img
+                    src={images[(currentImageIndex + 5) % 6]}
                     className="h-72 w-36 object-cover object-center"
                   />
                 </div>
