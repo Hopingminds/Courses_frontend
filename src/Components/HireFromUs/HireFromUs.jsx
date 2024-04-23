@@ -18,6 +18,11 @@ const HireFromUs = () => {
     phone:"",
     company:""
   })
+  const [hirelogindata, sethirelogindata] = useState({
+    name:"",
+    email:"",
+    otp:"",
+  })
   const [tab, settab] = useState(1)
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,6 +32,17 @@ const HireFromUs = () => {
         
     });
 };
+  const handleloginChange = (e) => {
+    const { name, value } = e.target;
+    sethirelogindata({
+        ...hirelogindata,
+        [name]: value,
+        
+    });
+};
+async function handleLogin(){
+
+}
 async function handleRegister(){
   if(!hiredata.name || !hiredata.email || !hiredata.company|| !hiredata.phone ){
       toast.error('Every input must be filled')
@@ -216,7 +232,7 @@ toast.error(response.message)
               {
                 tab==1?
                 <div className="flex flex-col gap-2 px-6 
-                ">
+                h-[350px]">
                 <div className="flex flex-col gap-1">
                   <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="name">
                     Name
@@ -273,12 +289,26 @@ toast.error(response.message)
                     placeholder="Enter Your Mobile number"
                   />
                 </div>
-                <div className="px-6">
+                <div className="px-6 mt-2">
                 <button onClick={handleRegister} className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]">
                 Submit
                 </button>
               </div>
-              </div>:<div className="flex flex-col gap-2 px-6 h-[270px]">
+              </div>:<div className="flex flex-col gap-y-5 px-6 h-[350px]">
+                <div className="flex flex-col gap-1">
+                  <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="name">
+                    Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
+                    onChange={handleloginChange}
+                    value={hirelogindata.name}
+                    type="text"
+                    placeholder="Enter your name"
+                  />
+                </div>
                 <div className="flex flex-col gap-1">
                   <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="email">
                     Email
@@ -287,8 +317,8 @@ toast.error(response.message)
                     id="email"
                     name="email"
                     className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
-                    onChange={handleChange}
-                    value={hiredata.name}
+                    onChange={handleloginChange}
+                    value={hirelogindata.email}
                     type="text"
                     placeholder="Enter your email"
                   />
@@ -301,23 +331,20 @@ toast.error(response.message)
                     id="otp"
                     name="otp"
                     className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
-                    onChange={handleChange}
-                    value={hiredata.name}
+                    onChange={handleloginChange}
+                    value={hirelogindata.otp}
                     type="text"
                     placeholder="Enter OTP"
                   />
                 </div>
-                <div className="px-6">
-                <button onClick={handleRegister} className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]">
+                <div className="px-6 mt-5">
+                <button onClick={handleLogin} className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]">
                 Get OTP
                 </button>
               </div>
               </div>}
-
-
-
            
-              <div className="flex justify-center px-6">
+              <div className="flex justify-center px-6 mb-1">
                 <Link target="_blank" to='https://wa.me/qr/S3LVDB3Y3SB3H1' className="font-int font-medium text-[40px] md:text-[30px]">
                 <RiWhatsappFill className="md:w-6 md:h-6"/>
                 </Link>
