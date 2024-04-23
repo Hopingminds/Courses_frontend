@@ -266,7 +266,7 @@ const AllCourses = () => {
 
         <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-28 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16 md:space-x-12">
           <div className="text-white xsm:flex xsm:flex-col">
-          
+
             <div className="text-center text-xl font-semibold xsm:text-[6px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={28725} />+</div>
             <div className="xsm:text-[6px] md:text-[14px]">Students Enrolled</div>
           </div>
@@ -321,6 +321,8 @@ const AllCourses = () => {
               ind={ind}
               _id={val._id}
               display={val.display}
+              IsMinorDegreeCourse={val.IsMinorDegreeCourse}
+              credits={val.credits}
             // Pass category to CourseCard component
             />
           );
@@ -384,7 +386,7 @@ const AllCourses = () => {
 
       {/* recommended cards */}
       <RecommendedCourses />
-<MinorDegree/>
+      <MinorDegree />
       {/* <div className="flex flex-col gap-10 bg-[#E2FFF1] px-28 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-2">
         <p className="text-[#000000] text-[30px] font-pop font-semibold xsm:text-[8px]">
           What our students have to say

@@ -207,8 +207,8 @@ export default function Navbar() {
                   <span className="tooltiptext text-[14px] md:text-[12px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] italic">
                     Complete Your Profile
                   </span>
-                  <div className="h-8 w-8 rounded-full border"><img src={profile} className="h-full w-full" /></div>
-                  {/* <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" /> */}
+                  {/* <div className="h-8 w-8 rounded-full border"><img src={profile} className="h-full w-full" /></div> */}
+                  <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" />
                 </div>
               </span>{" "}
             </Link>

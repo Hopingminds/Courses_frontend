@@ -19,6 +19,7 @@ import { useLayoutEffect } from 'react';
 import { authenticateUser } from '../../helpers/helperapi'
 import toast, { Toaster } from 'react-hot-toast';
 import { Globalinfo } from '../../App';
+import JobOffering from './jobOffering';
 
 export default function MyLearning() {
     const navigate = useNavigate()
@@ -81,23 +82,23 @@ export default function MyLearning() {
             <Toaster />
 
             {showPopup && (
-               <div className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center">
-                <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[50%] xsm:py-2 xsm:px-4 xsm:bottom-6 md:bottom-8 md:py-3 md:px-5">
-                    <div className='flex justify-end'>
-                    <button onClick={() => setShowPopup(false)}><img src={Close} /></button>
+                <div className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center">
+                    <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[50%] xsm:py-2 xsm:px-4 xsm:bottom-6 md:bottom-8 md:py-3 md:px-5">
+                        <div className='flex justify-end'>
+                            <button onClick={() => setShowPopup(false)}><img src={Close} /></button>
+                        </div>
+                        <div className='flex flex-col gap-2 text-center px-[5%]'>
+                            <p className='font-pop font-semibold text-[40px] text-[#1DBF73]'>Complete Your Profile!</p>
+                            <p className='font-mons '>Fill out your details to unlock full access and personalized features. Let's get started!</p>
+                        </div>
+                        <Link to='/profile' className='flex justify-center'>
+                            <button className='font-pop font-semibold text-[16px] text-white bg-[#1DBF73] rounded-lg p-4'>Complete Now</button>
+                        </Link>
                     </div>
-                    <div className='flex flex-col gap-2 text-center px-[5%]'>
-                        <p className='font-pop font-semibold text-[40px] text-[#1DBF73]'>Complete Your Profile!</p>
-                        <p className='font-mons '>Fill out your details to unlock full access and personalized features. Let's get started!</p>
-                    </div>
-                    <Link to='/profile' className='flex justify-center'>
-                        <button className='font-pop font-semibold text-[16px] text-white bg-[#1DBF73] rounded-lg p-4'>Complete Now</button>
-                    </Link>
-              </div>
-              </div>
+                </div>
             )}
 
-        
+
             <head>
                 <title>
                     MyLearing | HopingMinds
@@ -113,13 +114,14 @@ export default function MyLearning() {
                     <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px]' onClick={() => setshowpage('wishlist')} style={{ borderBottom: showpage === 'wishlist' ? "2px solid white" : "1px solid transparent" }}>Wishlist</button>
                     <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px]' onClick={() => setshowpage('certificate')} style={{ borderBottom: showpage === 'certificate' ? "2px solid white" : "1px solid transparent" }}>Certifications</button>
                     <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px]' onClick={() => setshowpage('stats')} style={{ borderBottom: showpage === 'stats' ? "2px solid white" : "1px solid transparent" }}>My Stats</button>
+                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px]' onClick={() => setshowpage('job')} style={{ borderBottom: showpage === 'job' ? "2px solid white" : "1px solid transparent" }}>Job Offering</button>
                 </div>
             </div>
             {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1]'>
                 <Spinner className='' />
 
             </div> : ''}
-            {showpage === 'courses' ? <Mycourse courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses} /> : showpage === 'stats' ? <MyStats courses={purchasedCourses} /> : <Assignment courses={purchasedCourses} />}
+            {showpage === 'courses' ? <Mycourse courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses} /> : showpage === 'stats' ? <MyStats courses={purchasedCourses} /> : showpage === 'stats' ? <Assignment courses={purchasedCourses} /> : <JobOffering courses={purchasedCourses} />}
             <RecommendedCourses className={'bg-[#E2FFF1]'} />
         </div>
     );
