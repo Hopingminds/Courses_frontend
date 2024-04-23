@@ -203,7 +203,7 @@ export default function Commoncard(props) {
             <hr />
           </div>
 
-          <div className="space-y-4 md:space-y-2">
+          {/* <div className="space-y-4 md:space-y-2">
             <p className="font-pop font-semibold md:text-[14px]">
               Training 5 Or More People
             </p>
@@ -212,7 +212,7 @@ export default function Commoncard(props) {
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
             <hr />
-          </div>
+          </div> */}
           <div className="space-y-4 md:space-y-2">
             <p className="font-pop font-semibold md:text-[14px]">
               Share this course

@@ -8,7 +8,7 @@ const SettingMain = () => {
   return (
     <AnimatePresence>
       <motion.div layout className="cardStyle">
-        <h1 className="text-2xl font-bold">CV Builder</h1>
+        <h1 className="text-2xl font-bold">Resume Builder</h1>
 
         <div className="flex flex-col mt-4">
           <div className="flex space-x-2 ">

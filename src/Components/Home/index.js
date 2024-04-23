@@ -67,7 +67,7 @@ export default function Home() {
           <div className="fixed bottom-10 right-0 bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] text-white py-4 px-6 drop-shadow-xl rounded-l-md xsm:py-2 xsm:px-4 xsm:bottom-6 md:bottom-8 md:py-3 md:px-5">
             <button className="italic flex justify-center items-center">
               <span className="xsm:text-[10px] md:text-[14px]">
-                Build Your CV
+                Build Your Resume
               </span>
             </button>
           </div>
