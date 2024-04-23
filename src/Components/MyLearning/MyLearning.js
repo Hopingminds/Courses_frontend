@@ -87,9 +87,9 @@ export default function MyLearning() {
                         <div className='flex justify-end'>
                             <button onClick={() => setShowPopup(false)}><img src={Close} /></button>
                         </div>
-                        <div className='flex flex-col gap-2 text-center px-[6%]'>
+                        <div className='flex flex-col gap-2 text-center px-[5%]'>
                             <p className='font-pop font-semibold text-[40px] text-[#1DBF73]'>Complete Your Profile!</p>
-                            <p className='font-mons '>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incaliquip ex ea commodo consequat.</p>
+                            <p className='font-mons '>Fill out your details to unlock full access and personalized features. Let's get started!</p>
                         </div>
                         <Link to='/profile' className='flex justify-center'>
                             <button className='font-pop font-semibold text-[16px] text-white bg-[#1DBF73] rounded-lg p-4'>Complete Now</button>

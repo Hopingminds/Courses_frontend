@@ -78,7 +78,7 @@ const Resume2 = () => {
               <div>Mongo DB database</div>
               <div>Setting up Express JS setup</div>
               <div>Backend development in NodeJS</div>
-              <div>Frontend development in ReactJS</div>
+              <div>Websockets communication</div>
             </div>
         </div>
         </div>

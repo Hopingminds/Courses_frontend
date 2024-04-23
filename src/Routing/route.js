@@ -23,6 +23,7 @@ import Success from '../Components/Success/success.js'
 // import DashboardSubAdmin from '../Components/SubAdminDashboard/DashboardSubAdmin.js'
 import SubAdmin from '../Components/SubAdminDashboard/index.js'
 
+import ChatBot from '../Components/chatbot/chatbot.js'
 
 // subadmin
 // import SubAdmin from '../Components/SubAdminDashboard/index.js'
@@ -46,6 +47,7 @@ import Modules from '../Components/Assignments/Modules/index.js'
 import Question from '../Components/Assignments/Questions/index.js'
 import SubmittedSuccess from '../Components/Assignments/Submittedpage/submitted.js'
 import ManageJobsmain from '../Components/ManageJobs/ManageJobsmain.jsx'
+import PostJobsForm from '../Components/PostJobsForm/PostJobsForm.jsx'
 import CVBuilder from '../Components/cvBuilder/index.jsx'
 
 const Router = () => {
@@ -112,6 +114,7 @@ const Router = () => {
                 <Route path='/questions' element={<Question />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/managejobs' element={<ManageJobsmain />} />
+                <Route path='/postjob' element={<PostJobsForm/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 

@@ -1,13 +1,17 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Globalinfo } from "../../App";
 import { ReactComponent as Account } from "../../Assets/Icons/account.svg";
 import { ReactComponent as Cart } from "../../Assets/Icons/cart.svg";
+
 import ScrollToTop from "../ScrollToTop";
 import { func } from "prop-types";
 import { Tooltip } from "@mui/material";
+import { BASE_URL } from "../../Api/api";
+import { jwtDecode } from "jwt-decode";
 
 export default function Navbar() {
+  const [profile, setprofile] = useState('')
   const {
     cartData,
     GetCart,
@@ -41,6 +45,26 @@ export default function Navbar() {
   function Top() {
     window.scrollTo(0, 0);
   }
+
+  useEffect(() => {
+    async function Fetchdata() {
+      try {
+        let token = localStorage.getItem('COURSES_USER_TOKEN')
+        if (token) {
+          let URL= BASE_URL + '/user/'+jwtDecode(token.email)
+          
+          const data = await fetch(URL)
+          const response = await data.json()
+          setprofile(response?.profile)
+          console.log(response?.profile);
+        }
+       
+      } catch (error) {
+        
+      }
+    }
+    Fetchdata()
+  }, []);
 
   return (
     <>
@@ -174,7 +198,7 @@ export default function Navbar() {
           {userDetail?._id ? (
             <Link
               to="/profile"
-              className="pl-4 xsm:pl-2 md:pl-1"
+              className=" xsm:pl-2 md:pl-1"
               style={{ cursor: "pointer" }}
             >
               {" "}
@@ -183,6 +207,7 @@ export default function Navbar() {
                   <span className="tooltiptext text-[14px] md:text-[12px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] italic">
                     Complete Your Profile
                   </span>
+                  {/* <div className="h-8 w-8 rounded-full border"><img src={profile} className="h-full w-full" /></div> */}
                   <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" />
                 </div>
               </span>{" "}

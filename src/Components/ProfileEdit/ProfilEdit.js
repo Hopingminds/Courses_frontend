@@ -183,7 +183,7 @@ const ProfilEdit = () => {
           <div className="absolute w-[160px] h-[160px] rounded-full top-28 xsm:h-[80px] xsm:w-[80px] xsm:top-10 bg-[#FFFFFF] md:w-[120px] md:h-[120px] md:top-24">
             {uploadLoader ? <div className="grid items-center justify-center h-[100%] w-[100%]"><p>uploading... </p> </div> : <img
               src={user.profile ? user.profile : 'https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png'}
-              className="w-full h-full rounded-full object-fit xsm:h-[80px] xsm:w-[80px] object-contain"
+              className="w-full h-full rounded-full object-cover xsm:h-[80px] xsm:w-[80px]"
             />}
             <div className="absolute w-[40px] h-[40px] bg-[#E2FFF1] text-[#E2FFF1] shadow-sm rounded-full top-[65%] right-[0%] flex justify-center items-center cursor-pointer
             xsm:w-[20px] xsm:h-[20px]">
@@ -262,7 +262,7 @@ const ProfilEdit = () => {
             <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="text"
-                className="outline-none w-full bg-transparent placeholder-[#000000]"
+                className="outline-none w-full bg-transparent placeholder-[#555555]"
                 placeholder="stream"
                 name="stream"
                 value={user.stream}
@@ -273,7 +273,7 @@ const ProfilEdit = () => {
             <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="text"
-                className="outline-none w-full bg-transparent placeholder-[#000000]"
+                className="outline-none w-full bg-transparent placeholder-[#555555]"
                 placeholder="Year Of Passing"
                 value={user?.yearofpass}
                 name="yearofpass"
@@ -283,7 +283,7 @@ const ProfilEdit = () => {
             <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="text"
-                className="outline-none w-full bg-transparent placeholder-[#000000]"
+                className="outline-none w-full bg-transparent placeholder-[#555555]"
                 placeholder="Biography"
                 value={user?.bio}
                 name="bio"
