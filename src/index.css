@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .phonenumbercountrycode input{
     outline: none;
 }

@@ -176,7 +176,7 @@ const Login = () => {
                                     <input className='' type="checkbox" />
                                     <p className='text-[12px]'>Remember me</p>
                                 </div> */}
-                                {/* <Link to={'/forgot-password'}><h6 className='xsm:text-[12px] md:text-[12px]'>Forgot password?</h6></Link> */}
+                                <Link to={'/forgot-password'}><h6 className='xsm:text-[12px] md:text-[12px]'>Forgot password?</h6></Link>
                             </div>
                         </div>
                         <div className='flex flex-col items-center gap-4 md:gap-3'>
