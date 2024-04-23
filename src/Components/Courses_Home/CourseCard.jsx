@@ -26,6 +26,8 @@ const CourseCard = ({
   ind,
   _id,
   display,
+  IsMinorDegreeCourse,
+  credits,
 }) => {
   // console.log(_id);
   const [mouseHovered, setMouseHovered] = useState(null);
@@ -146,24 +148,41 @@ const CourseCard = ({
           </p>
         </div>
         <div className=" flex items-center justify-between">
-          <div className="flex space-x-2 items-center xsm:space-x-1">
-            <img
-              className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
-              src="../Icons/RCDesign.svg"
-            />
-            <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
-              {category}
-            </p>
-          </div>
-          <div className="flex space-x-2 items-center xsm:space-x-0">
-            <img
-              className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
-              src="../Icons/RCClock.svg"
-            />
-            <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
-              45 Hours
-            </p>
-          </div>
+          <span className="flex flex-col">
+            {credits ? (
+              <div className="flex space-x-2 items-center xsm:space-x-1">
+                <img
+                  className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
+                  src="../Icons/RCDesign.svg"
+                />
+                <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
+                  Credits- {credits}
+                </p>
+              </div>
+            ) : (
+              <></>
+            )}
+            <div className="flex space-x-2 items-center xsm:space-x-1">
+              <img
+                className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
+                src="../Icons/RCDesign.svg"
+              />
+              <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
+                {category}
+              </p>
+            </div>
+          </span>
+          <span className="flex flex-col">
+            <div className="flex space-x-2 items-center xsm:space-x-0">
+              <img
+                className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
+                src="../Icons/RCClock.svg"
+              />
+              <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
+                45 Hours
+              </p>
+            </div>
+          </span>
         </div>
       </div>
     </a>

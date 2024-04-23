@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useLayoutEffect } from 'react';
 import Router from './Routing/route';
 import { BASE_URL } from './Api/api';
 import { jwtDecode } from 'jwt-decode';
@@ -14,6 +14,23 @@ function App() {
   const [checkoutData, setCheckoutData] = useState();
   const [adminlogin, setadminlogin] = useState()
 
+  const [user, setUser] = useState(null);
+
+  const getUser = async () => {
+    try {
+      const url = `https://courses-api.up.railway.app/auth/login/success`;
+      const res = await axios.get(url, { withCredentials: true });
+
+      console.log(res)
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useLayoutEffect(() => {
+    getUser();
+  }, []);
+
 
   useEffect(() => {
     // console.log(cartData)
@@ -27,11 +44,7 @@ function App() {
 
     if (userDetail?._id) {
       try {
-        // let url = BASE_URL + `api/getcart?mobile=${userDetail?.mobile}`
-        // const data = await fetch(url)
-        // const response = await data.json()
-        // console.log(response.cart[0])
-        // setCartData(response?.cart || [])
+
       } catch (error) {
         console.log(error)
       }
@@ -45,26 +58,16 @@ function App() {
 
 
   }
-  // async function GetWishList() {
-  //   try {
-  //     let url = BASE_URL + `api/getwishlist?mobile=${userDetail?.mobile}`
-  //     const data = await fetch(url)
-  //     const response = await data.json()
-  //     // console.log(response)
-  //     setWishListData(response?.wishlist || [])
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-function Getadmindetails(){
-let token=localStorage.getItem('token')
-if(token){
-  setadminlogin(true)
-}
-else{
-  setadminlogin(false)
-}
-}
+
+  function Getadmindetails() {
+    let token = localStorage.getItem('token')
+    if (token) {
+      setadminlogin(true)
+    }
+    else {
+      setadminlogin(false)
+    }
+  }
   const getUserDetails = async () => {
     // console.log(localStorage.getItem('GROC_USER_TOKEN'))
     const token = localStorage.getItem('COURSES_USER_TOKEN')
@@ -98,7 +101,7 @@ else{
 
 
   return (
-    <Globalinfo.Provider value={{ cartData,Getadmindetails,adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
+    <Globalinfo.Provider value={{ cartData, Getadmindetails, adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
       <div className='2xl:px-[17%] overflow-x-hidden'>
         <Router />
       </div>

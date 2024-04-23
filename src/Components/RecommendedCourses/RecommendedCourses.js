@@ -41,6 +41,8 @@ export default function RecommendedCourses() {
                         description={course.overview}
                         ind={ind}
                         featured_video={course.featured_video}
+                        IsMinorDegreeCourse={course.IsMinorDegreeCourse}
+                        credits={course.credits}
                     // Pass category to CourseCard component
                     />
                 ))
