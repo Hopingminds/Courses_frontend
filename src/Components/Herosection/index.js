@@ -143,10 +143,11 @@ export default function Herosection() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (currentIndex < remainingText.length) {
+    if (currentIndex < remainingText.length) {
+      const interval = setInterval(() => {
         setDisplayText((prevText) => prevText + remainingText[currentIndex]);
         setCurrentIndex((prevIndex) => prevIndex + 1);
+<<<<<<< HEAD
       } else {
         setDisplayText(staticText);
         setCurrentIndex(0);
@@ -156,6 +157,20 @@ export default function Herosection() {
     return () => clearInterval(interval);
   }, [currentIndex, remainingText.length, staticText]);
 
+=======
+      }, 100);
+
+      return () => clearInterval(interval);
+    }
+  }, [currentIndex, remainingText.length]);
+  const [textColor, setTextColor] = useState('black');
+  useEffect(() => {
+    if (currentIndex % 10 === 0) { // Change color every 10 characters
+      setTextColor((prevColor) => prevColor === 'black' ? 'blue' : 'black');
+    }
+  }, [currentIndex]); 
+
+>>>>>>> 7039e3dd772997ab85bf683a34c2f3e14b1e33a0
   return (
     <>
       <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%]">
