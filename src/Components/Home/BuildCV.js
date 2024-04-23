@@ -17,7 +17,7 @@ const BuildCV = () => {
         You can pick one of our handcrafted resume templates.You can start building your resume in less than 5 minutes, using predefined sections approved by recruiters worldwide. You can also customize it to your own needs and personality and hit 'Download'. 
         </p>
       </div>
-      <Link to={"/resumebuilder"} className="flex justify-center items-center">
+      <Link to={"/cv-builder"} className="flex justify-center items-center">
         <button className="button-resume font-pop shadow-xl">
               <span>Build Your Resume</span>
         </button>

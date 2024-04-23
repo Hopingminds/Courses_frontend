@@ -90,7 +90,7 @@ import ReactPlayer from "react-player";
 // }
 
 import { useEffect, useState } from "react";
-import './hero.css'
+import "./hero.css";
 import Circle from "../../Assests/Images/home-circle.png";
 import Square from "../../Assests/Images/home-square.png";
 import Img1 from "../../Assests/Images/hero2.jpeg";
@@ -102,9 +102,8 @@ import Img6 from "../../Assests/Images/hero6.jpeg";
 import { Link } from "react-router-dom";
 
 export default function Herosection() {
-
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const images = [Img1, Img2, Img3, Img4, Img5, Img6];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [Img1, Img2, Img3, Img4, Img5, Img6];
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -114,7 +113,7 @@ export default function Herosection() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const staticText = ""; 
+  const staticText = "";
   const remainingText = ` Courses that Earn you College Credits`;
   const [displayText, setDisplayText] = useState(staticText);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -125,18 +124,18 @@ export default function Herosection() {
     const handleMouseMove = (e) => {
       setCirclePosition({ x: e.clientX, y: e.clientY });
     };
-  
-    window.addEventListener('mousemove', handleMouseMove);
-  
+
+    window.addEventListener("mousemove", handleMouseMove);
+
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const newX = Math.random() * (window.innerWidth - 200); 
-      const newY = Math.random() * (window.innerHeight - 200); 
+      const newX = Math.random() * (window.innerWidth - 200);
+      const newY = Math.random() * (window.innerHeight - 200);
       setSquarePosition({ x: newX, y: newY });
     }, 1000);
 
@@ -144,92 +143,114 @@ export default function Herosection() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (currentIndex < remainingText.length) {
-        setDisplayText((prevText) => prevText + remainingText[currentIndex]);
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-      } else {
+    if (currentIndex < remainingText.length) {
+        const interval = setInterval(() => {
+            setDisplayText((prevText) => prevText + remainingText[currentIndex]);
+            setCurrentIndex((prevIndex) => prevIndex + 1);
+        }, 200);
+        return () => clearInterval(interval);
+    } else {
         setDisplayText(staticText);
-        setCurrentIndex(0); 
-      }
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, [currentIndex, remainingText.length, staticText]);
+        setCurrentIndex(0);
+    }
+}, [currentIndex, remainingText.length, staticText]);
 
 
   return (
     <>
-      <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%]">
-        <div className="flex flex-col gap-12">
+      <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%]">
+        <div className="flex flex-col gap-12 xsm:gap-6">
           <div className="">
-            <img src={Circle} className="w-10 h-10 animate-bounce z-0 md:w-8 md:h-8" style={{ position: 'absolute', top: circlePosition.y, left: circlePosition.x }}/>
+            <img
+              src={Circle}
+              className="w-10 h-10 animate-bounce z-0 md:w-8 md:h-8 xsm:w-4 xsm:h-4"
+              style={{
+                position: "absolute",
+                top: circlePosition.y,
+                left: circlePosition.x,
+              }}
+            />
           </div>
-          <div className="text-[44px] font-bold text-white font-pop text-wrap text-5xl ">
+          <div className="text-[60px] font-bold text-white font-pop text-wrap md:text-[50px] xsm:text-[20px] xsm:leading-5">
             {" "}
-            <span className="text-[60px]"> Master In-Demand </span> <br />{" "}
-            Skills for Dream Placements
+            <span className="text-[60px] md:text-[50px] xsm:text-[20px] xsm:leading-5">
+              {" "}
+              Master In-Demand{" "}
+            </span>{" "}
+            <br /> Skills for Dream Placements
           </div>
-          <div className="text-[25px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap " >
+          <div className="text-[25px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap md:text-[18px] xsm:text-[10px] xsm:h-8">
             <span className="text-white">Hign Impact</span>
             {displayText}
           </div>
           <div className="flex place-content-start">
-            {
-                localStorage.getItem('COURSES_USER_TOKEN')?'':<Link to='/login' className="text-white z-20 text-[16px] font-nu font-bold bg-[#1DBF73] rounded-full py-2 px-10">
+            {localStorage.getItem("COURSES_USER_TOKEN") ? (
+              ""
+            ) : (
+              <Link
+                to="/login"
+                className="text-white z-20 text-[16px] font-nu font-bold bg-[#1DBF73] rounded-full py-2 px-10 md:text-[14px] md:px-8"
+              >
                 Join Now
               </Link>
-            }
-            
+            )}
           </div>
         </div>
 
-        <div className="flex flex-col gap-6 w-[50%]">
+        <div className="flex flex-col gap-6 w-[50%] md:gap-2 xsm:gap-1">
           <div className="flex flex-row gap-2 justify-end">
             <div className="flex flex-col justify-end pb-6">
-              <img src={Square} className="square w-16 h-16 animate-ping" style={{ position: 'absolute', top: squarePosition.y, left: squarePosition.x }} />
+              <img
+                src={Square}
+                className="square w-12 h-12 animate-ping md:w-8 md:h-8 xsm:w-4 xsm:h-4"
+                style={{
+                  position: "absolute",
+                  top: squarePosition.y,
+                  left: squarePosition.x,
+                }}
+              />
             </div>
 
-            <div className="flex flex-row gap-8">
-              <div className="flex flex-col gap-5 items-end">
-                <div className="h-64 w-56 rounded-t-[4rem] rounded-br-[4rem] rounded-bl-[12rem] overflow-hidden scale-in-center">
+            <div className="flex flex-row gap-8 md:gap-4 xsm:gap-2">
+              <div className="flex flex-col gap-5 items-end md:gap-3 xsm:gap-2">
+                <div className="h-64 w-56 rounded-t-[4rem] rounded-br-[4rem] rounded-bl-[12rem] overflow-hidden scale-in-center md:h-52 md:w-44 xsm:h-20 xsm:w-16">
                   <img
                     src={images[currentImageIndex]}
-                    className="h-64 w-56 object-cover object-center "
+                    className="h-64 w-56 object-cover object-center md:h-52 md:w-44 xsm:h-20 xsm:w-16"
                   />
                 </div>
-                <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center">
+                <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center md:h-24 md:w-24 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-12 xsm:w-12 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
                   <img
                     src={images[(currentImageIndex + 1) % 6]}
-                    className="h-36 w-36 object-cover object-center"
+                    className="h-36 w-36 object-cover object-center md:h-24 md:w-24 xsm:h-12 xsm:w-12"
                   />
                 </div>
               </div>
-              <div className="flex flex-col gap-5">
-                <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center">
+              <div className="flex flex-col gap-5 md:gap-3 xsm:gap-2">
+                <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center md:h-24 md:w-24 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-12 xsm:w-12 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
                   <img
                     src={images[(currentImageIndex + 2) % 6]}
-                    className="h-36 w-36 object-cover object-center"
+                    className="h-36 w-36 object-cover object-center md:h-24 md:w-24 xsm:h-12 xsm:w-12"
                   />
                 </div>
-                <div className="rounded-[4rem] h-72 w-36 overflow-hidden scale-in-center">
+                <div className="rounded-[4rem] h-72 w-36 overflow-hidden scale-in-center md:h-56 md:w-24 md:rounded-[2.3rem] xsm:h-24 xsm:w-12 xsm:rounded-[1.3rem]">
                   <img
                     src={images[(currentImageIndex + 3) % 6]}
-                    className="h-72 w-36 object-cover object-center"
+                    className="h-72 w-36 object-cover object-center md:h-56 md:w-24 xsm:h-24 xsm:w-12"
                   />
                 </div>
               </div>
-              <div className="flex flex-col-reverse gap-5">
-                <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center">
+              <div className="flex flex-col-reverse gap-5 md:gap-3 xsm:gap-2">
+                <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center md:h-24 md:w-24 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-12 xsm:w-12 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
                   <img
                     src={images[(currentImageIndex + 4) % 6]}
-                    className="h-36 w-36 object-cover object-center"
+                    className="h-36 w-36 object-cover object-center md:h-24 md:w-24 xsm:h-12 xsm:w-12"
                   />
                 </div>
-                <div className="rounded-[4rem] h-72 w-36 overflow-hidden scale-in-center">
+                <div className="rounded-[4rem] h-72 w-36 overflow-hidden scale-in-center md:h-56 md:w-24 md:rounded-[2.3rem] xsm:h-24 xsm:w-12 xsm:rounded-[1.3rem]">
                   <img
                     src={images[(currentImageIndex + 5) % 6]}
-                    className="h-72 w-36 object-cover object-center"
+                    className="h-72 w-36 object-cover object-center md:h-56 md:w-24 xsm:h-24 xsm:w-12"
                   />
                 </div>
               </div>

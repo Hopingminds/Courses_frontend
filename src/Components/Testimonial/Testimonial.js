@@ -26,7 +26,7 @@ const Testimonial = () => {
     //   image: Img2,
     // },
     {
-      text: "Right from the recruitment and interview process,we were able to see a different level of professionalism in Hm's candidates.It is great to see freshers demonstrating corperate mapopally.",
+      text: "Right from the recruitment and interview process,we were able to see a different level of professionalism in Hm's candidates. It is great to see freshers demonstrating corperate mapopally.",
       author: "Lakshay S",
       empty: 0,
       stars: 5,
@@ -166,16 +166,14 @@ const Testimonial = () => {
           </p>
           <div className="flex flex-col gap-4 text-[#696984] text-[18px] text-justify font-poppins xsm:text-[6px] xsm:gap-0 md:text-[12px]">
             {/* <div className="flex flex-col gap-4 text-[#696984] text-[18px] text-justify font-poppins xsm:text-[6px] xsm:gap-0"> */}
-              <p className="">
-                HopingMinds has earned the trust of over 100 corporations, more than 50 universities, and over 10,000 students based on positive experiences and successful outcomes. {" "}
-              </p>
-              <p >
+            <p>
+            HopingMinds has earned the trust of over 100 corporations, more than 50 universities, and over 10,000 students based on their positive experiences and successful outcomes. Our community continues to grow, thanks to the proven results and confidence shared by our partners and learners.
+            </p>{/* <p >
                 Our community contipopes to grow, thanks to the proven results and confidence shared by our partners and learners
-              </p>
+              </p> */}
               <p>
-              Having worked in the ed-tech space, I understand the challenges of creating products that are both innovative and practical. HM excels in this, offering solutions that are forward-thinking yet grounded in real classroom needs. They're a model for how ed-tech firms should operate.
-              </p>
-            </div>
+              Having worked in the ed-tech space, I understand the challenges of creating products that are both innovative and practical. HopingMinds excels in this regard, offering solutions that are forward-thinking yet grounded in real classroom needs. They serve as a model for how ed-tech firms should operate.
+              </p></div>
             {/* <p className="text-[#696984] text-[18px] font-pop xsm:text-[6px]">
             Are you too? Please give your assessment
           </p> */}
@@ -218,7 +216,7 @@ const Testimonial = () => {
                   >
                     <hr className="h-[60%]  border border-[rgb(189,189,209)] absolute top-3 xsm:top-2 xsm:h-[30%]" />
                     <div className="flex flex-col justify-between gap-4 px-4 py-3 xsm:px-2 xsm:py-2 xsm:gap-1 md:gap-2">
-                      <p className="text-[#5F5F7E] text-[16px] font-pop leading-6 text-justify xsm:text-[4px] xsm:leading-none xsm:tracking-tight md:text-[10px] md:leading-tight">
+                      <p className="text-[#5F5F7E] text-[16px] font-pop leading-6 text-left xsm:text-[4px] xsm:leading-none xsm:tracking-tight md:text-[10px] md:leading-tight">
                         {testimonial.text}
                       </p>
                       <div className="flex flex-col ">
