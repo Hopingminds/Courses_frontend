@@ -101,9 +101,7 @@ const CartCheckout = () => {
   const navigate = useNavigate();
 
   const handleContinueCheckout = async () => {
-    if (!Payment) {
-      toast.error("Select payment method");
-    } else if (!country) {
+  if (!country) {
       toast.error("Select country");
     } else if (!state) {
       toast.error("Select state");
@@ -173,6 +171,39 @@ const CartCheckout = () => {
     }
   };
 
+  const loadRazorpay = () => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    document.body.appendChild(script);
+    script.onload = () => {
+      const options = {
+        // key: 'rzp_test_ovrL1ExhTWhDv2',
+        key: 'rzp_test_jmLsdK6FoWIRSe',
+        amount: total*100, // Amount in paisa
+        currency: 'INR',
+        name: 'Hoping minds',
+        description: 'Product description',
+        image: '',
+        handler: function(response) {
+          handleContinueCheckout()
+          // router.push('/profile?tab=booking-history')
+          // Handle success
+          // alert(response.razorpay_payment_id);
+        },
+        prefill: {
+          name: 'Customer Name',
+          email: 'customer@example.com',
+          contact: '8283929792'
+        },
+        theme: {
+          color: '#3399cc'
+        }
+      };
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    };
+  };
   return (
     <>
          {show ? <div className='w-full h-screen z-20 fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
@@ -237,7 +268,7 @@ const CartCheckout = () => {
           </div>
 
           {/* Payment Method */}
-          <div>
+          {/* <div>
             <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mt-4 xsm:mb-1 md:text-[18px]">
               Payment Method
             </h1>
@@ -330,7 +361,7 @@ const CartCheckout = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Order Details start*/}
 
@@ -472,7 +503,7 @@ const CartCheckout = () => {
           <span className="flex justify-center xsm:mt-4 md:mt-4">
             <button
               className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px] md:text-[16px] md:px-8"
-              onClick={handleContinueCheckout}
+              onClick={loadRazorpay}
             >
               Continue Checkout
             </button>
