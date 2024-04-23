@@ -6,8 +6,8 @@ import { IoMdArrowDropdown } from "react-icons/io";
 const PostJobsForm = () => {
     const [value, setValue] = useState('');
   return (
-    <div className='bg-[#e6e6e6] py-[3%] px-[15%] pr'>
-        <div className='bg-[#fafafa] pr-[35%]'>
+    <div className='bg-[#e6e6e6] py-[3%] px-[20%] pr'>
+        <div className='bg-[#fafafa] '>
             <div className='bg-white px-4 py-2 text-[12px] font-pop flex flex-col gap-6' >
                 <div className='flex flex-col '>
                     <p className='text-[24px] text-gray-600'>Post a Job - Hot Vacancy</p>
