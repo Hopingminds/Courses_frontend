@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { BASE_URL } from "../../Api/api";
 import HireTable from "./HireTable";
+import Close from "../../Assests/Images/close.png";
+
 const HireFromUs = () => {
   const [hiredata, sethiredata] = useState({
     name:"",
@@ -18,12 +20,23 @@ const HireFromUs = () => {
     phone:"",
     company:""
   })
+  const [showpopup, setshowpopup] = useState(false)
   const [hirelogindata, sethirelogindata] = useState({
     name:"",
     email:"",
     otp:"",
   })
   const [tab, settab] = useState(1)
+  const [count, setcount] = useState(1)
+
+function handleHover(){
+  // console.log("log");
+  if(count==1){
+    setshowpopup(true)
+    // setcount(2)
+  }
+}
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     sethiredata({
@@ -77,9 +90,29 @@ toast.error(response.message)
       }
   }
 }
+function handleClose(){
+   setshowpopup(false)
+   setcount(2)
+}
   return (
     <>
       <Toaster position="top-right" />
+      {(showpopup && count==1)? (
+               <div onClick={handleClose} className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center">
+                <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[50%] xsm:py-2 xsm:px-4 xsm:bottom-6 md:bottom-8 md:py-3 md:px-5">
+                    <div className='flex justify-end'>
+                    <button onClick={handleClose}><img src={Close} /></button>
+                    </div>
+                    <div className='flex flex-col gap-2 text-center px-[6%]'>
+                        {/* <p className='font-pop font-semibold text-[40px] text-[#1DBF73]'>Lorem, ipsum.</p> */}
+                        <p className='font-mons '>We aim to complete the verification process within 48 to 72 hours. Thank you for your understanding as we diligently review the necessary information to ensure all details are accurate and up-to-date, maintaining our high standards of accuracy.</p>
+                    </div>
+                    {/* <Link to='/profile' className='flex justify-center'>
+                        <button className='font-pop font-semibold text-[16px] text-white bg-[#1DBF73] rounded-lg p-4'>Complete Now</button>
+                    </Link> */}
+              </div>
+              </div>
+            ):''}
       <div className=" px-[5%] pt-[4%]  bg-gradient-to-r from-[#0F2027] to-[#203A43] wavebg"  style={{ width: "100%" }}>
         {/* Mainsection */}
         <div className=" flex justify-between pb-[18%] xsm:flex-col xsm:gap-6 xsm:pb-[35%] ">
@@ -220,8 +253,8 @@ toast.error(response.message)
               </div>
             </div> */}
           </div>
-          <div className="w-[30%] self-end xsm:w-full">
-            <div className="bg-[#00000033]   rounded-xl  text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
+          <div onMouseEnter={handleHover} className="w-[30%] self-end xsm:w-full ">
+            <div  className="bg-[#00000033]   rounded-xl  text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
              <div className="flex w-full rounded-t-xl mt-2 space-x-1">
                 <button className="w-[50%] ml-1 py-2 border-b-[2px] rounded-xl" onClick={()=>settab(2)}>Login</button>
                 <button className="w-[50%] mr-1 py-2 border-b-[2px] rounded-xl" onClick={()=>settab(1)}>Register</button>
