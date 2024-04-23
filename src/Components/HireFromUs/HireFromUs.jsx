@@ -18,6 +18,7 @@ const HireFromUs = () => {
     phone:"",
     company:""
   })
+  const [tab, settab] = useState(1)
   const handleChange = (e) => {
     const { name, value } = e.target;
     sethiredata({
@@ -204,11 +205,18 @@ toast.error(response.message)
             </div> */}
           </div>
           <div className="w-[30%] self-end xsm:w-full">
-            <div className="bg-[#00000033]   rounded-xl py-6 text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
-              <div className="flex justify-center text-center">
+            <div className="bg-[#00000033]   rounded-xl  text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
+             <div className="flex w-full rounded-t-xl mt-2 space-x-1">
+                <button className="w-[50%] ml-1 py-2 border-b-[2px] rounded-xl" onClick={()=>settab(2)}>Login</button>
+                <button className="w-[50%] mr-1 py-2 border-b-[2px] rounded-xl" onClick={()=>settab(1)}>Register</button>
+             </div>
+              {/* <div className="flex justify-center text-center">
                 <p className="font-pop font-semibold text-[20px] md:text-[14px] xsm:text-[16px]">Share Your Hiring Requirements</p>
-              </div>
-              <div className="flex flex-col gap-2 px-6">
+              </div> */}
+              {
+                tab==1?
+                <div className="flex flex-col gap-2 px-6 
+                ">
                 <div className="flex flex-col gap-1">
                   <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="name">
                     Name
@@ -265,12 +273,50 @@ toast.error(response.message)
                     placeholder="Enter Your Mobile number"
                   />
                 </div>
-              </div>
-              <div className="px-6">
+                <div className="px-6">
                 <button onClick={handleRegister} className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]">
                 Submit
                 </button>
               </div>
+              </div>:<div className="flex flex-col gap-2 px-6 h-[270px]">
+                <div className="flex flex-col gap-1">
+                  <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="email">
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
+                    onChange={handleChange}
+                    value={hiredata.name}
+                    type="text"
+                    placeholder="Enter your email"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="otp">
+                    OTP
+                  </label>
+                  <input
+                    id="otp"
+                    name="otp"
+                    className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
+                    onChange={handleChange}
+                    value={hiredata.name}
+                    type="text"
+                    placeholder="Enter OTP"
+                  />
+                </div>
+                <div className="px-6">
+                <button onClick={handleRegister} className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]">
+                Get OTP
+                </button>
+              </div>
+              </div>}
+
+
+
+           
               <div className="flex justify-center px-6">
                 <Link target="_blank" to='https://wa.me/qr/S3LVDB3Y3SB3H1' className="font-int font-medium text-[40px] md:text-[30px]">
                 <RiWhatsappFill className="md:w-6 md:h-6"/>
