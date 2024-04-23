@@ -90,7 +90,7 @@ total+=it.lessons.length;
                     <div className="flex items-center justify-between w-[60%]">
                       <div>
                         <p className="font-nu font-semibold text-[#243465] text-[22px] xsm:text-[10px] xsm:pb-1 md:text-[18px]">
-                          {val?.course.title}
+                          {val?.course?.title}
                         </p>
                       </div>
                       <div>

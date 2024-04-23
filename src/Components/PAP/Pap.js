@@ -27,13 +27,13 @@ export default function Pap() {
       question:
         "Is there a risk involved for participants in the Pay after Placement model?",
       answer:
-        "Risk is minimal as payment is contingent on job placement; participants typically aren't obligated to pay if unsuccessful.",
+      "Risk is low since payment depends on securing a job; usually, participants are not required to pay if they do not find employment",
       isOpen: false,
     },
     {
       question: "What are the advantages of the Pay after Placement model?",
       answer:
-        "It reduces financial barriers and aligns interests, with providers invested in participants' success.",
+        "It lowers financial hurdles and aligns goals, ensuring providers are committed to the success of participants.",
       isOpen: false,
     },
     {
@@ -214,7 +214,7 @@ export default function Pap() {
                 These only take effect once you start earning above the PAP
                 threshold amount for your course.
               </p>
-              <div className="flex flex-col gap-6 ml-6 xsm:gap-2 xsm:ml-4 md:gap-2">
+              <div className="flex flex-col gap-6 ml-6 xsm:gap-2 xsm:ml-4 md:gap-2 ">
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
                   <p className="font-nu text-[17px] xsm:text-[7px] md:text-[13px]">
@@ -242,7 +242,7 @@ export default function Pap() {
               </div>
             </div>
             <div>
-              <p className="font-nu text-[17px] xsm:text-[7px] md:text-[13px]">
+              <p className="font-nu text-[17px] xsm:text-[7px] md:text-[13px] ">
                 CTC (Cost to Company) is defined as the total gross income
                 earned, including but not permitted, to variable pay,
                 compensations and Employee Stock Ownership Plan (ESOP). Find out
