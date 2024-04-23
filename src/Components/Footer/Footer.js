@@ -40,7 +40,7 @@ const Footer = () => {
                             <Link to='/pap' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Pay After Placement</Link>
                             <Link to='/career' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Career</Link>
                             <Link to='/hire-from-us' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Hire From Us</Link>
-                            <Link to='/resumebuilder' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>CV Builder</Link>
+                            <Link to='/cv-builder' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>CV Builder</Link>
                         </div>
                     </div>
                     <div className='flex flex-col gap-8 xsm:gap-2 ' onClick={Top} >
