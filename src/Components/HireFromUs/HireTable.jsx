@@ -4,53 +4,53 @@ import "./hirefromus.css";
 const HireTable = () => {
   const sampleData = [
     {
-      name: "Jane Cooper",
+      name: "Akash Gupta",
       role: "Frontend",
-      phone: "(225) 555-0118",
-      email: "jane@microsoft.com",
-      country: "United States",
+      phone: "+91-987654782",
+      email: "akash123@gmail.com",
+      country: "India",
     },
     {
-      name: "John Doe",
+      name: "Sunita",
       role: "Backend",
-      phone: "(225) 555-0123",
-      email: "john@microsoft.com",
-      country: "Canada",
+      phone: "+91-887674782",
+      email: "sunita@gmail.com",
+      country: "India",
     },
     {
-      name: "Alice Smith",
+      name: "Raman sharma",
       role: "Designer",
-      phone: "(225) 555-0456",
-      email: "alice@microsoft.com",
-      country: "United Kingdom",
+      phone: "+91-987654782",
+      email: "raman@dev.com",
+      country: "India",
     },
     {
-      name: "Cooper",
+      name: "Akash Gupta",
       role: "Frontend",
-      phone: "(225) 555-0118",
-      email: "jane@microsoft.com",
-      country: "United States",
+      phone: "+91-987654782",
+      email: "akash123@gmail.com",
+      country: "India",
     },
     {
-      name: "Doe",
+      name: "Sunita",
       role: "Backend",
-      phone: "(225) 555-0123",
-      email: "john@microsoft.com",
-      country: "Canada",
+      phone: "+91-887674782",
+      email: "sunita@gmail.com",
+      country: "India",
     },
     {
-      name: "Smith",
+      name: "Raman sharma",
       role: "Designer",
-      phone: "(225) 555-0456",
-      email: "alice@microsoft.com",
-      country: "United Kingdom",
+      phone: "+91-987654782",
+      email: "raman@dev.com",
+      country: "India",
     },
     {
-      name: "Alice Smith",
+      name: "Raman sharma",
       role: "Designer",
-      phone: "(225) 555-0456",
-      email: "alice@microsoft.com",
-      country: "United Kingdom",
+      phone: "+91-987654782",
+      email: "raman@dev.com",
+      country: "India",
     },
   ];
 
@@ -260,7 +260,7 @@ const HireTable = () => {
       {showPopup && (
         <div className="w-[50%] h-[50%] bg-blue-50 fixed z-[99999] flex top-[50%] left-[50%] justify-center items-center transform -translate-x-1/2 -translate-y-1/2 rounded-lg drop-shadow-xl">
           <button className="" onClick={() => setShowPopup(false)}>
-            Close
+            Please Login first
           </button>
         </div>
       )}

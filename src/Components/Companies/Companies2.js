@@ -12,7 +12,7 @@ const Companies2 = () => {
         ['/animationLogos/indmoney.png', '/animationLogos/infosys.png', '/animationLogos/instamojo.png', '/animationLogos/mahindra.png', '/animationLogos/ola.png', '/animationLogos/paytm.png'],
         ['/animationLogos/revv.png', '/animationLogos/salesforce.png', '/animationLogos/sharechat.png', '/animationLogos/swiggy.png', '/animationLogos/tcs.png', '/animationLogos/techginia.png'],
         ['/animationLogos/techmatrix.png', '/animationLogos/unity.png', '/animationLogos/uolo.png', '/animationLogos/whatfix.png', '/animationLogos/whitehat.png', '/animationLogos/wipro.png']
-    ];
+    ];
 
     const totalLogosSets = logosSets.length;
 
@@ -35,7 +35,7 @@ const Companies2 = () => {
     return (
         <div className="text-[#696984] flex justify-center font-pop md:mt-0 xsm:mt-0">
             <div className="w-[90%] space-y-8 xsm:space-y-4 md:space-y-6">
-                <div className="text-center text-[30px] font-semibold text-[#000] xsm:text-[12px] md:text-[20px]">Trusted by <span className='text-[#1dbf73]'>5,000+</span> Companies Worldwide</div>
+                <div className="text-center text-[30px] font-semibold text-[#000] xsm:text-[12px] md:text-[20px]">Trusted by <span className='text-[#1dbf73]'>200+</span> Companies Worldwide</div>
                 <div className="flex justify-center">
                     {logosSets.map((logos, setIndex) => (
                         <div key={setIndex} className="slider-container w-[100%] xsm:w-[15%] md:w-[15%]">
