@@ -45,6 +45,7 @@ import Enterance from '../Components/Assignments/Entrancepage/Entrance.jsx'
 import Modules from '../Components/Assignments/Modules/index.js'
 import Question from '../Components/Assignments/Questions/index.js'
 import SubmittedSuccess from '../Components/Assignments/Submittedpage/submitted.js'
+import ManageJobsmain from '../Components/ManageJobs/ManageJobsmain.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -104,6 +105,7 @@ const Router = () => {
                 <Route path='/modules' element={<Modules/>} />
                 <Route path='/questions' element={<Question/>} />
                 <Route path='/submitted' element={<SubmittedSuccess/>} />
+                <Route path='/managejobs' element={<ManageJobsmain/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
