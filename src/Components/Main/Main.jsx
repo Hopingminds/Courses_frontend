@@ -5,6 +5,7 @@ import Instructor from "../Instructor/Instructor";
 import Faqs from "../Faqs/Faqs";
 import Reviews from "../Reviews/Reviews";
 import "./Main.css";
+import LaunchLab from '../LaunchLab';
 
 
 function Main() {
@@ -27,8 +28,10 @@ function Main() {
                     onClick={() => renderComponent('Instructor')}>Instructor</button>
             <button className={`btn_border font-nu text-[14px]  ${activeComponent === 'Faqs' ? 'active' : ''}`} 
                     onClick={() => renderComponent('Faqs')}>FAQs</button>
-            <button className={`btn_corners_last font-nu text-[14px]  ${activeComponent === 'Reviews' ? 'active' : ''}`}
+            <button className={`btn_border font-nu text-[14px]  ${activeComponent === 'Reviews' ? 'active' : ''}`}
                     onClick={() => renderComponent('Reviews')}>Reviews</button>
+                     <button className={`btn_corners_last font-nu text-[14px]  ${activeComponent === 'Launch' ? 'active' : ''}`}
+                    onClick={() => renderComponent('Launch')}>Launch Lab</button>
         </div>
 
         {/* <div className="component"> */}
@@ -37,6 +40,7 @@ function Main() {
             {activeComponent === 'Instructor' && <Instructor />}
             {activeComponent === 'Faqs' && <Faqs />}
             {activeComponent === 'Reviews' && <Reviews />} 
+            {activeComponent === 'Launch' && <LaunchLab />} 
         {/* </div> */}
  </div>
   )

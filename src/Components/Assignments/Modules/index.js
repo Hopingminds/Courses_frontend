@@ -103,7 +103,7 @@ export default function Modules(){
     <div className="w-full flex justify-between px-[5%] py-5">
         <div className="w-[35%] h-[85vh] bg-[#d8f7e8] p-[2%] space-y-2 rounded-xl ">
             <div className="text-3xl font-bold text-center">Pay After Placement</div>
-            <div className="mt-2">Enroll in our courses without paying any fees upfront</div>
+            <div className="mt-2">Enroll in our courses without paying any upfront fees</div>
             
             <div className="flex flex-col gap-y-10 py-2">
             <div className="flex justify-between py-5">
@@ -132,12 +132,13 @@ export default function Modules(){
             </div>
             <div className="flex flex-col space-y-5">
                 <div className="w-full border bg-gray-200 p-5  rounded-xl space-y-3">
-                    <div className="font-semibold">Assignments Score Tracker</div>
+                    <div className="font-semibold">Tracker Your Assignments Score</div>
                     <div className="h-8 bg-white text-[#1DBF73] flex pl-5 items-center rounded-lg">
                     Your current score is {testreport?.obtainedMarks}
                     </div>
                     <div className="flex justify-between text-sm">
-                        <div>You need to score {testreport?.totalMarks} by solving assignments to be eligible for the coding test.</div>
+                        <div>You need to solve all assignments to be eligible for the coding test.</div>
+                        {/* <div>You need to score {testreport?.totalMarks} by solving assignments to be eligible for the coding test.</div> */}
                         <div>Max Score : {testreport?.totalMarks}</div>
                     </div>
                 </div>
@@ -214,7 +215,7 @@ export default function Modules(){
                 </div>
 
                 <div className="w-[60%]  flex flex-col justify-between p-5" >
-                    <div className="flex space-x-24">
+                    <div className="flex flex-row gap-16">
                         <div>#</div>
                         <div>Students</div>
                     </div>
@@ -222,7 +223,7 @@ export default function Modules(){
                     {
                         studentslist?.map((item,ind)=>{
                             return(<>
-                             <div className="flex space-x-24 my-2">
+                             <div className="flex flex-row gap-16 my-2">
                         <div>{ind+1}</div>
                         <div>{item.name}({item.phone})</div>
                     </div>

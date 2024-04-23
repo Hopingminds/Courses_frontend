@@ -138,7 +138,7 @@ const ChatBot = () => {
                 </button>
                 <div className="chatbot mb-16 mr-8 " style={{ zIndex: "9999999" }}>
                     <header>
-                        <h2>CHAT With US</h2>
+                        <h2 className="text-[#000]">CHAT With US</h2>
                         {/* <img src="/chatmenu.svg" /> */}
                         <span className="close-btn material-symbols-outlined">close</span>
                     </header>

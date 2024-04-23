@@ -93,12 +93,12 @@ import { useEffect, useState } from "react";
 import "./hero.css";
 import Circle from "../../Assests/Images/home-circle.png";
 import Square from "../../Assests/Images/home-square.png";
-import Img1 from "../../Assests/Images/hero2.jpeg";
-import Img2 from "../../Assests/Images/hero1.jpeg";
-import Img3 from "../../Assests/Images/hero3.jpeg";
-import Img4 from "../../Assests/Images/hero4.jpeg";
-import Img5 from "../../Assests/Images/hero5.jpeg";
-import Img6 from "../../Assests/Images/hero6.jpeg";
+import Img1 from "../../Assests/Images/stu1.jpg";
+import Img2 from "../../Assests/Images/stu2.jpg";
+import Img3 from "../../Assests/Images/stu3.jpg";
+import Img4 from "../../Assests/Images/stu4.jpg";
+import Img5 from "../../Assests/Images/stu5.jpg";
+import Img6 from "../../Assests/Images/stu6.jpg";
 import { Link } from "react-router-dom";
 
 export default function Herosection() {
@@ -171,13 +171,9 @@ export default function Herosection() {
               }}
             />
           </div>
-          <div className="text-[60px] font-bold text-white font-pop text-wrap md:text-[50px] xsm:text-[20px] xsm:leading-5">
+          <div className="text-[20px] leading-10 font-bold text-white font-pop text-wrap md:text-[50px] xsm:text-[20px] xsm:leading-5">
             {" "}
-            <span className="text-[60px] md:text-[50px] xsm:text-[20px] xsm:leading-5">
-              {" "}
-              Master In-Demand{" "}
-            </span>{" "}
-            <br /> Skills for Dream Placements
+            Unlock Opportunities with 2000+ Leading Corporates, Master Skills with Industry Experts, and Stay up-skilled with our Annually Updated Curriculum; Experience Personalized Career Coaching and Exclusive Networking Events!
           </div>
           <div className="text-[25px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap md:text-[18px] xsm:text-[10px] xsm:h-8">
             <span className="text-white">Hign Impact</span>
