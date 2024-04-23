@@ -9,7 +9,7 @@ const ShippingPolicy = () => {
 
   return (
     <Wrapper>
-      <div className="container">
+      <div className="cont">
         <h2 className="py-8 font-extrabold">Terms and Conditions</h2>
         <p>
           {/* <strong>What are the delivery charges?</strong> */}
@@ -146,7 +146,7 @@ const Wrapper = styled.div`
   background-color: #e3dfdf;
   font-family: Arial, Helvetica, sans-serif;
   text-align: justify;
-  .container {
+  .cont {
     width: 70%;
     margin: 0 auto;
     padding: 2% 5%;
