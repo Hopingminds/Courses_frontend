@@ -53,8 +53,8 @@ const WhatHM = () => {
         <div className="flex justify-center">
           <p className="text-[#696984] text-[20px] font-pop w-[70%] text-center leading-12 xsm:text-[7px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
             Welcome to HopingMinds, your gateway to a brighter future. As an
-            esteemed partner of the National Skill Development Corporation
-            (NSDC), we stand at the forefront of transformative education,
+            esteemed partner of the <span className="font-semibold">National Skill Development Corporation
+            (NSDC)</span>, we stand at the forefront of transformative education,
             dedicated to nurturing the next generation of leaders and
             innovators.
           </p>

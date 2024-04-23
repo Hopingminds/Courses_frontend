@@ -107,10 +107,11 @@ export default function Pap() {
         className="h-[210px] flex flex-col justify-center xsm:h-[100px] md:h-[150px]"
         style={{
           backgroundImage: `url(${Img1})`,
-          backgroundSize: 'cover'
+          backgroundSize: 'cover',
+          // filter: 'brightness(50%)'
         }}
       >
-        <div className="font-pop font-semibold text-white text-[44px] pl-20 xsm:text-[20px] xsm:pl-4 md:text-[30px] md:pl-14">Pay After Placement</div>
+        <div className="font-pop font-semibold text-[#1DBF73] text-[44px] pl-20 xsm:text-[20px] xsm:pl-4 md:text-[30px] md:pl-14 z-10">Pay After Placement</div>
       </div>
       {/* Main */}
       <div className=" my-6">
@@ -130,7 +131,7 @@ export default function Pap() {
               <div className="w-[90%]">
                 <div>
                   <p className="font-nu font-semibold text-[22px] xsm:text-[10px] md:text-[18px]">Minimum CTC</p>
-                  <p className="font-nu font-medium text-[16px] xsm:text-[7px] md:text-[12px] md:leading-tight">If your salary is above the CTC of ₹5,00,000/-, the PAP monthly payments come into effect.</p>
+                  <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] xsm:text-[7px] md:text-[12px] md:leading-tight">If your salary exceeds the CTC of ₹5,00,000/-, your monthly payments of PAP will start.</p>
                 </div>
               </div>
             </div>
@@ -141,7 +142,7 @@ export default function Pap() {
               <div className="w-[90%]">
                 <div>
                   <p className="font-nu font-semibold text-[22px] xsm:text-[10px] md:text-[18px]">1 Year</p>
-                  <p className="font-nu font-medium text-[16px] xsm:text-[7px] md:text-[12px] md:leading-tight">If you don’t get a job offer within 1 year of the course, you pay nothing for your learning at  Hoping Minds.</p>
+                  <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] xsm:text-[7px] md:text-[12px] md:leading-tight">If you don’t get a job offer within 1 year of the course, you pay nothing for your learning at  Hoping Minds.</p>
                 </div>
               </div>
             </div>
@@ -152,7 +153,7 @@ export default function Pap() {
               <div className="w-[90%]">
                 <div>
                   <p className="font-nu font-semibold text-[22px] xsm:text-[10px] md:text-[18px]">Enforcement</p>
-                  <p className="font-nu font-medium text-[16px] xsm:text-[7px] md:text-[12px] md:leading-tight">In the event you are not working or if your income drops below the CTC mentioned in the Pay After Placement Agreement the monthly payments pause.</p>
+                  <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] xsm:text-[7px] md:text-[12px] md:leading-tight">In the event you are not working or if your income drops below the CTC mentioned in the Pay After Placement Agreement the monthly payments pause.</p>
                 </div>
               </div>
             </div>
