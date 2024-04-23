@@ -71,15 +71,15 @@ const WhyHM = () => {
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Felxibility in Learning.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Networking Opportunities.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Enhanced career Opportunities.</div>
             </div>
             </div>
             <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500">
