@@ -119,19 +119,21 @@ export default function Herosection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (currentIndex < remainingText.length) {
+    if (currentIndex < remainingText.length) {
+      const interval = setInterval(() => {
         setDisplayText((prevText) => prevText + remainingText[currentIndex]);
         setCurrentIndex((prevIndex) => prevIndex + 1);
-      } else {
-        setDisplayText(staticText);
-        setCurrentIndex(0); 
-      }
-    }, 100);
+      }, 100);
 
-    return () => clearInterval(interval);
-  }, [currentIndex, remainingText.length, staticText]);
-
+      return () => clearInterval(interval);
+    }
+  }, [currentIndex, remainingText.length]);
+  const [textColor, setTextColor] = useState('black');
+  useEffect(() => {
+    if (currentIndex % 10 === 0) { // Change color every 10 characters
+      setTextColor((prevColor) => prevColor === 'black' ? 'blue' : 'black');
+    }
+  }, [currentIndex]); 
 
   return (
     <>
