@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Mycourse from './Mycourse';
 import './MLheader.css';
 import Assignment from './Assignment';
@@ -6,6 +7,7 @@ import WishList from './WishList';
 import Certificate from './Certificate';
 import RecommendedCourses from '../RecommendedCourses/RecommendedCourses';
 import MyStats from './MyStats';
+import Close from "../../Assests/Images/close.png";
 
 import './MLheader.css';
 import { useNavigate } from 'react-router-dom';
@@ -21,6 +23,7 @@ import { Globalinfo } from '../../App';
 export default function MyLearning() {
     const navigate = useNavigate()
     const [show, setshow] = useState(false)
+    const [showPopup, setShowPopup] = useState(true);
     const [showpage, setshowpage] = useState('courses');
     const [purchasedCourses, setPurchasedCourses] = useState();
     const { userDetail, getUserDetails } = useContext(Globalinfo);
@@ -68,11 +71,33 @@ export default function MyLearning() {
         }
     }, [])
 
+    useEffect(() => {
+        setShowPopup(true);
+    }, []);
 
 
     return (
         <div>
             <Toaster />
+
+            {showPopup && (
+               <div className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center">
+                <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[50%] xsm:py-2 xsm:px-4 xsm:bottom-6 md:bottom-8 md:py-3 md:px-5">
+                    <div className='flex justify-end'>
+                    <button onClick={() => setShowPopup(false)}><img src={Close} /></button>
+                    </div>
+                    <div className='flex flex-col gap-2 text-center px-[6%]'>
+                        <p className='font-pop font-semibold text-[40px] text-[#1DBF73]'>Complete Your Profile!</p>
+                        <p className='font-mons '>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incaliquip ex ea commodo consequat.</p>
+                    </div>
+                    <Link to='/profile' className='flex justify-center'>
+                        <button className='font-pop font-semibold text-[16px] text-white bg-[#1DBF73] rounded-lg p-4'>Complete Now</button>
+                    </Link>
+              </div>
+              </div>
+            )}
+
+        
             <head>
                 <title>
                     MyLearing | HopingMinds

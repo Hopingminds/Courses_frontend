@@ -20,7 +20,7 @@ const OurFeatures = () => {
       currentIndex = (currentIndex + 1) % images.length;
       setDisplayImage(images[currentIndex]);
       setApplyZoomOutImage(false);
-    }, 5000);
+    }, 8000);
 
     return () => clearInterval(imageTimer);
   }, []);
@@ -28,7 +28,7 @@ const OurFeatures = () => {
   useEffect(() => {
     const imageZoomOutTimer = setTimeout(() => {
       setApplyZoomOutImage(true);
-    }, 3000);
+    }, 6000);
 
     return () => clearTimeout(imageZoomOutTimer);
   }, [displayImage]);
@@ -41,7 +41,7 @@ const OurFeatures = () => {
       currentIndex = (currentIndex + 1) % texts.length;
       setDisplayText(texts[currentIndex]);
       setApplyZoomOutText(false);
-    }, 5000);
+    }, 8000);
 
     return () => clearInterval(textTimer);
   }, []);
@@ -49,7 +49,7 @@ const OurFeatures = () => {
   useEffect(() => {
     const textZoomOutTimer = setTimeout(() => {
       setApplyZoomOutText(true);
-    }, 3000);
+    }, 6000);
 
     return () => clearTimeout(textZoomOutTimer);
   }, [displayText]);
@@ -59,7 +59,7 @@ const OurFeatures = () => {
       <style>
         {`
         .slide-in-left {
-          animation: slideLeft 0.3s ease forwards;
+          animation: slideLeft 0.6s ease forwards;
       }
       
       @keyframes slideLeft {
@@ -74,7 +74,7 @@ const OurFeatures = () => {
       }
       
       .slide-in-right {
-        animation: slideRight 0.3s ease forwards;
+        animation: slideRight 0.6s ease forwards;
     }
     
     @keyframes slideRight {

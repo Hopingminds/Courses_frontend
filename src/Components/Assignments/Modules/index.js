@@ -13,6 +13,7 @@ export default function Modules(){
     const [modulesdata, setmodulesdata] = useState([])
     const [show, setshow] = useState(false)
     const [Completed, setCompleted] = useState(false)
+    const [studentslist, setstudentslist] = useState([])
     const [index, setindex] = useState(1)
     const [testreport, settestreport] = useState()
     useEffect(() => {
@@ -68,6 +69,27 @@ export default function Modules(){
         }
         Fetchscores()
     }, [])
+    useEffect(() => {
+        async function Fetchallstudents(){
+            try {
+                setshow(true)
+                let url=BASE_URL+'/testsubmitteduserslist'
+                const data = await fetch(url)
+                const response=await data.json();
+                setstudentslist(response?.data)
+                // console.log(response);
+                // setCompleted(response?.isTestCompleted)
+                if(response.success){
+                    setshow(false)
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        Fetchallstudents()
+    }, [])
+
+
     
     
     const handleStartButtonClick = () => {
@@ -191,24 +213,32 @@ export default function Modules(){
                     <div className="text-sm">Check out the list of Top performers</div>
                 </div>
 
-                <div className="w-[40%] flex flex-col justify-between p-5" >
-                    <div className="flex justify-between w-[48%]">
+                <div className="w-[60%]  flex flex-col justify-between p-5" >
+                    <div className="flex space-x-24">
                         <div>#</div>
-                        <div>Student</div>
+                        <div>Students</div>
                     </div>
 
-                    <div className="flex justify-between w-full my-2">
+                    {
+                        studentslist?.map((item,ind)=>{
+                            return(<>
+                             <div className="flex space-x-24 my-2">
+                        <div>{ind+1}</div>
+                        <div>{item.name}({item.phone})</div>
+                    </div>
+                            
+                            </>)
+                        })
+                    }
+                   
+                    {/* <div className="flex justify-between w-full my-2">
                         <div>1</div>
                         <div>Davinder(828*******95)</div>
                     </div>
                     <div className="flex justify-between w-full my-2">
                         <div>1</div>
                         <div>Davinder(828*******95)</div>
-                    </div>
-                    <div className="flex justify-between w-full my-2">
-                        <div>1</div>
-                        <div>Davinder(828*******95)</div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
