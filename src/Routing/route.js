@@ -114,11 +114,7 @@ const Router = () => {
                 <Route path='/questions' element={<Question />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/managejobs' element={<ManageJobsmain />} />
-<<<<<<< HEAD
-                <Route path='/chatbot' element={<ChatBot />} />
-=======
                 <Route path='/postjob' element={<PostJobsForm/>} />
->>>>>>> a9791d23d956651f8110aad7d72245cdeefde137
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
