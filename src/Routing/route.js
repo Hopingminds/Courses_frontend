@@ -23,6 +23,7 @@ import Success from '../Components/Success/success.js'
 // import DashboardSubAdmin from '../Components/SubAdminDashboard/DashboardSubAdmin.js'
 import SubAdmin from '../Components/SubAdminDashboard/index.js'
 
+import ChatBot from '../Components/chatbot/chatbot.js'
 
 // subadmin
 // import SubAdmin from '../Components/SubAdminDashboard/index.js'
@@ -112,6 +113,7 @@ const Router = () => {
                 <Route path='/questions' element={<Question />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/managejobs' element={<ManageJobsmain />} />
+                <Route path='/chatbot' element={<ChatBot />} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 

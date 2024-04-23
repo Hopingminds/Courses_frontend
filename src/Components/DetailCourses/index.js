@@ -42,7 +42,7 @@ export default function DetailCourses() {
                         <div className='CCDetails-Header-content-row1qw'>
                             <h2 className='font-pop'>{Data?.title}</h2>
                         </div>
-                        <div className='CCDetails-Header-content-row2 w-[90%] xsm:mt-1 '>
+                        {/* <div className='CCDetails-Header-content-row2 w-[90%] xsm:mt-1 '>
                             <div className='CCDetails-Header-content-row2-clock gap-1'>
                                 <img src="../Icons/clockfilled.svg" className=' xsm:w-[6px] xsm:h-[6px] md:w-[10px] md:h-[10px]' alt="clock"></img>
                                 <p className='font-nu text-white' > 2 Weeks</p>
@@ -63,7 +63,7 @@ export default function DetailCourses() {
                                 <img src="../Icons/faq.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="faq"></img>
                                 <p className='font-nu'> 3 Quizzes</p>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <Commoncard Data={Data} />
                 </div>
