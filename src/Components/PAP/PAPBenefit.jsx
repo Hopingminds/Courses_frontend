@@ -20,16 +20,16 @@ const PAPBenefit = () => {
           <div className="rounded-full h-[45%] w-[60%] top-[27%] left-[7%] absolute bg-[#615f5f] flex justify-center items-center xsm:h-[100px] xsm:w-[100px] xsm:top-[32%] xsm:left-[5%] md:w-[65%] md:left-[6%]">
             <div className="rounded-full h-[80%] w-[80%] absolute bg-[#D9D9D9] flex justify-center items-center text-center text-[34px] font-medium px-10 shadow-lg shadow-[#000] xsm:text-[14px] xsm:w-[30%] md:text-[22px]">Benefits of PAP</div>
           </div>
-          <div onClick={()=>setcontent("Securing your future is our promise. With our 100% Placement Guarantee, embark on your journey knowing we're committed to your success every step of the way.")}
-          onMouseEnter={() => setcontent("Securing your future is our promise. With our 100% Placement Guarantee, embark on your journey knowing we're committed to your success every step of the way.")} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[5%] right-[0%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-5%] xsm:top-[8%] md:h-14 md:gap-2 md:top-[6%] md:max-w-[18vw]">
+          <div onClick={()=>setcontent("Securing your future is our promise. With our 100% Placement Guarantee, you can embark on your journey knowing we are committed to your success every step of the way.")}
+          onMouseEnter={() => setcontent("Securing your future is our promise. With our 100% Placement Guarantee, you can embark on your journey knowing we are committed to your success every step of the way.")} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[5%] right-[0%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-5%] xsm:top-[8%] md:h-14 md:gap-2 md:top-[6%] md:max-w-[18vw]">
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
               <FRisk className="h-[40px] w-[40px] xsm:h-[13px] xsm:w-[13px] md:h-[26px] md:w-[26px]" />
             </span>
             <p className="text-white text-[14px] xsm:text-[8px] md:text-[10px]">100% Placement Guarantee</p>
           </div>
-          <div onClick={()=>setcontent('Our comprehensive support system ensures your success. Gain access to resources, mentorship, and networking opportunities to secure your desired placement effortlessly')}
-          onMouseEnter={()=>setcontent('Our comprehensive support system ensures your success. Gain access to resources, mentorship, and networking opportunities to secure your desired placement effortlessly')} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[25%] right-[-25%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-40%] md:h-14 md:gap-2 md:max-w-[18vw]">
+          <div onClick={()=>setcontent('Our extensive support network is designed to guarantee your success. Benefit from access to resources, mentorship, and networking opportunities that will help you achieve your desired placement with ease.')}
+          onMouseEnter={()=>setcontent('Our extensive support network is designed to guarantee your success. Benefit from access to resources, mentorship, and networking opportunities that will help you achieve your desired placement with ease.')} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[25%] right-[-25%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-40%] md:h-14 md:gap-2 md:max-w-[18vw]">
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
               <QualityEdu className="h-[40px] w-[40px] xsm:h-[13px] xsm:w-[13px] md:h-[26px] md:w-[26px]" />
@@ -38,8 +38,8 @@ const PAPBenefit = () => {
             Placement Assistance
             </p>
           </div>
-          <div onClick={()=>setcontent("Flexible financing options tailored to your needs. Pay After Placement ensures you can pursue your goals without financial stress. Empower your journey with our adaptable payment solutions")}
-          onMouseEnter={()=>setcontent("Flexible financing options tailored to your needs. Pay After Placement ensures you can pursue your goals without financial stress. Empower your journey with our adaptable payment solutions")} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[45%] right-[-40%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-50%] xsm:top-[42%] md:h-14 md:gap-2 md:max-w-[18vw]">
+          <div onClick={()=>setcontent("Flexible financing options are tailored to your needs. Our Pay After Placement program ensures that you can pursue your goals without financial stress. Empower your journey with our adaptable payment solutions.")}
+          onMouseEnter={()=>setcontent("Flexible financing options are tailored to your needs. Our Pay After Placement program ensures that you can pursue your goals without financial stress. Empower your journey with our adaptable payment solutions.")} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[45%] right-[-40%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-50%] xsm:top-[42%] md:h-14 md:gap-2 md:max-w-[18vw]">
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
               <Guide className="h-[40px] w-[40px] xsm:h-[13px] xsm:w-[13px] md:h-[26px] md:w-[26px]" />
@@ -48,16 +48,16 @@ const PAPBenefit = () => {
             Financial Flexibility
             </p>
           </div>
-          <div onClick={()=>setcontent("Ensuring student success is our priority. Our program incorporates comprehensive risk mitigation strategies, safeguarding students' investments and paving the way for a secure educational journey")}
-          onMouseEnter={()=>setcontent("Ensuring student success is our priority. Our program incorporates comprehensive risk mitigation strategies, safeguarding students' investments and paving the way for a secure educational journey")} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[65%] right-[-25%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-45%] xsm:top-[60%] md:h-14 md:gap-2 md:max-w-[18vw]">
+          <div onClick={()=>setcontent("Our focus is on student success. We employ detailed risk management strategies to protect students' investments and ensure a secure educational experience.")}
+          onMouseEnter={()=>setcontent("Our focus is on student success. We employ detailed risk management strategies to protect students' investments and ensure a secure educational experience.")} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[65%] right-[-25%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-45%] xsm:top-[60%] md:h-14 md:gap-2 md:max-w-[18vw]">
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
               <FPlanning className="h-[40px] w-[40px] xsm:h-[13px] xsm:w-[13px] md:h-[26px] md:w-[26px]" />
             </span>
             <p className="text-white text-[14px] xsm:text-[8px] md:text-[10px]">Risk Mitigation for Students</p>
           </div>
-          <div onClick={()=>setcontent('Empowering students with the mindset of lifelong learning. Our program fosters continuous growth, equipping learners with skills to thrive in an ever-evolving world.')}
-          onMouseEnter={()=>setcontent('Empowering students with the mindset of lifelong learning. Our program fosters continuous growth, equipping learners with skills to thrive in an ever-evolving world.')} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[85%] right-[-5%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:top-[77%] xsm:right-[-8%] md:h-14 md:gap-2 md:top-[82%] md:max-w-[18vw]">
+          <div onClick={()=>setcontent('Our program is dedicated to nurturing a lifelong learning mindset in students. It promotes continuous growth and equips learners with the skills needed to excel in a constantly changing world.')}
+          onMouseEnter={()=>setcontent('Our program is dedicated to nurturing a lifelong learning mindset in students. It promotes continuous growth and equips learners with the skills needed to excel in a constantly changing world.')} className="flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[85%] right-[-5%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:top-[77%] xsm:right-[-8%] md:h-14 md:gap-2 md:top-[82%] md:max-w-[18vw]">
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
               <FPlanning className="h-[40px] w-[40px] xsm:h-[13px] xsm:w-[13px] md:h-[26px] md:w-[26px]" />
