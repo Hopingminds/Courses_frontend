@@ -46,6 +46,7 @@ import Modules from '../Components/Assignments/Modules/index.js'
 import Question from '../Components/Assignments/Questions/index.js'
 import SubmittedSuccess from '../Components/Assignments/Submittedpage/submitted.js'
 import ManageJobsmain from '../Components/ManageJobs/ManageJobsmain.jsx'
+import PostJobsForm from '../Components/PostJobsForm/PostJobsForm.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -106,6 +107,7 @@ const Router = () => {
                 <Route path='/questions' element={<Question/>} />
                 <Route path='/submitted' element={<SubmittedSuccess/>} />
                 <Route path='/managejobs' element={<ManageJobsmain/>} />
+                <Route path='/postjob' element={<PostJobsForm/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
