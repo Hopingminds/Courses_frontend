@@ -45,6 +45,7 @@ import Enterance from '../Components/Assignments/Entrancepage/Entrance.jsx'
 import Modules from '../Components/Assignments/Modules/index.js'
 import Question from '../Components/Assignments/Questions/index.js'
 import SubmittedSuccess from '../Components/Assignments/Submittedpage/submitted.js'
+import CVBuilder from '../Components/cvBuilder/index.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -83,7 +84,7 @@ const Router = () => {
                 <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
 
                 <Route path='/success' element={<Success />} />
-                {/* <Route path='/subadmin-login' element={<SubAdmin />} /> */}
+                <Route path='/cv-builder' element={<CVBuilder />} />
                 {/* <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} /> */}
                 <Route path='/pap' element={<Pap />} />
                 {/* <Route path='/career' element={<CareerServices />} /> */}
@@ -99,11 +100,11 @@ const Router = () => {
                 <Route path='/button' element={<Button />} />
                 <Route path='/resumebuilder' element={<ResumeBuilder />} />
                 <Route path='/minorCourse' element={<MinorCourse />} />
-                <Route path='/m' element={<MinorDegree/>} />
-                <Route path='/code' element={<CodeEditor/>} />
-                <Route path='/modules' element={<Modules/>} />
-                <Route path='/questions' element={<Question/>} />
-                <Route path='/submitted' element={<SubmittedSuccess/>} />
+                <Route path='/m' element={<MinorDegree />} />
+                <Route path='/code' element={<CodeEditor />} />
+                <Route path='/modules' element={<Modules />} />
+                <Route path='/questions' element={<Question />} />
+                <Route path='/submitted' element={<SubmittedSuccess />} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
