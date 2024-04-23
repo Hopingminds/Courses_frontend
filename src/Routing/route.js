@@ -47,6 +47,7 @@ import Modules from '../Components/Assignments/Modules/index.js'
 import Question from '../Components/Assignments/Questions/index.js'
 import SubmittedSuccess from '../Components/Assignments/Submittedpage/submitted.js'
 import ManageJobsmain from '../Components/ManageJobs/ManageJobsmain.jsx'
+import PostJobsForm from '../Components/PostJobsForm/PostJobsForm.jsx'
 import CVBuilder from '../Components/cvBuilder/index.jsx'
 
 const Router = () => {
@@ -113,7 +114,11 @@ const Router = () => {
                 <Route path='/questions' element={<Question />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/managejobs' element={<ManageJobsmain />} />
+<<<<<<< HEAD
                 <Route path='/chatbot' element={<ChatBot />} />
+=======
+                <Route path='/postjob' element={<PostJobsForm/>} />
+>>>>>>> a9791d23d956651f8110aad7d72245cdeefde137
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
