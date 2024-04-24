@@ -25,20 +25,15 @@ const MinorCourse = () => {
 
   return (
     <>
-      <div className="bg_clippath h-[60vh] w-full grid place-items-center ">
-        <div className="flex flex-row px-[5vw] w-full gap-20">
-          <ul className="list-disc text-white text-[18px]">
+      <div className="bg_clippath h-[60vh] w-full flex flex-col gap-14 pt-[4%] md:pt-[6%] md:gap-12 md:h-[55vh] xsm:pt-[12%] xsm:gap-8">
+        <div className="flex px-[6vw] w-full md:px-[7vw] xsm:px-[8vw]">
+          <ul className="list-disc text-white text-[18px] md:text-[14px] xsm:text-[10px]">
             <li>20 Credits that counts towards your degree</li>
             <li>Delivered by Industry Experts</li>
             <li>Exclusive Placement Opportunities</li>
           </ul>
-          <div className="relative">
-            {" "}
-            <img src={complete_bg} alt="" className="h-8" />
-            <h3 className="absolute top-0 left-2">75% Completed</h3>
-          </div>
         </div>
-        <div className="text-[16px] px-[5vw] pb-8 text-white flex flex-col gap-4">
+        <div className="text-[16px] px-[5vw] text-white flex flex-col gap-3 md:text-[12px] xsm:text-[8px]">
           <p>
           A specialised academic path with our industry tailored micro credential programs to help you master specific skillsets in just 20 credits. These also include a capstone project where you apply your skills to real-world challenges culminating in a showcase of your accomplishments and award of a minor degree at a prestigious Graduation Ceremony held at one of our partner Campuses. As a valued member of our community, you'll enjoy access to our extensive placement network with exclusive opportunities, industry events and 1-1 mentorship sessions.
           </p>
