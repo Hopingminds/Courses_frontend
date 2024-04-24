@@ -130,19 +130,6 @@ const HireFromUs = () => {
   return (
     <>
       <Toaster position="top-right" />
-<<<<<<< HEAD
-      {(showpopup && count==1)? (
-               <div onClick={handleClose} className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center">
-                <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[40%] xsm:h-[30%] xsm:w-[50%] xsm:gap-3 xsm:text-[10px] md:text-[14px] md:h-[30%] md:w-[50%] md:gap-4">
-                    <div className='flex justify-end'>
-                    <button onClick={handleClose}><img src={Close} className="w-6 h-6 md:w-5 md:h-5 xsm:w-3 xsm:h-3"/></button>
-                    </div>
-                    <div className='flex flex-col gap-2 text-center px-[6%]'>
-                        {/* <p className='font-pop font-semibold text-[40px] text-[#1DBF73]'>Lorem, ipsum.</p> */}
-                        <p className='font-mons '>We aim to complete the verification process within 48 to 72 hours. Thank you for your understanding as we diligently review the necessary information to ensure all details are accurate and up-to-date, maintaining our high standards of accuracy.</p>
-                    </div>
-                    {/* <Link to='/profile' className='flex justify-center'>
-=======
       {showpopup && count == 1 ? (
         <div
           onClick={handleClose}
@@ -164,7 +151,6 @@ const HireFromUs = () => {
               </p>
             </div>
             {/* <Link to='/profile' className='flex justify-center'>
->>>>>>> cf584555f8c17c05adfcd76be68b76fc55072812
                         <button className='font-pop font-semibold text-[16px] text-white bg-[#1DBF73] rounded-lg p-4'>Complete Now</button>
                     </Link> */}
           </div>
