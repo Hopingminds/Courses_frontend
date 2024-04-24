@@ -8,6 +8,8 @@ import Certificate from './Certificate';
 import RecommendedCourses from '../RecommendedCourses/RecommendedCourses';
 import MyStats from './MyStats';
 import Close from "../../Assests/Images/close.png";
+import Icon from "../../Assests/Images/complete-popup.png";
+import Arrow from "../../Assests/Images/complete-arrow.png";
 
 import './MLheader.css';
 import { useNavigate } from 'react-router-dom';
@@ -83,16 +85,21 @@ export default function MyLearning() {
 
             {showPopup && (
                 <div className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center">
-                    <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[50%] md:w-[50%] md:h-[40%] md:gap-4 xsm:w-[60%] xsm:h-[30%]">
+                    <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[60%] md:w-[50%] md:h-[45%] md:gap-4 xsm:gap-4 xsm:w-[70%] xsm:h-[30%]">
+                        
                         <div className='flex justify-end'>
-                            <button onClick={() => setShowPopup(false)}><img src={Close} className='w-8 h-8 md:w-6 md:h-6 xsm:w-4 xsm:h-4'/></button>
+                            <button onClick={() => setShowPopup(false)}><img src={Close} className='w-7 h-7 md:w-5 md:h-5 xsm:w-3 xsm:h-3'/></button>
+                        </div>
+                        <div className='flex justify-center'>
+                            <img src={Icon} className='w-14 h-14 md:w-10 md:h-10 xsm:w-6 xsm:h-6'/>
                         </div>
                         <div className='flex flex-col gap-2 text-center px-[5%] md:px-[3%] xsm:px-[3%]'>
-                            <p className='font-pop font-semibold text-[36px] text-[#1DBF73] md:text-[26px] xsm:text-[16px]'>Complete Your Profile!</p>
-                            <p className='font-mons md:text-[14px] xsm:text-[10px]'>Fill out your details to unlock full access and personalized features. Let's get started!</p>
+                            <p className='font-pop font-semibold text-[32px] text-[##0A2540] md:text-[22px] xsm:text-[12px]'>Complete Your Profile!</p>
+                            <p className='font-mons text-[14px] md:text-[12px] xsm:text-[8px]'>Fill out your details to unlock full access and personalized features. Let's get started!</p>
                         </div>
-                        <Link to='/profile' className='flex justify-center'>
-                            <button className='font-pop font-semibold text-[16px] text-white bg-[#1DBF73] rounded-lg p-4 md:text-[12px] md:p-3 xsm:text-[8px] xsm:p-2'>Complete Now</button>
+                        <Link to='/profile' className='flex flex-row justify-center'>
+                            <button className='font-pop text-[15px] text-[#9099A1] rounded-l-3xl px-6 py-4 w-[50%] text-left border border-[#1DBF73] truncate md:text-[12px] md:py-3 md:px-5 xsm:py-2 xsm:px-4 xsm:text-[8px]'>Complete Your Profile</button>
+                            <img src={Arrow} className='w-16 h-14 md:w-14 md:h-12 xsm:w-10 xsm:h-8'/>
                         </Link>
                     </div>
                 </div>

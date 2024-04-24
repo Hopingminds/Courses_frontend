@@ -208,7 +208,12 @@ export default function Navbar() {
                     Complete Your Profile
                   </span>
                   {/* <div className="h-8 w-8 rounded-full border"><img src={profile} className="h-full w-full" /></div> */}
-                  <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" />
+                  {/* <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" /> */}
+                  {profile ? (
+          <img src={profile} className="h-full w-full rounded-full border" alt="Profile" />
+        ) : (
+          <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" />
+        )}
                 </div>
               </span>{" "}
             </Link>
