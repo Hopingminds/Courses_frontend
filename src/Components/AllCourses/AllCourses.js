@@ -19,6 +19,7 @@ import ReactPlayer from "react-player";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import { IoIosLock } from "react-icons/io";
 import { GoUnmute } from "react-icons/go";
+
 import { Globalinfo } from "../../App";
 import Newinstructor from "../Newinstructor";
 import HireTestimonial from "../HireFromUs/HireTestimonial";
@@ -313,6 +314,7 @@ const AllCourses = () => {
               lastName={val.instructor.lastName}
               duration={val.duration}
               image={val.featured_image}
+              profile={val.instructor.profile}
               slug={val.slug}
               onClick={() => handleCourseClick(val.title)}
               isSelected={selectedCourse === val.title}
