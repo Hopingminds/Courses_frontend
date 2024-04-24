@@ -83,16 +83,16 @@ export default function MyLearning() {
 
             {showPopup && (
                 <div className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center">
-                    <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[50%] xsm:py-2 xsm:px-4 xsm:bottom-6 md:bottom-8 md:py-3 md:px-5">
+                    <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[50%] md:w-[50%] md:h-[40%] md:gap-4 xsm:w-[60%] xsm:h-[30%]">
                         <div className='flex justify-end'>
-                            <button onClick={() => setShowPopup(false)}><img src={Close} /></button>
+                            <button onClick={() => setShowPopup(false)}><img src={Close} className='w-8 h-8 md:w-6 md:h-6 xsm:w-4 xsm:h-4'/></button>
                         </div>
-                        <div className='flex flex-col gap-2 text-center px-[5%]'>
-                            <p className='font-pop font-semibold text-[40px] text-[#1DBF73]'>Complete Your Profile!</p>
-                            <p className='font-mons '>Fill out your details to unlock full access and personalized features. Let's get started!</p>
+                        <div className='flex flex-col gap-2 text-center px-[5%] md:px-[3%] xsm:px-[3%]'>
+                            <p className='font-pop font-semibold text-[36px] text-[#1DBF73] md:text-[26px] xsm:text-[16px]'>Complete Your Profile!</p>
+                            <p className='font-mons md:text-[14px] xsm:text-[10px]'>Fill out your details to unlock full access and personalized features. Let's get started!</p>
                         </div>
                         <Link to='/profile' className='flex justify-center'>
-                            <button className='font-pop font-semibold text-[16px] text-white bg-[#1DBF73] rounded-lg p-4'>Complete Now</button>
+                            <button className='font-pop font-semibold text-[16px] text-white bg-[#1DBF73] rounded-lg p-4 md:text-[12px] md:p-3 xsm:text-[8px] xsm:p-2'>Complete Now</button>
                         </Link>
                     </div>
                 </div>

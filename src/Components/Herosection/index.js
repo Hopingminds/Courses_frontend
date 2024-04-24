@@ -173,7 +173,7 @@ export default function Herosection() {
           </div>
           <div className="text-[20px] leading-10 font-bold text-white font-pop text-wrap md:text-[50px] xsm:text-[20px] xsm:leading-5">
             {" "}
-            Unlock Opportunities with 2000+ Leading Corporates, Master Skills with Industry Experts, and Stay up-skilled with our Annually Updated Curriculum; Experience Personalized Career Coaching and Exclusive Networking Events!
+            Unlock Opportunities with 200+ Leading Corporates, Master Skills with Industry Experts, and Stay up-skilled with our Annually Updated Curriculum; Experience Personalized Career Coaching and Exclusive Networking Events!
           </div>
           <div className="text-[25px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap md:text-[18px] xsm:text-[10px] xsm:h-8">
             <span className="text-white">Hign Impact</span>

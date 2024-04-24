@@ -99,9 +99,9 @@ function handleClose(){
       <Toaster position="top-right" />
       {(showpopup && count==1)? (
                <div onClick={handleClose} className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center">
-                <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[50%] xsm:py-2 xsm:px-4 xsm:bottom-6 md:bottom-8 md:py-3 md:px-5">
+                <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[40%] xsm:h-[30%] xsm:w-[50%] xsm:gap-3 xsm:text-[10px] md:text-[14px] md:h-[30%] md:w-[50%] md:gap-4">
                     <div className='flex justify-end'>
-                    <button onClick={handleClose}><img src={Close} /></button>
+                    <button onClick={handleClose}><img src={Close} className="w-6 h-6 md:w-5 md:h-5 xsm:w-3 xsm:h-3"/></button>
                     </div>
                     <div className='flex flex-col gap-2 text-center px-[6%]'>
                         {/* <p className='font-pop font-semibold text-[40px] text-[#1DBF73]'>Lorem, ipsum.</p> */}
