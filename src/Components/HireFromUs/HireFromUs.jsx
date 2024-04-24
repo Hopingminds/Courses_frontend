@@ -3,7 +3,7 @@ import Resume2 from "./Resume2";
 import Companies2 from "../Companies/Companies2";
 import "./hirefromus.css";
 import WhyHM from "./WhyHM";
-import {ReactComponent as Ok} from '../../Assets/Icons/ok.svg'
+import { ReactComponent as Ok } from "../../Assets/Icons/ok.svg";
 import HireTestimonial from "./HireTestimonial";
 import NewHireTestimonial from "./newhiretestimonials";
 import { RiWhatsappFill } from "react-icons/ri";
@@ -12,108 +12,156 @@ import toast, { Toaster } from "react-hot-toast";
 import { BASE_URL } from "../../Api/api";
 import HireTable from "./HireTable";
 import Close from "../../Assests/Images/close.png";
+import { validateEmail } from "../../helpers";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const HireFromUs = () => {
+  const navigate = useNavigate();
   const [hiredata, sethiredata] = useState({
-    name:"",
-    email:"",
-    phone:"",
-    company:""
-  })
-  const [showpopup, setshowpopup] = useState(false)
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+  });
+  const [showpopup, setshowpopup] = useState(false);
   const [hirelogindata, sethirelogindata] = useState({
-    name:"",
-    email:"",
-    otp:"",
-  })
-  const [tab, settab] = useState(1)
-  const [count, setcount] = useState(1)
+    name: "",
+    email: "",
+    otp: "",
+  });
+  const [tab, settab] = useState(1);
+  const [count, setcount] = useState(1);
 
-function handleHover(){
-  // console.log("log");
-  if(count==1){
-    setshowpopup(true)
-    // setcount(2)
+  function handleHover() {
+    // console.log("log");
+    if (count == 1) {
+      setshowpopup(true);
+      // setcount(2)
+    }
   }
-}
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     sethiredata({
-        ...hiredata,
-        [name]: value,
-        
+      ...hiredata,
+      [name]: value,
     });
-};
+  };
   const handleloginChange = (e) => {
     const { name, value } = e.target;
     sethirelogindata({
-        ...hirelogindata,
-        [name]: value,
-        
+      ...hirelogindata,
+      [name]: value,
     });
-};
-async function handleLogin(){
+  };
+  const handleLogin = async () => {
+    if (!validateEmail(hirelogindata.email)) {
+      toast.error("Enter valid Email Address");
 
-}
-async function handleRegister(){
-  if(!hiredata.name || !hiredata.email || !hiredata.company|| !hiredata.phone ){
-      toast.error('Every input must be filled')
       return;
-  }
-  else{
+    } else if (!hirelogindata.password) {
+      toast.error("Enter Your Password");
+
+      return;
+    } else {
       try {
-          let url=BASE_URL+'/addhirefromusform'
-          const data=await fetch(url,{
-              method:'POST',
-              headers: {
-                  'Accept': 'application.json',
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(hiredata),
-          })
-          const response=await data.json()
-          if(response.success){
-              toast.success(response.message)
-              // sethiredata({
-              //     "name": "",
-              //     "email": "",
-              //     "phone": "",
-              //     "degree": ""
-              // })
-          }
-          else{
-toast.error(response.message)
-          }
+        const res = await axios.post(`${BASE_URL}/loginrecwithemail`, {
+          email: hirelogindata.email,
+          password: hirelogindata.password,
+        });
+        if (res?.data?.token) {
+          navigate("/managejobs");
+        }
+
+        console.log(res);
+
+        toast.success("Login Successful");
+        // localStorage.setItem("COURSES_USER_TOKEN", res.data.token);
       } catch (error) {
-          console.log(error);
+        toast.error(error.response.data.error);
       }
+    }
+  };
+  async function handleRegister() {
+    if (
+      !hiredata.name ||
+      !hiredata.email ||
+      !hiredata.company ||
+      !hiredata.phone
+    ) {
+      toast.error("Every input must be filled");
+      return;
+    } else {
+      try {
+        let url = BASE_URL + "/addhirefromusform";
+        const data = await fetch(url, {
+          method: "POST",
+          headers: {
+            Accept: "application.json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(hiredata),
+        });
+        const response = await data.json();
+        if (response.success) {
+          toast.success(response.message);
+          // sethiredata({
+          //     "name": "",
+          //     "email": "",
+          //     "phone": "",
+          //     "degree": ""
+          // })
+        } else {
+          toast.error(response.message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
-}
-function handleClose(){
-   setshowpopup(false)
-   setcount(2)
-}
+  function handleClose() {
+    setshowpopup(false);
+    setcount(2);
+  }
+
+  console.log(hirelogindata);
+
   return (
     <>
       <Toaster position="top-right" />
-      {(showpopup && count==1)? (
-               <div onClick={handleClose} className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center">
-                <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[50%] xsm:py-2 xsm:px-4 xsm:bottom-6 md:bottom-8 md:py-3 md:px-5">
-                    <div className='flex justify-end'>
-                    <button onClick={handleClose}><img src={Close} /></button>
-                    </div>
-                    <div className='flex flex-col gap-2 text-center px-[6%]'>
-                        {/* <p className='font-pop font-semibold text-[40px] text-[#1DBF73]'>Lorem, ipsum.</p> */}
-                        <p className='font-mons '>We aim to complete the verification process within 48 to 72 hours. Thank you for your understanding as we diligently review the necessary information to ensure all details are accurate and up-to-date, maintaining our high standards of accuracy.</p>
-                    </div>
-                    {/* <Link to='/profile' className='flex justify-center'>
+      {showpopup && count == 1 ? (
+        <div
+          onClick={handleClose}
+          className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center"
+        >
+          <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[40%] md:w-[50%] md:h-[40%] md:gap-4 xsm:w-[60%] xsm:h-[30%]">
+            <div className="flex justify-end">
+              <button onClick={handleClose}>
+                <img src={Close} className='w-8 h-8 md:w-6 md:h-6 xsm:w-4 xsm:h-4' />
+              </button>
+            </div>
+            <div className="flex flex-col gap-2 text-center px-[6%]">
+              {/* <p className='font-pop font-semibold text-[40px] text-[#1DBF73]'>Lorem, ipsum.</p> */}
+              <p className="font-mons md:text-[14px] xsm:text-[10px]">
+                We aim to complete the verification process within 48 to 72
+                hours. Thank you for your understanding as we diligently review
+                the necessary information to ensure all details are accurate and
+                up-to-date, maintaining our high standards of accuracy.
+              </p>
+            </div>
+            {/* <Link to='/profile' className='flex justify-center'>
                         <button className='font-pop font-semibold text-[16px] text-white bg-[#1DBF73] rounded-lg p-4'>Complete Now</button>
                     </Link> */}
-              </div>
-              </div>
-            ):''}
-      <div className=" px-[5%] pt-[4%]  bg-gradient-to-r from-[#0F2027] to-[#203A43] wavebg"  style={{ width: "100%" }}>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+      <div
+        className=" px-[5%] pt-[4%]  bg-gradient-to-r from-[#0F2027] to-[#203A43] wavebg"
+        style={{ width: "100%" }}
+      >
         {/* Mainsection */}
         <div className=" flex justify-between pb-[18%] xsm:flex-col xsm:gap-6 xsm:pb-[35%] ">
           <div className="flex flex-col gap-16 w-[70%] md:gap-10 xsm:w-full xsm:gap-6 md:w-[65%]">
@@ -124,27 +172,36 @@ function handleClose(){
               </p>
             </div>
 
-
             <div className="flex flex-col gap-y-7 md:gap-y-5 xsm:gap-y-3">
               <div className="flex items-center gap-x-4 xsm:gap-x-2">
-                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5"/>
-                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">Hire from our Pan-India Talent pool, across 100+ colleges</div>
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5" />
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">
+                  Hire from our Pan-India Talent pool, across 100+ colleges
+                </div>
               </div>
               <div className="flex items-center gap-x-4 xsm:gap-x-2">
-                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5"/>
-                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">Pre-Trained Developers available across 10 profiles</div>
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5" />
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">
+                  Pre-Trained Developers available across 10 profiles
+                </div>
               </div>
               <div className="flex items-center gap-x-4 xsm:gap-x-2">
-                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5"/>
-                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">Experience ranging from 0 to 3 years</div>
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5" />
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">
+                  Experience ranging from 0 to 3 years
+                </div>
               </div>
               <div className="flex items-center gap-x-4 xsm:gap-x-2">
-                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5"/>
-                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">Available for Full-Time as well as for Internships</div>
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5" />
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">
+                  Available for Full-Time as well as for Internships
+                </div>
               </div>
               <div className="flex items-center gap-x-4 xsm:gap-x-2">
-                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5"/>
-                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">Solve your long-term Entry-Level Tech recruitment needs</div>
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5" />
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">
+                  Solve your long-term Entry-Level Tech recruitment needs
+                </div>
               </div>
             </div>
 
@@ -253,133 +310,181 @@ function handleClose(){
               </div>
             </div> */}
           </div>
-          <div onMouseEnter={handleHover} className="w-[30%] self-end xsm:w-full ">
-            <div  className="bg-[#00000033]   rounded-xl  text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
-             <div className="flex w-full rounded-t-xl mt-2 space-x-1">
-                <button className="w-[50%] ml-1 py-2 border-b-[2px] rounded-xl" onClick={()=>settab(2)}>Login</button>
-                <button className="w-[50%] mr-1 py-2 border-b-[2px] rounded-xl" onClick={()=>settab(1)}>Register</button>
-             </div>
+          <div
+            onMouseEnter={handleHover}
+            className="w-[30%] self-end xsm:w-full "
+          >
+            <div className="bg-[#00000033]   rounded-xl  text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
+              <div className="flex w-full rounded-t-xl mt-2 space-x-1">
+                <button
+                  className="w-[50%] ml-1 py-2 border-b-[2px] rounded-xl"
+                  onClick={() => settab(2)}
+                >
+                  Login
+                </button>
+                <button
+                  className="w-[50%] mr-1 py-2 border-b-[2px] rounded-xl"
+                  onClick={() => settab(1)}
+                >
+                  Register
+                </button>
+              </div>
               {/* <div className="flex justify-center text-center">
                 <p className="font-pop font-semibold text-[20px] md:text-[14px] xsm:text-[16px]">Share Your Hiring Requirements</p>
               </div> */}
-              {
-                tab==1?
-                <div className="flex flex-col gap-2 px-6 
-                h-[350px]">
-                <div className="flex flex-col gap-1">
-                  <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="name">
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
-                    onChange={handleChange}
-                    value={hiredata.name}
-                    type="text"
-                    placeholder="Enter Your name"
-                  />
+              {tab == 1 ? (
+                <div
+                  className="flex flex-col gap-2 px-6 
+                h-[350px]"
+                >
+                  <div className="flex flex-col gap-1">
+                    <label
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      htmlFor="name"
+                    >
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
+                      onChange={handleChange}
+                      value={hiredata.name}
+                      type="text"
+                      placeholder="Enter Your name"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      htmlFor="pass"
+                    >
+                      Company
+                    </label>
+                    <input
+                      id="pass"
+                      name="company"
+                      onChange={handleChange}
+                      value={hiredata.company}
+                      className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
+                      type="text"
+                      placeholder="Enter Your Company"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      htmlFor="study"
+                    >
+                      Work E-mail
+                    </label>
+                    <input
+                      onChange={handleChange}
+                      value={hiredata.email}
+                      name="email"
+                      id="study"
+                      className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
+                      type="text"
+                      placeholder="Enter Email"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      htmlFor="time"
+                    >
+                      Phone number
+                    </label>
+                    <input
+                      onChange={handleChange}
+                      value={hiredata.phone}
+                      id="time"
+                      name="phone"
+                      className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
+                      type="text"
+                      placeholder="Enter Your Mobile number"
+                    />
+                  </div>
+                  <div className="px-6 mt-2">
+                    <button
+                      onClick={handleRegister}
+                      className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]"
+                    >
+                      Submit
+                    </button>
+                  </div>
                 </div>
-                <div className="flex flex-col gap-1">
-                  <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="pass">
-                  Company
-                  </label>
-                  <input
-                    id="pass"
-                    name="company"
-                    onChange={handleChange}
-                    value={hiredata.company}
-                    className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
-                    type="text"
-                    placeholder="Enter Your Company"
-                  />
+              ) : (
+                <div className="flex flex-col gap-y-5 px-6 h-[350px]">
+                  <div className="flex flex-col gap-1">
+                    <label
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      htmlFor="name"
+                    >
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
+                      onChange={handleloginChange}
+                      value={hirelogindata.name}
+                      type="text"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      htmlFor="email"
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
+                      onChange={handleloginChange}
+                      value={hirelogindata.email}
+                      type="text"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      htmlFor="otp"
+                    >
+                      Password
+                    </label>
+                    <input
+                      id="password"
+                      name="password"
+                      className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
+                      onChange={handleloginChange}
+                      value={hirelogindata.password}
+                      type="text"
+                      placeholder="Enter Password"
+                    />
+                  </div>
+                  <div className="px-6 mt-5">
+                    <button
+                      onClick={handleLogin}
+                      className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]"
+                    >
+                      Login
+                    </button>
+                  </div>
                 </div>
-                <div className="flex flex-col gap-1">
-                  <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="study">
-                  Work E-mail
-                  </label>
-                  <input
-                  onChange={handleChange}
-                  value={hiredata.email}
-                  name="email"
-                    id="study"
-                    className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
-                    type="text"
-                    placeholder="Enter Email"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="time">
-                  Phone number
-                  </label>
-                  <input
-                   onChange={handleChange}
-                   value={hiredata.phone}
-                    id="time"
-                    name="phone"
-                    className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
-                    type="text"
-                    placeholder="Enter Your Mobile number"
-                  />
-                </div>
-                <div className="px-6 mt-2">
-                <button onClick={handleRegister} className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]">
-                Submit
-                </button>
-              </div>
-              </div>:<div className="flex flex-col gap-y-5 px-6 h-[350px]">
-                <div className="flex flex-col gap-1">
-                  <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="name">
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
-                    onChange={handleloginChange}
-                    value={hirelogindata.name}
-                    type="text"
-                    placeholder="Enter your name"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="email">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
-                    onChange={handleloginChange}
-                    value={hirelogindata.email}
-                    type="text"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]" htmlFor="otp">
-                    OTP
-                  </label>
-                  <input
-                    id="otp"
-                    name="otp"
-                    className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
-                    onChange={handleloginChange}
-                    value={hirelogindata.otp}
-                    type="text"
-                    placeholder="Enter OTP"
-                  />
-                </div>
-                <div className="px-6 mt-5">
-                <button onClick={handleLogin} className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]">
-                Get OTP
-                </button>
-              </div>
-              </div>}
-           
+              )}
+
               <div className="flex justify-center px-6 mb-1">
-                <Link target="_blank" to='https://wa.me/qr/S3LVDB3Y3SB3H1' className="font-int font-medium text-[40px] md:text-[30px]">
-                <RiWhatsappFill className="md:w-6 md:h-6"/>
+                <Link
+                  target="_blank"
+                  to="https://wa.me/qr/S3LVDB3Y3SB3H1"
+                  className="font-int font-medium text-[40px] md:text-[30px]"
+                >
+                  <RiWhatsappFill className="md:w-6 md:h-6" />
                 </Link>
               </div>
             </div>
@@ -389,9 +494,9 @@ function handleClose(){
       <Companies2 />
       <Resume2 />
       <WhyHM />
-      <HireTable/>
-      <div  className='px-[5%] bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43]'>
-        <NewHireTestimonial/>
+      <HireTable />
+      <div className="px-[5%] bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43]">
+        <NewHireTestimonial />
       </div>
     </>
   );
