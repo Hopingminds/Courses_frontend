@@ -175,7 +175,11 @@ export default function Herosection() {
             {" "}
             Unlock Opportunities with 200+ Leading Corporates, Master Skills with Industry Experts, and Stay up-skilled with our Annually Updated Curriculum; Experience Personalized Career Coaching and Exclusive Networking Events!
           </div>
+<<<<<<< HEAD
           <div className="text-[25px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap md:text-[18px] xsm:text-[12px] xsm:h-8">
+=======
+          <div className="text-[25px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap md:text-[18px] xsm:text-[10px] xsm:h-8">
+>>>>>>> cabc3556b7360e0ef94014c70894a33303e09ae3
             <span className="text-white">High Impact</span>
             {displayText}
           </div>
