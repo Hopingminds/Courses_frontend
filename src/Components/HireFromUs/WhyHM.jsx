@@ -54,8 +54,8 @@ const WhyHM = () => {
         <div className="flex justify-center">
           <p className="text-[#696984] text-[20px] font-pop w-[70%] text-center leading-12 xsm:text-[12px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
             Welcome to HopingMinds, your gateway to a brighter future. As an
-            esteemed partner of the National Skill Development Corporation
-            (NSDC), we stand at the forefront of transformative education,
+            esteemed partner of the <span className="font-semibold"> National Skill Development Corporation
+            (NSDC)</span>, we stand at the forefront of transformative education,
             dedicated to nurturing the next generation of leaders and
             innovators.
           </p>
@@ -67,19 +67,19 @@ const WhyHM = () => {
             <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">Immediate Joining</div>
             <div className="flex gap-x-2 ">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Rapid Skill Acquisition.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Felxibility in Learning.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Networking Opportunities.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Enhanced career Opportunities.</div>
             </div>
             </div>
             <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500">
@@ -87,19 +87,19 @@ const WhyHM = () => {
             <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">No Offer Dropouts</div>
             <div className="flex gap-x-2 ">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Access to Skilled Talent Pool.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Scalability in Hiring.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Enhanced Employer branding.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Data Driven Insights.</div>
             </div>
             </div>
             <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500">
@@ -107,19 +107,19 @@ const WhyHM = () => {
             <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">Hiring In 1 day</div>
             <div className="flex gap-x-2 ">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Reduced Hiring Risks.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Ready to deploy from day One.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Customizable learning paths.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Integration with HR systems.</div>
             </div>
             </div>
             <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500">
@@ -127,19 +127,19 @@ const WhyHM = () => {
             <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">PAN India Availabilitiy</div>
             <div className="flex gap-x-2 ">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Nationwide Talent Pool.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Diverse Regional Presence.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Scalable Hiring Solutions.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">We have pretrained developers.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Accessible Across India.</div>
             </div>
             </div>
         </div>

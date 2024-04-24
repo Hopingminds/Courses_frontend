@@ -11,7 +11,7 @@ import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 
 export default function Navbar() {
-  const [profile, setprofile] = useState('')
+  const [profile, setprofile] = useState("");
   const {
     cartData,
     GetCart,
@@ -49,21 +49,18 @@ export default function Navbar() {
   useEffect(() => {
     async function Fetchdata() {
       try {
-        let token = localStorage.getItem('COURSES_USER_TOKEN')
+        let token = localStorage.getItem("COURSES_USER_TOKEN");
         if (token) {
-          let URL= BASE_URL + '/user/'+jwtDecode(token.email)
-          
-          const data = await fetch(URL)
-          const response = await data.json()
-          setprofile(response?.profile)
+          let URL = BASE_URL + "/user/" + jwtDecode(token.email);
+
+          const data = await fetch(URL);
+          const response = await data.json();
+          setprofile(response?.profile);
           console.log(response?.profile);
         }
-       
-      } catch (error) {
-        
-      }
+      } catch (error) {}
     }
-    Fetchdata()
+    Fetchdata();
   }, []);
 
   return (
@@ -209,11 +206,15 @@ export default function Navbar() {
                   </span>
                   {/* <div className="h-8 w-8 rounded-full border"><img src={profile} className="h-full w-full" /></div> */}
                   {/* <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" /> */}
-                  {profile ? (
-          <img src={profile} className="h-full w-full rounded-full border" alt="Profile" />
-        ) : (
-          <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" />
-        )}
+                  {userDetail?.profile ? (
+                    <img
+                      src={userDetail?.profile}
+                      className="h-9 w-9 rounded-full object-cover xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px]"
+                      alt="Profile"
+                    />
+                  ) : (
+                    <Account className="w-9 h-9 rounded-full xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" />
+                  )}
                 </div>
               </span>{" "}
             </Link>
