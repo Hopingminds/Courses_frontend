@@ -64,11 +64,11 @@ const CourseCard = ({
             : "auto",
       }}
     >
-      {(userDetail?.blocked_courses?.includes(_id) || !display) && (
+{/*       {(userDetail?.blocked_courses?.includes(_id) || !display) && (
         <span className="absolute top-0 left-0 h-[100%] w-[100%] z-[9] bg-[rgba(0,0,0,0.6)] rounded-xl grid place-items-center">
           <IoIosLock size={"60"} color={"white"} />
         </span>
-      )}
+      )} */}
       {mouseHovered === ind && (
         <span className="bg-transparent p-4 absolute top-2 left-2 z-[9999]">
           {IsMuted ? (
