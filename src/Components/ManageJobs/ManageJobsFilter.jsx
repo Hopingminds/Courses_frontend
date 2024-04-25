@@ -112,7 +112,7 @@ const ManageJobsFilter = () => {
                                 <p className="select-none text-[13px] text-gray-600">1</p>
                             </div>
                         </label>
-                        <label htmlFor="expiredjobs" className="flex justify-between py-2">
+                        {/* <label htmlFor="expiredjobs" className="flex justify-between py-2">
                             <div className="flex items-center gap-x-2">
                                 <input
                                     className="w-4 h-4"
@@ -128,13 +128,13 @@ const ManageJobsFilter = () => {
                             <div>
                                 <p className="select-none text-[13px] text-gray-600">1</p>
                             </div>
-                        </label>
+                        </label> */}
                         {/* Add similar sections for other job statuses */}
                     </div>
                 )}
             </div>
             {/* Job Posted By Section */}
-            <div className="w-full py-6 border-b">
+            {/* <div className="w-full py-6 border-b">
                 <div
                     onClick={() => setPostedBy(!postedBy)}
                     className="flex items-center justify-between cursor-pointer"
@@ -176,11 +176,10 @@ const ManageJobsFilter = () => {
                                     <p className="select-none text-[13px] text-gray-600">12</p>
                                 </div>
                             </label>
-                            {/* Add similar sections for other posted by filters */}
                         </div>
                     </div>
                 )}
-            </div>
+            </div> */}
         </div>
     );
 };
