@@ -24,7 +24,7 @@ function Instructor() {
         const data = await fetch(url);
         const response = await data.json();
         // console.log(response);
-        setData(response.course);
+        setData(response?.course);
       } catch (error) {
         console.log(error);
       }
@@ -39,12 +39,12 @@ function Instructor() {
       <div className='instructor-container'>
 
         <div className='instructor-image'>
-          <img src={instructorImg} />
+          <img src={Data?.instructor?.profile} />
         </div>
 
         <div className='instructor-content space-y-2 xsm:space-y-0 md:space-y-1'>
 
-          <p className='font-mons font-semibold text-[22px]'>{Data?.instructor.firstName} {Data?.instructor.lastName}</p>
+          <p className='font-mons font-semibold text-[22px]'>{Data?.instructor?.name}</p>
           {/* <p className='text-[14px]'>{Data?.instructor.about}</p> */}
 
 
@@ -60,7 +60,7 @@ function Instructor() {
         </div>
       </div>
 
-      <p className='text-[14px]'>{Data?.instructor.about}</p>
+      <p className='text-[14px]'>{Data?.instructor?.bio}</p>
       {/* <div className='links'>
         <p>Follow: </p>
         {iconPaths.map((icon, index) => (
