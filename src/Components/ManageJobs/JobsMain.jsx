@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { RxDoubleArrowLeft, RxDoubleArrowRight } from "react-icons/rx";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import AllJobs from './AllJobs';
+import Draft from './Draft';
 
 const JobsMain = () => {
+  const [showPage, setShowPage] = useState("AllJobs");
   return (
     <div className='w-[70%]'>
         {/* Header */}
         <div className='border-b flex justify-between '>
           <div className='flex gap-6'>
-            <button className='text-[13px] focus:font-semibold py-2 focus:border-b-4 focus:border-green-500'>All Jobs <span>12</span></button>
-            <button className='text-[13px] focus:font-semibold py-2 focus:border-b-4 focus:border-green-500'>Drafts</button>
+            <button className={`text-[13px] py-2 ${showPage==="AllJobs"?'border-b-4 border-green-500 font-semibold':''}`} onClick={() => setShowPage("AllJobs")}>All Jobs <span>4</span></button>
+            {/* <button className={`text-[13px] py-2 ${showPage==="drafts"?'border-b-4 border-green-500 font-semibold':''}`} onClick={() => setShowPage("drafts")}>Drafts</button> */}
           </div>
-          <div className='flex py-2 gap-6'>
+          {/* <div className='flex py-2 gap-6'>
             <div className='flex items-center gap-2 text-gray-500'>
               <p className='text-[13px]'>Show</p>
               <div className='border px-2 '>
@@ -35,11 +37,12 @@ const JobsMain = () => {
               <RxDoubleArrowRight />
             </div>
 
-          </div>
+          </div> */}
         </div>
         {/* content */}
         <div>
-          <AllJobs/>
+          {showPage=== "AllJobs" ? <AllJobs/>:<Draft/>}
+          
         </div>
     </div>
   )
