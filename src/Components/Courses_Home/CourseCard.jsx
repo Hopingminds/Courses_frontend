@@ -16,10 +16,10 @@ const CourseCard = ({
   slug,
   featured_video,
   price,
- name,
- email,
- experience,
- phone,
+  name,
+  email,
+  experience,
+  phone,
   duration,
   image,
   onClick,
@@ -67,6 +67,7 @@ const CourseCard = ({
       }}
     >
       {/* {(userDetail?.blocked_courses?.includes(_id) || !display) && (
+{/*       {(userDetail?.blocked_courses?.includes(_id) || !display) && (
         <span className="absolute top-0 left-0 h-[100%] w-[100%] z-[9] bg-[rgba(0,0,0,0.6)] rounded-xl grid place-items-center">
           <IoIosLock size={"60"} color={"white"} />
         </span>
@@ -130,7 +131,7 @@ const CourseCard = ({
         <div className="flex flex-col gap-2 mt-2 xsm:mt-1 xsm:gap-0 md:gap-0">
           <div className="flex justify-between items-center min-h-[30%]">
             <div className="flex items-center space-x-3 max-w-[80%] xsm:max-w-[70%] xsm:space-x-1 md:space-x-2 md:max-w-[70%]">
-             {/* <FaUserCircle  className="text-2xl  xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"/> */}
+              {/* <FaUserCircle  className="text-2xl  xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"/> */}
               <img
                 className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"
                 src={profile}
@@ -143,7 +144,7 @@ const CourseCard = ({
               <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[6px] md:text-[10px]">
                 ₹ {price}
               </p>
-            </div>  
+            </div>
           </div>
           <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px] md:h-12 xsm:mt-2 xsm:h-6">
             {title}
