@@ -25,10 +25,10 @@ const ManageJobsHeader = () => {
                 </select> */}
           Post Job
         </div>
-        <IoIosSettings
+        {/* <IoIosSettings
           fontSize={"1.75rem"}
           className="text-gray-400 cursor-pointer"
-        />
+        /> */}
       </div>
     </div>
   );

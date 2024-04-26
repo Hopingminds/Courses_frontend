@@ -49,6 +49,7 @@ import SubmittedSuccess from '../Components/Assignments/Submittedpage/submitted.
 import ManageJobsmain from '../Components/ManageJobs/ManageJobsmain.jsx'
 import PostJobsForm from '../Components/PostJobsForm/PostJobsForm.jsx'
 import CVBuilder from '../Components/cvBuilder/index.jsx'
+import JobPreview from '../Components/JobPreview/JobPreview.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -115,6 +116,7 @@ const Router = () => {
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/managejobs' element={<ManageJobsmain />} />
                 <Route path='/postjob' element={<PostJobsForm/>} />
+                <Route path='/jobpreview' element={<JobPreview/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 

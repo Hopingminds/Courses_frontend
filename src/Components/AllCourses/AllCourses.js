@@ -38,6 +38,7 @@ const AllCourses = () => {
 
   const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
+
     [User1]: {
       name: "SAURABH PAL",
       email: "saurabh@dataresolve.com",
@@ -108,7 +109,7 @@ const AllCourses = () => {
         setshow(true);
 
         const res = await axios.get(`${BASE_URL}/courses`);
-        // console.log(res);
+        console.log(res?.data?.courses);
 
 
         setAllCourses(res?.data?.courses);
@@ -303,28 +304,31 @@ const AllCourses = () => {
       <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
       <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
-        {allCourses.map((val, ind) => {
+        {allCourses?.map((val, ind) => {
           return (
             <CourseCard
-              key={val.title}
-              title={val.title}
-              featured_video={val.featured_video}
-              price={val.base_price}
-              firstName={val.instructor.firstName}
-              lastName={val.instructor.lastName}
-              duration={val.duration}
-              image={val.featured_image}
-              profile={val.instructor.profile}
-              slug={val.slug}
-              onClick={() => handleCourseClick(val.title)}
-              isSelected={selectedCourse === val.title}
-              category={val.category}
-              description={val.overview}
+              key={val?.title}
+              title={val?.title}
+              featured_video={val?.featured_video}
+              price={val?.base_price}
+              name={val?.instructor?.name}
+              duration={val?.duration}
+              image={val?.featured_image}
+              profile={val?.instructor?.profile}
+              email={val?.instructor?.email}
+              experience={val?.instructor?.experience}
+              bio={val?.instructor?.bio}
+              slug={val?.slug}
+              phone={val?.instructor?.phone}
+              onClick={() => handleCourseClick(val?.title)}
+              isSelected={selectedCourse === val?.title}
+              category={val?.category}
+              description={val?.overview}
               ind={ind}
-              _id={val._id}
-              display={val.display}
-              IsMinorDegreeCourse={val.IsMinorDegreeCourse}
-              credits={val.credits}
+              _id={val?._id}
+              display={val?.display}
+              IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
+              credits={val?.credits}
             // Pass category to CourseCard component
             />
           );
