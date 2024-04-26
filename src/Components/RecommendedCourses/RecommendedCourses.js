@@ -27,22 +27,28 @@ export default function RecommendedCourses() {
                 <p className="font-pop font-semibold text-[30px] xsm:text-[14px] md:text-[20px]">Recommended Courses</p>
             </div>
             <div className="grid grid-cols-4  space-x-5 justify-between mt-2 flex-wrap 2xl:gap-10 xsm:grid xsm:grid-cols-2 pb-5 xsm:space-x-0 xsm:gap-3 xsm:px-[2%] md:space-x-2"> {/* Changed flex to flex-wrap */}
-                {Data?.map((course, ind) => (
+                {Data?.map((val, ind) => (
                     <CourseCard
-                        key={course.title}
-                        title={course.title}
-                        price={course.base_price}
-                        firstName={course.instructor.firstName}
-                        lastName={course.instructor.lastName}
-                        duration={course.duration}
-                        image={course.featured_image}
-                        slug={course.slug}
-                        category={course.category}
-                        description={course.overview}
-                        ind={ind}
-                        featured_video={course.featured_video}
-                        IsMinorDegreeCourse={course.IsMinorDegreeCourse}
-                        credits={course.credits}
+                    key={val?.title}
+              title={val?.title}
+              featured_video={val?.featured_video}
+              price={val?.base_price}
+              name={val?.instructor?.name}
+              duration={val?.duration}
+              image={val?.featured_image}
+              profile={val?.instructor?.profile}
+              email={val?.instructor?.email}
+              experience={val?.instructor?.experience}
+              bio={val?.instructor?.bio}
+              slug={val?.slug}
+              phone={val?.instructor?.phone}
+              category={val?.category}
+              description={val?.overview}
+              ind={ind}
+              _id={val?._id}
+              display={val?.display}
+              IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
+              credits={val?.credits}
                     // Pass category to CourseCard component
                     />
                 ))

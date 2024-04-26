@@ -16,8 +16,10 @@ const CourseCard = ({
   slug,
   featured_video,
   price,
-  lastName,
-  firstName,
+ name,
+ email,
+ experience,
+ phone,
   duration,
   image,
   onClick,
@@ -64,11 +66,11 @@ const CourseCard = ({
             : "auto",
       }}
     >
-      {(userDetail?.blocked_courses?.includes(_id) || !display) && (
+      {/* {(userDetail?.blocked_courses?.includes(_id) || !display) && (
         <span className="absolute top-0 left-0 h-[100%] w-[100%] z-[9] bg-[rgba(0,0,0,0.6)] rounded-xl grid place-items-center">
           <IoIosLock size={"60"} color={"white"} />
         </span>
-      )}
+      )} */}
       {mouseHovered === ind && (
         <span className="bg-transparent p-4 absolute top-2 left-2 z-[9999]">
           {IsMuted ? (
@@ -128,13 +130,13 @@ const CourseCard = ({
         <div className="flex flex-col gap-2 mt-2 xsm:mt-1 xsm:gap-0 md:gap-0">
           <div className="flex justify-between items-center min-h-[30%]">
             <div className="flex items-center space-x-3 max-w-[80%] xsm:max-w-[70%] xsm:space-x-1 md:space-x-2 md:max-w-[70%]">
-             <FaUserCircle  className="text-2xl  xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"/>
-              {/* <img
+             {/* <FaUserCircle  className="text-2xl  xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"/> */}
+              <img
                 className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"
-                src='https://drive.google.com/file/d/1ZiiqF4eD7tSjyG2h8TQHndbbX1bMAgaQ/view?usp=drive_link'
-              /> */}
+                src={profile}
+              />
               <p className="font-pop font-medium text-[13px] flex-wrap xsm:text-[6px] md:text-[7px]">
-                {firstName + " " + lastName}
+                {name}
               </p>
             </div>
             <div>
