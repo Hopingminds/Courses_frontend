@@ -30,20 +30,20 @@ export default function CDDetails() {
       let login = localStorage.getItem("COURSES_USER_TOKEN");
       if (login) {
         let token = jwtDecode(login);
-        let url1 = BASE_URL + "/course/"+ params.slug;
+        let url1 = BASE_URL + "/user/" + token.email + "/" + params.slug;
 
         const data = await fetch(url1);
         const response = await data.json();
-        console.log(response);
-        if (response?.course) {
-          setcourseId(response?.course?._id);
-          response?.completed_lessons?.forEach((val) => {
+        // console.log(response);
+        if (response?.data?.course) {
+          setcourseId(response?.data?.course?._id);
+          response?.data?.completed_lessons?.forEach((val) => {
             completed.push(val);
           });
         }
 
-        if (response?.course) {
-          response?.course?.curriculum?.forEach((val) => {
+        if (response?.data?.course) {
+          response?.data?.course?.curriculum?.forEach((val) => {
             val?.lessons?.map((it) => {
               // console.log("it",val);
               allchapters.push({
@@ -56,9 +56,9 @@ export default function CDDetails() {
         // console.log("all", allchapters[0]?.video);
         setALLCHAPTER(allchapters);
         seturl(allchapters[0]?.video);
-        setData(response?.course);
-        setcompleted_lessons(response?.completed_lessons);
-        setVideoUrl(response?.course?.curriculum[0]?.lessons[0]?.video);
+        setData(response?.data?.course);
+        setcompleted_lessons(response?.data?.completed_lessons);
+        setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
       }
     }

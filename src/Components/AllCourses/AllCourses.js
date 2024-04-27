@@ -147,7 +147,7 @@ const AllCourses = () => {
           return searchitem && slug.includes(searchitem);
         })
       );
-      setAllCourses(
+      setAllCourses(    
         allCourses?.filter((item) => {
           const searchitem = query.toLowerCase();
           const slug = item.slug.toLowerCase();
@@ -250,7 +250,8 @@ const AllCourses = () => {
         <div className="h-full w-full bg-black">
           <ReactPlayer
 
-            url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
+            // url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
+            url='/coursesvideo.mp4'
             height="100%"
             width={'100%'}
             playing={true}
