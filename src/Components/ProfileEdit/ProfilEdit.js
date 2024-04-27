@@ -10,7 +10,7 @@ import User from "../../Assests/Images/profile-user.png";
 import Edit from "../../Assests/Icons/edit.svg";
 import { Globalinfo } from "../../App";
 import { Link, useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../Api/api";
+import { AUTH_BASE_URL, BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
@@ -150,13 +150,15 @@ const ProfilEdit = () => {
       }
     }
   };
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
     localStorage.removeItem("COURSES_USER_TOKEN");
-    navigate("/");
-
     getUserDetails();
     clearCart();
     clearWishList();
+    window.open(
+			`${AUTH_BASE_URL}/logout`,
+			"_self"
+		);
   };
 
   const handleChange = (e) => {

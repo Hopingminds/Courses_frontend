@@ -144,16 +144,16 @@ export default function Herosection() {
 
   useEffect(() => {
     if (currentIndex < remainingText.length) {
-        const interval = setInterval(() => {
-            setDisplayText((prevText) => prevText + remainingText[currentIndex]);
-            setCurrentIndex((prevIndex) => prevIndex + 1);
-        }, 200);
-        return () => clearInterval(interval);
+      const interval = setInterval(() => {
+        setDisplayText((prevText) => prevText + remainingText[currentIndex]);
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+      }, 200);
+      return () => clearInterval(interval);
     } else {
-        setDisplayText(staticText);
-        setCurrentIndex(0);
+      setDisplayText(staticText);
+      setCurrentIndex(0);
     }
-}, [currentIndex, remainingText.length, staticText]);
+  }, [currentIndex, remainingText.length, staticText]);
 
 
   return (

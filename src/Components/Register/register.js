@@ -5,10 +5,11 @@ import { Link, useSearchParams } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { validateCollege, validateEmail } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../../Api/api';
+import { AUTH_BASE_URL, BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { ReactComponent as Google } from '../../Assests/Icons/google.svg';
+import { ReactComponent as Linkedin } from '../../Assests/Icons/linkedin.svg';
 import { jwtDecode } from 'jwt-decode';
 import { authenticateUser } from '../../helpers/helperapi';
 import PhoneInput from "react-phone-number-input";
@@ -149,19 +150,19 @@ const Register = () => {
 
 
     const handleGoogleRegister = () => {
-        window.location = 'https://courses-api.up.railway.app/auth/google'
-
+        window.open(
+			`${AUTH_BASE_URL}/google/callback`,
+			"_self"
+		);
     }
 
-    useLayoutEffect(() => {
-        if (searchParams.get('name') && searchParams.get('email')) {
-            toast.success("Fill all the details");
-            user.name = searchParams.get('name');
-            user.email = searchParams.get('email')
+    const handleLinkedInRegister = () => {
+        window.open(
+			`${AUTH_BASE_URL}/linkedin/callback`,
+			"_self"
+		);
+    }
 
-        }
-
-    }, [searchParams.get('name'), searchParams.get('email')])
 function handleSearch(clg){
     setUser({
         ...user,
@@ -304,6 +305,7 @@ function handleSearch(clg){
                                 <div >
 
                                     <span onClick={handleGoogleRegister} className='cursor-pointer'><Google /></span>
+                                    <span onClick={handleLinkedInRegister} className='cursor-pointer'><Linkedin /></span>
 
                                 </div>
                             </div>

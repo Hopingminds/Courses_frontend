@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { validateEmail } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../../Api/api';
+import { AUTH_BASE_URL, BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
 import { IoEyeOffOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
 import { jwtDecode } from 'jwt-decode';
 import { ReactComponent as Google } from '../../Assests/Icons/google.svg';
+import { ReactComponent as Linkedin } from '../../Assests/Icons/linkedin.svg';
 import { useSearchParams } from 'react-router-dom';
 
 const Login = () => {
@@ -83,68 +84,19 @@ const Login = () => {
         }
     };
 
-
     const handleGoogleLogin = () => {
-
-        window.location = 'https://courses-api.up.railway.app/auth/google'
-        if (searchParams.get('token')) {
-            setLoader(true);
-            // console.log(searchParams.get('token'))
-
-        }
+        window.open(
+			`${AUTH_BASE_URL}/google/callback`,
+			"_self"
+		);
     }
-    const authenticateUser = async (token) => {
-
-        try {
-            const res = await axios.post(`${BASE_URL}/authenticate`, null, {
-                headers: {
-                    Authorization: "Bearer " + token,
-                },
-            })
-            if (res.status === 200) {
-                localStorage.setItem('COURSES_USER_TOKEN', token);
-                // getUserDetails();
-                toast.success("Login Successful");
-
-                const decoded = jwtDecode(token);
-                try {
-                    const res = await axios.get(`${BASE_URL}/user/${decoded.email}`);
-                    console.log(res.data)
-                    getUserDetails()
-                    if (res.data.userDetails.purchased_courses.length > 0) {
-                        navigate('/learning');
-                    } else {
-                        navigate('/course');
-                    }
-                } catch (error) {
-                    console.log(error);
-                }
-
-
-            }
-            else {
-                navigate('/login');
-
-
-            }
-        } catch (error) {
-            console.log(error)
-            navigate('/login');
-            toast.error('Invalid Token')
-
-        }
+    
+    const handleLinkedInLogin = () => {
+        window.open(
+			`${AUTH_BASE_URL}/linkedin/callback`,
+			"_self"
+		);
     }
-
-
-    useLayoutEffect(() => {
-        if (searchParams.get('token')) {
-            const token = searchParams.get('token');
-            authenticateUser(token)
-
-        }
-
-    }, [searchParams.get('token')])
-
 
     return (
         <>
@@ -190,9 +142,10 @@ const Login = () => {
                             <div className='flex flex-col gap-2 items-center'>
 
 
-                                <div >
+                                <div className='flex gap-4 items-center'>
 
                                     <span onClick={handleGoogleLogin} className='cursor-pointer'><Google /></span>
+                                    <span onClick={handleLinkedInLogin} className='cursor-pointer'><Linkedin /></span>
 
                                 </div>
                             </div>
