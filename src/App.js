@@ -21,6 +21,8 @@ function App() {
       const url = `${AUTH_BASE_URL}/login/success`;
       const { data } = await axios.get(url, { withCredentials: true });
       localStorage.setItem('COURSES_USER_TOKEN', data.user.token);
+      getUserDetails();
+      GetCart()
     } catch (err) {
 			console.log(err);
 		}
@@ -54,8 +56,6 @@ function App() {
       let temp2 = JSON.parse(temp)
       console.log(temp2);
     }
-
-
   }
 
   function Getadmindetails() {
