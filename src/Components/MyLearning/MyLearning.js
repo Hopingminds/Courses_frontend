@@ -30,7 +30,7 @@ export default function MyLearning() {
     const [showpage, setshowpage] = useState('courses');
     const [purchasedCourses, setPurchasedCourses] = useState();
     const { userDetail, getUserDetails } = useContext(Globalinfo);
-    console.log(userDetail)
+    // console.log(userDetail)
 
     // console.log(userDetail?.name?.split(" ")[0])
     const checkUserValidation = async () => {
@@ -128,7 +128,7 @@ export default function MyLearning() {
                 <Spinner className='' />
 
             </div> : ''}
-            {showpage === 'courses' ? <Mycourse courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses} /> : showpage === 'stats' ? <MyStats courses={purchasedCourses} /> : showpage === 'stats' ? <Assignment courses={purchasedCourses} /> : <JobOffering courses={purchasedCourses} />}
+            {showpage === 'courses' ? <Mycourse courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses} /> : showpage === 'stats' ? <MyStats courses={purchasedCourses} /> : showpage === 'assignments' ? <Assignment courses={purchasedCourses} /> : <JobOffering courses={purchasedCourses} />}
             <RecommendedCourses className={'bg-[#E2FFF1]'} />
         </div>
     );
