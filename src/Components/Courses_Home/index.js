@@ -111,26 +111,30 @@ const Courses_Home = () => {
         <div className="my-4 grid grid-cols-4 gap-4 xsm:grid-cols-3 xsm:gap-3 xsm:my-[2%] md:gap-3 xl:grid-cols-5">
           {" "}
           {/* Changed flex to flex-wrap */}
-          {filteredCourses?.slice(0, cardsToShow)?.map((course, ind) => (
+          {filteredCourses?.slice(0, cardsToShow)?.map((val, ind) => (
             <CourseCard
-              key={course.title}
-              title={course.title}
-              featured_video={course.featured_video}
-              price={course.base_price}
-              firstName={course.instructor.firstName}
-              lastName={course.instructor.lastName}
-              duration={course.duration}
-              image={course.featured_image}
-              slug={course.slug}
-              onClick={() => handleCourseClick(course.title)}
-              isSelected={selectedCourse === course.title}
-              category={course.category}
-              description={course.overview}
-              ind={ind}
-              _id={course._id}
-              display={course.display}
-              IsMinorDegreeCourse={course.IsMinorDegreeCourse}
-              credits={course.credits}
+            key={val?.title}
+            title={val?.title}
+            featured_video={val?.featured_video}
+            price={val?.base_price}
+            name={val?.instructor?.name}
+            duration={val?.duration}
+            image={val?.featured_image}
+            profile={val?.instructor?.profile}
+            email={val?.instructor?.email}
+            experience={val?.instructor?.experience}
+            bio={val?.instructor?.bio}
+            slug={val?.slug}
+            phone={val?.instructor?.phone}
+            onClick={() => handleCourseClick(val?.title)}
+            isSelected={selectedCourse === val?.title}
+            category={val?.category}
+            description={val?.overview}
+            ind={ind}
+            _id={val?._id}
+            display={val?.display}
+            IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
+            credits={val?.credits}
             // Pass category to CourseCard component
             />
           ))}

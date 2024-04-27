@@ -12,7 +12,7 @@ export default function Coursecontents({ data, completed_lessons,setMenu }) {
 
 
     const navigate = useNavigate()
-    console.log(completed_lessons);
+    console.log(completed_lessons)
 
     const [clicked, setclicked] = useState(false);
     const [totallessons, setTotalLessons] = useState(0);
