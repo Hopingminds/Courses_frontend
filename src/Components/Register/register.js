@@ -302,7 +302,7 @@ function handleSearch(clg){
                             <div className='flex flex-col gap-2 items-center'>
 
 
-                                <div >
+                                <div className="flex gap-4 items-center">
 
                                     <span onClick={handleGoogleRegister} className='cursor-pointer'><Google /></span>
                                     <span onClick={handleLinkedInRegister} className='cursor-pointer'><Linkedin /></span>

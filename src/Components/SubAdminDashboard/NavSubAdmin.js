@@ -8,10 +8,8 @@ const NavSubAdmin = () => {
 function handleLogout(){
   localStorage.removeItem('token')
   Getadmindetails()
-
     navigate('/subadmin-login')
-
-}
+  }
   return (
     <div className="flex flex-row justify-between px-[3%] py-[1%] bg-[#0F2027]">
       <Link to='/subadmin-dashboard'><img src="/logo.png" className="h-[50px] w-auto xsm:w-[40px] xsm:h-[15px]" /></Link>

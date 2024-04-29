@@ -15,7 +15,7 @@ import './MLheader.css';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
-import { BASE_URL } from '../../Api/api';
+import { AUTH_BASE_URL, BASE_URL } from '../../Api/api';
 import Spinner from '../Spinner';
 import { useLayoutEffect } from 'react';
 import { authenticateUser } from '../../helpers/helperapi'
@@ -38,8 +38,11 @@ export default function MyLearning() {
         console.log(isValidUser)
         if (isValidUser !== 200) {
             localStorage.removeItem('COURSES_USER_TOKEN');
-            navigate('/login')
             toast.error('You have been Logged Out')
+            window.open(
+                `${AUTH_BASE_URL}/logout`,
+                "_self"
+            );
         }
     }
 

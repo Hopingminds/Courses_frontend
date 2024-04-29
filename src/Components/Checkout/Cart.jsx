@@ -4,7 +4,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { ReactComponent as Clock } from "../../Assets/Icons/clock2.svg";
 import { ReactComponent as Design } from "../../Assets/Icons/design2.svg";
 import { ReactComponent as Star } from "../../Assets/Icons/Star.svg";
-import { BASE_URL } from "../../Api/api";
+import { AUTH_BASE_URL, BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import {
   CountrySelector,
@@ -38,8 +38,11 @@ const CartCheckout = () => {
     console.log(isValidUser);
     if (isValidUser !== 200) {
       localStorage.removeItem("COURSES_USER_TOKEN");
-      navigate("/login");
       toast.error("You have been Logged Out");
+      window.open(
+        `${AUTH_BASE_URL}/logout`,
+        "_self"
+      );
     }
   };
 
