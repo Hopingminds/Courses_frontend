@@ -101,13 +101,6 @@ const CartCheckout = () => {
   const navigate = useNavigate();
 
   const handleContinueCheckout = async () => {
-  if (!country) {
-      toast.error("Select country");
-    } else if (!state) {
-      toast.error("Select state");
-    } else if (!address || !zip ) {
-      toast.error("Every input must be filled");
-    } else {
       try {
         setshow(true)
         let url = BASE_URL + "/purchasecourse";
@@ -168,10 +161,16 @@ const CartCheckout = () => {
     }
 
       // console.log(response);
-    }
   };
 
   const loadRazorpay = () => {
+    if (!country) {
+      toast.error("Select country");
+    } else if (!state) {
+      toast.error("Select state");
+    } else if (!address || !zip ) {
+      toast.error("Every input must be filled");
+    } else {
     const script = document.createElement('script');
     script.src = 'https://checkout.razorpay.com/v1/checkout.js';
     script.async = true;
@@ -203,6 +202,7 @@ const CartCheckout = () => {
       const rzp = new window.Razorpay(options);
       rzp.open();
     };
+  }
   };
   return (
     <>

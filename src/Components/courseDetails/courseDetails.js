@@ -37,11 +37,18 @@ export default function CDDetails() {
         // console.log(response);
         if (response?.data?.course) {
           setcourseId(response?.data?.course?._id);
-          response?.data?.completed_lessons?.forEach((val) => {
-            completed.push(val);
-          });
-        }
+          if(!response?.data?.completed_lessons?.length){
+            completed.push(response?.data?.course?.curriculum[0]?.lessons[0]?._id)
 
+          }
+          else{
+            response?.data?.completed_lessons?.forEach((val) => {
+              completed.push(val);
+            });
+          }
+
+        }
+        // console.log(completed);
         if (response?.data?.course) {
           response?.data?.course?.curriculum?.forEach((val) => {
             val?.lessons?.map((it) => {
@@ -54,10 +61,14 @@ export default function CDDetails() {
           });
         }
         // console.log("all", allchapters[0]?.video);
+        // allchapters=[...new Set(allchapters)]
+        console.log(allchapters);
         setALLCHAPTER(allchapters);
-        seturl(allchapters[0]?.video);
         setData(response?.data?.course);
-        setcompleted_lessons(response?.data?.completed_lessons);
+        completed=[...new Set(completed)]
+        let videoindex=completed.length;
+        seturl(allchapters[videoindex-1]?.video);
+        setcompleted_lessons(completed);
         setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
       }
@@ -65,17 +76,27 @@ export default function CDDetails() {
     Fetchdata();
   }, []);
 
+
+  function handleActiveVideo(url){
+    console.log(url);
+    seturl(url)
+  }
+
   // console.log(allchapters);
   const handleVideoEnded = async () => {
-    setcount(count + 1);
-    seturl(ALLCHAPTER[count + 1]?.video);
-    setcompleted_lessons([...ALLCHAPTER], ALLCHAPTER[count + 1]?._id);
+    // console.log(count + 1);
+   
+    seturl(ALLCHAPTER[count+1]?.video);
+    let temp=completed_lessons;
+    temp.push(ALLCHAPTER[count+1]?._id)
+    // console.log(count);
+    setcompleted_lessons(temp);
 
     try {
       let login = localStorage.getItem("COURSES_USER_TOKEN");
       if (login) {
         let url = BASE_URL + "/lessoncompleted";
-        let bodydata = { courseId, lessonId: ALLCHAPTER[count + 1]?._id };
+        let bodydata = { courseId, lessonId: ALLCHAPTER[count]?._id };
         const data1 = await fetch(url, {
           method: "PUT",
           headers: {
@@ -86,7 +107,9 @@ export default function CDDetails() {
           body: JSON.stringify(bodydata),
         });
         const response = await data1.json();
-        console.log(response);
+        setcount(count + 1);
+
+        // console.log(response);
       }
     } catch (error) {
       console.log(error);
@@ -163,6 +186,7 @@ export default function CDDetails() {
           ) : (
             <div className="w-[45%]  h-[80vh] overflow-y-auto md:h-[40vh]">
               <Coursecontents
+              handleActiveVideo={handleActiveVideo}
                 data={Data?.curriculum}
                 completed_lessons={completed_lessons}
                 setMenu={setMenu}
