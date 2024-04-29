@@ -4,6 +4,7 @@ import Router from './Routing/route';
 import { AUTH_BASE_URL, BASE_URL } from './Api/api';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
+import ChatBot from './Components/chatbot/chatbot';
 
 export const Globalinfo = createContext()
 function App() {
@@ -24,8 +25,8 @@ function App() {
       getUserDetails();
       GetCart()
     } catch (err) {
-			console.log(err);
-		}
+      console.log(err);
+    }
   };
 
   useLayoutEffect(() => {
@@ -103,7 +104,11 @@ function App() {
     <Globalinfo.Provider value={{ cartData, Getadmindetails, adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
       <div className='2xl:px-[17%] overflow-x-hidden'>
         <Router />
+        <div className="fixed right-0 bottom-24">
+          <ChatBot className="w-fit" />
+        </div>
       </div>
+
     </Globalinfo.Provider>
   );
 }

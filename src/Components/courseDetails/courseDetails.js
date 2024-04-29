@@ -144,9 +144,7 @@ export default function CDDetails() {
                   }
                 }}
               />
-              {/* <div className="absolute right-0 bottom-10">
-                                <ChatBot className="w-fit" />
-                            </div> */}
+
             </div>
           </div>
 

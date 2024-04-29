@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./chatbot.css";
+import axios from "axios";
+
 
 const ChatBot = () => {
     const chatboxRef = useRef(null);
@@ -39,7 +41,7 @@ const ChatBot = () => {
                 let chatContent =
                     className === "outgoing"
                         ? `<p></p><span class="material-symbols-outlined user-icon pl-2"><img src="/usergreen.svg" class="w-[20px] h-full" /></span>`
-                        : `<span class="material-symbols-outlined chat-icon"><img src="/chatbot.svg" /></span><p></p>`;
+                        : `<span class="material-symbols-outlined chat-icon bg-green-600 rounded-full"><img src="/hopingbot.png" /></span><p></p>`;
                 chatLi.innerHTML = chatContent;
             }
 
@@ -48,31 +50,21 @@ const ChatBot = () => {
         };
 
         const generateResponse = (chatElement, data) => {
-            const API_URL = "https://api.openai.com/v1/chat/completions";
+            console.log(data)
+            const API_URL = "http://localhost:9000/get_response";
             const messageElement = chatElement.querySelector("p");
+            console.log(messageElement)
 
-            const requestOptions = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${API_KEY}`,
-                },
-                body: JSON.stringify({
-                    model: "gpt-3.5-turbo",
-                    messages: [{ role: "user", content: userMessage }],
-                }),
-            };
 
-            fetch(API_URL, requestOptions)
-                .then((res) => res.json())
-                .then((data) => {
-                    messageElement.textContent = data.choices[0].message.content.trim();
-                })
-                .catch(() => {
-                    messageElement.classList.add("error");
-                    messageElement.textContent =
-                        "Oops! Something went wrong. Please try again.";
-                })
+            axios.post(API_URL, { user_input: data }).then((data) => {
+                console.log(data)
+                messageElement.textContent = data.data.response;
+
+            }).catch(() => {
+                messageElement.classList.add("error");
+                messageElement.textContent =
+                    "Oops! Something went wrong. Please try again.";
+            })
                 .finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
         };
 
@@ -127,9 +119,9 @@ const ChatBot = () => {
 
     return (
         <div>
-            <div className="h-[80%]">
+            <div className="h-[80%] z-[999999999]">
                 <button className="chatbot-toggler">
-                    <span className="material-symbols-rounded pt-2">
+                    <span className="material-symbols-rounded pt-2 ">
                         <img src="/chat.svg" />
                     </span>
                     <span className="material-symbols-outlined pt-2">
@@ -144,11 +136,11 @@ const ChatBot = () => {
                     </header>
                     <ul className="chatbox" ref={chatboxRef}>
                         <li className="chat incoming flex items-center">
-                            <span className="material-symbols-outlined pb-10">
-                                <img src="/chatbot.svg" />
+                            <span className="material-symbols-outlined pb-10 bg-green-600 rounded-full ">
+                                <img src="/hopingbot.png" />
                             </span>
                             <p className="bg-[#FFFFFF] text-[#848484]">
-                                Hi there 👋
+                                Hi, I'm Kabby
                                 <br />
                                 How can I help you today?
                             </p>
@@ -162,10 +154,12 @@ const ChatBot = () => {
                             spellCheck="false"
                             required
                             defaultValue={""}
+
                         />
                         <span
                             id="send-btn"
                             className="material-symbols-rounded absolute right-6 "
+
                         >
                             <img src="/chatsearch.svg" />
                         </span>
