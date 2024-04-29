@@ -38,8 +38,11 @@ const CartCheckout = () => {
     console.log(isValidUser);
     if (isValidUser !== 200) {
       localStorage.removeItem("COURSES_USER_TOKEN");
-      navigate("/login");
       toast.error("You have been Logged Out");
+      window.open(
+        `${AUTH_BASE_URL}/logout`,
+        "_self"
+      );
     }
   };
 
