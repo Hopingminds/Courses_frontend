@@ -20,7 +20,7 @@ export default function CDDetails() {
   const [ALLCHAPTER, setALLCHAPTER] = useState([]);
   const [courseId, setcourseId] = useState();
 
-  const [url, seturl] = useState();
+  const [url, seturl] = useState('');
   const params = useParams();
   let completed = [];
   let allchapters = [];
@@ -78,7 +78,7 @@ export default function CDDetails() {
 
 
   function handleActiveVideo(url){
-    console.log(url);
+    // console.log(url);
     seturl(url)
   }
 
@@ -149,24 +149,29 @@ export default function CDDetails() {
         <div className="CCD-content flex gap-5">
           <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
             <div className="relative h-[100%] shadow-lg xsm:h-[35vh] md:h-[40vh]">
-              <ReactPlayer
-                height="100%"
-                width="100%"
-                className="shadow-2xl"
-                playing={true}
-                controls={true}
-                autoPlay={true}
-                url={url}
-                onDuration={handleDuration}
-                onEnded={handleVideoEnded}
-                config={{
-                  file: {
-                    attributes: {
-                      controlsList: "nodownload" // Disable download option
-                    }
-                  }
-                }}
-              />
+
+              {url.toString().endsWith('pdf')?
+                    <iframe src={url} width="100%" height="100%" />
+                    :url.toString().endsWith('mp3')?<iframe src={url} width="100%" height="100%" />
+                    :<ReactPlayer
+                      height="100%"
+                      width="100%"
+                      className="shadow-2xl"
+                      playing={true}
+                      controls={true}
+                      autoPlay={true}
+                      url={url}
+                      onDuration={handleDuration}
+                      onEnded={handleVideoEnded}
+                      config={{
+                        file: {
+                          attributes: {
+                            controlsList: "nodownload" // Disable download option
+                          }
+                        }
+                      }}
+                    />
+}
               {/* <div className="absolute right-0 bottom-10">
                                 <ChatBot className="w-fit" />
                             </div> */}
