@@ -8,7 +8,7 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import { MdClose, MdOutlineFileDownload } from "react-icons/md";
 
 
-export default function Coursecontents({ data, completed_lessons,setMenu }) {
+export default function Coursecontents({ data, completed_lessons,setMenu,handleActiveVideo }) {
 
 
     const navigate = useNavigate()
@@ -20,7 +20,7 @@ export default function Coursecontents({ data, completed_lessons,setMenu }) {
     let allchapters = []
 
     let completed = [];
-
+    // console.log(completed_lessons);
     if (completed_lessons) {
        completed_lessons?.map((val) => {
             completed.push(val)
@@ -120,7 +120,7 @@ export default function Coursecontents({ data, completed_lessons,setMenu }) {
 
 
                                                     return (
-                                                        <div className={`flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id) ? 'cursor-not-allowed text-gray-300' : ''}`} key={index}>
+                                                        <div onClick={()=>handleActiveVideo(chapter?.video)} className={`flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id) ? 'cursor-not-allowed text-gray-300' : ''}`} key={index}>
                                                             <span className='flex justify-between'>
                                                                 <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">{index + 1}. {chapter?.lesson_name}</p>
                                                                 <p className='font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]'>{chapter?.duration}</p>

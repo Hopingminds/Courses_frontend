@@ -20,7 +20,7 @@ export default function CDDetails() {
   const [ALLCHAPTER, setALLCHAPTER] = useState([]);
   const [courseId, setcourseId] = useState();
 
-  const [url, seturl] = useState();
+  const [url, seturl] = useState('');
   const params = useParams();
   let completed = [];
   let allchapters = [];
@@ -37,11 +37,18 @@ export default function CDDetails() {
         // console.log(response);
         if (response?.data?.course) {
           setcourseId(response?.data?.course?._id);
-          response?.data?.completed_lessons?.forEach((val) => {
-            completed.push(val);
-          });
-        }
+          if (!response?.data?.completed_lessons?.length) {
+            completed.push(response?.data?.course?.curriculum[0]?.lessons[0]?._id)
 
+          }
+          else {
+            response?.data?.completed_lessons?.forEach((val) => {
+              completed.push(val);
+            });
+          }
+
+        }
+        // console.log(completed);
         if (response?.data?.course) {
           response?.data?.course?.curriculum?.forEach((val) => {
             val?.lessons?.map((it) => {
@@ -54,10 +61,14 @@ export default function CDDetails() {
           });
         }
         // console.log("all", allchapters[0]?.video);
+        // allchapters=[...new Set(allchapters)]
+        console.log(allchapters);
         setALLCHAPTER(allchapters);
-        seturl(allchapters[0]?.video);
         setData(response?.data?.course);
-        setcompleted_lessons(response?.data?.completed_lessons);
+        completed = [...new Set(completed)]
+        let videoindex = completed.length;
+        seturl(allchapters[videoindex - 1]?.video);
+        setcompleted_lessons(completed);
         setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
       }
@@ -65,17 +76,27 @@ export default function CDDetails() {
     Fetchdata();
   }, []);
 
+
+  function handleActiveVideo(url) {
+    // console.log(url);
+    seturl(url)
+  }
+
   // console.log(allchapters);
   const handleVideoEnded = async () => {
-    setcount(count + 1);
+    // console.log(count + 1);
+
     seturl(ALLCHAPTER[count + 1]?.video);
-    setcompleted_lessons([...ALLCHAPTER], ALLCHAPTER[count + 1]?._id);
+    let temp = completed_lessons;
+    temp.push(ALLCHAPTER[count + 1]?._id)
+    // console.log(count);
+    setcompleted_lessons(temp);
 
     try {
       let login = localStorage.getItem("COURSES_USER_TOKEN");
       if (login) {
         let url = BASE_URL + "/lessoncompleted";
-        let bodydata = { courseId, lessonId: ALLCHAPTER[count + 1]?._id };
+        let bodydata = { courseId, lessonId: ALLCHAPTER[count]?._id };
         const data1 = await fetch(url, {
           method: "PUT",
           headers: {
@@ -86,7 +107,9 @@ export default function CDDetails() {
           body: JSON.stringify(bodydata),
         });
         const response = await data1.json();
-        console.log(response);
+        setcount(count + 1);
+
+        // console.log(response);
       }
     } catch (error) {
       console.log(error);
@@ -126,25 +149,32 @@ export default function CDDetails() {
         <div className="CCD-content flex gap-5">
           <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
             <div className="relative h-[100%] shadow-lg xsm:h-[35vh] md:h-[40vh]">
-              <ReactPlayer
-                height="100%"
-                width="100%"
-                className="shadow-2xl"
-                playing={true}
-                controls={true}
-                autoPlay={true}
-                url={url}
-                onDuration={handleDuration}
-                onEnded={handleVideoEnded}
-                config={{
-                  file: {
-                    attributes: {
-                      controlsList: "nodownload" // Disable download option
-                    }
-                  }
-                }}
-              />
 
+              {url.toString().endsWith('pdf') ?
+                <iframe src={url} width="100%" height="100%" />
+                : url.toString().endsWith('mp3') ? <iframe src={url} width="100%" height="100%" />
+                  : <ReactPlayer
+                    height="100%"
+                    width="100%"
+                    className="shadow-2xl"
+                    playing={true}
+                    controls={true}
+                    autoPlay={true}
+                    url={url}
+                    onDuration={handleDuration}
+                    onEnded={handleVideoEnded}
+                    config={{
+                      file: {
+                        attributes: {
+                          controlsList: "nodownload" // Disable download option
+                        }
+                      }
+                    }}
+                  />
+              }
+              {/* <div className="absolute right-0 bottom-10">
+                                <ChatBot className="w-fit" />
+                            </div> */}
             </div>
           </div>
 
@@ -161,6 +191,7 @@ export default function CDDetails() {
           ) : (
             <div className="w-[45%]  h-[80vh] overflow-y-auto md:h-[40vh]">
               <Coursecontents
+                handleActiveVideo={handleActiveVideo}
                 data={Data?.curriculum}
                 completed_lessons={completed_lessons}
                 setMenu={setMenu}

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { ReactComponent as Cart } from "../../Assets/Icons/cartblack.svg";
 import { CiHeart } from "react-icons/ci";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Globalinfo } from "../../App";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
@@ -17,6 +17,7 @@ export default function Commoncard(props) {
   // console.log(Data);
   const [IsMuted, setIsMuted] = useState(true);
 
+  const {pathname}=useLocation()
   let login = localStorage.getItem("COURSES_USER_TOKEN");
   let navigate = useNavigate();
   // const [Show, setShow] = useState(false)
@@ -221,12 +222,12 @@ export default function Commoncard(props) {
               <RWebShare
                 data={{
                   text: "Hoping Minds",
-                  url: "http://localhost:3001/",
+                  url: "https://hopingminds.in"+pathname,
                   title: "Hoping Minds",
                 }}
                 onClick={() => console.log("shared successfully!")}
               >
-                <IoIosShareAlt className="h-6 w-6 cursor-pointer md:h-4 w-4" />
+                <IoIosShareAlt className="h-6 w-6 cursor-pointer md:h-4 " />
               </RWebShare>
               {/* <Link to={'https://www.facebook.com/share/Z3c1iwpnxsDk3YJH/?mibextid=qi2Omg'}><img className="w-[12px]" src="../Icons/facebook.svg" /></Link> */}
               {/* <Link to={'https://www.instagram.com/hopingminds_?igsh=MWxvN2F5YmM0aW1lYQ=='}><img className="w-[20px]" src="../Icons/instagram.svg" /></Link> */}

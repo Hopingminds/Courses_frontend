@@ -50,6 +50,7 @@ import ManageJobsmain from '../Components/ManageJobs/ManageJobsmain.jsx'
 import PostJobsForm from '../Components/PostJobsForm/PostJobsForm.jsx'
 import CVBuilder from '../Components/cvBuilder/index.jsx'
 import JobPreview from '../Components/JobPreview/JobPreview.jsx'
+import PDFViewer from '../Components/pdfReader/index.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -117,6 +118,7 @@ const Router = () => {
                 <Route path='/managejobs' element={<ManageJobsmain />} />
                 <Route path='/postjob' element={<PostJobsForm/>} />
                 <Route path='/jobpreview' element={<JobPreview/>} />
+                <Route path='/pdf' element={<PDFViewer/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
