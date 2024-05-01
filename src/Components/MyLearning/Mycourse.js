@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // import { useMediaQuery } from 'react-responsive';
 
 export default function Mycourse({ courses }) {
+    // console.log(courses);
 
     return (<>
         {!courses?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Purchased</div></div>:''}
@@ -22,8 +23,8 @@ export default function Mycourse({ courses }) {
                             <div className="h-[45%] flex flex-col justify-between mt-2 xsm:space-y-1 xsm:mt-1">
                                 <p className="font-pop font-semibold text-[18px] xsm:text-[6px] md:text-[16px]">{val?.course?.title}</p>
                                 <div className=" flex items-center gap-1">
-                                    <img className="w-[32px] h-[32px] xsm:w-[10px] xsm:h-[10px] md:h-[24px] md:w-[24px] rounded-full" src="../img/RCimg2.png" />
-                                    <p className="font-pop font-medium text-[16px] xsm:text-[6px] md:text-[12px]"> {val?.course?.instructor.firstName + " " + val?.course?.instructor.lastName}</p>
+                                    <img className="w-[32px] h-[32px] xsm:w-[10px] xsm:h-[10px] md:h-[24px] md:w-[24px] rounded-full" src={val?.course?.instructor?.profile} />
+                                    <p className="font-pop font-medium text-[16px] xsm:text-[6px] md:text-[12px]"> {val?.course?.instructor?.name}</p>
                                 </div>
                                 <ProgressBar completed={val?.completed_lessons.length} maxCompleted={totallessons} height={5} bgColor='#1DBF73' isLabelVisible={false} className="mt-2" />
 

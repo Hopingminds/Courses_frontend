@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect, createContext, useLayoutEffect } from 'react';
 import Router from './Routing/route';
-import { BASE_URL } from './Api/api';
+import { AUTH_BASE_URL, BASE_URL } from './Api/api';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 
@@ -18,13 +18,14 @@ function App() {
 
   const getUser = async () => {
     try {
-      const url = `https://courses-api.up.railway.app/auth/login/success`;
-      const res = await axios.get(url, { withCredentials: true });
-
-      console.log(res)
+      const url = `${AUTH_BASE_URL}/login/success`;
+      const { data } = await axios.get(url, { withCredentials: true });
+      localStorage.setItem('COURSES_USER_TOKEN', data.user.token);
+      getUserDetails();
+      GetCart()
     } catch (err) {
-      console.log(err);
-    }
+			console.log(err);
+		}
   };
 
   useLayoutEffect(() => {
@@ -55,8 +56,6 @@ function App() {
       let temp2 = JSON.parse(temp)
       console.log(temp2);
     }
-
-
   }
 
   function Getadmindetails() {
