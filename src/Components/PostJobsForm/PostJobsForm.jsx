@@ -15,6 +15,11 @@ const INITIAL_FORM_STATE = {
     annualSalaryRange: { currency: 'INR', minSalary: '', maxSalary: '' },
     companyIndustry: '',
     educationalQualification: '',
+    specialization:'',
+    interviewmode:'',
+    aboutCompany:'',
+    websiteurl:'',
+    companyAddress:'',
     jobDescription: ''
 };
 
@@ -35,6 +40,11 @@ const PostJobsForm = () => {
         annualSalaryRange: { currency: 'INR', minSalary: '', maxSalary: '' },
         companyIndustry: '',
         educationalQualification: '',
+        interviewmode:'',
+        specialization:'',
+        aboutCompany:'',
+        websiteurl:'',
+        companyAddress:'',
         jobDescription: ''
     });
 
@@ -114,7 +124,12 @@ const PostJobsForm = () => {
             'annualSalaryRange.minSalary',
             'annualSalaryRange.maxSalary',
             'companyIndustry',
-            'educationalQualification'
+            'educationalQualification',
+            'interviewmode',
+            'specialization',
+            'aboutCompany',
+            'websiteurl',
+            'companyAddress',
         ];
     
         // Check if any required field is empty
@@ -489,17 +504,52 @@ const PostJobsForm = () => {
                             value={formData.educationalQualification}
                             onChange={handleChange}
                         >
-                        <option className="border-none" value="Graduation Not Required" selected>
-                            Graduation Not Required
+                        <option className="border-none" value="12th" selected>
+                            12th
                         </option>
-                        <option className="border-none" value="Graduate">
-                            Graduate
+                        <option className="border-none" value="Under Graduate">
+                            Under Graduate
                         </option>
-                        <option className="border-none" value="Postgraduate">
-                            Postgraduate
+                        <option className="border-none" value="Post Graduate">
+                            Post Graduate
                         </option>
                         <option className="border-none" value="Doctoral/Ph.D">
                             Doctoral/Ph.D
+                        </option>
+                        </select>
+                    </div>
+                    {/* Specialization */}
+                    <div className="w-[65%]">
+                        <p className="font-pop font-semibold ">
+                            Specialization
+                            <span className="text-red-500 text-[16px]">*</span>
+                        </p>
+                        <input
+                            type="text"
+                            placeholder="Enter Your Specialization"
+                            className="border outline-none px-4 py-2 text-[14px] w-full "
+                            value={formData.specialization}
+                            onChange={handleChange}
+                            name="specialization"
+                        />
+                    </div>
+                    {/* Interview Mode */}
+                    <div className="w-[65%]">
+                        <p className="font-pop  font-semibold">
+                        Interview Mode
+                        <span className="text-red-500 text-[16px]">*</span>
+                        </p>
+                        <select
+                            name="interviewmode"
+                            className="border outline-none px-2 py-2 text-[14px] w-full"
+                            value={formData.interviewmode}
+                            onChange={handleChange}
+                        >
+                        <option className="border-none" value="Under Graduate" selected>
+                            Virtual
+                        </option>
+                        <option className="border-none" value="Walk-In">
+                            Walk-In
                         </option>
                         </select>
                     </div>
@@ -514,6 +564,51 @@ const PostJobsForm = () => {
                         value={jd}
                         onChange={setJd}
                         className="h-[150px]"
+                        />
+                    </div>
+                    {/* ABOUT COMPANY */}
+                    <div className="w-full">
+                        <p className="font-pop font-semibold ">
+                            About Company
+                            <span className="text-red-500 text-[16px]">*</span>
+                        </p>
+                        <textarea
+                            type="text"
+                            placeholder="Tell us about your Company"
+                            className="border outline-none px-4 py-2 text-[14px] w-full "
+                            value={formData.aboutCompany}
+                            onChange={handleChange}
+                            name="aboutCompany"
+                        />
+                    </div>
+                    {/* COMPANY Website Link */}
+                    <div className="w-full">
+                        <p className="font-pop font-semibold ">
+                            Company Website Link
+                            <span className="text-red-500 text-[16px]">*</span>
+                        </p>
+                        <input
+                            type="text"
+                            placeholder="Company Link/Url"
+                            className="border outline-none px-4 py-2 text-[14px] w-full "
+                            value={formData.websiteurl}
+                            onChange={handleChange}
+                            name="websiteurl"
+                        />
+                    </div>
+                    {/* COMPANY Address */}
+                    <div className="w-full">
+                        <p className="font-pop font-semibold ">
+                            Company Address
+                            <span className="text-red-500 text-[16px]">*</span>
+                        </p>
+                        <input
+                            type="text"
+                            placeholder="Company Address"
+                            className="border outline-none px-4 py-2 text-[14px] w-full "
+                            value={formData.companyAddress}
+                            onChange={handleChange}
+                            name="companyAddress"
                         />
                     </div>
                     <div className="flex justify-center">
