@@ -51,7 +51,7 @@ const ChatBot = () => {
 
         const generateResponse = (chatElement, data) => {
             console.log(data)
-            const API_URL = "http://localhost:9000/get_response";
+            const API_URL = "https://api.hopingminds.in/api/get-bot-response";
             const messageElement = chatElement.querySelector("p");
             console.log(messageElement)
 
