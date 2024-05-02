@@ -4,7 +4,6 @@ import ReactPlayer from "react-player";
 import ChatBot from "../chatbot/chatbot";
 import { useParams, useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
-import { CiSettings } from "react-icons/ci";
 import Coursecontents from "../Meeting/Coursecontents";
 import { jwtDecode } from "jwt-decode";
 import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
