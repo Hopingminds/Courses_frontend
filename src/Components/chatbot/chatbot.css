@@ -40,8 +40,8 @@ body.show-chatbot .chatbot-toggler span:last-child {
   right: 48px;
   bottom: 70px;
   z-index: 999999;
-  width: 30vw;
-  height: 75vh;
+  width: 25vw;
+  height: 65vh;
   /* background: #fff; */
   background: rgb(255, 255, 255);
   /* background-color: #1dbf73; */
@@ -74,7 +74,7 @@ body.show-chatbot .chatbot {
   background: rgba(255, 255, 255, 0);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.chatbot header span {
+.chatbot .header span {
   position: absolute;
   right: 15px;
   top: 50%;
@@ -82,17 +82,16 @@ body.show-chatbot .chatbot {
   cursor: pointer;
   transform: translateY(-50%);
 }
-header h2 {
+.header h2 {
   font-size: 1.4rem;
   font-family: "Gorditas", sans-serif;
 }
 
 .chatbot .chatbox {
   overflow-y: auto;
-
   bottom: 10px;
-  height: 70vh;
-  padding: 30px 20px 100px;
+  height: 45vh;
+  /* padding: 30px 20px 100px; */
   font-family: "Montserrat", sans-serif;
 }
 .chatbot :where(.chatbox, textarea)::-webkit-scrollbar {

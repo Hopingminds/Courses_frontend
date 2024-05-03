@@ -147,7 +147,7 @@ export default function Herosection() {
       const interval = setInterval(() => {
         setDisplayText((prevText) => prevText + remainingText[currentIndex]);
         setCurrentIndex((prevIndex) => prevIndex + 1);
-      }, 200);
+      }, 100);
       return () => clearInterval(interval);
     } else {
       setDisplayText(staticText);
