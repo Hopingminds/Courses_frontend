@@ -1,28 +1,28 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./chatbot.css";
+import { IoMdClose } from "react-icons/io";
 import axios from "axios";
-
 
 const ChatBot = () => {
     const chatboxRef = useRef(null);
     const chatInputRef = useRef(null);
-
+    const [isopen, setisopen] = useState(true)
     useEffect(() => {
-        // console.log('yes');
         const chatbox = chatboxRef.current;
         const chatInput = chatInputRef.current;
-
         if (!chatInput || !chatbox) return;
+
         const chatbotToggler = document.querySelector(".chatbot-toggler");
+        const CloseButton = document.querySelector(".closebutton");
+        const chatSearchIcon = document.getElementById("send-btn");
 
         let userMessage = null;
-        const API_KEY = "PASTE-YOUR-API-KEY";
         const inputInitHeight = chatInput.scrollHeight;
 
         const handleSearch = () => {
             console.log("Searching...");
         };
-        const chatSearchIcon = document.getElementById("send-btn");
+
         chatSearchIcon.addEventListener("click", handleSearch);
 
         const handleToggle = () => {
@@ -30,6 +30,7 @@ const ChatBot = () => {
         };
 
         chatbotToggler.addEventListener("click", handleToggle);
+        CloseButton.addEventListener("click", handleToggle);
 
         const createChatLi = (message, className, isBot) => {
             const chatLi = document.createElement("li");
@@ -50,19 +51,16 @@ const ChatBot = () => {
         };
 
         const generateResponse = (chatElement, data) => {
-            console.log(data)
             const API_URL = "https://api.hopingminds.in/api/get-bot-response";
             const messageElement = chatElement.querySelector("p");
-            console.log(messageElement)
-            axios.post(API_URL, { user_input: data }).then((data) => {
-                // console.log(data)
-                messageElement.textContent = data.data.response;
+
+            axios.post(API_URL, { user_input: data }).then((response) => {
+                messageElement.textContent = response.data.response;
+                chatbox.scrollTo(0, chatbox.scrollHeight);
             }).catch(() => {
-                messageElement.classList.add("error")
-                messageElement.textContent =
-                    "Oops! Something went wrong. Please try again.";
-            })
-                .finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
+                messageElement.classList.add("error");
+                messageElement.textContent = "Oops! Something went wrong. Please try again.";
+            });
         };
 
         const handleChat = () => {
@@ -85,11 +83,6 @@ const ChatBot = () => {
             }, 600);
         };
 
-        const handleInput = () => {
-            chatInput.style.height = `${inputInitHeight}px`;
-            chatInput.style.height = `${chatInput.scrollHeight}px`;
-        };
-
         const handleKeyDown = (e) => {
             if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
                 e.preventDefault();
@@ -101,22 +94,27 @@ const ChatBot = () => {
             handleChat();
         };
 
-        chatInput.addEventListener("input", handleInput);
         chatInput.addEventListener("keydown", handleKeyDown);
-        chatInput.addEventListener("click", handleClick);
+
+        // Remove the event listener from the textarea
+        // chatInput.addEventListener("click", handleClick);
+
+        // Attach event listener to send button
+        chatSearchIcon.addEventListener("click", handleClick);
 
         return () => {
             chatbotToggler.removeEventListener("click", handleToggle);
-            chatInput.removeEventListener("input", handleInput);
+            CloseButton.removeEventListener("click", handleToggle);
             chatInput.removeEventListener("keydown", handleKeyDown);
-            chatInput.removeEventListener("click", handleClick);
             chatSearchIcon.removeEventListener("click", handleSearch);
+            chatSearchIcon.removeEventListener("click", handleClick);
         };
     }, []);
 
     return (
         <div>
-            <div className="h-[80%] z-[999999999]">
+
+            <div className="h-[80%] z-[999999999] ">
                 <button className="chatbot-toggler">
                     <span className="material-symbols-rounded pt-2 ">
                         <img src="/chat.svg" />
@@ -126,11 +124,15 @@ const ChatBot = () => {
                     </span>
                 </button>
                 <div className="chatbot mb-16 mr-8 " style={{ zIndex: "9999999" }}>
-                    <header>
+                    <div className="flex justify-between w-full h-10  items-center px-4 shadow-md">
                         <h2 className="text-[#000]">CHAT With US</h2>
-                        {/* <img src="/chatmenu.svg" /> */}
-                        <span className="close-btn material-symbols-outlined">close</span>
-                    </header>
+                        <IoMdClose className="text-3xl closebutton cursor-pointer" />
+                    </div>
+
+
+
+                    {/* <img src="/chatmenu.svg" /> */}
+
                     <ul className="chatbox" ref={chatboxRef}>
                         <li className="chat incoming flex items-center">
                             <span className="material-symbols-outlined pb-10 bg-green-600 rounded-full ">
@@ -143,7 +145,7 @@ const ChatBot = () => {
                             </p>
                         </li>
                     </ul>
-                    <div className="chat-input">
+                    <div className="chat-input bg-black">
                         <textarea
                             className="rounded-2xl text-[#000000]"
                             ref={chatInputRef}
