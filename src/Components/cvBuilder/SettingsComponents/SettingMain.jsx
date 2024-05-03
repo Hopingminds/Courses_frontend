@@ -26,6 +26,7 @@ const SettingMain = () => {
               <TemplateSwitcher value={1} />
               <TemplateSwitcher value={2} />
               <TemplateSwitcher value={3} />
+              <TemplateSwitcher value={4} />
             </div>
           </div>
         </div>

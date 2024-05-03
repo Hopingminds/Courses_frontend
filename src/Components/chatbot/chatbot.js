@@ -54,14 +54,11 @@ const ChatBot = () => {
             const API_URL = "https://api.hopingminds.in/api/get-bot-response";
             const messageElement = chatElement.querySelector("p");
             console.log(messageElement)
-
-
             axios.post(API_URL, { user_input: data }).then((data) => {
-                console.log(data)
+                // console.log(data)
                 messageElement.textContent = data.data.response;
-
             }).catch(() => {
-                messageElement.classList.add("error");
+                messageElement.classList.add("error")
                 messageElement.textContent =
                     "Oops! Something went wrong. Please try again.";
             })

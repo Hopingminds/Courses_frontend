@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef, useLayoutEffect } from 'react';
+import React, { useContext, useState, useRef, useLayoutEffect, useEffect } from 'react';
 import './register.css';
 import axios from 'axios';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -37,43 +37,56 @@ const Register = () => {
         phone: "",
         college: "",
         degree: "",
-        stream: "",
         password: "",
     });
+
+    const [errors, setErrors] = useState({
+        name: false,
+        email: false,
+        phone: false,
+        college: false,
+        degree: false,
+        password: false,
+    });
+
+    useEffect(() => {
+        setUser({ ...user, phone: countrycode })
+    }, [countrycode])
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUser({
             ...user,
             [name]: value,
-            
+
         });
     };
 
-  async function SearchData(e) {
+    async function SearchData(e) {
         let query = e.target.value;
         setUser({
             ...user,
-            college:query,
-            
+            college: query,
+
         })
         if (query == "") {
-          setSearchedData([]);
-         
-         
+            setSearchedData([]);
+
+
         } else {
-          try {
-            let url1=BASE_URL+'/getcolleges?search='+query
-            const data=await fetch(url1)
-            const response=await data.json()
-            // console.log(response);
-            setSearchedData(response)
-          } catch (error) {
-            console.log(error);
-          }
-          
+            try {
+                let url1 = BASE_URL + '/getcolleges?search=' + query
+                const data = await fetch(url1)
+                const response = await data.json()
+                // console.log(response);
+                setSearchedData(response)
+            } catch (error) {
+                console.log(error);
+            }
+
         }
-      }
+    }
 
 
     const handleKeyDown = (e, nextRef) => {
@@ -88,17 +101,49 @@ const Register = () => {
     };
 
     const handleRegister = async () => {
-        // console.log(user);
-        countrycode.replace(/\D/g, '')
-        console.log(countrycode.length);
-       
-    //    console.log( countrycode.replace(/\D/g, ''));
-    
+
+        let hasErrors = false;
+        const newErrors = {};
+        console.log(user)
+
+        for (const key in user) {
+            if (user[key].trim() == '') {
+                newErrors[key] = true;
+                hasErrors = true;
+            } else {
+                newErrors[key] = false;
+            }
+        }
+        setErrors(newErrors);
+        console.log(newErrors)
+
+        if (hasErrors) {
+            const firstErrorInput = Object.keys(newErrors)[0];
+            // console.log(firstErrorInput)
+            const errorElement = document.getElementById(firstErrorInput)
+            const errorRect = errorElement.getBoundingClientRect();
+            // console.log(errorRect)
+            const middleY = errorRect.height;
+
+            window.scrollTo({
+                top: middleY,
+                behavior: 'smooth'
+            });
+            return;
+        }
+
+
+
+        // 
+        // console.log(countrycode.length);
+
+        //    console.log( countrycode.replace(/\D/g, ''));
+
         if (!validateEmail(user.email)) {
             toast.error('Enter valid Email');
             return;
         }
-        if(!(countrycode.length>8 && countrycode.length<15)){
+        if (!(countrycode.length > 8 && countrycode.length < 15)) {
             toast.error('Enter valid Phone Number');
             return;
         }
@@ -107,11 +152,12 @@ const Register = () => {
             return;
         }
 
-        if (!user.name || !user.degree || !user.password || !user.email || !user.college ) {
+        if (!user.name || !user.degree || !user.password || !user.email || !user.college) {
             toast.error("Enter Valid Credentials");
             return;
         }
         setBtnLoader(true);
+        countrycode.replace(/\D/g, '')
         try {
             const res = await axios.post(`${BASE_URL}/register`, {
                 name: user.name,
@@ -151,26 +197,26 @@ const Register = () => {
 
     const handleGoogleRegister = () => {
         window.open(
-			`${AUTH_BASE_URL}/google/callback`,
-			"_self"
-		);
+            `${AUTH_BASE_URL}/google/callback`,
+            "_self"
+        );
     }
 
     const handleLinkedInRegister = () => {
         window.open(
-			`${AUTH_BASE_URL}/linkedin/callback`,
-			"_self"
-		);
+            `${AUTH_BASE_URL}/linkedin/callback`,
+            "_self"
+        );
     }
 
-function handleSearch(clg){
-    setUser({
-        ...user,
-        college:clg,
-        
-    })
-    setSearchedData([])
-}
+    function handleSearch(clg) {
+        setUser({
+            ...user,
+            college: clg,
+
+        })
+        setSearchedData([])
+    }
     return (
         <>
             <div className='flex overflow-hidden'>
@@ -190,8 +236,9 @@ function handleSearch(clg){
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Name</p>
                                 <input
                                     ref={nameRef}
-                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.name ? 'error_input' : ""}`}
                                     type="text"
+                                    id="name"
                                     placeholder="Enter Your Name"
                                     name="name"
                                     value={user.name}
@@ -203,10 +250,11 @@ function handleSearch(clg){
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Email</p>
                                 <input
                                     ref={emailRef}
-                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.email ? 'error_input' : ""}`}
                                     type="text"
                                     placeholder="Enter Your Email"
                                     name="email"
+                                    id={"email"}
                                     value={user.email}
                                     onChange={handleChange}
                                     onKeyDown={(e) => handleKeyDown(e, phoneRef)}
@@ -214,14 +262,15 @@ function handleSearch(clg){
                             </div>
                             <div>
                                 <p className='text-[14px] font-pop'>Contact Number</p>
-                              <PhoneInput
-                        className='phonenumbercountrycode mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none'
-                        defaultCountry="IN"
-                        name="phone"
-                        placeholder="Enter phone number"
-                        value={countrycode}
-                        onChange={setcountrycode}
-                        />
+                                <PhoneInput
+                                    className={`phonenumbercountrycode mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none ${errors.phone ? 'error_input' : ""}`}
+                                    defaultCountry="IN"
+                                    name="phone"
+                                    id={"phone"}
+                                    placeholder="Enter phone number"
+                                    value={countrycode}
+                                    onChange={setcountrycode}
+                                />
                                 {/* <input
                                     ref={phoneRef}
                                     className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
@@ -237,8 +286,9 @@ function handleSearch(clg){
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Degree</p>
                                 <input
                                     ref={degreeRef}
-                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.degree ? 'error_input' : ""}`}
                                     type="text"
+                                    id={"degree"}
                                     placeholder="Enter Your Degree"
                                     name="degree"
                                     value={user.degree}
@@ -248,37 +298,39 @@ function handleSearch(clg){
                             </div>
                             <div>
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>College/University</p>
-                               <div className='relative'>
-    <input
-    ref={collegeRef}
-    className={`mt-2 w-full  border border-[#1dbf73] rounded-[25px] py-[10px] px-[24px] text-[14px] font-pop font-light outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${SearchedData.length? 'border-b-[0px] rounded-b-none' : 'border-b-[1px]'}`}
-    type="text"
-    placeholder="Enter Your College/University"
-    name="college"
-    value={user.college}
-    onChange={SearchData}
-    onKeyDown={(e) => handleKeyDown(e, passwordRef)}
-/>
-                                <div className='w-full collegescroll min-h-[0px] max-h-[200px] overflow-y-auto absolute  z-20 bg-[#eafff5]  '>
-                                    {
-                                        SearchedData.map((it)=>{
-                                            return(<>
-                                            <div onClick={(e)=> handleSearch(it.college)} className='text-center text-[12px] border py-1 cursor-pointer'>{it.college}</div>
-                                            </>)
-                                        })
-                                    }
-                                    {/* <div className='text-center'>dfdasf</div> */}
+                                <div className='relative'>
+                                    <input
+                                        ref={collegeRef}
+                                        className={`mt-2 w-full  border border-[#1dbf73] rounded-[25px] py-[10px] px-[24px] text-[14px] font-pop font-light outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${SearchedData.length ? 'border-b-[0px] rounded-b-none' : 'border-b-[1px]'}  ${errors.college ? ' error_input' : ""}`}
+                                        type="text"
+                                        placeholder="Enter Your College/University"
+                                        name="college"
+                                        id={"college"}
+                                        value={user.college}
+                                        onChange={SearchData}
+                                        onKeyDown={(e) => handleKeyDown(e, passwordRef)}
+                                    />
+                                    <div className='w-full collegescroll min-h-[0px] max-h-[200px] overflow-y-auto absolute  z-20 bg-[#eafff5]  '>
+                                        {
+                                            SearchedData.map((it) => {
+                                                return (<>
+                                                    <div onClick={(e) => handleSearch(it.college)} className='text-center text-[12px] border py-1 cursor-pointer'>{it.college}</div>
+                                                </>)
+                                            })
+                                        }
+
+                                    </div>
                                 </div>
-                               </div> 
                             </div>
                             <div style={{ position: "relative" }}>
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Password</p>
                                 <input
                                     ref={passwordRef}
-                                    className='mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px]'
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.password ? 'error_input' : ""}`}
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Enter Your Password"
                                     name="password"
+                                    id={"password"}
                                     value={user.password}
                                     onChange={handleChange}
                                     onKeyDown={(e) => handleKeyDown(e, null)}

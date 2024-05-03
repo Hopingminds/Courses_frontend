@@ -1,4 +1,3 @@
-
 .Loginactive {
   background-color: #1dbf73 !important;
   border-radius: 20px;
@@ -15,8 +14,12 @@
   font-size: 1rem;
   height: 35px;
   width: 125px;
-  margin: 0 ;
+  margin: 0;
 }
-.collegescroll::-webkit-scrollbar{
+.collegescroll::-webkit-scrollbar {
   width: 0px;
+}
+
+.error_input {
+  border: 1px solid red;
 }

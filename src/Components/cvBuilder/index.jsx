@@ -13,6 +13,7 @@ import {
   UNSUPPORTED_FILE_TYPE,
 } from "./constants/message-result.constants";
 import LS from "./utils/browser.utils";
+import CV4 from "./CV4";
 
 export default function CVBuilder() {
   const [cv, setCv] = useState(cvData);
@@ -200,6 +201,8 @@ export default function CVBuilder() {
         return <CV />;
       case "3":
         return <CV2 />;
+      case "4":
+        return <CV4 />;
       default:
         return <CV3 />;
     }
