@@ -34,7 +34,7 @@ const Basic = ({changeComponent,setFinalData}) => {
     return (
         <div className='flex flex-col justify-between min-h-[70vh] md:min-h-[60vh] xsm:min-h-[50vh]'>
             <div className='flex flex-col gap-4 px-4 py-2'>
-                <div className='grid grid-cols-2  gap-8'>
+                {/* <div className='grid grid-cols-2  gap-8'>
                     <div className='flex flex-col text-[15px] md:text-[12px] xsm:text-[8px]'>
                         <label htmlFor="fname" className='font-nu font-semibold '>First Name</label>
                         <input onChange={formHandler} required className='outline-none bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md' type="text" value={basicFormData.fname} name='fname' />
@@ -43,8 +43,8 @@ const Basic = ({changeComponent,setFinalData}) => {
                         <label htmlFor="lname" className='font-nu font-semibold '>Last Name</label>
                         <input onChange={formHandler} required className='outline-none bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md' type="text" value={basicFormData.lname} name='lname' />
                     </div>
-                </div>
-                <div className='grid grid-cols-2  gap-8'>
+                </div> */}
+                {/* <div className='grid grid-cols-2  gap-8'>
                     <div className='flex flex-col text-[15px] md:text-[12px] xsm:text-[8px]'>
                         <label htmlFor="email" className='font-nu font-semibold '>Email</label>
                         <input onChange={formHandler} required className='outline-none bg-[#F9F9F9] py-1 px-2 rounded-md shadow-md' type="email" value={basicFormData.email} name='email'/>
@@ -60,7 +60,7 @@ const Basic = ({changeComponent,setFinalData}) => {
                             onChange={setNum}
                             />
                     </div>
-                </div>
+                </div> */}
                 <div className=''>
                     <div className='flex flex-col text-[15px] md:text-[12px] xsm:text-[8px]'>
                         <label htmlFor="address" className='font-nu font-semibold '>Address</label>

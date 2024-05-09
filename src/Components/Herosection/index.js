@@ -160,7 +160,7 @@ export default function Herosection() {
     <>
       <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%]">
         <div className="flex flex-col gap-12 xsm:gap-6">
-          <div className="">
+          {/* <div className="">
             <img
               src={Circle}
               className="w-10 h-10 animate-bounce z-0 md:w-8 md:h-8 xsm:w-4 xsm:h-4"
@@ -170,7 +170,7 @@ export default function Herosection() {
                 left: circlePosition.x,
               }}
             />
-          </div>
+          </div> */}
           <div className="text-[20px] leading-10 font-bold text-white font-pop text-wrap w-[90%] md:text-[16px] md:leading-6 xsm:text-[8px] xsm:leading-3">
             {" "}
             Unlock Opportunities with 200+ Leading Corporates, Master Skills with Industry Experts, and Stay up-skilled with our Annually Updated Curriculum; Experience Personalized Career Coaching and Exclusive Networking Events!

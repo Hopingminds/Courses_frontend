@@ -120,7 +120,7 @@ export default function Coursecontents({ data, completed_lessons,setMenu,handleA
 
 
                                                     return (
-                                                        <div onClick={()=>handleActiveVideo(chapter?.video)} className={`flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id) ? 'cursor-not-allowed text-gray-300' : ''}`} key={index}>
+                                                        <div onClick={()=> completed.includes(chapter._id)&&handleActiveVideo(chapter?.video)} className={`flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id) ? 'cursor-not-allowed text-gray-300' : ''}`} key={index}>
                                                             <span className='flex justify-between'>
                                                                 <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">{index + 1}. {chapter?.lesson_name}</p>
                                                                 <p className='font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]'>{chapter?.duration}</p>
