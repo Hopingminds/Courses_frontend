@@ -51,6 +51,8 @@ import PostJobsForm from '../Components/PostJobsForm/PostJobsForm.jsx'
 import CVBuilder from '../Components/cvBuilder/index.jsx'
 import JobPreview from '../Components/JobPreview/JobPreview.jsx'
 import PDFViewer from '../Components/pdfReader/index.js'
+import HRDashboard from '../Components/HRDashboard/index.jsx'
+import HRNavbar from '../Components/HRDashboard/HRNavbar/HRNavbar.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -60,13 +62,15 @@ const Router = () => {
         <BrowserRouter >
             <ScrollToTop />
             {/* <Navbar /> */}
-            {pathname.includes('subadmin') ? <div>
-
-                <NavSubAdmin />
-            </div> : <div className='h-20 md:h-14 xsm:h-10'>
-
-                <Navbar />
-            </div>}
+            {pathname.includes('subadmin') ? 
+                <div>
+                    <NavSubAdmin />
+                </div> : pathname.includes('hrdashboard') ? <HRNavbar/> 
+                : 
+                <div className='h-20 md:h-14 xsm:h-10'>
+                    <Navbar />
+                </div>
+            }
 
             <Routes>
                 <Route path='/' element={<Home />} />
@@ -119,6 +123,7 @@ const Router = () => {
                 <Route path='/postjob' element={<PostJobsForm/>} />
                 <Route path='/jobpreview' element={<JobPreview/>} />
                 <Route path='/pdf' element={<PDFViewer/>} />
+                <Route path='/hrdashboard' element={<HRDashboard/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 

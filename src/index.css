@@ -189,3 +189,16 @@
 .buttonHover {
   @apply hover:text-neutral-700 hover:scale-105 hover:drop-shadow-md transition-all;
 }
+
+
+.css-1jq9w0k-JoySlider-track {
+  background-color: #1DBF73 !important;
+}
+
+.css-hayzob-JoySlider-thumb{
+  background-color: #1DBF73 !important;
+}
+
+.css-hayzob-JoySlider-thumb::before{
+  border: none !important;
+}
