@@ -201,6 +201,10 @@ const AllCourses = () => {
     };
   }, [searchBarRef, searchResultsRef]);
 
+  const handleContextMenu = (e) => {
+    e.preventDefault(); // Prevent default context menu behavior
+  };
+
   return (
     <>
       <head>
@@ -249,6 +253,7 @@ const AllCourses = () => {
 
         <div className="h-full w-full bg-black">
           <ReactPlayer
+          onContextMenu={handleContextMenu}
 
             // url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
             url='/coursesvideo.mp4'

@@ -43,9 +43,9 @@ const Footer = () => {
                             <Link to='/cv-builder' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>CV Builder</Link>
                         </div>
                     </div>
-                    <div className='flex flex-col gap-8 xsm:gap-2 ' onClick={Top} >
+                    <div className='flex flex-col gap-8 xsm:gap-2 ' >
                         <p className='text-white text-[20px] font-pop font-semibold xsm:text-[10px] md:text-[14px]'>PROGRAMS</p>
-                        <div className='flex flex-col gap-3 xsm:gap-1 md:gap-2'>
+                        <div className='flex flex-col gap-3 xsm:gap-1 md:gap-2'  onClick={Top}>
                             <Link to='/course?category=Management' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Management</Link>
                             <Link to='/course?category=Finance' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Finance</Link>
                             <Link to='/course?category=Full Stack Development' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Full Stack Development</Link>

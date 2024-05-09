@@ -221,14 +221,14 @@ const ProfilEdit = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <Link
             to={"/resumebuilder"}
             className="cursor-pointer text-center mt-0 w-max text-red-500 xsm:text-[12px] md:text-[16px]"
           >
             Complete Your Profile
           </Link>
-        </div>
+        </div> */}
         <div className="flex justify-center mt-20 xsm:mt-6 md:mt-16">
           <div className="grid grid-cols-2 justify-between gap-x-40 gap-y-8 w-[80%] xsm:gap-x-8 xsm:gap-y-3 md:gap-x-28 md:gap-y-6">
             <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
@@ -304,7 +304,7 @@ const ProfilEdit = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
+            {/* <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
               <input
                 type="text"
                 className="outline-none w-full bg-transparent placeholder-[#555555]"
@@ -313,7 +313,13 @@ const ProfilEdit = () => {
                 name="bio"
                 onChange={handleChange}
               />
-            </div>
+            </div> */}
+            <Link
+            to={"/resumebuilder"}
+            className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-2 py-1 w-[45%] flex justify-center items-center text-center xsm:text-[10px] md:text-[16px]"
+          >
+            <p>Complete Your Profile</p>  
+          </Link>
           </div>
         </div>
         <div className="flex justify-center pt-10 xsm:pt-0 ">

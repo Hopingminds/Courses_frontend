@@ -42,6 +42,10 @@ const WhatHM = () => {
 
   };
 
+  const handleContextMenu = (e) => {
+    e.preventDefault(); // Prevent default context menu behavior
+  };
+
   return (
     <div className="py-12 xsm:py-0 md:py-4">
       <div className="flex flex-col gap-3" ref={sectionRef}>
@@ -65,6 +69,7 @@ const WhatHM = () => {
             onClick={() => handlePlay(0)}
           >
             <ReactPlayer
+            onContextMenu={handleContextMenu}
               className={"w-full h-full md:w-[35%] rounded-3xl aspect-auto"}
               url="/Corporate1.mp4"
               playing={playingIndex === 0}
@@ -108,6 +113,7 @@ const WhatHM = () => {
             onClick={() => handlePlay(1)}
           >
             <ReactPlayer
+            onContextMenu={handleContextMenu}
               className={"w-full h-full rounded-3xl md:w-[35%] aspect-auto"}
               url="/Corporate2.mp4"
               playing={playingIndex === 1}

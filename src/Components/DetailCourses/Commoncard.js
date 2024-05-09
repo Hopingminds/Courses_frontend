@@ -93,6 +93,10 @@ export default function Commoncard(props) {
     e.preventDefault();
     setIsMuted((prev) => !prev);
   };
+  const handleContextMenu = (e) => {
+    e.preventDefault(); // Prevent default context menu behavior
+  };
+  
   return (
     <div className="bg-[#E2FFF1] w-[33%] h-max my-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3">
       <div className="h-[225px] bg-white xsm:h-[65px] md:h-[35%] relative">
@@ -124,6 +128,7 @@ export default function Commoncard(props) {
           </span>
         }
         <ReactPlayer
+        onContextMenu={handleContextMenu}
           height="100%"
           width="100%"
           url={Data?.featured_video}
