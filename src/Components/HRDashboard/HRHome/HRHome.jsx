@@ -16,7 +16,7 @@ const HRHome = () => {
               <p className='text-center'>It looks like you haven't posted any jobs yet. Posting a job is super easy. Get started to find the right candidates for your company now.</p>
             </div>
             <div className='py-[2%]'>
-              <button onClick={navigate('/postjob')} className='bg-[#1DBF73] text-white text-[18px] px-6 py-2 rounded-lg'>Post New Job</button>
+              <button onClick={() => navigate('/postjob')} className='bg-[#1DBF73] text-white text-[18px] px-6 py-2 rounded-lg'>Post New Job</button>
             </div>
           </div>
         </div>

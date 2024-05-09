@@ -46,8 +46,8 @@ const Sidebar = ({ onItemClick, selectedComponent }) => {
 
                 {/* Reports Section */}
                 <div className='flex items-center gap-2' onClick={() => onItemClick('reports')}>
-                    {selectedComponent==='reports'? <img src={ReportWhite} alt='' /> : <img src={ReportGray} alt='' />}
-                    <p className={`cursor-pointer ${ selectedComponent==='reports'?'text-white underline':''}`}>Reports</p>
+                    {selectedComponent==='reports' || selectedComponent==='application' || selectedComponent==='results' ? <img src={ReportWhite} alt='' /> : <img src={ReportGray} alt='' />}
+                    <p className={`cursor-pointer ${ selectedComponent==='reports' || selectedComponent==='application' || selectedComponent==='results' ?'text-white underline':''}`}>Reports</p>
                 </div>
             </div>
         </div>

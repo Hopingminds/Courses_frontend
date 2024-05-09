@@ -61,6 +61,55 @@ const StudentList = () => {
       country: "India",
     },
     {
+      name: "Sunita",
+      role: "Backend",
+      phone: "+91-887674782",
+      email: "sunita@gmail.com",
+      country: "India",
+    },
+    {
+      name: "Raman sharma",
+      role: "Designer",
+      phone: "+91-987654782",
+      email: "raman@dev.com",
+      country: "India",
+    },
+    {
+      name: "Akash Gupta",
+      role: "Frontend",
+      phone: "+91-987654782",
+      email: "akash123@gmail.com",
+      country: "India",
+    },
+    {
+      name: "Akash Gupta",
+      role: "Frontend",
+      phone: "+91-987654782",
+      email: "akash123@gmail.com",
+      country: "India",
+    },
+    {
+      name: "Sunita",
+      role: "Backend",
+      phone: "+91-887674782",
+      email: "sunita@gmail.com",
+      country: "India",
+    },
+    {
+      name: "Raman sharma",
+      role: "Designer",
+      phone: "+91-987654782",
+      email: "raman@dev.com",
+      country: "India",
+    },
+    {
+      name: "Akash Gupta",
+      role: "Frontend",
+      phone: "+91-987654782",
+      email: "akash123@gmail.com",
+      country: "India",
+    },
+    {
       name: "Akash Gupta",
       role: "Frontend",
       phone: "+91-987654782",
@@ -140,7 +189,7 @@ const StudentList = () => {
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(3);
   const [showPopup, setShowPopup] = useState(false);
   const [checkedMarks, setCheckedMarks] = useState(
     Array(Math.ceil(sampleData.length / itemsPerPage))
@@ -167,6 +216,69 @@ const StudentList = () => {
 
   const handleSendMailClick = () => {
     setShowPopup(true);
+  };
+
+  const renderPaginationButtons = () => {
+    const totalPages = Math.ceil(sampleData.length / itemsPerPage);
+    const maxButtonsToShow = 3;
+
+    if (totalPages <= maxButtonsToShow) {
+      // Less than or equal to 4 pages, show all page numbers
+      return (
+        <div className="flex gap-2 xsm:gap-1">
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i + 1}
+              className={`border border-[#808080] w-[25px] h-[25px] rounded-[10px] text-[12px] font-bold md:text-[14px] md:w-[29px] md:h-[29px] xsm:text-[8px] xsm:w-[20px] xsm:h-[20px] ${
+                currentPage === i + 1 ? "text-[#D9D9D9] bg-[#808080]" : "bg-[#D8D8D8] text-[#808080]"
+              }`}
+              onClick={() => paginate(i + 1)}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
+      );
+    } else {
+      // More than 4 pages, show dynamic pagination
+      const pageNumbers = [];
+      const startPage = Math.max(1, currentPage - Math.floor(maxButtonsToShow / 2));
+      const endPage = Math.min(totalPages, startPage + maxButtonsToShow - 1);
+
+      if (startPage > 1) {
+        pageNumbers.push(1); // Always show first page
+        if (startPage > 2) {
+          pageNumbers.push("..."); // Show ellipsis if startPage is greater than 2
+        }
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(i);
+      }
+
+      if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+          pageNumbers.push("..."); // Show ellipsis if endPage is less than totalPages - 1
+        }
+        pageNumbers.push(totalPages); // Always show last page
+      }
+
+      return (
+        <div className="flex gap-2 xsm:gap-1">
+          {pageNumbers.map((pageNumber, index) => (
+            <button
+              key={index}
+              className={`border border-[#808080] w-[25px] h-[25px] rounded-[10px] text-[12px] font-bold md:text-[14px] md:w-[29px] md:h-[29px] xsm:text-[8px] xsm:w-[20px] xsm:h-[20px] ${
+                currentPage === pageNumber ? "text-[#D9D9D9] bg-[#808080]" : "bg-[#D8D8D8] text-[#808080]"
+              }`}
+              onClick={() => paginate(pageNumber)}
+            >
+              {pageNumber}
+            </button>
+          ))}
+        </div>
+      );
+    }
   };
 
   return (
@@ -287,55 +399,25 @@ const StudentList = () => {
               <span>Send Mail</span>
             </button> */}
 
-            <div className="flex items-center gap-2 xsm:gap-1">
+            <div className="flex items-center gap-2 xsm:gap-1"> 
               <button
                 className="border border-[#808080] w-[25px] h-[25px] bg-[#D8D8D8] rounded-[10px] flex justify-center items-center md:text-[14px] md:w-[29px] md:h-[29px] xsm:text-[8px] xsm:w-[20px] xsm:h-[20px]"
                 onClick={() => paginate(currentPage - 1)}
                 disabled={currentPage === 1}
               >
-                <img
-                  src={ArrowLeft}
-                  alt=""
-                  className="xsm:w-2"
-                />
+                <img src={ArrowLeft} alt="" className="xsm:w-2" />
               </button>
 
-              {sampleData.length > itemsPerPage && (
-                <div className="flex gap-2 xsm:gap-1">
-                  {Array(Math.ceil(sampleData.length / itemsPerPage))
-                    .fill()
-                    .map((_, i) => (
-                      <button
-                        key={i}
-                        className={`border border-[#808080] w-[25px] h-[25px]  rounded-[10px] text-[12px] font-bold md:text-[14px] md:w-[29px] md:h-[29px] xsm:text-[8px] xsm:w-[20px] xsm:h-[20px] ${
-                          currentPage === i + 1
-                            ? "text-[#D9D9D9] bg-[#808080]"
-                            : "bg-[#D8D8D8] text-[#808080]"
-                        }`}
-                        onClick={() => {
-                          console.log("currentPage:", currentPage);
-                          console.log("i + 1:", i + 1);
-                          paginate(i + 1);
-                        }}
-                      >
-                        {i + 1}
-                      </button>
-                    ))}
-                </div>
-              )}
+              {/* Render Pagination Buttons */}
+              {renderPaginationButtons()}
 
+              {/* Next Page Button */}
               <button
                 className="border border-[#808080] w-[25px] h-[25px] bg-[#D8D8D8] rounded-[10px] flex justify-center items-center md:text-[14px] md:w-[29px] md:h-[29px] xsm:text-[8px] xsm:w-[20px] xsm:h-[20px]"
                 onClick={() => paginate(currentPage + 1)}
-                disabled={
-                  currentPage === Math.ceil(sampleData.length / itemsPerPage)
-                }
+                disabled={currentPage === Math.ceil(sampleData.length / itemsPerPage)}
               >
-                <img
-                  src={ArrowRight}
-                  alt=""
-                  className="xsm:w-2"
-                />
+                <img src={ArrowRight} alt="" className="xsm:w-2" />
               </button>
             </div>
           </div>

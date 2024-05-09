@@ -5,6 +5,9 @@ import Reports from './Report/Reports';
 import Sidebar from './SideBar/Sidebar';
 import HRHome from './HRHome/HRHome';
 import ReportMain from './Report/ReportMain';
+import Applications from './Report/Applications/Applications';
+import Results from './Report/Results/Results';
+import ViewProfile from './Report/Results/ViewProfile';
 
 const HRDashboard = () => {
   const [selectedComponent, setSelectedComponent] = useState('home'); // Default component to render
@@ -23,7 +26,10 @@ const HRDashboard = () => {
         {selectedComponent === 'home' && <HRHome />}
         {selectedComponent === 'searchCandidate' && <SearchCandidate />}
         {selectedComponent === 'saveSearch' && <SaveSearch />}
-        {selectedComponent === 'reports' && <ReportMain selectedComponent={selectedComponent} />}
+        {selectedComponent === 'reports' && <ReportMain selectedComponent={selectedComponent} onItemClick={handleSidebarItemClick} />}
+        {selectedComponent === 'application' && <Applications  onItemClick={handleSidebarItemClick}/>}
+        {selectedComponent === 'results' && <Results onItemClick={handleSidebarItemClick} />}
+        {selectedComponent === 'viewprofile' && <ViewProfile onItemClick={handleSidebarItemClick} />}
       </div>
     </div>
   );

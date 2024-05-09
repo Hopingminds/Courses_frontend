@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ArrowLeft from '../../../Assets/Icons/hrlessthan.svg'
 import ArrowRight from '../../../Assets/Icons/hrgreaterthan.svg'
 
@@ -140,13 +140,39 @@ const SearchCandidateList = () => {
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(3);
   const [showPopup, setShowPopup] = useState(false);
   const [checkedMarks, setCheckedMarks] = useState(
     Array(Math.ceil(sampleData.length / itemsPerPage))
       .fill()
       .map(() => Array(itemsPerPage).fill(false))
   );
+
+  const [selectAllChecked, setSelectAllChecked] = useState(false);
+
+  useEffect(() => {
+    // Check if all checkboxes are checked across all pages
+    const allChecked = checkedMarks.every((pageMarks) =>
+      pageMarks.every((mark) => mark)
+    );
+    setSelectAllChecked(allChecked);
+  }, [checkedMarks]);
+
+  function checkHandler(event, pageIndex) {
+    const targetIndex = Number(event.target.getAttribute("data-index"));
+    const newCheckedMarks = [...checkedMarks];
+    newCheckedMarks[pageIndex][targetIndex] = !newCheckedMarks[pageIndex][targetIndex];
+    setCheckedMarks(newCheckedMarks);
+  }
+
+  function toggleSelectAll() {
+    const newCheckedMarks = checkedMarks.map((pageMarks) =>
+      pageMarks.map(() => !selectAllChecked)
+    );
+    setCheckedMarks(newCheckedMarks);
+    setSelectAllChecked(!selectAllChecked);
+  }
+
 
   function checkHandler(event, pageIndex) {
     const targetIndex = Number(event.target.getAttribute("data-index"));
@@ -167,6 +193,69 @@ const SearchCandidateList = () => {
 
   const handleSendMailClick = () => {
     setShowPopup(true);
+  };
+
+  const renderPaginationButtons = () => {
+    const totalPages = Math.ceil(sampleData.length / itemsPerPage);
+    const maxButtonsToShow = 3;
+
+    if (totalPages <= maxButtonsToShow) {
+      // Less than or equal to 4 pages, show all page numbers
+      return (
+        <div className="flex gap-2 xsm:gap-1">
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i + 1}
+              className={`border border-[#808080] w-[25px] h-[25px] rounded-[10px] text-[12px] font-bold md:text-[14px] md:w-[29px] md:h-[29px] xsm:text-[8px] xsm:w-[20px] xsm:h-[20px] ${
+                currentPage === i + 1 ? "text-[#D9D9D9] bg-[#808080]" : "bg-[#D8D8D8] text-[#808080]"
+              }`}
+              onClick={() => paginate(i + 1)}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
+      );
+    } else {
+      // More than 4 pages, show dynamic pagination
+      const pageNumbers = [];
+      const startPage = Math.max(1, currentPage - Math.floor(maxButtonsToShow / 2));
+      const endPage = Math.min(totalPages, startPage + maxButtonsToShow - 1);
+
+      if (startPage > 1) {
+        pageNumbers.push(1); // Always show first page
+        if (startPage > 2) {
+          pageNumbers.push("..."); // Show ellipsis if startPage is greater than 2
+        }
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(i);
+      }
+
+      if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+          pageNumbers.push("..."); // Show ellipsis if endPage is less than totalPages - 1
+        }
+        pageNumbers.push(totalPages); // Always show last page
+      }
+
+      return (
+        <div className="flex gap-2 xsm:gap-1">
+          {pageNumbers.map((pageNumber, index) => (
+            <button
+              key={index}
+              className={`border border-[#808080] w-[25px] h-[25px] rounded-[10px] text-[12px] font-bold md:text-[14px] md:w-[29px] md:h-[29px] xsm:text-[8px] xsm:w-[20px] xsm:h-[20px] ${
+                currentPage === pageNumber ? "text-[#D9D9D9] bg-[#808080]" : "bg-[#D8D8D8] text-[#808080]"
+              }`}
+              onClick={() => paginate(pageNumber)}
+            >
+              {pageNumber}
+            </button>
+          ))}
+        </div>
+      );
+    }
   };
 
   return (
@@ -244,7 +333,7 @@ const SearchCandidateList = () => {
               Country
             </p>
             <div className="font-pop font-bold text-[#808080] text-[14px] md:text-[13px] xsm:text-[8px] flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" name="" id="selectall" />
+              <input type="checkbox" name="" id="selectall" checked={selectAllChecked} onChange={toggleSelectAll} />
               <label htmlFor="selectall" className="cursor-pointer">Select All</label>
             </div>
           </div>
@@ -314,30 +403,7 @@ const SearchCandidateList = () => {
                   className="xsm:w-2"
                 />
               </button>
-
-              {sampleData.length > itemsPerPage && (
-                <div className="flex gap-2 xsm:gap-1">
-                  {Array(Math.ceil(sampleData.length / itemsPerPage))
-                    .fill()
-                    .map((_, i) => (
-                      <button
-                        key={i}
-                        className={`border border-[#808080] w-[25px] h-[25px]  rounded-[10px] text-[12px] font-bold md:text-[14px] md:w-[29px] md:h-[29px] xsm:text-[8px] xsm:w-[20px] xsm:h-[20px] ${
-                          currentPage === i + 1
-                            ? "text-[#D9D9D9] bg-[#808080]"
-                            : "bg-[#D8D8D8] text-[#808080]"
-                        }`}
-                        onClick={() => {
-                          console.log("currentPage:", currentPage);
-                          console.log("i + 1:", i + 1);
-                          paginate(i + 1);
-                        }}
-                      >
-                        {i + 1}
-                      </button>
-                    ))}
-                </div>
-              )}
+              {renderPaginationButtons()}
 
               <button
                 className="border border-[#808080] w-[25px] h-[25px] bg-[#D8D8D8] rounded-[10px] flex justify-center items-center md:text-[14px] md:w-[29px] md:h-[29px] xsm:text-[8px] xsm:w-[20px] xsm:h-[20px]"

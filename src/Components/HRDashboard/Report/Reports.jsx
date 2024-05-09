@@ -3,7 +3,7 @@ import Icon1 from '../../../Assets/Icons/hrreporticon1.svg'
 import Icon2 from '../../../Assets/Icons/hrreporticon2.svg'
 import { useNavigate } from 'react-router-dom'
 
-const Reports = ({ onShowApplication, onShowResult }) => {
+const Reports = ({ onItemClick }) => {
 
     return (
         <div className='min-h-screen'>
@@ -14,7 +14,7 @@ const Reports = ({ onShowApplication, onShowResult }) => {
                         <p className='font-medium text-[22px]'>Applications</p>
                         <p className='text-[17px]'>Get all applications received in a single report</p>
                     </div>
-                    <div className='flex justify-between items-center cursor-pointer' onClick={onShowApplication}>
+                    <div className='flex justify-between items-center cursor-pointer' onClick={() => onItemClick('application')}>
                         <p className='text-[#1DBF73]'>View Reports </p>
                         <img src={Icon2} alt="" />
                     </div>
@@ -25,7 +25,7 @@ const Reports = ({ onShowApplication, onShowResult }) => {
                         <p className='font-medium text-[22px]'>View frontend hiring results</p>
                         <p className='text-[17px]'>Get all applications received in a single report</p>
                     </div>
-                    <div className='flex justify-between items-center cursor-pointer' onClick={onShowResult}>
+                    <div className='flex justify-between items-center cursor-pointer' onClick={() => onItemClick('results')}>
                         <p className='text-[#1DBF73]'>View Reports </p>
                         <img src={Icon2} alt="" />
                     </div>

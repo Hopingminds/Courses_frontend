@@ -10,13 +10,21 @@ function valuetext(value) {
 }
 
 const SearchCandidate = () => {
-    const [selectedValue, setSelectedValue] = useState(null);
+    const [selectedValue, setSelectedValue] = useState("Freshers only");
+    const [selectedSkills, setSelectedSkills] = useState([]);
+    const [slider, setSlider] = React.useState([0, 10]);
 
     const handleRadioChange = (event) => {
         setSelectedValue(event.target.value);
     };
 
-    const [slider, setSlider] = React.useState([0, 10]);
+    const handleSkillClick = (skill) => {
+        if (selectedSkills.includes(skill)) {
+            setSelectedSkills(selectedSkills.filter((s) => s !== skill));
+        } else {
+            setSelectedSkills([...selectedSkills, skill]);
+        }
+    };
 
     const handleChange = (event, newValue) => {
         setSlider(newValue);
@@ -33,69 +41,57 @@ const SearchCandidate = () => {
                         <div className='text-[14px] font-light text-[#808080] flex gap-6'>
                             <label className='flex items-center gap-2'>
                                 <input
-                                type="radio"
-                                value="option1"
-                                checked={selectedValue === 'option1'}
-                                onChange={handleRadioChange}
+                                    className="sr-only peer"
+                                    type="radio"
+                                    value="Freshers only"
+                                    checked={selectedValue === 'Freshers only'}
+                                    onChange={handleRadioChange}
                                 />
-                                <p>Freshers only</p>
+                                <div className="w-3 h-3 bg-transparent border border-green-500 rounded-full peer-checked:bg-green-500 peer-checked:border-green-500"></div>
+                                <p>Freshers Only</p>
                             </label>
 
                             <label className='flex items-center gap-2'>
                                 <input
-                                type="radio"
-                                value="option2"
-                                checked={selectedValue === 'option2'}
-                                onChange={handleRadioChange}
+                                    className="sr-only peer"
+                                    type="radio"
+                                    value="Experienced only"
+                                    checked={selectedValue === 'Experienced only'}
+                                    onChange={handleRadioChange}
                                 />
-                                <p>Experienced only</p>
+                                <div className="w-3 h-3 bg-transparent border border-green-500 rounded-full peer-checked:bg-green-500 peer-checked:border-green-500"></div>
+                                <p>Experienced Only</p>
                             </label>
 
                             <label className='flex items-center gap-2'>
                                 <input
-                                type="radio"
-                                value="option3"
-                                checked={selectedValue === 'option3'}
-                                onChange={handleRadioChange}
+                                    className="sr-only peer"
+                                    type="radio"
+                                    value="Any"
+                                    checked={selectedValue === 'Any'}
+                                    onChange={handleRadioChange}
                                 />
+                                <div className="w-3 h-3 bg-transparent border border-green-500 rounded-full peer-checked:bg-green-500 peer-checked:border-green-500"></div>
                                 <p>Any</p>
                             </label>
                         </div>
                     </div>
-                    <div className='flex flex-wrap w-[40%] justify-end items-center font-pop gap-2'>
+                    <div className='flex flex-wrap w-[45%] justify-end items-center font-pop gap-2'>
                         <div className='pr-4'>
                             <p className="font-pop font-semibold text-[20px] md:text-[20px] xsm:text-[14px] text-[#808080]">Skills:</p>
                         </div>
-                        <div className='bg-white border border-[#808080] rounded-full px-4 py-2 flex items-center gap-2 cursor-pointer'>
-                            <p className='text-[14px] leading-none'>UI/UX</p>
-                            <div>
-                                <img src={Plus} alt="" />
+                        {['UI/UX', 'Frontend', 'Backend', 'React.js', 'Node.js'].map((skill) => (
+                            <div
+                                key={skill}
+                                className={`bg-white border rounded-full px-4 py-2 flex items-center gap-2 cursor-pointer ${
+                                    selectedSkills.includes(skill) ? 'border-[#1DBF73] text-[#1DBF73] font-semibold' : 'border-[#808080]'
+                                }`}
+                                onClick={() => handleSkillClick(skill)}
+                            >
+                                <p className="text-[14px] leading-none">{skill}</p>
+                                <img className={`transition-transform duration-300  ${selectedSkills.includes(skill) ?'rotate-45 redcross':'rotate-0'}`} src={Plus} alt="" />
                             </div>
-                        </div>
-                        <div className='bg-white border border-[#808080] rounded-full px-4 py-2 flex items-center gap-2 cursor-pointer'>
-                            <p className='text-[14px] leading-none'>Frontend</p>
-                            <div>
-                                <img src={Plus} alt="" />
-                            </div>
-                        </div>
-                        <div className='bg-white border border-[#808080] rounded-full px-4 py-2 flex items-center gap-2 cursor-pointer'>
-                            <p className='text-[14px] leading-none'>Backend</p>
-                            <div>
-                                <img src={Plus} alt="" />
-                            </div>
-                        </div>
-                        <div className='bg-white border border-[#808080] rounded-full px-4 py-2 flex items-center gap-2 cursor-pointer'>
-                            <p className='text-[14px] leading-none'>React</p>
-                            <div>
-                                <img src={Plus} alt="" />
-                            </div>
-                        </div>
-                        <div className='bg-white border border-[#808080] rounded-full px-4 py-2 flex items-center gap-2 cursor-pointer'>
-                            <p className='text-[14px] leading-none'>More</p>
-                            <div>
-                                <img src={Plus} alt="" />
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
                 <div className='flex justify-between'>

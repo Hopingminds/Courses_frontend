@@ -4,3 +4,8 @@
     text-indent: 1px;
     text-overflow: '';
 }
+
+
+.redcross{
+    filter: invert(31%) sepia(95%) saturate(7320%) hue-rotate(352deg) brightness(89%) contrast(120%);
+}
