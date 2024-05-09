@@ -85,7 +85,7 @@ export default function Coursecontents({ data, completed_lessons,setMenu,handleA
                     </div>
                     <div className="flex justify-between items-center">
                         <p className="font-pop text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px]">{completed_lessons?.length}/{totallessons}  COMPLETED</p>
-                        <img className="w-[19px] h-[19px] xsm:w-4 xsm:h-4 md:w-4 md:h-4" src="../Icons/Calender.svg" />
+                        {/* <img className="w-[19px] h-[19px] xsm:w-4 xsm:h-4 md:w-4 md:h-4" src="../Icons/Calender.svg" /> */}
                     </div>
                     <div>
                         {/* progressbar */}
