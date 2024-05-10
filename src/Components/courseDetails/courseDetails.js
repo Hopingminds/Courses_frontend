@@ -67,7 +67,7 @@ export default function CDDetails() {
         }
         // console.log("all", allchapters[0]?.video);
         // allchapters=[...new Set(allchapters)]
-        console.log(allchapters);
+        // console.log(allchapters);
         setALLCHAPTER(allchapters);
         setData(response?.data?.course);
         completed = [...new Set(completed)]
@@ -112,6 +112,7 @@ export default function CDDetails() {
           body: JSON.stringify(bodydata),
         });
         const response = await data1.json();
+        
         setcount(count + 1);
 
         // console.log(response);
@@ -156,6 +157,9 @@ export default function CDDetails() {
 
   let totalLessons = countLessons();
   // console.log("Count",totalLessons);
+  const handleContextMenu = (e) => {
+    e.preventDefault(); // Prevent default context menu behavior
+  };
 
   return (
     <>
@@ -167,7 +171,7 @@ export default function CDDetails() {
               {url.toString().endsWith('pdf') ?
                 <iframe src={url} width="100%" height="100%" />
                 : url.toString().endsWith('mp3') ? <iframe src={url} width="100%" height="100%" />
-                  : <ReactPlayer
+                  : <ReactPlayer onContextMenu={handleContextMenu}
                     height="100%"
                     width="100%"
                     className="shadow-2xl"
@@ -207,6 +211,7 @@ export default function CDDetails() {
               <Coursecontents
                 handleActiveVideo={handleActiveVideo}
                 data={Data?.curriculum}
+                courseId={courseId}
                 completed_lessons={completed_lessons}
                 setMenu={setMenu}
               />

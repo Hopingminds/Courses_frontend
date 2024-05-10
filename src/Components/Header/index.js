@@ -138,6 +138,17 @@ export default function Navbar() {
                 Courses
               </Link>
               <Link
+                to={"/internship"}
+                onClick={Top}
+                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] md:text-[14px] font-pop  ${
+                  location.pathname === "/internship"
+                    ? " font-bold text-[#1DBF73]"
+                    : ""
+                }`}
+              >
+                Internship
+              </Link>
+              <Link
                 to={"/hire-from-us"}
                 onClick={Top}
                 className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${
