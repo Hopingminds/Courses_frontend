@@ -33,7 +33,7 @@ const Sidebar = ({ onItemClick, selectedComponent }) => {
                     <p className={`${ showDatabaseOptions?'text-white underline':''}`}>Database</p>
                     </div>
                     <div>
-                    <img className={`${showDatabaseOptions?'rotate-180':'rotate-0'}`} src={Dropdown} alt='' />
+                    <img className={`transition-transform duration-500 ${showDatabaseOptions?'rotate-180 ':'rotate-0'}`} src={Dropdown} alt='' />
                     </div>
                 </div>
                 {showDatabaseOptions && (
@@ -46,8 +46,8 @@ const Sidebar = ({ onItemClick, selectedComponent }) => {
 
                 {/* Reports Section */}
                 <div className='flex items-center gap-2' onClick={() => onItemClick('reports')}>
-                    {selectedComponent==='reports' || selectedComponent==='application' || selectedComponent==='results' ? <img src={ReportWhite} alt='' /> : <img src={ReportGray} alt='' />}
-                    <p className={`cursor-pointer ${ selectedComponent==='reports' || selectedComponent==='application' || selectedComponent==='results' ?'text-white underline':''}`}>Reports</p>
+                    {selectedComponent==='reports' || selectedComponent==='application' || selectedComponent==='results' || selectedComponent==='viewprofile' ? <img src={ReportWhite} alt='' /> : <img src={ReportGray} alt='' />}
+                    <p className={`cursor-pointer ${ selectedComponent==='reports' || selectedComponent==='application' || selectedComponent==='results' || selectedComponent==='viewprofile' ?'text-white underline':''}`}>Reports</p>
                 </div>
             </div>
         </div>

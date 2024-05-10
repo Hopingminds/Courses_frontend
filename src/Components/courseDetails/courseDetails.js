@@ -7,6 +7,8 @@ import { BASE_URL } from "../../Api/api";
 import Coursecontents from "../Meeting/Coursecontents";
 import { jwtDecode } from "jwt-decode";
 import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
+import Main from "../Main/Main";
+import CourseNavigation from "../CourseNavigation/CourseNavigation";
 
 export default function CDDetails() {
   const [clicked, setclicked] = useState(false);
@@ -18,12 +20,14 @@ export default function CDDetails() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [ALLCHAPTER, setALLCHAPTER] = useState([]);
   const [courseId, setcourseId] = useState();
+  const [courseAssignment, setCourseAssignment] = useState([]);
+  const [courseLessons, setCourseLessons] = useState([]);
 
   const [url, seturl] = useState('');
   const params = useParams();
   let completed = [];
   let allchapters = [];
-
+  
   useEffect(() => {
     async function Fetchdata() {
       let login = localStorage.getItem("COURSES_USER_TOKEN");
@@ -33,7 +37,9 @@ export default function CDDetails() {
 
         const data = await fetch(url1);
         const response = await data.json();
-        // console.log(response);
+        console.log("Course particular",response);
+        setCourseLessons(response?.data?.completed_lessons);
+        setCourseAssignment(response?.data?.completed_assignments);
         if (response?.data?.course) {
           setcourseId(response?.data?.course?._id);
           if (!response?.data?.completed_lessons?.length) {
@@ -140,7 +146,16 @@ export default function CDDetails() {
     // console.log("Menu toggled"); 
     // }
   };
+  const countLessons = () => {
+    let temp = 0;
+    Data?.curriculum?.forEach((val) => {
+        temp += val?.lessons?.length;
+    })
+    return temp;
+  }
 
+  let totalLessons = countLessons();
+  // console.log("Count",totalLessons);
 
   return (
     <>
@@ -234,6 +249,7 @@ export default function CDDetails() {
                 <p className="xsm:text-[8px] md:text-[14px]">{Data?.overview}</p>
               </div>
             </div>
+            <CourseNavigation courseLessons={courseLessons} courseAssignment={courseAssignment} totalLessons={totalLessons}/>
           </div>
         </div>
       </div>

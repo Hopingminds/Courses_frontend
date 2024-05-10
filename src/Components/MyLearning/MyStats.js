@@ -54,8 +54,8 @@ export default function MyStats({ courses }) {
           <div className="">
             {courses?.map((val, ind) => {
               let total=0;
-             val?.course?.curriculum?.map((it)=>{
-total+=it.lessons.length;
+              val?.course?.curriculum?.map((it)=>{
+                total+=it.lessons.length;
               })
               // console.log(total);
               return (

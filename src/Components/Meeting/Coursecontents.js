@@ -95,10 +95,10 @@ export default function Coursecontents({ data, completed_lessons,setMenu,handleA
                 {data?.map((val, ind) => {
                     return (
                         <>
-                            <div className='mt-3 py-2 border border-[#1DBF73] px-4 bg-white rounded-xl cursor-pointer md:p-1' key={ind}>
+                            <div className='mt-3  border border-[#1DBF73] bg-white rounded-xl cursor-pointer md:p-1' key={ind}>
                                 <div className=''>
                                     <div>
-                                        <div className='' onClick={() => ClickSection(ind + 1)} >
+                                        <div className='py-2 px-4' onClick={() => ClickSection(ind + 1)} >
                                             <div className='flex justify-between '>
                                                 <p className='font-pop font-medium text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px]'>{val?.chapter_name}</p>
                                                 <Down />
@@ -114,7 +114,7 @@ export default function Coursecontents({ data, completed_lessons,setMenu,handleA
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id={ind + 1} className='pt-2'>
+                                        <div id={ind + 1} className='pt-2 py-2 px-4'>
                                             <div className='w-full'>
                                                 {val?.lessons?.map((chapter, index) => {
 
