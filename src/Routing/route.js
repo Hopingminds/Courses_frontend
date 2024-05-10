@@ -53,6 +53,7 @@ import JobPreview from '../Components/JobPreview/JobPreview.jsx'
 import PDFViewer from '../Components/pdfReader/index.js'
 import HRDashboard from '../Components/HRDashboard/index.jsx'
 import HRNavbar from '../Components/HRDashboard/HRNavbar/HRNavbar.jsx'
+import Internship from '../Components/Internship/Index.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -124,6 +125,7 @@ const Router = () => {
                 <Route path='/jobpreview' element={<JobPreview/>} />
                 <Route path='/pdf' element={<PDFViewer/>} />
                 <Route path='/hrdashboard' element={<HRDashboard/>} />
+                <Route path='/internship' element={<Internship/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 
