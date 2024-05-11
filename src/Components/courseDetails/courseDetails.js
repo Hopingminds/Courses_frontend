@@ -227,7 +227,7 @@ export default function CDDetails() {
             </Link>
           </div>
         </div>
-        <div className="">
+        <div className="w-full">
           <div className="CCD-container pb-10 pr-16 xsm:pr-[5%] xsm:h-[42vh] md:pr-[5%] md:h-[50vh]">
             <div className="flex gap-20">
               <div className="CCD-content flex gap-5 pt-10">
