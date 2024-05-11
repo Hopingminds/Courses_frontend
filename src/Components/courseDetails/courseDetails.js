@@ -233,7 +233,7 @@ export default function CDDetails() {
                   </p>
                   <div className="flex space-x-4">
                     <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px] md:text-[12px]">
-                      {Data?.curriculum[0]?.lessons?.length} Lesson
+                      {totalLessons} Lesson
                     </p>
                     <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px] md:text-[12px]">
                       6h 30min

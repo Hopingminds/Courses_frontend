@@ -20,10 +20,10 @@ export default function Coursecontents({ data,courseId, completed_lessons,setMen
     const [totallessons, setTotalLessons] = useState(0);
     const [openDropDown, setOpenDropdown] = useState('');
     let allchapters = []
-    console.log(data);
+    // console.log(data);
 
     let completed = [];
-    console.log(completed_lessons);
+    // console.log(completed_lessons);
     if (completed_lessons) {
        completed_lessons?.map((val) => {
             completed.push(val)
@@ -155,7 +155,7 @@ export default function Coursecontents({ data,courseId, completed_lessons,setMen
                                         <div id={ind + 1} className='pt-2 py-2 px-4'>
                                             <div className='w-full'>
                                                 {val?.lessons?.map((chapter, index) => {
-                                                        console.log(chapter);
+                                                        // console.log(chapter);
 
                                                     return (
                                                         <div onClick={()=> completed.includes(chapter._id)&&handleActiveVideo(chapter?.video)} className={`flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id) ? 'cursor-not-allowed text-gray-300' : ''}`} key={index}>

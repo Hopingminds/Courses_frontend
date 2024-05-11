@@ -20,6 +20,7 @@ export default function WishList() {
           const data = await fetch(url);
           const response = await data.json();
           setData(response?.wishlist);
+          console.log(response?.wishlist);
           setshow(false);
         }
       } catch (error) {
