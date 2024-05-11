@@ -52,17 +52,7 @@ const Testimonial = () => {
       stars: 5,
       reviews: 12,
       image: '/Tuhina Jain .jpg',
-      company: 'Google',
-
-    },
-    {
-      text: "HM's students come with a certain level of exposure and practical experience that distinguishes them from the rest. We are able to save critical time as they start delivering early.",
-      author: "Priyanka Ashok",
-      empty: 0,
-      stars: 5,
-      reviews: 12,
-      image: '/priyanka-ashok.jpeg',
-      company: 'Barclay',
+      company: 'Technology Recruiter - Adobe',
 
     },
     {
@@ -72,7 +62,7 @@ const Testimonial = () => {
       stars: 5,
       reviews: 12,
       image: '/amit-gupta.jpeg',
-      company: 'Techginia',
+      company: 'Director-Techginia',
 
     },
     {
@@ -82,7 +72,7 @@ const Testimonial = () => {
       stars: 5,
       reviews: 12,
       image: '/paras-chawala.jpeg',
-      company: 'Zonal',
+      company: 'Professor and HOD, ECE & EE.-Zonal',
 
     },
     {
@@ -92,7 +82,7 @@ const Testimonial = () => {
       stars: 5,
       reviews: 12,
       image: '/sachin-arora.jpeg',
-      company: 'TCS',
+      company: 'Business Analyst-TCS',
 
     },
     {
@@ -112,7 +102,7 @@ const Testimonial = () => {
       stars: 5,
       reviews: 12,
       image: '/probhjot-singh.jpeg',
-      company: 'KPMG',
+      company: 'Associate Director-KPMG',
 
     },
     {
@@ -122,7 +112,7 @@ const Testimonial = () => {
       stars: 5,
       reviews: 12,
       image: '/bhawna-thapiyal.jpeg',
-      company: 'Nagarro',
+      company: 'Director-Nagarro',
 
     },
     // {

@@ -3,6 +3,7 @@ import "./MLheader.css";
 import { jwtDecode } from "jwt-decode";
 import { BASE_URL } from "../../Api/api";
 import Img from "../../Assets/Images/nocoursefound.png"
+import { Link } from "react-router-dom";
 export default function Assignment({ courses }) {
   // console.log();
   const [Data, setData] = useState([]);
@@ -41,20 +42,21 @@ export default function Assignment({ courses }) {
           <img src={Img} />
         </div>
       </div>:
-        (<><div className="grid grid-cols-[1fr,1.5fr,3fr,2fr,2fr] w-full bg-[#E2FFF1] py-4 px-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
+        (<><div className="grid grid-cols-[1fr,1.5fr,3fr,2fr,2fr,1fr] w-full bg-[#E2FFF1] py-4 px-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
           <p className="font-pop font-bold text-center grid">Section</p>
           <p className="font-pop font-bold text-center">Assignment No</p>
           <p className="font-pop font-bold text-center">Course</p>
           <p className="font-pop font-bold text-center">Lesson Name</p>
           {/* <p className="font-pop font-semibold text-center">Deadline</p> */}
           <p className="font-pop font-bold text-center">Status</p>
+          <p className="font-pop font-bold text-center">Action</p>
         </div>
         
 
         {Data?.map((item, ind) => {
           return (
             <>
-              <div className="grid grid-cols-[1fr,1.5fr,3fr,2fr,2fr] w-full bg-[#E2FFF1] py-4 px-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
+              <div className="grid grid-cols-[1fr,1.5fr,3fr,2fr,2fr,1fr] w-full bg-[#E2FFF1] py-4 px-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
                 <p className="font-nu font-semibold text-center">{ind + 1}</p>
                 <p className="font-nu font-semibold text-center">{ind + 1}</p>
                 <p className="font-nu font-semibold text-center">
@@ -73,6 +75,7 @@ export default function Assignment({ courses }) {
                     Pending
                   </p>
                 )}
+                <p className="font-nu font-semibold text-center"><Link to={item?.assignmentUrl} target="_blank">View</Link></p>
               </div>
             </>
           );

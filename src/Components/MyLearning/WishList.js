@@ -62,7 +62,7 @@ export default function WishList() {
                 <div className="h-[55%] xsm:h-[45%] md:h-[40%]">
                   <img
                     className="w-full h-full rounded-lg"
-                    src={item.course.featured_image}
+                    src={item.course?.featured_image}
                   />
                 </div>
                 <div className="flex flex-col gap-3 justify-between h-[45%]">
@@ -70,22 +70,21 @@ export default function WishList() {
                   <div className="flex justify-between mt-3 min-h-[30%] xsm:mt-1 md:mt-0 items-center">
                     <div className="flex items-center space-x-3 max-w-[80%] xsm:space-x-1 md:space-x-1">
                       <img
-                        className="w-[32px] h-[32px] xsm:w-4 xsm:h-4 md:w-5 md:h-5"
-                        src="../img/RCimg2.png"
+                        className="w-[32px] h-[32px] rounded-full xsm:w-4 xsm:h-4 md:w-5 md:h-5"
+                        src={item?.course?.instructor?.profile}
                       />
                       <p className="font-pop font-medium text-[14px] flex flex-wrap xsm:text-[5px] md:text-[10px]">
-                        {item.course.instructor.firstName}{" "}
-                        {item.course.instructor.lastName}
+                        {item?.course?.instructor?.name}
                       </p>
                     </div>
                     <div>
                       <p className="font-pop font-bold text-[#49BBBD] text-[18px] xsm:text-[5px] md:text-[10px]">
-                        ₹{item.course.base_price}
+                        ₹{item?.course?.base_price}
                       </p>
                     </div>
                   </div>
                   <p className="font-pop font-semibold text-[18px] text-[#252641] xsm:text-[8px] md:text-[14px]">
-                    {item.course.title}
+                    {item?.course?.title}
                   </p>
                   </div>
                   <div className=" flex flex-row items-center justify-between">
@@ -95,7 +94,7 @@ export default function WishList() {
                         src="../Icons/RCDesign.svg"
                       />
                       <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[8px]">
-                        {item.course.category}
+                        {item.course?.category}
                       </p>
                     </div>
                     <div className="flex space-x-2 items-center xsm:space-x-0 md:space-x-1">
@@ -104,7 +103,7 @@ export default function WishList() {
                         src="../Icons/RCClock.svg"
                       />
                       <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[8px]">
-                        {item.course.duration}
+                        {item.course?.duration}
                       </p>
                     </div>
                   </div>
