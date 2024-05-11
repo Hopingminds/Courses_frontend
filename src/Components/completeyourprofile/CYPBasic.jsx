@@ -1,0 +1,70 @@
+import React, { useState } from 'react'
+import toast from 'react-hot-toast';
+
+const CYPBasic = ({setFinalData, setActiveDetail}) => {
+    const [basicFormData, setBasicFormData] = useState({address:"", city:"", state:"", objective:""});
+    
+    function formHandler(e){
+        setBasicFormData(prev =>(
+            {
+                ...prev,
+                [e.target.name]: e.target.value
+            }
+        ))
+    }
+
+    function handleSubmit(){
+        const finalBasicData ={
+            ...basicFormData
+        }
+        console.log(finalBasicData);
+        
+        if(basicFormData.address === "" || basicFormData.city === "" || basicFormData.state === "" || basicFormData.objective === "" ){
+            toast.error("Fill all the field");
+        }else{
+            setFinalData(prevData => ({...prevData, finalBasicData}));
+            setActiveDetail('education');
+        }
+    }
+
+
+    return (
+        <div className='font-nu font-semibold flex flex-col gap-4 items-center w-full'>
+            <div>
+                <p className='font-semibold'>Basic</p>
+            </div>
+            <div className='flex  flex-col gap-4 px-12 py-6 w-full border border-[#00000050] rounded-xl '>
+                <div className=''>
+                    <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
+                        <label htmlFor="address" className='font-nu font-semibold '>Address</label>
+                        <textarea onChange={formHandler} required className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="text" value={basicFormData.address} name='address' placeholder='Address'  />
+                    </div>
+                </div>
+                <div className='grid grid-cols-2  gap-8'>
+                    <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
+                        <label htmlFor="city" className='font-nu font-semibold '>City</label>
+                        <input onChange={formHandler} required className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="email" value={basicFormData.city} name='city'/>  {/* make it select*/}
+                    </div>
+                    <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
+                        <label htmlFor="number" className='font-nu font-semibold '>State</label>
+                        <input onChange={formHandler} required className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="text" value={basicFormData.state} name='state'/>   {/* make it select*/}
+                    </div>
+                </div>
+                <div className=''>
+                    <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
+                        <label htmlFor="address" className='font-nu font-semibold '>Objective</label>
+                        <textarea onChange={formHandler} required className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050] font-nu font-light' type="text" placeholder='Tell about Yourself' value={basicFormData.objective} name='objective' />
+                    </div>
+                </div>
+            </div>
+            <div className='flex justify-end w-full'>
+                <div onClick={handleSubmit} className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4 cursor-pointer xsm:gap-0 xsm:px-2 xsm:py-1'>
+                    <button  className=" text-white font-pop font-medium text-[18px]  xsm:text-[10px] xsm:py-1 xsm:px-4 md:text-[14px]">Submit</button>
+                    <img className='w-7 md:w-6 xsm:w-5' src="../Icons/resumerightarrow.svg" alt="" />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default CYPBasic
