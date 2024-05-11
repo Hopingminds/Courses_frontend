@@ -102,7 +102,7 @@ console.log(window.location.pathname);
 
   return (
     <Globalinfo.Provider value={{ cartData, Getadmindetails, adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
-      <div className='2xl:px-[17%] overflow-x-hidden'>
+      <div className='2xl:px-[17%]'>
         <Router />
         <div className="fixed right-0 bottom-24">
            <ChatBot className="w-fit" />

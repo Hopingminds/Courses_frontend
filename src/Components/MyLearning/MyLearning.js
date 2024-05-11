@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Mycourse from './Mycourse';
 import './MLheader.css';
 import Assignment from './Assignment';
@@ -27,6 +27,7 @@ export default function MyLearning() {
     const navigate = useNavigate()
     const [show, setshow] = useState(false)
     const [showPopup, setShowPopup] = useState(true);
+    const [search,setsearch]=useSearchParams()
     const [showpage, setshowpage] = useState('courses');
     const [purchasedCourses, setPurchasedCourses] = useState();
     const { userDetail, getUserDetails } = useContext(Globalinfo);
@@ -49,6 +50,12 @@ export default function MyLearning() {
     useLayoutEffect(() => {
         checkUserValidation()
     }, [])
+    useEffect(() => {
+     if(search.get('tab')){
+        setshowpage(search.get('tab'))
+     }
+    }, [])
+    
 
     const fetchUserData = async (email) => {
         setshow(true)

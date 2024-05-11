@@ -9,6 +9,14 @@ import { jwtDecode } from "jwt-decode";
 import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
 import Main from "../Main/Main";
 import CourseNavigation from "../CourseNavigation/CourseNavigation";
+import { Link } from "react-router-dom";
+
+import { ReactComponent as MyCourse } from "../../Assests/Icons/my-courses.svg";
+import { ReactComponent as MyAssignment } from "../../Assests/Icons/assignments.svg";
+import { ReactComponent as MyWhishlist } from "../../Assests/Icons/whishlist.svg";
+import { ReactComponent as MyCertificate } from "../../Assests/Icons/certificate.svg";
+import { ReactComponent as MyStats } from "../../Assests/Icons/stats.svg";
+import { ReactComponent as MyJob } from "../../Assests/Icons/job.svg";
 
 export default function CDDetails() {
   const [clicked, setclicked] = useState(false);
@@ -23,11 +31,11 @@ export default function CDDetails() {
   const [courseAssignment, setCourseAssignment] = useState([]);
   const [courseLessons, setCourseLessons] = useState([]);
 
-  const [url, seturl] = useState('');
+  const [url, seturl] = useState("");
   const params = useParams();
   let completed = [];
   let allchapters = [];
-  
+
   useEffect(() => {
     async function Fetchdata() {
       let login = localStorage.getItem("COURSES_USER_TOKEN");
@@ -37,21 +45,20 @@ export default function CDDetails() {
 
         const data = await fetch(url1);
         const response = await data.json();
-        console.log("Course particular",response);
+        console.log("Course particular", response);
         setCourseLessons(response?.data?.completed_lessons);
         setCourseAssignment(response?.data?.completed_assignments);
         if (response?.data?.course) {
           setcourseId(response?.data?.course?._id);
           if (!response?.data?.completed_lessons?.length) {
-            completed.push(response?.data?.course?.curriculum[0]?.lessons[0]?._id)
-
-          }
-          else {
+            completed.push(
+              response?.data?.course?.curriculum[0]?.lessons[0]?._id
+            );
+          } else {
             response?.data?.completed_lessons?.forEach((val) => {
               completed.push(val);
             });
           }
-
         }
         // console.log(completed);
         if (response?.data?.course) {
@@ -70,7 +77,7 @@ export default function CDDetails() {
         // console.log(allchapters);
         setALLCHAPTER(allchapters);
         setData(response?.data?.course);
-        completed = [...new Set(completed)]
+        completed = [...new Set(completed)];
         let videoindex = completed.length;
         seturl(allchapters[videoindex - 1]?.video);
         setcompleted_lessons(completed);
@@ -81,10 +88,9 @@ export default function CDDetails() {
     Fetchdata();
   }, []);
 
-
   function handleActiveVideo(url) {
     // console.log(url);
-    seturl(url)
+    seturl(url);
   }
 
   // console.log(allchapters);
@@ -93,7 +99,7 @@ export default function CDDetails() {
 
     seturl(ALLCHAPTER[count + 1]?.video);
     let temp = completed_lessons;
-    temp.push(ALLCHAPTER[count + 1]?._id)
+    temp.push(ALLCHAPTER[count + 1]?._id);
     // console.log(count);
     setcompleted_lessons(temp);
 
@@ -112,7 +118,7 @@ export default function CDDetails() {
           body: JSON.stringify(bodydata),
         });
         const response = await data1.json();
-        
+
         setcount(count + 1);
 
         // console.log(response);
@@ -144,16 +150,16 @@ export default function CDDetails() {
   const toggleMenu = () => {
     // if (window.innerWidth <= 480) {
     setMenu((prevClicked) => !prevClicked);
-    // console.log("Menu toggled"); 
+    // console.log("Menu toggled");
     // }
   };
   const countLessons = () => {
     let temp = 0;
     Data?.curriculum?.forEach((val) => {
-        temp += val?.lessons?.length;
-    })
+      temp += val?.lessons?.length;
+    });
     return temp;
-  }
+  };
 
   let totalLessons = countLessons();
   // console.log("Count",totalLessons);
@@ -163,98 +169,170 @@ export default function CDDetails() {
 
   return (
     <>
-      <div className="CCD-container py-10 px-16 xsm:p-[5%] xsm:h-[42vh] md:px-[5%] md:h-[50vh]">
-        <div className="CCD-content flex gap-5">
-          <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
-            <div className="relative h-[100%] shadow-lg xsm:h-[35vh] md:h-[40vh]">
-
-              {url.toString().endsWith('pdf') ?
-                <iframe src={url} width="100%" height="100%" />
-                : url.toString().endsWith('mp3') ? <iframe src={url} width="100%" height="100%" />
-                  : <ReactPlayer onContextMenu={handleContextMenu}
-                    height="100%"
-                    width="100%"
-                    className="shadow-2xl"
-                    playing={true}
-                    controls={true}
-                    autoPlay={true}
-                    url={url}
-                    onDuration={handleDuration}
-                    onEnded={handleVideoEnded}
-                    config={{
-                      file: {
-                        attributes: {
-                          controlsList: "nodownload" // Disable download option
-                        }
-                      }
-                    }}
-                  />
-              }
-              {/* <div className="absolute right-0 bottom-10">
+      {/* side menu */}
+      <div className="flex gap-20">
+        <div className="w-16 h-[100vh] sticky top-12 bg-[#0F2027] flex flex-col justify-start items-center gap-8 py-10 pl-[2%] pr-2 text-white">
+          <div className="group relative">
+            <Link to="/learning?tab=courses">
+              <MyCourse />
+              <div class="bg-[#0F2027] p-1 px-2 z-10 rounded-md group-hover:flex hidden absolute top-1/2 -translate-y-1/2 -right-3 translate-x-full">
+                <span class="text-white whitespace-nowrap">My Courses</span>
+                <div class="bg-[#0F2027] rotate-45 p-1 absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2"></div>
+              </div>
+            </Link>
+          </div>
+          <div className="group relative">
+          <Link to="/learning?tab=assignments">
+            <MyAssignment />
+            <div class="bg-[#0F2027] p-1 px-2 z-50 rounded-md group-hover:flex hidden absolute top-1/2 -translate-y-1/2 -right-4 translate-x-full">
+              <span class="text-white whitespace-nowrap">Assignment</span>
+              <div class="bg-[#0F2027] rotate-45 p-1 absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2"></div>
+            </div>
+            </Link>
+          </div>
+          <div className="group relative">
+          <Link to="/learning?tab=wishlist">
+            <MyWhishlist />
+            <div class="bg-[#0F2027] p-1 px-2 z-10 rounded-md group-hover:flex hidden absolute top-1/2 -translate-y-1/2 -right-3 translate-x-full">
+              <span class="text-white whitespace-nowrap">Whishlist</span>
+              <div class="bg-[#0F2027] rotate-45 p-1 absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2"></div>
+            </div>
+            </Link>
+          </div>
+          <div className="group relative">
+          <Link to="/learning?tab=certificate">
+            <MyCertificate />
+            <div class="bg-[#0F2027] p-1 px-2 z-10 rounded-md group-hover:flex hidden absolute top-1/2 -translate-y-1/2 -right-3 translate-x-full">
+              <span class="text-white whitespace-nowrap">Certificate</span>
+              <div class="bg-[#0F2027] rotate-45 p-1 absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2"></div>
+            </div>
+            </Link>
+          </div>
+          <div className="group relative">
+          <Link to="/learning?tab=stats">
+            <MyStats />
+            <div class="bg-[#0F2027] p-1 px-2 z-10 rounded-md group-hover:flex hidden absolute top-1/2 -translate-y-1/2 -right-3 translate-x-full">
+              <span class="text-white whitespace-nowrap">My Stats</span>
+              <div class="bg-[#0F2027] rotate-45 p-1 absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2"></div>
+            </div>
+            </Link>
+          </div>
+          <div className="group relative">
+          <Link to="/learning?tab=job">
+            <MyJob />
+            <div class="bg-[#0F2027] p-1 px-2 z-10 rounded-md group-hover:flex hidden absolute top-1/2 -translate-y-1/2 -right-3 translate-x-full">
+              <span class="text-white whitespace-nowrap">Job Offering</span>
+              <div class="bg-[#0F2027] rotate-45 p-1 absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2"></div>
+            </div>
+            </Link>
+          </div>
+        </div>
+        <div className="">
+          <div className="CCD-container pb-10 pr-16 xsm:pr-[5%] xsm:h-[42vh] md:pr-[5%] md:h-[50vh]">
+            <div className="flex gap-20">
+              <div className="CCD-content flex gap-5 pt-10">
+                <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
+                  <div className="relative h-[100%] shadow-lg xsm:h-[35vh] md:h-[40vh]">
+                    {url.toString().endsWith("pdf") ? (
+                      <iframe src={url} width="100%" height="100%" />
+                    ) : url.toString().endsWith("mp3") ? (
+                      <iframe src={url} width="100%" height="100%" />
+                    ) : (
+                      <ReactPlayer
+                        onContextMenu={handleContextMenu}
+                        height="100%"
+                        width="100%"
+                        className="shadow-2xl"
+                        playing={true}
+                        controls={true}
+                        autoPlay={true}
+                        url={url}
+                        onDuration={handleDuration}
+                        onEnded={handleVideoEnded}
+                        config={{
+                          file: {
+                            attributes: {
+                              controlsList: "nodownload", // Disable download option
+                            },
+                          },
+                        }}
+                      />
+                    )}
+                    {/* <div className="absolute right-0 bottom-10">
                                 <ChatBot className="w-fit" />
                             </div> */}
+                  </div>
+                </div>
+
+                {window.innerWidth <= 480 ? (
+                  menu ? (
+                    <div className="w-[45%] h-[80vh] overflow-y-auto">
+                      <Coursecontents
+                        data={Data?.curriculum}
+                        completed_lessons={completed_lessons}
+                        setMenu={setMenu}
+                      />
+                    </div>
+                  ) : (
+                    <></>
+                  )
+                ) : (
+                  <div className="w-[45%]  h-[80vh] overflow-y-auto md:h-[40vh]">
+                    <Coursecontents
+                      handleActiveVideo={handleActiveVideo}
+                      data={Data?.curriculum}
+                      courseId={courseId}
+                      completed_lessons={completed_lessons}
+                      setMenu={setMenu}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
+          <div className=" w-[72vw] px-16 pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]">
+            <div className="CCD-Header-container flex justify-evenly">
+              <div className="w-[100%] xsm:mb-10">
+                <div className=" mt-8 xsm:mt-0 md:mt-0">
+                  <div className="bg-[#E2FFF1] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 xsm:px-5 xsm:rounded-md md:px-8 md:py-4">
+                    <div className="space-y-2 xsm:space-y-0 md:space-y-1">
+                      <p
+                        className={`font-pop font-semibold text-[22px] text-[#1DBF73] xsm:text-[10px] md:text-[18px]`}
+                      >
+                        {Data?.title}{" "}
+                      </p>
+                      <div className="flex space-x-4">
+                        <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px] md:text-[12px]">
+                          {Data?.curriculum[0]?.lessons?.length} Lesson
+                        </p>
+                        <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px] md:text-[12px]">
+                          6h 30min
+                        </p>
+                      </div>
+                    </div>
+                    {window.innerWidth <= 480 && (
+                      <div className="menu-icon" onClick={toggleMenu}>
+                        <Menu />
+                      </div>
+                    )}
+                    {console.log("Menu state:", menu)}
+                  </div>
+                </div>
 
-          {window.innerWidth <= 480 ? (
-            menu ? (
-              <div className="w-[45%] h-[80vh] overflow-y-auto">
-                <Coursecontents
-                  data={Data?.curriculum}
-                  completed_lessons={completed_lessons}
-                  setMenu={setMenu}
-                />
-              </div>
-            ) : <></>
-          ) : (
-            <div className="w-[45%]  h-[80vh] overflow-y-auto md:h-[40vh]">
-              <Coursecontents
-                handleActiveVideo={handleActiveVideo}
-                data={Data?.curriculum}
-                courseId={courseId}
-                completed_lessons={completed_lessons}
-                setMenu={setMenu}
-              />
-            </div>
-          )}
-
-        </div>
-      </div>
-      <div className="h-full w-[72vw] px-16 pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]">
-        <div className="CCD-Header-container flex justify-evenly">
-          <div className="w-[100%] xsm:mb-10">
-            <div className=" mt-8 xsm:mt-0 md:mt-0">
-              <div className="bg-[#E2FFF1] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 xsm:px-5 xsm:rounded-md md:px-8 md:py-4">
-                <div className="space-y-2 xsm:space-y-0 md:space-y-1">
-                  <p
-                    className={`font-pop font-semibold text-[22px] text-[#1DBF73] xsm:text-[10px] md:text-[18px]`}
-                  >
-                    {Data?.title}{" "}
-                  </p>
-                  <div className="flex space-x-4">
-                    <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px] md:text-[12px]">
-                      {Data?.curriculum[0]?.lessons?.length} Lesson
-                    </p>
-                    <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px] md:text-[12px]">
-                      6h 30min
+                <div className="CCD-Main-container mt-10 px-2 text-justify xsm:mt-0 xsm:py-3 xsm:px-1 md:mt-4">
+                  <div className="CCD-Main-container-content">
+                    <p className="xsm:text-[8px] md:text-[14px]">
+                      {Data?.overview}
                     </p>
                   </div>
                 </div>
-                {window.innerWidth <= 480 && (
-                  <div className="menu-icon" onClick={toggleMenu}>
-                    <Menu />
-                  </div>
-                )}
-                {console.log("Menu state:", menu)}
+                <CourseNavigation
+                  courseLessons={courseLessons}
+                  courseAssignment={courseAssignment}
+                  totalLessons={totalLessons}
+                />
               </div>
             </div>
-
-            <div className="CCD-Main-container mt-10 px-2 text-justify xsm:mt-0 xsm:py-3 xsm:px-1 md:mt-4">
-              <div className="CCD-Main-container-content">
-                <p className="xsm:text-[8px] md:text-[14px]">{Data?.overview}</p>
-              </div>
-            </div>
-            <CourseNavigation courseLessons={courseLessons} courseAssignment={courseAssignment} totalLessons={totalLessons}/>
           </div>
         </div>
       </div>
