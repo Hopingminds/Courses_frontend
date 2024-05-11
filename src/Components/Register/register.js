@@ -267,7 +267,7 @@ const Register = () => {
                                     defaultCountry="IN"
                                     name="phone"
                                     id={"phone"}
-                                    maxlength={12}
+                                    maxlength={11}
                                     placeholder="Enter phone number"
                                     value={countrycode}
                                     onChange={setcountrycode}

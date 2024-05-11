@@ -6,7 +6,7 @@ import AnimatedProgressProvider from "../MyLearning/AnimatedProgressProvider";
 
 const CNMyStats = ({courseLessons, totalLessons, courseAssignment }) => {
 	const [completedLessons,setCompletedLessons] = useState(courseLessons.length);
-	const [completedAssignments,setCompletedAssignments] = useState(2);
+	const [completedAssignments,setCompletedAssignments] = useState(courseAssignment.length);
 	let percentageLesson = ((courseLessons?.length / totalLessons) * 100).toFixed(2);
 	let percentageAssignment = ((courseAssignment?.length / totalLessons) * 100).toFixed(2);
 
@@ -16,12 +16,15 @@ const CNMyStats = ({courseLessons, totalLessons, courseAssignment }) => {
 		? ((completedAssignments + completedLessons) / 2).toFixed(2)
 		: 0;
 	};
+
+	console.log(completedAssignments)
+	
 	
 
 	return (
 		<div className='bg-[#E2FFF1] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col items-center gap-2 '>
 			<p className="font-nu font-semibold text-[20px] text-[#243465] xsm:text-[10px] md:text-[16px]">
-				Your Spending
+				Your Progress
 			</p>
 			<div className="flex justify-around items-center w-full">
 				<div className=" flex items-center justify-center h-[350px] xsm:w-[50%] xsm:h-[60%] xsm:mt-0 md:mt-8 md:w-[70%] md:h-[70%] md:items-center">

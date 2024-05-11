@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../../Api/api';
 import Img from "../../Assets/Images/nocoursefound.png"
 
-const CNAssignment = () => {
+const CNAssignment = ({courseAssignment}) => {
     const [Data, setData] = useState([]);
     let login = localStorage.getItem("COURSES_USER_TOKEN");
 
@@ -31,6 +31,8 @@ const CNAssignment = () => {
         }
         Fetchdata();
     }, []);
+
+    console.log("Assignments",courseAssignment)
 
     return (
         <div className='bg-[#E2FFF1] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col items-center '>

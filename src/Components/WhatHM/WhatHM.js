@@ -49,13 +49,13 @@ const WhatHM = () => {
   return (
     <div className="py-12 xsm:py-0 md:py-4">
       <div className="flex flex-col gap-3" ref={sectionRef}>
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <p className="text-[#1DBF73] text-[36px] font-pop font-semibold xsm:text-[12px] md:text-[30px]">
             What is Hoping Minds?
           </p>
-        </div>
+        </div> */}
         <div className="flex justify-center">
-          <p className="text-[#696984] text-[20px] font-pop w-[70%] text-center leading-12 xsm:text-[7px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
+          <p className="text-[#696984] text-[24px] font-pop w-[70%] text-center leading-12 xsm:text-[7px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
             Welcome to HopingMinds, your gateway to a brighter future. As an
             esteemed partner of the <span className="font-semibold">National Skill Development Corporation
               (NSDC)</span>, we stand at the forefront of transformative education,

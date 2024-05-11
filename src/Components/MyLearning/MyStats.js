@@ -11,6 +11,9 @@ import AnimatedProgressProvider from "./AnimatedProgressProvider";
 export default function MyStats({ courses }) {
   // console.log(courses);
   const [completed, setcompleted] = useState(0)
+  const [completedLessons,setCompletedLessons] = useState(0);
+  const [completedAssignments,setCompletedAssignments] = useState(0);
+
   const [maxValues, setMaxValues] = useState({
     first: 0,
     second: 0,
@@ -29,19 +32,41 @@ export default function MyStats({ courses }) {
     }; // Cleanup function to clear timeout on unmount or state change
   }, []);
 
+  const countLessons = () => {
+    let temp = 0;
+    selectedCourse?.course?.curriculum?.forEach((val) => {
+        temp += val?.lessons?.length;
+    })
+    return temp;
+  }
+  let totalLessons = countLessons();
+  // console.log("asdfhhgfdsfg",totalLessons)
 
   const handleCourseClick = (course,total) => {
-    // console.log(course);
+    // console.log("selectedCourse",course?.course?.curriculum);
+    let totalless = 0;
+    course?.course?.curriculum?.forEach((val) => {
+      totalless += val?.lessons?.length;
+    })
     setSelectedCourse(course);
-    setcompleted(total)
+    let currpercentageLesson = ((course?.completed_lessons?.length / totalless) * 100).toFixed(2);
+    setcompleted(currpercentageLesson)
+    setCompletedLessons(course?.completed_lessons?.length)
+    setCompletedAssignments(course?.completed_assignments?.length)
   };
 
-  const calculateAverageProgress = (completedAssignments, completedLessons) => {
-    const totalCompleted = completedAssignments + completedLessons;
-    return totalCompleted > 0
-      ? ((completedAssignments + completedLessons) / 2).toFixed(2)
-      : 0;
-  };
+  let percentageLesson = 0;
+  let percentageAssignments  = 0;
+  if(totalLessons!==0){
+    percentageLesson = ((completedLessons / totalLessons) * 100).toFixed(2);
+    percentageAssignments  = ((completedAssignments / totalLessons) * 100).toFixed(2);
+  }
+  const calculateAverageProgress = (percentageLesson, percentageAssignments) => {
+		let totalCompleted = (((percentageLesson+percentageAssignments)  / 200) * 100).toFixed(2);
+		return totalCompleted > 0
+		? ((completedAssignments + completedLessons) / 2).toFixed(2)
+		: 0;
+	};
 
   return (
     <div className="px-[8%] mt-20 mb-24 xsm:px-[5%] xsm:m-[6%]">
@@ -57,15 +82,15 @@ export default function MyStats({ courses }) {
               val?.course?.curriculum?.map((it)=>{
                 total+=it.lessons.length;
               })
-              // console.log(total);
+              let totalpercent  = ((val?.completed_lessons.length / total) * 100).toFixed(2);
               return (
-                <div key={ind} onClick={() => handleCourseClick(val,((val?.completed_lessons?.length*100)/total).toFixed(2))}>
+                <div key={ind} onClick={() => handleCourseClick(val,total)}>
                   {/* Course Item */}
                   <div className="flex justify-evenly py-6 cursor-pointer xsm:justify-between xsm:py-2 xsm:pt-4 md:py-4">
                     <div className="w-[17%] font-nu font-semibold xsm:w-[14%] md:w-[15%]">
                       <AnimatedProgressProvider
                         valueStart={0}
-                        valueEnd={((val?.completed_lessons?.length*100)/total).toFixed(2)}
+                        valueEnd={totalpercent}
                         duration={1.4}
                         easingFunction={easeQuadInOut}
                       >
@@ -74,8 +99,8 @@ export default function MyStats({ courses }) {
                           // console.log(total,val?.completed_lessons?.length*100);
                           return (
                             <CircularProgressbar
-                              value={((val?.completed_lessons?.length*100)/total).toFixed(2)}
-                              text={`${((val?.completed_lessons?.length*100)/total).toFixed(2)}%`}
+                              value={totalpercent}
+                              text={`${totalpercent}%`}
                               styles={buildStyles({
                                 pathTransition:
                                   "stroke-dashoffset 1s ease 0s",
@@ -137,7 +162,7 @@ export default function MyStats({ courses }) {
                       <div style={{ width: "85%" }}>
                         <AnimatedProgressProvider
                           valueStart={0}
-                          valueEnd={selectedCourse?.completed_assignments.length || 0}
+                          valueEnd={percentageAssignments || 0}
                           duration={1.4}
                           easingFunction={easeQuadInOut}
                         >
@@ -145,7 +170,7 @@ export default function MyStats({ courses }) {
                             const roundedValue = Math.round(value);
                             return (
                               <CircularProgressbarWithChildren
-                                value={selectedCourse?.completed_assignments.length || 0}
+                                value={percentageAssignments || 0}
                                 strokeWidth={4}
                                 styles={buildStyles({
                                   pathColor: "#FFA84A",
@@ -157,7 +182,7 @@ export default function MyStats({ courses }) {
                                 <div style={{ width: "80%" }}>
                                   <AnimatedProgressProvider
                                     valueStart={0}
-                                    valueEnd={completed || 0}
+                                    valueEnd={percentageLesson || 0}
                                     duration={1.4}
                                     easingFunction={easeQuadInOut}
                                   >
@@ -165,7 +190,7 @@ export default function MyStats({ courses }) {
                                       const roundedValue = Math.round(value);
                                       return (
                                         <CircularProgressbarWithChildren
-                                          value={completed || 0}
+                                          value={percentageLesson || 0}
                                           strokeWidth={5}
                                           styles={buildStyles({
                                             pathColor: "#04BFDA",
@@ -211,7 +236,7 @@ export default function MyStats({ courses }) {
                     Assignment
                   </p>
                 </div>
-                <p className="font-nu font-semibold text-[20px] xsm:text-[10px] md:text-[14px]">{selectedCourse?.completed_assignments.length}%</p>
+                <p className="font-nu font-semibold text-[20px] xsm:text-[10px] md:text-[14px]">{percentageAssignments}%</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="flex space-x-2 items-center md:space-x-1">
@@ -223,7 +248,7 @@ export default function MyStats({ courses }) {
                     Lessons
                   </p>
                 </div>
-                <p className="font-nu font-semibold text-[20px] xsm:text-[10px] md:text-[14px]">{completed}%</p>
+                <p className="font-nu font-semibold text-[20px] xsm:text-[10px] md:text-[14px]">{percentageLesson}%</p>
               </div>
             </div>
           </div>
