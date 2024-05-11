@@ -16,6 +16,7 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import Spinner from "../Spinner";
 import { authenticateUser } from "../../helpers/helperapi";
+import CYPMain from "../completeyourprofile/CYPMain";
 
 const ProfilEdit = () => {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const ProfilEdit = () => {
   const [show, setshow] = useState(false);
   const [data, setData] = useState([]);
   const [uploadLoader, setUploadLoader] = useState(false);
+  const [completeProfile,setCompleteProfile] = useState("Profile");
 
   const checkUserValidation = async () => {
     const isValidUser = await authenticateUser();
@@ -170,9 +172,13 @@ const ProfilEdit = () => {
     setUser({ ...user, [name]: value });
   };
 
+  const handleEditProfileClick = () => {
+    setCompleteProfile("completeprofile");
+  }
+
   return (
     <>
-      <div className="flex flex-col gap-0 pb-60 xsm:gap-6 xsm:pb-20">
+      <div className={`flex flex-col gap-0 pb-60 xsm:gap-6 xsm:pb-20 ${completeProfile === "completeprofile"?'justify-between':''}`}>
         <div className="relative flex justify-center h-[280px] xsm:h-[100px] md:h-[220px]">
           <img
             src={Banner}
@@ -221,115 +227,112 @@ const ProfilEdit = () => {
             </div>
           </div>
         </div>
-        {/* <div className="flex justify-center">
-          <Link
-            to={"/resumebuilder"}
-            className="cursor-pointer text-center mt-0 w-max text-red-500 xsm:text-[12px] md:text-[16px]"
-          >
-            Complete Your Profile
-          </Link>
-        </div> */}
-        <div className="flex justify-center mt-20 xsm:mt-6 md:mt-16">
-          <div className="grid grid-cols-2 justify-between gap-x-40 gap-y-8 w-[80%] xsm:gap-x-8 xsm:gap-y-3 md:gap-x-28 md:gap-y-6">
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
-              <input
-                type="text"
-                className="outline-none w-full bg-transparent placeholder-[#000000]"
-                name="name"
-                placeholder="First Name"
-                value={user.name}
-                onChange={handleChange}
-              />
-            </div>
+        {completeProfile === "Profile" &&
+          <div>
+            <div className="flex justify-center mt-20 xsm:mt-6 md:mt-16">
+              <div className="grid grid-cols-2 justify-between gap-x-40 gap-y-8 w-[80%] xsm:gap-x-8 xsm:gap-y-3 md:gap-x-28 md:gap-y-6">
+                <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
+                  <input
+                    type="text"
+                    className="outline-none w-full bg-transparent placeholder-[#000000]"
+                    name="name"
+                    placeholder="First Name"
+                    value={user.name}
+                    onChange={handleChange}
+                  />
+                </div>
 
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
-              <input
-                type="email"
-                className="outline-none w-full bg-transparent placeholder-[#000000]"
-                placeholder="Email"
-                value={user.email}
-                onChange={handleChange}
-                disabled
-              />
-            </div>
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
-              <input
-                type="text"
-                className="outline-none w-full bg-transparent placeholder-[#000000]"
-                placeholder="Phone Number"
-                name="phone"
-                value={user.phone}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
-              <input
-                type="text"
-                className="outline-none w-full bg-transparent placeholder-[#000000]"
-                placeholder="University/College Name"
-                value={user.college}
-                name="college"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
-              <input
-                type="text"
-                className="outline-none w-full bg-transparent placeholder-[#000000]"
-                placeholder="Degree"
-                value={user.degree}
-                name="degree"
-                onChange={handleChange}
-              />
-            </div>
+                <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
+                  <input
+                    type="email"
+                    className="outline-none w-full bg-transparent placeholder-[#000000]"
+                    placeholder="Email"
+                    value={user.email}
+                    onChange={handleChange}
+                    disabled
+                  />
+                </div>
+                <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
+                  <input
+                    type="text"
+                    className="outline-none w-full bg-transparent placeholder-[#000000]"
+                    placeholder="Phone Number"
+                    name="phone"
+                    value={user.phone}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
+                  <input
+                    type="text"
+                    className="outline-none w-full bg-transparent placeholder-[#000000]"
+                    placeholder="University/College Name"
+                    value={user.college}
+                    name="college"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
+                  <input
+                    type="text"
+                    className="outline-none w-full bg-transparent placeholder-[#000000]"
+                    placeholder="Degree"
+                    value={user.degree}
+                    name="degree"
+                    onChange={handleChange}
+                  />
+                </div>
 
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
-              <input
-                type="text"
-                className="outline-none w-full bg-transparent placeholder-[#555555]"
-                placeholder="stream"
-                name="stream"
-                value={user.stream}
-                onChange={handleChange}
-              />
-            </div>
+                <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
+                  <input
+                    type="text"
+                    className="outline-none w-full bg-transparent placeholder-[#555555]"
+                    placeholder="stream"
+                    name="stream"
+                    value={user.stream}
+                    onChange={handleChange}
+                  />
+                </div>
 
-            <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
-              <input
-                type="text"
-                className="outline-none w-full bg-transparent placeholder-[#555555]"
-                placeholder="Year Of Passing"
-                value={user?.yearofpass}
-                name="yearofpass"
-                onChange={handleChange}
-              />
+                <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
+                  <input
+                    type="text"
+                    className="outline-none w-full bg-transparent placeholder-[#555555]"
+                    placeholder="Year Of Passing"
+                    value={user?.yearofpass}
+                    name="yearofpass"
+                    onChange={handleChange}
+                  />
+                </div>
+                {/* <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
+                  <input
+                    type="text"
+                    className="outline-none w-full bg-transparent placeholder-[#555555]"
+                    placeholder="Biography"
+                    value={user?.bio}
+                    name="bio"
+                    onChange={handleChange}
+                  />
+                </div> */}
+                <button
+                onClick={handleEditProfileClick}
+                className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-2 py-1 w-[45%] flex justify-center items-center text-center xsm:text-[10px] md:text-[16px]"
+              >
+                <p>Complete Your Profile</p>  
+              </button>
+              </div>
             </div>
-            {/* <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
-              <input
-                type="text"
-                className="outline-none w-full bg-transparent placeholder-[#555555]"
-                placeholder="Biography"
-                value={user?.bio}
-                name="bio"
-                onChange={handleChange}
-              />
-            </div> */}
-            <Link
-            to={"/resumebuilder"}
-            className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-2 py-1 w-[45%] flex justify-center items-center text-center xsm:text-[10px] md:text-[16px]"
-          >
-            <p>Complete Your Profile</p>  
-          </Link>
+            <div className="flex justify-center pt-10 xsm:pt-0 ">
+              <button
+                className="text-[#FFFFFF] text-[22px] font-nu bg-[#1DBF73] rounded-full px-12 py-1 xsm:text-[10px] xsm:px-8 md:text-[16px]"
+                onClick={handleSaveClick}
+              >
+                {btnLoader ? "Saving..." : "Save"}
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="flex justify-center pt-10 xsm:pt-0 ">
-          <button
-            className="text-[#FFFFFF] text-[22px] font-nu bg-[#1DBF73] rounded-full px-12 py-1 xsm:text-[10px] xsm:px-8 md:text-[16px]"
-            onClick={handleSaveClick}
-          >
-            {btnLoader ? "Saving..." : "Save"}
-          </button>
-        </div>
+        }
+        { completeProfile === "completeprofile" && <CYPMain/> }
         {show ? (
           <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
             <Spinner className="" />
@@ -338,7 +341,7 @@ const ProfilEdit = () => {
           ""
         )}
       </div>
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
     </>
   );
 };
