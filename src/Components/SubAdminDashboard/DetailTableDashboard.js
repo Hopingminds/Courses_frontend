@@ -3,6 +3,7 @@ import {ReactComponent as Cap} from '../../Assets/Icons/cap.svg'
 import {ReactComponent as Coin} from '../../Assets/Icons/coin.svg'
 import {ReactComponent as Upload} from '../../Assets/Icons/upload.svg'
 import {ReactComponent as Download} from '../../Assets/Icons/download.svg'
+import { Link } from 'react-router-dom'
 const DetailTableDashboard = ({data}) => {
   return (<>
     <div className='px-[4%] flex flex-col gap-4 w-full'>
@@ -52,7 +53,7 @@ const DetailTableDashboard = ({data}) => {
             <p className='text-[#000] text-[16px] font-pop font-semibold'>fds</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>dfadsf</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>64%</p>
-            <p className='text-[#000] text-[16px] font-pop font-semibold'>View</p>
+            <Link to="/subadmin-studentdata" className='text-[#000] text-[16px] font-pop font-semibold'>View</Link>
             </div>
                 // </>)
             // })
