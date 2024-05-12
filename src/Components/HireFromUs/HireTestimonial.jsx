@@ -119,7 +119,7 @@ const HireTestimonial = () => {
                         interval: 4000,
                         speed: 5500,
                         delay: 1,
-                        pauseOnHover: true,
+                        pauseOnHover: false,
                         drag: true,
                         gap:'1rem',
                     }}>
@@ -173,7 +173,7 @@ const HireTestimonial = () => {
                         speed: 5500,
                         direction:'rtl',
                         right: true, // Set rtl option to true to move from left to right
-                        pauseOnHover: true,
+                        pauseOnHover: false,
                         drag: true,
                         gap:'1rem',
                     }}>

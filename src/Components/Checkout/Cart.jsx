@@ -187,6 +187,7 @@ const CartCheckout = () => {
         name: 'Hoping minds',
         description: 'Product description',
         image: '',
+        height: "90vh",
         handler: function(response) {
           handleContinueCheckout()
           // router.push('/profile?tab=booking-history')

@@ -27,7 +27,7 @@ export default function Newinstructor() {
                         wheel: false,
                         arrows: false,
                         autoplay: true,
-                        interval: 2500,
+                        interval: 3000,
                         speed: 5000,
                         // delay: 1,
                         // pauseOnHover: true,
