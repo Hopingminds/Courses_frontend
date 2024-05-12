@@ -60,7 +60,7 @@ const CYPBasic = ({setFinalData, setActiveDetail}) => {
             </div>
             <div className='flex justify-end w-full'>
                 <div onClick={handleSubmit} className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4 cursor-pointer xsm:gap-0 xsm:px-2 xsm:py-1'>
-                    <button  className=" text-white font-pop font-medium text-[18px]  xsm:text-[10px] xsm:py-1 xsm:px-4 md:text-[14px]">Submit</button>
+                    <button  className=" text-white font-pop font-medium text-[18px]  xsm:text-[10px] xsm:py-1 xsm:px-4 md:text-[14px]">Next</button>
                     <img className='w-7 md:w-6 xsm:w-5' src="../Icons/resumerightarrow.svg" alt="" />
                 </div>
             </div>

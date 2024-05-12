@@ -36,13 +36,13 @@ const JobOffering = ({ courses }) => {
     return (
         <>
             <div className="px-[5%] my-[3%] flex gap-10 space-y-8 justify-between xsm:flex-col-reverse xsm:mt-3">
-                <div className="flex flex-col w-[70%] justify-between xsm:w-[100%] md:w-[65%] md:gap-3">
-                    {!jobOpeningData ? <div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Job Found</div></div> : ''}
+                <div className={`flex flex-col justify-between xsm:w-[100%] md:w-[65%] md:gap-3 ${!jobOpeningData ?"w-full":'w-[70%]' }`}>
+                    {!jobOpeningData ? <div className="flex justify-center  items-center w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Job Found</div></div> : ''}
 
                     {
                         jobOpeningData?.filter((val, index) => { return index === 0 })?.map((item, ind) => {
                             return (<>
-                                <div key={ind} className="h-[12rem] flex flex-row gap-4 bg-[#E2FFF1] p-4 mt-4 w-full rounded-2xl justify-between shadow-2xl shadow-[#D9D9D9] xsm:p-2 xsm:rounded-lg xsm:h-[15vh] md:mt-0 md:p-3">
+                                <div key={ind} className="h-[12rem] w-full flex flex-row gap-4 bg-[#E2FFF1] p-4 mt-4 rounded-2xl justify-between shadow-2xl shadow-[#D9D9D9] xsm:p-2 xsm:rounded-lg xsm:h-[15vh] md:mt-0 md:p-3">
                                     <div className="w-[25%] rounded-2xl">
                                         <img className="w-full h-full rounded-xl xsm:rounded-lg object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8x5PF710Tlrlpt4ZxG-9hgDEwkQqcHa8_-ITu0dUhEw&s" />
                                     </div>
@@ -69,11 +69,11 @@ const JobOffering = ({ courses }) => {
                         })
                     }
                 </div>
-                <div className="w-[25%] justify-self-start flex flex-col Certificate-right gap-y-5 xsm:flex-row xsm:justify-between md:gap-y-4">
-                    {/* <p className="font-pop text-center font-semibold text-[18px] xsm:hidden md:text-[14px]">Explore Jobs</p>
+                {/* <div className="w-[25%] justify-self-start flex flex-col Certificate-right gap-y-5 xsm:flex-row xsm:justify-between md:gap-y-4">
+                    <p className="font-pop text-center font-semibold text-[18px] xsm:hidden md:text-[14px]">Explore Jobs</p>
                     <button className="bg-[#E2FFF1] py-3 px-10 rounded-lg font-nu font-semibold xsm:text-[8px] xsm:py-2 xsm:px-6 xsm:rounded-sm md:text-[14px] md:py-2">Applied Jobs</button>
-                    <button className="bg-[#E2FFF1] py-3 px-10 rounded-lg font-nu font-semibold xsm:text-[8px] xsm:py-2 xsm:px-6 xsm:rounded-sm md:text-[14px] md:py-2">Openings For You</button> */}
-                </div>
+                    <button className="bg-[#E2FFF1] py-3 px-10 rounded-lg font-nu font-semibold xsm:text-[8px] xsm:py-2 xsm:px-6 xsm:rounded-sm md:text-[14px] md:py-2">Openings For You</button>
+                </div> */}
             </div>
         </>
     )

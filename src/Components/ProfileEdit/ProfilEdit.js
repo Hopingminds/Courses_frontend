@@ -234,7 +234,7 @@ const ProfilEdit = () => {
                 <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
                   <input
                     type="text"
-                    className="outline-none w-full bg-transparent placeholder-[#000000]"
+                    className="outline-none w-full bg-transparent placeholder:text-[#c6c3c3]"
                     name="name"
                     placeholder="First Name"
                     value={user.name}
@@ -245,7 +245,7 @@ const ProfilEdit = () => {
                 <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
                   <input
                     type="email"
-                    className="outline-none w-full bg-transparent placeholder-[#000000]"
+                    className="outline-none w-full bg-transparent placeholder:text-[#c6c3c3]"
                     placeholder="Email"
                     value={user.email}
                     onChange={handleChange}
@@ -255,7 +255,7 @@ const ProfilEdit = () => {
                 <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
                   <input
                     type="text"
-                    className="outline-none w-full bg-transparent placeholder-[#000000]"
+                    className="outline-none w-full bg-transparent placeholder:text-[#c6c3c3]"
                     placeholder="Phone Number"
                     name="phone"
                     value={user.phone}
@@ -265,7 +265,7 @@ const ProfilEdit = () => {
                 <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
                   <input
                     type="text"
-                    className="outline-none w-full bg-transparent placeholder-[#000000]"
+                    className="outline-none w-full bg-transparent placeholder:text-[#c6c3c3]"
                     placeholder="University/College Name"
                     value={user.college}
                     name="college"
@@ -275,7 +275,7 @@ const ProfilEdit = () => {
                 <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
                   <input
                     type="text"
-                    className="outline-none w-full bg-transparent placeholder-[#000000]"
+                    className="outline-none w-full bg-transparent placeholder:text-[#c6c3c3]"
                     placeholder="Degree"
                     value={user.degree}
                     name="degree"
@@ -286,7 +286,7 @@ const ProfilEdit = () => {
                 <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
                   <input
                     type="text"
-                    className="outline-none w-full bg-transparent placeholder-[#555555]"
+                    className="outline-none w-full bg-transparent placeholder:text-[#c6c3c3]"
                     placeholder="stream"
                     name="stream"
                     value={user.stream}
@@ -297,7 +297,7 @@ const ProfilEdit = () => {
                 <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
                   <input
                     type="text"
-                    className="outline-none w-full bg-transparent placeholder-[#555555]"
+                    className="outline-none w-full bg-transparent placeholder:text-[#c6c3c3]"
                     placeholder="Year Of Passing"
                     value={user?.yearofpass}
                     name="yearofpass"

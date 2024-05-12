@@ -60,11 +60,11 @@ const Footer = () => {
                             <p className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Tel: +91 9779886900</p>
                             <Link to='mailto:support@hopingminds.com' target='_blank' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Mail: support@hopingminds.com</Link>
                             <div className='flex flex-row gap-2 items-center'>
-                                <Link to='https://www.instagram.com/hopingminds_?igsh=MWxvN2F5YmM0aW1lYQ=='> <img src={Icon1} className='w-[30px] h-[30px] xsm:w-[15px] xsm:h-[15px] md:w-[18px] md:h-[18px]' /></Link>
-                                <Link to='https://www.facebook.com/share/Z3c1iwpnxsDk3YJH/?mibextid=qi2Omg'> <img src={Icon2} className='w-[32px] h-[32px] xsm:w-[15px] xsm:h-[15px] md:w-[18px] md:h-[18px]' /></Link>
-                                <Link to='https://www.linkedin.com/company/hoping-minds/'><img src={Icon3} className='w-[30px] h-[30px] xsm:w-[15px] xsm:h-[15px] md:w-[18px] md:h-[18px]' />
+                                <Link target='_blank' to='https://www.instagram.com/hopingminds_?igsh=MWxvN2F5YmM0aW1lYQ=='> <img src={Icon1} className='w-[30px] h-[30px] xsm:w-[15px] xsm:h-[15px] md:w-[18px] md:h-[18px]' /></Link>
+                                <Link target='_blank' to='https://www.facebook.com/share/Z3c1iwpnxsDk3YJH/?mibextid=qi2Omg'> <img src={Icon2} className='w-[32px] h-[32px] xsm:w-[15px] xsm:h-[15px] md:w-[18px] md:h-[18px]' /></Link>
+                                <Link target='_blank' to='https://www.linkedin.com/company/hoping-minds/'><img src={Icon3} className='w-[30px] h-[30px] xsm:w-[15px] xsm:h-[15px] md:w-[18px] md:h-[18px]' />
                                 </Link>
-                                <Link to='https://youtube.com/@HopingMinds?si=t7nBGjhMukWF6aN9'> <img src={Icon4} className='w-[36px] h-[36px] xsm:w-[15px] xsm:h-[15px] md:w-[20px] md:h-[20px]' /></Link>
+                                <Link target='_blank' to='https://youtube.com/@HopingMinds?si=t7nBGjhMukWF6aN9'> <img src={Icon4} className='w-[36px] h-[36px] xsm:w-[15px] xsm:h-[15px] md:w-[20px] md:h-[20px]' /></Link>
 
                             </div>
                         </div>

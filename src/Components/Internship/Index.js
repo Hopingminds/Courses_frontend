@@ -253,8 +253,8 @@ const Internship = () => {
           </button>
         </div>
 
-        <div className="absolute z-20 top-[10%] flex justify-center items-center text-center w-full text-white text-[50px] font-int font-semibold md:text-[35px] xsm:text-[16px]">Internship</div>
-        <div className="absolute z-20 top-[27%] flex justify-center items-center text-center w-full text-white text-[22px] font-int font-semibold md:text-[16px] xsm:text-[8px]">INTERNSHIP</div>
+        <div className="absolute z-20 top-[10%] flex justify-center items-center text-center w-full text-white text-[50px] font-int font-semibold md:text-[35px] xsm:text-[16px]">Get Work Experience</div>
+        <div className="absolute z-20 top-[27%] flex justify-center items-center text-center w-full text-white font-int md:text-[16px] xsm:text-[8px]">A valuable learning experience to develop professional competencies and expand industry knowledge</div>
 
         <div className="h-full w-full bg-black" style={{ backdropFilter: 'brightness(50%)' }}>
           <ReactPlayer

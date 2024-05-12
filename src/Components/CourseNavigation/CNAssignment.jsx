@@ -38,7 +38,7 @@ const CNAssignment = ({courseAssignment}) => {
         <div className='bg-[#E2FFF1] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col items-center '>
             {!Data?.length? 
                 <div className="flex flex-col items-center gap-10 w-full ">
-                    <p className="text-center font-semibold text-2xl w-full "> No Assignment Found</p>
+                    <p className="text-center font-semibold text-2xl w-full ">Assignment Coming Soon</p>
                     <div className='w-full flex justify-center'>
                         <img className='w-[40%]' src={Img} />
                     </div>

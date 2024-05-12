@@ -319,13 +319,13 @@ export default function CDDetails() {
                   </div>
                 </div>
 
-                <div className="CCD-Main-container mt-10 px-2 text-justify xsm:mt-0 xsm:py-3 xsm:px-1 md:mt-4">
+                {/* <div className="CCD-Main-container mt-10 px-2 text-justify xsm:mt-0 xsm:py-3 xsm:px-1 md:mt-4">
                   <div className="CCD-Main-container-content">
                     <p className="xsm:text-[8px] md:text-[14px]">
                       {Data?.overview}
                     </p>
                   </div>
-                </div>
+                </div> */}
                 <CourseNavigation
                   courseLessons={courseLessons}
                   courseAssignment={courseAssignment}

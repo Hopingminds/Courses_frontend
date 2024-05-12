@@ -10,6 +10,8 @@ import { Globalinfo } from "../../App";
 import { IoIosLock } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import abhishek from "../../Assets/Images/abhishek.jpeg";
+import { IoTrendingUpSharp } from "react-icons/io5";
+
 
 const CourseCard = ({
   title,
@@ -157,10 +159,11 @@ const CourseCard = ({
           <span className="flex flex-col">
             {credits ? (
               <div className="flex space-x-2 items-center xsm:space-x-1">
-                <img
+                {/* <img
                   className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
                   src="../Icons/RCDesign.svg"
-                />
+                /> */}
+                <IoTrendingUpSharp className="w-[16px] h-[16px] text-[#DFDFDF] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3" />
                 <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[6px]">
                   Credits- {credits}
                 </p>

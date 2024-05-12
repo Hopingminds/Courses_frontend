@@ -9,7 +9,7 @@ import User9 from "../../Assests/Images/Poonam Saliya.jpg";
 import User10 from "../../Assests/Images/Loveneet Kaur.jpg";
 import User1 from "../../Assests/Images/Saurabh Pal-Data Resolve.png";
 import User2 from "../../Assests/Images/Sumit.jpg";
-import User3 from "../../Assests/Images/Khushpreet Kaur-Delta IT.jpeg";
+import User3 from "../../Assests/Images/Khushpreet Kaur.jpg";
 import User4 from "../../Assests/Images/Amritpal Protiviti GDU 5.7.png";
 import User5 from "../../Assests/Images/Ravinder Singh.jpg";
 import User6 from "../../Assests/Images/Rupak Yadav.jpg";
