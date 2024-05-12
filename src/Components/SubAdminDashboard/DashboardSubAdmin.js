@@ -16,31 +16,30 @@ const DashboardSubAdmin = () => {
     }
   }, [])
 
-  useEffect(() => {
-    async function FetchData() {
-      try {
-        let url = BASE_URL + '/getadmindashdata?university=Chandigarh University(CU) - Punjab'
-        const data = await fetch(url);
-        const response = await data.json()
-        setdata(response?.data)
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    FetchData()
-  }, [])
+  // useEffect(() => {
+  //   async function FetchData() {
+  //     try {
+  //       let url = BASE_URL + '/getadmindashdata?university=Chandigarh University(CU) - Punjab'
+  //       const data = await fetch(url);
+  //       const response = await data.json()
+  //       setdata(response?.data)
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   FetchData()
+  // }, [])
 
   return (
     <>
 
       <BannarSubAdmin />
-      <div className="flex flex-col gap-14 pb-20 bg-[#FCF8F8]">
         <div className="flex flex-row">
           <FilterSubAdmin />
-          <DataDashboard data={data} />
-        </div>
+          {/* <DataDashboard data={data} /> */}
+    
         <DetailTableDashboard data={data?.users} />
-      </div>
+        </div>
     </>
   );
 };

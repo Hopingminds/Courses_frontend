@@ -54,6 +54,7 @@ import PDFViewer from '../Components/pdfReader/index.js'
 import HRDashboard from '../Components/HRDashboard/index.jsx'
 import HRNavbar from '../Components/HRDashboard/HRNavbar/HRNavbar.jsx'
 import Internship from '../Components/Internship/Index.js'
+import StudentSection from '../Components/SubAdminDashboard/Studentsection.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -126,6 +127,7 @@ const Router = () => {
                 <Route path='/pdf' element={<PDFViewer/>} />
                 <Route path='/hrdashboard' element={<HRDashboard/>} />
                 <Route path='/internship' element={<Internship/>} />
+                <Route path='/subadmin-studentdata' element={<StudentSection/>} />
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}
 

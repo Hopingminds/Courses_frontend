@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 const FilterSubAdmin = () => {
     const [selectedDegrees, setSelectedDegrees] = useState([]);
 
@@ -11,76 +11,80 @@ const FilterSubAdmin = () => {
         setSelectedDegrees([...selectedDegrees, value]);
       }
     };
+    function ClickSection(id) {
+      let inner = document.getElementById(id);
+      let arrow = document.getElementById(`arrow${id}`);
+      if (inner.style.display=="flex") {
+        arrow.style.transform = "rotate(0deg)";
+        inner.style.display = "none";
+      } else {
+        arrow.style.transform = "rotate(180deg)";
+        inner.style.display = "flex";
+      }
+    }
 
   return (
-    <div className="bg-white pl-[4%] pr-8 py-[2%] flex flex-col gap-8 w-[37%]">
-      <select
-        id="degree"
-        name="degree"
-        placeholder="Degree"
-        className="w-full outline-none font-medium text-[18px]"
-      > 
-        <option value="degree" selected disabled hidden >Degree</option>
-        <option value="Engineering">Engineering</option>
-        <option value="BCA">BCA</option>
-        <option value="MCA">MCA</option>
-      </select>
-
-      <select
-        id="degree"
-        name="degree"
-        className="w-full outline-none font-medium text-[18px]"
-        style={{ paddingRight: "7rem" }}
-      >
-        <option value="Batch" selected disabled hidden>Batch</option>
-        <option value="Engineering">Engineering</option>
-        <option value="BCA">BCA</option>
-        <option value="MCA">MCA</option>
-      </select>
-
-      <select
-        id="degree"
-        name="degree"
-        className="w-full outline-none font-medium text-[18px]"
-      >
-        <option value="Branch" selected disabled hidden>Branch</option>
-        <option value="Engineering">Engineering</option>
-        <option value="BCA">BCA</option>
-        <option value="MCA">MCA</option>
-      </select>
-
-      <select
-        id="degree"
-        name="degree"
-        className="w-full outline-none font-medium text-[18px]"
-      >
-        <option value="Semester" selected disabled hidden>Semester</option>
-        <option value="Engineering">Engineering</option>
-        <option value="BCA">BCA</option>
-        <option value="MCA">MCA</option>
-      </select>
-
-      <select
-        id="degree"
-        name="degree"
-        className="w-full outline-none font-medium text-[18px]"
-      >
-        <option value="Field of Study" selected disabled hidden>Field of Study</option>
-        <option value="Engineering">Engineering</option>
-        <option value="BCA">BCA</option>
-        <option value="MCA">MCA</option>
-      </select>
-
-      <select
-        id="degree"
-        name="degree"
-        className="w-full outline-none font-medium text-[18px]"
-      >
-        <option value="Status" selected disabled hidden>Status</option>
-        <option value="Engineering">Engineering</option>
-        <option value="BCA">BCA</option>
-        <option value="MCA">MCA</option>
-      </select>
+    <div className="bg-white flex flex-col gap-8 w-[20%] ml-5 h-auto py-3">
+          <div className="">
+             <div className="font-semibold text-xl flex justify-between items-center"  onClick={()=>ClickSection(1)}>
+              <p>Degree</p>
+              <MdOutlineKeyboardArrowDown id="arrow1" className="h-8 w-8"/>
+             </div>
+             <div className="flex flex-col pl-5 gap-2 mt-2" id={1}>
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" name="engineering" className="h-8 w-8 text-xl"/>
+                  <p>Engineering</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" name="bca" className="h-8 w-8 text-xl"/>
+                  <p>BCA</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" name="mca" className="h-8 w-8 text-xl"/>
+                  <p>MCA</p>
+                </div>
+             </div>
+          </div>
+          <div className="" >
+             <div className="font-semibold text-xl flex justify-between items-center"  onClick={()=>ClickSection(2)}>
+              <p>Batch</p>
+              <MdOutlineKeyboardArrowDown id="arrow2" className="h-8 w-8"/>
+             </div>
+             <div className="flex flex-col pl-5 gap-2 mt-2" id={2}>
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" name="engineering" className="h-8 w-8 text-xl"/>
+                  <p>Engineering</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" name="bca" className="h-8 w-8 text-xl"/>
+                  <p>BCA</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" name="mca" className="h-8 w-8 text-xl"/>
+                  <p>MCA</p>
+                </div>
+             </div>
+          </div>
+          <div className="">
+             <div className="font-semibold text-xl flex justify-between items-center" onClick={()=>ClickSection(3)}>
+              <p>Branch</p>
+              <MdOutlineKeyboardArrowDown id="arrow3" className="h-8 w-8"/>
+             </div>
+             <div className="flex flex-col pl-5 gap-2 mt-2"  id={3}>
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" name="engineering" className="h-8 w-8 text-xl"/>
+                  <p>Engineering</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" name="bca" className="h-8 w-8 text-xl"/>
+                  <p>BCA</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" name="mca" className="h-8 w-8 text-xl"/>
+                  <p>MCA</p>
+                </div>
+             </div>
+          </div>
     </div>
   );
 };
