@@ -233,7 +233,7 @@ const Register = () => {
                         {/* inputs */}
                         <div className='flex flex-col gap-4 grid grid-cols-2 gap-4 xsm:px-[5%]'>
                             <div>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Name</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Name  <span className='text-red-500'>*</span></p>
                                 <input
                                     ref={nameRef}
                                     className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.name ? 'error_input' : ""}`}
@@ -247,7 +247,7 @@ const Register = () => {
                                 />
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Email</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Email  <span className='text-red-500'>*</span></p>
                                 <input
                                     ref={emailRef}
                                     className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.email ? 'error_input' : ""}`}
@@ -261,7 +261,7 @@ const Register = () => {
                                 />
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop'>Contact Number</p>
+                                <p className='text-[14px] font-pop'>Contact Number <span className='text-red-500'>*</span></p>
                                 <PhoneInput
                                     className={`phonenumbercountrycode mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none ${errors.phone ? 'error_input' : ""}`}
                                     defaultCountry="IN"
@@ -284,7 +284,7 @@ const Register = () => {
                                 /> */}
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Degree</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Degree <span className='text-red-500'>*</span></p>
                                 <input
                                     ref={degreeRef}
                                     className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.degree ? 'error_input' : ""}`}
@@ -298,7 +298,7 @@ const Register = () => {
                                 />
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>College/University</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>College/University <span className='text-red-500'>*</span></p>
                                 <div className='relative'>
                                     <input
                                         ref={collegeRef}
@@ -324,7 +324,7 @@ const Register = () => {
                                 </div>
                             </div>
                             <div style={{ position: "relative" }}>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Password</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Password <span className='text-red-500'>*</span></p>
                                 <input
                                     ref={passwordRef}
                                     className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.password ? 'error_input' : ""}`}
@@ -366,7 +366,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-            <Toaster position="top-right" />
+            <Toaster position="top-center" />
         </>
     );
 };

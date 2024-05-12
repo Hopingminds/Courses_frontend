@@ -28,6 +28,7 @@ const Basic = ({changeComponent,setFinalData}) => {
         }else{
             setFinalData(prevData => ({...prevData, finalBasicData}));
             changeComponent('education');
+            toast.success("Submitted Successfully")
         }
 
     }

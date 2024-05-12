@@ -130,6 +130,7 @@ export default function Question() {
       const response = await data.json();
       if (response.success) {
         // stopRecording();
+        toast.success("Submitted Successfully")
         navigate("/submitted");
       } else {
         toast.error(response.message);

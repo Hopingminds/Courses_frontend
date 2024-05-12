@@ -32,6 +32,7 @@ const Education = ({changeComponent,setFinalData}) => {
       console.log(educationFields);
       setFinalData(prevData => ({...prevData,educationFields}));
       changeComponent('technical');
+      toast.success("Submitted Successfully")
     }
   }
 

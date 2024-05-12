@@ -59,7 +59,7 @@ toast.error(response.message)
     }
   return (
     <>
-                <Toaster position="top-right" />
+                <Toaster position="top-center" />
 
         <div className=' px-[5%] py-[5%] mb-10 bg-gradient-to-r from-[#0F2027] to-[#203A43] backgroundsvg md:mb-6 xsm:pb-[14%]'>
             {/* Mainsection */}

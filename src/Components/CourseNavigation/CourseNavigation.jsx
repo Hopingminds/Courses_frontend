@@ -14,18 +14,18 @@ const CourseNavigation = ({courseLessons, totalLessons, courseAssignment }) => {
     };
     return (
         <div className="w-full min-h-[540px] mt-[20px] xsm:w-full">
-            <div className="flex border border-[#EAEAEA] font-nu font-semibold text-[16px] leading-[24px] rounded-t-[20px] xsm:w-full">
-                <button className={`btn_corners_first w-[170px] py-[12px]  ${activeComponent === 'Overview' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`} 
+            <div className="grid grid-cols-6 border w-full border-[#EAEAEA] font-nu font-semibold text-[16px] leading-[24px] rounded-t-[20px] xsm:w-full">
+                <button className={`btn_corners_first py-[12px]  ${activeComponent === 'Overview' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`} 
                         onClick={() => renderComponent('Overview')}>Overview</button>
-                <button className={ `btn_border w-[170px] py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'Instructor' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`}
+                <button className={ `btn_border py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'Instructor' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`}
                         onClick={() => renderComponent('Instructor')}>Instructor</button>
-                <button className={`btn_border w-[170px] py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'assignment' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`} 
+                <button className={`btn_border py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'assignment' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`} 
                         onClick={() => renderComponent('assignment')}>Assignment</button>
-                <button className={`btn_border w-[170px] py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'certifications' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`} 
+                <button className={`btn_border py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'certifications' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`} 
                         onClick={() => renderComponent('certifications')}>Certifications</button>
-                <button className={`btn_border w-[170px] py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'mystats' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`}
+                <button className={`btn_border py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'mystats' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`}
                         onClick={() => renderComponent('mystats')}>MyStats</button>
-                        <button className={`btn_corners_last w-[170px] py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'Launch' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`}
+                        <button className={`btn_corners_last py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'Launch' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`}
                         onClick={() => renderComponent('Launch')}>Launch Lab</button>
             </div>
 

@@ -118,7 +118,7 @@ const HireTable = () => {
                   id=""
                   className="flex bg-[#F9FBFF] font-pop font-medium text-[18px] outline-none py-2 md:text-[14px] xsm:text-[10px] xsm:py-1"
                 >
-                  <option value="">FILTER</option>
+                  <option value="" disabled selected hidden>FILTER</option>
                   <option value="">Field/Skills</option>
                   <option value="">Experience</option>
                   <option value="">Location</option>

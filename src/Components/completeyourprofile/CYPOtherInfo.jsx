@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import toast from 'react-hot-toast';
 
-const CYPOtherInfo = ({finalData, setFinalData, setActiveDetail}) => {
+const CYPOtherInfo = ({finalData, setFinalData, setActiveDetail, setCompleteProfile }) => {
     const [otherFormData, setOtherFormData] = useState({hackerrank:"", github:"",linkedin:"", codechef:"", leetcode:"", gfg:""});
 
     function formHandler(e){
@@ -14,17 +15,27 @@ const CYPOtherInfo = ({finalData, setFinalData, setActiveDetail}) => {
 
     function submitHandler(e) {
         e.preventDefault();
-        console.log(otherFormData);
-        setFinalData(prevData => ({...prevData,otherFormData}));
-        console.log(finalData);
-        setOtherFormData({
-            hackerrank: "",
-            github: "",
-            linkedin: "",
-            codechef: "",
-            leetcode: "",
-            gfg: "",
-        });
+        if(otherFormData.hackerrank === "" || otherFormData.github === "" || otherFormData.linkedin === "" || otherFormData.codechef === "" || otherFormData.leetcode === "" || otherFormData.gfg === "" ){
+            toast.error("Please fill out all valid fields.")
+        }
+        else{
+            console.log(otherFormData);
+            setFinalData(prevData => ({...prevData,otherFormData}));
+            console.log(finalData);
+            setOtherFormData({
+                hackerrank: "",
+                github: "",
+                linkedin: "",
+                codechef: "",
+                leetcode: "",
+                gfg: "",
+            });
+            toast.success("Your data is Saved Successfully")
+
+            setTimeout(() => {
+                setCompleteProfile('Profile')
+            }, 1000);
+        }
     }
       
 
@@ -40,32 +51,32 @@ const CYPOtherInfo = ({finalData, setFinalData, setActiveDetail}) => {
                 <div className='flex flex-col gap-4 w-full'>
                     <div className='grid grid-cols-2  gap-8 w-full'>
                         <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="fname" className='font-nu font-semibold '>Hacker Rank</label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="text" onChange={formHandler} value={otherFormData.hackerrank} name='hackerrank' />
+                            <label htmlFor="fname" className='font-nu font-semibold '>Hacker Rank <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.hackerrank} name='hackerrank' />
                         </div>
                         <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="lname" className='font-nu font-semibold '>GitHub</label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="text" onChange={formHandler} value={otherFormData.github} name='github' />
-                        </div>
-                    </div>
-                    <div className='grid grid-cols-2  gap-8'>
-                        <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="fname" className='font-nu font-semibold '>LinkedIn</label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="text" onChange={formHandler} value={otherFormData.linkedin} name='linkedin' />
-                        </div>
-                        <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="lname" className='font-nu font-semibold '>Code Chef</label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="text" onChange={formHandler} value={otherFormData.codechef} name='codechef' />
+                            <label htmlFor="lname" className='font-nu font-semibold '>GitHub <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.github} name='github' />
                         </div>
                     </div>
                     <div className='grid grid-cols-2  gap-8'>
                         <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="fname" className='font-nu font-semibold '>LeetCode</label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="text" onChange={formHandler} value={otherFormData.leetcode} name='leetcode' />
+                            <label htmlFor="fname" className='font-nu font-semibold '>LinkedIn <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.linkedin} name='linkedin' />
                         </div>
                         <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="lname" className='font-nu font-semibold '>Geek For Geeks</label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="text" onChange={formHandler} value={otherFormData.gfg} name='gfg' />
+                            <label htmlFor="lname" className='font-nu font-semibold '>Code Chef <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.codechef} name='codechef' />
+                        </div>
+                    </div>
+                    <div className='grid grid-cols-2  gap-8'>
+                        <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
+                            <label htmlFor="fname" className='font-nu font-semibold '>LeetCode <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.leetcode} name='leetcode' />
+                        </div>
+                        <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
+                            <label htmlFor="lname" className='font-nu font-semibold '>Geek For Geeks <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.gfg} name='gfg' />
                         </div>
                     </div>
                 </div>

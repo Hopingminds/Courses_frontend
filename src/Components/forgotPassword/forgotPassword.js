@@ -82,6 +82,7 @@ const Forgotpassword = () => {
                 // console.log(res)
                 if (res?.status) {
                     setShow(2)
+                    toast.success("OTP is Generate")
                 }
 
             } catch (error) {
@@ -107,6 +108,7 @@ const Forgotpassword = () => {
                 // console.log(res);
                 if (res.status === 201) {
                     setShow(3)
+                    toast.success("OTP is valid")
                 }
 
             } catch (error) {
@@ -137,7 +139,7 @@ const Forgotpassword = () => {
 
                                 <div>
                                     {/* Email input */}
-                                    <p>Email</p>
+                                    <p>Email <span className='text-red-500'>*</span></p>
                                     <input type="text" placeholder="Enter Your Email" name="email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
                                 </div>
 
@@ -183,7 +185,7 @@ const Forgotpassword = () => {
 
                                 <div style={{ position: "relative" }}>
                                     {/* Email input */}
-                                    <p>Enter New Password</p>
+                                    <p>Enter New Password <span className='text-red-500'>*</span></p>
                                     <input type={showPassword ? "text" : "password"} placeholder="Enter Your New Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
                                     <span style={{ position: "absolute", bottom: "12px", right: "15px" }}> {
                                         showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />
@@ -192,7 +194,7 @@ const Forgotpassword = () => {
                                 </div>
                                 <div style={{ position: "relative" }}>
                                     {/* Email input */}
-                                    <p>Confirm New Password</p>
+                                    <p>Confirm New Password <span className='text-red-500'>*</span></p>
                                     <input type={showPassword ? "text" : "password"} placeholder="Confirm New Password" name="confirmPassword" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} />
                                     <span style={{ position: "absolute", bottom: "12px", right: "15px" }}> {
                                         showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />
@@ -213,7 +215,7 @@ const Forgotpassword = () => {
                         </div> </>}
                 </div>
             </div>
-            <Toaster position="top-right" />
+            <Toaster position="top-center" />
         </>
     );
 };

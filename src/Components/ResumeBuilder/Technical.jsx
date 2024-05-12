@@ -112,6 +112,7 @@ const Technical = ({changeComponent,setFinalData}) => {
     } else {
       setFinalData(prevData => ({...prevData,finalTechnicalData}));
       changeComponent('otherinfo');
+      toast.success("Submitted Successfully")
     }
   }
   

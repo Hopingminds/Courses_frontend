@@ -113,11 +113,11 @@ const Login = () => {
                         </div>
                         <div className='flex flex-col gap-4'>
                             <div>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Username/Email</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Username/Email <span className='text-red-500'>*</span></p>
                                 <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] md:py-[7px] text-[14px] md:text-[12px] xsm:text-[12px] font-pop font-light rounded-full xsm:py-[7px] outline-none' type="text" placeholder="Enter Your Username/Email" name="email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} onKeyDown={handleKeyDown} />
                             </div>
                             <div style={{ position: "relative" }}>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Password</p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Password <span className='text-red-500'>*</span></p>
                                 <input className='w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] md:py-[7px] text-[14px] md:text-[12px] xsm:py-[7px] xsm:text-[12px] font-pop font-light rounded-full outline-none' type={showPassword ? "text" : "password"} placeholder="Enter Your Password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} onKeyDown={handleKeyDown} />
                                 <span style={{ position: "absolute", bottom: "12px", right: "15px" }}>
                                     {showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />}
@@ -153,7 +153,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <Toaster position="top-right" />
+            <Toaster position="top-center" />
         </>
     );
 };

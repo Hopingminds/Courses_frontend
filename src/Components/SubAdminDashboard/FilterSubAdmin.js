@@ -20,7 +20,7 @@ const FilterSubAdmin = () => {
         placeholder="Degree"
         className="w-full outline-none font-medium text-[18px]"
       > 
-        <option value="degree" hidden >Degree</option>
+        <option value="degree" selected disabled hidden >Degree</option>
         <option value="Engineering">Engineering</option>
         <option value="BCA">BCA</option>
         <option value="MCA">MCA</option>
@@ -32,7 +32,7 @@ const FilterSubAdmin = () => {
         className="w-full outline-none font-medium text-[18px]"
         style={{ paddingRight: "7rem" }}
       >
-        <option value="Batch" hidden>Batch</option>
+        <option value="Batch" selected disabled hidden>Batch</option>
         <option value="Engineering">Engineering</option>
         <option value="BCA">BCA</option>
         <option value="MCA">MCA</option>
@@ -43,7 +43,7 @@ const FilterSubAdmin = () => {
         name="degree"
         className="w-full outline-none font-medium text-[18px]"
       >
-        <option value="Branch" hidden>Branch</option>
+        <option value="Branch" selected disabled hidden>Branch</option>
         <option value="Engineering">Engineering</option>
         <option value="BCA">BCA</option>
         <option value="MCA">MCA</option>
@@ -54,7 +54,7 @@ const FilterSubAdmin = () => {
         name="degree"
         className="w-full outline-none font-medium text-[18px]"
       >
-        <option value="Semester" hidden>Semester</option>
+        <option value="Semester" selected disabled hidden>Semester</option>
         <option value="Engineering">Engineering</option>
         <option value="BCA">BCA</option>
         <option value="MCA">MCA</option>
@@ -65,7 +65,7 @@ const FilterSubAdmin = () => {
         name="degree"
         className="w-full outline-none font-medium text-[18px]"
       >
-        <option value="Field of Study" hidden>Field of Study</option>
+        <option value="Field of Study" selected disabled hidden>Field of Study</option>
         <option value="Engineering">Engineering</option>
         <option value="BCA">BCA</option>
         <option value="MCA">MCA</option>
@@ -76,7 +76,7 @@ const FilterSubAdmin = () => {
         name="degree"
         className="w-full outline-none font-medium text-[18px]"
       >
-        <option value="Status" hidden>Status</option>
+        <option value="Status" selected disabled hidden>Status</option>
         <option value="Engineering">Engineering</option>
         <option value="BCA">BCA</option>
         <option value="MCA">MCA</option>

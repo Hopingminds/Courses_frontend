@@ -315,8 +315,8 @@ const ProfilEdit = () => {
                   />
                 </div> */}
                 <button
-                onClick={handleEditProfileClick}
-                className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-2 py-1 w-[45%] flex justify-center items-center text-center xsm:text-[10px] md:text-[16px]"
+                  onClick={handleEditProfileClick}
+                  className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-2 py-1 w-[100%] flex justify-center items-center text-center xsm:text-[10px] md:text-[16px]"
               >
                 <p>Complete Your Profile</p>  
               </button>
@@ -332,7 +332,7 @@ const ProfilEdit = () => {
             </div>
           </div>
         }
-        { completeProfile === "completeprofile" && <CYPMain/> }
+        { completeProfile === "completeprofile" && <CYPMain setCompleteProfile={setCompleteProfile} /> }
         {show ? (
           <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
             <Spinner className="" />

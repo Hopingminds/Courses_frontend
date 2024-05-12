@@ -23,6 +23,7 @@ const CYPBasic = ({setFinalData, setActiveDetail}) => {
             toast.error("Fill all the field");
         }else{
             setFinalData(prevData => ({...prevData, finalBasicData}));
+            toast.success("Submitted Successfully")
             setActiveDetail('education');
         }
     }
@@ -36,24 +37,24 @@ const CYPBasic = ({setFinalData, setActiveDetail}) => {
             <div className='flex  flex-col gap-4 px-12 py-6 w-full border border-[#00000050] rounded-xl '>
                 <div className=''>
                     <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                        <label htmlFor="address" className='font-nu font-semibold '>Address</label>
+                        <label htmlFor="address" className='font-nu font-semibold '>Address <span className='text-red-500'>*</span></label>
                         <textarea onChange={formHandler} required className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="text" value={basicFormData.address} name='address' placeholder='Address'  />
                     </div>
                 </div>
                 <div className='grid grid-cols-2  gap-8'>
                     <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                        <label htmlFor="city" className='font-nu font-semibold '>City</label>
+                        <label htmlFor="city" className='font-nu font-semibold '>City <span className='text-red-500'>*</span></label>
                         <input onChange={formHandler} required className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="email" value={basicFormData.city} name='city'/>  {/* make it select*/}
                     </div>
                     <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                        <label htmlFor="number" className='font-nu font-semibold '>State</label>
+                        <label htmlFor="number" className='font-nu font-semibold '>State <span className='text-red-500'>*</span></label>
                         <input onChange={formHandler} required className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="text" value={basicFormData.state} name='state'/>   {/* make it select*/}
                     </div>
                 </div>
                 <div className=''>
                     <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                        <label htmlFor="address" className='font-nu font-semibold '>Objective</label>
-                        <textarea onChange={formHandler} required className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050] font-nu font-light' type="text" placeholder='Tell about Yourself' value={basicFormData.objective} name='objective' />
+                        <label htmlFor="address" className='font-nu font-semibold '>Objective <span className='text-red-500'>*</span></label>
+                        <textarea onChange={formHandler} required className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="text" placeholder='Tell about Yourself' value={basicFormData.objective} name='objective' />
                     </div>
                 </div>
             </div>

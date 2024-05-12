@@ -129,7 +129,7 @@ const HireFromUs = () => {
 
   return (
     <>
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
       {showpopup && count == 1 ? (
         <div
           onClick={handleClose}
@@ -342,7 +342,7 @@ const HireFromUs = () => {
                       className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
                       htmlFor="name"
                     >
-                      Name
+                      Name  <span className='text-red-500'>*</span>
                     </label>
                     <input
                       id="name"
@@ -351,7 +351,7 @@ const HireFromUs = () => {
                       onChange={handleChange}
                       value={hiredata.name}
                       type="text"
-                      placeholder="Enter Your name"
+                      placeholder="Enter your name"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -359,7 +359,7 @@ const HireFromUs = () => {
                       className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
                       htmlFor="pass"
                     >
-                      Company
+                      Company <span className='text-red-500'>*</span>
                     </label>
                     <input
                       id="pass"
@@ -368,7 +368,7 @@ const HireFromUs = () => {
                       value={hiredata.company}
                       className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
                       type="text"
-                      placeholder="Enter Your Company"
+                      placeholder="Enter your Company"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -376,7 +376,7 @@ const HireFromUs = () => {
                       className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
                       htmlFor="study"
                     >
-                      Work E-mail
+                      Work E-mail <span className='text-red-500'>*</span>
                     </label>
                     <input
                       onChange={handleChange}
@@ -393,7 +393,7 @@ const HireFromUs = () => {
                       className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
                       htmlFor="time"
                     >
-                      Phone number
+                      Phone number <span className='text-red-500'>*</span>
                     </label>
                     <input
                       onChange={handleChange}
@@ -402,7 +402,7 @@ const HireFromUs = () => {
                       name="phone"
                       className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
                       type="text"
-                      placeholder="Enter Your Mobile number"
+                      placeholder="Enter your Mobile number"
                     />
                   </div>
                   <div className="px-6 mt-2">
@@ -421,7 +421,7 @@ const HireFromUs = () => {
                       className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
                       htmlFor="name"
                     >
-                      Name
+                      Name <span className='text-red-500'>*</span>
                     </label>
                     <input
                       id="name"
@@ -438,7 +438,7 @@ const HireFromUs = () => {
                       className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
                       htmlFor="email"
                     >
-                      Email
+                      Email <span className='text-red-500'>*</span>
                     </label>
                     <input
                       id="email"
@@ -455,7 +455,7 @@ const HireFromUs = () => {
                       className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
                       htmlFor="otp"
                     >
-                      Password
+                      Password <span className='text-red-500'>*</span>
                     </label>
                     <input
                       id="password"

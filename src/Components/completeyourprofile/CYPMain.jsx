@@ -8,7 +8,7 @@ import CYPEducation from './CYPEducation'
 import CYPTechnical from './CYPTechnical'
 import CYPOtherInfo from './CYPOtherInfo'
 
-const CYPMain = () => {
+const CYPMain = ({setCompleteProfile}) => {
     const [activeDetail, setActiveDetail] = useState("Basic");
     const[finalData, setFinalData] = useState([]);
 
@@ -36,7 +36,7 @@ const CYPMain = () => {
                 {activeDetail==="Basic" && <CYPBasic setFinalData={setFinalData} setActiveDetail={setActiveDetail}/>}
                 {activeDetail==="education" && <CYPEducation setFinalData={setFinalData} setActiveDetail={setActiveDetail}/>}
                 {activeDetail==="technical" && <CYPTechnical setFinalData={setFinalData} setActiveDetail={setActiveDetail}/>}
-                {activeDetail==="otherinfo" && <CYPOtherInfo setFinalData={setFinalData} setActiveDetail={setActiveDetail} finalData={finalData}/>}
+                {activeDetail==="otherinfo" && <CYPOtherInfo setFinalData={setFinalData} setActiveDetail={setActiveDetail} finalData={finalData} setCompleteProfile={setCompleteProfile}/>}
             </div>
         </div>
     )

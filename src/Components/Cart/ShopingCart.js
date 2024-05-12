@@ -238,7 +238,7 @@ function ShopingCart() {
       ) : (
         ""
       )}
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
     </div>
   );
 }

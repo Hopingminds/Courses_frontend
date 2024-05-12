@@ -104,14 +104,16 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
     const isAnySkillsFieldEmpty = skills.some(
     (field) =>
         field.skill.trim() === '' ||
-        field.skillLevel.trim() === ''
+        field.skillLevel.trim() === '' ||
+        field.skillLevel > 10
     );
 
     if (isAnyTrainingFieldEmpty || isAnyProjectsFieldEmpty || isAnyCertificationsFieldEmpty || isAnySkillsFieldEmpty) {
-        toast.error("Please fill out all fields.");
+        toast.error("Please fill out all valid fields.");
     } else {
         setFinalData(prevData => ({...prevData,finalTechnicalData}));
         setActiveDetail('otherinfo');
+        toast.success("Submitted Successfully")
     }
     }
 
@@ -135,7 +137,7 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
                         <div key={index} className='flex flex-col gap-4'>
                             <div className='grid grid-cols-2 gap-8'>
                                 <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                                <label htmlFor={`companyName${index}`} className='font-nu font-semibold'>Company Name</label>
+                                <label htmlFor={`companyName${index}`} className='font-nu font-semibold'>Company Name <span className='text-red-500'>*</span></label>
                                 <input
                                     id={`companyName${index}`}
                                     name="companyName"
@@ -146,7 +148,7 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
                                 />
                                 </div>
                                 <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                                <label htmlFor={`postName${index}`} className='font-nu font-semibold'>Post Name</label>
+                                <label htmlFor={`postName${index}`} className='font-nu font-semibold'>Post Name <span className='text-red-500'>*</span></label>
                                 <input
                                     id={`postName${index}`}
                                     name="postName"
@@ -159,7 +161,7 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
                             </div>
                             <div className='grid grid-cols-2 gap-8'>
                                 <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                                <label htmlFor={`location${index}`} className='font-nu font-semibold'>Location</label>
+                                <label htmlFor={`location${index}`} className='font-nu font-semibold'>Location <span className='text-red-500'>*</span></label>
                                 <input
                                     id={`location${index}`}
                                     name="location"
@@ -170,7 +172,7 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
                                 />
                                 </div>
                                 <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                                <label htmlFor={`fromDate${index}`} className='font-nu font-semibold'>Duration</label>
+                                <label htmlFor={`fromDate${index}`} className='font-nu font-semibold'>Duration <span className='text-red-500'>*</span></label>
                                 <div className='flex justify-between items-center gap-2'>
                                     <input
                                     id={`fromDate${index}`}
@@ -207,7 +209,7 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
                         <div key={index} className='flex flex-col gap-4'>
                             <div className='grid grid-cols-2 gap-8'>
                                 <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                                    <label htmlFor={`projectName${index}`} className='font-nu font-semibold'>Project Name</label>
+                                    <label htmlFor={`projectName${index}`} className='font-nu font-semibold'>Project Name <span className='text-red-500'>*</span></label>
                                     <input
                                         id={`projectName${index}`}
                                         name="projectName"
@@ -218,7 +220,7 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
                                     />
                                 </div>
                                 <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                                    <label htmlFor={`projectRole${index}`} className='font-nu font-semibold'>Project Role</label>
+                                    <label htmlFor={`projectRole${index}`} className='font-nu font-semibold'>Project Role <span className='text-red-500'>*</span></label>
                                     <input
                                         id={`projectRole${index}`}
                                         name="projectRole"
@@ -230,7 +232,7 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
                                 </div>
                             </div>
                             <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                                <label htmlFor={`projectDescription${index}`} className='font-nu font-semibold'>Project Description</label>
+                                <label htmlFor={`projectDescription${index}`} className='font-nu font-semibold'>Project Description <span className='text-red-500'>*</span></label>
                                 <textarea
                                         id={`projectDescription${index}`}
                                         name="projectDescription"
@@ -255,7 +257,7 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
                         <div key={index} className='flex flex-col gap-4'>
                             <div className='grid grid-cols-2 gap-8'>
                                 <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                                    <label htmlFor={`certificateName${index}`} className='font-nu font-semibold'>Certificate Name</label>
+                                    <label htmlFor={`certificateName${index}`} className='font-nu font-semibold'>Certificate Name <span className='text-red-500'>*</span></label>
                                     <input
                                         id={`certificateName${index}`}
                                         name="certificateName"
@@ -266,7 +268,7 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
                                     />
                                 </div>
                                 <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                                    <label htmlFor={`certifiedBy${index}`} className='font-nu font-semibold'>Certified By</label>
+                                    <label htmlFor={`certifiedBy${index}`} className='font-nu font-semibold'>Certified By <span className='text-red-500'>*</span></label>
                                     <input
                                         id={`certifiedBy${index}`}
                                         name="certifiedBy"
@@ -292,7 +294,7 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
                         <div key={index} className='flex flex-col gap-4'>
                             <div className='grid grid-cols-2 gap-8'>
                                 <div className='flex flex-col text-[15px] md:text-[12px] xsm:text-[8px]'>
-                                    <label htmlFor={`skill${index}`} className='font-nu font-semibold'>Skill</label>
+                                    <label htmlFor={`skill${index}`} className='font-nu font-semibold'>Skill <span className='text-red-500'>*</span></label>
                                     <input
                                         id={`skill${index}`}
                                         name="skill"
@@ -303,14 +305,15 @@ const CYPTechnical = ({setFinalData, setActiveDetail}) => {
                                     />
                                 </div>
                                 <div className='flex flex-col text-[15px] md:text-[12px] xsm:text-[8px]'>
-                                    <label htmlFor={`skillLevel${index}`} className='font-nu font-semibold'>Skill Level</label>
+                                    <label htmlFor={`skillLevel${index}`} className='font-nu font-semibold'>Skill Level (from 10) <span className='text-red-500'>*</span></label>
                                     <input
                                         id={`skillLevel${index}`}
                                         name="skillLevel"
                                         value={skill.skillLevel}
                                         onChange={(e) => handleChangeSkill(index, e)}
                                         className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]'
-                                        type="text"
+                                        type="number"
+                                        max={10}
                                     />
                                 </div>
                             </div>

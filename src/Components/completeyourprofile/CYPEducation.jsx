@@ -22,13 +22,15 @@ const CYPEducation = ({setFinalData, setActiveDetail}) => {
             field.degree.trim() === '' ||
             field.university.trim() === '' ||
             field.passingYear.trim() === '' ||
-            field.percentage.trim() === ''
+            field.percentage.trim() === '' ||
+			field.percentage>=100
         );
 
         if (isAnyFieldEmpty) {
-            toast.error("Fill all field to move forward");
+            toast.error("Fill all valid field to move forward");
         } else {
             console.log(educationFields);
+			toast.success("Submitted Successfully")
             setFinalData(prevData => ({...prevData,educationFields}));
             setActiveDetail('technical');
         }
@@ -47,7 +49,7 @@ const CYPEducation = ({setFinalData, setActiveDetail}) => {
 					<div key={index} className='flex flex-col gap-4  py-2 w-full'>
 						<div className='grid grid-cols-2  gap-8 w-full'>
 							<div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-								<label htmlFor={`degree${index}`} className='font-nu font-semibold'>Degree</label>
+								<label htmlFor={`degree${index}`} className='font-nu font-semibold'>Degree <span className='text-red-500'>*</span></label>
 								<input
 									id={`degree${index}`}
 									name="degree"
@@ -58,7 +60,7 @@ const CYPEducation = ({setFinalData, setActiveDetail}) => {
 								/>
 							</div>
 							<div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-								<label htmlFor={`university${index}`} className='font-nu font-semibold'>College/University</label>
+								<label htmlFor={`university${index}`} className='font-nu font-semibold'>College/University <span className='text-red-500'>*</span></label>
 								<input
 									id={`university${index}`}
 									name="university"
@@ -71,25 +73,26 @@ const CYPEducation = ({setFinalData, setActiveDetail}) => {
 						</div>
 						<div className='grid grid-cols-2  gap-8 w-full'>
 							<div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-								<label htmlFor={`passingYear${index}`} className='font-nu font-semibold'>Pass Yearing</label>
+								<label htmlFor={`passingYear${index}`} className='font-nu font-semibold'>Pass Yearing <span className='text-red-500'>*</span></label>
 								<input
 									id={`passingYear${index}`}
 									name="passingYear"
 									value={field.passingYear}
 									onChange={(e) => handleChangeInput(index, e)}
 									className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]'
-									type="text"
+									type="number"
 								/>
 							</div>
 							<div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-								<label htmlFor={`percentage${index}`} className='font-nu font-semibold'>Percentage</label>
+								<label htmlFor={`percentage${index}`} className='font-nu font-semibold'>Percentage <span className='text-red-500'>*</span></label>
 								<input
 									id={`percentage${index}`}
 									name="percentage"
 									value={field.percentage}
 									onChange={(e) => handleChangeInput(index, e)}
 									className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]'
-									type="text"
+									type="number"
+									max={100}
 								/>
 							</div>
 						</div>

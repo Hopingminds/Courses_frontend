@@ -241,7 +241,7 @@ export default function Commoncard(props) {
           </div>
         </div>
       </div>
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
     </div>
   );
 }

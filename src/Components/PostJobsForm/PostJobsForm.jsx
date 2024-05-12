@@ -295,7 +295,10 @@ const PostJobsForm = () => {
                             value={formData.departmentRoleCategory}
                             onChange={handleChange}
                         >
-                        <option className="border-none" value="Engineering - Software & QA" selected>
+                        <option className="border-none" value="" selected disabled hidden>
+                            Select Your Department Role 
+                        </option>
+                        <option className="border-none" value="Engineering - Software & QA" >
                             Engineering - Software & QA
                         </option>
                         <option className="border-none" value="Customer Success, Service & Operations">
@@ -326,7 +329,10 @@ const PostJobsForm = () => {
                             value={formData.workMode}
                             onChange={handleChange}
                         >
-                        <option className="border-none" value="In office" selected>
+                        <option className="border-none" value="" selected disabled hidden>
+                            Select Your Work Mode
+                        </option>
+                        <option className="border-none" value="In office" >
                             In office
                         </option>
                         <option className="border-none" value="Hybrid">
@@ -472,7 +478,10 @@ const PostJobsForm = () => {
                             value={formData.companyIndustry}
                             onChange={handleChange}
                         >
-                        <option className="border-none" value="IT Services & Consulting" selected>
+                        <option className="border-none" value="" selected disabled hidden>
+                            Select Your Company industry
+                        </option>
+                        <option className="border-none" value="IT Services & Consulting" >
                             IT Services & Consulting
                         </option>
                         <option className="border-none" value="Electronic Components / Semiconductors">

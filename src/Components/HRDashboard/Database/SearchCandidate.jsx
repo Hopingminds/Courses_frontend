@@ -121,6 +121,7 @@ const SearchCandidate = () => {
                         </div>
                         <div className='LocationSelect w-full bg-white px-4 py-2 flex items-center justify-between border border-[#808080] rounded-xl'>
                             <select name="" id="" className='outline-none w-full'>
+                                <option value="" selected disabled hidden>Select Location</option>
                                 <option value="Delhi">Delhi</option>
                                 <option value="Chandigarh">Chandigarh</option>
                                 <option value="Pune">Pune</option>

@@ -515,7 +515,7 @@ const CartCheckout = () => {
         </div>
         {/* Summary end */}
       </div>
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
       {/* CheckOut end */}
     </>
   );
