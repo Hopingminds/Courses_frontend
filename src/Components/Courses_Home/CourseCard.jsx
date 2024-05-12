@@ -155,7 +155,7 @@ const CourseCard = ({
             {description.slice(0, 70)}..
           </p>
         </div>
-        <div className=" flex items-center justify-between">
+        <div className=" flex items-end justify-between">
           <span className="flex flex-col">
             {credits ? (
               <div className="flex space-x-2 items-center xsm:space-x-1">
