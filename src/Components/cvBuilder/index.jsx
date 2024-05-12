@@ -14,6 +14,7 @@ import {
 } from "./constants/message-result.constants";
 import LS from "./utils/browser.utils";
 import CV4 from "./CV4";
+import CV5 from "./CV5";
 
 export default function CVBuilder() {
   const [cv, setCv] = useState(cvData);
@@ -203,6 +204,8 @@ export default function CVBuilder() {
         return <CV2 />;
       case "4":
         return <CV4 />;
+      case "5":
+        return <CV5 />;
       default:
         return <CV3 />;
     }
