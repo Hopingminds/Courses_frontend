@@ -25,23 +25,23 @@ const DataDashboard = ({data}) => {
           <div className="flex flex-col gap-1 w-[70%]">
             <p className="font-pop font-semibold text-[26px]">{data?.enrolled_students}</p>
             <p className="font-pop font-semibold text-[14px]">
-              Enrolled Students
+              Davinder Kumar
             </p>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow-lg flex flex-row gap-8 justify-between items-center px-2 py-6 w-[30%]">
-          <img src={Img2} className="w-[28%]" />
+        <div className="bg-white rounded-lg shadow-lg flex flex-row gap-8 items-center px-3 py-6 w-[30%]">
+          <img src={Img2} className="w-[25%] " />
           <div className="flex flex-col gap-1">
-            <p className="font-pop font-semibold text-[26px]">{data?.enrolled_courses}</p>
+            <p className="font-pop font-semibold text-[26px]">{data?.enrolled_courses || 30}</p>
             <p className="font-pop font-semibold text-[14px]">
               Enrolled courses
             </p>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow-lg flex flex-row gap-8 justify-between items-center px-2 py-6 w-[30%]">
-          <img src={Img3} className="w-[28%]" />
+        <div className="bg-white rounded-lg shadow-lg flex flex-row gap-8  items-center px-2 py-6 w-[30%]">
+          <img src={Img3} className="w-[25%]" />
           <div className="flex flex-col gap-1">
-            <p className="font-pop font-semibold text-[26px]">{data?.enrolled_courses/2}</p>
+            <p className="font-pop font-semibold text-[26px]">{data?.enrolled_courses || 20}</p>
             <p className="font-pop font-semibold text-[14px]">
               Completed Course
             </p>
@@ -103,13 +103,12 @@ const DataDashboard = ({data}) => {
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-xl shadow-lg flex flex-col gap-2 p-4 w-[50%]">
+        {/* <div className="bg-white rounded-xl shadow-lg flex flex-col gap-2 p-4 w-[50%]">
           <p className="font-pop font-semibold text-[18px]">Attendance</p>
           <div>
-          {/* <LineGraph data={[12,34,12]}/> */}
           <Temp/>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="bg-white rounded-xl shadow=lg pl-[3%] pr-[5%] py-[4%] flex flex-row justify-between">
         <div className="flex flex-col gap-6 w-[75%]">
