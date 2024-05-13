@@ -149,7 +149,7 @@ const Internship = () => {
           return searchitem && slug.includes(searchitem);
         })
       );
-      setAllCourses(    
+      setAllCourses(
         allCourses?.filter((item) => {
           const searchitem = query.toLowerCase();
           const slug = item.slug.toLowerCase();
@@ -258,7 +258,7 @@ const Internship = () => {
 
         <div className="h-full w-full bg-black" style={{ backdropFilter: 'brightness(50%)' }}>
           <ReactPlayer
-          onContextMenu={handleContextMenu}
+            onContextMenu={handleContextMenu}
 
             // url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
             url='/internshipvideo2.mp4'
@@ -315,7 +315,7 @@ const Internship = () => {
       <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
       <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
-        {allCourses?.map((val, ind) => {
+        {allCourses?.filter((course) => { return course.courseType === 'internship' })?.map((val, ind) => {
           return (
             <CourseCard
               key={val?.title}
