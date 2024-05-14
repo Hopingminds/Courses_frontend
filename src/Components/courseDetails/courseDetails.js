@@ -10,7 +10,7 @@ import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
 import Main from "../Main/Main";
 import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import { Link } from "react-router-dom";
-
+import SideBar from "./SideBar.jsx"
 import { ReactComponent as MyCourse } from "../../Assests/Icons/my-courses.svg";
 import { ReactComponent as MyAssignment } from "../../Assests/Icons/assignments.svg";
 import { ReactComponent as MyWhishlist } from "../../Assests/Icons/whishlist.svg";
@@ -169,9 +169,12 @@ export default function CDDetails() {
 
   return (
     <>
-      {/* side menu */}
-      <div className="flex gap-20">
-        <div className="w-16 h-[100vh] sticky top-12 bg-[#0F2027] flex flex-col justify-start items-center gap-8 py-10 pl-[2%] pr-2 text-white">
+      <div className="flex justify-between gap-5">
+        {/* side menu */}
+        <div className='w-[15%]'>
+          <SideBar/>
+        </div>
+        {/* <div className="w-16 h-[100vh] sticky top-12 bg-[#0F2027] flex flex-col justify-start items-center gap-8 py-10 pl-[2%] pr-2 text-white">
           <div className="group relative">
             <Link to="/learning?tab=courses">
               <MyCourse />
@@ -226,8 +229,9 @@ export default function CDDetails() {
             </div>
             </Link>
           </div>
-        </div>
-        <div className="w-full">
+        </div> */}
+        {/* Main Content */}
+        <div className="w-[85%]">
           <div className="CCD-container pb-10 pr-16 xsm:pr-[5%] xsm:h-[42vh] md:pr-[5%] md:h-[50vh]">
             <div className="flex gap-20">
               <div className="CCD-content flex gap-5 pt-10">
@@ -277,7 +281,7 @@ export default function CDDetails() {
                     <></>
                   )
                 ) : (
-                  <div className="w-[45%]  h-[80vh] overflow-y-auto md:h-[40vh]">
+                  <div className="w-[45%]  h-[80vh] overflow-y-auto customScroll md:h-[40vh]">
                     <Coursecontents
                       handleActiveVideo={handleActiveVideo}
                       data={Data?.curriculum}

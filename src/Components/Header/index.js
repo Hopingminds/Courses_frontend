@@ -67,22 +67,16 @@ export default function Navbar() {
   useEffect(() => {
     async function Fetchdata() {
       try {
-        // console.log(token);
-        // setshow(true);
         let url = BASE_URL + "/getcart?email=" + token.email;
-        // console.log(url);
         const data = await fetch(url);
         const response = await data.json();
         setCartSize(response?.cart?.length);
-        // Total(response?.cart);
-        // setshow(false);
-        // console.log(response);
       } catch (error) {
         console.error(error);
       }
     }
     Fetchdata();
-  }, []);
+  }, [token.email]);
 
   return (
     <>

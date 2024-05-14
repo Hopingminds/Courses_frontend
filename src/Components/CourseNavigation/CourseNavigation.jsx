@@ -14,7 +14,7 @@ const CourseNavigation = ({courseLessons, totalLessons, courseAssignment }) => {
     };
     return (
         <div className="w-full min-h-[540px] mt-[20px] xsm:w-full">
-            <div className="grid grid-cols-4 border w-full border-[#EAEAEA] font-nu font-semibold text-[16px] leading-[24px] rounded-t-[20px] xsm:w-full">
+            <div className="grid grid-cols-4 border w-full overflow-hidden border-[#EAEAEA] font-nu font-semibold text-[16px] leading-[24px] rounded-t-[20px] xsm:w-full">
                 <button className={`btn_corners_first py-[12px]  ${activeComponent === 'Overview' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`} 
                         onClick={() => renderComponent('Overview')}>Overview</button>
                 <button className={ `btn_border py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'Instructor' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`}
