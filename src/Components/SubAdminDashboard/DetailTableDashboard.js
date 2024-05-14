@@ -20,7 +20,26 @@ const DetailTableDashboard = ({ data }) => {
     }
   };
 
-  
+  const handleDownload = () => {
+    let fileurl='/abbott.png'
+    fetch(fileurl)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = fileurl || "downloaded-file";
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((error) => {
+        console.error("Error fetching the file:", error);
+      });
+  };
 
   // Example table content
 
@@ -58,7 +77,7 @@ const DetailTableDashboard = ({ data }) => {
             </div>
           </div>
           </label>
-          <div className='h-32 w-56 flex justify-center items-center shadow-xl gap-1'>
+          <div onClick={handleDownload} className='h-32 cursor-pointer w-56 flex justify-center items-center shadow-xl gap-1'>
             <Download className='h-16 w-12' />
             <div className='flex flex-col '>
               <p className='text-xs font-semibold'>Download Sheets</p>
@@ -75,7 +94,7 @@ const DetailTableDashboard = ({ data }) => {
         {/* Render table rows */}
         {data?.map((row) => (
           <div key={row.id} className='grid grid-cols-5 bg-[#fff] py-3 text-center shadow-lg w-full'>
-            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row._id.slice(0,10)}</p>
+            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row._id.slice(-10)}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.name}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.batch || 2024}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.stream || "CSE"}</p>

@@ -32,7 +32,7 @@ const FilterSubAdmin = () => {
              </div>
              <div className="flex flex-col pl-5 gap-2 mt-2" id={1}>
                 <div className="flex items-center gap-2">
-                  <input type="checkbox" name="engineering" className="h-8 w-8 text-xl"/>
+                  <input type="checkbox" name="engineering"   className="h-8 w-8 text-xl"/>
                   <p>Engineering</p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -52,16 +52,16 @@ const FilterSubAdmin = () => {
              </div>
              <div className="flex flex-col pl-5 gap-2 mt-2" id={2}>
                 <div className="flex items-center gap-2">
-                  <input type="checkbox" name="engineering" className="h-8 w-8 text-xl"/>
-                  <p>Engineering</p>
+                  <input type="checkbox" name="2024" className="h-8 w-8 text-xl"/>
+                  <p>2024</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <input type="checkbox" name="bca" className="h-8 w-8 text-xl"/>
-                  <p>BCA</p>
+                  <input type="checkbox" name="2023" className="h-8 w-8 text-xl"/>
+                  <p>2023</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <input type="checkbox" name="mca" className="h-8 w-8 text-xl"/>
-                  <p>MCA</p>
+                  <input type="checkbox" name="2022" className="h-8 w-8 text-xl"/>
+                  <p>2022</p>
                 </div>
              </div>
           </div>
@@ -72,16 +72,16 @@ const FilterSubAdmin = () => {
              </div>
              <div className="flex flex-col pl-5 gap-2 mt-2"  id={3}>
                 <div className="flex items-center gap-2">
-                  <input type="checkbox" name="engineering" className="h-8 w-8 text-xl"/>
-                  <p>Engineering</p>
+                  <input type="checkbox" name="cse" className="h-8 w-8 text-xl"/>
+                  <p>CSE</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <input type="checkbox" name="bca" className="h-8 w-8 text-xl"/>
-                  <p>BCA</p>
+                  <input type="checkbox" name="data science" className="h-8 w-8 text-xl"/>
+                  <p>Data Science</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <input type="checkbox" name="mca" className="h-8 w-8 text-xl"/>
-                  <p>MCA</p>
+                  <p>Full Stack Development</p>
                 </div>
              </div>
           </div>

@@ -15,6 +15,7 @@ import { easeQuadInOut } from "d3-ease";
 import Temp from "../temp";
 
 const DataDashboard = ({data}) => {
+ 
 // console.log(data);
   // const data = [10,0,2.5,5];
   return (
