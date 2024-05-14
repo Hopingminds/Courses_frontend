@@ -149,7 +149,7 @@ const CourseCard = ({
             </div>
           </div>
           <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px] md:h-12 xsm:mt-2 xsm:h-6">
-            {title}
+            {title.length>40 ? title.slice(0, 40) +"..." : title}
           </p>
           <p className="font-pop text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px]">
             {description.slice(0, 70)}..
