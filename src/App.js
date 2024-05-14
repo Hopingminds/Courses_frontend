@@ -104,6 +104,7 @@ function App() {
       <div className='2xl:px-[17%]'>
         <Router />
        {window.location.pathname!=='/course' && <div className="fixed right-0 bottom-4">
+        <div className="fixed right-0 bottom-4 z-[987656789]">
            <ChatBot className="w-fit" />
         </div>}
       </div>

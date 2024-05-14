@@ -1,0 +1,38 @@
+.sidebarHover:hover .SideBar-whitecircle{
+    display: none;
+}
+.sidebarHover:hover{
+    transition: all .5s ease-in-out;
+}
+
+.sidebarHover:hover .sideBarMenus{
+    align-items: flex-start;
+    padding-left: 5px;
+}
+
+.sidebarHover:hover .sideBarMenu{
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+}
+
+.sidebarHover:hover .sideBarMenu:hover{
+    background-image: linear-gradient(to right, rgba(7, 223, 105, 1), rgba(7, 223, 105, 0.1));
+    height: 100%;
+    width: 100%;
+}
+
+.sidebarHover:hover .SidebarmenuIcons{
+    width: 27px;
+    transition: all .5s ease-in-out;
+    padding-left: 5px;
+}
+
+.SideTextshow{
+    display: none;
+}
+
+.sidebarHover:hover .SideTextshow{
+    display: block;
+    width: 80%;
+}

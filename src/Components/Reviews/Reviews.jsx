@@ -27,7 +27,7 @@ function Reviews() {
   }, []);
   return (
     <>
-      <div className="" id="Reviews">
+      {/* <div className="" id="Reviews">
         <div className="reviews">
           <h3>Comments</h3>
           <div className="review-head">
@@ -44,10 +44,10 @@ function Reviews() {
               </div>
               <p className="review-head-rating">based on 1,469 ratings</p>
             </div>
-          </div>
+          </div> */}
 
           {/* Section-3 Ratings */}
-          <div className="main-rating-box">
+          {/* <div className="main-rating-box">
             <div className="ratings-box">
               <div className="ratings">
                 <img src={ratings} alt="ratings" />
@@ -93,10 +93,10 @@ function Reviews() {
             <div className="ratings-box-value">
               <RatingsBar />
             </div>
-          </div>
+          </div> */}
           {/* Person Reviews */}
           {/* Box-1 */}
-          <div className="person-review-1 ">
+          {/* <div className="person-review-1 ">
             <img
               src={
                 "https://i.pinimg.com/550x/7a/74/49/7a744949cbdb01fca6fa3a9df9d1259c.jpg"
@@ -110,17 +110,13 @@ function Reviews() {
                 <span className="h-2">October 03, 2022</span>
               </div>
               <div className="content-para1">
-                This React course was fantastic! The instructor did a great job
-                breaking down complex concepts into understandable pieces. The
-                hands-on projects really helped solidify my understanding, and
-                the quizzes after each section were a nice touch to test my
-                knowledge. Highly recommended for anyone wanting to learn React!
+              This course was fantastic! The instructor did a great job breaking down complex concepts into understandable pieces. The hands-on projects really helped solidify my understanding, and the quizzes after each section were a nice touch to test my knowledge. Highly recommended for anyone wanting to deepen their expertise!
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Box-2 */}
-          <div className="person-review-1 ">
+          {/* <div className="person-review-1 ">
             <img
               src={
                 "https://img.freepik.com/free-photo/cheerful-indian-businessman-smiling-closeup-portrait-jobs-career-campaign_53876-129417.jpg"
@@ -134,12 +130,7 @@ function Reviews() {
                 <span className="h-2">June 15, 2023</span>
               </div>
               <div className="content-para1">
-                As someone completely new to programming, I found this React
-                course to be incredibly beginner-friendly. The explanations were
-                clear, and the pace was just right for me. The practical
-                exercises were challenging but manageable, and I feel like I've
-                gained a solid foundation in React. Thank you for making this
-                course accessible to beginners like me!
+              Absolutely enlightening experience! The instructor managed to simplify challenging topics and provided thorough hands-on practice. The projects were engaging and significantly enhanced my learning, while the quizzes effectively tested my grasp of the material. This course is a must for anyone looking to advance their skills.
               </div>
             </div>
           </div>
@@ -157,12 +148,7 @@ function Reviews() {
                 <span className="h-2">June 15, 2023</span>
               </div>
               <div className="content-para1">
-                Unfortunately, this React course fell short of my expectations.
-                While the content was decent, I found the explanations to be
-                lacking at times, especially for more complex topics.
-                Additionally, some of the code examples were outdated, which
-                made it difficult to follow along. Overall, I think there are
-                better options out there for learning React.
+              I thoroughly enjoyed this course! The teaching method was excellent, making difficult topics easy to understand. The real-world projects added immense value, and the periodic quizzes were great for reinforcing what we learned. Highly recommended for anyone interested in expanding their knowledge base!
               </div>
             </div>
           </div>
@@ -180,13 +166,7 @@ function Reviews() {
                 <span className="h-2">january 15, 2023</span>
               </div>
               <div className="content-para1">
-                I've taken several online courses before, but this React course
-                stands out as one of the best. The production quality was
-                top-notch, and the content was organized in a way that made it
-                easy to follow along. The instructor's teaching style kept me
-                engaged throughout, and I appreciated the frequent code-along
-                sessions. I'll definitely be referring back to this course as I
-                continue my journey with React.
+              Superb course with an excellent curriculum! The instructor was very knowledgeable and presented the material in an easy-to-follow manner. Practical assignments were particularly useful, and the quizzes helped consolidate the information learned. Anyone looking to master new skills should consider this course.
               </div>
             </div>
           </div>
@@ -204,15 +184,10 @@ function Reviews() {
                 <span className="h-2">August 2, 2023</span>
               </div>
               <div className="content-para1">
-                I've been working with React for a while now, but I wanted to
-                deepen my understanding and fill in any gaps in my knowledge.
-                This course exceeded my expectations! The instructor covered
-                advanced topics thoroughly, and I appreciated the focus on best
-                practices and real-world applications. I definitely feel more
-                confident in my React skills after completing this course.
+              Outstanding course! The clear explanations of complex principles were impressive, and the hands-on challenges deepened my understanding significantly. The inclusion of quizzes after each section was a thoughtful touch that helped reinforce the learning. Highly recommend this course to anyone eager to learn and grow!
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* <div className="Reviews-pages">
             <button type="submit">
@@ -225,9 +200,9 @@ function Reviews() {
               <img src="../Icons/rightarrow.svg" alt="right-arrow"></img>
             </button>
           </div> */}
-        </div>
+        {/* </div> */}
         {/* <Comment/> */}
-      </div>
+      {/* </div> */}
       {/* Comment-box */}
       {/* <Comment/> */}
     </>
