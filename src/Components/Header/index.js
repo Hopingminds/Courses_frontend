@@ -24,7 +24,7 @@ export default function Navbar() {
   const location = useLocation();
   // console.log(location);
   let navigate = useNavigate();
-  let token = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
+  // let token = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
   const [cartSize, setCartSize] = useState(0);
   function Top() {
     window.scrollTo(0, 0);
@@ -64,19 +64,19 @@ export default function Navbar() {
     Fetchdata();
   }, []);
 
-  useEffect(() => {
-    async function Fetchdata() {
-      try {
-        let url = BASE_URL + "/getcart?email=" + token.email;
-        const data = await fetch(url);
-        const response = await data.json();
-        setCartSize(response?.cart?.length);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    Fetchdata();
-  }, [token.email]);
+  // useEffect(() => {
+  //   async function Fetchdata() {
+  //     try {
+  //       let url = BASE_URL + "/getcart?email=" + token.email;
+  //       const data = await fetch(url);
+  //       const response = await data.json();
+  //       setCartSize(response?.cart?.length);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  //   Fetchdata();
+  // }, []);
 
   return (
     <>
