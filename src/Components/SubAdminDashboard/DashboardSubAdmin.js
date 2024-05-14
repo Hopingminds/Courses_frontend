@@ -15,30 +15,30 @@ const DashboardSubAdmin = () => {
       navigate('/subadmin-login')
     }
   }, [])
-
-  // useEffect(() => {
-  //   async function FetchData() {
-  //     try {
-  //       let url = BASE_URL + '/getadmindashdata?university=Chandigarh University(CU) - Punjab'
-  //       const data = await fetch(url);
-  //       const response = await data.json()
-  //       setdata(response?.data)
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   FetchData()
-  // }, [])
+  useEffect(() => {
+    async function FetchData(){
+      const data=await fetch(BASE_URL+'/get-college-students',{
+        method:'GET',
+        headers:{
+          'Authorization':'Bearer '+localStorage.getItem('token')
+        }
+      })
+      const response=await data.json()
+      setdata(response?.data)
+      // console.log(response);
+    }
+    FetchData()
+      }, [])
 
   return (
     <>
 
       <BannarSubAdmin />
         <div className="flex flex-row">
-          <FilterSubAdmin />
+          <FilterSubAdmin data={data}/>
           {/* <DataDashboard data={data} /> */}
     
-        <DetailTableDashboard data={data?.users} />
+        <DetailTableDashboard data={data}/>
         </div>
     </>
   );

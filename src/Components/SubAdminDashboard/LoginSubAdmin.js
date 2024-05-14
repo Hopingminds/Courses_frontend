@@ -26,21 +26,30 @@ const LoginSubAdmin = () => {
     }
     else{
       try{
-        const res = await axios.post(`${BASE_URL}/loginAdminWithEmail`, {
+        const res = await axios.post(`${BASE_URL}/loginCollegeUserWithEmail`, {
           email: Admin.email,
           password: Admin.password,
         })
-
+        // console.log(res);
         // getAdminDetails();
-        toast.success("Login Successful")
+        if(res?.data?.success){   
+          console.log("dfadsfds");
+           localStorage.setItem('token',res?.data?.token)
+          Getadmindetails()
+          toast.success(res?.data?.msg)
+          setTimeout(() => {
+            navigate('/subadmin-dashboard')
+          }, 1000);
+         
+
+        }
+        else{
+          toast.error(res?.data?.msg)
+        }
        
-        localStorage.setItem('token',res.data.token)
-        Getadmindetails()
-        setTimeout(() => {
-          navigate('/subadmin-dashboard')
-        }, 1000);
+    
       } catch(error){
-        console.log(error);
+        // console.log(error);
         toast.error("Some Error Occured while Login")
       } finally{
         setBtnLoader(false);

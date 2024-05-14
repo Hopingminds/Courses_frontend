@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Globalinfo } from "../../App";
 
@@ -10,6 +10,10 @@ function handleLogout(){
   Getadmindetails()
     navigate('/subadmin-login')
   }
+  useEffect(() => {
+    Getadmindetails()
+  }, [])
+  
   return (
     <div className="flex flex-row justify-between px-[3%] py-[1%] bg-[#0F2027]">
       <Link to='/subadmin-dashboard'><img src="/logo.png" className="h-[50px] w-auto xsm:w-[40px] xsm:h-[15px]" /></Link>
