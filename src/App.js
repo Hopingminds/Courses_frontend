@@ -104,7 +104,7 @@ console.log(window.location.pathname);
     <Globalinfo.Provider value={{ cartData, Getadmindetails, adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
       <div className='2xl:px-[17%]'>
         <Router />
-        <div className="fixed right-0 bottom-4">
+        <div className="fixed right-0 bottom-4 z-[987656789]">
            <ChatBot className="w-fit" />
         </div>
       </div>
