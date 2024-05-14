@@ -14,7 +14,7 @@ const CourseNavigation = ({courseLessons, totalLessons, courseAssignment }) => {
     };
     return (
         <div className="w-full min-h-[540px] mt-[20px] xsm:w-full">
-            <div className="grid grid-cols-5 border w-full border-[#EAEAEA] font-nu font-semibold text-[16px] leading-[24px] rounded-t-[20px] xsm:w-full">
+            <div className="grid grid-cols-4 border w-full border-[#EAEAEA] font-nu font-semibold text-[16px] leading-[24px] rounded-t-[20px] xsm:w-full">
                 <button className={`btn_corners_first py-[12px]  ${activeComponent === 'Overview' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`} 
                         onClick={() => renderComponent('Overview')}>Overview</button>
                 <button className={ `btn_border py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'Instructor' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`}
@@ -25,8 +25,8 @@ const CourseNavigation = ({courseLessons, totalLessons, courseAssignment }) => {
                         onClick={() => renderComponent('certifications')}>Certifications</button> */}
                 <button className={`btn_border py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'mystats' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`}
                         onClick={() => renderComponent('mystats')}>MyStats</button>
-                        <button className={`btn_corners_last py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'Launch' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`}
-                        onClick={() => renderComponent('Launch')}>Launch Lab</button>
+                        {/* <button className={`btn_corners_last py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'Launch' ? 'bg-[#E2FFF1] text-[#1FC074]' : ''}`}
+                        onClick={() => renderComponent('Launch')}>Launch Lab</button> */}
             </div>
 
             {activeComponent === 'Overview' && <Overview />}
@@ -34,7 +34,7 @@ const CourseNavigation = ({courseLessons, totalLessons, courseAssignment }) => {
             {activeComponent === 'assignment' && <CNAssignment courseAssignment={courseAssignment} />}
             {/* {activeComponent === 'certifications' && <CNCertifications />} */}
             {activeComponent === 'mystats' && <CNMyStats courseLessons={courseLessons} totalLessons={totalLessons} courseAssignment={courseAssignment}/>} 
-            {activeComponent === 'Launch' && <LaunchLab />} 
+            {/* {activeComponent === 'Launch' && <LaunchLab />}  */}
         </div>
     )
 }

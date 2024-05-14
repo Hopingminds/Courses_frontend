@@ -225,7 +225,7 @@ const Internship = () => {
           <div className="relative w-full rounded-md">
             <input
               type="text"
-              placeholder="Search for course"
+              placeholder="Search for an Internship program"
               ref={searchBarRef}
               onChange={SearchData}
               className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
@@ -253,8 +253,8 @@ const Internship = () => {
           </button>
         </div>
 
-        <div className="absolute z-20 top-[10%] flex justify-center items-center text-center w-full text-white text-[50px] font-int font-semibold md:text-[35px] xsm:text-[16px]">Get Work Experience</div>
-        <div className="absolute z-20 top-[27%] flex justify-center items-center text-center w-full text-white font-int md:text-[16px] xsm:text-[8px]">A valuable learning experience to develop professional competencies and expand industry knowledge</div>
+        <div className="absolute z-20 top-[10%] flex justify-center items-center text-center w-full text-white text-[50px] font-int font-semibold md:text-[35px] xsm:text-[16px]">Gain Professional Skills</div>
+        <div className="absolute z-20 top-[27%] flex justify-center items-center text-center w-full text-white font-int md:text-[16px] xsm:text-[8px]">Unlock your potential with real-world experience in your field of study.</div>
 
         <div className="h-full w-full bg-black" style={{ backdropFilter: 'brightness(50%)' }}>
           <ReactPlayer

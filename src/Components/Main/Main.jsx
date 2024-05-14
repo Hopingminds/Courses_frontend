@@ -16,7 +16,7 @@ function Main() {
 
   return (
     <div className="container1 xsm:w-full">
-      <div className="nav-buttons xsm:w-full">
+      <div className="nav-buttons overflow-hidden xsm:w-full">
         <button
           className={`btn_corners_first font-nu text-[14px]  ${
             activeComponent === "Overview" ? "active" : ""
@@ -42,21 +42,21 @@ function Main() {
           Instructor
         </button>
         <button
-          className={`btn_border font-nu text-[14px]  ${
+          className={`btn_corners_last font-nu text-[14px]  ${
             activeComponent === "Faqs" ? "active" : ""
           }`}
           onClick={() => renderComponent("Faqs")}
         >
           FAQs
         </button>
-        <button
-          className={`btn_border font-nu text-[14px]  ${
+        {/* <button
+          className={`btn_corners_last font-nu text-[14px]  ${
             activeComponent === "Reviews" ? "active" : ""
           }`}
           onClick={() => renderComponent("Reviews")}
         >
           Reviews
-        </button>
+        </button> */}
         {/* <button className={`btn_corners_last font-nu text-[14px]  ${activeComponent === 'Launch' ? 'active' : ''}`}
                     onClick={() => renderComponent('Launch')}>Launch Lab</button> */}
       </div>

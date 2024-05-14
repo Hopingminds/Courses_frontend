@@ -24,7 +24,8 @@ export default function Navbar() {
   const location = useLocation();
   // console.log(location);
   let navigate = useNavigate();
-
+  let token = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
+  const [cartSize, setCartSize] = useState(0);
   function Top() {
     window.scrollTo(0, 0);
     navigate("/");
@@ -59,6 +60,26 @@ export default function Navbar() {
           console.log(response?.profile);
         }
       } catch (error) {}
+    }
+    Fetchdata();
+  }, []);
+
+  useEffect(() => {
+    async function Fetchdata() {
+      try {
+        // console.log(token);
+        // setshow(true);
+        let url = BASE_URL + "/getcart?email=" + token.email;
+        // console.log(url);
+        const data = await fetch(url);
+        const response = await data.json();
+        setCartSize(response?.cart?.length);
+        // Total(response?.cart);
+        // setshow(false);
+        // console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
     }
     Fetchdata();
   }, []);
@@ -188,7 +209,7 @@ export default function Navbar() {
               {userDetail?._id && (
                 <Link
                   to={"/cart"}
-                  className={` rounded-full hover:text-[#1DBF73] ${
+                  className={` rounded-full hover:text-[#1DBF73] relative ${
                     location.pathname === "/cart"
                       ? " font-bold text-[#1DBF73]"
                       : ""
@@ -199,6 +220,9 @@ export default function Navbar() {
                     style={{ color: "white" }}
                     className=" text-white xsm:h-[15px] xsm:w-[15px] md:h-[20px] md:w-[20px]"
                   />{" "}
+                  <div className="absolute -right-2 -top-3 bg-[#1DBF73] text-white rounded-full w-4 h-4 flex justify-center">
+                    <p className="text-[12px] font-normal">{cartSize}</p>
+                  </div>
                 </Link>
               )}
             </>

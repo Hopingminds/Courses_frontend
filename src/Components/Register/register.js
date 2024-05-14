@@ -16,12 +16,14 @@ import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
 const Register = () => {
     const navigate = useNavigate();
-    const { getUserDetails } = useContext(Globalinfo);
+    const { getUserDetails, cartData } = useContext(Globalinfo);
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams()
     const [countrycode, setcountrycode] = useState()
     const [SearchedData, setSearchedData] = useState([])
+
+    console.log("cardatata",cartData);
 
     const nameRef = useRef(null);
     const emailRef = useRef(null);
