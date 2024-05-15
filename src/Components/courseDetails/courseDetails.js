@@ -11,12 +11,7 @@ import Main from "../Main/Main";
 import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import { Link } from "react-router-dom";
 import SideBar from "./SideBar.jsx"
-import { ReactComponent as MyCourse } from "../../Assests/Icons/my-courses.svg";
-import { ReactComponent as MyAssignment } from "../../Assests/Icons/assignments.svg";
-import { ReactComponent as MyWhishlist } from "../../Assests/Icons/whishlist.svg";
-import { ReactComponent as MyCertificate } from "../../Assests/Icons/certificate.svg";
-import { ReactComponent as MyStats } from "../../Assests/Icons/stats.svg";
-import { ReactComponent as MyJob } from "../../Assests/Icons/job.svg";
+
 
 export default function CDDetails() {
   const [clicked, setclicked] = useState(false);
@@ -172,7 +167,7 @@ export default function CDDetails() {
       <div className="flex justify-between gap-5">
         {/* side menu */}
         <div className='w-[15%]'>
-          <SideBar/>
+          <SideBar />
         </div>
         {/* <div className="w-16 h-[100vh] sticky top-12 bg-[#0F2027] flex flex-col justify-start items-center gap-8 py-10 pl-[2%] pr-2 text-white">
           <div className="group relative">
@@ -236,7 +231,7 @@ export default function CDDetails() {
             <div className="flex gap-20">
               <div className="CCD-content flex gap-5 pt-10">
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
-                  <div className="relative h-[100%] shadow-lg xsm:h-[35vh] md:h-[40vh]">
+                  <div className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]">
                     {url.toString().endsWith("pdf") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : url.toString().endsWith("mp3") ? (
@@ -244,9 +239,9 @@ export default function CDDetails() {
                     ) : (
                       <ReactPlayer
                         onContextMenu={handleContextMenu}
-                        height="100%"
+                        height="auto"
                         width="100%"
-                        className="shadow-2xl"
+                        className="shadow-2xl rounded-sm"
                         playing={true}
                         controls={true}
                         autoPlay={true}
@@ -256,15 +251,14 @@ export default function CDDetails() {
                         config={{
                           file: {
                             attributes: {
-                              controlsList: "nodownload", // Disable download option
+                              controlsList: "nodownload",
                             },
                           },
                         }}
+
                       />
                     )}
-                    {/* <div className="absolute right-0 bottom-10">
-                                <ChatBot className="w-fit" />
-                            </div> */}
+
                   </div>
                 </div>
 
@@ -298,18 +292,18 @@ export default function CDDetails() {
             <div className="CCD-Header-container flex justify-evenly">
               <div className="w-[100%] xsm:mb-10">
                 <div className=" mt-8 xsm:mt-0 md:mt-0">
-                  <div className="bg-[#E2FFF1] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 xsm:px-5 xsm:rounded-md md:px-8 md:py-4">
+                  <div className="bg-[#1DBF73] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 xsm:px-5 xsm:rounded-md md:px-8 md:py-4">
                     <div className="space-y-2 xsm:space-y-0 md:space-y-1">
                       <p
-                        className={`font-pop font-semibold text-[22px] text-[#1DBF73] xsm:text-[10px] md:text-[18px]`}
+                        className={`font-pop font-semibold text-[22px] text-[#FFFFFF] xsm:text-[10px] md:text-[18px]`}
                       >
                         {Data?.title}{" "}
                       </p>
                       <div className="flex space-x-4">
-                        <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px] md:text-[12px]">
+                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
                           {totalLessons} Lesson
                         </p>
-                        <p className="font-pop text-[#1DBF73] text-[14px] xsm:text-[8px] md:text-[12px]">
+                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
                           6h 30min
                         </p>
                       </div>
