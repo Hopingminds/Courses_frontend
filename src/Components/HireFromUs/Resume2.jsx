@@ -54,20 +54,20 @@ const Resume2 = () => {
                   src="/node.png"
                   className="md:w-8 md:h-8 xsm:w-6 xsm:h-6 img-item"
                   style={{
-                    transform: isHovered ? 'scale(1.25)' : 'scale(1)',
+                    transform: isHovered ? 'scale(1.10)' : 'scale(1)',
                     transition: 'transform 0.3s ease',
                   }}
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                 />
             <img src="/mongodb.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6 img-item" style={{
-                    transform: isHovered ? 'scale(1.25)' : 'scale(1)',
+                    transform: isHovered ? 'scale(1.10)' : 'scale(1)',
                     transition: 'transform 0.3s ease',
                   }}
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}/>
             <img src="/express.png" className="md:w-8 md:h-8 xsm:w-6 xsm:h-6 img-item" style={{
-                    transform: isHovered ? 'scale(1.25)' : 'scale(1)',
+                    transform: isHovered ? 'scale(1.10)' : 'scale(1)',
                     transition: 'transform 0.3s ease',
                   }}
                   onMouseEnter={() => setIsHovered(true)}

@@ -463,7 +463,7 @@ const HireFromUs = () => {
                       className="bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px]"
                       onChange={handleloginChange}
                       value={hirelogindata.password}
-                      type="text"
+                      type="password"
                       placeholder="Enter Password"
                     />
                   </div>
@@ -494,7 +494,7 @@ const HireFromUs = () => {
       <Companies2 />
       <Resume2 />
       <WhyHM />
-      <HireTable />
+      {/* <HireTable /> */}
       <div className="px-[5%] bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43]">
         <NewHireTestimonial />
       </div>
