@@ -118,12 +118,12 @@ export default function Coursecontents({
   };
 
   return (
-    <div className="bg-[#E2FFF1] rounded-2xl border border-2 xsm:absolute xsm:top-[3rem] xsm:right-0 xsm:w-[80vw]">
+    <div className="bg-[#1DBF73] rounded-2xl border border-2 xsm:absolute xsm:top-[3rem] xsm:right-0 xsm:w-[80vw]">
       <Toaster />
       <div className="px-5 py-8 xsm:py-4 xsm:px-2 md:px-3 md:py-5">
         <div className="space-y-2 xsm:space-y-1">
           <div className="flex flex-row justify-between">
-            <p className="font-pop font-semibold text-[21px] text-[#1DBF73] xsm:text-[12px] md:text-[16px]">
+            <p className="font-pop font-semibold text-[21px] text-[#FFFFFF] xsm:text-[12px] md:text-[16px]">
               Course Contents
             </p>
             {window.innerWidth <= 480 && (
@@ -131,7 +131,7 @@ export default function Coursecontents({
             )}
           </div>
           <div className="flex justify-between items-center">
-            <p className="font-pop text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px]">
+            <p className="font-pop text-[12px] text-[#FFFFFF] xsm:text-[10px] md:text-[10px]">
               {completed_lessons?.length}/{totallessons} COMPLETED
             </p>
             {/* <img className="w-[19px] h-[19px] xsm:w-4 xsm:h-4 md:w-4 md:h-4" src="../Icons/Calender.svg" /> */}
@@ -184,11 +184,10 @@ export default function Coursecontents({
                                 completed.includes(chapter._id) &&
                                 handleActiveVideo(chapter?.video)
                               }
-                              className={`flex flex-col justify-between border-t py-2 w-full ${
-                                !completed?.includes(chapter?._id)
-                                  ? "cursor-not-allowed text-gray-300"
-                                  : ""
-                              }`}
+                              className={`flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id)
+                                ? "cursor-not-allowed text-gray-300"
+                                : ""
+                                }`}
                               key={index}
                             >
                               <span className="flex justify-between">

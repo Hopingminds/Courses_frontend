@@ -34,8 +34,11 @@
   border: 2px solid #eaeaea;
   border-bottom: none;
 }
+.CCD-content video {
+  border-radius: 15px !important;
+}
 
-.CCDetails-Header-content-right-list-course { 
+.CCDetails-Header-content-right-list-course {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -149,7 +152,6 @@
   border-radius: 5px;
   margin: 13px 0 13px 13px;
 }
-
 
 .CCD-Main-container-content p {
   font-family: Montserrat;

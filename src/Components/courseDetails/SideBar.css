@@ -1,38 +1,82 @@
-.sidebarHover:hover .SideBar-whitecircle{
-    display: none;
+.sidebarHover:hover .SideBar-whitecircle {
+  display: none;
 }
-.sidebarHover:hover{
-    transition: all .5s ease-in-out;
+.sidebarHover:hover {
+  width: 100%;
+  margin-right: 0;
+  margin-top: 0;
+  border-radius: 0px;
+  height: 100%;
+  transition: width 0.4s ease-in-out;
 }
-
-.sidebarHover:hover .sideBarMenus{
-    align-items: flex-start;
-    padding-left: 5px;
-}
-
-.sidebarHover:hover .sideBarMenu{
-    justify-content: space-between;
-    gap: 8px;
-    align-items: center;
-}
-
-.sidebarHover:hover .sideBarMenu:hover{
-    background-image: linear-gradient(to right, rgba(7, 223, 105, 1), rgba(7, 223, 105, 0.1));
-    height: 100%;
-    width: 100%;
+.sidebarHover:not(:hover) {
+  transition: width 0.4s ease-in-out;
+  margin-right: 0;
+  margin-top: 2.5rem;
+  border-radius: 9999px;
+  height: 75vh;
 }
 
-.sidebarHover:hover .SidebarmenuIcons{
-    width: 27px;
-    transition: all .5s ease-in-out;
-    padding-left: 5px;
+.sidebarHover:hover .sideBarMenus {
+  align-items: flex-start;
+  padding-left: 5px;
 }
 
-.SideTextshow{
-    display: none;
+.sidebarHover:hover .sideBarMenu {
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
 }
 
-.sidebarHover:hover .SideTextshow{
-    display: block;
-    width: 80%;
+.sidebarHover:hover .sideBarMenu:hover {
+  background-image: linear-gradient(
+    to right,
+    rgba(7, 223, 105, 1),
+    rgba(7, 223, 105, 0.1)
+  );
+  height: 100%;
+  width: 100%;
+}
+
+.sidebarHover:hover .SidebarmenuIcons {
+  width: 27px;
+  transition: all 0.5s ease-in-out;
+  padding-left: 5px;
+}
+
+.SideTextshow {
+  /* border: 1px solid red; */
+}
+.sideBarMenus {
+  /* border: 1px solid white; */
+  justify-content: center;
+  align-items: start;
+}
+
+.sideBarMenu {
+  /* border: 2px solid black; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  /* transform: translateX(10%); */
+}
+
+.sidebarHover:hover .SideTextshow {
+  /* display: block; */
+  width: 80%;
+  transition: all 0.5s linear;
+  opacity: 1;
+  /* transform: translateX(-10%); */
+}
+.SidebarmenuIcons svg {
+  height: 30px !important;
+  width: 30px !important;
+}
+
+.sidebarHover:not(:hover) .SideTextshow {
+  display: none;
+  /* transform: translateX(50%); */
+  opacity: 0;
+  transition: all 0.5s linear;
 }
