@@ -8,6 +8,8 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import { MdClose, MdOutlineFileDownload } from "react-icons/md";
 import { useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { ReactComponent as Notes } from '../../Assets/Icons/notes.svg'
+import { ReactComponent as Assignment } from '../../Assets/Icons/assignment.svg'
 
 export default function Coursecontents({
   data,
@@ -202,73 +204,62 @@ export default function Coursecontents({
                               {(chapter?.notes || chapter?.assignment) && (
                                 <div className="relative">
                                   <button
-                                    className="flex gap-2 align-middle justify-self-end border w-fit items-center px-2 mt-3 realtive xsm:mt-2"
-                                    onClick={() => handleDropDown(chapter._id)}
-                                  >
-                                    {" "}
-                                    <TiFolderOpen className="xsm:w-3 xsm:h-3 md:w-4 md:h-4" />{" "}
-                                    <p className="text-[12px] xsm:text-[6px] md:text-[10px]">
-                                      {" "}
-                                      Resources
-                                    </p>{" "}
-                                  </button>
-                                  {openDropDown === chapter._id && (
-                                    <ul className="list-none absolute top-10 left-0 bg-white text-sm  shadow-xl py-1 z-40 w-[11rem]">
-                                      {chapter?.notes && (
-                                        <span className=" flex justify-between items-center px-5 border-b-[1px] py-1">
-                                          {" "}
-                                          <li className=" px-5 md:text-[10px]">
-                                            {" "}
-                                            Notes
-                                          </li>{" "}
-                                          <span className="flex gap-2">
-                                            {" "}
-                                            <a
-                                              href={chapter?.notes}
-                                              target="_blank"
-                                            >
-                                              <MdOutlineFileDownload
-                                                size={16}
-                                              />
-                                            </a>
-                                          </span>{" "}
-                                        </span>
-                                      )}
+                                    className="flex gap-2 align-middle justify-self-end w-fit items-center px-2 mt-3 realtive xsm:mt-2"
 
-                                      {chapter?.assignment && (
-                                        <span className="flex justify-between items-center px-5 py-1">
-                                          {" "}
+                                  >
+
+                                    {/* <TiFolderOpen className="xsm:w-3 xsm:h-3 md:w-4 md:h-4" /> */}
+                                    <p className="text-[12px] xsm:text-[6px] md:text-[10px]">
+
+                                      Resources
+                                    </p>
+                                  </button>
+
+                                  <ul className="list-none flex justify-between bg-white text-sm  py-1 z-40">
+                                    {chapter?.notes && (
+                                      <span className=" flex justify-between items-center px-5 border rounded-lg py-1">
+
+                                        <a href={chapter?.notes} target="_blank" className="flex gap-2">
+                                          <Notes />
+                                          <li className=" px-2xxxxxxxxx md:text-[10px]">
+
+                                            Notes
+                                          </li>
+                                        </a>
+
+                                      </span>
+                                    )}
+
+                                    {chapter?.assignment && (
+                                      <span className="flex justify-between items-center px-5 py-1 border rounded-lg">
+
+                                        <a href={chapter?.assignment} target="_blank" className="flex gap-2">
+                                          <Assignment />
                                           <li className="md:text-[10px]">
-                                            {" "}
+
                                             Assignment
-                                          </li>{" "}
-                                          <span className="flex gap-2">
-                                            {" "}
-                                            <a
-                                              href={chapter?.assignment}
-                                              target="_blank"
-                                            >
-                                              <MdOutlineFileDownload
-                                                size={16}
-                                              />
-                                            </a>{" "}
-                                            <MdOutlineFileUpload
-                                              size={16}
-                                              onClick={handleFileUploadClick}
-                                            />{" "}
-                                            <input
-                                              ref={fileInputRef}
-                                              type="file"
-                                              style={{ display: "none" }}
-                                              onChange={(e) =>
-                                                handleUpload(e, chapter?._id)
-                                              }
-                                            />{" "}
-                                          </span>{" "}
+                                          </li>
+                                        </a>
+                                        <span className="flex gap-2">
+
+
+                                          {/* <MdOutlineFileUpload
+                                            size={16}
+                                            onClick={handleFileUploadClick}
+                                          />
+                                          <input
+                                            ref={fileInputRef}
+                                            type="file"
+                                            style={{ display: "none" }}
+                                            onChange={(e) =>
+                                              handleUpload(e, chapter?._id)
+                                            }
+                                          /> */}
                                         </span>
-                                      )}
-                                    </ul>
-                                  )}
+                                      </span>
+                                    )}
+                                  </ul>
+
                                 </div>
                               )}
                             </div>

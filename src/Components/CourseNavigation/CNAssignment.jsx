@@ -35,7 +35,7 @@ const CNAssignment = ({ courseAssignment }) => {
   console.log("Assignments", courseAssignment);
 
   return (
-    <div className="bg-[#1DBF73] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col gap-3 items-center ">
+    <div className="bg-[#FFFFFF] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col gap-3 items-center ">
       {!Data?.length ? (
         <div className="flex flex-col items-center gap-10 w-full ">
           <p className="text-center font-semibold text-2xl w-full ">

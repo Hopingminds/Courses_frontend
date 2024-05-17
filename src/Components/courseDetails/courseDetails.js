@@ -231,7 +231,7 @@ export default function CDDetails() {
             <div className="flex gap-20">
               <div className="CCD-content flex gap-5 pt-10">
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
-                  <div className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]">
+                  <div className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]" style={{ borderRadius: "14px !important" }}>
                     {url.toString().endsWith("pdf") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : url.toString().endsWith("mp3") ? (
@@ -241,7 +241,9 @@ export default function CDDetails() {
                         onContextMenu={handleContextMenu}
                         height="auto"
                         width="100%"
-                        className="shadow-2xl rounded-sm"
+                        borderRadius="14px"
+                        className="shadow-2xl rounded-[18px]"
+                        style={{ borderRadius: "14px !important" }}
                         playing={true}
                         controls={true}
                         autoPlay={true}
