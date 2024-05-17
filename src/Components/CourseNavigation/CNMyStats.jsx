@@ -33,8 +33,8 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
   console.log(completedAssignments);
 
   return (
-    <div className="bg-[#1DBF73] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col items-center gap-2 ">
-      <p className="font-nu font-semibold text-[20px] text-[#FFFFFF] xsm:text-[10px] md:text-[16px]">
+    <div className="bg-[#FFFFFF] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col items-center gap-2 ">
+      <p className="font-nu font-semibold text-[20px] text-black xsm:text-[10px] md:text-[16px]">
         Your Progress
       </p>
       <div className="flex justify-around items-center w-full">
@@ -128,7 +128,7 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
                 Completed
               </p>
             </div>
-            <p className="font-nu font-semibold text-white text-[20px] xsm:text-[10px] md:text-[14px]">
+            <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px]">
               {calculateAverageProgress(completedLessons, completedAssignments)}
               %
             </p>
@@ -143,7 +143,7 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
                 Assignment
               </p>
             </div>
-            <p className="font-nu font-semibold text-white text-[20px] xsm:text-[10px] md:text-[14px]">
+            <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px]">
               {percentageAssignment}%
             </p>
           </div>
@@ -157,7 +157,7 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
                 Lessons
               </p>
             </div>
-            <p className="font-nu font-semibold text-white text-[20px] xsm:text-[10px] md:text-[14px]">
+            <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px]">
               {percentageLesson}%
             </p>
           </div>

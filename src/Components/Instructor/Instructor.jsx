@@ -32,31 +32,31 @@ function Instructor() {
     Fetchdata();
   }, []);
   return (
-    <div className="instructor  bg-[#1DBF73] text-white" id="Instructor">
+    <div className="instructor  bg-[#FFFFFF] text-black" id="Instructor">
       <div className="instructor-container">
         <div className="instructor-image">
           <img src={Data?.instructor?.profile} />
         </div>
 
         <div className="instructor-content space-y-2 xsm:space-y-0 md:space-y-1">
-          <p className="font-mons font-semibold text-[22px] text-white">
+          <p className="font-mons font-semibold text-[22px] text-black">
             {Data?.instructor?.name}
           </p>
           {/* <p className='text-[14px]'>{Data?.instructor.about}</p> */}
 
-          <div className="students text-white">
+          <div className="students text-black">
             <img src={studentsIcon} />
             <p>156 Students</p>
           </div>
 
-          <div className="lessons text-white">
+          <div className="lessons text-black">
             <img src={lessonsIcon} />
             <p>20 Lessons</p>
           </div>
         </div>
       </div>
 
-      <p className="text-[14px] text-white">{Data?.instructor?.bio}</p>
+      <p className="text-[14px] text-black">{Data?.instructor?.bio}</p>
       {/* <div className='links'>
         <p>Follow: </p>
         {iconPaths.map((icon, index) => (

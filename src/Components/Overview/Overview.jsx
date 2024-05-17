@@ -19,7 +19,7 @@ function Overview() {
     Fetchdata();
   }, []);
   return (
-    <div className="overview bg-[#1DBF73] flex flex-col " id="overview">
+    <div className="overview bg-[#FFFFFF] flex flex-col border" id="overview">
       <p className="font-nu text-[15px] xsm:text-[8px] md:text-[12px]">
         {Data?.overview}
       </p>

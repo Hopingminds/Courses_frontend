@@ -1,5 +1,10 @@
 .sidebarHover:hover .SideBar-whitecircle {
-  display: none;
+  transform: translateX(-20vw);
+  transition: all 0.3s linear;
+}
+.sidebarHover:not(:hover) .SideBar-whitecircle {
+  transform: translateX(0vw);
+  transition: all 0.3s linear;
 }
 .sidebarHover:hover {
   width: 100%;
