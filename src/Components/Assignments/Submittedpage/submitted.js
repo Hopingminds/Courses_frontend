@@ -9,7 +9,7 @@ function SubmittedSuccess() {
                 <img width="188" height="188" src="/ok.gif" alt="ok" />
                 <h1 className='text-[#1DBF73] font-semibold font-pop'>Assignment Completed Successfully</h1>
                 <div className="button-container">
-                    <Link to={'/result'}> <button className="view-order">View Result</button></Link>
+                    <Link to={'/modules'}> <button className="view-order">View Result</button></Link>
                 </div>
             </div>
         </div>

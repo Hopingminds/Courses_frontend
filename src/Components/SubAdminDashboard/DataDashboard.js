@@ -16,7 +16,7 @@ import Temp from "../temp";
 
 const DataDashboard = ({data}) => {
  
-// console.log(data);
+console.log(data);
   // const data = [10,0,2.5,5];
   return (
     <div className="flex flex-col gap-12 px-[4%] pt-[2%] mb-2 w-full">
@@ -24,16 +24,15 @@ const DataDashboard = ({data}) => {
         <div className="bg-white rounded-lg shadow-lg flex flex-row gap-6 justify-between items-center px-2 py-6 w-[30%]">
           <img src={Img1} className="w-[30%]" />
           <div className="flex flex-col gap-1 w-[70%]">
-            <p className="font-pop font-semibold text-[26px]">{data?.enrolled_students}</p>
             <p className="font-pop font-semibold text-[14px]">
-              Davinder Kumar
+              {data?.name}
             </p>
           </div>
         </div>
         <div className="bg-white rounded-lg shadow-lg flex flex-row gap-8 items-center px-3 py-6 w-[30%]">
           <img src={Img2} className="w-[25%] " />
           <div className="flex flex-col gap-1">
-            <p className="font-pop font-semibold text-[26px]">{data?.enrolled_courses || 30}</p>
+            <p className="font-pop font-semibold text-[26px]">{data?.purchased_courses?.length}</p>
             <p className="font-pop font-semibold text-[14px]">
               Enrolled courses
             </p>
