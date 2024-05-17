@@ -4,6 +4,8 @@ import { ReactComponent as Coin } from '../../Assets/Icons/coin.svg';
 import { ReactComponent as Upload } from '../../Assets/Icons/upload.svg';
 import { ReactComponent as Download } from '../../Assets/Icons/download.svg';
 import { Link } from 'react-router-dom';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver'
 import { BASE_URL } from '../../Api/api';
 
 const DetailTableDashboard = ({ data }) => {
@@ -40,6 +42,17 @@ const DetailTableDashboard = ({ data }) => {
         console.error("Error fetching the file:", error);
       });
   };
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+    // Buffer to store the generated Excel file
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
+
+    saveAs(blob, "data.xlsx");
+};
 
   // Example table content
 
@@ -77,7 +90,7 @@ const DetailTableDashboard = ({ data }) => {
             </div>
           </div>
           </label>
-          <div onClick={handleDownload} className='h-32 cursor-pointer w-56 flex justify-center items-center shadow-xl gap-1'>
+          <div onClick={exportToExcel} className='h-32 cursor-pointer w-56 flex justify-center items-center shadow-xl gap-1'>
             <Download className='h-16 w-12' />
             <div className='flex flex-col '>
               <p className='text-xs font-semibold'>Download Sheets</p>
@@ -91,7 +104,7 @@ const DetailTableDashboard = ({ data }) => {
           <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Branch</p>
           <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Action</p>
         </div>
-        {/* Render table rows */}
+        {/* Render table rows */} 
         {data?.map((row) => (
           <div key={row.id} className='grid grid-cols-5 bg-[#fff] py-3 text-center shadow-lg w-full'>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row._id.slice(-10)}</p>
