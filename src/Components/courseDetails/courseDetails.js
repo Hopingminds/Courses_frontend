@@ -300,7 +300,7 @@ useEffect(() => {
                   )
                 ) : (
                   <div className="w-[45%]  h-[80vh] overflow-y-auto customScroll md:h-[40vh]">
-                    <Coursecontents
+                    <s
                       handleActiveVideo={handleActiveVideo}
                       data={Data?.curriculum}
                       courseId={courseId}

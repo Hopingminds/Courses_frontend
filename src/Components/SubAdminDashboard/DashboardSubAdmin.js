@@ -15,18 +15,20 @@ const DashboardSubAdmin = () => {
       navigate('/subadmin-login')
     }
   }, [])
+  async function FetchData(){
+    const data=await fetch(BASE_URL+'/get-college-students',{
+      method:'GET',
+      headers:{
+        'Authorization':'Bearer '+localStorage.getItem('token')
+      }
+      
+    })
+    const response=await data.json()
+    setdata(response?.data)
+    console.log(response);
+  }
   useEffect(() => {
-    async function FetchData(){
-      const data=await fetch(BASE_URL+'/get-college-students',{
-        method:'GET',
-        headers:{
-          'Authorization':'Bearer '+localStorage.getItem('token')
-        }
-      })
-      const response=await data.json()
-      setdata(response?.data)
-      // console.log(response);
-    }
+   
     FetchData()
       }, [])
 
@@ -38,7 +40,7 @@ const DashboardSubAdmin = () => {
           <FilterSubAdmin data={data}/>
           {/* <DataDashboard data={data} /> */}
     
-        <DetailTableDashboard data={data}/>
+        <DetailTableDashboard data={data} FetchData={FetchData} />
         </div>
     </>
   );
