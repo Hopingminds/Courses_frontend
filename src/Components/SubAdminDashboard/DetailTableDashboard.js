@@ -7,19 +7,59 @@ import { Link } from 'react-router-dom';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver'
 import { BASE_URL } from '../../Api/api';
+import toast, { Toaster } from 'react-hot-toast';
+import { jwtDecode } from 'jwt-decode';
 
-const DetailTableDashboard = ({ data }) => {
-  console.log(data);
+const DetailTableDashboard = ({ data,FetchData }) => {
+  // console.log(data);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [Coins, setCoins] = useState([])
+  async function Fetchdata(){
+    let token=localStorage.getItem('token')
+    if(token){
+      const temp=await fetch(BASE_URL+'/collegeUser?email='+jwtDecode(token)?.email)
+      const response=await temp.json()
+      setCoins(response?.data)
+      // console.log(response);
+    }
+  }
+  useEffect(() => {
+   
+    Fetchdata()
+  }, [])
+  
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async(event) => {
     const file = event.target.files[0];
+    const formData=new FormData()
     // Validate file type
     if (file && (file.type === 'application/vnd.ms-excel' || file.type === 'text/csv')) {
-      setSelectedFile(file);
+      // setSelectedFile(file);
+      try {
+        formData.append('file',event.target.files[0])
+        const fetchdata=await fetch(BASE_URL+'/upload-students',{
+          method:'POST',
+          headers:{
+            'Authorization':'Bearer '+localStorage.getItem('token')
+          },
+          body:formData
+        })
+        const response=await fetchdata.json()
+        if(response.success){
+          toast.success(response.msg)
+          FetchData()
+          Fetchdata()
+        }
+        else{
+          toast.success(response.msg)
+
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       // Show error message or handle invalid file type
-      alert('Please select a valid file type (xlsx or csv).');
+      alert('Please select a csv file type.');
     }
   };
 
@@ -52,14 +92,18 @@ const DetailTableDashboard = ({ data }) => {
     const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
 
-    saveAs(blob, "data.xlsx");
+    saveAs(blob, "data.csv");
 };
 
   // Example table content
 
   return (
     <>
+    <Toaster/>
       <div className='px-[4%] flex flex-col gap-4 w-full'>
+        <div className='flex w-full justify-end'>
+          <button className='py-2 bg-[#1DBF73] text-white rounded mt-3 px-3' onClick={handleDownload}>Download format</button>
+        </div>
         <div className='w-full flex justify-between'>
           <div className='h-32 w-56 flex justify-center items-center shadow-xl'>
             <Cap className='h-20 w-20' />
@@ -71,7 +115,7 @@ const DetailTableDashboard = ({ data }) => {
           <div className='h-32 w-56 flex justify-center items-center shadow-xl gap-1'>
             <Coin className='h-12 w-16' />
             <div className='flex flex-col '>
-              <p className='font-bold text-center text-xl'>24</p>
+              <p className='font-bold text-center text-xl '><span className='text-gray-500 text-2xl'>{Coins?.used_coins}</span>/{Coins?.coins}</p>
               <p className='text-xs font-semibold'>Total coins</p>
             </div>
           </div>
@@ -83,7 +127,7 @@ const DetailTableDashboard = ({ data }) => {
                 <input
                   id='fileInput'
                   type='file'
-                  accept='.xlsx, .csv'
+                  accept='.csv'
                   onChange={handleFileChange}
                   className='hidden'
                 />
