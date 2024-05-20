@@ -9,6 +9,7 @@ import { saveAs } from 'file-saver'
 import { BASE_URL } from '../../Api/api';
 
 const DetailTableDashboard = ({ data }) => {
+  console.log(data);
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {

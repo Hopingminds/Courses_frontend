@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Img1 from "../../Assests/Icons/hat-sub.svg";
 import Img2 from "../../Assests/Icons/couse-sub.svg";
 import Img3 from "../../Assests/Icons/bar-sub.svg";
@@ -15,8 +15,23 @@ import { easeQuadInOut } from "d3-ease";
 import Temp from "../temp";
 
 const DataDashboard = ({data}) => {
+  // console.log(data);
+  const [Completed, setCompleted] = useState()
+  let complete=0;
+data?.purchased_courses?.map((item)=>{
+  let count=0;
+  item?.course?.curriculum?.map((it)=>{
+    count+=it?.lessons?.length
+  })
+  if(item?.completed_lessons?.length==count){
+    complete+=1
+  }
+})
+// setCompleted(complete)
+
+  
  
-console.log(data);
+// console.log(data);
   // const data = [10,0,2.5,5];
   return (
     <div className="flex flex-col gap-12 px-[4%] pt-[2%] mb-2 w-full">
@@ -41,7 +56,7 @@ console.log(data);
         <div className="bg-white rounded-lg shadow-lg flex flex-row gap-8  items-center px-2 py-6 w-[30%]">
           <img src={Img3} className="w-[25%]" />
           <div className="flex flex-col gap-1">
-            <p className="font-pop font-semibold text-[26px]">{data?.enrolled_courses || 20}</p>
+            <p className="font-pop font-semibold text-[26px]">{complete}</p>
             <p className="font-pop font-semibold text-[14px]">
               Completed Course
             </p>
@@ -56,8 +71,8 @@ console.log(data);
               style={{borderImage:'linear-gradient(toright,#36AE8F,#1A35DD47,#32AF8B)1'}}
             >
               <CircularProgressbar
-                value={50}
-                text={`${50}%`}
+                value={(complete/data?.purchased_courses?.length)*100 || 0}
+                text={`${(complete/data?.purchased_courses?.length)*100 || 0}%`}
                 styles={buildStyles({
                   strokeLinecap: "butt",
                   pathColor: "#1DBF73",
@@ -74,7 +89,7 @@ console.log(data);
                     Completed
                   </p>
                   <p className="font-nu font-semibold text-[#243465] text-[16px]">
-                    90%
+                    {(complete/data?.purchased_courses?.length)*100 || 0}%
                   </p>
                 </div>
               </div>
@@ -85,11 +100,11 @@ console.log(data);
                     Assignment
                   </p>
                   <p className="font-nu font-semibold text-[#243465] text-[16px]">
-                    50%
+                    0%
                   </p>
                 </div>
               </div>
-              <div className="flex flex-row gap-2 items-start">
+              {/* <div className="flex flex-row gap-2 items-start">
                 <img src={Img4} className="w-[14px]" />
                 <div className="flex flex-col items-center">
                   <p className="font-nu font-semibold text-[#7A7A7A] text-[14px]">
@@ -99,7 +114,7 @@ console.log(data);
                     60%
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -112,88 +127,37 @@ console.log(data);
       </div>
       <div className="bg-white rounded-xl shadow=lg pl-[3%] pr-[5%] py-[4%] flex flex-row justify-between">
         <div className="flex flex-col gap-6 w-[75%]">
-          <div className="flex flex-row items-center">
+          {
+            data?.purchased_courses?.map((item)=>{
+              let count=0;
+  item?.course?.curriculum?.map((it)=>{
+    count+=it?.lessons?.length
+  })
+              return(<>
+                  <div className="flex flex-row items-center">
             <p className="font-pop font-semibold text-[#000000] text-[12px] w-[37%]">
-              Full Stack Development
+              {item?.course?.title}
             </p>
             <div className="w-full">
             <ProgressBar 
-              completed={50}
+              completed={item?.completed_lessons?.length/count}
+              maxCompleted={count}
               bgColor="#29B27E"
-              height="10px"
+              height="15px"
               width="100%"
               baseBgColor="#EDF2F7"
-              labelColor="#e80909"
-              labelSize="0"
+              labelColor="white"
+              labelSize="13px"
+              customLabel={`${(item?.completed_lessons?.length/count)*100 || 0}%`}
               />
             </div>
           </div>
-          <div className="flex flex-row items-center">
-            <p className="font-pop font-semibold text-[#000000] text-[12px] w-[37%]">
-            AI&ML
-            </p>
-            <div className="w-full">
-            <ProgressBar 
-              completed={50}
-              bgColor="#29B27E"
-              height="10px"
-              width="100%"
-              baseBgColor="#EDF2F7"
-              labelColor="#e80909"
-              labelSize="0"
-              />
-            </div>
-          </div>
-          <div className="flex flex-row items-center">
-            <p className="font-pop font-semibold text-[#000000] text-[12px] w-[37%]">
-            Data Science
-            </p>
-            <div className="w-full">
-            <ProgressBar 
-              completed={50}
-              bgColor="#29B27E"
-              height="10px"
-              width="100%"
-              baseBgColor="#EDF2F7"
-              labelColor="#e80909"
-              labelSize="0"
-              />
-            </div>
-          </div>
-          <div className="flex flex-row items-center">
-            <p className="font-pop font-semibold text-[#000000] text-[12px] w-[37%]">
-            Cyber Security
-            </p>
-            <div className="w-full">
-            <ProgressBar 
-              completed={50}
-              bgColor="#29B27E"
-              height="10px"
-              width="100%"
-              baseBgColor="#EDF2F7"
-              labelColor="#e80909"
-              labelSize="0"
-              />
-            </div>
-          </div>
-          <div className="flex flex-row items-center">
-            <p className="font-pop font-semibold text-[#000000] text-[12px] w-[37%]">
-            Digital Marketing
-            </p>
-            <div className="w-full">
-            <ProgressBar 
-              completed={50}
-              bgColor="#29B27E"
-              height="10px"
-              width="100%"
-              baseBgColor="#EDF2F7"
-              labelColor="#e80909"
-              labelSize="0"
-              />
-            </div>
-          </div>
+              </>)
+            })
+          }
+      
         </div>
-        <div className="flex flex-col gap-6">
+        {/* <div className="flex flex-col gap-6">
           <div className="flex flex-col">
             <div className="flex flex-row gap-3 items-center">
               <input
@@ -227,7 +191,7 @@ console.log(data);
               90%
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
