@@ -64,7 +64,7 @@ const DetailTableDashboard = ({ data,FetchData }) => {
   };
 
   const handleDownload = () => {
-    let fileurl='/abbott.png'
+    let fileurl='/upload-dummy - Sheet1.csv'
     fetch(fileurl)
       .then((response) => response.blob())
       .then((blob) => {
