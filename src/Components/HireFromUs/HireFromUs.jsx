@@ -71,12 +71,12 @@ const HireFromUs = () => {
           password: hirelogindata.password,
         });
         if (res?.data?.token) {
+          toast.success("Login Successful");
+          localStorage.setItem('hrtoken',res?.data?.token)
           navigate("/managejobs");
         }
 
-        console.log(res);
-
-        toast.success("Login Successful");
+        
         // localStorage.setItem("COURSES_USER_TOKEN", res.data.token);
       } catch (error) {
         toast.error(error.response.data.error);
@@ -125,7 +125,6 @@ const HireFromUs = () => {
     setcount(2);
   }
 
-  console.log(hirelogindata);
 
   return (
     <>
