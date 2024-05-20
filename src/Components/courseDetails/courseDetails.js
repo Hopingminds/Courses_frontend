@@ -82,7 +82,29 @@ export default function CDDetails() {
     }
     Fetchdata();
   }, []);
+  const handleKeyDown = (e) => {
+    console.log(e.key);
+    if (e.metaKey) {
+      alert("Screenshot is not allowed")
+      e.preventDefault()
+      return false;
+      // e.preventDefault(); // Prevent default behavior for Win Key + PrtSc
+    }
+  };
 
+  // useEffect hook to add event listeners when the component mounts
+useEffect(() => {
+  document.addEventListener('keydown', handleKeyDown);
+  // document.addEventListener('keyup', (e)=>{
+  //   navigator.clipboard.writeText('')
+  //   alert('Screenshot is not allowed')
+  // });
+  return () => {
+    document.removeEventListener('keydown', handleKeyDown);
+  };
+}, [])
+
+  
   function handleActiveVideo(url) {
     // console.log(url);
     seturl(url);

@@ -58,16 +58,13 @@ import StudentSection from '../Components/SubAdminDashboard/Studentsection.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
-    console.log(pathname.includes('subadmin'));
+    // console.log(pathname.includes('subadmin'));
     return (
 
         <BrowserRouter >
             <ScrollToTop />
             {/* <Navbar /> */}
-            {pathname.includes('subadmin') ? 
-                <div>
-                    <NavSubAdmin />
-                </div> : pathname.includes('hrdashboard') ? <HRNavbar/> 
+            {pathname.includes('subadmin') ? <NavSubAdmin />: (pathname.includes('hrdashboard') || pathname.includes('managejobs') || pathname.includes('jobpreview') || pathname.includes('postjob') ) ? <HRNavbar/> 
                 : 
                 <div className='h-20 md:h-14 xsm:h-10'>
                     <Navbar />

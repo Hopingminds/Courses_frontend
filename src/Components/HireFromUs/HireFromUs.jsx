@@ -75,9 +75,6 @@ const HireFromUs = () => {
           navigate("/managejobs");
         }
 
-        console.log(res);
-
-        toast.success("Login Successful");
         // localStorage.setItem("COURSES_USER_TOKEN", res.data.token);
       } catch (error) {
         toast.error(error.response.data.error);
@@ -125,8 +122,6 @@ const HireFromUs = () => {
     setshowpopup(false);
     setcount(2);
   }
-
-  console.log(hirelogindata);
 
   return (
     <>

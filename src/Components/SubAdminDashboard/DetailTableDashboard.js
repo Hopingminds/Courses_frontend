@@ -9,6 +9,7 @@ import { saveAs } from 'file-saver'
 import { BASE_URL } from '../../Api/api';
 
 const DetailTableDashboard = ({ data }) => {
+  console.log(data);
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -111,7 +112,7 @@ const DetailTableDashboard = ({ data }) => {
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.name}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.batch || 2024}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.stream || "CSE"}</p>
-            <Link to='/subadmin-studentdata' className='text-[#000] text-[16px] font-pop font-semibold'>View</Link>
+            <Link to={`/subadmin-studentdata?email=${row.email}`} className='text-[#000] text-[16px] font-pop font-semibold'>View</Link>
           </div>
         ))}
       </div>
