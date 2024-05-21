@@ -143,25 +143,23 @@ const DetailTableDashboard = ({ data,FetchData }) => {
             </div>
           </div>
         </div>
-        {/* <div className='grid grid-cols-6 bg-[#000000] py-6 text-center w-full'>
+        <div className='grid grid-cols-4 bg-[#000000] py-6 text-center w-full'>
           <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Sr No.</p>
           <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>CourseID</p>
           <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Course title</p>
           <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Category</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Instructor</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Action</p>
+          {/* <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Instructor</p> */}
+          {/* <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Action</p> */}
         </div>
-        {data?.map((row) => (
-          <div key={row.id} className='grid grid-cols-6 bg-[#fff] py-3 text-center shadow-lg w-full'>
+        {Coins?.coursesAllotted?.map((row,index) => (
+          <div key={row.id} className='grid grid-cols-4 bg-[#fff] py-3 text-center shadow-lg w-full'>
+            <p className='text-[#000] text-[16px] font-pop font-semibold'>{index+1}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row._id.slice(-10)}</p>
-            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.name}</p>
-            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.batch || 2024}</p>
-            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.stream || "CSE"}</p>
-            {row.isCourseOpened ?<p className='text-[#43e674] text-[16px] font-pop font-semibold'>Accepted</p>:<p className='text-[#f8674d] text-[16px] font-pop font-semibold'>Pending</p>}
-            <Link to={`/subadmin-studentdata?email=${row.email}`} className='text-[#000] text-[16px] font-pop font-semibold'>View</Link>
+            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.title}</p>
+            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.category}</p>
           </div>
-        ))} */}
-        <div className='grid grid-cols-6 bg-[#000000] py-6 text-center w-full'>
+        ))}
+        <div className='grid grid-cols-6 bg-[#000000] py-6 text-center w-full mt-3'>
           <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Student Id</p>
           <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Name</p>
           <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Batch</p>
