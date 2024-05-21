@@ -39,7 +39,8 @@ const Footer = () => {
                             <Link to='/terms' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Terms and Conditions</Link>
                             <Link to='/pap' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Pay After Placement</Link>
                             <Link to='/career' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Career</Link>
-                            <Link to='/hire-from-us' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Hire From Us</Link>
+                            <Link to='/about' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>About</Link>
+                            {/* <Link to='/hire-from-us' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Hire From Us</Link> */}
                             <Link to='/cv-builder' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>CV Builder</Link>
                         </div>
                     </div>

@@ -19,7 +19,7 @@ const BatchesContent = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { batchDetails, setBatchDetails } = useBatchDetails();
-    const [showAttendance, setShowAttendance] = useState(true);
+    const [showAttendance, setShowAttendance] = useState(false);
 
     return (
         <div className='px-8 py-10 flex flex-col gap-3'>

@@ -19,7 +19,7 @@ const AboutUs = () => {
         </p>
         <div className="flex flex-row justify-between">
           <div className="flex flex-col gap-6 w-[50%] pb-28 pt-6">
-            <p className="text-[#141414] text-[48px] font-poppins font-semibold text-justify" style={{ fontweight: 500, lineHeight: '1' }}>
+            <p className="text-[#141414] text-[48px] font-poppins font-semibold " style={{ fontweight: 500, lineHeight: '1' }}>
               {" "}
               <span className="text-[#1DBF73]"> Hoping Minds </span> providing
               the best opportunities to the students around the glob.
@@ -54,22 +54,19 @@ const AboutUs = () => {
         </div>
       </div>
       <div className="flex flex-row gap-36 px-24 py-10">
-        <div className="flex w-[35%] relative justify-center">
-          <div className="bg-[#E2FFF1] text-[#E2FFF1] rounded-t-xl w-[95%] h-[93%]">
-            .
-          </div>
-          <img src={Img3} className="absolute w-[88%] h-[93%] bottom-0" />
+        <div className="flex w-[35%]  justify-center items-center">
+          <img src={Img3} className=" w-[88%] h-[60%] " />
         </div>
         <div className="flex flex-col gap-3 w-[45%] py-6 pb-36">
           <p className="text-[#22B286] text-[32px] font-poppins font-bold">
             Features
           </p>
           <div className="flex flex-col gap-3">
-            <p className="text-[#141414] text-[46px] font-poppins text-justify" style={{ fontweight: 500, lineHeight: '1.2' }}>
+            <p className="text-[#141414] text-[46px] font-poppins " style={{ fontweight: 500, lineHeight: '1.2' }}>
               We are always working to provide you best of the features in all
               aspects.
             </p>
-            <div className="flex flex-col gap-4 text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify">
+            <div className="flex flex-col gap-4 text-[#1E1E1E] text-[20px] font-Nunito Sans ">
               <p>
                 Hoping Minds the chief determination is to clear the minds of
                 our students about their goals, while making them consistent in
@@ -83,7 +80,7 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          <button className="text-[#FFFFFF] text-[20px] font-Nunito Sans bg-[#1DBF73] rounded-full flex flex-row gap-2 items-center justify-center w-[23%] py-2 mt-4">
+          <button className="text-[#FFFFFF] text-[20px] font-Nunito Sans bg-[#1DBF73] rounded-full flex flex-row gap-2 items-center justify-center px-2 w-auto py-2 mt-4">
             Learn More{" "}
             <span>
               {" "}
