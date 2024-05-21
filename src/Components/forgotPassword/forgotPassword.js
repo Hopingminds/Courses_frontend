@@ -30,7 +30,7 @@ const Forgotpassword = () => {
     // console.log(userDetail)
 
     const handleReset = async () => {
-        console.log(user)
+        // console.log(user)
         setBtnLoader(true);
 
         if (!validateEmail(user.email)) {
@@ -49,7 +49,7 @@ const Forgotpassword = () => {
                     password: user.password,
                 })
 
-                console.log(res);
+                // console.log(res);
                 getUserDetails()
                 toast.success("Password reset Successfull")
 

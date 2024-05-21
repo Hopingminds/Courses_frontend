@@ -14,6 +14,7 @@ const DetailTableDashboard = ({ data,FetchData }) => {
   // console.log(data);
   const [selectedFile, setSelectedFile] = useState(null);
   const [Coins, setCoins] = useState([])
+  console.log(data);
   async function Fetchdata(){
     let token=localStorage.getItem('token')
     if(token){
@@ -142,20 +143,40 @@ const DetailTableDashboard = ({ data,FetchData }) => {
             </div>
           </div>
         </div>
-        <div className='grid grid-cols-5 bg-[#000000] py-6 text-center w-full'>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Student Id</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Name</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Batch</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Branch</p>
+        {/* <div className='grid grid-cols-6 bg-[#000000] py-6 text-center w-full'>
+          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Sr No.</p>
+          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>CourseID</p>
+          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Course title</p>
+          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Category</p>
+          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Instructor</p>
           <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Action</p>
         </div>
-        {/* Render table rows */} 
         {data?.map((row) => (
-          <div key={row.id} className='grid grid-cols-5 bg-[#fff] py-3 text-center shadow-lg w-full'>
+          <div key={row.id} className='grid grid-cols-6 bg-[#fff] py-3 text-center shadow-lg w-full'>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row._id.slice(-10)}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.name}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.batch || 2024}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.stream || "CSE"}</p>
+            {row.isCourseOpened ?<p className='text-[#43e674] text-[16px] font-pop font-semibold'>Accepted</p>:<p className='text-[#f8674d] text-[16px] font-pop font-semibold'>Pending</p>}
+            <Link to={`/subadmin-studentdata?email=${row.email}`} className='text-[#000] text-[16px] font-pop font-semibold'>View</Link>
+          </div>
+        ))} */}
+        <div className='grid grid-cols-6 bg-[#000000] py-6 text-center w-full'>
+          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Student Id</p>
+          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Name</p>
+          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Batch</p>
+          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Branch</p>
+          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Status</p>
+          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Action</p>
+        </div>
+        {/* Render table rows */} 
+        {data?.map((row) => (
+          <div key={row.id} className='grid grid-cols-6 bg-[#fff] py-3 text-center shadow-lg w-full'>
+            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row._id.slice(-10)}</p>
+            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.name}</p>
+            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.batch || 2024}</p>
+            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.stream || "CSE"}</p>
+            {row.isCourseOpened ?<p className='text-[#43e674] text-[16px] font-pop font-semibold'>Accepted</p>:<p className='text-[#f8674d] text-[16px] font-pop font-semibold'>Pending</p>}
             <Link to={`/subadmin-studentdata?email=${row.email}`} className='text-[#000] text-[16px] font-pop font-semibold'>View</Link>
           </div>
         ))}
