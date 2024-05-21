@@ -56,11 +56,11 @@ const Forgotpassword = () => {
                 setTimeout(() => {
                     navigate('/login')
 
-                }, 2000);
+                }, 1000);
 
             } catch (error) {
                 console.log(error);
-                toast.error("Some Error Occured while Login")
+                toast.error("Some Error Occured while reseting password")
             } finally {
                 setBtnLoader(false)
             }
@@ -106,14 +106,14 @@ const Forgotpassword = () => {
                 const res = await axios.get(`${BASE_URL}/verifyOTP?code=${user.otp}`)
 
                 // console.log(res);
-                if (res.status === 201) {
+                if (res?.status === 201) {
                     setShow(3)
                     toast.success("OTP is valid")
                 }
 
             } catch (error) {
                 console.log(error);
-                toast.error(error.response.data.error)
+                toast.error(error?.response?.data?.error)
             } finally {
                 setBtnLoader(false)
             }
