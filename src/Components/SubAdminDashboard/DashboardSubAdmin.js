@@ -25,7 +25,7 @@ const DashboardSubAdmin = () => {
     })
     const response=await data.json()
     setdata(response?.data)
-    console.log(response);
+    // console.log(response);
   }
   useEffect(() => {
    
