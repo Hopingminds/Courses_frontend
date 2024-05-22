@@ -116,7 +116,7 @@ const DetailTableDashboard = ({ data,FetchData }) => {
           <div className='h-32 w-56 flex justify-center items-center shadow-xl gap-1'>
             <Coin className='h-12 w-16' />
             <div className='flex flex-col '>
-              <p className='font-bold text-center text-xl '><span className='text-gray-500 text-2xl'>{Coins?.used_coins}</span>/{Coins?.coins}</p>
+              <p className='font-bold text-center text-xl '><span className='text-gray-500 text-2xl flip-scale-2-hor-top'>{Coins?.used_coins}</span>/{Coins?.coins}</p>
               <p className='text-xs font-semibold'>Total coins</p>
             </div>
           </div>
