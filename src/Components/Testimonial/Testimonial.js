@@ -52,8 +52,7 @@ const Testimonial = () => {
       stars: 5,
       reviews: 12,
       image: '/Tuhina Jain .jpg',
-      company: 'Technology Recruiter - Adobe',
-
+      company: 'Technology Recruiter - Blinkit',
     },
     {
       text: "HM's curated talent pool and industry exposure ensure our confidence in the talent we recruit. In other words, if there are any surprises then they are only pleasant.",
