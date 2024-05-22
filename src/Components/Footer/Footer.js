@@ -46,7 +46,7 @@ const Footer = () => {
                     </div>
                     <div className='flex flex-col gap-8 xsm:gap-2 ' >
                         <p className='text-white text-[20px] font-pop font-semibold xsm:text-[10px] md:text-[14px]'>PROGRAMS</p>
-                        <div className='flex flex-col gap-3 xsm:gap-1 md:gap-2'  onClick={Top}>
+                        <div className='flex flex-col gap-3 xsm:gap-1 md:gap-2' onClick={Top}>
                             <Link to='/course?category=Management' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Management</Link>
                             <Link to='/course?category=Finance' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Finance</Link>
                             <Link to='/course?category=Full Stack Development' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Full Stack Development</Link>
@@ -58,7 +58,8 @@ const Footer = () => {
                     <div className='flex flex-col gap-8 xsm:gap-2  '>
                         <p className='text-white text-[20px] font-pop font-semibold xsm:text-[10px] md:text-[14px]'>CONTACT US</p>
                         <div className='flex flex-col gap-3 xsm:gap-1 md:gap-2'>
-                            <p className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Tel: +91 9779886900</p>
+                            <p className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Tel: +91 93100050 , +91 9872227496
+                            </p>
                             <Link to='mailto:support@hopingminds.com' target='_blank' className='text-white text-[16px] font-pop xsm:text-[8px] md:text-[10px]'>Mail: support@hopingminds.com</Link>
                             <div className='flex flex-row gap-2 items-center'>
                                 <Link target='_blank' to='https://www.instagram.com/hopingminds_?igsh=MWxvN2F5YmM0aW1lYQ=='> <img src={Icon1} className='w-[30px] h-[30px] xsm:w-[15px] xsm:h-[15px] md:w-[18px] md:h-[18px]' /></Link>
