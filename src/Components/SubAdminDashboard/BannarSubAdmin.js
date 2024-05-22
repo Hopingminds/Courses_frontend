@@ -7,7 +7,7 @@ const BannarSubAdmin = () => {
       className="bg-cover bg-no-repeat w-full h-[30vh] px-[5%] pt-[5%]"
       style={{ backgroundImage: `url(${Img1})` }}
     >
-      <p className="text-white text-[60px]">Admin Dashboard</p>
+      <p className="text-white text-[60px]">College Dashboard</p>
     </div>
   );
 };
