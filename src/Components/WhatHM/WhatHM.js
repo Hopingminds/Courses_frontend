@@ -55,7 +55,7 @@ const WhatHM = () => {
           </p>
         </div> */}
         <div className="flex justify-center">
-          <p className="text-[#696984] text-[24px] font-pop w-[70%] text-center leading-12 xsm:text-[7px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
+          <p className="text-[#696984] text-[20px] font-pop w-[70%] text-center leading-12 xsm:text-[7px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
             Welcome to HopingMinds, your gateway to a brighter future. As an
             esteemed partner of the <span className="font-semibold">National Skill Development Corporation
               (NSDC)</span>, we stand at the forefront of transformative education,
@@ -69,7 +69,7 @@ const WhatHM = () => {
             onClick={() => handlePlay(0)}
           >
             <ReactPlayer
-            onContextMenu={handleContextMenu}
+              onContextMenu={handleContextMenu}
               className={"w-full h-full md:w-[35%] rounded-3xl aspect-auto"}
               url="/Corporate1.mp4"
               playing={playingIndex === 0}
@@ -113,7 +113,7 @@ const WhatHM = () => {
             onClick={() => handlePlay(1)}
           >
             <ReactPlayer
-            onContextMenu={handleContextMenu}
+              onContextMenu={handleContextMenu}
               className={"w-full h-full rounded-3xl md:w-[35%] aspect-auto"}
               url="/Corporate2.mp4"
               playing={playingIndex === 1}

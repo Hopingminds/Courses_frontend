@@ -158,8 +158,8 @@ export default function Herosection() {
 
   return (
     <>
-      <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%]">
-        <div className="flex flex-col gap-12 xsm:gap-6">
+      <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] xsm:flex-col-reverse xsm:justify-center xsm:pt-5">
+        <div className="flex flex-col gap-12 xsm:gap-6 xsm:mt-5 ">
           {/* <div className="">
             <img
               src={Circle}
@@ -171,21 +171,21 @@ export default function Herosection() {
               }}
             />
           </div> */}
-          <div className="text-[20px] leading-10 font-bold text-white font-pop text-wrap w-[90%] md:text-[16px] md:leading-6 xsm:text-[8px] xsm:leading-3">
-            {" "}
+          <div className="text-[22px] leading-10  text-white font-pop text-wrap w-[90%] md:text-[16px] md:leading-6 xsm:text-[12px] xsm:leading-6">
+
             Unlock Opportunities with 200+ Leading Corporates, Master Skills with Industry Experts, and Stay up-skilled with our Annually Updated Curriculum; Experience Personalized Career Coaching and Exclusive Networking Events!
           </div>
-          <div className="text-[25px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap md:text-[18px] xsm:text-[10px] xsm:h-8">
+          <div className="text-[20px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap md:text-[18px] xsm:text-[11px] xsm:h-8">
             <span className="text-white">High Impact</span>
             {displayText}
           </div>
-          <div className="flex place-content-start">
+          <div className="flex place-content-start xsm:place-content-center">
             {localStorage.getItem("COURSES_USER_TOKEN") ? (
               ""
             ) : (
               <Link
                 to="/login"
-                className="text-white z-20 text-[16px] font-nu font-bold bg-[#1DBF73] rounded-full py-2 px-10 md:text-[14px] md:px-8"
+                className="text-white z-20 text-[16px] font-nu font-bold bg-[#1DBF73] rounded-full py-2 px-10 md:text-[14px] md:px-8 xsm:text-[12px] xsm:py-[0.5rem]"
               >
                 Join Now
               </Link>
@@ -193,7 +193,7 @@ export default function Herosection() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6 w-[50%] md:gap-2 xsm:gap-1">
+        <div className=" flex flex-col gap-6 w-[50%] md:gap-2 xsm:gap-1">
           <div className="flex flex-row gap-2 justify-end">
             <div className="flex flex-col justify-end pb-6">
               <img
@@ -252,20 +252,7 @@ export default function Herosection() {
               </div>
             </div>
           </div>
-          {/* <div className="flex flex-row gap-4 justify-end">
-            <div className="rounded-full h-40 w-40 overflow-hidden scale-in-center">
-              <img
-                src={images[(currentImageIndex + 4) % 6]}
-                className="h-40 w-40 object-cover object-center"
-              />
-            </div>
-            <div className="rounded-[3.5rem] h-40 w-80 overflow-hidden scale-in-center">
-              <img
-                src={images[(currentImageIndex + 5) % 6]}
-                className="h-40 w-80 object-cover object-center"
-              />
-            </div>
-          </div> */}
+
         </div>
       </div>
     </>

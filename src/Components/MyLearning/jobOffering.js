@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { BASE_URL } from '../../Api/api'
 import toast from 'react-hot-toast'
+import { Link } from 'react-router-dom'
 
 const JobOffering = ({ courses }) => {
 
@@ -16,12 +17,19 @@ const JobOffering = ({ courses }) => {
     const fetchUserData = async () => {
 
         try {
-            const res = await axios.get(`${BASE_URL}/getalljobppenings`)
-            console.log(res.data.jobOpenings)
+            const res = await axios.get(
+                `${BASE_URL}/getalljobppenings
+ 
 
-            setJobOpeningData(res?.data.jobOpenings)
-
-
+`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("COURSES_USER_TOKEN")}`,
+                    },
+                }
+            );
+            console.log(res.data?.jobOpenings);
+            setJobOpeningData(res?.data?.jobOpenings);
         } catch (error) {
             console.log(error)
         }
@@ -36,15 +44,15 @@ const JobOffering = ({ courses }) => {
     return (
         <>
             <div className="px-[5%] my-[3%] flex gap-10 space-y-8 justify-between xsm:flex-col-reverse xsm:mt-3">
-                <div className={`flex flex-col justify-between xsm:w-[100%] md:w-[65%] md:gap-3 ${!jobOpeningData ?"w-full":'w-[70%]' }`}>
+                <div className={`flex flex-col justify-between xsm:w-[100%] md:w-[65%] md:gap-3 ${!jobOpeningData ? "w-full" : 'w-[70%]'}`}>
                     {!jobOpeningData ? <div className="flex justify-center  items-center w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Job Found</div></div> : ''}
 
                     {
-                        jobOpeningData?.filter((val, index) => { return index === 0 })?.map((item, ind) => {
+                        jobOpeningData?.map((item, ind) => {
                             return (<>
-                                <div key={ind} className="h-[12rem] w-full flex flex-row gap-4 bg-[#E2FFF1] p-4 mt-4 rounded-2xl justify-between shadow-2xl shadow-[#D9D9D9] xsm:p-2 xsm:rounded-lg xsm:h-[15vh] md:mt-0 md:p-3">
+                                <Link to={"/jobpreview?jobid=" + item?._id} key={ind} className="h-[12rem] w-full flex flex-row gap-4 bg-[#E2FFF1] p-4 mt-4 rounded-2xl justify-between shadow-2xl shadow-[#D9D9D9] xsm:p-2 xsm:rounded-lg xsm:h-[15vh] md:mt-0 md:p-3">
                                     <div className="w-[25%] rounded-2xl">
-                                        <img className="w-full h-full rounded-xl xsm:rounded-lg object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8x5PF710Tlrlpt4ZxG-9hgDEwkQqcHa8_-ITu0dUhEw&s" />
+                                        <img className="w-full h-full rounded-xl xsm:rounded-lg object-cover" src={item?.logoUrl} />
                                     </div>
                                     <div className="w-[60%] flex flex-col justify-between">
                                         <div className="space-y-2 xsm:space-y-1">
@@ -64,7 +72,7 @@ const JobOffering = ({ courses }) => {
                                         <button onClick={handleApply}
                                             className="bg-[#1DBF73] py-2 px-6 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1" >Apply</button>
                                     </div>
-                                </div>
+                                </Link>
                             </>)
                         })
                     }
