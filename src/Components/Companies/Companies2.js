@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './companies.css'; // Import CSS file for styling (you need to create this file)
+import './companies.css';
 
 const Companies2 = () => {
     const [currentLogoIndexes, setCurrentLogoIndexes] = useState([0, 0, 0, 0, 0, 0]); // Initialize with 6 sets of logos

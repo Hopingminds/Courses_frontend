@@ -19,12 +19,12 @@ const AboutUs = () => {
         </p>
         <div className="flex flex-row justify-between">
           <div className="flex flex-col gap-6 w-[50%] pb-28 pt-6">
-            <p className="text-[#141414] text-[48px] font-poppins font-semibold " style={{ fontweight: 500, lineHeight: '1' }}>
+            <p className="text-[#141414] text-[40px] font-poppins font-semibold leading-[50px]">
               {" "}
               <span className="text-[#1DBF73]"> Hoping Minds </span> providing
               the best opportunities to the students around the glob.
             </p>
-            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans leading-8 text-justify">
+            <p className="text-[#1E1E1E] text-[20px] font-poppins leading-[24px] text-justify">
               Hoping Minds, is a E Learning platform involved in User Experience
               and User Interface Training and Consulting. It was started in 2023
               and passionate towards User Interface Design/ User Experience
@@ -62,11 +62,11 @@ const AboutUs = () => {
             Features
           </p>
           <div className="flex flex-col gap-3">
-            <p className="text-[#141414] text-[46px] font-poppins " style={{ fontweight: 500, lineHeight: '1.2' }}>
+            <p className="text-[#141414] text-[40px] leading-[50px] font-poppins ">
               We are always working to provide you best of the features in all
               aspects.
             </p>
-            <div className="flex flex-col gap-4 text-[#1E1E1E] text-[20px] font-Nunito Sans ">
+            <div className="flex flex-col gap-4 text-[#1E1E1E] text-[20px] font-Nunito Sans leading-[24px]">
               <p>
                 Hoping Minds the chief determination is to clear the minds of
                 our students about their goals, while making them consistent in
@@ -80,13 +80,13 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          <button className="text-[#FFFFFF] text-[20px] font-Nunito Sans bg-[#1DBF73] rounded-full flex flex-row gap-2 items-center justify-center px-2 w-auto py-2 mt-4">
+          {/* <button className="text-[#FFFFFF] text-[20px] font-Nunito Sans bg-[#1DBF73] rounded-full flex flex-row gap-2 items-center justify-center px-2 w-auto py-2 mt-4">
             Learn More{" "}
             <span>
               {" "}
               <img src={Arrow} />{" "}
             </span>{" "}
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="flex flex-col justidfy-center items-center gap-6 py-16 pb-40">
@@ -94,36 +94,36 @@ const AboutUs = () => {
         <p className="text-[#141414] text-[40px] font-poppins font-semibold w-[45%] flex text-center">By Joining Hoping Minds Platform, One Can Avail a Lot Of Benefits.</p>
         <p className="text-[#1E1E1E] text-[24px] font-Nunito Sans w-[38%] text-center">Install our top-rated dropshipping app to your e-commerce site and get access to US Suppliers, AliExpress vendors, and the best.</p>
         <div className="grid grid-cols-3 gap-6 w-[80%] pt-6">
-            <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6">
-                <img src={Num1} className="w-[15%]" />
-                <p className="text-[#141414] text-[32px] font-poppins">Standardization</p>
-                <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">When working in a global workplace, it’s often difficult to gauge learners’ training experiences, which are ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-            </div>
-            <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
-                <img src={Num2} className="w-[15%]" />
-                <p className="text-[#141414] text-[32px] font-poppins">Reduced Costs</p>
-                <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">With hoping minds, there’s no cost to reproduce materials and, thanks to mobile learning and microlearning ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-            </div>
-            <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6">
-                <img src={Num3} className="w-[15%]" />
-                <p className="text-[#141414] text-[32px] font-poppins">More Customization</p>
-                <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">Just like learners aren’t one-size-fits-all, learning is not a one-size-fits-all experience. By using different ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-            </div>
-            <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
-                <img src={Num4} className="w-[15%]" />
-                <p className="text-[#141414] text-[32px] font-poppins">Affordable Pricing</p>
-                <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">With hoping minds, there’s no cost to reproduce materials and, thanks to mobile learning and microlearning ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-            </div>
-            <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6">
-                <img src={Num5} className="w-[15%]" />
-                <p className="text-[#141414] text-[32px] font-poppins">Learner Satisfaction</p>
-                <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">If you really want students to retain what they learn, you’ll need to aim for high satisfaction rates. Bad ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-            </div>
-            <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
-                <img src={Num6} className="w-[15%]" />
-                <p className="text-[#141414] text-[32px] font-poppins">Multimedia Materials</p>
-                <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">One of the main reasons why custom eLearning is effective is that it’s the perfect delivery method for ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-            </div>
+          <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6">
+            <img src={Num1} className="w-[15%]" />
+            <p className="text-[#141414] text-[32px] font-poppins">Standardization</p>
+            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">When working in a global workplace, it’s often difficult to gauge learners’ training experiences, which are ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
+          </div>
+          <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
+            <img src={Num2} className="w-[15%]" />
+            <p className="text-[#141414] text-[32px] font-poppins">Reduced Costs</p>
+            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">With hoping minds, there’s no cost to reproduce materials and, thanks to mobile learning and microlearning ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
+          </div>
+          <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6">
+            <img src={Num3} className="w-[15%]" />
+            <p className="text-[#141414] text-[32px] font-poppins">More Customization</p>
+            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">Just like learners aren’t one-size-fits-all, learning is not a one-size-fits-all experience. By using different ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
+          </div>
+          <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
+            <img src={Num4} className="w-[15%]" />
+            <p className="text-[#141414] text-[32px] font-poppins">Affordable Pricing</p>
+            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">With hoping minds, there’s no cost to reproduce materials and, thanks to mobile learning and microlearning ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
+          </div>
+          <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6">
+            <img src={Num5} className="w-[15%]" />
+            <p className="text-[#141414] text-[32px] font-poppins">Learner Satisfaction</p>
+            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">If you really want students to retain what they learn, you’ll need to aim for high satisfaction rates. Bad ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
+          </div>
+          <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
+            <img src={Num6} className="w-[15%]" />
+            <p className="text-[#141414] text-[32px] font-poppins">Multimedia Materials</p>
+            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8">One of the main reasons why custom eLearning is effective is that it’s the perfect delivery method for ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
+          </div>
         </div>
       </div>
     </>

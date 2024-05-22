@@ -132,10 +132,7 @@ const AllJobs = () => {
               <MdRefresh fontSize={"1.5rem"} />
               <p className="text-[13px]">Refresh</p>
             </div>
-            {/* <div className='flex items-center gap-1 cursor-pointer'>
-                        <FcCollaboration fontSize={'1.5rem'} className='text-gray-500'/>
-                        <p className='text-[13px]'>Collaborate</p>
-                    </div> */}
+
             <div className="flex items-center gap-1 cursor-pointer">
               <IoIosCloseCircleOutline
                 fontSize={"1.5rem"}

@@ -93,18 +93,18 @@ export default function CDDetails() {
   };
 
   // useEffect hook to add event listeners when the component mounts
-useEffect(() => {
-  document.addEventListener('keydown', handleKeyDown);
-  // document.addEventListener('keyup', (e)=>{
-  //   navigator.clipboard.writeText('')
-  //   alert('Screenshot is not allowed')
-  // });
-  return () => {
-    document.removeEventListener('keydown', handleKeyDown);
-  };
-}, [])
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    // document.addEventListener('keyup', (e)=>{
+    //   navigator.clipboard.writeText('')
+    //   alert('Screenshot is not allowed')
+    // });
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [])
 
-  
+
   function handleActiveVideo(url) {
     // console.log(url);
     seturl(url);
@@ -300,7 +300,7 @@ useEffect(() => {
                   )
                 ) : (
                   <div className="w-[45%]  h-[80vh] overflow-y-auto customScroll md:h-[40vh]">
-                    <s
+                    <Coursecontents
                       handleActiveVideo={handleActiveVideo}
                       data={Data?.curriculum}
                       courseId={courseId}

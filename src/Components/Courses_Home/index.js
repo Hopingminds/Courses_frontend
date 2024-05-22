@@ -101,7 +101,7 @@ const Courses_Home = () => {
         <div className="flex justify-end w-full items-center">
 
           <Link
-            to={"/course"}
+            to={selectedCategory == "All Courses" ? "/course" : "/course?category=" + selectedCategory}
             className="text-[#1DBF73] text-[16px] font-bold xsm:text-[8px] md:text-[14px] md:pr-3"
           >
             See all
@@ -113,28 +113,28 @@ const Courses_Home = () => {
           {/* Changed flex to flex-wrap */}
           {filteredCourses?.slice(0, cardsToShow)?.map((val, ind) => (
             <CourseCard
-            key={val?.title}
-            title={val?.title}
-            featured_video={val?.featured_video}
-            price={val?.base_price}
-            name={val?.instructor?.name}
-            duration={val?.duration}
-            image={val?.featured_image}
-            profile={val?.instructor?.profile}
-            email={val?.instructor?.email}
-            experience={val?.instructor?.experience}
-            bio={val?.instructor?.bio}
-            slug={val?.slug}
-            phone={val?.instructor?.phone}
-            onClick={() => handleCourseClick(val?.title)}
-            isSelected={selectedCourse === val?.title}
-            category={val?.category}
-            description={val?.overview}
-            ind={ind}
-            _id={val?._id}
-            display={val?.display}
-            IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
-            credits={val?.credits}
+              key={val?.title}
+              title={val?.title}
+              featured_video={val?.featured_video}
+              price={val?.base_price}
+              name={val?.instructor?.name}
+              duration={val?.duration}
+              image={val?.featured_image}
+              profile={val?.instructor?.profile}
+              email={val?.instructor?.email}
+              experience={val?.instructor?.experience}
+              bio={val?.instructor?.bio}
+              slug={val?.slug}
+              phone={val?.instructor?.phone}
+              onClick={() => handleCourseClick(val?.title)}
+              isSelected={selectedCourse === val?.title}
+              category={val?.category}
+              description={val?.overview}
+              ind={ind}
+              _id={val?._id}
+              display={val?.display}
+              IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
+              credits={val?.credits}
             // Pass category to CourseCard component
             />
           ))}
