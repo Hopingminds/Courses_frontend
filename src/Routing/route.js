@@ -69,19 +69,36 @@ import History from '../Components/TeacherPanel/Assignment/History/History.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
-    // console.log(pathname.includes('subadmin'));
+    useEffect(() => {
+        // console.log('cytraewsdlfghl');
+        ReturnNavbar()
+    }, [pathname])
+    const ReturnNavbar = () => {
+        if (pathname.includes('subadmin')) {
+            return <NavSubAdmin />
+        }
+        else if ((pathname.includes('hrdashboard') || pathname.includes('managejobs') || pathname.includes('jobpreview') || pathname.includes('postjob'))) {
+            return <HRNavbar />
+        }
+        else if((pathname.includes('teacherpanel'))){
+            return <></>
+        }
+        else {
+            return (<div className='h-20 md:h-14 xsm:h-10'>
+                <Navbar />
+            </div>)
+        }
+
+    }
+
+
     return (
 
         <BrowserRouter >
             <ScrollToTop />
             {/* <Navbar /> */}
-            {pathname.includes('subadmin') ? <NavSubAdmin />: (pathname.includes('hrdashboard') || pathname.includes('managejobs') || pathname.includes('jobpreview') || pathname.includes('postjob') ) ? <HRNavbar/> 
-                : pathname.includes('teacherpanel') ? <></> :
-                <div className='h-20 md:h-14 xsm:h-10'>
-                    <Navbar />
-                </div>
-            }
 
+            {ReturnNavbar()}
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/detailcourse/:slug' element={<DetailCourses />} />

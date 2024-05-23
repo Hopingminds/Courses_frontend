@@ -215,9 +215,9 @@ export default function Coursecontents({
                                     </p>
                                   </button>
 
-                                  <ul className="list-none flex justify-between bg-white text-sm  py-1 z-40">
+                                  <ul className="list-none flex justify-between bg-white text-sm  py-1 z-40 gap-2">
                                     {chapter?.notes && (
-                                      <span className=" flex justify-between items-center px-5 border rounded-lg py-1">
+                                      <span className=" flex justify-between items-center px-3 border rounded-lg py-1">
 
                                         <a href={chapter?.notes} target="_blank" className="flex gap-2">
                                           <Notes />
@@ -231,21 +231,22 @@ export default function Coursecontents({
                                     )}
 
                                     {chapter?.assignment && (
-                                      <span className="flex justify-between items-center px-5 py-1 border rounded-lg">
+                                      <span className="flex justify-between items-center gap-2">
 
-                                        <a href={chapter?.assignment} target="_blank" className="flex gap-2">
+                                        <a href={chapter?.assignment} target="_blank" className="flex gap-2 border rounded-lg  px-3 py-1">
                                           <Assignment />
                                           <li className="md:text-[10px]">
 
                                             Assignment
                                           </li>
                                         </a>
-                                        <span className="flex gap-2">
+                                        <span className="flex gap-2 border rounded-lg px-3 py-1 relative ">
 
 
-                                          {/* <MdOutlineFileUpload
+                                          <MdOutlineFileUpload
                                             size={16}
                                             onClick={handleFileUploadClick}
+                                            className="peer"
                                           />
                                           <input
                                             ref={fileInputRef}
@@ -254,7 +255,8 @@ export default function Coursecontents({
                                             onChange={(e) =>
                                               handleUpload(e, chapter?._id)
                                             }
-                                          /> */}
+                                          />
+                                          <p className="absolute top-8 right-[0px] bg-black text-[0.7rem] text-white w-[8rem] px-2 py-1 opacity-0 peer-hover:opacity-100 rounded-lg text-center">Upload Your assignment</p>
                                         </span>
                                       </span>
                                     )}

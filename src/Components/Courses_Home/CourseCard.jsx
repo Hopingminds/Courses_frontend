@@ -12,7 +12,6 @@ import { FaUserCircle } from "react-icons/fa";
 import abhishek from "../../Assets/Images/abhishek.jpeg";
 import { IoTrendingUpSharp } from "react-icons/io5";
 
-
 const CourseCard = ({
   title,
   slug,
@@ -101,7 +100,7 @@ const CourseCard = ({
           )}
         </span>
       )}
-      <div className="h-[45%] md:h-[40%]">
+      <div className="h-fit aspect-[16/9] md:h-[40%]">
         {mouseHovered === ind ? (
           <ReactPlayer
             className=" rounded-xl xsm:rounded-md border"
@@ -123,7 +122,7 @@ const CourseCard = ({
         ) : (
           <img
             // style={{ height: "10rem" }}
-            className="w-full  rounded-lg h-full object-cover "
+            className="w-full rounded-lg h-full object-cover "
             src={image}
             alt="Course"
           />
@@ -149,7 +148,7 @@ const CourseCard = ({
             </div>
           </div>
           <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px] md:h-12 xsm:mt-2 xsm:h-6">
-            {title.length>40 ? title.slice(0, 40) +"..." : title}
+            {title.length > 40 ? title.slice(0, 40) + "..." : title}
           </p>
           <p className="font-pop text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px]">
             {description.slice(0, 70)}..
