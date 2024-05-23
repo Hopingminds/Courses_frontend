@@ -53,10 +53,17 @@ const Login = () => {
                     const decoded = jwtDecode(res.data.token);
                     try {
                         const res = await axios.get(`${BASE_URL}/user/${decoded.email}`);
-                        if (res.data.userDetails.purchased_courses.length > 0) {
-                            navigate('/learning');
-                        } else {
-                            navigate('/course');
+                        if(localStorage.getItem('history')){
+                            let history=localStorage.getItem('history');
+                            localStorage.removeItem('history')
+                            navigate(history)
+                        }
+                        else {
+                            if (res.data.userDetails.purchased_courses.length > 0) {
+                                navigate('/learning');
+                            } else {
+                                navigate('/course');
+                            }
                         }
                     } catch (error) {
                         console.log(error);
