@@ -31,7 +31,7 @@ export default function MyLearning() {
     const [showpage, setshowpage] = useState('courses');
     const [purchasedCourses, setPurchasedCourses] = useState();
     const { userDetail, getUserDetails } = useContext(Globalinfo);
-    const maxPopupDisplays = 2;
+    const maxPopupDisplays = 1;
     // console.log(userDetail)
 
     // console.log(userDetail?.name?.split(" ")[0])
