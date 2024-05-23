@@ -27,6 +27,7 @@ import CourseCard from "../Courses_Home/CourseCard";
 import MinorDegree from "../MinorCourses/minordegree";
 import CountUp from 'react-countup';
 import Skeleton from "../Skeleton/Skeletoncard";
+import VideoSkeleton from "../Skeleton/videoskeleton";
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
   const [selectedUser, setSelectedUser] = useState(User1);
@@ -253,7 +254,7 @@ const AllCourses = () => {
           </button>
         </div>
 
-        <div className="h-full w-full ">
+        <div className="h-full w-full card__skeleton bg-white">
           <ReactPlayer
           onContextMenu={handleContextMenu}
 

@@ -153,6 +153,20 @@ const Router = () => {
                 <Route path='/hrdashboard' element={<HRDashboard />} />
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
+                <Route path='/teacherpanel' element={<TPHome/>} >
+                    <Route index path='dashboard' element={<Dashboard />} />
+                    <Route path='liveclass' element={<LiveClasses />} />
+                    <Route path='addcourse' element={<AddCourses />} />
+                    <Route path='assignment' element={<Assignment />} >
+                        <Route index path='scheduledassignments' element={<ScheduledAssignments />} />
+                        <Route path='history' element={<History />} />
+                    </Route>
+                    <Route path='batch' element={<Batches />} >
+                        <Route index path='courses' element={<Courses />} />
+                        <Route path='batches' element={<CourseBatches />} />
+                    </Route>
+                    <Route path='userprofile' element={<UserProfile />} />
+                </Route>
             </Routes>
             {pathname.includes('college') ? <></> : <Footer />}
 
