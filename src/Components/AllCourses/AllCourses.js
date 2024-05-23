@@ -36,6 +36,7 @@ const AllCourses = () => {
   const [SearchedData, setSearchedData] = useState([]);
   const [Temp, setTemp] = useState([]);
   const [show, setshow] = useState(false);
+  const [videoSkeleton, setvideoSkeleton] = useState(true)
 
   const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
@@ -231,7 +232,7 @@ const AllCourses = () => {
                 }`}
             />
             <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center" ref={searchResultsRef}>
-              {SearchedData.map((item, ind) => {
+              {SearchedData?.map((item, ind) => {
                 // console.log(item.);
                 return (
                   <>

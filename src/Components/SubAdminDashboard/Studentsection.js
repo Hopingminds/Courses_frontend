@@ -24,7 +24,7 @@ export default function StudentSection(){
     return(<>
     <BannarSubAdmin/>
     <div className="w-full flex justify-center">
-        <Link to="/subadmin-dashboard">    <IoIosArrowBack className="text-3xl font-extrabold"/></Link>
+        <Link to="/college-dashboard">    <IoIosArrowBack className="text-3xl font-extrabold"/></Link>
         <div className="w-[80%]">
             <DataDashboard data={data}/>
         </div>

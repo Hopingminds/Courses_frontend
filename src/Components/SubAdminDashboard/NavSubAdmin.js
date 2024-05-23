@@ -8,7 +8,7 @@ const NavSubAdmin = () => {
 function handleLogout(){
   localStorage.removeItem('token')
   Getadmindetails()
-    navigate('/subadmin-login')
+    navigate('/college-login')
   }
   useEffect(() => {
     Getadmindetails()
@@ -16,7 +16,7 @@ function handleLogout(){
   
   return (
     <div className="flex flex-row justify-between px-[3%] py-[1%] bg-[#0F2027]">
-      <Link to='/subadmin-dashboard'><img src="/logo.png" className="h-[50px] w-auto xsm:w-[40px] xsm:h-[15px]" /></Link>
+      <Link to='/'><img src="/logo.png" className="h-[50px] w-auto xsm:w-[40px] xsm:h-[15px]" /></Link>
       <div className="flex flex-row gap-5">
         {
           adminlogin?<button
@@ -25,7 +25,7 @@ function handleLogout(){
         >
           Log out
         </button>:<Link
-          to={"/subadmin-login"}
+          to={"/college-login"}
           className="bg-[#1DBF73] text-[22px] px-2 w-[150px] h-[45px] justify-center text-center rounded-full text-white py-1 xsm:text-[8px] xsm:px-3"
         >
           Login

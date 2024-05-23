@@ -33,12 +33,11 @@ const LoginSubAdmin = () => {
         // console.log(res);
         // getAdminDetails();
         if(res?.data?.success){   
-          console.log("dfadsfds");
            localStorage.setItem('token',res?.data?.token)
           Getadmindetails()
           toast.success(res?.data?.msg)
           setTimeout(() => {
-            navigate('/subadmin-dashboard')
+            navigate('/college-dashboard')
           }, 1000);
          
 

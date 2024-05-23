@@ -63,7 +63,7 @@ const Router = () => {
         ReturnNavbar()
     }, [pathname])
     const ReturnNavbar = () => {
-        if (pathname.includes('subadmin')) {
+        if (pathname.includes('college')) {
             return <NavSubAdmin />
         }
         else if ((pathname.includes('hrdashboard') || pathname.includes('managejobs') || pathname.includes('jobpreview') || pathname.includes('postjob'))) {
@@ -102,8 +102,8 @@ const Router = () => {
                 <Route path='/AssignmentMeet' element={<AssignmentMeet />} />
                 <Route path='/AssignmentStart' element={<AssignmentStart />} />
 
-                <Route path='/subadmin-login' element={<SubAdmin />} />
-                <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
+                <Route path='/college-login' element={<SubAdmin />} />
+                <Route path='/college-dashboard' element={<DashboardSubAdmin />} />
 
                 <Route path='/success' element={<Success />} />
                 <Route path='/cv-builder' element={<CVBuilder />} />
@@ -138,9 +138,9 @@ const Router = () => {
                 <Route path='/pdf' element={<PDFViewer />} />
                 <Route path='/hrdashboard' element={<HRDashboard />} />
                 <Route path='/internship' element={<Internship />} />
-                <Route path='/subadmin-studentdata' element={<StudentSection />} />
+                <Route path='/college-studentdata' element={<StudentSection />} />
             </Routes>
-            {pathname.includes('subadmin') ? <></> : <Footer />}
+            {pathname.includes('college') ? <></> : <Footer />}
 
         </BrowserRouter >
 
