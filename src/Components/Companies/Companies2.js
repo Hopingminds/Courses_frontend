@@ -2,16 +2,57 @@ import React, { useEffect, useState } from 'react';
 import './companies.css';
 
 const Companies2 = () => {
-    const [currentLogoIndexes, setCurrentLogoIndexes] = useState([0, 0, 0, 0, 0, 0]); // Initialize with 6 sets of logos
-
+    const [currentLogoIndexes, setCurrentLogoIndexes] = useState([0, 0, 0, 0, 0, 0]); 
 
     const logosSets = [
-        ['/animationLogos/abbott.png', '/animationLogos/accentire.png', '/animationLogos/adept.png', '/animationLogos/adobe.png', '/animationLogos/ajio.png', '/animationLogos/alexa.png'],
-        ['/animationLogos/bosch.png', '/animationLogos/byjus.png', '/animationLogos/capgemini.png', '/animationLogos/cleartax.png', '/animationLogos/cognizant.png', '/animationLogos/dream11.png'],
-        ['/animationLogos/dxc.png', '/animationLogos/ebay.png', '/animationLogos/google.png', '/animationLogos/grammarly.png', '/animationLogos/hcl.png', '/animationLogos/ibm.png'],
-        ['/animationLogos/indmoney.png', '/animationLogos/infosys.png', '/animationLogos/instamojo.png', '/animationLogos/mahindra.png', '/animationLogos/ola.png', '/animationLogos/paytm.png'],
-        ['/animationLogos/revv.png', '/animationLogos/salesforce.png', '/animationLogos/sharechat.png', '/animationLogos/swiggy.png', '/animationLogos/tcs.png', '/animationLogos/techginia.png'],
-        ['/animationLogos/techmatrix.png', '/animationLogos/unity.png', '/animationLogos/uolo.png', '/animationLogos/whatfix.png', '/animationLogos/whitehat.png', '/animationLogos/wipro.png']
+        [
+            { src: '/animationLogos/logo 1.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 2.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 3.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 4.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 5.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 6.jpg', height: '80px', width: 'auto' }
+        ],
+        [
+            { src: '/animationLogos/logo 7.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 8.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 9.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 10.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 11.jpg', height: '80px', width: 'auto' },
+            
+        ],
+        [
+            { src: '/animationLogos/logo 13.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 14.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 15.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 16.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 17.jpg', height: '80px', width: 'auto' },
+            
+        ],
+        [
+            { src: '/animationLogos/logo 19.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 20.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 21.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 22.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 23.jpg', height: '80px', width: 'auto' },
+            
+        ],
+        [
+            { src: '/animationLogos/logo 25.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 26.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 27.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 28.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 29.jpg', height: '80px', width: 'auto' },
+            
+        ],
+        [
+            { src: '/animationLogos/logo 31.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 30.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 24.jpg', height: '80px', width: 'auto' },
+            { src: '/animationLogos/logo 18.jpg', height: '70px', width: 'auto' },
+            { src: '/animationLogos/logo 12.jpg', height: '80px', width: 'auto' }
+           
+        ]
     ];
 
     const totalLogosSets = logosSets.length;
@@ -19,7 +60,7 @@ const Companies2 = () => {
     useEffect(() => {
         const intervals = logosSets.map((logos, setIndex) => {
             const totalLogos = logos.length;
-            const intervalDuration = (setIndex % 2 === 0) ? 3000 : 4000; // Adjust interval duration for different sets
+            const intervalDuration = (setIndex % 2 === 0) ? 3000 : 4000;  
             return setInterval(() => {
                 setCurrentLogoIndexes(prevIndexes => {
                     const updatedIndexes = [...prevIndexes];
@@ -42,8 +83,12 @@ const Companies2 = () => {
                             {logos.map((logo, index) => (
                                 <img
                                     key={index}
-                                    src={logo}
+                                    src={logo.src}
                                     alt={`Company Logo ${index}`}
+                                    style={{
+                                        height: logo.height,
+                                        width: logo.width
+                                    }}
                                     className={index === currentLogoIndexes[setIndex] ? 'logo active' : 'logo'}
                                 />
                             ))}

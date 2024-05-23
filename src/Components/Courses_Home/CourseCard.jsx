@@ -57,7 +57,7 @@ const CourseCard = ({
       onMouseEnter={() => toggleHover(ind)}
       onMouseLeave={() => toggleHover(null)}
       href={`/detailcourse/${slug}`}
-      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative h-[420px] coursecardhome  bg-white p-2 xsm:rounded-lg  md:w-[95%] md:h-[260px] xsm:h-[160px] xsm:w-[100%] ${
+      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative h-[420px] 2xl:h-[450px] coursecardhome  bg-white p-2 xsm:rounded-lg  md:w-[95%] md:h-[260px] xsm:h-[160px] xsm:w-[100%]  ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
       style={{
@@ -154,7 +154,7 @@ const CourseCard = ({
             {description.slice(0, 70)}..
           </p>
         </div>
-        <div className=" flex items-end justify-between">
+        <div className=" flex items-end justify-between 2xl:pb-2">
           <span className="flex flex-col">
             {credits ? (
               <div className="flex space-x-2 items-center xsm:space-x-1">
