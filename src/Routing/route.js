@@ -55,6 +55,17 @@ import HRDashboard from '../Components/HRDashboard/index.jsx'
 import HRNavbar from '../Components/HRDashboard/HRNavbar/HRNavbar.jsx'
 import Internship from '../Components/Internship/Index.js'
 import StudentSection from '../Components/SubAdminDashboard/Studentsection.js'
+import TPHome from '../Components/TeacherPanel/TPHome.jsx'
+import Dashboard from '../Components/TeacherPanel/Dashboard/Dashboard.jsx'
+import LiveClasses from '../Components/TeacherPanel/LiveClasses/LiveClasses.jsx'
+import AddCourses from '../Components/TeacherPanel/AddCourses/AddCourses.jsx'
+import Batches from '../Components/TeacherPanel/Batches/Batches.jsx'
+import Courses from '../Components/TeacherPanel/Batches/Courses.jsx'
+import CourseBatches from '../Components/TeacherPanel/Batches/CourseBatches.jsx'
+import UserProfile from '../Components/TeacherPanel/UserProfile/UserProfile.jsx'
+import Assignment from '../Components/TeacherPanel/Assignment/Assignment.jsx'
+import ScheduledAssignments from '../Components/TeacherPanel/Assignment/ScheduledAssignments/ScheduledAssignments.jsx'
+import History from '../Components/TeacherPanel/Assignment/History/History.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -68,6 +79,9 @@ const Router = () => {
         }
         else if ((pathname.includes('hrdashboard') || pathname.includes('managejobs') || pathname.includes('jobpreview') || pathname.includes('postjob'))) {
             return <HRNavbar />
+        }
+        else if((pathname.includes('teacherpanel'))){
+            return <></>
         }
         else {
             return (<div className='h-20 md:h-14 xsm:h-10'>
