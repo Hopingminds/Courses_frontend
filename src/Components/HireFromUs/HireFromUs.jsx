@@ -131,7 +131,7 @@ const HireFromUs = () => {
           onClick={handleClose}
           className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center"
         >
-          <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col gap-6 py-[3%] px-[3%] drop-shadow-xl rounded-xl w-[40%] h-[40%] md:w-[50%] md:h-[40%] md:gap-4 xsm:w-[60%] xsm:h-[30%]">
+          <div className="fixed top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-white flex flex-col py-6 px-4 drop-shadow-xl rounded-xl w-[40%]  md:w-[50%]  md:gap-4 xsm:w-[60%] ">
             <div className="flex justify-end">
               <button onClick={handleClose}>
                 <img
@@ -140,7 +140,7 @@ const HireFromUs = () => {
                 />
               </button>
             </div>
-            <div className="flex flex-col gap-2 text-center px-[6%]">
+            <div className="flex flex-col gap-2 text-center px-[8%]">
               {/* <p className='font-pop font-semibold text-[40px] text-[#1DBF73]'>Lorem, ipsum.</p> */}
               <p className="font-mons md:text-[14px] xsm:text-[10px]">
                 We aim to complete the verification process within 48 to 72

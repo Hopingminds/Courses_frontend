@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import Banner from "../../Assests/Images/profileedit-banner.png";
-import User from "../../Assests/Images/profile-user.png";
+import ProfileIcon from "../../Assets/Images/ProfileIcon.png";
 import Edit from "../../Assests/Icons/edit.svg";
 import { Globalinfo } from "../../App";
 import { Link, useNavigate } from "react-router-dom";
@@ -203,7 +203,7 @@ const ProfilEdit = () => {
                 src={
                   user.profile
                     ? user.profile
-                    : "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+                    : ProfileIcon
                 }
                 className="w-full h-full rounded-full object-cover xsm:h-[80px] xsm:w-[80px]"
               />

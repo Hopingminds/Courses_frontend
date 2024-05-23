@@ -3,7 +3,7 @@ import Clock from '../../../../Assets/Icons/tpassignmentclock.svg'
 import Calender from '../../../../Assets/Icons/tpassignmentcalender.svg'
 import ProgressBar from '@ramonak/react-progress-bar'
 
-const DeclareResultCard = () => {
+const DeclareResultCard = ({setDeclareResult}) => {
     return (
         <div className='border border-[#E6E6E6] rounded-xl px-4 py-2 text-[#3C3C3C] font-int flex flex-col gap-2'>
             <div>
@@ -35,7 +35,7 @@ const DeclareResultCard = () => {
                     labelColor="#D9D9D9"
                     />
             </div>
-            <button className='bg-black text-white rounded py-2 text-[11px] mt-3'>
+            <button onClick={() => setDeclareResult(true)} className='bg-black text-white rounded py-2 text-[11px] mt-3'>
                 Declare Result
             </button>
         </div>

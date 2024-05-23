@@ -58,19 +58,6 @@ const CreateAssignmentS4 = ({setShowStep, setCreateAssignment}) => {
                             <input type="time" name="" id="" className='cursor-pointer outline-none bg-[#EDEDF5] rounded px-2 py-[2px] w-[140px]' />
                         </div>
                     </div>
-                    {/* <label htmlFor="UploadFiles" className='flex gap-3 mt-8 items-center border border-[#000000] justify-center py-2 rounded text-[13px] cursor-pointer'>
-                        <p>Upload Files</p>
-                        <img className='w-3 h-3' src={Upload} alt="" />
-                        <input type="file" id="UploadFiles" multiple onChange={handleFileChange} hidden />
-                    </label>
-                    <div className='flex gap-4 flex-wrap overflow-hidden pl-4 mt-2'>
-                        {uploadedFiles.map((file, index) => (
-                            <div key={index} className='flex items-center gap-2 bg-[#E9E9E9] rounded px-4 py-1 w-max'>
-                                <p className='text-[13px] text-[#5C5C5C]'>{file.name}</p>
-                                <img className='w-3 h-3 cursor-pointer' src={Cross} alt="" onClick={() => removeFile(index)} />
-                            </div>
-                        ))}
-                    </div> */}
                 </div>
                 <div className='flex items-center justify-between text-[13px] text-[#6B6B6B]'>
                     <div onClick={() => setShowStep('step3')} className='flex items-center gap-2 cursor-pointer'>
