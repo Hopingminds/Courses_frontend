@@ -96,7 +96,9 @@ export default function Pap() {
   const checkUserAuth = () => {
     if (localStorage.getItem("COURSES_USER_TOKEN")) {
       navigate("/enterance");
+
     } else {
+      localStorage.setItem('history',window.location.pathname);
       navigate("/login");
     }
   };
