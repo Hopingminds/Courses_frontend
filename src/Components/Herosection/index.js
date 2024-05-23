@@ -93,16 +93,22 @@ import { useEffect, useState } from "react";
 import "./hero.css";
 import Circle from "../../Assests/Images/home-circle.png";
 import Square from "../../Assests/Images/home-square.png";
-import Img1 from "../../Assests/Images/stu1.jpg";
-import Img2 from "../../Assests/Images/stu2.jpg";
-import Img3 from "../../Assests/Images/stu3.jpg";
-import Img4 from "../../Assests/Images/stu4.jpg";
-import Img5 from "../../Assests/Images/stu5.jpg";
-import Img6 from "../../Assests/Images/stu6.jpg";
+// import Img1 from "../../Assests/Images/stu1.jpg";
+// import Img2 from "../../Assests/Images/stu2.jpg";
+// import Img3 from "../../Assests/Images/stu3.jpg";
+// import Img4 from "../../Assests/Images/stu4.jpg";
+// import Img5 from "../../Assests/Images/stu5.jpg";
+// import Img6 from "../../Assests/Images/stu6.jpg";
 import { Link } from "react-router-dom";
 
 export default function Herosection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  let Img1='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442041699-stu1.jpg'
+  let Img2='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442058362-stu2.jpg'
+  let Img3='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442067452-stu3.jpg'
+  let Img4='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442077323-stu4.jpg'
+  let Img5='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442130415-stu5.jpg'
+  let Img6='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442141861-stu6.jpg'
   const images = [Img1, Img2, Img3, Img4, Img5, Img6];
 
   useEffect(() => {

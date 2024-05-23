@@ -9,7 +9,7 @@ export default function MinorDegree(){
         let url=BASE_URL+'/getminordegreecategories'
         const data=await fetch(url)
         const response=await data.json()
-        setallcategories(response.categories)
+        setallcategories(response?.categories)
         // console.log(response);
      }
      Fetchdata()
@@ -24,8 +24,8 @@ export default function MinorDegree(){
         allcategories?.map((item)=>{
             return(<>
             <Link to='/minorCourse?minordegree=true&category=Full Stack Development' className="border shadow-2xl rounded-xl">
-                <img src={item.Category_image} className="h-[28vh] w-full xsm:h-[20vh] md:h-[20vh]"/>
-                <div className="font-bold text-xl text-center my-10 xsm:my-6 xsm:text-[16px] md:text-lg md:my-8">{item.Category_Name}</div>
+                <img src={item?.Category_image} className="h-[28vh] w-full xsm:h-[20vh] md:h-[20vh]"/>
+                <div className="font-bold text-xl text-center my-10 xsm:my-6 xsm:text-[16px] md:text-lg md:my-8">{item?.Category_Name}</div>
             </Link>
             </>)
         })

@@ -26,6 +26,7 @@ import HireTestimonial from "../HireFromUs/HireTestimonial";
 import CourseCard from "../Courses_Home/CourseCard";
 import MinorDegree from "../MinorCourses/minordegree";
 import CountUp from 'react-countup';
+import Skeleton from "../Skeleton/Skeletoncard";
 
 
 const Internship = () => {
@@ -232,7 +233,7 @@ const Internship = () => {
                 }`}
             />
             <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center" ref={searchResultsRef}>
-              {SearchedData.map((item, ind) => {
+              {SearchedData?.map((item, ind) => {
                 // console.log(item.);
                 return (
                   <>
@@ -256,12 +257,12 @@ const Internship = () => {
         <div className="absolute z-20 top-[10%] flex justify-center items-center text-center w-full text-white text-[50px] font-int font-semibold md:text-[35px] xsm:text-[16px]">Gain Professional Skills</div>
         <div className="absolute z-20 top-[27%] flex justify-center items-center text-center w-full text-white font-int md:text-[16px] xsm:text-[8px]">Unlock your potential with real-world experience in your field of study.</div>
 
-        <div className="h-full w-full bg-black" style={{ backdropFilter: 'brightness(50%)' }}>
+        <div className="h-full w-full " style={{ backdropFilter: 'brightness(50%)' }}>
           <ReactPlayer
             onContextMenu={handleContextMenu}
 
             // url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
-            url='/internshipvideo2.mp4'
+            url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716441485951-stock%20web_1compressed_1.mp4'
             height="100%"
             width={'100%'}
             playing={true}
@@ -302,7 +303,9 @@ const Internship = () => {
         </div>
       </div>
       {/* cards */}
-      {!allCourses?.length ? (
+      {
+      
+      !allCourses?.length && !show ? (
         <div className="flex justify-center  w-full mt-10">
           <div className="text-center font-semibold text-2xl w-full ">
             {" "}
@@ -315,7 +318,12 @@ const Internship = () => {
       <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
       <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
-        {allCourses?.filter((course) => { return course.courseType === 'internship' })?.map((val, ind) => {
+        {
+        show ? [1,2,3,4].map((item)=>{
+          return(<Skeleton/>)
+        })  :
+        
+        allCourses?.filter((course) => { return course.courseType === 'internship' })?.map((val, ind) => {
           return (
             <CourseCard
               key={val?.title}
@@ -468,13 +476,7 @@ const Internship = () => {
           </div>
         </div>
       </div> */}
-      {show ? (
-        <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
-          <Spinner className="" />
-        </div>
-      ) : (
-        ""
-      )}
+
       <div className="px-[5%] py-[4%] bg-[#111F25]">
         <HireTestimonial />
       </div>
