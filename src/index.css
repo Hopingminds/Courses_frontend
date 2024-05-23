@@ -316,9 +316,9 @@ input::-webkit-inner-spin-button {
     #ccc 80px
   );
   background-size: 300%;
-  background-position: 100% 0;
+  background-position: 100% 50%;
   border-radius: inherit;
-  animation: shimmer 1.5s infinite;
+  animation: shimmer 0.5s infinite;
 }
 
 .card__title {
@@ -332,6 +332,6 @@ input::-webkit-inner-spin-button {
 
 @keyframes shimmer {
   to {
-    background-position: -100% 0;
+    background-position: -70% 0;
   }
 }
