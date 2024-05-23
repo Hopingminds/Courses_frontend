@@ -62,6 +62,10 @@ import AddCourses from '../Components/TeacherPanel/AddCourses/AddCourses.jsx'
 import Batches from '../Components/TeacherPanel/Batches/Batches.jsx'
 import Courses from '../Components/TeacherPanel/Batches/Courses.jsx'
 import CourseBatches from '../Components/TeacherPanel/Batches/CourseBatches.jsx'
+import UserProfile from '../Components/TeacherPanel/UserProfile/UserProfile.jsx'
+import Assignment from '../Components/TeacherPanel/Assignment/Assignment.jsx'
+import ScheduledAssignments from '../Components/TeacherPanel/Assignment/ScheduledAssignments/ScheduledAssignments.jsx'
+import History from '../Components/TeacherPanel/Assignment/History/History.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -136,10 +140,15 @@ const Router = () => {
                     <Route index path='dashboard' element={<Dashboard />} />
                     <Route path='liveclass' element={<LiveClasses />} />
                     <Route path='addcourse' element={<AddCourses />} />
+                    <Route path='assignment' element={<Assignment />} >
+                        <Route index path='scheduledassignments' element={<ScheduledAssignments />} />
+                        <Route path='history' element={<History />} />
+                    </Route>
                     <Route path='batch' element={<Batches />} >
                         <Route index path='courses' element={<Courses />} />
                         <Route path='batches' element={<CourseBatches />} />
                     </Route>
+                    <Route path='userprofile' element={<UserProfile />} />
                 </Route>
             </Routes>
             {pathname.includes('subadmin') ? <></> : <Footer />}

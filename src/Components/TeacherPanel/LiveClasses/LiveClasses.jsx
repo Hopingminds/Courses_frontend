@@ -7,7 +7,7 @@ import ClassHistory from './ClassHistory'
 const LiveClasses = () => {
     const[classes, setClasses ] = useState("scheduled")
     return (
-        <div className='px-8 py-10 flex flex-col gap-3'>
+        <div className='px-8 py-10 flex flex-col gap-5'>
             <div className='flex justify-between items-center font-int'>
                 <div>
                     <p className='font-semibold text-[19px]'>Live Classes</p>    

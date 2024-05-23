@@ -5,13 +5,19 @@ import Arrow from '../../../Assets/Icons/tparrow.svg'
 import ProfilePurple from '../../../Assets/Icons/tpnavbarprofile.svg'
 import Logout from '../../../Assets/Icons/tplogoutred.svg'
 import './Navbar.css'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
-
+    const navigate = useNavigate();
     const[showMenu,setShowMenu] = useState(false);
 
     function handleShowMenu(){
         setShowMenu(!showMenu);
+    }
+
+    function goToProfile(){
+        navigate('/teacherpanel/userprofile');
+        setShowMenu(false);
     }
 
     return (
@@ -29,7 +35,7 @@ const Navbar = () => {
                     <img className={`w-3 transition-transform duration-500 ${showMenu?'rotate-180':'rotate-0'}`} src={Arrow} alt="" />
                     {showMenu &&
                         <div class="dropdown-content text-[#5B5B5B] py-2 text-[12px] bg-white rounded-xl">
-                            <div className='flex items-center gap-2 py-2 px-4'>
+                            <div onClick={goToProfile} className='flex items-center gap-2 py-2 px-4'>
                                 <div className='bg-[#FAEDFF] p-2 rounded-full'>
                                     <img className='w-4 h-4' src={ProfilePurple} alt="" />
                                 </div>

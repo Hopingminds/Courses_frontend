@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Cross from '../../../../Assets/Icons/tpcross.svg'
+import Arrow from '../../../../Assets/Icons/tpattendancearrow.svg'
 import Clock from '../../../../Assets/Icons/tpattendanceclock.svg'
 import Calender from '../../../../Assets/Icons/tpattendancecalender.svg'
 import AttendanceList from './AttendanceList'
@@ -12,7 +12,7 @@ const ReviewAttendance = ({setBatchDetails, setShowAttendance, setActiveAttendan
     return (
         <div className='bg-white w-full px-4 py-6 font-int '>
             <div className='flex flex-col gap-6'>
-                <img onClick={handleClose} className='w-5 h-5 cursor-pointer' src={Cross} alt="" />
+                <img onClick={() => setActiveAttendance("report")} className='w-5 h-5 cursor-pointer' src={Arrow} alt="" />
                 <div className='flex justify-between'>
                     <p className='text-[28px] text-[#434343] font-semibold'>Attendance Report </p>
                     <button onClick={() => setActiveAttendance("final")} className='px-6 py-2 bg-[#2C62EE] text-white text-[13px] rounded-md'>Confirm</button>

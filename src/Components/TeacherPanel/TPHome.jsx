@@ -14,7 +14,7 @@ const TPHome = () => {
     };
     return (
         <div className='flex'>
-            <div className='w-[20%] h-full sticky top-20 '>
+            <div className='w-[20%] h-full sticky top-0'>
                 <Sidebar onItemClick={handleSidebarItemClick} selectedComponent={selectedComponent}/>
             </div>
             <div className='flex flex-col w-full border-l border-[#808080] relative'>
@@ -22,9 +22,6 @@ const TPHome = () => {
                     <Navbar/>
                 </div>
                 <Outlet/>
-                {/* {selectedComponent === 'dashboard' && <Dashboard />} */}
-                {/* {selectedComponent === 'liveclass' && <LiveClasses />}
-                {selectedComponent === 'addcourse' && <AddCourses />} */}
             </div>
         </div>
     )
