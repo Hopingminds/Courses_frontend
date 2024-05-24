@@ -257,7 +257,7 @@ const Internship = () => {
         <div className="absolute z-20 top-[10%] flex justify-center items-center text-center w-full text-white text-[50px] font-int font-semibold md:text-[35px] xsm:text-[16px]">Gain Professional Skills</div>
         <div className="absolute z-20 top-[27%] flex justify-center items-center text-center w-full text-white font-int md:text-[16px] xsm:text-[8px]">Unlock your potential with real-world experience in your field of study.</div>
 
-        <div className="h-full w-full " style={{ backdropFilter: 'brightness(50%)' }}>
+        <div className="h-full w-full bg-gray-300" >
           <ReactPlayer
             onContextMenu={handleContextMenu}
 
