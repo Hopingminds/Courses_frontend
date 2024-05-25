@@ -191,7 +191,7 @@ export default function CDDetails() {
     <>
       <div className="flex justify-between gap-5">
         {/* side menu */}
-        <div className='w-[20%]'>
+        <div className='w-[20%] sticky top-20 h-max'>
           {/* <SideBar /> */}
           <NewSideBar/>
         </div>

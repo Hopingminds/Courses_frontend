@@ -20,7 +20,7 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams()
-    const [countrycode, setcountrycode] = useState()
+    const [countrycode, setcountrycode] = useState('')
     const [SearchedData, setSearchedData] = useState([])
 
     console.log("cardatata",cartData);
@@ -64,6 +64,22 @@ const Register = () => {
         return emailPattern.test(email);
     }
 
+    const handleNumChange = (number) => {
+        setcountrycode(number);
+        if (number && number.length >= 9 && number.length <= 14) {
+            setIsNumValid(false);
+        } else {
+            setIsNumValid(true);
+        }
+        setUser({
+            ...user,
+            phone: number,
+
+        });
+    };
+    
+    
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUser(prevState => {
@@ -81,12 +97,6 @@ const Register = () => {
                 else{
                     setIsEmailValid(false);
                 }
-            }
-            if (!(countrycode.length > 8 && countrycode.length < 15)) {
-                setIsNumValid(true);
-            }
-            else{
-                setIsNumValid(false);
             }
 
             return updatedUser;
@@ -300,8 +310,9 @@ const Register = () => {
                                     maxlength={11}
                                     placeholder="Enter phone number"
                                     value={countrycode}
-                                    onChange={setcountrycode}
+                                    onChange={handleNumChange}
                                     ref={phoneRef}
+                                    onKeyDown={(e) => handleKeyDown(e, degreeRef)}
                                 />
                                 {/* <input
                                     ref={phoneRef}

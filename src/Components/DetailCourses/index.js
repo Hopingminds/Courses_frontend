@@ -8,6 +8,8 @@ import { COURSESURL } from '../confidential';
 import { BASE_URL } from '../../Api/api';
 import { jwtDecode } from 'jwt-decode';
 import Spinner from '../Spinner';
+import { TiTick } from 'react-icons/ti';
+import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 
 export default function DetailCourses() {
     const param = useParams()
@@ -41,6 +43,31 @@ export default function DetailCourses() {
                     <div className='CCDetails-Header-content-leftqw xsm:text-[14px]'>
                         <div className='CCDetails-Header-content-row1qw'>
                             <h2 className='font-pop'>{Data?.title}</h2>
+                        </div>
+                        <div className='text-white flex gap-2 items-center text-[14px] font-pop mt-4'>
+                            <p>4.7</p>
+                            <div className='flex gap-1 items-center text-yellow-400'>
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStarHalfAlt />
+                            </div>
+                            <p>Based on feedback received from 250+ learners</p>
+                        </div>
+                        <div className='text-white mt-4 font-pop text-[14px]'>
+                            <div className='flex gap-2 items-center'>
+                                <TiTick />
+                                <p>{Data?.whatWillILearn[0]}</p>
+                            </div>
+                            <div className='flex gap-2 items-center'>
+                                <TiTick />
+                                <p>{Data?.whatWillILearn[1]}</p>
+                            </div>
+                            <div className='flex gap-2 items-center'>
+                                <TiTick />
+                                <p>{Data?.whatWillILearn[2]}</p>
+                            </div>
                         </div>
                         {/* <div className='CCDetails-Header-content-row2 w-[90%] xsm:mt-1 '>
                             <div className='CCDetails-Header-content-row2-clock gap-1'>
