@@ -315,7 +315,7 @@ setTimeout(() => {
       )} */}
       <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
-      <div id="CoursesContent" className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
+      <div id="CoursesContent" className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] md:gap-3 md:mx-[3%]">
       {!allCourses?.length && !show ? (
         <div className="flex justify-center  w-full mt-10">
           <div className="text-center font-semibold text-2xl w-full ">

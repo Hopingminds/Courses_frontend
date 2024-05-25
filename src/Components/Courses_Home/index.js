@@ -83,8 +83,8 @@ const Courses_Home = () => {
     <>
       {/* <h1 className='text-[40px] mt-16 font-semibold' style={{ textAlign: 'center' }}> Our Feature Courses</h1> */}
 
-      <div className="h-[100%] w-full px-16 py-8 font-pop bg-[#E2FFF1] xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-10 md:space-y-2">
-        <div className="h-12 md:h-10 xsm:min-h-6 flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px] md:text-[12px] md:space-x-6">
+      <div className="h-[100%] w-full px-16 py-8 font-pop bg-[#E2FFF1] xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-6 md:space-y-2">
+        <div className="h-12 md:h-8 xsm:h-6 flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px] md:text-[12px] md:space-x-6">
           {[
             "All Courses",
             "Full Stack Development",
