@@ -2,14 +2,18 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { BASE_URL } from '../../Api/api'
 import toast from 'react-hot-toast'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { applyJob, getAllJobAplicants } from '../../helpers/helperapi'
 
 const JobOffering = ({ courses }) => {
+    const navigate = useNavigate();
 
     const [jobOpeningData, setJobOpeningData] = useState()
 
 
     useEffect(() => {
+
+        getAllJobAplicants()
         fetchUserData()
     }, [])
 
@@ -36,9 +40,27 @@ const JobOffering = ({ courses }) => {
 
     }
 
-    const handleApply = () => {
-        toast.success('You have Successfully Applied')
+    const handleApply = async (e, id) => {
+        e.stopPropagation();
+        e.preventDefault();
+        try {
+            const res = await applyJob(id)
+            console.log(res)
+            if (res) {
+
+                toast.success('You have Successfully Applied')
+            }
+            else {
+                toast.error("Error while applying")
+            }
+        } catch (error) {
+            toast.error("Error while applying")
+        }
+
+
     }
+
+
 
 
     return (
@@ -50,7 +72,7 @@ const JobOffering = ({ courses }) => {
                     {
                         jobOpeningData?.map((item, ind) => {
                             return (<>
-                                <Link to={"/jobpreview?jobid=" + item?._id} key={ind} className="h-[12rem] w-full flex flex-row gap-4 bg-[#E2FFF1] p-4 mt-4 rounded-2xl justify-between shadow-2xl shadow-[#D9D9D9] xsm:p-2 xsm:rounded-lg xsm:h-[15vh] md:mt-0 md:p-3">
+                                <div onClick={() => navigate("/jobpreview?jobid=" + item?._id)} key={ind} className="h-[12rem] w-full flex flex-row gap-4 bg-[#E2FFF1] p-4 mt-4 rounded-2xl justify-between shadow-2xl shadow-[#D9D9D9] xsm:p-2 xsm:rounded-lg xsm:h-[15vh] md:mt-0 md:p-3">
                                     <div className="w-[25%] rounded-2xl">
                                         <img className="w-full h-full rounded-xl xsm:rounded-lg object-cover" src={item?.logoUrl} />
                                     </div>
@@ -69,10 +91,10 @@ const JobOffering = ({ courses }) => {
                                     </div>
                                     <div className="flex w-[15%] justify-end  justify-self-end items-start md:mt-2">
 
-                                        <button onClick={handleApply}
+                                        <button onClick={(e) => handleApply(e, item._id)}
                                             className="bg-[#1DBF73] py-2 px-6 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1" >Apply</button>
                                     </div>
-                                </Link>
+                                </div>
                             </>)
                         })
                     }
