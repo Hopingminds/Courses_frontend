@@ -8,7 +8,7 @@ import CYPEducation from './CYPEducation'
 import CYPTechnical from './CYPTechnical'
 import CYPOtherInfo from './CYPOtherInfo'
 
-const CYPMain = ({setCompleteProfile}) => {
+const CYPMain = ({setCompleteProfile,user, setUser}) => {
     const [activeDetail, setActiveDetail] = useState("Basic");
     const[finalData, setFinalData] = useState([]);
 
@@ -33,10 +33,10 @@ const CYPMain = ({setCompleteProfile}) => {
                 </div>
             </div>
             <div className='w-[75%] mt-[5%]'>
-                {activeDetail==="Basic" && <CYPBasic setFinalData={setFinalData} setActiveDetail={setActiveDetail}/>}
-                {activeDetail==="education" && <CYPEducation setFinalData={setFinalData} setActiveDetail={setActiveDetail}/>}
-                {activeDetail==="technical" && <CYPTechnical setFinalData={setFinalData} setActiveDetail={setActiveDetail}/>}
-                {activeDetail==="otherinfo" && <CYPOtherInfo setFinalData={setFinalData} setActiveDetail={setActiveDetail} finalData={finalData} setCompleteProfile={setCompleteProfile}/>}
+                {activeDetail==="Basic" && <CYPBasic setFinalData={setFinalData} setActiveDetail={setActiveDetail} user={user} setUser={setUser}/>}
+                {activeDetail==="education" && <CYPEducation setFinalData={setFinalData} setActiveDetail={setActiveDetail} user={user} setUser={setUser}/>}
+                {activeDetail==="technical" && <CYPTechnical setFinalData={setFinalData} setActiveDetail={setActiveDetail} user={user} setUser={setUser}/>}
+                {activeDetail==="otherinfo" && <CYPOtherInfo setFinalData={setFinalData} setActiveDetail={setActiveDetail} finalData={finalData} setCompleteProfile={setCompleteProfile} user={user} setUser={setUser}/>}
             </div>
         </div>
     )

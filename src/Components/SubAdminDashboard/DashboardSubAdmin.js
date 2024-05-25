@@ -12,7 +12,7 @@ const DashboardSubAdmin = () => {
   let navigate = useNavigate()
   useEffect(() => {
     if (!localStorage.getItem('token')) {
-      navigate('/subadmin-login')
+      navigate('/college-login')
     }
   }, [])
   async function FetchData(){
@@ -32,12 +32,15 @@ const DashboardSubAdmin = () => {
     FetchData()
       }, [])
 
+      function Statehandle(temp){
+setdata(temp)
+      }
   return (
     <>
 
       <BannarSubAdmin />
         <div className="flex flex-row">
-          <FilterSubAdmin data={data}/>
+          <FilterSubAdmin data={data}  FetchData={FetchData} Statehandle={Statehandle}/>
           {/* <DataDashboard data={data} /> */}
     
         <DetailTableDashboard data={data} FetchData={FetchData} />

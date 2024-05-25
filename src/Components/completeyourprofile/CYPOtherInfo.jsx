@@ -1,47 +1,76 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
+import { BASE_URL } from '../../Api/api';
+import axios from 'axios';
 
-const CYPOtherInfo = ({finalData, setFinalData, setActiveDetail, setCompleteProfile }) => {
-    const [otherFormData, setOtherFormData] = useState({hackerrank:"", github:"",linkedin:"", codechef:"", leetcode:"", gfg:""});
+const CYPOtherInfo = ({setActiveDetail, setCompleteProfile, user, setUser }) => {
+    // Ensure user object is properly initialized
+    const initialUserState = {
+        profileLinks: {
+            hackerRank: '',
+            github: '',
+            linkedIn: '',
+            codeChef: '',
+            leetCode: '',
+            geekForGeeks: '',
+        },
+        isProfileComplete: false,
+    };
 
-    function formHandler(e){
-        setOtherFormData(prev =>(
-            {
-                ...prev,
-                [e.target.name]: e.target.value
-            }
-        ))
+    user = { ...initialUserState, ...user };
+
+    // Handle form changes
+    function formHandler(e) {
+        const { name, value } = e.target;
+        setUser(prev => ({
+            ...prev,
+            profileLinks: {
+                ...prev.profileLinks,
+                [name]: value,
+            },
+        }));
     }
 
-    function submitHandler(e) {
+    // Handle form submission
+    async function submitHandler(e) {
         e.preventDefault();
-        if(otherFormData.hackerrank === "" || otherFormData.github === "" || otherFormData.linkedin === "" || otherFormData.codechef === "" || otherFormData.leetcode === "" || otherFormData.gfg === "" ){
-            toast.error("Please fill out all valid fields.")
-        }
-        else{
-            console.log(otherFormData);
-            setFinalData(prevData => ({...prevData,otherFormData}));
-            console.log(finalData);
-            setOtherFormData({
-                hackerrank: "",
-                github: "",
-                linkedin: "",
-                codechef: "",
-                leetcode: "",
-                gfg: "",
-            });
-            toast.success("Your data is Saved Successfully")
+        const { hackerRank, github, linkedIn, codeChef, leetCode, geekForGeeks } = user.profileLinks;
+        if (!hackerRank || !github || !linkedIn || !codeChef || !leetCode || !geekForGeeks) {
+            toast.error("Please fill out all fields.");
+            console.log("Missing fields:", { hackerRank, github, linkedIn, codeChef, leetCode, geekForGeeks });
+        } else {
+            setUser(prev => ({
+                ...prev,
+                isProfileComplete: true
+            }));
 
-            setTimeout(() => {
-                setCompleteProfile('Profile')
-            }, 1000);
+            if (!user.email) {
+                toast.error("Enter valid Credentials");
+            } else {
+                try {
+                    const res = await axios.put(`${BASE_URL}/updateuser`, user, {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("COURSES_USER_TOKEN")}`,
+                        },
+                    });
+                    toast.success("Saved Successfully");
+                    toast.success("Your data is Saved Successfully");
+                    setTimeout(() => {
+                        setCompleteProfile('Profile');
+                    }, 1000);
+                } catch (error) {
+                    toast.error("Profile error");
+                    console.error("Profile error", error);
+                }
+            }
         }
     }
-      
 
-    function handlePrev(){
-        setActiveDetail('technical')
+    // Handle previous button click
+    function handlePrev() {
+        setActiveDetail('technical');
     }
+
     return (
         <div className='font-nu font-semibold flex flex-col gap-4 items-center w-full'>
             <div>
@@ -51,32 +80,32 @@ const CYPOtherInfo = ({finalData, setFinalData, setActiveDetail, setCompleteProf
                 <div className='flex flex-col gap-4 w-full'>
                     <div className='grid grid-cols-2  gap-8 w-full'>
                         <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="fname" className='font-nu font-semibold '>Hacker Rank <span className='text-red-500'>*</span></label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.hackerrank} name='hackerrank' />
+                            <label htmlFor="hackerRank" className='font-nu font-semibold '>Hacker Rank <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={user.profileLinks.hackerRank} name='hackerRank' />
                         </div>
                         <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="lname" className='font-nu font-semibold '>GitHub <span className='text-red-500'>*</span></label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.github} name='github' />
-                        </div>
-                    </div>
-                    <div className='grid grid-cols-2  gap-8'>
-                        <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="fname" className='font-nu font-semibold '>LinkedIn <span className='text-red-500'>*</span></label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.linkedin} name='linkedin' />
-                        </div>
-                        <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="lname" className='font-nu font-semibold '>Code Chef <span className='text-red-500'>*</span></label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.codechef} name='codechef' />
+                            <label htmlFor="github" className='font-nu font-semibold '>GitHub <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={user.profileLinks.github} name='github' />
                         </div>
                     </div>
                     <div className='grid grid-cols-2  gap-8'>
                         <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="fname" className='font-nu font-semibold '>LeetCode <span className='text-red-500'>*</span></label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.leetcode} name='leetcode' />
+                            <label htmlFor="linkedIn" className='font-nu font-semibold '>LinkedIn <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={user.profileLinks.linkedIn} name='linkedIn' />
                         </div>
                         <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
-                            <label htmlFor="lname" className='font-nu font-semibold '>Geek For Geeks <span className='text-red-500'>*</span></label>
-                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={otherFormData.gfg} name='gfg' />
+                            <label htmlFor="codeChef" className='font-nu font-semibold '>Code Chef <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={user.profileLinks.codeChef} name='codeChef' />
+                        </div>
+                    </div>
+                    <div className='grid grid-cols-2  gap-8'>
+                        <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
+                            <label htmlFor="leetCode" className='font-nu font-semibold '>LeetCode <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={user.profileLinks.leetCode} name='leetCode' />
+                        </div>
+                        <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
+                            <label htmlFor="geekForGeeks" className='font-nu font-semibold '>Geek For Geeks <span className='text-red-500'>*</span></label>
+                            <input className='outline-none font-normal bg-[#FFFFFF] py-1 px-2 rounded-sm border border-[#00000050]' type="url" onChange={formHandler} value={user.profileLinks.geekForGeeks} name='geekForGeeks' />
                         </div>
                     </div>
                 </div>
@@ -94,4 +123,4 @@ const CYPOtherInfo = ({finalData, setFinalData, setActiveDetail, setCompleteProf
     )
 }
 
-export default CYPOtherInfo
+export default CYPOtherInfo;

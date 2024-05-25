@@ -55,6 +55,17 @@ import HRDashboard from '../Components/HRDashboard/index.jsx'
 import HRNavbar from '../Components/HRDashboard/HRNavbar/HRNavbar.jsx'
 import Internship from '../Components/Internship/Index.js'
 import StudentSection from '../Components/SubAdminDashboard/Studentsection.js'
+import TPHome from '../Components/TeacherPanel/TPHome.jsx'
+import Dashboard from '../Components/TeacherPanel/Dashboard/Dashboard.jsx'
+import LiveClasses from '../Components/TeacherPanel/LiveClasses/LiveClasses.jsx'
+import AddCourses from '../Components/TeacherPanel/AddCourses/AddCourses.jsx'
+import Batches from '../Components/TeacherPanel/Batches/Batches.jsx'
+import Courses from '../Components/TeacherPanel/Batches/Courses.jsx'
+import CourseBatches from '../Components/TeacherPanel/Batches/CourseBatches.jsx'
+import UserProfile from '../Components/TeacherPanel/UserProfile/UserProfile.jsx'
+import Assignment from '../Components/TeacherPanel/Assignment/Assignment.jsx'
+import ScheduledAssignments from '../Components/TeacherPanel/Assignment/ScheduledAssignments/ScheduledAssignments.jsx'
+import History from '../Components/TeacherPanel/Assignment/History/History.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -63,14 +74,17 @@ const Router = () => {
         ReturnNavbar()
     }, [pathname])
     const ReturnNavbar = () => {
-        if (pathname.includes('subadmin')) {
+        if (pathname.includes('college')) {
             return <NavSubAdmin />
         }
         else if ((pathname.includes('hrdashboard') || pathname.includes('managejobs') || pathname.includes('jobpreview') || pathname.includes('postjob'))) {
             return <HRNavbar />
         }
+        else if((pathname.includes('teacherpanel'))){
+            return <></>
+        }
         else {
-            return (<div className='h-20 md:h-14 xsm:h-10'>
+            return (<div className='h-20 md:h-14 xsm:h-10 sm:h-12'>
                 <Navbar />
             </div>)
         }
@@ -102,8 +116,8 @@ const Router = () => {
                 <Route path='/AssignmentMeet' element={<AssignmentMeet />} />
                 <Route path='/AssignmentStart' element={<AssignmentStart />} />
 
-                <Route path='/subadmin-login' element={<SubAdmin />} />
-                <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} />
+                <Route path='/college-login' element={<SubAdmin />} />
+                <Route path='/college-dashboard' element={<DashboardSubAdmin />} />
 
                 <Route path='/success' element={<Success />} />
                 <Route path='/cv-builder' element={<CVBuilder />} />
@@ -138,9 +152,23 @@ const Router = () => {
                 <Route path='/pdf' element={<PDFViewer />} />
                 <Route path='/hrdashboard' element={<HRDashboard />} />
                 <Route path='/internship' element={<Internship />} />
-                <Route path='/subadmin-studentdata' element={<StudentSection />} />
+                <Route path='/college-studentdata' element={<StudentSection />} />
+                <Route path='/teacherpanel' element={<TPHome/>} >
+                    <Route index path='dashboard' element={<Dashboard />} />
+                    <Route path='liveclass' element={<LiveClasses />} />
+                    <Route path='addcourse' element={<AddCourses />} />
+                    <Route path='assignment' element={<Assignment />} >
+                        <Route index path='scheduledassignments' element={<ScheduledAssignments />} />
+                        <Route path='history' element={<History />} />
+                    </Route>
+                    <Route path='batch' element={<Batches />} >
+                        <Route index path='courses' element={<Courses />} />
+                        <Route path='batches' element={<CourseBatches />} />
+                    </Route>
+                    <Route path='userprofile' element={<UserProfile />} />
+                </Route>
             </Routes>
-            {pathname.includes('subadmin') ? <></> : <Footer />}
+            {pathname.includes('college') || pathname.includes('teacherpanel') ? <></> : <Footer />}
 
         </BrowserRouter >
 

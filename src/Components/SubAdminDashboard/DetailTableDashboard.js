@@ -175,7 +175,7 @@ const DetailTableDashboard = ({ data,FetchData }) => {
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.batch || 2024}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.stream || "CSE"}</p>
             {row.isCourseOpened ?<p className='text-[#43e674] text-[16px] font-pop font-semibold'>Accepted</p>:<p className='text-[#f8674d] text-[16px] font-pop font-semibold'>Pending</p>}
-            <Link to={`/subadmin-studentdata?email=${row.email}`} className='text-[#000] text-[16px] font-pop font-semibold'>View</Link>
+            <Link to={`/college-studentdata?email=${row.email}`} className='text-[#000] text-[16px] font-pop font-semibold'>View</Link>
           </div>
         ))}
       </div>

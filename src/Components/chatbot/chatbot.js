@@ -114,7 +114,7 @@ const ChatBot = () => {
     return (
         <div>
 
-            <div className="h-[80%] z-[999999999] ">
+            <div className="h-[80%] z-[999999999] font-pop">
                 <button className="chatbot-toggler">
                     <span className="material-symbols-rounded pt-2 ">
                         <img src="/chat.svg" />

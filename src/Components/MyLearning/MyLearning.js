@@ -31,6 +31,7 @@ export default function MyLearning() {
     const [showpage, setshowpage] = useState('courses');
     const [purchasedCourses, setPurchasedCourses] = useState();
     const { userDetail, getUserDetails } = useContext(Globalinfo);
+    const maxPopupDisplays = 1;
     // console.log(userDetail)
 
     // console.log(userDetail?.name?.split(" ")[0])
@@ -85,8 +86,21 @@ export default function MyLearning() {
     }, [])
 
     useEffect(() => {
-        setShowPopup(true);
+        const popupCount = parseInt(localStorage.getItem('popupCount') || '0', 10);
+        console.log('popupCount:', popupCount);
+
+        if (popupCount < maxPopupDisplays) {
+            setShowPopup(true);
+            localStorage.setItem('popupCount', popupCount + 1);
+            console.log('Popup displayed. New popupCount:', popupCount + 1);
+        } else {
+            console.log('Popup not displayed. Max count reached.');
+            setShowPopup(false); 
+        }
     }, []);
+    // useEffect(() => {
+    //     setShowPopup(true);
+    // }, []);
 
 
     return (

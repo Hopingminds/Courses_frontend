@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import Banner from "../../Assests/Images/profileedit-banner.png";
-import User from "../../Assests/Images/profile-user.png";
+import ProfileIcon from "../../Assets/Images/ProfileIcon.png";
 import Edit from "../../Assests/Icons/edit.svg";
 import { Globalinfo } from "../../App";
 import { Link, useNavigate } from "react-router-dom";
@@ -53,6 +53,44 @@ const ProfilEdit = () => {
     stream: "",
     yearofpass: "",
     bio: "",
+    address:'',
+    city:'',
+    state:'',
+    degree:'',
+    college:'',
+    yearofpass:'',
+    percentage:'',
+    trainingInternships:[{
+      companyName:'',
+      postName:'',
+      location:'',
+      duration:{
+        from:'',
+        to:'',
+      },
+    }],
+    projects:[{
+      projectName:'',
+      projectRole:'',
+      projectDescription:'',
+    }],
+    certifications:[{
+      certificateName:'',
+      certifiedBy:'',
+    }],
+    skills:[{
+      skill:'',
+      skill_lever:'',
+    }],
+    profileLinks:{
+      hackerRank:'',
+      github:'',
+      linkedIn:'',
+      codeChef:'',
+      leetCode:'',
+      geekForGeeks:'',
+    },
+    isProfileComplete:false,
   });
 
   // console.log(user)
@@ -203,7 +241,7 @@ const ProfilEdit = () => {
                 src={
                   user.profile
                     ? user.profile
-                    : "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+                    : ProfileIcon
                 }
                 className="w-full h-full rounded-full object-cover xsm:h-[80px] xsm:w-[80px]"
               />
@@ -332,7 +370,7 @@ const ProfilEdit = () => {
             </div>
           </div>
         }
-        { completeProfile === "completeprofile" && <CYPMain setCompleteProfile={setCompleteProfile} /> }
+        { completeProfile === "completeprofile" && <CYPMain setCompleteProfile={setCompleteProfile} setUser={setUser} user={user} /> }
         {show ? (
           <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
             <Spinner className="" />

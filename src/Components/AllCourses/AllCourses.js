@@ -26,6 +26,8 @@ import HireTestimonial from "../HireFromUs/HireTestimonial";
 import CourseCard from "../Courses_Home/CourseCard";
 import MinorDegree from "../MinorCourses/minordegree";
 import CountUp from 'react-countup';
+import Skeleton from "../Skeleton/Skeletoncard";
+import VideoSkeleton from "../Skeleton/videoskeleton";
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
   const [selectedUser, setSelectedUser] = useState(User1);
@@ -35,7 +37,8 @@ const AllCourses = () => {
   const [SearchedData, setSearchedData] = useState([]);
   const [Temp, setTemp] = useState([]);
   const [show, setshow] = useState(false);
-
+  const [videoSkeleton, setvideoSkeleton] = useState(true)
+const [secondloader, setsecondloader] = useState(true)
   const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
 
@@ -81,6 +84,7 @@ const AllCourses = () => {
   // console.log(userDetail.blocked_courses)
   const [IsMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
+  const [loaded, setloaded] = useState(true)
   const [selectedCourse, setSelectedCourse] = useState("");
   // console.log(pat);
 
@@ -109,7 +113,7 @@ const AllCourses = () => {
         setshow(true);
 
         const res = await axios.get(`${BASE_URL}/courses`);
-        console.log(res?.data?.courses);
+        // console.log(res?.data?.courses);
 
 
         setAllCourses(res?.data?.courses);
@@ -204,7 +208,9 @@ const AllCourses = () => {
   const handleContextMenu = (e) => {
     e.preventDefault(); // Prevent default context menu behavior
   };
-
+setTimeout(() => {
+  setloaded(false)
+}, 1000);
   return (
     <>
       <head>
@@ -230,7 +236,7 @@ const AllCourses = () => {
                 }`}
             />
             <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center" ref={searchResultsRef}>
-              {SearchedData.map((item, ind) => {
+              {SearchedData?.map((item, ind) => {
                 // console.log(item.);
                 return (
                   <>
@@ -251,12 +257,11 @@ const AllCourses = () => {
           </button>
         </div>
 
-        <div className="h-full w-full bg-black">
-          <ReactPlayer
+        <div className="h-full w-full bg-gray-300">
+         <ReactPlayer
           onContextMenu={handleContextMenu}
-
             // url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
-            url='/coursesvideo.mp4'
+            url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
             height="100%"
             width={'100%'}
             playing={true}
@@ -270,6 +275,7 @@ const AllCourses = () => {
               }
             }}
           />
+
         </div>
 
         <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-28 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16 md:space-x-12">
@@ -297,7 +303,20 @@ const AllCourses = () => {
         </div>
       </div>
       {/* cards */}
-      {!allCourses?.length ? (
+      {/* {!allCourses?.length ? (
+        <div className="flex justify-center  w-full mt-10">
+          <div className="text-center font-semibold text-2xl w-full ">
+            {" "}
+            No Course Found
+          </div>
+        </div>
+      ) : (
+        ""
+      )} */}
+      <div className="text-2xl font-bold pl-[5%]">{cat}</div>
+
+      <div id="CoursesContent" className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] md:gap-3 md:mx-[3%]">
+      {!allCourses?.length && !show ? (
         <div className="flex justify-center  w-full mt-10">
           <div className="text-center font-semibold text-2xl w-full ">
             {" "}
@@ -307,10 +326,11 @@ const AllCourses = () => {
       ) : (
         ""
       )}
-      <div className="text-2xl font-bold pl-[5%]">{cat}</div>
-
-      <div id="CoursesContent" className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
-        {allCourses?.map((val, ind) => {
+        {
+        show ? [1,2,3,4].map((item)=>{
+          return(<Skeleton/>)
+        })   
+       : allCourses?.map((val, ind) => {
           return (
             <CourseCard
               key={val?.title}
@@ -463,13 +483,13 @@ const AllCourses = () => {
           </div>
         </div>
       </div> */}
-      {show ? (
-        <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
+      {/* {show ? (
+        <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80 z-50">
           <Spinner className="" />
         </div>
       ) : (
         ""
-      )}
+      )} */}
       <div className="px-[5%] py-[4%] bg-[#111F25]">
         <HireTestimonial />
       </div>

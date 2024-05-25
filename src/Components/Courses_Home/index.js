@@ -4,6 +4,8 @@ import CourseCard from "./CourseCard";
 import { COURSESURL } from "../confidential";
 import { BASE_URL } from "../../Api/api";
 import { Link } from "react-router-dom";
+import { logDOM } from "@testing-library/react";
+import Skeleton from "../Skeleton/Skeletoncard";
 // import { COURSESURL } from '../Confidential';
 
 const Courses_Home = () => {
@@ -12,14 +14,20 @@ const Courses_Home = () => {
   const [cardsToShow, setCardsToShow] = useState(4); // State to keep track of number of cards to display
   const [showAllCards, setShowAllCards] = useState(false);
   const [courses, setcourses] = useState([]);
-
+  const [show, setshow] = useState(false)
   useEffect(() => {
     async function Fetchdata() {
-      let url = BASE_URL + "/courses";
-      const data = await fetch(url);
-      const response = await data.json();
-      console.log(response);
-      setcourses(response.courses);
+  try {
+    setshow(true)
+    let url = BASE_URL + "/courses";
+    const data = await fetch(url);
+    const response = await data.json();
+    // console.log(response);
+    setcourses(response?.courses);
+    setshow(false)
+  } catch (error) {
+    console.log(error);
+  }
     }
     Fetchdata();
   }, []);
@@ -75,8 +83,8 @@ const Courses_Home = () => {
     <>
       {/* <h1 className='text-[40px] mt-16 font-semibold' style={{ textAlign: 'center' }}> Our Feature Courses</h1> */}
 
-      <div className="h-[100%] w-full px-16 py-8 font-pop bg-[#E2FFF1] xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-10 md:space-y-2">
-        <div className="h-12 md:h-10 xsm:min-h-6 flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px] md:text-[12px] md:space-x-6">
+      <div className="h-[100%] w-full px-16 py-8 font-pop bg-[#E2FFF1] sm:px-4 xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-6 md:space-y-2">
+        <div className="h-12 md:h-8 xsm:h-6 flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px] sm:space-x-4 sm:gap-y-2 sm:text-[10px] sm:flex-wrap md:text-[12px] md:space-x-6">
           {[
             "All Courses",
             "Full Stack Development",
@@ -111,7 +119,11 @@ const Courses_Home = () => {
         <div className="my-4 grid grid-cols-4 gap-4 xsm:grid-cols-3 xsm:gap-3 xsm:my-[2%] md:gap-3 xl:grid-cols-5">
           {" "}
           {/* Changed flex to flex-wrap */}
-          {filteredCourses?.slice(0, cardsToShow)?.map((val, ind) => (
+          {
+           show ? [1,2,3,4].map((item)=>{
+            return(<Skeleton/>)
+          }):
+          filteredCourses?.slice(0, cardsToShow)?.map((val, ind) => (
             <CourseCard
               key={val?.title}
               title={val?.title}

@@ -5,13 +5,17 @@ import CourseCard from "../Courses_Home/CourseCard";
 import { BASE_URL } from "../../Api/api";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
+import Spinner from "../Spinner";
 
 const MinorCourse = () => {
   const [allCourses, setAllCourses] = useState([]);
+  const [show, setshow] = useState(false)
   const [params, setparams] = useSearchParams();
   useEffect(() => {
     async function Fetchdata() {
-      let category = params.get("category");
+      try {
+        setshow(true)
+        let category = params.get("category");
       category = category.replace(/%20/g, " ");
       const res = await axios.get(
         `${BASE_URL}/courses?minordegree=true&category=${category}`
@@ -19,13 +23,17 @@ const MinorCourse = () => {
       // console.log(res);
 
       setAllCourses(res?.data?.courses);
+      setshow(false)
+      } catch (error) {
+        console.log(error);
+      }
     }
     Fetchdata();
   }, []);
 
   return (
     <>
-      <div className="bg_clippath h-[60vh] w-full flex flex-col gap-14 pt-[4%] md:pt-[6%] md:gap-12 md:h-[55vh] xsm:pt-[12%] xsm:gap-8">
+      <div className="bg_clippath font-pop  w-full flex flex-col gap-14 pt-[4%] pb-[7%] md:pt-[6%] md:gap-12 md:h-[55vh] xsm:pt-[12%] xsm:gap-8">
         <div className="flex px-[6vw] w-full md:px-[7vw] xsm:px-[8vw]">
           <ul className="list-disc text-white text-[18px] md:text-[14px] xsm:text-[10px]">
             <li>20 Credits that counts towards your degree</li>
@@ -46,27 +54,38 @@ const MinorCourse = () => {
         {allCourses?.map((val, ind) => {
           return (
             <CourseCard
-              key={val.title}
-              title={val.title}
-              featured_video={val.featured_video}
-              price={val.base_price}
-              firstName={val.instructor.firstName}
-              lastName={val.instructor.lastName}
-              duration={val.duration}
-              image={val.featured_image}
-              slug={val.slug}
-              category={val.category}
-              description={val.overview}
+              key={val?.title}
+              title={val?.title}
+              featured_video={val?.featured_video}
+              price={val?.base_price}
+              name={val?.instructor?.name}
+              duration={val?.duration}
+              image={val?.featured_image}
+              profile={val?.instructor?.profile}
+              email={val?.instructor?.email}
+              experience={val?.instructor?.experience}
+              bio={val?.instructor?.bio}
+              slug={val?.slug}
+              phone={val?.instructor?.phone}
+              category={val?.category}
+              description={val?.overview}
               ind={ind}
-              _id={val._id}
-              display={val.display}
-              IsMinorDegreeCourse={val.IsMinorDegreeCourse}
-              credits={val.credits}
-              // Pass category to CourseCard component
+              _id={val?._id}
+              display={val?.display}
+              IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
+              credits={val?.credits}
+            // Pass category to CourseCard component
             />
           );
         })}
       </div>
+      {show ? (
+        <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
+          <Spinner className="" />
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };
