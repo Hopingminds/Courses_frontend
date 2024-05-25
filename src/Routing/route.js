@@ -84,7 +84,7 @@ const Router = () => {
             return <></>
         }
         else {
-            return (<div className='h-20 md:h-14 xsm:h-10'>
+            return (<div className='h-20 md:h-14 xsm:h-10 sm:h-12'>
                 <Navbar />
             </div>)
         }

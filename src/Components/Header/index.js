@@ -122,20 +122,20 @@ export default function Navbar() {
         
         `}
       </style>
-      <div className="w-full flex justify-between px-[5%] h-20 items-center  font-pop fixed top-0 z-[9999] bg-[#0F2027] xsm:h-12 xsm:px-[2%] text-white md:h-14">
+      <div className="w-full flex justify-between px-[5%] h-20 items-center  font-pop fixed top-0 z-[9999] bg-[#0F2027] xsm:h-12 sm:h-12 xsm:px-[2%] text-white md:h-14">
         <Link to="/" onClick={Top} className=" cursor-pointer">
           <img
             src="/logo.png"
-            className="h-[50px] w-auto xsm:w-[50px] xsm:h-[25px] md:w-[70px] md:h-[30px]"
+            className="h-[50px] w-auto xsm:w-[50px] xsm:h-[25px] sm:w-[40px] sm:h-[27px] md:w-[70px] md:h-[30px]"
           />
         </Link>
-        <div className="flex space-x-10 items-center xsm:space-x-2 md:space-x-4">
+        <div className="flex space-x-10 items-center xsm:space-x-2 md:space-x-4 sm:space-x-3">
           {userDetail?.role != "subadmin" && (
             <>
               <Link
                 to={"/"}
                 onClick={Top}
-                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] md:text-[14px] font-pop ${
+                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[12px] md:text-[14px] font-pop ${
                   location.pathname === "/" ? " font-bold text-[#1DBF73]" : ""
                 }`}
               >
@@ -144,7 +144,7 @@ export default function Navbar() {
               <Link
                 to={"/course"}
                 onClick={Top}
-                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] md:text-[14px] font-pop  ${
+                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[12px] md:text-[14px] font-pop  ${
                   location.pathname === "/course"
                     ? " font-bold text-[#1DBF73]"
                     : ""
@@ -155,7 +155,7 @@ export default function Navbar() {
               <Link
                 to={"/internship"}
                 onClick={Top}
-                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] md:text-[14px] font-pop  ${
+                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[12px] md:text-[14px] font-pop  ${
                   location.pathname === "/internship"
                     ? " font-bold text-[#1DBF73]"
                     : ""
@@ -166,7 +166,7 @@ export default function Navbar() {
               <Link
                 to={"/hire-from-us"}
                 onClick={Top}
-                className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${
+                className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] sm:text-[12px] md:text-[14px] font-pop ${
                   location.pathname === "/hire-from-us"
                     ? " font-bold text-[#1DBF73]"
                     : ""
@@ -179,7 +179,7 @@ export default function Navbar() {
               <a
                 href={location.pathname == "/" ? "#" : "/pap"}
                 onClick={ScrollToPap}
-                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] cursor-pointer md:text-[14px] font-pop ${
+                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[12px] cursor-pointer md:text-[14px] font-pop ${
                   location.pathname === "#pap"
                     ? " font-bold text-[#1DBF73]"
                     : ""
@@ -191,7 +191,7 @@ export default function Navbar() {
               {userDetail?._id && (
                 <Link
                   to={"/learning"}
-                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] md:text-[14px] font-pop ${
+                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[12px] md:text-[14px] font-pop ${
                     location.pathname === "/learning"
                       ? " font-bold text-[#1DBF73]"
                       : ""
@@ -230,7 +230,7 @@ export default function Navbar() {
               {" "}
               <span>
                 <div className="custom-tooltip">
-                  <span className="tooltiptext text-[14px] md:text-[12px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] italic">
+                  <span className="tooltiptext text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] italic">
                     Complete Your Profile
                   </span>
                   {/* <div className="h-8 w-8 rounded-full border"><img src={profile} className="h-full w-full" /></div> */}
@@ -251,13 +251,13 @@ export default function Navbar() {
             <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-1">
               <Link
                 to={"/login"}
-                className="bg-[#1DBF73] px-7 rounded-full text-white py-1 xsm:text-[8px] xsm:px-2 font-pop md:text-[14px] md:px-4"
+                className="bg-[#1DBF73] px-7 rounded-full text-white py-1 sm:text-[12px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
               >
                 Log in
               </Link>
               <Link
                 to={"/register"}
-                className="bg-white px-7 rounded-full text-black py-1 xsm:text-[8px] xsm:px-2 font-pop md:text-[14px] md:px-4"
+                className="bg-white px-7 rounded-full text-black py-1 sm:text-[12px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
               >
                 Sign Up
               </Link>
