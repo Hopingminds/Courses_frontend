@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { formatDate } from "../../helpers/helper_function";
 
-const LiveClass = () => {
-  const Data = [
-    {
-      topic: "React",
-      Date: "30 Jun 2014",
-      time: "11:30 AM",
-      meetLink: "https://meet.google.com/wjr-evsu-pdb",
-    },
-  ];
+const LiveClass = ({ data }) => {
+  console.log(data);
+  // const Data = [
+  //   {
+  //     topic: "React",
+  //     Date: "30 Jun 2014",
+  //     time: "11:30 AM",
+  //     meetLink: "https://meet.google.com/wjr-evsu-pdb",
+  //   },
+  // ];
 
   return (
     <>
@@ -20,7 +22,7 @@ const LiveClass = () => {
           <p className="font-pop font-bold text-center">Time</p>
           <p className="font-pop font-bold text-center">Action</p>
         </div>
-        {Data?.map((item, ind) => {
+        {data?.map((item, ind) => {
           return (
             <>
               <div className="grid grid-cols-[1fr,1fr,1fr,1fr] w-full bg-[#E2FFF1] py-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
@@ -28,11 +30,11 @@ const LiveClass = () => {
                   {item?.topic}
                 </p>
                 <p className="font-nu font-semibold text-center">
-                  {item?.Date}
+                  {formatDate(item?.date)}
                 </p>
                 <p className="font-nu font-semibold text-center">{item.time}</p>
                 <p className="font-nu font-semibold text-center">
-                  <Link target="_blank" to={item.meetLink}>
+                  <Link target="_blank" to={item.meetingLink}>
                     Join
                   </Link>
                 </p>
