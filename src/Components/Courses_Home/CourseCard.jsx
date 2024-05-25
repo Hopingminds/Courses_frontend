@@ -57,7 +57,7 @@ const CourseCard = ({
       onMouseEnter={() => toggleHover(ind)}
       onMouseLeave={() => toggleHover(null)}
       href={`/detailcourse/${slug}`}
-      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative h-full 2xl:h-[450px] coursecardhome  bg-white px-3 py-3 xsm:rounded-lg  md:w-[95%] md:h-[260px] xsm:h-[160px] xsm:w-[100%]  ${
+      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative h-full 2xl:h-[450px] coursecardhome  bg-white px-3 py-3 xsm:rounded-md xsm:p-1 md:p-[6px] md:w-[95%] xsm:w-[100%] md:rounded-xl  ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
       style={{
@@ -100,7 +100,7 @@ const CourseCard = ({
           )}
         </span>
       )}
-      <div className="h-fit aspect-[16/9] md:h-[40%]">
+      <div className="h-fit aspect-[16/9] ">
         {mouseHovered === ind ? (
           <ReactPlayer
             className=" rounded-xl xsm:rounded-md border overflow-hidden"
@@ -128,9 +128,9 @@ const CourseCard = ({
           />
         )}
       </div>
-      <div className="flex flex-col gap-6 justify-between h-[47%] xsm:space-y-2 md:space-y-2 md:mt-0 xsm:mt-0">
+      <div className="flex flex-col gap-6 justify-between h-[47%] xsm:gap-1 md:gap-0 md:mt-0 xsm:mt-0">
         <div className="flex flex-col justify-between gap-1 mt-2 xsm:mt-1 xsm:gap-0 md:gap-0">
-          <div className="flex justify-between items-center min-h-[30%]">
+          <div className="flex justify-between items-center min-h-[30%] md:min-h-0">
             <div className="flex items-center space-x-3 max-w-[80%] xsm:max-w-[70%] xsm:space-x-1 md:space-x-2 md:max-w-[70%]">
               {/* <FaUserCircle  className="text-2xl  xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"/> */}
               <img
@@ -147,10 +147,10 @@ const CourseCard = ({
               </p>
             </div>
           </div>
-          <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px] md:h-12 xsm:mt-2 xsm:h-6">
+          <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[10px] md:h-6 xsm:mt-1 xsm:h-6">
             {title.length > 40 ? title.slice(0, 40) + "..." : title}
           </p>
-          <p className="font-pop mt-2 text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px]">
+          <p className="font-pop mt-2 text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px] md:h-10">
             {description.slice(0, 70)}..
           </p>
         </div>
