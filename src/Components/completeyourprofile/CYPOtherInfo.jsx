@@ -46,7 +46,7 @@ const CYPOtherInfo = ({setActiveDetail, setCompleteProfile, user, setUser }) => 
 
             if (!user.email) {
                 toast.error("Enter valid Credentials");
-              } else {
+            } else {
                 try {
                     const res = await axios.put(`${BASE_URL}/updateuser`, user, {
                         headers: {
@@ -62,9 +62,7 @@ const CYPOtherInfo = ({setActiveDetail, setCompleteProfile, user, setUser }) => 
                     toast.error("Profile error");
                     console.error("Profile error", error);
                 }
-              }
-
-            
+            }
         }
     }
 

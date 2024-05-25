@@ -168,7 +168,7 @@ const Router = () => {
                     <Route path='userprofile' element={<UserProfile />} />
                 </Route>
             </Routes>
-            {pathname.includes('college') ? <></> : <Footer />}
+            {pathname.includes('college') || pathname.includes('teacherpanel') ? <></> : <Footer />}
 
         </BrowserRouter >
 

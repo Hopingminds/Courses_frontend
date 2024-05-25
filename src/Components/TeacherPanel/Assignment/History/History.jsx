@@ -8,7 +8,7 @@ import FinalSubmit from '../DeclareResult/FinalSubmit';
 const History = () => {
 	const [declareResult,setDeclareResult] = useState(false);
 	const [declareResultDetails,setDeclareResultDetails] = useState(false);
-	const [resultSubmit, setResultSubmit] = useState(true);
+	const [resultSubmit, setResultSubmit] = useState(false);
 	const [activeSection, setAciveSection] = useState('Details');
 	return (
 		<div>

@@ -23,7 +23,7 @@ const Navbar = () => {
     return (
         <div className='bg-[#000000] w-full text-[#FFFFFF] px-6 py-4 font-int flex justify-between'>
             <div>
-                <p className='font-semibold text-[25px]'>Hii, Abc</p>
+                <p className='font-semibold text-[25px]'>Hii, Anshul</p>
             </div>
             <div className='flex gap-6'>
                 <div className='bg-[#808080] flex justify-center items-center h-[35px] w-[35px] rounded-full relative'>
