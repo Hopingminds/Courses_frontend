@@ -8,7 +8,8 @@ import FinalSubmit from '../DeclareResult/FinalSubmit';
 const History = () => {
 	const [declareResult,setDeclareResult] = useState(false);
 	const [declareResultDetails,setDeclareResultDetails] = useState(false);
-	const [resultSubmit, setResultSubmit] = useState(true);
+	const [resultSubmit, setResultSubmit] = useState(false);
+	const [activeSection, setAciveSection] = useState('Details');
 	return (
 		<div>
 			<div className='grid grid-cols-3 gap-6 gap-y-8'>
@@ -24,12 +25,12 @@ const History = () => {
 			}
 			{declareResultDetails && 
 				<div className='w-[80%] flex right-0 top-0 h-full overflow-y-auto absolute fadeInLeft border-l-[1.5px] border-[#E4E4E4] customScrollfortp'>
-					<DeclareResultDetails setDeclareResultDetails={setDeclareResultDetails} setResultSubmit={setResultSubmit}/>
+					<DeclareResultDetails setDeclareResultDetails={setDeclareResultDetails} setResultSubmit={setResultSubmit} activeSection={activeSection} setAciveSection={setAciveSection}/>
 				</div>
 			}
 			{resultSubmit &&
 				<div className='w-[80%] flex right-0 top-0 h-full overflow-y-auto absolute fadeInLeft border-l-[1.5px] border-[#E4E4E4] customScrollfortp'>
-					<FinalSubmit setResultSubmit={setResultSubmit}/>
+					<FinalSubmit setResultSubmit={setResultSubmit} activeSection={activeSection} setAciveSection={setAciveSection}/>
 				</div>
 			}
 		</div>

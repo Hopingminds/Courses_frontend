@@ -6,8 +6,8 @@ import DRDetails from './DRDetails'
 import DRResult from './DRResult'
 import ConfirmPopUp from './ConfirmPopUp'
 
-const DeclareResultDetails = ({setDeclareResultDetails, setResultSubmit}) => {
-    const [activeSection, setAciveSection] = useState('Details');
+const DeclareResultDetails = ({setDeclareResultDetails, setResultSubmit, setAciveSection, activeSection}) => {
+    // const [activeSection, setAciveSection] = useState('Details');
     const [confirmPopUp, setConfirmPopUp] = useState(false)
     return (
         <div className={`bg-white h-full w-full px-4 py-6 font-int relative ${confirmPopUp && 'appearance-none'}`}>

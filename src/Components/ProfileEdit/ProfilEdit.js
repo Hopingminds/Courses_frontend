@@ -53,6 +53,44 @@ const ProfilEdit = () => {
     stream: "",
     yearofpass: "",
     bio: "",
+    address:'',
+    city:'',
+    state:'',
+    degree:'',
+    college:'',
+    yearofpass:'',
+    percentage:'',
+    trainingInternships:[{
+      companyName:'',
+      postName:'',
+      location:'',
+      duration:{
+        from:'',
+        to:'',
+      },
+    }],
+    projects:[{
+      projectName:'',
+      projectRole:'',
+      projectDescription:'',
+    }],
+    certifications:[{
+      certificateName:'',
+      certifiedBy:'',
+    }],
+    skills:[{
+      skill:'',
+      skill_lever:'',
+    }],
+    profileLinks:{
+      hackerRank:'',
+      github:'',
+      linkedIn:'',
+      codeChef:'',
+      leetCode:'',
+      geekForGeeks:'',
+    },
+    isProfileComplete:false,
   });
 
   // console.log(user)
@@ -332,7 +370,7 @@ const ProfilEdit = () => {
             </div>
           </div>
         }
-        { completeProfile === "completeprofile" && <CYPMain setCompleteProfile={setCompleteProfile} /> }
+        { completeProfile === "completeprofile" && <CYPMain setCompleteProfile={setCompleteProfile} setUser={setUser} user={user} /> }
         {show ? (
           <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
             <Spinner className="" />

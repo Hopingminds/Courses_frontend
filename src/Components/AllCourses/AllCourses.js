@@ -38,7 +38,7 @@ const AllCourses = () => {
   const [Temp, setTemp] = useState([]);
   const [show, setshow] = useState(false);
   const [videoSkeleton, setvideoSkeleton] = useState(true)
-
+const [secondloader, setsecondloader] = useState(true)
   const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
 
@@ -84,6 +84,7 @@ const AllCourses = () => {
   // console.log(userDetail.blocked_courses)
   const [IsMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
+  const [loaded, setloaded] = useState(true)
   const [selectedCourse, setSelectedCourse] = useState("");
   // console.log(pat);
 
@@ -207,7 +208,9 @@ const AllCourses = () => {
   const handleContextMenu = (e) => {
     e.preventDefault(); // Prevent default context menu behavior
   };
-
+setTimeout(() => {
+  setloaded(false)
+}, 1000);
   return (
     <>
       <head>
@@ -254,10 +257,9 @@ const AllCourses = () => {
           </button>
         </div>
 
-        <div className="h-full w-full card__skeleton bg-white">
-          <ReactPlayer
+        <div className="h-full w-full bg-gray-300">
+         <ReactPlayer
           onContextMenu={handleContextMenu}
-
             // url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
             url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
             height="100%"
@@ -273,6 +275,7 @@ const AllCourses = () => {
               }
             }}
           />
+
         </div>
 
         <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-28 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16 md:space-x-12">

@@ -2,8 +2,9 @@ import React from 'react'
 import Cross from '../../../../Assets/Icons/tpcross.svg'
 import Tick from '../../../../Assets/Icons/tpdoubletick.svg'
 import DRFinalList from './DRFinalList'
+import DRDetails from './DRDetails'
 
-const FinalSubmit = ({setResultSubmit}) => {
+const FinalSubmit = ({setResultSubmit,activeSection, setAciveSection}) => {
     return (
         <div className='bg-white h-full w-full px-4 py-6 font-int'>
             <div className='flex flex-col gap-3'>
@@ -19,14 +20,16 @@ const FinalSubmit = ({setResultSubmit}) => {
                 </div>
                 <p className='text-[20px] text-[#3C3C3C] font-semibold'>Articulate structure of C++ and Java in Semester 1</p>
                 <div className='flex bg-[#EEEFF9] w-max text-[13px] rounded'>
-                    {/* <button onClick={() => setAciveSection("Details")} className={`py-2 w-[120px]  text-[#7E7E7E] rounded ${activeSection === "Details" ?'bg-[#2C62EE] text-white':''}`}>
+                    <button onClick={() => setAciveSection("Details")} className={`py-2 w-[120px]  text-[#7E7E7E] rounded ${activeSection === "Details" ?'bg-[#2C62EE] text-white':''}`}>
                         Details
                     </button>
                     <button onClick={() => setAciveSection("Result")} className={`py-2 w-[120px] text-[#7E7E7E] rounded ${activeSection === "Result" ?'bg-[#2C62EE] text-white':''}`}>
                         Result
-                    </button> */}
+                    </button>
                 </div>
-                <DRFinalList/>
+                {activeSection === "Result" && <DRFinalList/>}
+                {activeSection === "Details" && <DRDetails/>}
+
             </div>
         </div>
     )
