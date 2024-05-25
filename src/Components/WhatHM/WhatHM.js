@@ -65,7 +65,7 @@ const WhatHM = () => {
         </div>
         <div className="flex flex-row gap-20 justify-center xsm:gap-4 mt-8 xsm:mt-2 md:mt-4 md:gap-10">
           <div
-            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[15vh] xsm:rounded-lg md:w-[35%] md:h-[35%] relative"
+            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[90px] xsm:rounded-lg md:w-[35%] md:h-[160px] md:rounded-xl relative"
             onClick={() => handlePlay(0)}
           >
             <ReactPlayer
@@ -109,7 +109,7 @@ const WhatHM = () => {
             )} */}
           </div>
           <div
-            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[15vh] xsm:rounded-lg md:w-[35%] md:h-[35%] relative"
+            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden xsm:w-[35%] xsm:h-[90px] xsm:rounded-lg md:w-[35%] md:h-[160px] md:rounded-xl relative"
             onClick={() => handlePlay(1)}
           >
             <ReactPlayer
