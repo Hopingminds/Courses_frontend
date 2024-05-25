@@ -122,7 +122,7 @@ export default function Navbar() {
         
         `}
       </style>
-      <div className="w-full flex justify-between px-[5%] h-20 items-center  font-pop fixed top-0 z-[9999] bg-[#0F2027] xsm:h-12 sm:h-12 xsm:px-[2%] text-white md:h-14">
+      <div className="w-full 2xl:w-[66%] flex justify-between px-[5%] h-20 items-center  font-pop fixed top-0 z-[9999] bg-[#0F2027] xsm:h-12 sm:px-[3%] sm:h-12 xsm:px-[2%] text-white md:h-14">
         <Link to="/" onClick={Top} className=" cursor-pointer">
           <img
             src="/logo.png"
@@ -135,7 +135,7 @@ export default function Navbar() {
               <Link
                 to={"/"}
                 onClick={Top}
-                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[12px] md:text-[14px] font-pop ${
+                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[10px] md:text-[14px] font-pop ${
                   location.pathname === "/" ? " font-bold text-[#1DBF73]" : ""
                 }`}
               >
@@ -144,7 +144,7 @@ export default function Navbar() {
               <Link
                 to={"/course"}
                 onClick={Top}
-                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[12px] md:text-[14px] font-pop  ${
+                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[10px] md:text-[14px] font-pop  ${
                   location.pathname === "/course"
                     ? " font-bold text-[#1DBF73]"
                     : ""
@@ -155,7 +155,7 @@ export default function Navbar() {
               <Link
                 to={"/internship"}
                 onClick={Top}
-                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[12px] md:text-[14px] font-pop  ${
+                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[10px] md:text-[14px] font-pop  ${
                   location.pathname === "/internship"
                     ? " font-bold text-[#1DBF73]"
                     : ""
@@ -166,7 +166,7 @@ export default function Navbar() {
               <Link
                 to={"/hire-from-us"}
                 onClick={Top}
-                className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] sm:text-[12px] md:text-[14px] font-pop ${
+                className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] sm:text-[10px] md:text-[14px] font-pop ${
                   location.pathname === "/hire-from-us"
                     ? " font-bold text-[#1DBF73]"
                     : ""
@@ -179,7 +179,7 @@ export default function Navbar() {
               <a
                 href={location.pathname == "/" ? "#" : "/pap"}
                 onClick={ScrollToPap}
-                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[12px] cursor-pointer md:text-[14px] font-pop ${
+                className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[10px] cursor-pointer md:text-[14px] font-pop ${
                   location.pathname === "#pap"
                     ? " font-bold text-[#1DBF73]"
                     : ""
@@ -191,7 +191,7 @@ export default function Navbar() {
               {userDetail?._id && (
                 <Link
                   to={"/learning"}
-                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[12px] md:text-[14px] font-pop ${
+                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[8px] sm:text-[10px] md:text-[14px] font-pop ${
                     location.pathname === "/learning"
                       ? " font-bold text-[#1DBF73]"
                       : ""
@@ -248,16 +248,16 @@ export default function Navbar() {
               </span>{" "}
             </Link>
           ) : (
-            <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-1">
+            <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-1 sm:pl-0 sm:space-x-3">
               <Link
                 to={"/login"}
-                className="bg-[#1DBF73] px-7 rounded-full text-white py-1 sm:text-[12px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
+                className="bg-[#1DBF73] px-7 rounded-full text-white py-1 sm:text-[10px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
               >
                 Log in
               </Link>
               <Link
                 to={"/register"}
-                className="bg-white px-7 rounded-full text-black py-1 sm:text-[12px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
+                className="bg-white px-7 rounded-full text-black py-1 sm:text-[10px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
               >
                 Sign Up
               </Link>

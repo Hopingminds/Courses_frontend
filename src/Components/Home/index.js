@@ -53,7 +53,7 @@ export default function Home() {
       <div className="space-y-8 xsm:space-y-6 md:space-y-10">
         <Herosection />
         <Companies />
-        <Courses_Home />
+        {/* <Courses_Home /> */}
         <WhatHM />
         <OurFeatures />
         <PapHome />
