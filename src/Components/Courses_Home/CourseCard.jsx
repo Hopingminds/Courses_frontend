@@ -57,7 +57,7 @@ const CourseCard = ({
       onMouseEnter={() => toggleHover(ind)}
       onMouseLeave={() => toggleHover(null)}
       href={`/detailcourse/${slug}`}
-      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative h-[420px] 2xl:h-[450px] coursecardhome  bg-white p-2 xsm:rounded-lg  md:w-[95%] md:h-[260px] xsm:h-[160px] xsm:w-[100%]  ${
+      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative h-full 2xl:h-[450px] coursecardhome  bg-white px-3 py-3 xsm:rounded-lg  md:w-[95%] md:h-[260px] xsm:h-[160px] xsm:w-[100%]  ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
       style={{
@@ -103,7 +103,7 @@ const CourseCard = ({
       <div className="h-fit aspect-[16/9] md:h-[40%]">
         {mouseHovered === ind ? (
           <ReactPlayer
-            className=" rounded-xl xsm:rounded-md border"
+            className=" rounded-xl xsm:rounded-md border overflow-hidden"
             height={"100%"}
             width={"100%"}
             url={featured_video}
@@ -122,14 +122,14 @@ const CourseCard = ({
         ) : (
           <img
             // style={{ height: "10rem" }}
-            className="w-full rounded-lg h-full object-cover "
+            className="w-full rounded-lg h-full "
             src={image}
             alt="Course"
           />
         )}
       </div>
-      <div className="space-y-2 flex flex-col justify-between h-[53%] xsm:space-y-2 md:space-y-2 md:mt-0 xsm:mt-0">
-        <div className="flex flex-col gap-2 mt-2 xsm:mt-1 xsm:gap-0 md:gap-0">
+      <div className="flex flex-col gap-6 justify-between h-[47%] xsm:space-y-2 md:space-y-2 md:mt-0 xsm:mt-0">
+        <div className="flex flex-col justify-between gap-1 mt-2 xsm:mt-1 xsm:gap-0 md:gap-0">
           <div className="flex justify-between items-center min-h-[30%]">
             <div className="flex items-center space-x-3 max-w-[80%] xsm:max-w-[70%] xsm:space-x-1 md:space-x-2 md:max-w-[70%]">
               {/* <FaUserCircle  className="text-2xl  xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"/> */}
@@ -150,7 +150,7 @@ const CourseCard = ({
           <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[12px] md:h-12 xsm:mt-2 xsm:h-6">
             {title.length > 40 ? title.slice(0, 40) + "..." : title}
           </p>
-          <p className="font-pop text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px]">
+          <p className="font-pop mt-2 text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px]">
             {description.slice(0, 70)}..
           </p>
         </div>
