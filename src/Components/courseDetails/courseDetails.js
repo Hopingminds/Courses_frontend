@@ -185,6 +185,8 @@ export default function CDDetails() {
     e.preventDefault(); // Prevent default context menu behavior
   };
 
+
+  console.log(Data?.liveClasses)
   return (
     <>
       <div className="flex justify-between gap-5">
@@ -354,6 +356,7 @@ export default function CDDetails() {
                   courseLessons={courseLessons}
                   courseAssignment={courseAssignment}
                   totalLessons={totalLessons}
+                  liveclass={Data?.liveClasses}
                 />
               </div>
             </div>

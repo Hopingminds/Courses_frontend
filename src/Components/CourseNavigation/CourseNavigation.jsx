@@ -11,6 +11,7 @@ const CourseNavigation = ({
   courseLessons,
   totalLessons,
   courseAssignment,
+  liveclass,
 }) => {
   const [activeComponent, setActiveComponent] = useState("Overview");
 
@@ -81,7 +82,7 @@ const CourseNavigation = ({
           courseAssignment={courseAssignment}
         />
       )}
-      {activeComponent === "liveClass" && <LiveClass />}
+      {activeComponent === "liveClass" && <LiveClass data={liveclass} />}
       {/* {activeComponent === "Launch" && <LaunchLab />} */}
     </div>
   );
