@@ -120,12 +120,12 @@ export default function Coursecontents({
   };
 
   return (
-    <div className="bg-[#1DBF73] rounded-2xl border border-2 xsm:absolute xsm:top-[3rem] xsm:right-0 xsm:w-[80vw]">
+    <div className="bg-[#E2FFF1] rounded-3xl xsm:absolute xsm:top-[3rem] xsm:right-0 xsm:w-[80vw]">
       <Toaster />
       <div className="px-5 py-8 xsm:py-4 xsm:px-2 md:px-3 md:py-5">
         <div className="space-y-2 xsm:space-y-1">
           <div className="flex flex-row justify-between">
-            <p className="font-pop font-semibold text-[21px] text-[#FFFFFF] xsm:text-[12px] md:text-[16px]">
+            <p className="font-pop font-semibold text-[21px] text-[#1DBF73] xsm:text-[12px] md:text-[16px]">
               Course Contents
             </p>
             {window.innerWidth <= 480 && (
@@ -133,7 +133,7 @@ export default function Coursecontents({
             )}
           </div>
           <div className="flex justify-between items-center">
-            <p className="font-pop text-[12px] text-[#FFFFFF] xsm:text-[10px] md:text-[10px]">
+            <p className="font-pop text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px]">
               {completed_lessons?.length}/{totallessons} COMPLETED
             </p>
             {/* <img className="w-[19px] h-[19px] xsm:w-4 xsm:h-4 md:w-4 md:h-4" src="../Icons/Calender.svg" /> */}
@@ -147,7 +147,7 @@ export default function Coursecontents({
           return (
             <>
               <div
-                className="mt-3  border border-[#1DBF73] bg-white rounded-xl cursor-pointer md:p-1"
+                className="mt-3  border border-[#1DBF73] bg-[#F1FFF8] rounded-xl cursor-pointer md:p-1"
                 key={ind}
               >
                 <div className="">
@@ -168,7 +168,7 @@ export default function Coursecontents({
                           <p className="text-[#252641CC] text-[11px] font-pop font-medium"></p>
                         </div>
                         <div className="flex items-center space-x-1">
-                          <IoBookOutline className="text-[#252641CC] xsm:h-3 xsm:w-3 md:h-3 md:w-3" />
+                          <IoBookOutline className="text-[#252641CC] w-4 h-4 xsm:h-3 xsm:w-3 md:h-3 md:w-3" />
                           <p className="text-[#252641CC] text-[11px] font-pop font-medium xsm:text-[8px] md:text-[10px]">
                             {val?.lessons?.length} Lessons
                           </p>
@@ -215,14 +215,13 @@ export default function Coursecontents({
                                     </p>
                                   </button>
 
-                                  <ul className="list-none flex justify-between bg-white text-sm  py-1 z-40 gap-2">
+                                  <ul className="list-none flex items-center bg-[#F1FFF8] text-sm  py-1 z-40 gap-1 text-[12px]">
                                     {chapter?.notes && (
-                                      <span className=" flex justify-between items-center px-3 border rounded-lg py-1">
+                                      <span className=" flex justify-between items-center px-2 border rounded-md h-max">
 
-                                        <a href={chapter?.notes} target="_blank" className="flex gap-2">
-                                          <Notes />
-                                          <li className=" px-2xxxxxxxxx md:text-[10px]">
-
+                                        <a href={chapter?.notes} target="_blank" className="flex items-center gap-1">
+                                          <Notes className="w-3 h-3" />
+                                          <li className="text-[12px] md:text-[10px]">
                                             Notes
                                           </li>
                                         </a>
@@ -231,22 +230,22 @@ export default function Coursecontents({
                                     )}
 
                                     {chapter?.assignment && (
-                                      <span className="flex justify-between items-center gap-2">
+                                      <span className=" flex gap-1 items-center h-max">
 
-                                        <a href={chapter?.assignment} target="_blank" className="flex gap-2 border rounded-lg  px-3 py-1">
-                                          <Assignment />
-                                          <li className="md:text-[10px]">
+                                        <a href={chapter?.assignment} target="_blank" className="flex items-center border rounded-md gap-1 px-2">
+                                          <Assignment className="w-3 h-3"/>
+                                          <li className="text-[12px] md:text-[10px]">
 
                                             Assignment
                                           </li>
                                         </a>
-                                        <span className="flex gap-2 border rounded-lg px-3 py-1 relative ">
+                                        <span className="flex gap-2 border rounded-md px-2 py-1 relative ">
 
 
                                           <MdOutlineFileUpload
                                             size={16}
                                             onClick={handleFileUploadClick}
-                                            className="peer"
+                                            className="peer w-3 h-3"
                                           />
                                           <input
                                             ref={fileInputRef}

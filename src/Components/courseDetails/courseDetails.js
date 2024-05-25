@@ -11,6 +11,7 @@ import Main from "../Main/Main";
 import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import { Link } from "react-router-dom";
 import SideBar from "./SideBar.jsx"
+import NewSideBar from "./NewSideBar.jsx";
 
 
 export default function CDDetails() {
@@ -188,8 +189,9 @@ export default function CDDetails() {
     <>
       <div className="flex justify-between gap-5">
         {/* side menu */}
-        <div className='w-[15%]'>
-          <SideBar />
+        <div className='w-[20%]'>
+          {/* <SideBar /> */}
+          <NewSideBar/>
         </div>
         {/* <div className="w-16 h-[100vh] sticky top-12 bg-[#0F2027] flex flex-col justify-start items-center gap-8 py-10 pl-[2%] pr-2 text-white">
           <div className="group relative">
