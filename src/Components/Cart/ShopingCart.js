@@ -1,17 +1,18 @@
 import toast, { Toaster } from "react-hot-toast";
 import "./ShopingCart.css";
 import { BASE_URL } from "../../Api/api";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { Link } from "react-router-dom";
 import Spinner from "../Spinner";
+import { Globalinfo } from "../../App";
 
 function ShopingCart() {
   const [Data, setData] = useState([]);
   const [total, settotal] = useState(0);
   const [show, setshow] = useState(false);
   let token = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
-
+  const { setCartSize,cartSize } = useContext(Globalinfo);
   function Total(data) {
     let price = 0;
     data?.map((item) => {
@@ -36,6 +37,7 @@ function ShopingCart() {
       setData(response.data);
       Total(response.data);
       toast.success(response.message);
+      setCartSize(cartSize-1);
       setshow(false);
     } else {
       toast.error(response.message);
@@ -67,7 +69,7 @@ function ShopingCart() {
           </h2>
         </div>
       </div>
-      <div className="flex justify-between items-start mt-10 min-h-[70vh] lg:flex-col lg:items-center h-auto  px-[3%] xsm:flex-col xsm:justify-start xsm:h-auto xsm:gap-8 xsm:my-6 md:h-auto md:my-10">
+      <div className="flex justify-between items-start mt-10 min-h-[70vh] h-auto  px-[3%] xsm:flex-col xsm:justify-start xsm:h-auto xsm:gap-8 xsm:my-6 md:h-auto md:my-10">
         <div className="w-[75%] space-y-10 xsm:w-[100%] xsm:space-y-4 md:space-y-8">
           {Data?.length > 0 ? (
             Data?.map((item) => {

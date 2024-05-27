@@ -18,6 +18,14 @@ const CourseNavigation = ({
 
   const renderComponent = (componentName) => {
     setActiveComponent(componentName);
+    
+    // Ensure the component is set before scrolling
+    setTimeout(() => {
+      const scrollDiv = document.getElementById('ScrollToTop');
+      if (scrollDiv) {
+          scrollDiv.scrollIntoView({ behavior: 'smooth' });
+      }
+  }, 0);
   };
   return (
     <div className="w-full min-h-[540px] mt-[20px] xsm:w-full">

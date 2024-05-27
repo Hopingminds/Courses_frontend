@@ -21,6 +21,10 @@ export default function Commoncard(props) {
   let login = localStorage.getItem("COURSES_USER_TOKEN");
   let navigate = useNavigate();
   // const [Show, setShow] = useState(false)
+
+  const { setCartSize,cartSize } = useContext(Globalinfo);
+
+
   async function Addtocart(courseid) {
     try {
       if (login) {
@@ -40,10 +44,13 @@ export default function Commoncard(props) {
         console.log(response);
         if (response.success) {
           toast.success(response.msg);
+          setCartSize(cartSize +1);
         } else {
           toast.error(response.msg);
         }
       } else {
+        localStorage.setItem('ADD_TO_CART_HISTORY',window.location.pathname);
+        console.log("add to cart withour log")
         navigate("/login");
       }
     } catch (error) {

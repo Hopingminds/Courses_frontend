@@ -26,22 +26,22 @@
 .lesson-container{
     background: #fff;
     border-radius: 8px;
-    padding: 16px 20px 16px 20px;
+    /* padding: 16px 20px 16px 20px; */
     margin-top: 12px;
     margin-bottom: 12px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
-.lesson-container:active{
+/* .lesson-container:active{
     color: #1DBF73;
-}
+} */
 
 .lesson-container-contents{
-    margin: 10px 0;
+    margin-bottom: 10px;
     gap: 10px;
     display: none;
     flex-direction: column;
-    
+    padding-bottom: 16px;
 }
 
 
@@ -49,6 +49,8 @@
 .lesson-container-title{
     display: flex;
     justify-content: space-between;
+    padding: 16px 20px 16px 20px;
+    cursor: pointer;
 }
 
 .lesson-container-title-left, .lesson-container-title-right{
@@ -106,11 +108,11 @@
     font-size: 14px;
 }
 
-.lesson-container-content-left p:focus{
+/* .lesson-container-content-left p:focus{
     color: #1DBF73;
     font-family: Nunito Sans;
     font-size: 14px;
-}
+} */
 
 .lesson-container-content-right button{
     padding: 4px 12px;
@@ -184,9 +186,9 @@
         font-size: 12px;
     }
 
-    .lesson-container{
+    /* .lesson-container{
         padding: 14px 10px;
-    }
+    } */
 
     .lesson-container-title-left p{
         font-size: 10px;

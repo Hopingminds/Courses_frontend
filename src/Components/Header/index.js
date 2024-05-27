@@ -14,18 +14,19 @@ export default function Navbar() {
   const [profile, setprofile] = useState("");
   const {
     cartData,
+    cartSize,
     GetCart,
     wishListData,
     GetWishList,
     userDetail,
     getUserDetails,
   } = useContext(Globalinfo);
-  // console.log(userDetail)
+  // console.log(cartData)
   const location = useLocation();
   // console.log(location);
   let navigate = useNavigate();
   // let token = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
-  const [cartSize, setCartSize] = useState(0);
+  // const [cartSize, setCartSize] = useState(0);
   function Top() {
     window.scrollTo(0, 0);
     navigate("/");

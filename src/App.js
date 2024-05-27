@@ -14,7 +14,7 @@ function App() {
   const [userDetail, setUserDetail] = useState();
   const [checkoutData, setCheckoutData] = useState();
   const [adminlogin, setadminlogin] = useState()
-
+  const [cartSize, setCartSize] = useState(0);
   const [user, setUser] = useState(null);
 
   const getUser = async () => {
@@ -43,12 +43,16 @@ function App() {
 
 
   async function GetCart() {
-
     if (userDetail?._id) {
       try {
-
+        let token = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
+        let url = BASE_URL + "/getcart?email=" + token.email;
+        const data = await fetch(url);
+        const response = await data.json();
+        setCartSize(response?.cart?.length);
+        console.log(response?.cart?.length);
       } catch (error) {
-        console.log(error)
+        console.error(error);
       }
     }
     else {
@@ -100,11 +104,11 @@ function App() {
   }
 
   return (
-    <Globalinfo.Provider value={{ cartData, Getadmindetails, adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
+    <Globalinfo.Provider value={{cartSize,setCartSize, cartData, Getadmindetails, adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
       <div className='2xl:px-[17%]'>
-      <div className="fixed right-0 bottom-4 z-[987656789]">
+      {/* <div className="fixed right-0 bottom-4 z-[987656789]">
            <ChatBot className="w-fit" />
-      </div>
+      </div> */}
       <Router />
 
       </div>

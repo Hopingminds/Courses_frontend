@@ -316,7 +316,7 @@ export default function CDDetails() {
               </div>
             </div>
           </div>
-          <div className=" w-[65%] pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]">
+          <div id="ScrollToTop" className=" w-[65%] pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]">
             <div className="CCD-Header-container flex justify-evenly">
               <div className="w-[100%] xsm:mb-10">
                 <div className=" mt-8 xsm:mt-0 md:mt-0">
