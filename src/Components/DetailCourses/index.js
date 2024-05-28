@@ -55,19 +55,13 @@ export default function DetailCourses() {
                             </div>
                             <p>Based on feedback received from 250+ learners</p>
                         </div>
-                        <div className='text-white mt-4 font-pop text-[14px]'>
-                            <div className='flex gap-2 items-center'>
-                                <TiTick />
-                                <p>{Data?.whatWillILearn[0]}</p>
-                            </div>
-                            <div className='flex gap-2 items-center'>
-                                <TiTick />
-                                <p>{Data?.whatWillILearn[1]}</p>
-                            </div>
-                            <div className='flex gap-2 items-center'>
-                                <TiTick />
-                                <p>{Data?.whatWillILearn[2]}</p>
-                            </div>
+                        <div className='text-white mt-4 font-pop text-[14px] grid grid-cols-2 gap-2'>
+                            {Data?.whatWillILearn?.map((item, index) => (
+                                <div key={index} className='flex gap-2 items-center'>
+                                    <TiTick className='w-10 h-10'/>
+                                    <p>{item}</p>
+                                </div>
+                            ))}
                         </div>
                         {/* <div className='CCDetails-Header-content-row2 w-[90%] xsm:mt-1 '>
                             <div className='CCDetails-Header-content-row2-clock gap-1'>
