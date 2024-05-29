@@ -1,5 +1,5 @@
 .page-header {
-  background-image: url("../../../public//react_bg.png");
+  /* background-image: url("../../../public//react_bg.png"); */
   /* background-size: cover;
   background-position: center; */
   height: 325px;
@@ -9,7 +9,7 @@
 
 .CCDetails-Header-main {
   display: flex;
-  background-image: url("../../../public//react_bg.png");
+  /* background-image: url("../../../public//react_bg.png"); */
   /* background-position: center;
   background-size: cover; */
   height: 325px;
