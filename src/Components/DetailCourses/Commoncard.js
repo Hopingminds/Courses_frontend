@@ -106,9 +106,9 @@ export default function Commoncard(props) {
   
   return (
     <div className="bg-[#E2FFF1] w-[33%] h-max my-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3">
-      <div className="h-[225px] bg-white xsm:h-[65px] md:h-[35%] relative">
+      <div className="h-max rounded-xl overflow-hidden bg-white md:h-[35%] relative">
         {
-          <span className="bg-transparent p-4 absolute top-6 left-2 z-[99]">
+          <span className="bg-transparent p-4 absolute top-0 left-0 z-[99]">
             {IsMuted ? (
               <IoVolumeMuteOutline
                 size={"20"}

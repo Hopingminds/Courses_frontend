@@ -1,7 +1,7 @@
 .page-header {
   background-image: url("../../../public//react_bg.png");
-  background-size: cover;
-  background-position: center;
+  /* background-size: cover;
+  background-position: center; */
   height: 325px;
   /* opacity: 0.8; */
   /* background-color: linea; */
@@ -10,8 +10,8 @@
 .CCDetails-Header-main {
   display: flex;
   background-image: url("../../../public//react_bg.png");
-  background-position: center;
-  background-size: cover;
+  /* background-position: center;
+  background-size: cover; */
   height: 325px;
   /* background-color: black;
   opacity: 0.9; */

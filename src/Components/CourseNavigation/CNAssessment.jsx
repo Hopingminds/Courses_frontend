@@ -24,6 +24,7 @@ const CNAssessment = () => {
                 // setCompleted(response?.isTestCompleted);
                 if (response.success) {
                 // setshow(false);
+                localStorage.setItem('history',window.location.pathname);
                 }
                 console.log(response?.data);
                 console.log(response?.[0]?.module_name);
