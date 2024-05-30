@@ -140,6 +140,18 @@ export default function Question() {
     }
   }
 
+  function handlePrev() {
+    if(localStorage.getItem('history')){
+      let history=localStorage.getItem('history');
+      localStorage.removeItem('history')
+      navigate(history)
+  }
+  else{
+    navigate('/modules');
+  }
+
+  }
+
   //   ............
   //   timer
   // useEffect(() => {
@@ -346,10 +358,10 @@ export default function Question() {
       <Toaster />
       <div className="px-[6%] space-y-5 py-2">
         <div className=" flex justify-between items-center border p-3  rounded-lg">
-          <Link to="/modules" className="flex items-center space-x-3">
+          <div onClick={handlePrev} className="flex items-center space-x-3 cursor-pointer">
             <FaArrowLeft />
             <p className="font-semibold">Go Back to {data?.module} Module</p>
-          </Link>
+          </div>
 
           <div className="flex items-center space-x-3">
             <FaLessThan
