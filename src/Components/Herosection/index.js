@@ -100,7 +100,8 @@ import Square from "../../Assests/Images/home-square.png";
 // import Img5 from "../../Assests/Images/stu5.jpg";
 // import Img6 from "../../Assests/Images/stu6.jpg";
 import { Link } from "react-router-dom";
-
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 export default function Herosection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   let Img1='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442041699-stu1.jpg'
@@ -164,19 +165,41 @@ export default function Herosection() {
 
   return (
     <>
-      <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] xsm:pt-5">
+     <Splide  options={{
+                        type: "loop",
+                        perPage:1,
+                        pagination: false,
+                        perMove: 1,
+                        wheel: false,
+                        arrows: false,
+                        autoplay: true,
+                        interval: 3000,
+                        speed: 1000,
+                        // delay: 1,
+                        pauseOnHover: false,
+                        drag: true,
+                        
+                    }}>
+<SplideSlide>
+<img src='/firstbanner.svg'/>
+</SplideSlide>
+<SplideSlide>
+
+<img src='/secondbanner.svg'/>
+</SplideSlide>
+<SplideSlide>
+
+<img src='/thirdbanner.svg'/>
+</SplideSlide>
+<SplideSlide>
+
+<img src='/fourthbanner.svg'/>
+</SplideSlide>
+
+<SplideSlide>
+   <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] xsm:pt-5 h-[720px] lg:h-[505px]">
         <div className="flex flex-col gap-10 xl:gap-12 xsm:gap-6 sm:gap-6">
-          {/* <div className="">
-            <img
-              src={Circle}
-              className="w-10 h-10 animate-bounce z-0 md:w-8 md:h-8 xsm:w-4 xsm:h-4"
-              style={{
-                position: "absolute",
-                top: circlePosition.y,
-                left: circlePosition.x,
-              }}
-            />
-          </div> */}
+  
           <div className="text-[20px] leading-10  text-white font-pop text-wrap w-[90%] sm:text-[14px] xl:text-[26px] md:text-[16px] md:leading-6 sm:leading-6 xsm:text-[12px] xsm:leading-4">
 
             Unlock Opportunities with 200+ Leading Corporates, Master Skills with Industry Experts, and Stay up-skilled with our Annually Updated Curriculum; Experience Personalized Career Coaching and Exclusive Networking Events!
@@ -261,6 +284,9 @@ export default function Herosection() {
 
         </div>
       </div>
+</SplideSlide>
+
+</Splide>
     </>
   );
 }
