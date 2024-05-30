@@ -197,7 +197,7 @@ export default function Herosection() {
 </SplideSlide>
 
 <SplideSlide>
-   <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] xsm:pt-5 h-[720px] lg:h-[505px]">
+   <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] xsm:pt-5 h-[37.2vw]">
         <div className="flex flex-col gap-10 xl:gap-12 xsm:gap-6 sm:gap-6">
   
           <div className="text-[20px] leading-10  text-white font-pop text-wrap w-[90%] sm:text-[14px] xl:text-[26px] md:text-[16px] md:leading-6 sm:leading-6 xsm:text-[12px] xsm:leading-4">
