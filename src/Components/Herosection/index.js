@@ -180,23 +180,7 @@ export default function Herosection() {
                         drag: true,
                         
                     }}>
-<SplideSlide>
-<img src='/firstbanner.svg'/>
-</SplideSlide>
-<SplideSlide>
-
-<img src='/secondbanner.svg'/>
-</SplideSlide>
-<SplideSlide>
-
-<img src='/thirdbanner.svg'/>
-</SplideSlide>
-<SplideSlide>
-
-<img src='/fourthbanner.svg'/>
-</SplideSlide>
-
-<SplideSlide>
+                      <SplideSlide>
    <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] xsm:pt-5 h-[37.2vw]">
         <div className="flex flex-col gap-10 xl:gap-12 xsm:gap-6 sm:gap-6">
   
@@ -285,6 +269,23 @@ export default function Herosection() {
         </div>
       </div>
 </SplideSlide>
+<SplideSlide>
+<img src='/firstbanner.svg'/>
+</SplideSlide>
+<SplideSlide>
+
+<img src='/secondbanner.svg'/>
+</SplideSlide>
+<SplideSlide>
+
+<img src='/thirdbanner.svg'/>
+</SplideSlide>
+<SplideSlide>
+
+<img src='/fourthbanner.svg'/>
+</SplideSlide>
+
+
 
 </Splide>
     </>
