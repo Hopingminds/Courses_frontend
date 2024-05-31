@@ -191,10 +191,13 @@ export default function Herosection() {
           <SplideSlide>
             <img className="xsm:h-[200px]" src='/fourthbanner.svg'/>
           </SplideSlide>
+
           <SplideSlide>
-            <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] xsm:pt-5 h-[720px] lg:h-[505px] xsm:h-[200px]">
-              <div className="flex flex-col gap-10 xl:gap-12 xsm:gap-1 sm:gap-6">
-                <div className="text-[20px] leading-10  text-white font-pop text-wrap w-[90%] sm:text-[14px] xl:text-[26px] md:text-[16px] md:leading-6 sm:leading-6 xsm:text-[10px] xsm:leading-4">
+            <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] xsm:pt-5 h-[37.2vw] xsm:h-[250px]">
+              <div className="flex flex-col gap-10 xl:gap-12 xsm:gap-2 sm:gap-6">
+        
+                <div className="text-[20px] leading-10  text-white font-pop text-wrap w-[90%] sm:text-[14px] xl:text-[26px] md:text-[16px] md:leading-6 sm:leading-6 xsm:text-[11px] xsm:leading-4 xsm:text-balance">
+
                   Unlock Opportunities with 200+ Leading Corporates, Master Skills with Industry Experts, and Stay up-skilled with our Annually Updated Curriculum; Experience Personalized Career Coaching and Exclusive Networking Events!
                 </div>
                 <div className="text-[18px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap sm:h-10 sm:text-[12px] xl:text-[24px] md:text-[18px] xsm:text-[9px] xsm:h-8">
@@ -207,13 +210,14 @@ export default function Herosection() {
                   ) : (
                     <Link
                       to="/login"
-                      className="text-white z-20 text-[16px] font-nu font-bold bg-[#1DBF73] rounded-full py-2 px-10 sm:px-6 sm:py-1 sm:text-[12px] xl:text-[20px] md:text-[14px] md:px-8 xsm:text-[10px] xsm:py-[0.2rem] xsm:px-4"
+                      className="text-white z-20 text-[16px] font-nu font-bold bg-[#1DBF73] rounded-full py-2 px-10 sm:px-6 sm:py-1 sm:text-[12px] xl:text-[20px] md:text-[14px] md:px-8 xsm:text-[9px] xsm:py-[0.2rem] xsm:px-4"
                     >
                       Join Now
                     </Link>
                   )}
                 </div>
               </div>
+
               <div className=" flex flex-col gap-6 w-[50%] md:gap-2 xsm:gap-1">
                 <div className="flex flex-row gap-2 justify-end">
                   <div className="flex flex-col justify-end pb-6">
@@ -227,6 +231,7 @@ export default function Herosection() {
                       }}
                     />
                   </div>
+
                   <div className="flex flex-row gap-8 md:gap-4 xsm:gap-2 sm:gap-3">
                     <div className="flex flex-col gap-5 items-end md:gap-3 xsm:gap-2 xsm:hidden">
                       <div className="h-64 w-56 rounded-t-[4rem] rounded-br-[4rem] rounded-bl-[12rem] overflow-hidden scale-in-center md:h-52 md:w-44 xsm:h-20 xsm:w-16 sm:h-24 sm:w-20 lg:h-60 lg:w-52">
@@ -272,6 +277,7 @@ export default function Herosection() {
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </SplideSlide>
