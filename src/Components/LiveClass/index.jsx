@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { formatDate } from "../../helpers/helper_function";
+import { checkAndDisable, formatDate } from "../../helpers/helper_function";
 
 const LiveClass = ({ data }) => {
   console.log(data);
-  // const Data = [
-  //   {
-  //     topic: "React",
-  //     Date: "30 Jun 2014",
-  //     time: "11:30 AM",
-  //     meetLink: "https://meet.google.com/wjr-evsu-pdb",
-  //   },
-  // ];
+  const [updatedData, setUpdatedData] = useState([]);
+
+  useEffect(() => {
+    let result = [];
+    data.forEach((val) => {
+      const temp = checkAndDisable(val);
+      console.log(temp);
+      result.push(temp);
+    });
+    setUpdatedData(result);
+  }, [data]);
+
+  console.log(updatedData);
 
   return (
     <>
@@ -33,11 +38,24 @@ const LiveClass = ({ data }) => {
                   {formatDate(item?.date)}
                 </p>
                 <p className="font-nu font-semibold text-center">{item.time}</p>
-                <p className="font-nu font-semibold text-center">
-                  <Link target="_blank" to={item.meetingLink}>
-                    Join
-                  </Link>
-                </p>
+                {item?.disabled ? (
+                  <span className="relative cursor-pointer">
+                    <p
+                      className={`font-nu font-semibold text-center text-red-500 peer`}
+                    >
+                      Join
+                    </p>
+                    <p className="absolute top-8 right-[0px] bg-black text-[0.7rem] text-white w-[8rem] px-2 py-1 opacity-0 peer-hover:opacity-100 rounded-lg text-center">
+                      Link is disabled
+                    </p>
+                  </span>
+                ) : (
+                  <p className={`font-nu font-semibold text-center`}>
+                    <Link target="_blank" to={item.meetingLink}>
+                      Join
+                    </Link>
+                  </p>
+                )}
               </div>
             </>
           );

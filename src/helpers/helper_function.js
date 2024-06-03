@@ -72,3 +72,25 @@ export function getVideoDuration(videoUrl) {
     });
     return duration;
 }
+
+export function checkAndDisable(data) {
+    data.disabled = false;
+    console.log(data)
+    const currentDate = new Date();
+    const meetingDate = new Date(data.date);
+
+    // Split the time and set it on the meetingDate
+    const [hours, minutes] = data.time.split(':');
+    meetingDate.setHours(hours, minutes);
+
+    // Calculate the time difference in milliseconds
+    const timeDifference = currentDate - meetingDate;
+    console.log(timeDifference)
+
+    // Check if the time difference is greater than 10 minutes (600,000 milliseconds)
+    if (timeDifference > 10 * 60 * 1000 || timeDifference < 10 * 60 * 1000) {
+        data.disabled = true;
+    }
+
+    return data;
+}

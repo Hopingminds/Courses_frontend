@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Overview from "../Overview/Overview";
 import Instructor from "../Instructor/Instructor";
-import LaunchLab from "../LaunchLab";
 import CNAssignment from "./CNAssignment";
-import CNCertifications from "./CNCertifications";
 import CNMyStats from "./CNMyStats";
 import LiveClass from "../LiveClass";
 
