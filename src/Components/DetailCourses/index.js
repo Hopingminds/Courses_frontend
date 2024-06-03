@@ -16,8 +16,8 @@ export default function DetailCourses() {
     const [Data, setData] = useState()
     let slug = param.slug;
     const [show, setshow] = useState(false)
-    
-   
+
+
     useEffect(() => {
         async function Fetchdata() {
             try {
@@ -39,7 +39,7 @@ export default function DetailCourses() {
     return (
         <div className="h-auto min-h-screen overflow-x-visible ">
             <div className=" px-[5%] mb-5 xsm:mx-0">
-                <div className='CCDetails-Header-main flex justify-between px-[5%] w-full' style={{backgroundImage: `url(${Data?.featured_image})` , backgroundSize: '100% 100%' }}>
+                <div className='CCDetails-Header-main flex justify-between px-[5%] w-full ' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.featured_image})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat" }}>
                     <div className='CCDetails-Header-content-leftqw xsm:text-[14px]'>
                         <div className='CCDetails-Header-content-row1qw'>
                             <h2 className='font-pop'>{Data?.title}</h2>
@@ -58,7 +58,7 @@ export default function DetailCourses() {
                         <div className='text-white mt-4 font-pop text-[14px] grid grid-cols-2 gap-2'>
                             {Data?.whatWillILearn?.map((item, index) => (
                                 <div key={index} className='flex gap-1 items-center'>
-                                    <TiTick className='w-5 h-5'/>
+                                    <TiTick className='w-5 h-5' />
                                     <p>{item}</p>
                                 </div>
                             ))}
