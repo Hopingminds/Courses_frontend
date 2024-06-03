@@ -10,13 +10,13 @@ const LiveClass = ({ data }) => {
     let result = [];
     data.forEach((val) => {
       const temp = checkAndDisable(val);
-      console.log(temp);
+      // console.log(temp);
       result.push(temp);
     });
     setUpdatedData(result);
   }, [data]);
 
-  console.log(updatedData);
+  // console.log(updatedData);
 
   return (
     <>

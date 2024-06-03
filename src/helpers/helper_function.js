@@ -75,7 +75,7 @@ export function getVideoDuration(videoUrl) {
 
 export function checkAndDisable(data) {
     data.disabled = false;
-    console.log(data)
+    // console.log(data)
     const currentDate = new Date();
     const meetingDate = new Date(data.date);
 
@@ -85,7 +85,7 @@ export function checkAndDisable(data) {
 
     // Calculate the time difference in milliseconds
     const timeDifference = currentDate - meetingDate;
-    console.log(timeDifference)
+    // console.log(timeDifference)
 
     // Check if the time difference is greater than 10 minutes (600,000 milliseconds)
     if (timeDifference > 10 * 60 * 1000 || timeDifference < 10 * 60 * 1000) {
