@@ -30,7 +30,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("100% Placement Guarantee")}
             onMouseEnter={() => handleSectionClick("100% Placement Guarantee")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[5%] right-[0%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-5%] xsm:top-[8%] md:h-14 md:gap-2 md:top-[6%] md:max-w-[18vw] ${activeSection === "100% Placement Guarantee" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[5%] right-[0%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-5%] xsm:top-[8%] md:h-14 md:gap-2 md:top-[6%] md:max-w-[18vw] ${activeSection === "100% Placement Guarantee" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span
               className={`bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit `}
@@ -45,7 +45,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("Placement Assistance")}
             onMouseEnter={() => handleSectionClick("Placement Assistance")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[25%] right-[-25%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-40%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Placement Assistance" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[25%] right-[-25%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-40%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Placement Assistance" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
@@ -58,7 +58,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("Financial Flexibility")}
             onMouseEnter={() => handleSectionClick("Financial Flexibility")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[45%] right-[-40%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-50%] xsm:top-[42%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Financial Flexibility" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[45%] right-[-40%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-50%] xsm:top-[42%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Financial Flexibility" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
@@ -71,7 +71,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("Risk Mitigation for Students")}
             onMouseEnter={() => handleSectionClick("Risk Mitigation for Students")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[65%] right-[-25%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-45%] xsm:top-[60%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Risk Mitigation for Students" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[65%] right-[-25%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-45%] xsm:top-[60%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Risk Mitigation for Students" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
@@ -84,7 +84,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("Encourages life long learning")}
             onMouseEnter={() => handleSectionClick("Encourages life long learning")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[85%] right-[-5%] bg-black xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:top-[77%] xsm:right-[-8%] md:h-14 md:gap-2 md:top-[82%] md:max-w-[18vw] ${activeSection === "Encourages life long learning" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[85%] right-[-5%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:top-[77%] xsm:right-[-8%] md:h-14 md:gap-2 md:top-[82%] md:max-w-[18vw] ${activeSection === "Encourages life long learning" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}

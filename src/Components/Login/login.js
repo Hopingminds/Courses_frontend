@@ -58,6 +58,11 @@ const Login = () => {
                             localStorage.removeItem('history')
                             navigate(history)
                         }
+                        else if(localStorage.getItem('ADD_TO_CART_HISTORY')){
+                            let history=localStorage.getItem('ADD_TO_CART_HISTORY');
+                            localStorage.removeItem('ADD_TO_CART_HISTORY')
+                            navigate(history)
+                        }
                         else {
                             if (res.data.userDetails.purchased_courses.length > 0) {
                                 navigate('/learning');

@@ -20,7 +20,7 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams()
-    const [countrycode, setcountrycode] = useState()
+    const [countrycode, setcountrycode] = useState('')
     const [SearchedData, setSearchedData] = useState([])
 
     console.log("cardatata",cartData);
@@ -50,18 +50,56 @@ const Register = () => {
         degree: false,
         password: false,
     });
-
+    const [isEmailValid, setIsEmailValid] = useState(false);
+    const [isNumValid, setIsNumValid] = useState(false);
     useEffect(() => {
         setUser({ ...user, phone: countrycode })
     }, [countrycode])
 
+    function validateUserEmail(email) {
+        // Regular expression for validating an email
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    
+        // Test the email against the pattern
+        return emailPattern.test(email);
+    }
+
+    const handleNumChange = (number) => {
+        setcountrycode(number);
+        if (number && number.length >= 9 && number.length <= 14) {
+            setIsNumValid(false);
+        } else {
+            setIsNumValid(true);
+        }
+        setUser({
+            ...user,
+            phone: number,
+
+        });
+    };
+    
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setUser({
-            ...user,
-            [name]: value,
+        setUser(prevState => {
+            const updatedUser = {
+                ...prevState,
+                [name]: value,
+            };
 
+            // If the field being updated is the email, call validateEmail
+            if (name === "email") {
+                if(!validateUserEmail(updatedUser.email)){
+                    setIsEmailValid(true);
+                    // console.log('asdfgdsfgh')
+                }
+                else{
+                    setIsEmailValid(false);
+                }
+            }
+
+            return updatedUser;
         });
     };
 
@@ -252,7 +290,7 @@ const Register = () => {
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Email  <span className='text-red-500'>*</span></p>
                                 <input
                                     ref={emailRef}
-                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.email ? 'error_input' : ""}`}
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.email ? 'error_input' : ""} ${isEmailValid && 'border-red-500'}`}
                                     type="text"
                                     placeholder="Enter Your Email"
                                     name="email"
@@ -265,14 +303,16 @@ const Register = () => {
                             <div>
                                 <p className='text-[14px] font-pop'>Contact Number <span className='text-red-500'>*</span></p>
                                 <PhoneInput
-                                    className={`phonenumbercountrycode mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none ${errors.phone ? 'error_input' : ""}`}
+                                    className={`phonenumbercountrycode mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none ${errors.phone ? 'error_input' : ""} ${isNumValid && 'border-red-500'}`}
                                     defaultCountry="IN"
                                     name="phone"
                                     id={"phone"}
                                     maxlength={11}
                                     placeholder="Enter phone number"
                                     value={countrycode}
-                                    onChange={setcountrycode}
+                                    onChange={handleNumChange}
+                                    ref={phoneRef}
+                                    onKeyDown={(e) => handleKeyDown(e, degreeRef)}
                                 />
                                 {/* <input
                                     ref={phoneRef}

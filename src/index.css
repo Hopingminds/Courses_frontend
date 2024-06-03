@@ -335,3 +335,8 @@ input::-webkit-inner-spin-button {
     background-position: -100% 0;
   }
 }
+
+._3sXmFundefined {
+  display: flex;
+  align-items: center;
+}

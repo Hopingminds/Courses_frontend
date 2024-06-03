@@ -215,9 +215,9 @@ const CartCheckout = () => {
 
             </div> : ''}
       {/* CheckOut start */}
-      <div className="card-checkout mx-14 my-5 flex  gap-20 xsm:flex-col xsm:mx-0 xsm:px-[5%] xsm:gap-8 px-[3%] md:mx-[2%]">
+      <div className="card-checkout mx-14 my-5 flex  gap-20 xsm:flex-col xsm:mx-0 xsm:px-[5%] xsm:gap-8 px-[2%] md:mx-[2%]">
         {/* Billing address start */}
-        <div className="w-[55%] min-h-[100vh] xsm:w-[100%] space-y-5 xsm:space-y-2 xsm:min-h-full">
+        <div className="w-[65%] min-h-[100vh] xsm:w-[100%] space-y-5 xsm:space-y-2 xsm:min-h-full">
           <span className="text-xl font-bold xsm:text-[12px] md:text-[18px]">
             Billing Address
           </span>
@@ -265,6 +265,11 @@ const CartCheckout = () => {
             <input
               value={zip}
               onChange={(e) => setzip(e.target.value)}
+              onInput={(e) => {
+                const value = e.target.value;
+                // Only allow digits
+                e.target.value = value.replace(/[^0-9]/g, '');
+            }}
               type="number"
               placeholder="ZIP Code"
               className="w-[88%] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 xsm:w-[95%] md:text-[14px] md:w-[80%]"
@@ -416,7 +421,7 @@ const CartCheckout = () => {
                       <img
                         src={item.course.featured_image}
                         alt="course"
-                        className="w-full h-full object-cover rounded-lg xsm:ml-0 xsm:w-full xsm:h-full xsm:object-fit md:ml-0"
+                        className="w-full h-full  rounded-lg xsm:ml-0 xsm:w-full xsm:h-full xsm:object-fit md:ml-0"
                       />
                     </div>
                     <div className="ml-[20px] h-full flex flex-col justify-between my-3 xsm:w-[55%] xsm:my-0 xsm:ml-0 md:ml-2">
@@ -481,7 +486,7 @@ const CartCheckout = () => {
         {/* Billing address end */}
 
         {/* Summary start */}
-        <div className="h-[100vh] w-[40%] xsm:w-full">
+        <div className="h-[100vh] w-[30%] xsm:w-full">
           <span className=" text-xl font-bold xsm:text-[12px] md:text-[18px]">Summary</span>
 
           {/* Summary div start*/}

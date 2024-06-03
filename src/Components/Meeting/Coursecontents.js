@@ -231,7 +231,6 @@ export default function Coursecontents({
 
                                     {chapter?.assignment && (
                                       <span className=" flex gap-1 items-center h-max">
-
                                         <a href={chapter?.assignment} target="_blank" className="flex items-center border rounded-md gap-1 px-2">
                                           <Assignment className="w-3 h-3"/>
                                           <li className="text-[12px] md:text-[10px]">
@@ -240,8 +239,6 @@ export default function Coursecontents({
                                           </li>
                                         </a>
                                         <span className="flex gap-2 border rounded-md px-2 py-1 relative ">
-
-
                                           <MdOutlineFileUpload
                                             size={16}
                                             onClick={handleFileUploadClick}
@@ -260,7 +257,6 @@ export default function Coursecontents({
                                       </span>
                                     )}
                                   </ul>
-
                                 </div>
                               )}
                             </div>

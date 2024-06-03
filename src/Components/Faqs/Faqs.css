@@ -13,9 +13,9 @@
 }
 .faq-box{
     background: #fff;
-    padding: 10px 30px;
+    /* padding: 10px 30px; */
     border-radius: 8px;
-    cursor: pointer;
+    /* cursor: pointer; */
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -23,6 +23,8 @@
 
 .faq-box-head{
     display: flex;
+    padding: 10px 30px;
+    cursor: pointer;
     justify-content: space-between;
     align-items: center;
 }
@@ -44,7 +46,7 @@
 
 }
 .faq-box-descrip{
-    padding: 10px 0;
+    padding: 0px 30px 10px 30px;
     display: none;
 }
 .faq-box-descrip h3{

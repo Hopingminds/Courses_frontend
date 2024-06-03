@@ -141,19 +141,19 @@ const Testimonial = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between pt-20 px-[10%] pb-28 xsm:px-[5%] xsm:pt-4 xsm:pb-8 xsm:gap-4 md:pb-14 md:pt-6">
+      <div className="flex flex-row justify-between pt-20 px-[10%] pb-28 xsm:px-[5%] xsm:pt-4 xsm:pb-8 xsm:gap-4 sm:p-8 md:pb-14 md:pt-6">
         {/* left */}
         <div className="flex flex-col gap-4 w-[45%] xsm:gap-2">
           <div className="flex flex-row gap-4 items-center xsm:gap-2 xsm:pl-2">
-            <hr className="border border-[black] w-16 xsm:w-6 md:w-12" />
-            <p className=" text-[18px] font-pop xsm:text-[6px] md:text-[10px]">
+            <hr className="border border-[black] w-16 xsm:w-6 sm:w-10 md:w-12 lg:w-14" />
+            <p className=" text-[18px] font-pop xsm:text-[6px] sm:text-[8px] md:text-[10px] lg:text-[14px]">
               TESTIMONIAL
             </p>
           </div>
-          <p className="text-[#1DBF73] text-[36px]  font-pop font-semibold xsm:text-[10px] xsm:pl-2 md:text-[30px]">
+          <p className="text-[#1DBF73] text-[36px]  font-pop font-semibold xsm:text-[10px] xsm:pl-2 sm:text-[20px] md:text-[30px] lg:text-[34px]">
             What They Say?
           </p>
-          <div className="flex flex-col gap-4 text-[#696984] text-[18px] text-justify font-poppins xsm:text-[6px] xsm:gap-0 md:text-[12px]">
+          <div className="flex flex-col gap-4 text-[#696984] text-[18px] text-justify font-poppins xsm:text-[6px] xsm:gap-0 sm:text-[10px] md:text-[12px] lg:text-[16px]">
             {/* <div className="flex flex-col gap-4 text-[#696984] text-[18px] text-justify font-poppins xsm:text-[6px] xsm:gap-0"> */}
             <p>
             HopingMinds has earned the trust of over 100 corporations, more than 50 universities, and over 10,000 students based on their positive experiences and successful outcomes. Our community continues to grow, thanks to the proven results and confidence shared by our partners and learners.
@@ -181,17 +181,17 @@ const Testimonial = () => {
           {/* right */}
           <div className="relative w-[45%]">
             <div className="relative ">
-              <div className="w-[70%] h-[54vh] rounded-3xl xsm:h-[22vh] md:h-[40%] md:w-[80%]">
+              <div className="w-[70%] h-[54vh] rounded-3xl xsm:h-[60%] sm:h-[50%] md:h-[40%] md:w-[80%] lg:h-[60%]">
               <img
                 src={testimonials[currentIndex].image}
-                className="w-[100%] h-[100%]  rounded-3xl xsm:rounded-md xsm:w-[95px] xsm:h-[120px] md:h-[280px] md:w-[80%]"
+                className="w-[100%] h-[100%]  rounded-3xl xsm:rounded-md xsm:w-[80%] xsm:h-[120px] sm:w-[80%] sm:h-[200px] md:h-[280px] md:w-[80%] lg:h-[320px]"
               />
               </div>
               <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[95%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md xsm:top-[69%] md:">
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={index}
-                    className={`bg-[#1DBF73] text-[rgb(29,191,115)] w-12 rounded-l-xl xsm:w-4 md:w-8 ${index === currentIndex ? "" : "hidden"
+                    className={`bg-[#1DBF73] text-[rgb(29,191,115)] w-12 rounded-l-xl xsm:w-4 sm:w-6 md:w-8 lg:w-10 ${index === currentIndex ? "" : "hidden"
                       }`}
                   >
                     .
@@ -205,13 +205,13 @@ const Testimonial = () => {
                   >
                     <hr className="h-[60%]  border border-[rgb(189,189,209)] absolute top-3 xsm:top-2 xsm:h-[30%]" />
                     <div className="flex flex-col justify-between gap-4 px-4 py-3 xsm:px-2 xsm:py-2 xsm:gap-1 md:gap-2">
-                      <p className="text-[#5F5F7E] text-[16px] font-pop leading-6 text-left xsm:text-[4px] xsm:leading-none xsm:tracking-tight md:text-[10px] md:leading-tight">
+                      <p className="text-[#5F5F7E] text-[16px] font-pop leading-6 text-left xsm:text-[4px] xsm:leading-none xsm:tracking-tight sm:text-[8px] sm:leading-none md:text-[10px] md:leading-tight lg:text-[14px] lg:leading-none">
                         {testimonial.text}
                       </p>
                       <div className="flex flex-col ">
                       <div className="flex flex-row justify-between items-center ">
                         <div className="flex space-x-1">
-                          <p className="text-[#5F5F7E] text-[18px] font-pop font-semibold xsm:text-[4px] md:text-[8px]">
+                          <p className="text-[#5F5F7E] text-[18px] font-pop font-semibold xsm:text-[4px] sm:text-[6px] md:text-[8px] lg:text-[16px]">
                             {/* Gloria Rose */}
                             {testimonial.author}
                           </p>
@@ -220,12 +220,12 @@ const Testimonial = () => {
                         <div className="flex flex-col gap-1  xsm:gap-0">
                           <div className="flex justify-center items-center">
                             {[...Array(testimonial.stars)].map((star, index) => (
-                              <svg viewBox="0 0 24 24" className="h-5 w-5 xsm:h-2 xsm:w-2 md:h-3 md:w-3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <svg viewBox="0 0 24 24" className="h-5 w-5 xsm:h-2 xsm:w-2 sm:h-3 sm:w-3 md:h-3 md:w-3 lg:w-4 lg:h-4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" fill="#FBA333" />
                               </svg>
                             ))}
                             {[...Array(testimonial.empty)].map((star, index) => (
-                              <svg viewBox="0 0 24 24" className="h-5 w-5 xsm:h-2 xsm:w-2 md:h-3 md:w-3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <svg viewBox="0 0 24 24" className="h-5 w-5 xsm:h-2 xsm:w-2 sm:h-3 sm:w-3 md:h-3 md:w-3 lg:w-4 lg:h-4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" fill="#DCE2EE" />
                               </svg>
                             ))}
@@ -235,7 +235,7 @@ const Testimonial = () => {
                         </p> */}
                         </div>
                       </div>
-                      <p className="text-[#5F5F7E] text-[16px] font-pop xsm:text-[4px] md:text-[8px]">
+                      <p className="text-[#5F5F7E] text-[16px] font-pop xsm:text-[4px] sm:text-[6px] md:text-[8px] lg:text-[12px]">
                             {/* Gloria Rose */}
                             {testimonial.company}
                           </p>
@@ -248,11 +248,11 @@ const Testimonial = () => {
 
             {/* arrrow */}
             <div
-              className="w-[60px] h-[60px] absolute bg-[#ffffff] rounded-full right-[22%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[36%] md:w-[40px] md:h-[40px] md:right-[30%]"
+              className="w-[60px] h-[60px] absolute bg-[#ffffff] rounded-full right-[25%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[36%] sm:w-[30px] sm:h-[30px] sm:top-[35%] sm:right-[38%] md:w-[40px] md:h-[40px] md:right-[30%] lg:w-[50px] lg:h-[50px]"
               style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }}
               onClick={handleArrow2Click}
             >
-              <img src={Arrow2} className="self-center w-5 h-5 xsm:w-[8px] xsm:h-[8px] md:w-[12px] md:h-[12px]" />
+              <img src={Arrow2} className="self-center w-5 h-5 xsm:w-[8px] xsm:h-[8px] sm:w-[10px] sm:h-[10px] md:w-[12px] md:h-[12px] lg:w-4 lg:h-4" />
             </div>
           </div>
         </div>
