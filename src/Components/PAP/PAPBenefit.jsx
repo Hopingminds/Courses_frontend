@@ -14,13 +14,13 @@ const PAPBenefit = () => {
   };
 
   return (
-    <div className="pap_curve_bg  h-[110vh] w-full grid xsm:h-[20%] md:h-[60%]">
-      <div className="flex h-[90vh] justify-around mt-[15vh] place-items-center  xsm:h-[60%] xsm:justify-between xsm:gap-1 xsm:pr-4 md:h-[70%] md:justify-between md:pr-20 md:pl-4">
+    <div className="pap_curve_bg  h-[110vh]  w-full grid xsm:h-[15%] md:h-[60%]">
+      <div className="flex h-[90vh] justify-around mt-[15vh] place-items-center   xsm:h-[60%] xsm:justify-center xsm:gap-1 xsm:pr-4 md:h-[70%] md:justify-between md:pr-20 md:pl-4">
         <div className=" h-[80vh] py-[10vh] relative xsm:h-[45vh] md:h-[60vh]">
           <img
             src={curve}
             alt="..."
-            className="h-[100%] w-[100%] object-contain"
+            className="h-[100%] w-[100%] object-contain xsm:w-[88%] xsm:h-[79%]"
           />
           <div className="rounded-full h-[45%] w-[60%] top-[27%] left-[7%] absolute bg-[#615f5f] flex justify-center items-center xsm:h-[100px] xsm:w-[100px] xsm:top-[32%] xsm:left-[5%] md:w-[65%] md:left-[6%]">
             <div className="rounded-full h-[80%] w-[80%] absolute bg-[#D9D9D9] flex justify-center items-center text-center text-[34px] font-medium px-10 shadow-lg shadow-[#000] xsm:text-[14px] xsm:w-[30%] md:text-[22px]">
@@ -30,7 +30,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("100% Placement Guarantee")}
             onMouseEnter={() => handleSectionClick("100% Placement Guarantee")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[5%] right-[0%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-5%] xsm:top-[8%] md:h-14 md:gap-2 md:top-[6%] md:max-w-[18vw] ${activeSection === "100% Placement Guarantee" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[5%] right-[0%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-5%] xsm:top-[14%] md:h-14 md:gap-2 md:top-[6%] md:max-w-[18vw] ${activeSection === "100% Placement Guarantee" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span
               className={`bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit `}
@@ -45,7 +45,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("Placement Assistance")}
             onMouseEnter={() => handleSectionClick("Placement Assistance")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[25%] right-[-25%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-40%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Placement Assistance" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[25%] right-[-25%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-31%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Placement Assistance" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
@@ -58,7 +58,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("Financial Flexibility")}
             onMouseEnter={() => handleSectionClick("Financial Flexibility")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[45%] right-[-40%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-50%] xsm:top-[42%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Financial Flexibility" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[45%] right-[-40%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-49%] xsm:top-[39%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Financial Flexibility" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
@@ -71,7 +71,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("Risk Mitigation for Students")}
             onMouseEnter={() => handleSectionClick("Risk Mitigation for Students")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[65%] right-[-25%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-45%] xsm:top-[60%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Risk Mitigation for Students" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[65%] right-[-25%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-33%] xsm:top-[52%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Risk Mitigation for Students" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
@@ -84,7 +84,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("Encourages life long learning")}
             onMouseEnter={() => handleSectionClick("Encourages life long learning")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[85%] right-[-5%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:top-[77%] xsm:right-[-8%] md:h-14 md:gap-2 md:top-[82%] md:max-w-[18vw] ${activeSection === "Encourages life long learning" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[85%] right-[-5%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:top-[63%] xsm:right-[-8%] md:h-14 md:gap-2 md:top-[82%] md:max-w-[18vw] ${activeSection === "Encourages life long learning" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
@@ -95,8 +95,8 @@ const PAPBenefit = () => {
             </p>
           </div>
         </div>
-        <div className="border grid justify-self-start rounded-2xl">
-          <div className="h-[260px] aspect-square p-5 text-white grid place-items-center text-balance xsm:h-[150px] xsm:text-[8px] md:text-[14px] md:h-[30vh]">
+        <div className="border grid justify-self-start rounded-2xl xsm:hidden">
+          <div className="h-[260px] aspect-square p-5  text-white grid place-items-center text-balance xsm:h-[150px] xsm:text-[8px] md:text-[14px] md:h-[30vh]">
             <p>{activeSection === "100% Placement Guarantee"
               ? "Securing your future is our promise. With our 100% Placement Guarantee, you can embark on your journey knowing we are committed to your success every step of the way."
               : activeSection === "Placement Assistance"

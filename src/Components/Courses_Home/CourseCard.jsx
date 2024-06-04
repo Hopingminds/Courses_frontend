@@ -128,7 +128,7 @@ const CourseCard = ({
           />
         )}
       </div>
-      <div className="flex flex-col gap-6 justify-between h-[47%] xsm:gap-1 md:gap-0 md:mt-0 xsm:mt-0">
+      <div className="flex flex-col gap-6 justify-between h-[47%] xsm:h-[37%] xsm:gap-1 md:gap-0 md:mt-0 xsm:mt-0">
         <div className="flex flex-col justify-between gap-1 mt-2 xsm:mt-1 xsm:gap-0 md:gap-0">
           <div className="flex justify-between items-center min-h-[30%] md:min-h-0">
             <div className="flex items-center space-x-3 max-w-[80%] xsm:max-w-[70%] xsm:space-x-1 md:space-x-2 md:max-w-[70%]">
@@ -147,12 +147,12 @@ const CourseCard = ({
               </p>
             </div>
           </div>
-          <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[8px] md:text-[10px] md:h-6 xsm:mt-1 xsm:h-6">
-            {title.length > 40 ? title.slice(0, 40) + "..." : title}
+          <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[7px] md:text-[10px] md:h-6 xsm:mt-1 xsm:h-6">
+            {title.length > 40 ? title.slice(0, (window.innerWidth >=320 && window.innerWidth <=480) ? 20 :40) + "..." : title}
           </p>
-          <p className="font-pop mt-2 text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px] md:h-10">
-            {description.slice(0, 70)}..
-          </p>
+   {description && <p className="font-pop mt-2 text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px] md:h-10">
+            {description?.slice(0, 70)}..
+          </p>}
         </div>
         <div className=" flex items-end justify-between 2xl:pb-2">
           <span className="flex flex-col">

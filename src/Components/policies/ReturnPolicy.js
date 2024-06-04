@@ -7,8 +7,8 @@ const ReturnPolicy = () => {
 
     return (
         <Wrapper >
-            <div className="cont">
-        <h2 className="py-8 font-extrabold">PRIVACY POLICY</h2>
+            <div className={window.innerWidth >=320 && window.innerWidth<=480 ? 'w-[100%] p-[5%]' :'cont'}>
+        <h2 className="py-8 font-extrabold text-center w-full">PRIVACY POLICY</h2>
         <p>
           {/* <strong>What are the delivery charges?</strong> */}
         </p>
@@ -171,6 +171,11 @@ const Wrapper = styled.div`
       strong, p ,li{
         font-size: 12px; /* Decrease font size for smaller screens */
       }
+    }
+    @media (max-width: 480px) {
+       .cont{
+        width:100%;
+       }
     }
   }
 `;

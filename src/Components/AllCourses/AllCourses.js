@@ -225,7 +225,7 @@ setTimeout(() => {
       {/* </div> */}
 
       <div className="relative h-auto w-full mb-14 xsm:mb-8">
-        <div className="flex flex-row rounded-md w-[50%] p-1 bg-[#f3fffa] xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] xsm:top-[25%] left-[50%] translate-x-[-50%] md:w-[70%]">
+        <div className="flex flex-row rounded-md w-[50%] p-1 bg-[#f3fffa] xsm:p-0 xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] xsm:top-[25%] left-[50%] translate-x-[-50%] md:w-[70%]">
           <div className="relative w-full rounded-md">
             <input
               type="text"

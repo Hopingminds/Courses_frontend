@@ -24,8 +24,8 @@ export default function MinorDegree(){
         allcategories?.map((item)=>{
             return(<>
             <Link to='/minorCourse?minordegree=true&category=Full Stack Development' className="border shadow-2xl rounded-xl">
-                <img src={item?.Category_image} className="h-[28vh] w-full xsm:h-[20vh] md:h-[20vh]"/>
-                <div className="font-bold text-xl text-center my-10 xsm:my-6 xsm:text-[16px] md:text-lg md:my-8">{item?.Category_Name}</div>
+                <img src={item?.Category_image} className="h-[28vh] rounded-t-xl w-full xsm:h-[15vh] md:h-[20vh]"/>
+                <div className="font-bold text-xl text-center my-10 xsm:my-5 xsm:text-[14px] md:text-lg md:my-8 ">{item?.Category_Name}</div>
             </Link>
             </>)
         })

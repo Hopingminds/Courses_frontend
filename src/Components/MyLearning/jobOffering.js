@@ -72,9 +72,9 @@ const JobOffering = ({ courses }) => {
                     {
                         jobOpeningData?.map((item, ind) => {
                             return (<>
-                                <div onClick={() => navigate("/jobpreview?jobid=" + item?._id)} key={ind} className="h-[12rem] w-full flex flex-row gap-4 bg-[#E2FFF1] p-4 mt-4 rounded-2xl justify-between shadow-2xl shadow-[#D9D9D9] xsm:p-2 xsm:rounded-lg xsm:h-[15vh] md:mt-0 md:p-3">
+                                <div onClick={() => navigate("/jobpreview?jobid=" + item?._id)} key={ind} className="h-[12rem] w-full flex flex-row gap-4 bg-[#E2FFF1] p-4 mt-4 rounded-2xl justify-between shadow-2xl shadow-[#D9D9D9] xsm:p-2 xsm:rounded-lg xsm:h-[10vh] md:mt-0 md:p-3">
                                     <div className="w-[25%] rounded-2xl">
-                                        <img className="w-full h-full rounded-xl xsm:rounded-lg object-cover" src={item?.logoUrl} />
+                                        <img className="w-full h-full rounded-xl xsm:rounded-lg object-cover " src={item?.logoUrl} />
                                     </div>
                                     <div className="w-[60%] flex flex-col justify-between">
                                         <div className="space-y-2 xsm:space-y-1">

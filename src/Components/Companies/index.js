@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './companies.css';
 
 const Companies = () => {
-    const [currentLogoIndexes, setCurrentLogoIndexes] = useState([0, 0, 0, 0, 0, 0]); 
+    const [currentLogoIndexes, setCurrentLogoIndexes] = useState([0, 0, 0, 0, 0, 0]);
 
     const logosSets = [
         [
@@ -55,30 +55,18 @@ const Companies = () => {
         ]
     ];
 
-    const totalLogosSets = logosSets.length;
-
-    useEffect(() => {
-        const intervals = logosSets.map((logos, setIndex) => {
-            const totalLogos = logos.length;
-            const intervalDuration = (setIndex % 2 === 0) ? 3000 : 4000;  
-            return setInterval(() => {
-                setCurrentLogoIndexes(prevIndexes => {
-                    const updatedIndexes = [...prevIndexes];
-                    updatedIndexes[setIndex] = (updatedIndexes[setIndex] + 1) % totalLogos;
-                    return updatedIndexes;
-                });
-            }, intervalDuration);
-        });
-
-        return () => intervals.forEach(interval => clearInterval(interval));
-    }, []);
+   
 
     return (
         <div className="text-[#696984] flex justify-center font-pop md:mt-0 xsm:mt-0">
             <div className="w-[90%] space-y-8 xsm:space-y-4 md:space-y-6">
-                <div className="text-center text-[30px] font-semibold text-[#000] xsm:text-[12px] sm:text-[16px] md:text-[25px]">Trusted by <span className='text-[#1dbf73]'>200+</span> Companies Worldwide</div>
-                <div className="flex justify-center">
-                    {logosSets.map((logos, setIndex) => (
+                <div className="text-center text-[30px] font-semibold text-[#000] xsm:text-[12px] md:text-[20px]">
+                    Trusted by <span className='text-[#1dbf73]'>200+</span> Companies Worldwide
+                </div>
+                <div className={` flex ${window.innerWidth >= 320 && window.innerWidth <= 480 ? 'justify-between' : 'justify-center'} `}>
+                    {logosSets?.slice(0, (window.innerWidth >= 320 && window.innerWidth <= 480) ? 4 : logosSets.length)?.map((logos, setIndex) => {
+                       console.log(logosSets);
+                       return(<>
                         <div key={setIndex} className="slider-container w-[100%] xsm:w-[15%] md:w-[15%]">
                             {logos.map((logo, index) => (
                                 <img
@@ -87,17 +75,18 @@ const Companies = () => {
                                     alt={`Company Logo ${index}`}
                                     style={{
                                         height: logo.height,
-                                        width: logo.width
+                                        width:logo.width
                                     }}
                                     className={index === currentLogoIndexes[setIndex] ? 'logo active' : 'logo'}
                                 />
                             ))}
                         </div>
-                    ))}
+                        </>)
+})}
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default Companies;

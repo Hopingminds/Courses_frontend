@@ -92,7 +92,7 @@ const Courses_Home = () => {
             "Data Science",
             "Management",
             "Networking",
-          ].map((category) => (
+          ].slice(0,(window.innerWidth >=320 && window.innerWidth<=480 ? 5 : 6)).map((category) => (
             <button
               key={category}
               onClick={() => handleCategoryClick(category)}
@@ -107,7 +107,6 @@ const Courses_Home = () => {
           ))}
         </div>
         <div className="flex justify-end w-full items-center">
-
           <Link
             to={selectedCategory == "All Courses" ? "/course" : "/course?category=" + selectedCategory}
             className="text-[#1DBF73] text-[16px] font-bold xsm:text-[8px] md:text-[14px] md:pr-3"

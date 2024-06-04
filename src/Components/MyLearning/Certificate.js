@@ -57,6 +57,8 @@ export default function Certificate(props) {
                         </>)
                     })
                 }
+                            {!flag ? <div className="text-right ml-5 w-full font-bold text-2xl">You didn't complete any course</div> : ''}
+
             </div>
             {/* <div className="flex flex-col Certificate-right gap-y-5 xsm:flex-row xsm:justify-between md:gap-y-4">
                 <p className="font-pop font-semibold text-[18px] xsm:hidden md:text-[14px]">Explore Certificates By Category</p>

@@ -205,7 +205,7 @@ const Testimonial = () => {
                   >
                     <hr className="h-[60%]  border border-[rgb(189,189,209)] absolute top-3 xsm:top-2 xsm:h-[30%]" />
                     <div className="flex flex-col justify-between gap-4 px-4 py-3 xsm:px-2 xsm:py-2 xsm:gap-1 md:gap-2">
-                      <p className="text-[#5F5F7E] text-[16px] font-pop leading-6 text-left xsm:text-[4px] xsm:leading-none xsm:tracking-tight sm:text-[8px] sm:leading-none md:text-[10px] md:leading-tight lg:text-[14px] lg:leading-none">
+                      <p className="text-[#5F5F7E] text-[16px] font-pop leading-6 text-left xsm:text-[6px] xsm:leading-[1] xsm:tracking-tight sm:text-[8px] sm:leading-none md:text-[10px] md:leading-tight lg:text-[14px] lg:leading-none">
                         {testimonial.text}
                       </p>
                       <div className="flex flex-col ">

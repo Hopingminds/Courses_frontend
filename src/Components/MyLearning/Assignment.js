@@ -39,7 +39,7 @@ export default function Assignment({ courses }) {
       {!Data?.length? <div className="flex flex-col items-center gap-10 w-full mt-10">
         <div className="text-center font-semibold text-2xl w-full "> No Assignment Found</div>
         <div>
-          <img src={Img} />
+          <img className="h-[200px] " src={Img} />
         </div>
       </div>:
         (<><div className="grid grid-cols-[1fr,1.5fr,3fr,2fr,2fr,1fr] w-full bg-[#E2FFF1] py-4 px-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">

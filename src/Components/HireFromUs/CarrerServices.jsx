@@ -76,7 +76,7 @@ toast.error(response.message)
                         <Splide
                             options={{
                                 type: "loop",
-                                perPage: (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 2 : 3,
+                                perPage: ((window.innerWidth >= 721 && window.innerWidth <= 1024)|| (window.innerWidth >= 320 && window.innerWidth <= 480)) ? 2 : 3,
                                 pagination: false,
                                 perMove: 1,
                                 wheel: false,
@@ -87,8 +87,9 @@ toast.error(response.message)
                                 delay: 4,
                                 pauseOnHover: false,
                                 drag: true,
-                                gap: window.innerWidth <= 480 ? '1rem' : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? '2rem' : '4rem',
-                            }}>
+                                gap: window.innerWidth <= 480 ? '3rem' : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? '2rem' : '4rem',
+
+                           }}>
                             <SplideSlide>
                                 <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
                                     <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
@@ -162,10 +163,10 @@ toast.error(response.message)
                         </Splide>
                     </div>
                 </div>
-                <div className='w-[30%] md:w-[40%] xsm:w-[90%]'>
-                    <div className='bg-[#00000033] bw-border rounded-xl p-6 text-white flex flex-col gap-4 md:p-4'>
+                <div className='w-[30%] xsm:mx-auto md:w-[40%] xsm:w-[90%] '>
+                    <div className='bg-[#00000033] bw-border  rounded-xl p-6 xsm:px-10 text-white flex flex-col gap-4 xsm:pb-3 md:p-4'>
                         <div>
-                            <p className='font-int font-bold md:text-[14px] xsm:text-[12px]'>Connect with us!</p>
+                            <p className='font-int font-bold md:text-[14px] xsm:text-[12px] text-center'>Connect with us!</p>
                         </div>
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-1'>

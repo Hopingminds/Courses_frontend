@@ -139,11 +139,11 @@ const ProfilEdit = () => {
     setUploadLoader(true);
     // console.log(e.target.files[0])
     const file = e.target.files[0];
-    console.log(file);
+    // console.log(file);
     setSelectedImage(file);
     // console.log(file)
     if (file) {
-      console.log(file);
+      // console.log(file);
       try {
         const res = await axios.post(
           `${BASE_URL}/uploaduserprofiletoaws`,
@@ -157,7 +157,7 @@ const ProfilEdit = () => {
             },
           }
         );
-        console.log(res);
+        // console.log(res);
         if (res.data.success) {
           setUploadLoader(false);
           toast.success("Profile Picture Updated");
@@ -360,7 +360,7 @@ const ProfilEdit = () => {
               </button>
               </div>
             </div>
-            <div className="flex justify-center pt-10 xsm:pt-0 ">
+            <div className="flex justify-center pt-10 xsm:pt-0 xsm:mt-2">
               <button
                 className="text-[#FFFFFF] text-[22px] font-nu bg-[#1DBF73] rounded-full px-12 py-1 xsm:text-[10px] xsm:px-8 md:text-[16px]"
                 onClick={handleSaveClick}
