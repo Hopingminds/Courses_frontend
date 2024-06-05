@@ -18,7 +18,7 @@ import CV5 from "./CV5";
 
 export default function CVBuilder() {
   const [cv, setCv] = useState(cvData);
-  const [scale, setScale] = useState(1);
+  const [scale, setScale] = useState(window.innerWidth<=480 ? 0.5 : 1);
 
   const setCV = () => {
     setCv(cvData);
@@ -241,18 +241,18 @@ export default function CVBuilder() {
           addEducation,
         }}
       >
-        <main className="grid grid-cols-2 gap-10 md:w-auto w-full  items-center md:relative md:items-stretch  md:h-screen">
-          <div className="justify-self-start flex align-middle h-[110vh] overflow-y-auto">
-            <section className="settings rounded-2xl w-full overflow-auto">
+        <main className="grid grid-cols-2 gap-10 md:w-auto w-full  items-center md:relative md:items-stretch  md:h-screen xsm:flex xsm:flex-col">
+          <div className="justify-self-start flex align-middle h-[110vh] overflow-y-auto xsm:justify-self-center ">
+            <section className="settings rounded-2xl w-full overflow-auto ">
               <Settings />
             </section>
-            <div className="md:meshGradient left-0 bg-slate-300 h-full w-full md:opacity-20 fixed md:absolute -z-10  md:h-screen"></div>
+            <div className="md:meshGradient xsm:hidden left-0 bg-slate-300 h-full w-full md:opacity-20 fixed md:absolute -z-10  md:h-screen"></div>
           </div>
-          <div className=" md:w-fit md:h-fit relative md:absolute  md:left-[26.5rem] md:right-0 md:bottom-0 md:flex md:top-0  justify-self-start">
+          <div className=" md:w-fit md:h-fit relative md:absolute  md:left-[26.5rem] md:right-0 md:bottom-0 md:flex md:top-0  justify-self-start xsm:w-full xsm:right-20">
             <div>
               <section
                 ref={componentRef}
-                className="bg-white md:rounded-md transition-all  p-8 h-[90vh] aspect-[3.9/5]  md:aspect-[3.9/5] md:h-[90vh]"
+                className="bg-white md:rounded-md transition-all  p-8 h-[90vh] aspect-[3.9/5]  md:aspect-[3.9/5] md:h-[90vh] xsm:pr-5 xsm:border lg:h-[100vh]"
                 style={{
                   transform: `scale(${scale})`,
                 }}
@@ -260,7 +260,7 @@ export default function CVBuilder() {
                 {templateSwitch()}
               </section>
             </div>
-            <div className="absolute -top-6 left-[50%] -translate-x-[50%] ">
+            <div className="absolute -top-6 left-[50%] -translate-x-[50%] xsm:left-[70%]">
               <PageButtons />
             </div>
           </div>

@@ -73,11 +73,11 @@ const Companies = () => {
                                     key={index}
                                     src={logo.src}
                                     alt={`Company Logo ${index}`}
-                                    style={{
-                                        height: logo.height,
-                                        width:logo.width
-                                    }}
-                                    className={index === currentLogoIndexes[setIndex] ? 'logo active' : 'logo'}
+                                    // style={{
+                                    //     height: logo.height,
+                                    //     width:logo.width
+                                    // }}
+                                    className={index === currentLogoIndexes[setIndex] ? 'logo active ' : 'logo'}
                                 />
                             ))}
                         </div>

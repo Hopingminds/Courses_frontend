@@ -271,7 +271,7 @@ export default function Herosection() {
           speed: 1000,
           // delay: 1,
           pauseOnHover: false,
-          drag: true,
+          
         }}
       >
         <SplideSlide>

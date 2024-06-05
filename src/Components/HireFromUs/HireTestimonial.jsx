@@ -120,7 +120,8 @@ const HireTestimonial = () => {
                         speed: 5500,
                         delay: 1,
                         pauseOnHover: false,
-                        drag: true,
+                        drag: false,
+                        swipeThreshold: false,
                         gap:'1rem',
                     }}>
                     {tempdata.map((data,index)=>(
@@ -174,7 +175,8 @@ const HireTestimonial = () => {
                         direction:'rtl',
                         right: true, // Set rtl option to true to move from left to right
                         pauseOnHover: false,
-                        drag: true,
+                        drag: false,
+                        swipeThreshold: false,
                         gap:'1rem',
                     }}>
                     {tempdata.slice(0).reverse().map((data,index)=>(

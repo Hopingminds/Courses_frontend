@@ -67,13 +67,14 @@ toast.error(response.message)
             <div className=' flex justify-between pr-[12%] md:pr-[0%] xsm:flex-col xsm:pr-[0%] xsm:gap-4'>
                 <div className='w-[55%] flex flex-col gap-16 xsm:w-full xsm:gap-6'>
                     <div>
-                        <p className='font-pop font-semibold text-[50px] text-white md:text-[32px] xsm:text-[20px]'>Make your career thrive with <span className='text-[#1DBF73]'>Hoping Minds !</span></p>
+                        <p className='font-pop font-semibold text-[50px] text-white md:text-[32px] xsm:text-[20px] xsm:px-5'>Make your career thrive with <span className='text-[#1DBF73]'>Hoping Minds !</span></p>
                     </div>
 
                     {/* set the color of the border in gradient */}
 
-                        <div className='text-white pl-8 md:pl-0 xsm:pl-0 xsm:pr-8'>
+                        <div className='text-white pl-8 md:pl-0  xsm:pl-5'>
                         <Splide
+                       
                             options={{
                                 type: "loop",
                                 perPage: ((window.innerWidth >= 721 && window.innerWidth <= 1024)|| (window.innerWidth >= 320 && window.innerWidth <= 480)) ? 2 : 3,
@@ -91,17 +92,17 @@ toast.error(response.message)
 
                            }}>
                             <SplideSlide>
-                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
+                                <div className='bg-[#00000033] xsm:w-28 xsm:h-24 flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
                                     <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
                                         <img className='w-10 h-10 md:w-6 md:h-6 xsm:w-4 xsm:h-4' src="../Icons/hireheadicon1.svg" alt="" />
                                     </div>
                                     <div>
-                                        <p className='font-pop font-semibold text-center text-[14px] md:text-[12px] xsm:text-[10px]'>Job Placement Guarantee</p>
+                                        <p className='font-pop font-semibold text-center text-[14px] md:text-[12px] xsm:text-[10px]'>Placement Guarantee</p>
                                     </div>
                                 </div>
                             </SplideSlide>
                             <SplideSlide>
-                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
+                                <div className='bg-[#00000033] xsm:w-28 xsm:h-24 flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
                                     <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
                                         <img className='w-10 h-10 md:w-6 md:h-6 xsm:w-4 xsm:h-4' src="../Icons/hireheadicon2.svg" alt="" />
                                     </div>
@@ -111,7 +112,7 @@ toast.error(response.message)
                                 </div>
                             </SplideSlide>
                             <SplideSlide>
-                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
+                                <div className='bg-[#00000033] xsm:w-28 xsm:h-24 flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
                                     <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
                                         <img className='w-10 h-10 md:w-6 md:h-6 xsm:w-4 xsm:h-4' src="../Icons/hireheadicon3.png" alt="" />
                                     </div>
@@ -121,7 +122,7 @@ toast.error(response.message)
                                 </div>
                             </SplideSlide>
                             <SplideSlide>
-                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
+                                <div className='bg-[#00000033] xsm:w-28 xsm:h-24 flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
                                     <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
                                         <img className='w-10 h-10 md:w-6 md:h-6 xsm:w-4 xsm:h-4' src="../Icons/hireheadicon3.png" alt="" />
                                     </div>
@@ -131,7 +132,7 @@ toast.error(response.message)
                                 </div>
                             </SplideSlide>
                             <SplideSlide>
-                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
+                                <div className='bg-[#00000033] xsm:w-28 xsm:h-24 flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
                                     <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
                                         <img className='w-10 h-10 md:w-6 md:h-6 xsm:w-4 xsm:h-4' src="../Icons/hireheadicon3.png" alt="" />
                                     </div>
@@ -141,7 +142,7 @@ toast.error(response.message)
                                 </div>
                             </SplideSlide>
                             <SplideSlide>
-                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
+                                <div className='bg-[#00000033] xsm:w-28 xsm:h-24 flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
                                     <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
                                         <img className='w-10 h-10 md:w-6 md:h-6 xsm:w-4 xsm:h-4' src="../Icons/hireheadicon3.png" alt="" />
                                     </div>
@@ -151,7 +152,7 @@ toast.error(response.message)
                                 </div>
                             </SplideSlide>
                             <SplideSlide>
-                                <div className='bg-[#00000033] flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
+                                <div className='bg-[#00000033] xsm:w-28 xsm:h-24 flex flex-col items-center px-2 py-4 gap-6 rounded-xl bw-border md:gap-4 xsm:gap-2'>
                                     <div className='bg-[#1DBF73] flex justify-center rounded-full px-2 py-2'>
                                         <img className='w-10 h-10 md:w-6 md:h-6 xsm:w-4 xsm:h-4' src="../Icons/hireheadicon3.png" alt="" />
                                     </div>

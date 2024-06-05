@@ -9,8 +9,8 @@ const ShippingPolicy = () => {
 
   return (
     <Wrapper>
-      <div className="cont">
-        <h2 className="py-8 font-extrabold">Terms and Conditions</h2>
+      <div className={window.innerWidth >=320 && window.innerWidth<=480 ? 'w-[100%] p-[5%]' :'cont'}>
+        <h2 className="py-8 font-extrabold text-center">Terms and Conditions</h2>
         <p>
           {/* <strong>What are the delivery charges?</strong> */}
         </p>

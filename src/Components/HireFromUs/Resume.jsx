@@ -6,7 +6,7 @@ const Resume = () => {
     <div className='py-[4%] xsm:pb-[12%]'>
         <div className='py-[4%] text-white font-pop font-semibold text-[40px] text-center relative md:text-[32px] md:pt-[0%] xsm:text-[20px]'>
             <p><span className='text-[#1DBF73]'>Thousands</span> of successful tech</p>
-            <div className='absolute left-[30%] top-[43%] md:left-[26%] md:top-[32%] xsm:left-[20%]'>
+            <div className='absolute left-[30%] top-[43%] md:left-[26%] md:top-[32%] xsm:left-[14%] xsm:top-[30%]'>
                 <img className='w-[70%] md:w-[50%] xsm:w-[30%]' src="../Icons/yellowcurve.svg" alt="" />
                 <img className='w-[70%] md:w-[50%] xsm:w-[30%] absolute top-[50%] rotate-[357deg]' src="../Icons/yellowcurve.svg" alt="" />
             </div>

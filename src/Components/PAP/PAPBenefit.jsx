@@ -22,7 +22,7 @@ const PAPBenefit = () => {
             alt="..."
             className="h-[100%] w-[100%] object-contain xsm:w-[88%] xsm:h-[79%]"
           />
-          <div className="rounded-full h-[45%] w-[60%] top-[27%] left-[7%] absolute bg-[#615f5f] flex justify-center items-center xsm:h-[100px] xsm:w-[100px] xsm:top-[32%] xsm:left-[5%] md:w-[65%] md:left-[6%]">
+          <div className="rounded-full h-[45%] w-[60%] top-[27%] left-[7%] absolute bg-[#615f5f] flex justify-center items-center xsm:h-[100px] xsm:w-[100px] xsm:top-[29%] xsm:left-[-6%] md:w-[65%] md:left-[6%]">
             <div className="rounded-full h-[80%] w-[80%] absolute bg-[#D9D9D9] flex justify-center items-center text-center text-[34px] font-medium px-10 shadow-lg shadow-[#000] xsm:text-[14px] xsm:w-[30%] md:text-[22px]">
               Benefits of PAP
             </div>
@@ -30,7 +30,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("100% Placement Guarantee")}
             onMouseEnter={() => handleSectionClick("100% Placement Guarantee")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[5%] right-[0%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-5%] xsm:top-[14%] md:h-14 md:gap-2 md:top-[6%] md:max-w-[18vw] ${activeSection === "100% Placement Guarantee" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[5%] right-[0%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-5%] xsm:top-[12%] md:h-14 md:gap-2 md:top-[6%] md:max-w-[18vw] ${activeSection === "100% Placement Guarantee" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span
               className={`bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit `}
@@ -84,7 +84,7 @@ const PAPBenefit = () => {
           <div
             onClick={() => handleSectionClick("Encourages life long learning")}
             onMouseEnter={() => handleSectionClick("Encourages life long learning")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[85%] right-[-5%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:top-[63%] xsm:right-[-8%] md:h-14 md:gap-2 md:top-[82%] md:max-w-[18vw] ${activeSection === "Encourages life long learning" ? "bg-[#615F5F]" : "bg-black"}`}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[85%] right-[-5%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:top-[65%] xsm:right-[-8%] md:h-14 md:gap-2 md:top-[82%] md:max-w-[18vw] ${activeSection === "Encourages life long learning" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
