@@ -126,7 +126,7 @@ const ReturnPolicy = () => {
         </strong>
         </p>
         <p className="py-2">
-We don't have any refund & cancellation policy.
+          We don't have any refund & cancellation policy.
         </p>
         </div>
         <div className="py-2">
