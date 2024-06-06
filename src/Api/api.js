@@ -5,4 +5,5 @@
 
 /** PROD */
 export const BASE_URL = 'https://api.hopingminds.in/api';
+// export const BASE_URL = 'http://localhost:3009/api';
 export const AUTH_BASE_URL = 'https://api.hopingminds.in/auth';
