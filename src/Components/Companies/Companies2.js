@@ -77,8 +77,8 @@ const Companies2 = () => {
         <div className="text-[#696984] flex justify-center font-pop md:mt-0 xsm:mt-0">
             <div className="w-[90%] space-y-8 xsm:space-y-4 md:space-y-6">
                 <div className="text-center text-[30px] font-semibold text-[#000] xsm:text-[12px] md:text-[20px]">Trusted by <span className='text-[#1dbf73]'>200+</span> Companies Worldwide</div>
-                <div className="flex justify-center">
-                    {logosSets.map((logos, setIndex) => (
+                <div className="flex justify-center xsm:gap-3">
+                    {logosSets.slice(0,window.innerWidth<=480 ? 4 : 6 ).map((logos, setIndex) => (
                         <div key={setIndex} className="slider-container w-[100%] xsm:w-[15%] md:w-[15%]">
                             {logos.map((logo, index) => (
                                 <img

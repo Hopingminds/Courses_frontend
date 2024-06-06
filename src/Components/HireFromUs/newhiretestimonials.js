@@ -121,6 +121,8 @@ const NewHireTestimonial = () => {
                         delay: 1,
                         pauseOnHover: true,
                         drag: true,
+                        drag: false,
+                        swipeThreshold: false,
                         gap:'1rem',
                     }}>
                     {tempdata.map((data,index)=>(

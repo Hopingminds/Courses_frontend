@@ -30,7 +30,7 @@ const Resume2 = () => {
         <p>
           <span className="text-[#1DBF73]">Roles</span> You Can Hire  From Us
         </p>
-        <div className="absolute left-[25%] top-[85%] md:left-[25%] xsm:left-[18%]">
+        <div className="absolute left-[25%] top-[85%] md:left-[25%] xsm:left-[1%]">
           <img
             className="w-[70%] md:w-[50%] xsm:w-[30%]"
             src="../Icons/yellowcurve.svg"

@@ -62,7 +62,7 @@ const WhyHM = () => {
         </div>
 
         <div className="grid grid-cols-4 py-10 px-[5%] gap-x-6 md:py-6 xsm:grid-cols-2 xsm:gap-y-10 xsm:pt-6" >
-            <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500">
+            <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500 rounded-xl">
             <Hm1 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
             <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">Immediate Joining</div>
             <div className="flex gap-x-2 ">
@@ -82,7 +82,7 @@ const WhyHM = () => {
               <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Enhanced career Opportunities.</div>
             </div>
             </div>
-            <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500">
+            <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500 rounded-xl" >
             <Hm2 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
             <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">No Offer Dropouts</div>
             <div className="flex gap-x-2 ">
@@ -102,7 +102,7 @@ const WhyHM = () => {
               <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Data Driven Insights.</div>
             </div>
             </div>
-            <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500">
+            <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500 rounded-xl">
             <Hm3 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
             <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">Hiring In 1 day</div>
             <div className="flex gap-x-2 ">
@@ -122,7 +122,7 @@ const WhyHM = () => {
               <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Integration with HR systems.</div>
             </div>
             </div>
-            <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500">
+            <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500 rounded-xl">
             <Hm4 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
             <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">PAN India Availabilitiy</div>
             <div className="flex gap-x-2 ">

@@ -15,6 +15,7 @@ import Close from "../../Assests/Images/close.png";
 import { validateEmail } from "../../helpers";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Companies from "../Companies";
 
 const HireFromUs = () => {
   const navigate = useNavigate();
@@ -158,11 +159,11 @@ const HireFromUs = () => {
         ""
       )}
       <div
-        className=" px-[5%] pt-[4%]  bg-gradient-to-r from-[#0F2027] to-[#203A43] wavebg"
+        className=" px-[5%] pt-[4%]  bg-gradient-to-r from-[#0F2027] to-[#203A43] wavebg "
         style={{ width: "100%" }}
       >
         {/* Mainsection */}
-        <div className=" flex justify-between pb-[18%] xsm:flex-col xsm:gap-6 xsm:pb-[35%] ">
+        <div className=" flex justify-between pb-[18%] xsm:flex-col xsm:gap-6 xsm:pb-[72%] ">
           <div className="flex flex-col gap-16 w-[70%] md:gap-10 xsm:w-full xsm:gap-6 md:w-[65%]">
             <div>
               <p className="font-pop font-semibold text-[50px] text-white md:text-[32px] xsm:text-[24px]">
@@ -334,7 +335,7 @@ const HireFromUs = () => {
               {tab == 1 ? (
                 <div
                   className="flex flex-col gap-2 px-6 
-                h-[350px]"
+                h-[350px] xsm:h-[300px]"
                 >
                   <div className="flex flex-col gap-1">
                     <label
@@ -414,7 +415,7 @@ const HireFromUs = () => {
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col gap-y-5 px-6 h-[350px]">
+                <div className="flex flex-col gap-y-5 px-6 h-[350px] xsm:h-[300px]">
                   <div className="flex flex-col gap-1">
                     <label
                       className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
