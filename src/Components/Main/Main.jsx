@@ -15,7 +15,7 @@ function Main() {
   };
 
   return (
-    <div className="container1 xsm:w-full">
+    <div className="container1 xsm:w-full ">
       <div className="nav-buttons overflow-hidden xsm:w-full">
         <button
           className={`btn_corners_first font-nu text-[14px]  ${

@@ -26,23 +26,23 @@ export default function Certificate(props) {
                         return (<>
                         {
                             completed==totallessons ? 
-                            <div key={ind} className="flex flex-row bg-[#E2FFF1] p-4 mt-4 w-full rounded-2xl justify-between shadow-2xl shadow-[#D9D9D9] xsm:p-2 xsm:rounded-lg xsm:h-[15vh] md:mt-0 md:p-3">
-                                <div className="w-[28%] rounded-2xl">
-                                    <img className="w-full h-full rounded-xl xsm:rounded-lg" src={item.course.featured_image} />
+                            <div key={ind} className="flex flex-row bg-[#E2FFF1] p-4 mt-4 w-full rounded-2xl justify-between shadow-2xl shadow-[#D9D9D9] xsm:p-2 xsm:rounded-lg xsm:h-[100px] md:mt-0 md:p-3">
+                                <div className="w-[28%] rounded-2xl ">
+                                    <img className="w-full h-full rounded-xl xsm:rounded-lg" src={item?.course?.featured_image} />
                                    
                                 </div>
                                 <div className="w-[69%] flex flex-col justify-between">
                                     <div className="space-y-2 xsm:space-y-1">
-                                        <p className="font-pop font-semibold text-[18px] xsm:text-[12px] md:text-[16px]">{item.course.title}</p>
-                                        <p className="font-pop text-[#555555] text-[13px] xsm:hidden md:text-[10px]">{item.course.overview.slice(0, 70)}..</p>
+                                        <p className="font-pop font-semibold text-[18px] xsm:text-[12px] md:text-[16px]">{item?.course?.title}</p>
+                                        <p className="font-pop text-[#555555] text-[13px] xsm:hidden md:text-[10px]">{item?.course?.overview.slice(0, 70)}..</p>
                                         <div className="flex space-x-36 xsm:space-x-10 md:space-x-16">
                                             <div className="flex space-x-2 items-center xsm:space-x-1">
                                                 <img className="w-[16px] h-[16px] xsm:w-3 xsm:h-3 md:w-4 md:h-4" src="../Icons/RCDesign.svg" />
-                                                <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">{item.course.category}</p>
+                                                <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">{item?.course?.category}</p>
                                             </div>
                                             <div className="flex space-x-2 items-center xsm:space-x-1">
                                                 <img className="w-[16px] h-[16px] xsm:w-3 xsm:h-3 text-[#555555] md:w-4 md:h-4" src="../Icons/RCClock.svg" />
-                                                <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">{item.course.duration}</p>
+                                                <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">{item?.course?.duration}</p>
                                             </div>
                                         </div>
                                     </div>

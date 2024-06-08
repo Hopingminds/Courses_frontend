@@ -120,7 +120,7 @@
   color: #9d9d9d;
 }
 
-@media only screen and (min-width: 20px) and (max-width: 480px) {
+@media only screen and (min-width: 320px) and (max-width: 480px) {
   .page-header {
     height: 100px;
   }
@@ -134,7 +134,7 @@
   }
 
   .CCDetails-Header-content-row1qw h2 {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .CCDetails-Header-content-row2 {

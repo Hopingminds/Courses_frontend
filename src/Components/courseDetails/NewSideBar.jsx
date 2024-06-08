@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 const NewSideBar = () => {
     const navigate = useNavigate();
     return (
-        <div className='bg-[#E2FFF1] mx-4 my-6 px-6 py-8 h-[80vh] rounded-3xl font-int font-medium text-[#1DBF73] flex flex-col gap-2'>
+        <div className='bg-[#E2FFF1] mx-4 my-6 px-6 py-8 h-[80vh] rounded-3xl font-int font-medium text-[#1DBF73] flex flex-col gap-2 xsm:hidden'>
             <div onClick={() => navigate("/learning?tab=courses")} className='flex gap-2 items-center px-4 py-2 hover:rounded-xl hover:bg-[#F0FFF8] hover:font-bold hover:border hover:border-[#1DBF73] cursor-pointer'>
                 <img className='w-6 h-6' src={Courses} alt="" />
                 <p>My Courses</p>

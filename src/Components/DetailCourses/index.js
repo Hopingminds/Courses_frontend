@@ -38,13 +38,13 @@ export default function DetailCourses() {
 
     return (
         <div className="h-auto min-h-screen overflow-x-visible ">
-            <div className=" px-[5%] mb-5 xsm:mx-0">
-                <div className='CCDetails-Header-main flex justify-between px-[5%] w-full ' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.featured_image})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat" }}>
-                    <div className='CCDetails-Header-content-leftqw xsm:text-[14px]'>
-                        <div className='CCDetails-Header-content-row1qw'>
-                            <h2 className='font-pop'>{Data?.title}</h2>
+            <div className=" px-[5%] mb-5 xsm:mx-0 ">
+                <div className='CCDetails-Header-main flex justify-between px-[5%] w-full xsm:mb-[4.5rem]' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.featured_image})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat" }}>
+                    <div className='CCDetails-Header-content-leftqw xsm:text-[10px]'>
+                        <div className='CCDetails-Header-content-row1qw xsm:text-[10px]'>
+                            <h2 className='font-pop  xsm:text-[10px]'>{Data?.title}</h2>
                         </div>
-                        <div className='text-white flex gap-2 items-center text-[14px] font-pop mt-4'>
+                        <div className='text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-2'>
                             <p>4.7</p>
                             <div className='flex gap-1 items-center text-yellow-400'>
                                 <FaStar />

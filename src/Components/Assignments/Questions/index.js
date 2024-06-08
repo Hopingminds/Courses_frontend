@@ -394,8 +394,8 @@ export default function Question() {
           </div>
         )} */}
 
-        <div className="flex justify-between h-[77vh] ">
-          <div className="w-[60%] rounded-xl border h-full shadow-xl">
+        <div className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5">
+          <div className="w-[60%] rounded-xl border h-full shadow-xl xsm:w-full">
             <div className="border-b-[2px] p-3 font-semibold">
               {data?.module}
             </div>
@@ -404,7 +404,7 @@ export default function Question() {
             </div>
           </div>
 
-          <div className="w-[35%] rounded-xl border min-h-full shadow-xl overflow-y-auto">
+          <div className="w-[35%] rounded-xl border min-h-full shadow-xl overflow-y-auto xsm:w-full xsm:min-h-[50vh] xsm:h-fit">
             <div className="border-b-[2px] p-3 font-semibold">Options</div>
             <div className="flex flex-col p-5 gap-y-5">
               {data?.question?.options &&

@@ -27,7 +27,7 @@ const CourseNavigation = ({
   };
   return (
     <div className="w-full min-h-[540px] mt-[20px] xsm:w-full">
-      <div className="grid grid-cols-6 border w-full overflow-hidden border-[#EAEAEA] font-nu font-semibold text-[16px] leading-[24px] rounded-t-[20px] xsm:w-full">
+      <div className="grid grid-cols-6 border w-full overflow-hidden border-[#EAEAEA] font-nu font-semibold text-[16px] xsm:text-[10px] leading-[24px] rounded-t-[20px] xsm:w-full">
         <button
           className={`btn_corners_first py-[12px]  ${
             activeComponent === "Overview" ? "bg-[#1FC074] text-[#FFFFFF]" : ""

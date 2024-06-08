@@ -72,9 +72,9 @@ function Curriculum() {
         {Data?.curriculum?.map((val, ind) => {
           return (
             <>
-              <div className="lesson-container" key={ind}>
+              <div className="lesson-container "  key={ind}>
                 <div
-                  className="lesson-container-title"
+                  className="lesson-container-title xsm:p-[0px!important]"
                   onClick={() => ClickSection(ind + 1)}
                 >
                   <div className="lesson-container-title-left">

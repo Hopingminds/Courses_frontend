@@ -12,6 +12,7 @@ import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import { Link } from "react-router-dom";
 import SideBar from "./SideBar.jsx"
 import NewSideBar from "./NewSideBar.jsx";
+import { FiMenu } from "react-icons/fi";
 
 
 export default function CDDetails() {
@@ -186,12 +187,12 @@ export default function CDDetails() {
   };
 
 
-  console.log(Data?.liveClasses)
+  // console.log(Data?.liveClasses)
   return (
     <>
       <div className="flex justify-between gap-5">
         {/* side menu */}
-        <div className='w-[20%] sticky top-20 h-max'>
+        <div className='w-[20%] sticky top-20 h-max xsm:hidden'>
           {/* <SideBar /> */}
           <NewSideBar/>
         </div>
@@ -252,9 +253,12 @@ export default function CDDetails() {
           </div>
         </div> */}
         {/* Main Content */}
-        <div className="w-[85%]">
-          <div className="CCD-container pb-10 pr-16 xsm:pr-[5%] xsm:h-[42vh] md:pr-[5%] md:h-[50vh]">
-            <div className="flex gap-20">
+        <div className="w-[85%] xsm:w-full ">
+          <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] md:pr-[5%] md:h-[50vh] xsm:px-4">
+            {
+              window.innerWidth <=480 ?<FiMenu className="absolute top-14 right-1 " onClick={()=>setMenu(true)} size={24} />:<></>
+            }
+            <div className="flex gap-20 xsm:gap-0">
               <div className="CCD-content flex gap-5 pt-10">
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
                   <div className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]" style={{ borderRadius: "14px !important" }}>
@@ -292,11 +296,13 @@ export default function CDDetails() {
 
                 {window.innerWidth <= 480 ? (
                   menu ? (
-                    <div className="w-[45%] h-[80vh] overflow-y-auto">
+                    <div className="w-[45%] h-[80vh] overflow-y-auto ">
                       <Coursecontents
-                        data={Data?.curriculum}
-                        completed_lessons={completed_lessons}
-                        setMenu={setMenu}
+                       handleActiveVideo={handleActiveVideo}
+                       data={Data?.curriculum}
+                       courseId={courseId}
+                       completed_lessons={completed_lessons}
+                       setMenu={setMenu}
                       />
                     </div>
                   ) : (
@@ -341,7 +347,6 @@ export default function CDDetails() {
                         <Menu />
                       </div>
                     )}
-                    {console.log("Menu state:", menu)}
                   </div>
                 </div>
 

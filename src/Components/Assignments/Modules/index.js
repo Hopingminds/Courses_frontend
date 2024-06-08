@@ -189,8 +189,8 @@ export default function Modules() {
 
   return (
     <>
-      <div className="w-full flex justify-between px-[5%] py-5">
-        <div className="w-[35%] h-[85vh] bg-[#d8f7e8] p-[2%] space-y-2 rounded-xl ">
+      <div className="w-full flex justify-between px-[5%] py-5 xsm:flex-col">
+        <div className="w-[35%] h-[85vh] bg-[#d8f7e8] p-[2%] space-y-2 rounded-xl xsm:w-full xsm:h-fit xsm:px-[3%] xsm:py-[5%]">
           <div className="text-3xl font-bold text-center">
             Pay After Placement
           </div>
@@ -230,7 +230,7 @@ export default function Modules() {
         </div>
 
         <div
-          className="w-[62%] h-[85vh]  p-2 space-y-5 overflow-y-auto modules"
+          className="w-[62%] h-[85vh]  p-2 space-y-5 overflow-y-auto modules xsm:w-full xsm:h-fit"
           ref={modulesContainerRef}
         >
           <div className="flex justify-between items-center">
@@ -245,13 +245,13 @@ export default function Modules() {
               <div className="h-8 bg-white text-[#1DBF73] flex pl-5 items-center rounded-lg">
                 Your current score is {testreport?.obtainedMarks}
               </div>
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-sm xsm:flex-col xsm:gap-2">
                 <div>
                   You need to solve all assignments to be eligible for the
                   coding test.
                 </div>
                 {/* <div>You need to score {testreport?.totalMarks} by solving assignments to be eligible for the coding test.</div> */}
-                <div>Max Score : {testreport?.totalMarks}</div>
+                <div className="font-semibold">Max Score : {testreport?.totalMarks}</div>
               </div>
             </div>
             {modulesdata?.map((item, ind) => {

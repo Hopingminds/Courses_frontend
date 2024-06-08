@@ -41,7 +41,7 @@ export default function Commoncard(props) {
           body: JSON.stringify({ email, courseid, quantity }),
         });
         let response = await data.json();
-        console.log(response);
+        // console.log(response);
         if (response.success) {
           toast.success(response.msg);
           setCartSize(cartSize +1);
@@ -50,7 +50,7 @@ export default function Commoncard(props) {
         }
       } else {
         localStorage.setItem('ADD_TO_CART_HISTORY',window.location.pathname);
-        console.log("add to cart withour log")
+        // console.log("add to cart withour log")
         navigate("/login");
       }
     } catch (error) {
@@ -150,21 +150,21 @@ export default function Commoncard(props) {
         <p className="font-pop font-semibold xsm:text-[8px] md:text-[14px]">
           {Data?.title}
         </p>
-        <div className="flex justify-between items-center xsm:pb-1">
+        <div className="flex justify-between items-center xsm:pb-1 ">
           <p className="font-nu text-[16px] font-semibold xsm:text-[8px] md:text-[12px]">
             ₹{Data?.base_price}
           </p>
 
-          <div className="gap-x-4 flex items-center xsm:gap-1 md:gap-x-2">
+          <div className="gap-x-4 flex items-center xsm:gap-x-2 md:gap-x-2">
             {!purchasedCourses.includes(Data?._id) ? (
-              <div className="space-x-4 flex items-center md:space-x-2">
+              <div className="space-x-4 flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
               <Tooltip title="Add to Wishlist" arrow>
-                <button className="xsm:w-1 xsm:hidden" onClick={() => Addtowishlist(Data?._id)}>
+                <button className="xsm:w-1 " onClick={() => Addtowishlist(Data?._id)}>
                   <CiHeart className="w-6 h-6 xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
                 </button>
               </Tooltip>
               <Tooltip title="Add to Cart" arrow>
-                <button className="xsm:w-1 xsm:hidden" onClick={() => Addtocart(Data?._id)}>
+                <button className="xsm:w-1 " onClick={() => Addtocart(Data?._id)}>
                   <Cart className="xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
                 </button>
               </Tooltip>
@@ -183,7 +183,7 @@ export default function Commoncard(props) {
             ) : (
               <Link
                 to={login ? "/checkout?slug=" + Data?.slug : "/login"}
-                className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1"
+                className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
               >
                 Buy Now
               </Link>

@@ -13,6 +13,7 @@ import NewTestimonial from "../Testimonial/NewTestimonial";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BuildCV from "./BuildCV";
+import Companies2 from "../Companies/Companies2";
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
@@ -52,7 +53,7 @@ export default function Home() {
       </head>
       <div className="space-y-8 xsm:space-y-6 md:space-y-10">
         <Herosection />
-        <Companies />
+        <Companies2 />
         <Courses_Home />
         <WhatHM />
         <OurFeatures />
