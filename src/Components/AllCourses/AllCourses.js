@@ -327,7 +327,10 @@ setTimeout(() => {
         ""
       )}
         {
-        show ? [1,2,3,4].map((item)=>{
+        (show && window.innerWidth<=480) ? [1,2,3,4,5,6].map((item)=>{
+          return(<Skeleton/>)
+        }):
+        show && window.innerWidth>480 ? [1,2,3,4].map((item)=>{
           return(<Skeleton/>)
         })   
        : allCourses?.map((val, ind) => {

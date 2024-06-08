@@ -86,7 +86,7 @@ const Companies2 = () => {
                                     src={logo.src}
                                     alt={`Company Logo ${index}`}
                                     style={{
-                                        height: logo.height,
+                                        height: window.innerWidth<=480 ? '21px' : logo.height,
                                         width: logo.width
                                     }}
                                     className={index === currentLogoIndexes[setIndex] ? 'logo active' : 'logo'}

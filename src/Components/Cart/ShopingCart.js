@@ -16,7 +16,7 @@ function ShopingCart() {
   function Total(data) {
     let price = 0;
     data?.map((item) => {
-      price += item.course.base_price;
+      price += item?.course?.base_price;
     });
     settotal(price);
   }
@@ -76,11 +76,11 @@ function ShopingCart() {
               return (
                 <>
                   <div className="w-full bg-[#E2FFF1] p-3 shadow-xl rounded-xl xsm:p-2 md:p-2">
-                    <div className="flex  h-[15vw] rounded-[1.2vw] 2xl:w-[900px] 2xl:h-[240px]">
+                    <div className="flex  h-[15vw] rounded-[1.2vw] xsm:h-[80px] 2xl:w-[900px] 2xl:h-[240px]">
                       <div className="w-[50%] 2xl:w-[600px]">
                         <img
                           className="w-[100%] h-[100%] rounded-xl"
-                          src={item.course.featured_image}
+                          src={item?.course?.featured_image}
                           alt="FSD-img"
                         ></img>
                       </div>
@@ -91,15 +91,15 @@ function ShopingCart() {
                         <div className="flex flex-nowrap justify-between items-center">
                           <div className="space-y-2 md:space-y-1">
                             <p className="font-mons text-[1.5vw] font-semibold  2xl:text-[18px] xsm:text-[10px]">
-                              {item.course.title}
+                              {item?.course?.title?.slice(0,60)}..
                             </p>
                             <p className="text-[#696984] text-md w-[100%] xsm:hidden md:text-[10px]">
-                              {item.course.overview.slice(0, 60)}..{" "}
+                              {item?.course?.overview.slice(0, 60)}..{" "}
                             </p>
                           </div>
                           <div>
                             <p
-                              onClick={() => Removecart(item.course._id)}
+                              onClick={() => Removecart(item?.course?._id)}
                               className="cursor-pointer font-mons text-[1vw] 2xl:text-[16px]  mt-[1vw] text-black font-semibold xsm:text-[7px]"
                             >
                               Remove
@@ -128,11 +128,11 @@ function ShopingCart() {
                             </div>
                             {/* <div className='flex items-center'>
                                                     <img className='w-[1.3vw] mr-[0.1vw] 2xl:w-[13px]' src="../Icons/clockfilled.svg" alt="clock"></img>
-                                                    <p className='font-mons text-[14px] 2xl:text-[14px] font-normal text-[#555555] xsm:text-[6px]'> {item.course.duration}</p>
+                                                    <p className='font-mons text-[14px] 2xl:text-[14px] font-normal text-[#555555] xsm:text-[6px]'> {item?.course?.duration}</p>
                                                 </div> */}
                             {/* <div className='flex items-center'>
                                                     <img className='w-[1.6vw] mr-[0.1vw] 2xl:w-[13px]' src="../Icons/hat.svg" alt="hat"></img>
-                                                    <p className='font-mons text-[14px] 2xl:text-[14px] font-normal text-[#555555] xsm:text-[6px]'> {item.course.enrollments / 1000}k Students</p>
+                                                    <p className='font-mons text-[14px] 2xl:text-[14px] font-normal text-[#555555] xsm:text-[6px]'> {item?.course?.enrollments / 1000}k Students</p>
                                                 </div> */}
                             {/* <div className='flex items-center'>
                                         <img className='w-[1.1vw] mr-[0.1vw] 2xl:w-[13px]' src="../Icons/barchartgreen.svg" alt="bar-chart"></img>
@@ -140,7 +140,7 @@ function ShopingCart() {
                                     </div> */}
                             {/* <div className='flex items-center'>
                                                     <img className='w-[1.2vw] mr-[0.1vw] 2xl:w-[13px]' src="../Icons/files.svg" alt="files"></img>
-                                                    <p className='font-mons text-[14px] 2xl:text-[14px] font-normal text-[#555555] xsm:text-[6px]'> {item.course.total_lessons} Lessons</p>
+                                                    <p className='font-mons text-[14px] 2xl:text-[14px] font-normal text-[#555555] xsm:text-[6px]'> {item?.course?.total_lessons} Lessons</p>
                                                 </div> */}
                           </div>
                           <div>
@@ -189,7 +189,7 @@ function ShopingCart() {
                           </div>
                           <div>
                             <p className="font-Inter text-[1.2vw] font-semibold text-[black] 2xl:text-[20px] xsm:text-[8px]">
-                              ₹{item.course.base_price}
+                              ₹{item?.course?.base_price}
                             </p>
                           </div>
                         </div>

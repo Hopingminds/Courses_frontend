@@ -33,7 +33,7 @@ const MinorCourse = () => {
 
   return (
     <>
-      <div className="bg_clippath font-pop  w-full flex flex-col gap-14 pt-[4%] pb-[7%] md:pt-[6%] md:gap-12 md:h-[55vh] xsm:pt-[12%] xsm:gap-8">
+      <div className="bg_clippath font-pop  w-full flex flex-col gap-14 pt-[4%] pb-[7%] md:pt-[6%] md:gap-12 md:h-[55vh] xsm:pt-[12%] xsm:gap-8 xsm:pb-[12%]">
         <div className="flex px-[6vw] w-full md:px-[7vw] xsm:px-[8vw]">
           <ul className="list-disc text-white text-[18px] md:text-[14px] xsm:text-[10px]">
             <li>20 Credits that counts towards your degree</li>

@@ -39,7 +39,7 @@ export default function DetailCourses() {
     return (
         <div className="h-auto min-h-screen overflow-x-visible ">
             <div className=" px-[5%] mb-5 xsm:mx-0 ">
-                <div className='CCDetails-Header-main flex justify-between px-[5%] w-full xsm:mb-[4.5rem]' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.featured_image})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat" }}>
+                <div className='CCDetails-Header-main flex justify-between px-[5%] w-full xsm:mb-[4.5rem]' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.featured_image})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat",backgroundPosition:'center' }}>
                     <div className='CCDetails-Header-content-leftqw xsm:text-[10px]'>
                         <div className='CCDetails-Header-content-row1qw xsm:text-[10px]'>
                             <h2 className='font-pop  xsm:text-[10px]'>{Data?.title}</h2>
@@ -55,7 +55,7 @@ export default function DetailCourses() {
                             </div>
                             <p>Based on feedback received from 250+ learners</p>
                         </div>
-                        <div className='text-white mt-4 font-pop text-[14px] grid grid-cols-2 gap-2'>
+                        <div className='text-white mt-4 font-pop text-[14px] grid grid-cols-2 gap-2 xsm:hidden'>
                             {Data?.whatWillILearn?.map((item, index) => (
                                 <div key={index} className='flex gap-1 items-center'>
                                     <TiTick className='w-5 h-5' />
