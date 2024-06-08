@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import ProfileIcon from "../../Assets/Images/ProfileIcon.png";
 import { IoMdArrowDropdown } from "react-icons/io";
+import Edit from "../../Assests/Icons/edit.svg";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 
 const INITIAL_FORM_STATE = {
+  logoUrl: "",
   position: "",
   employmentType: "",
   departmentRoleCategory: "",
@@ -27,12 +30,16 @@ const INITIAL_FORM_STATE = {
 
 const PostJobsForm = () => {
   const navigate = useNavigate();
+  const fileInputRef = useRef(null);
+  const [uploadLoader, setUploadLoader] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
   const [jd, setJd] = useState("");
   const [keySkill, setKeySkill] = useState("");
   const [addedSkills, setAddedSkills] = useState([]);
   const [jobLocation, setJobLocation] = useState("");
   const [addedLocations, setAddedLocations] = useState([]);
   const [formData, setFormData] = useState({
+    logoUrl: "",
     position: "",
     employment_type: "",
     departmentRoleCategory: "",
@@ -162,19 +169,11 @@ const PostJobsForm = () => {
       return;
     }
 
-    // If any required field is empty, display error toast and prevent submission
-    // if (isEmpty) {
-    //   toast.error("Please fill out all required fields.");
-    //   return;
-    // }
-
-    // Proceed with form submission if all validations pass
-
     const newFormData = {
       publichedBy: "",
       position: formData?.position,
       employment_type: formData?.employment_type,
-
+      logoUrl: formData?.logoUrl,
       company: formData?.company,
       role_category: formData?.departmentRoleCategory,
       work_mode: formData?.workMode,
@@ -188,7 +187,6 @@ const PostJobsForm = () => {
       about_company: formData?.aboutCompany,
       company_website_link: "",
       company_address: formData?.companyAddress,
-      logoUrl: "",
       key_skills: addedSkills,
       job_description: jd,
     };
@@ -229,20 +227,86 @@ const PostJobsForm = () => {
       toast.error(error);
     }
   };
+  const handleEditClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = async (e) => {
+    setUploadLoader(true);
+    // console.log(e.target.files[0])
+    const file = e.target.files[0];
+    // console.log(file);
+    setSelectedImage(file);
+    // console.log(file)
+    if (file) {
+      // console.log(file);
+      try {
+        const res = await axios.post(
+          `${BASE_URL}/uploaduserprofiletoaws`,
+          { file },
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${localStorage.getItem(
+                "COURSES_USER_TOKEN"
+              )}`,
+            },
+          }
+        );
+        // console.log(res);
+        if (res.data.success) {
+          console.log(res.data);
+          setUploadLoader(false);
+          toast.success("Profile Picture Updated");
+          setFormData({ ...formData, logoUrl: res.data.url });
+        }
+      } catch (error) {
+        console.log(error);
+        setUploadLoader(false);
+      }
+    }
+
+    // setUser({ ...user, profile: URL.createObjectURL(file) })
+  };
 
   return (
     <div className="bg-[#e6e6e6] py-[3%] px-[20%] pr">
       <div className="bg-[#fafafa] ">
-        <div className="bg-white px-4 py-2 text-[12px] font-pop flex flex-col gap-6">
+        <div className="bg-white px-4 py-2 text-[12px] font-pop flex flex-col gap-6 w-full">
           {/* Heading */}
           <div className="flex flex-col ">
             <p className="text-[24px] text-gray-600">Post a Job Vacancy</p>
-            {/* <p className="text-gray-500 text-[14px]">
-                        Begin from scratch or{" "}
-                        <span className="text-blue-600">prefill from previous jobs</span>
-                        </p> */}
           </div>
-          {/* Job title & Employment type */}
+          <div className="relative w-[160px] h-[160px] rounded-full  xsm:h-[80px] xsm:w-[80px] xsm:top-10 bg-[#FFFFFF] md:w-[120px] md:h-[120px] md:top-24 mx-auto">
+            {uploadLoader ? (
+              <div className="grid items-center justify-center h-[100%] w-[100%]">
+                <p>uploading... </p>{" "}
+              </div>
+            ) : (
+              <img
+                src={formData.logoUrl ? formData.logoUrl : ProfileIcon}
+                className="w-full h-full rounded-full object-cover xsm:h-[80px] xsm:w-[80px]"
+              />
+            )}
+            <div
+              className="absolute w-[40px] h-[40px] bg-[#E2FFF1] text-[#E2FFF1] shadow-sm rounded-full top-[65%] right-[0%] flex justify-center items-center cursor-pointer
+            xsm:w-[20px] xsm:h-[20px]"
+            >
+              <img
+                src={Edit}
+                className=" absolute w-[20px] h-[20px] xsm:w-[10px] xsm:h-[10px]"
+                onClick={handleEditClick}
+              />
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                ref={fileInputRef}
+                onChange={handleFileChange}
+              />
+            </div>
+          </div>
+
           <div className="grid grid-cols-[1.5fr,1fr] gap-4">
             <div>
               <p className="font-pop font-semibold ">
