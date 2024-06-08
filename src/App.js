@@ -50,7 +50,7 @@ function App() {
         const data = await fetch(url);
         const response = await data.json();
         setCartSize(response?.cart?.length);
-        console.log(response?.cart?.length);
+        // console.log(response?.cart?.length);
       } catch (error) {
         console.error(error);
       }
