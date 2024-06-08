@@ -105,7 +105,7 @@ export default function Commoncard(props) {
   };
   
   return (
-    <div className="bg-[#E2FFF1] w-[33%] h-max my-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3">
+    <div className="bg-[#E2FFF1] w-[33%] h-max my-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
       <div className="h-max rounded-xl overflow-hidden bg-white md:h-[35%] relative">
         {
           <span className="bg-transparent p-4 absolute top-0 left-0 z-[99]">

@@ -23,7 +23,7 @@ const Resume2 = () => {
       `}
     </style>
     <div
-      className="px-[5%] py-[15%] pb-[10%] bg-gradient-to-r from-[#0F2027] to-[#203A43] curvedbg w-full xsm:pt-[30%] xsm:pb-[12%]"
+      className="px-[5%] py-[15%] pb-[10%] bg-gradient-to-r from-[#0F2027] to-[#203A43] curvedbg w-full xsm:pt-[38%] xsm:pb-[22%]"
       style={{ width: "100%" }}
     >
       <div className="text-white font-pop font-semibold text-[40px] text-center relative md:text-[32px] xsm:text-[20px]">
