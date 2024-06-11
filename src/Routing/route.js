@@ -66,6 +66,7 @@ import UserProfile from '../Components/TeacherPanel/UserProfile/UserProfile.jsx'
 import Assignment from '../Components/TeacherPanel/Assignment/Assignment.jsx'
 import ScheduledAssignments from '../Components/TeacherPanel/Assignment/ScheduledAssignments/ScheduledAssignments.jsx'
 import History from '../Components/TeacherPanel/Assignment/History/History.jsx'
+import Restriction from '../Components/Restrictions/index.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -153,6 +154,8 @@ const Router = () => {
                 <Route path='/hrdashboard' element={<HRDashboard />} />
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
+                <Route path='/res' element={<Restriction />} />
+
                 <Route path='/teacherpanel' element={<TPHome/>} >
                     <Route index path='dashboard' element={<Dashboard />} />
                     <Route path='liveclass' element={<LiveClasses />} />
@@ -163,7 +166,7 @@ const Router = () => {
                     </Route>
                     <Route path='batch' element={<Batches />} >
                         <Route index path='courses' element={<Courses />} />
-                        <Route path='batches' element={<CourseBatches />} />
+                        <Route path='batches' element={<CourseBatches />} /> 
                     </Route>
                     <Route path='userprofile' element={<UserProfile />} />
                 </Route>
@@ -176,4 +179,4 @@ const Router = () => {
     )
 }
 
-export default Router
+export default Router;
