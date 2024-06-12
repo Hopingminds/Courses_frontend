@@ -15,13 +15,13 @@ const Restriction = () => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
         document.title = "Don't change the tab";
-        audio.play().catch(error => {
-          console.error('Error playing audio:', error);
-        });
-        alert('You are not allowed to change the tab');
+        // audio.play().catch(error => {
+        //   console.error('Error playing audio:', error);
+        // });
+        // alert('You are not allowed to change the tab');
       } else {
         document.title = 'Online Test';
-        audio.pause();
+        // audio.pause();
       }
     };
 
@@ -50,7 +50,7 @@ const Restriction = () => {
     setIsFullScreen(isFullScreenNow);
 
     if (!isFullScreenNow && escapePressed) {
-      alert('You have pressed the Escape key to exit full screen mode.');
+      // alert('You have pressed the Escape key to exit full screen mode.');
       setEscapePressed(false);
     }
   };
@@ -157,22 +157,14 @@ const Restriction = () => {
     enterFullScreen();
   }, [window.location.pathname]);
 
+  
+
   return (
-    <div ref={contentRef} style={{ width: '100%', height: '100vh', backgroundColor: 'lightgray', textAlign: 'center' }}>
-      <h1>Full Screen Mode</h1>
-      {!isFullScreen && (
-        <div>
-          <p>You have exited full screen mode. Please click the button below to re-enter full screen mode.</p>
-          <button onClick={enterFullScreen}>Enter Full Screen</button>
-        </div>
-      )}
-      <div>
+    <div ref={contentRef} className='fixed bottom-0 left-0'>
         <div className='relative'>
-          <video ref={videoRef} width="640" height="480" style={{ display: 'block' }} />
-          <canvas ref={canvasRef} width="640" height="480" className='absolute top-0' />
+          <video ref={videoRef} width="200" height="180" className='rounded-xl' style={{ display: 'block' }} />
+          <canvas ref={canvasRef} width="200" height="180" className='absolute top-0' />
         </div>
-        <div>Number of people detected: {personCount}</div>
-      </div>
     </div>
   );
 };

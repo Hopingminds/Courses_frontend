@@ -1,20 +1,12 @@
 import { useEffect, useState, useRef } from "react";
-import { FaArrowLeft } from "react-icons/fa";
-import { FaGreaterThan } from "react-icons/fa6";
-import { FaLessThan } from "react-icons/fa6";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { FaArrowLeft, FaGreaterThan, FaLessThan } from "react-icons/fa";
+import * as cocoSsd from '@tensorflow-models/coco-ssd';
+import '@tensorflow/tfjs';
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
 import toast, { Toaster } from "react-hot-toast";
-import html2canvas from "html2canvas";
-import RecordRTC, { getMediaElement } from 'recordrtc';
-let screenshotInterval;
-
+import Restriction from "../../Restrictions";
 
 export default function Question() {
   const [Selected, setSelected] = useState();
@@ -22,40 +14,26 @@ export default function Question() {
   const [show, setshow] = useState(false);
   const [params, setparams] = useSearchParams();
   const [index, setindex] = useState(1);
+  
+  const [tabwarning, settabwarning] = useState(0);
+  let [peoplewarning, setpeoplewarning] = useState(4);
   let navigate = useNavigate();
   const [Length, setLength] = useState();
   let token = localStorage.getItem("COURSES_USER_TOKEN");
 
-  //   ..........
-  const [timer, setTimer] = useState(20);
-  const [timeString, setTimeString] = useState("");
-  const [userImage, setUserImage] = useState(null);
-  const [recorderInstance, setRecorderInstance] = useState(null); // Define recorderInstance
-  const [recordedVideoURL, setRecordedVideoURL] = useState(null);
-  //   ..........
-
   async function Fetchdata() {
     try {
-      let url =
-        BASE_URL +
-        "/getmodulequestions?module_id=" +
-        params.get("module_id") +
-        "&index=" +
-        params.get("index");
-      // console.log(url);
+      let url = `${BASE_URL}/getmodulequestions?module_id=${params.get("module_id")}&index=${params.get("index")}`;
       setshow(true);
       const data = await fetch(url, {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
       const response = await data.json();
-      console.log(response);
       if (response.success) {
         setshow(false);
-        setdata(response?.data);
-        setLength(response?.length);
+        setdata(response.data);
+        setLength(response.length);
       } else {
         navigate("/submitted");
       }
@@ -63,12 +41,14 @@ export default function Question() {
       console.log(error);
     }
   }
+
   useEffect(() => {
     Fetchdata();
   }, [params.get("index")]);
+
   const handleSubmit = async () => {
     try {
-      let url = BASE_URL + "/submittestanswer";
+      let url = `${BASE_URL}/submittestanswer`;
       setshow(true);
       const data1 = await fetch(url, {
         method: "PUT",
@@ -78,7 +58,7 @@ export default function Question() {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          questionID: data?.question?._id,
+          questionID: data.question._id,
           moduleID: params.get("module_id"),
           answer: Selected,
         }),
@@ -88,36 +68,32 @@ export default function Question() {
         setindex(index + 1);
         setshow(false);
         setSelected("");
-        navigate(
-          `/questions?module_id=${params.get("module_id")}&index=${index + 1}`
-        );
+        navigate(`/questions?module_id=${params.get("module_id")}&index=${index + 1}`);
       }
-      // console.log(response);
     } catch (error) {
       console.log(error);
     }
   };
+
   function Nextquestion() {
     if (index <= Length) {
       Fetchdata();
       setindex(index + 1);
-      navigate(
-        `/questions?module_id=${params.get("module_id")}&index=${index + 1}`
-      );
+      navigate(`/questions?module_id=${params.get("module_id")}&index=${index + 1}`);
     }
   }
+
   function Previousquestion() {
     if (index >= 1) {
       Fetchdata();
       setindex(index - 1);
-      navigate(
-        `/questions?module_id=${params.get("module_id")}&index=${index - 1}`
-      );
+      navigate(`/questions?module_id=${params.get("module_id")}&index=${index - 1}`);
     }
   }
+
   async function handleClick() {
     try {
-      let url = BASE_URL + "/submitmodule";
+      let url = `${BASE_URL}/submitmodule`;
       const data = await fetch(url, {
         method: "PUT",
         headers: {
@@ -129,9 +105,8 @@ export default function Question() {
       });
       const response = await data.json();
       if (response.success) {
-        // stopRecording();
-        toast.success("Submitted Successfully")
-        navigate("/submitted");
+        toast.success("Submitted Successfully");
+        window.location.replace('/submitted');
       } else {
         toast.error(response.message);
       }
@@ -141,340 +116,249 @@ export default function Question() {
   }
 
   function handlePrev() {
-    if(localStorage.getItem('history')){
-      let history=localStorage.getItem('history');
-      localStorage.removeItem('history')
-      navigate(history)
-  }
-  else{
-    navigate('/modules');
-  }
-
+    if (localStorage.getItem('history')) {
+      let history = localStorage.getItem('history');
+      localStorage.removeItem('history');
+      navigate(history);
+    } else {
+      navigate('/modules');
+    }
   }
 
-  //   ............
-  //   timer
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (timer > 0) {
-  //       setTimer((prevTimer) => prevTimer - 1);
-  //     } else {
-  //       clearInterval(interval);
-  //       // exitFullscreen();
-  //       navigate("/submitted"); // Redirect when time is up
-  //     }
-  //   }, 1000);
+  const [audio] = useState(new Audio('/danger.mp3'));
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [escapePressed, setEscapePressed] = useState(false);
+  const [personCount, setPersonCount] = useState(0);
+  const contentRef = useRef(null);
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+  const allowedwarnings = 3;
 
-  //   return () => clearInterval(interval);
-  // }, [timer, navigate]);
-  // useEffect(() => {
-  //   const minutes = Math.floor(timer / 60);
-  //   const seconds = timer % 60;
-  //   setTimeString(`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`);
-  // }, [timer]);
-  // timer
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.title = "Don't change the tab";
+        if (peoplewarning > 0) {
+          setpeoplewarning(peoplewarning - 1);
+          alert(`You are not allowed to change the tab.`);
+          enterFullScreen();
+        }
+        audio.play().catch(error => console.error('Error playing audio:', error));
+      } else {
+        document.title = 'Online Test';
+        audio.pause();
+      }
+    };
 
-  // tab switch
-  // useEffect(() => {
-  //   const handleVisibilityChange = () => {
-  //     if (document.hidden) {
-  //       // User switched tabs or minimized the window
-  //       alert("Please do not switch tabs during the assessment.");
-  //       // Block navigation (not fully enforceable)
-  //       document.addEventListener("visibilitychange", handleBlockedNavigation);
-  //     } else {
-  //       // Remove the block on navigation
-  //       document.removeEventListener(
-  //         "visibilitychange",
-  //         handleBlockedNavigation
-  //       );
-  //     }
-  //   };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
-  //   const handleBeforeUnload = (event) => {
-  //     // Prompt the user before leaving the page
-  //     event.preventDefault();
-  //     event.returnValue = "";
-  //   };
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [audio, peoplewarning]);
 
-  //   const handleBlockedNavigation = (event) => {
-  //     // Block navigation while assessment is ongoing
-  //     event.preventDefault();
-  //     event.returnValue = "";
-  //   };
+  const enterFullScreen = () => {
+    const content = document.documentElement;
+    if (content.requestFullscreen) {
+      content.requestFullscreen().then(() => {}).catch(err => console.error(err));
+    } else if (content.mozRequestFullScreen) {
+      content.mozRequestFullScreen().then(() => {}).catch(err => console.error(err));
+    } else if (content.webkitRequestFullscreen) {
+      content.webkitRequestFullscreen().then(() => {}).catch(err => console.error(err));
+    } else if (content.msRequestFullscreen) {
+      content.msRequestFullscreen().then(() => {}).catch(err => console.error(err));
+    }
+  };
 
-  //   // Add event listeners for visibility change and before unload 
-  //   document.addEventListener("visibilitychange", handleVisibilityChange);
-  //   window.addEventListener("beforeunload", handleBeforeUnload);
+  useEffect(() => {
+    const handleFullScreenChange = () => {
+      const isFullScreenNow = !!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+      if (!isFullScreenNow && escapePressed) {
+        alert('You have pressed the Escape key to exit full screen mode.');
+        enterFullScreen();
+        setEscapePressed(false);
+      }
+    };
 
-  //   // Clean up event listeners on component unmount
-  //   return () => {
-  //     document.removeEventListener("visibilitychange", handleVisibilityChange);
-  //     window.removeEventListener("beforeunload", handleBeforeUnload);
-  //   };
-  // }, []);
-  // tab switch
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullScreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
+    document.addEventListener('msfullscreenchange', handleFullScreenChange);
 
-  // Request fullscreen mode when the assessment starts
-  // useEffect(() => {
-  //   const handleVisibilityChange = () => {
-  //     if (document.hidden) {
-  //       // User switched tabs or minimized the window
-  //       alert("Please do not switch tabs during the assessment.");
-  //       // Block navigation (not fully enforceable)
-  //       document.addEventListener("visibilitychange", handleBlockedNavigation);
-  //     } else {
-  //       // Remove the block on navigation
-  //       document.removeEventListener(
-  //         "visibilitychange",
-  //         handleBlockedNavigation
-  //       );
-  //     }
-  //   };
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullScreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullScreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
+      document.removeEventListener('msfullscreenchange', handleFullScreenChange);
+    };
+  }, []);
 
-    // const handleBeforeUnload = (event) => {
-    //   // Prompt the user before leaving the page
-    //   event.preventDefault();
-    //   event.returnValue = "";
-    // };
+  useEffect(() => {
+    const detectDevTools = () => {
+      const devtools = /./;
+      devtools.toString = function() {
+        this.opened = true;
+      };
+      if (devtools.opened) {
+        alert('Developer tools are open. Taking screenshots is not allowed.');
+      }
+    };
 
-    // const handleBlockedNavigation = (event) => {
-    //   // Block navigation while assessment is ongoing
-    //   event.preventDefault();
-    //   event.returnValue = "";
-    // };
+    window.addEventListener('devtoolschange', detectDevTools);
+    return () => {
+      window.removeEventListener('devtoolschange', detectDevTools);
+    };
+  }, []);
 
-    // const enterFullscreen = () => {
-    //   if (document.documentElement.webkitRequestFullscreen) {
-    //     // Safari
-    //     document.documentElement.webkitRequestFullscreen();
-    //   } else if (document.documentElement.msRequestFullscreen) {
-    //     // IE11
-    //     document.documentElement.msRequestFullscreen();
-    //   }
-    // };
+  useEffect(() => {
+    const loadModelAndDetect = async () => {
+      const model = await cocoSsd.load();
+      setInterval(() => detectFrame(videoRef.current, model), 100);
+    };
 
-    // enterFullscreen();
+    const startCamera = () => {
+      navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+        videoRef.current.srcObject = stream;
+        videoRef.current.play().catch(err => console.error('Error playing video:', err));
+        loadModelAndDetect();
+      }).catch(err => console.error('Error accessing camera:', err));
+    };
 
-    // const takeScreenshot = () => {
-    //   html2canvas(document.body).then(canvas => {
-    //     // Convert canvas to data URL
-    //     const screenshot = canvas.toDataURL("image/png");
-    
-    //     // Send the screenshot data to the server
-    //     fetch("/save-screenshot", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({ screenshot }),
-    //     })
-    //     .then(response => {
-    //       if (response.ok) {
-    //         console.log("Screenshot saved on server.");
-    //       } else {
-    //         console.error("Failed to save screenshot on server.");
-    //       }
-    //     })
-    //     .catch(error => {
-    //       console.error("Error while saving screenshot:", error);
-    //     });
-    //     const randomDuration = Math.floor(Math.random() * 5000) + 1000; // Random duration between 1 and 10 seconds
-    //   clearInterval(screenshotInterval); // Clear the current interval
-    //   screenshotInterval = setInterval(takeScreenshot, randomDuration);
-    //   });
-    // };
-    
-    // takeScreenshot();
+    const detectFrame = async (video, model) => {
+      if (video && video.readyState === 4) {
+        const predictions = await model.detect(video);
+        drawBoundingBoxes(predictions);
+        countPersons(predictions);
+      }
+    };
 
-  //   const cleanup = () => {
-  //     // Exit fullscreen mode when the component unmounts
-  //     exitFullscreen();
-  //     // Clean up event listeners
-  //     document.removeEventListener("visibilitychange", handleVisibilityChange);
-  //     window.removeEventListener("beforeunload", handleBeforeUnload);
-  //     // Clear the screenshot interval
-  //       clearInterval(screenshotInterval);
-  //   };
+    const drawBoundingBoxes = (predictions) => {
+      const ctx = canvasRef.current.getContext('2d');
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      predictions.forEach(prediction => {
+        if (prediction.class === 'person') {
+          const [x, y, width, height] = prediction.bbox;
+          ctx.strokeStyle = 'red';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(x, y, width, height);
+          ctx.fillStyle = 'red';
+          ctx.fillText(
+            `${prediction.class} (${Math.round(prediction.score * 100)}%)`,
+            x,
+            y > 10 ? y - 5 : y + 10
+          );
+        }
+      });
+    };
 
-  //   return cleanup;
-  // }, []);
+    const countPersons = (predictions) => {
+      const count = predictions.filter(prediction => prediction.class === 'person').length;
+      setPersonCount(count);
+    };
 
-  // const exitFullscreen = () => {
-  //   if (document.webkitExitFullscreen) {
-  //     // Safari
-  //     document.webkitExitFullscreen();
-  //   } else if (document.msExitFullscreen) {
-  //     // IE11
-  //     document.msExitFullscreen();
-  //   }
-  // };
+    startCamera();
 
-  // useEffect(() => {
-  //   // Retrieve the user's image from local storage
-  //   const imageSrc = localStorage.getItem("userImage");
-  //   console.log("User Image:", imageSrc); // Log the image source
-  //   setUserImage(imageSrc);
-  // }, []);
+    return () => {
+      if (videoRef.current && videoRef.current.srcObject) {
+        videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+      }
+    };
+  }, []);
 
-  // const startRecording = async () => {
-  //   try {
-  //     const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-  //     const recorder = new RecordRTC(stream, {
-  //       type: 'video',
-  //       mimeType: 'video/webm',
-  //     });
-  //     recorder.startRecording();
-  //     setRecorderInstance(recorder);
-  //     console.log("no error");
-  //   } catch (error) {
-  //     console.error('Error starting recording:', error);
-  //   }
-  // };
-  
-  // const stopRecording = () => {
-  //   try {
-  //     if (recorderInstance) {
-  //       recorderInstance.stopRecording(() => {
-  //         const blob = recorderInstance.getBlob();
-  //         const videoURL = window.URL.createObjectURL(blob);
-  //         setRecordedVideoURL(videoURL);
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.error('Error stopping recording:', error);
-  //   }
-  // };
+  useEffect(() => {
+    if (personCount > 1) {
+      alert(`${personCount} Person Detected in your camera frame. Only ${peoplewarning-1} warnings left!!`);
+      setpeoplewarning(peoplewarning-1);
+      enterFullScreen();
+    } else if (personCount === 0) {
+      alert(`Your face should be in front of camera. Only ${peoplewarning-1} warnings left!!`);
+      setpeoplewarning(peoplewarning-1);
+      enterFullScreen();
+    }
+  }, [personCount]);
 
-  // useEffect(() => {
-  //   // Start recording when the component renders on the questions route
-  //   startRecording();
-  // }, []);
+  useEffect(() => {
+    if (peoplewarning <= 0 ) {
+      handleClick();
+    }
+  }, [peoplewarning]);
 
-  //   ..............
+  useEffect(() => {
+    enterFullScreen();
+  }, [window.location.pathname]);
 
   return (
     <>
       <Toaster />
-      <div className="px-[6%] space-y-5 py-2">
-        <div className=" flex justify-between items-center border p-3  rounded-lg">
+      <div className="px-[6%] space-y-5 py-2 bg-white" ref={contentRef}>
+        <div className='fixed bottom-0 left-0'>
+          <div className='relative'>
+            <video ref={videoRef} width="200" height="180" className='rounded-xl' style={{ display: 'block' }} />
+            <canvas ref={canvasRef} width="200" height="180" className='absolute top-0' />
+          </div>
+        </div>
+        <div className="flex justify-between items-center border p-3 rounded-lg">
           <div onClick={handlePrev} className="flex items-center space-x-3 cursor-pointer">
             <FaArrowLeft />
             <p className="font-semibold">Go Back to {data?.module} Module</p>
           </div>
-
           <div className="flex items-center space-x-3">
             <FaLessThan
-              className={`h-8 w-8 text-xs rounded-full bg-slate-300 p-2  ${
-                index == 1 ? "cursor-not-allowed opacity-50" : "cursor-pointer"
-              }`}
+              className={`h-8 w-8 text-xs rounded-full bg-slate-300 p-2 ${index === 1 ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
               onClick={() => (index > 1 ? Previousquestion() : "")}
             />
             <FaGreaterThan
-              className={`h-8 w-8 text-xs rounded-full bg-slate-300 p-2  ${
-                index == Length
-                  ? "cursor-not-allowed opacity-50"
-                  : "cursor-pointer"
-              }`}
+              className={`h-8 w-8 text-xs rounded-full bg-slate-300 p-2 ${index === Length ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
               onClick={() => (index < Length ? Nextquestion() : "")}
             />
           </div>
         </div>
-
-        {/* <div>
-          <p>Time Remaining: {timeString}</p>
-        </div>
-        {userImage && (
-          <div className="flex justify-center">
-            <img
-              src={userImage}
-              alt="User"
-              className="w-32 h-32 rounded-full"
-            />
-          </div>
-        )} */}
-
         <div className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5">
           <div className="w-[60%] rounded-xl border h-full shadow-xl xsm:w-full">
-            <div className="border-b-[2px] p-3 font-semibold">
-              {data?.module}
-            </div>
-            <div className="p-3 text-lg text-gray-700">
-              {data?.question?.question}
-            </div>
+            <div className="border-b-[2px] p-3 font-semibold">{data?.module}</div>
+            <div className="p-3 text-lg text-gray-700">{data?.question?.question}</div>
           </div>
-
           <div className="w-[35%] rounded-xl border min-h-full shadow-xl overflow-y-auto xsm:w-full xsm:min-h-[50vh] xsm:h-fit">
             <div className="border-b-[2px] p-3 font-semibold">Options</div>
             <div className="flex flex-col p-5 gap-y-5">
-              {data?.question?.options &&
-                Object.entries(data?.question?.options).map(([key, value]) => {
-                  return (
-                    <>
-                      <label
-                        onClick={() =>
-                          !data?.isSubmitted ? setSelected(key?.toString()) : ""
-                        }
-                        htmlFor={key?.toString()}
-                        className={`${
-                          Selected == key?.toString() ||
-                          data?.submittedAnswer == key?.toString()
-                            ? "border-[#1DBF73]"
-                            : ""
-                        } flex p-3 border rounded-lg space-x-2 cursor-pointer`}
-                      >
-                        {data?.isSubmitted ? (
-                          <input
-                            name="option"
-                            id={key?.toString()}
-                            type="radio"
-                            checked={data?.submittedAnswer == key?.toString()}
-                            className="accent-[#1DBF73]"
-                          />
-                        ) : (
-                          <input
-                            name="option"
-                            id={key?.toString()}
-                            type="radio"
-                            checked={Selected == key?.toString()}
-                            className="accent-[#1DBF73]"
-                          />
-                        )}
-                        <p>{value}</p>
-                      </label>
-                    </>
-                  );
-                })}
-
+              {data?.question?.options && Object.entries(data.question.options).map(([key, value]) => (
+                <label
+                  key={key}
+                  onClick={() => !data?.isSubmitted ? setSelected(key.toString()) : ""}
+                  htmlFor={key.toString()}
+                  className={`${Selected === key.toString() || data?.submittedAnswer === key.toString() ? "border-[#1DBF73]" : ""} flex p-3 border rounded-lg space-x-2 cursor-pointer`}
+                >
+                  <input
+                    name="option"
+                    id={key.toString()}
+                    type="radio"
+                    checked={data?.isSubmitted ? data.submittedAnswer === key.toString() : Selected === key.toString()}
+                    className="accent-[#1DBF73]"
+                    readOnly
+                  />
+                  <p>{value}</p>
+                </label>
+              ))}
               <div className="flex justify-end space-x-2">
                 <button
-                  className={`py-2 px-4 rounded-xl bg-[#1DBF73] text-white ${
-                    data?.isSubmitted ? "cursor-not-allowed opacity-50" : ""
-                  }`}
-                  onClick={() => (!data?.isSubmitted ? handleSubmit() : "")}
+                  className={`py-2 px-4 rounded-xl bg-[#1DBF73] text-white ${data?.isSubmitted ? "cursor-not-allowed opacity-50" : ""}`}
+                  onClick={() => !data?.isSubmitted ? handleSubmit() : ""}
                 >
                   Save
                 </button>
-                {Length == params.get("index") ? (
-                  <button
-                    className={`py-2 px-4 rounded-xl bg-[#1DBF73] text-white `}
-                    onClick={handleClick}
-                  >
+                {Length === parseInt(params.get("index")) && (
+                  <button className="py-2 px-4 rounded-xl bg-[#1DBF73] text-white" onClick={handleClick}>
                     Finish
                   </button>
-                ) : (
-                  ""
                 )}
               </div>
             </div>
           </div>
         </div>
-        {show ? (
+        {show && (
           <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
-            <Spinner className="" />
+            <Spinner />
           </div>
-        ) : (
-          ""
         )}
       </div>
     </>

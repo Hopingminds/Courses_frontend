@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./courseDetails.css";
 import ReactPlayer from "react-player";
 import ChatBot from "../chatbot/chatbot";
@@ -27,8 +27,12 @@ export default function CDDetails() {
   const [courseId, setcourseId] = useState();
   const [courseAssignment, setCourseAssignment] = useState([]);
   const [courseLessons, setCourseLessons] = useState([]);
-
+  const [showSmallvideo, setshowSmallvideo] = useState(false)
+  const [smallVideourl, setsmallVideourl] = useState('')
+  const [pdfurl, setpdfurl] = useState('')
+  const [pageFullyRead, setPageFullyRead] = useState(false);
   const [url, seturl] = useState("");
+  const pdfRef = useRef(null);
   const params = useParams();
   let completed = [];
   let allchapters = [];
@@ -109,17 +113,18 @@ export default function CDDetails() {
 
   function handleActiveVideo(url) {
     // console.log(url);
+    setshowSmallvideo(false)
     seturl(url);
   }
 
   // console.log(allchapters);
   const handleVideoEnded = async () => {
     // console.log(count + 1);
-
+    setshowSmallvideo(false)
     seturl(ALLCHAPTER[count + 1]?.video);
     let temp = completed_lessons;
     temp.push(ALLCHAPTER[count + 1]?._id);
-    // console.log(count);
+    // console.log(count);v
     setcompleted_lessons(temp);
 
     try {
@@ -185,6 +190,29 @@ export default function CDDetails() {
   const handleContextMenu = (e) => {
     e.preventDefault(); // Prevent default context menu behavior
   };
+
+  const handleToggleNotes = async (pdf,videourl) => {
+    console.log(pdfurl);
+    setshowSmallvideo(true)
+    // seturl(pdfurl)
+    setpdfurl(pdf)
+    setsmallVideourl(videourl)
+  };
+  
+
+  function handleNext(){
+    setshowSmallvideo(false)
+    if(count==completed_lessons.length){
+      handleVideoEnded()
+    }
+    else{
+      seturl(ALLCHAPTER[count + 1]?.video);
+    }
+   
+  }
+
+
+  // Add scroll event listener when component mounts
 
 
   // console.log(Data?.liveClasses)
@@ -255,6 +283,30 @@ export default function CDDetails() {
         {/* Main Content */}
         <div className="w-[85%] xsm:w-full ">
           <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] md:pr-[5%] md:h-[50vh] xsm:px-4">
+          { showSmallvideo && <div className="fixed bottom-0 left-0 z-20 rounded-xl">
+                <ReactPlayer
+                            onContextMenu={handleContextMenu}
+                            height="200px"
+                            width="250px"
+                            borderRadius="14px"
+                            className="shadow-2xl rounded-xl"
+                            style={{ borderRadius: "14px !important" }}
+                            playing={true}
+                            controls={true}
+                            autoPlay={true}
+                            url={smallVideourl}
+                            onDuration={handleDuration}
+                            onEnded={handleVideoEnded}
+                            config={{
+                              file: {
+                                attributes: {
+                                  controlsList: "nodownload",
+                                },
+                              },
+                            }}
+
+                          />
+            </div>}
             {
               window.innerWidth <=480 ?<FiMenu className="absolute top-14 right-1 " onClick={()=>setMenu(true)} size={24} />:<></>
             }
@@ -262,11 +314,12 @@ export default function CDDetails() {
               <div className="CCD-content flex gap-5 pt-10">
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
                   <div className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]" style={{ borderRadius: "14px !important" }}>
-                    {url.toString().endsWith("pdf") ? (
-                      <iframe src={url} width="100%" height="100%" />
-                    ) : url.toString().endsWith("mp3") ? (
+                    { showSmallvideo ||  url?.toString().endsWith("pdf") ? (
+                        <iframe  src={pdfurl} width="100%" height="100%" />
+                    ) : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : (
+                      
                       <ReactPlayer
                         onContextMenu={handleContextMenu}
                         height="auto"
@@ -303,6 +356,7 @@ export default function CDDetails() {
                        courseId={courseId}
                        completed_lessons={completed_lessons}
                        setMenu={setMenu}
+                       
                       />
                     </div>
                   ) : (
@@ -316,6 +370,9 @@ export default function CDDetails() {
                       courseId={courseId}
                       completed_lessons={completed_lessons}
                       setMenu={setMenu}
+                      handleToggleNotes={handleToggleNotes}
+                      ALLCHAPTER={ALLCHAPTER}
+                      count={count}
                     />
                   </div>
                 )}

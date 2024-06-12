@@ -17,6 +17,9 @@ export default function Coursecontents({
   completed_lessons,
   setMenu,
   handleActiveVideo,
+  handleToggleNotes,
+  ALLCHAPTER,
+  count
 }) {
   const navigate = useNavigate();
   // console.log(completed_lessons)
@@ -178,14 +181,11 @@ export default function Coursecontents({
                     <div id={ind + 1} className="pt-2 py-2 px-4">
                       <div className="w-full">
                         {val?.lessons?.map((chapter, index) => {
-                          console.log(chapter);
+                          // console.log(chapter);
 
                           return (
                             <div
-                              onClick={() =>
-                                completed.includes(chapter._id) &&
-                                handleActiveVideo(chapter?.video)
-                              }
+                              
                               className={`flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id)
                                 ? "cursor-not-allowed text-gray-300"
                                 : ""
@@ -193,7 +193,10 @@ export default function Coursecontents({
                               key={index}
                             >
                               <span className="flex justify-between">
-                                <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
+                                <p onClick={() =>
+                                completed.includes(chapter._id) &&
+                                handleActiveVideo(chapter?.video)
+                              } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
                                   {index + 1}. {chapter?.lesson_name}
                                 </p>
                                 <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
@@ -219,12 +222,12 @@ export default function Coursecontents({
                                     {chapter?.notes && (
                                       <span className=" flex justify-between items-center px-2 border rounded-md h-max">
 
-                                        <a href={chapter?.notes} target="_blank" className="flex items-center gap-1">
+                                        <div onClick={()=>handleToggleNotes(chapter?.notes,ALLCHAPTER[count]?.video)} className="flex items-center gap-1">
                                           <Notes className="w-3 h-3" />
                                           <li className="text-[12px] md:text-[10px]">
                                             Notes
                                           </li>
-                                        </a>
+                                        </div>
 
                                       </span>
                                     )}

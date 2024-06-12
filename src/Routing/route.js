@@ -154,7 +154,6 @@ const Router = () => {
                 <Route path='/hrdashboard' element={<HRDashboard />} />
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
-                <Route path='/res' element={<Restriction />} />
 
                 <Route path='/teacherpanel' element={<TPHome/>} >
                     <Route index path='dashboard' element={<Dashboard />} />
