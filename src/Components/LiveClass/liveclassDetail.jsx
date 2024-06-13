@@ -10,7 +10,7 @@ import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
 import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import NewSideBar from "../courseDetails/NewSideBar";
 import { FiMenu } from "react-icons/fi";
-import { checkAndDisable } from "../../helpers/helper_function";
+import { checkAndDisable, formatDate } from "../../helpers/helper_function";
 
 export default function LiveClassDetailPage() {
   const [clicked, setclicked] = useState(false);
@@ -140,23 +140,23 @@ export default function LiveClassDetailPage() {
     setsmallVideourl(videourl);
   };
 
-  console.log(Data);
+  //   console.log(Data);
 
   const [updatedData, setUpdatedData] = useState();
 
-  //   useEffect(() => {
-  //     if (Data) {
-  //       let result = [];
+  useEffect(() => {
+    if (Data) {
+      let result = [];
 
-  //       const temp = checkAndDisable(Data);
+      const temp = checkAndDisable(Data.liveClasses[0]);
 
-  //       result.push(temp);
+      result.push(temp);
 
-  //       setUpdatedData(result);
-  //     }
-  //   }, [Data]);
+      setUpdatedData(result);
+    }
+  }, [Data]);
 
-  //   console.log(updatedData);
+  console.log(updatedData);
 
   return (
     <>
@@ -185,9 +185,26 @@ export default function LiveClassDetailPage() {
                     className="border relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
                     style={{ borderRadius: "14px !important" }}
                   >
-                    <Link to={Data?.liveClasses[0].meetingLink}>
-                      Join Live Class
-                    </Link>
+                    <div className="bg-transparent p-4 absolute top-2 right-2 z-[99]">
+                      <img
+                        src="/liveclass.png"
+                        alt="live class logo "
+                        className="h-[30px] w-auto"
+                      />
+                    </div>
+                    {updatedData[0]?.disabled ? (
+                      <h2 className="text-[1.5rem]">
+                        Scheduled On- {formatDate(updatedData[0]?.date)} at{" "}
+                        {updatedData[0]?.time}{" "}
+                      </h2>
+                    ) : (
+                      <Link
+                        to={Data?.liveClasses[0].meetingLink}
+                        className="text-[2.5rem]"
+                      >
+                        Join Live Class
+                      </Link>
+                    )}
                   </div>
                 </div>
 
