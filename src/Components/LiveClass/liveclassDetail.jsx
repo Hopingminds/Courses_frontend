@@ -1,21 +1,18 @@
 import { useEffect, useRef, useState } from "react";
-import "./courseDetails.css";
+import "./liveclassdetail.css";
 import ReactPlayer from "react-player";
 import ChatBot from "../chatbot/chatbot";
-import { useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
 import Coursecontents from "../Meeting/Coursecontents";
 import { jwtDecode } from "jwt-decode";
 import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
-import Main from "../Main/Main";
 import CourseNavigation from "../CourseNavigation/CourseNavigation";
-import { Link } from "react-router-dom";
-import SideBar from "./SideBar.jsx"
-import NewSideBar from "./NewSideBar.jsx";
+import NewSideBar from "../courseDetails/NewSideBar";
 import { FiMenu } from "react-icons/fi";
+import { checkAndDisable } from "../../helpers/helper_function";
 
-
-export default function CDDetails() {
+export default function LiveClassDetailPage() {
   const [clicked, setclicked] = useState(false);
   const [menu, setMenu] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
@@ -27,9 +24,9 @@ export default function CDDetails() {
   const [courseId, setcourseId] = useState();
   const [courseAssignment, setCourseAssignment] = useState([]);
   const [courseLessons, setCourseLessons] = useState([]);
-  const [showSmallvideo, setshowSmallvideo] = useState(false)
-  const [smallVideourl, setsmallVideourl] = useState('')
-  const [pdfurl, setpdfurl] = useState('')
+  const [showSmallvideo, setshowSmallvideo] = useState(false);
+  const [smallVideourl, setsmallVideourl] = useState("");
+  const [pdfurl, setpdfurl] = useState("");
   const [pageFullyRead, setPageFullyRead] = useState(false);
   const [url, seturl] = useState("");
   const pdfRef = useRef(null);
@@ -38,6 +35,7 @@ export default function CDDetails() {
   let allchapters = [];
 
   useEffect(() => {
+    console.log(params.slug);
     async function Fetchdata() {
       let login = localStorage.getItem("COURSES_USER_TOKEN");
       if (login) {
@@ -88,11 +86,12 @@ export default function CDDetails() {
     }
     Fetchdata();
   }, []);
+
   const handleKeyDown = (e) => {
     console.log(e.key);
     if (e.metaKey) {
-      alert("Screenshot is not allowed")
-      e.preventDefault()
+      alert("Screenshot is not allowed");
+      e.preventDefault();
       return false;
       // e.preventDefault(); // Prevent default behavior for Win Key + PrtSc
     }
@@ -100,76 +99,18 @@ export default function CDDetails() {
 
   // useEffect hook to add event listeners when the component mounts
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-    // document.addEventListener('keyup', (e)=>{
-    //   navigator.clipboard.writeText('')
-    //   alert('Screenshot is not allowed')
-    // });
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [])
+    document.addEventListener("keydown", handleKeyDown);
 
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   function handleActiveVideo(url) {
     // console.log(url);
-    setshowSmallvideo(false)
+    setshowSmallvideo(false);
     seturl(url);
   }
-
-  // console.log(allchapters);
-  const handleVideoEnded = async () => {
-    // console.log(count + 1);
-    setshowSmallvideo(false)
-    seturl(ALLCHAPTER[count + 1]?.video);
-    let temp = completed_lessons;
-    temp.push(ALLCHAPTER[count + 1]?._id);
-    // console.log(count);v
-    setcompleted_lessons(temp);
-
-    try {
-      let login = localStorage.getItem("COURSES_USER_TOKEN");
-      if (login) {
-        let url = BASE_URL + "/lessoncompleted";
-        let bodydata = { courseId, lessonId: ALLCHAPTER[count]?._id };
-        const data1 = await fetch(url, {
-          method: "PUT",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + login,
-          },
-          body: JSON.stringify(bodydata),
-        });
-        const response = await data1.json();
-
-        setcount(count + 1);
-
-        // console.log(response);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  function ClickSection(id) {
-    if (!clicked) {
-      setclicked(true);
-      let inner = document.getElementById(id);
-      // console.log(inner);
-      inner.style.display = "none";
-    } else {
-      setclicked(false);
-      let inner = document.getElementById(id);
-
-      // console.log(inner);
-      inner.style.display = "block";
-    }
-  }
-  const handleDuration = (duration) => {
-    // setDuration(duration);
-    console.log(duration);
-  };
 
   const toggleMenu = () => {
     // if (window.innerWidth <= 480) {
@@ -193,96 +134,60 @@ export default function CDDetails() {
 
   const handleToggleNotes = async (pdf, videourl) => {
     console.log(pdfurl);
-    setshowSmallvideo(true)
+    setshowSmallvideo(true);
     // seturl(pdfurl)
-    setpdfurl(pdf)
-    setsmallVideourl(videourl)
+    setpdfurl(pdf);
+    setsmallVideourl(videourl);
   };
 
+  console.log(Data);
 
-  function handleNext() {
-    setshowSmallvideo(false)
-    if (count == completed_lessons.length) {
-      handleVideoEnded()
-    }
-    else {
-      seturl(ALLCHAPTER[count + 1]?.video);
-    }
+  const [updatedData, setUpdatedData] = useState();
 
-  }
+  //   useEffect(() => {
+  //     if (Data) {
+  //       let result = [];
+
+  //       const temp = checkAndDisable(Data);
+
+  //       result.push(temp);
+
+  //       setUpdatedData(result);
+  //     }
+  //   }, [Data]);
+
+  //   console.log(updatedData);
 
   return (
     <>
       <div className="flex justify-between gap-5">
         {/* side menu */}
-        <div className='w-[20%] sticky top-20 h-max xsm:hidden'>
+        <div className="w-[20%] sticky top-20 h-max xsm:hidden">
           {/* <SideBar /> */}
           <NewSideBar />
         </div>
 
         <div className="w-[85%] xsm:w-full ">
           <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] md:pr-[5%] md:h-[50vh] xsm:px-4">
-            {showSmallvideo && <div className="fixed bottom-0 left-0 z-20 rounded-xl">
-              <ReactPlayer
-                onContextMenu={handleContextMenu}
-                height="200px"
-                width="250px"
-                borderRadius="14px"
-                className="shadow-2xl rounded-xl"
-                style={{ borderRadius: "14px !important" }}
-                playing={true}
-                controls={true}
-                autoPlay={true}
-                url={smallVideourl}
-                onDuration={handleDuration}
-                onEnded={handleVideoEnded}
-                config={{
-                  file: {
-                    attributes: {
-                      controlsList: "nodownload",
-                    },
-                  },
-                }}
-
+            {window.innerWidth <= 480 ? (
+              <FiMenu
+                className="absolute top-14 right-1 "
+                onClick={() => setMenu(true)}
+                size={24}
               />
-            </div>}
-            {
-              window.innerWidth <= 480 ? <FiMenu className="absolute top-14 right-1 " onClick={() => setMenu(true)} size={24} /> : <></>
-            }
+            ) : (
+              <></>
+            )}
             <div className="flex gap-20 xsm:gap-0">
               <div className="CCD-content flex gap-5 pt-10">
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
-                  <div className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]" style={{ borderRadius: "14px !important" }}>
-                    {showSmallvideo || url?.toString().endsWith("pdf") ? (
-                      <iframe src={pdfurl} width="100%" height="100%" />
-                    ) : url?.toString().endsWith("mp3") ? (
-                      <iframe src={url} width="100%" height="100%" />
-                    ) : (
-
-                      <ReactPlayer
-                        onContextMenu={handleContextMenu}
-                        height="auto"
-                        width="100%"
-                        borderRadius="14px"
-                        className="shadow-2xl rounded-[18px]"
-                        style={{ borderRadius: "14px !important" }}
-                        playing={true}
-                        controls={true}
-                        autoPlay={true}
-                        url={url}
-                        onDuration={handleDuration}
-                        onEnded={handleVideoEnded}
-                        config={{
-                          file: {
-                            attributes: {
-                              controlsList: "nodownload",
-                            },
-                          },
-                        }}
-
-                      />
-                    )}
-
+                  <div
+                    className="border relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
+                    style={{ borderRadius: "14px !important" }}
+                  >
+                    <Link to={Data?.liveClasses[0].meetingLink}>
+                      Join Live Class
+                    </Link>
                   </div>
                 </div>
 
@@ -295,7 +200,7 @@ export default function CDDetails() {
                         courseId={courseId}
                         completed_lessons={completed_lessons}
                         setMenu={setMenu}
-
+                        courseCategory={Data?.courseCategory}
                       />
                     </div>
                   ) : (
@@ -312,13 +217,17 @@ export default function CDDetails() {
                       handleToggleNotes={handleToggleNotes}
                       ALLCHAPTER={ALLCHAPTER}
                       count={count}
+                      courseCategory={Data?.courseCategory}
                     />
                   </div>
                 )}
               </div>
             </div>
           </div>
-          <div id="ScrollToTop" className=" w-[65%] pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]">
+          <div
+            id="ScrollToTop"
+            className=" w-[65%] pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]"
+          >
             <div className="CCD-Header-container flex justify-evenly">
               <div className="w-[100%] xsm:mb-10">
                 <div className=" mt-8 xsm:mt-0 md:mt-0">
@@ -353,12 +262,12 @@ export default function CDDetails() {
                     </p>
                   </div>
                 </div> */}
-                <CourseNavigation
+                {/* <CourseNavigation
                   courseLessons={courseLessons}
                   courseAssignment={courseAssignment}
                   totalLessons={totalLessons}
                   liveclass={Data?.liveClasses}
-                />
+                /> */}
               </div>
             </div>
           </div>

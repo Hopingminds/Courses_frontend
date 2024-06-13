@@ -23,7 +23,6 @@ import Success from '../Components/Success/success.js'
 // import DashboardSubAdmin from '../Components/SubAdminDashboard/DashboardSubAdmin.js'
 import SubAdmin from '../Components/SubAdminDashboard/index.js'
 
-import ChatBot from '../Components/chatbot/chatbot.js'
 
 // subadmin
 // import SubAdmin from '../Components/SubAdminDashboard/index.js'
@@ -67,6 +66,7 @@ import Assignment from '../Components/TeacherPanel/Assignment/Assignment.jsx'
 import ScheduledAssignments from '../Components/TeacherPanel/Assignment/ScheduledAssignments/ScheduledAssignments.jsx'
 import History from '../Components/TeacherPanel/Assignment/History/History.jsx'
 import Restriction from '../Components/Restrictions/index.js'
+import LiveClassDetailPage from '../Components/LiveClass/liveclassDetail.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -81,7 +81,7 @@ const Router = () => {
         else if ((pathname.includes('hrdashboard') || pathname.includes('managejobs') || pathname.includes('jobpreview') || pathname.includes('postjob'))) {
             return <HRNavbar />
         }
-        else if((pathname.includes('teacherpanel'))){
+        else if ((pathname.includes('teacherpanel'))) {
             return <></>
         }
         else {
@@ -113,6 +113,7 @@ const Router = () => {
                 <Route path='/cart' element={< ShopingCart />} />
                 <Route path='/course' element={<AllCourses />} />
                 <Route path='/course/:slug' element={<CDDetails />} />
+                <Route path='/liveclass/:slug' element={<LiveClassDetailPage />} />
                 <Route path='/checkout' element={<CartCheckout />} />
                 <Route path='/AssignmentMeet' element={<AssignmentMeet />} />
                 <Route path='/AssignmentStart' element={<AssignmentStart />} />
@@ -155,7 +156,7 @@ const Router = () => {
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
 
-                <Route path='/teacherpanel' element={<TPHome/>} >
+                <Route path='/teacherpanel' element={<TPHome />} >
                     <Route index path='dashboard' element={<Dashboard />} />
                     <Route path='liveclass' element={<LiveClasses />} />
                     <Route path='addcourse' element={<AddCourses />} />
@@ -165,7 +166,7 @@ const Router = () => {
                     </Route>
                     <Route path='batch' element={<Batches />} >
                         <Route index path='courses' element={<Courses />} />
-                        <Route path='batches' element={<CourseBatches />} /> 
+                        <Route path='batches' element={<CourseBatches />} />
                     </Route>
                     <Route path='userprofile' element={<UserProfile />} />
                 </Route>

@@ -146,6 +146,7 @@ const Courses_Home = () => {
               display={val?.display}
               IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
               credits={val?.credits}
+              courseCategory={val?.courseCategory}
             // Pass category to CourseCard component
             />
           ))}

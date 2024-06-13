@@ -22,15 +22,11 @@ const JobOffering = ({ courses }) => {
 
         try {
             const res = await axios.get(
-                `${BASE_URL}/getalljobppenings
- 
-
-`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("COURSES_USER_TOKEN")}`,
-                    },
-                }
+                `${BASE_URL}/getalljobppenings`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("COURSES_USER_TOKEN")}`,
+                },
+            }
             );
             console.log(res.data?.jobOpenings);
             setJobOpeningData(res?.data?.jobOpenings);

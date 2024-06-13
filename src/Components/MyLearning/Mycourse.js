@@ -3,20 +3,29 @@ import { Link } from "react-router-dom";
 // import { useMediaQuery } from 'react-responsive';
 
 export default function Mycourse({ courses }) {
-    // console.log(courses);
+    // console.log(courses && courses[5]?.course?.courseCategory);
 
     return (<>
-        {!courses?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Purchased</div></div>:''}
+        {!courses?.length ? <div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Purchased</div></div> : ''}
 
         <div className="my-[5%] mx-[5%] grid grid-cols-3 gap-16 xsm:my-3 xsm:gap-4 md:gap-10">
             {
                 courses?.map((val, ind) => {
                     let totallessons = 0
-                    val?.course?.curriculum.map((it) => {
+                    val?.course?.curriculum?.map((it) => {
                         totallessons += it?.lessons?.length
                     })
                     return (
-                        <Link to={`/course/${val?.course?.slug}`} className="w-full flex flex-col justify-between p-4  mt-2 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm">
+                        <Link to={val?.course?.courseCategory === "liveCourse" ? `/liveclass/${val?.course?.slug}` : `/course/${val?.course?.slug}`} className=" relative w-full flex flex-col justify-between p-4  mt-2 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm">
+                            {val?.course?.courseCategory === "liveCourse" && (
+                                <div className="bg-transparent p-4 absolute top-2 right-2 z-[99]">
+                                    <img
+                                        src="/liveclass.png"
+                                        alt="live class logo "
+                                        className="h-[30px] w-auto"
+                                    />
+                                </div>
+                            )}
                             <div className="w-full h-[50%]">
                                 <img className="w-full h-full xsm:rounded-md xsm:h-[55px]" src={val?.course?.featured_image} />
                             </div>
@@ -36,5 +45,5 @@ export default function Mycourse({ courses }) {
             }
 
         </div>
-        </>);
+    </>);
 }
