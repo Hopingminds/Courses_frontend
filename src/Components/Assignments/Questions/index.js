@@ -267,11 +267,13 @@ export default function Question() {
 
   useEffect(() => {
     if (personCount > 1) {
-      alert(`${personCount} Person Detected in your camera frame. Only ${peoplewarning-1} warnings left!!`);
       setpeoplewarning(peoplewarning-1);
       enterFullScreen();
     } else if (personCount === 0) {
-      alert(`Your face should be in front of camera. Only ${peoplewarning-1} warnings left!!`);
+      if(peoplewarning>=0){
+        alert(`${personCount} Person Detected in your camera frame. Only ${peoplewarning-1} warnings left!!`);
+
+      }      
       setpeoplewarning(peoplewarning-1);
       enterFullScreen();
     }

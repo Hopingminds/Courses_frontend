@@ -67,6 +67,7 @@ import Assignment from '../Components/TeacherPanel/Assignment/Assignment.jsx'
 import ScheduledAssignments from '../Components/TeacherPanel/Assignment/ScheduledAssignments/ScheduledAssignments.jsx'
 import History from '../Components/TeacherPanel/Assignment/History/History.jsx'
 import Restriction from '../Components/Restrictions/index.js'
+import Pdfaudio from '../Components/Restrictions/pdfaudio.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -83,6 +84,9 @@ const Router = () => {
         }
         else if((pathname.includes('teacherpanel'))){
             return <></>
+        }
+        else if(pathname.includes('questions')){
+            return<></>
         }
         else {
             return (<div className='h-20 md:h-14 xsm:h-10 sm:h-12'>
@@ -140,7 +144,7 @@ const Router = () => {
                 <Route path='/m' element={<MinorDegree />} />
                 <Route path='/code' element={<CodeEditor />} />
                 <Route path='/modules' element={<Modules />} />
-                <Route path='/questions' element={<Question />} />
+                <Route path='/questions' element={<Question ReturnNavbar={ReturnNavbar}/>} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/m' element={<MinorDegree />} />
                 <Route path='/code' element={<CodeEditor />} />
@@ -150,7 +154,7 @@ const Router = () => {
                 <Route path='/managejobs' element={<ManageJobsmain />} />
                 <Route path='/postjob' element={<PostJobsForm />} />
                 <Route path='/jobpreview' element={<JobPreview />} />
-                <Route path='/pdf' element={<PDFViewer />} />
+                <Route path='/pdf' element={<Pdfaudio />} />
                 <Route path='/hrdashboard' element={<HRDashboard />} />
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
@@ -170,7 +174,7 @@ const Router = () => {
                     <Route path='userprofile' element={<UserProfile />} />
                 </Route>
             </Routes>
-            {pathname.includes('college') || pathname.includes('teacherpanel') ? <></> : <Footer />}
+            {pathname.includes('college') || pathname.includes('teacherpanel') || pathname.includes('questions') ? <></> : <Footer />}
 
         </BrowserRouter >
 
