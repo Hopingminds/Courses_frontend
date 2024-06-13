@@ -297,8 +297,8 @@ export default function Modules() {
                     </div>
                   ) : (
                     // <div onClick={handleCamera}>
-                      <Link
-                        to={`/questions?module_id=${item._id}&index=1`}
+                      <a
+                        href={`/questions?module_id=${item._id}&index=1`}
                         className="w-full p-5 border  flex justify-between items-center rounded-xl"
                       >
                         <div className="space-y-1 w-full">
@@ -336,7 +336,7 @@ export default function Modules() {
                         </div>
 
                         <FaGreaterThan className="text-3xl text-gray-500 font-extralight" />
-                      </Link>
+                      </a>
                     // </div>
                   )}
                 </>
