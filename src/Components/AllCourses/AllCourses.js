@@ -38,7 +38,7 @@ const AllCourses = () => {
   const [Temp, setTemp] = useState([]);
   const [show, setshow] = useState(false);
   const [videoSkeleton, setvideoSkeleton] = useState(true)
-const [secondloader, setsecondloader] = useState(true)
+  const [secondloader, setsecondloader] = useState(true)
   const [cat, setcat] = useState()
   const [userData, setUserData] = useState({
 
@@ -151,7 +151,7 @@ const [secondloader, setsecondloader] = useState(true)
           return searchitem && slug.includes(searchitem);
         })
       );
-      setAllCourses(    
+      setAllCourses(
         allCourses?.filter((item) => {
           const searchitem = query.toLowerCase();
           const slug = item.slug.toLowerCase();
@@ -208,9 +208,9 @@ const [secondloader, setsecondloader] = useState(true)
   const handleContextMenu = (e) => {
     e.preventDefault(); // Prevent default context menu behavior
   };
-setTimeout(() => {
-  setloaded(false)
-}, 1000);
+  setTimeout(() => {
+    setloaded(false)
+  }, 1000);
   return (
     <>
       <head>
@@ -258,8 +258,8 @@ setTimeout(() => {
         </div>
 
         <div className="h-full w-full bg-gray-300">
-         <ReactPlayer
-          onContextMenu={handleContextMenu}
+          <ReactPlayer
+            onContextMenu={handleContextMenu}
             // url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
             url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
             height="100%"
@@ -316,52 +316,53 @@ setTimeout(() => {
       <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
       <div id="CoursesContent" className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] md:gap-3 md:mx-[3%]">
-      {!allCourses?.length && !show ? (
-        <div className="flex justify-center  w-full mt-10">
-          <div className="text-center font-semibold text-2xl w-full ">
-            {" "}
-            No Course Found
+        {!allCourses?.length && !show ? (
+          <div className="flex justify-center  w-full mt-10">
+            <div className="text-center font-semibold text-2xl w-full ">
+              {" "}
+              No Course Found
+            </div>
           </div>
-        </div>
-      ) : (
-        ""
-      )}
+        ) : (
+          ""
+        )}
         {
-        (show && window.innerWidth<=480) ? [1,2,3,4,5,6].map((item)=>{
-          return(<Skeleton/>)
-        }):
-        show && window.innerWidth>480 ? [1,2,3,4].map((item)=>{
-          return(<Skeleton/>)
-        })   
-       : allCourses?.map((val, ind) => {
-          return (
-            <CourseCard
-              key={val?.title}
-              title={val?.title}
-              featured_video={val?.featured_video}
-              price={val?.base_price}
-              name={val?.instructor?.name}
-              duration={val?.duration}
-              image={val?.featured_image}
-              profile={val?.instructor?.profile}
-              email={val?.instructor?.email}
-              experience={val?.instructor?.experience}
-              bio={val?.instructor?.bio}
-              slug={val?.slug}
-              phone={val?.instructor?.phone}
-              onClick={() => handleCourseClick(val?.title)}
-              isSelected={selectedCourse === val?.title}
-              category={val?.category}
-              description={val?.overview}
-              ind={ind}
-              _id={val?._id}
-              display={val?.display}
-              IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
-              credits={val?.credits}
-            // Pass category to CourseCard component
-            />
-          );
-        })}
+          (show && window.innerWidth <= 480) ? [1, 2, 3, 4, 5, 6].map((item) => {
+            return (<Skeleton />)
+          }) :
+            show && window.innerWidth > 480 ? [1, 2, 3, 4].map((item) => {
+              return (<Skeleton />)
+            })
+              : allCourses?.map((val, ind) => {
+                return (
+                  <CourseCard
+                    key={val?.title}
+                    title={val?.title}
+                    featured_video={val?.featured_video}
+                    price={val?.base_price}
+                    name={val?.instructor?.name}
+                    duration={val?.duration}
+                    image={val?.featured_image}
+                    profile={val?.instructor?.profile}
+                    email={val?.instructor?.email}
+                    experience={val?.instructor?.experience}
+                    bio={val?.instructor?.bio}
+                    slug={val?.slug}
+                    phone={val?.instructor?.phone}
+                    onClick={() => handleCourseClick(val?.title)}
+                    isSelected={selectedCourse === val?.title}
+                    category={val?.category}
+                    description={val?.overview}
+                    ind={ind}
+                    _id={val?._id}
+                    display={val?.display}
+                    IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
+                    credits={val?.credits}
+                    courseCategory={val?.courseCategory}
+                  // Pass category to CourseCard component
+                  />
+                );
+              })}
       </div>
       <Newinstructor />
       {/* <div className="flex flex-col gap-14 px-24 py-20 md:px-[5%] md:gap-2 md:py-10">

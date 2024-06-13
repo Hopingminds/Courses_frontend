@@ -242,20 +242,18 @@ const PostJobsForm = () => {
       // console.log(file);
       try {
         const res = await axios.post(
-          `${BASE_URL}/uploaduserprofiletoaws`,
+          `${BASE_URL}/uploadCompanyLogo`,
           { file },
           {
             headers: {
               "Content-Type": "multipart/form-data",
-              Authorization: `Bearer ${localStorage.getItem(
-                "COURSES_USER_TOKEN"
-              )}`,
+              Authorization: `Bearer ${localStorage.getItem("RECTR_TOKEN")}`,
             },
           }
         );
         // console.log(res);
         if (res.data.success) {
-          console.log(res.data);
+          // console.log(res.data);
           setUploadLoader(false);
           toast.success("Profile Picture Updated");
           setFormData({ ...formData, logoUrl: res.data.url });

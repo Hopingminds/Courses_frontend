@@ -19,7 +19,8 @@ export default function Coursecontents({
   handleActiveVideo,
   handleToggleNotes,
   ALLCHAPTER,
-  count
+  count,
+  courseCategory
 }) {
   const navigate = useNavigate();
   // console.log(completed_lessons)
@@ -46,6 +47,8 @@ export default function Coursecontents({
     });
     setTotalLessons(temp);
   };
+
+  console.log(courseCategory)
 
   useEffect(() => {
     countLessons();
@@ -185,18 +188,18 @@ export default function Coursecontents({
 
                           return (
                             <div
-                              
-                              className={`flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id)
+
+                              className={courseCategory === "liveCourse" ? "" : `flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id)
                                 ? "cursor-not-allowed text-gray-300"
                                 : ""
                                 }`}
                               key={index}
                             >
                               <span className="flex justify-between">
-                                <p onClick={() =>
-                                completed.includes(chapter._id) &&
-                                handleActiveVideo(chapter?.video)
-                              } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
+                                <p onClick={courseCategory === "liveCourse" ? () => { } : () =>
+                                  completed.includes(chapter._id) &&
+                                  handleActiveVideo(chapter?.video)
+                                } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
                                   {index + 1}. {chapter?.lesson_name}
                                 </p>
                                 <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
@@ -222,7 +225,7 @@ export default function Coursecontents({
                                     {chapter?.notes && (
                                       <span className=" flex justify-between items-center px-2 border rounded-md h-max">
 
-                                        <div onClick={()=>handleToggleNotes(chapter?.notes,ALLCHAPTER[count]?.video)} className="flex items-center gap-1">
+                                        <div onClick={() => handleToggleNotes(chapter?.notes, ALLCHAPTER[count]?.video)} className="flex items-center gap-1">
                                           <Notes className="w-3 h-3" />
                                           <li className="text-[12px] md:text-[10px]">
                                             Notes
@@ -235,7 +238,7 @@ export default function Coursecontents({
                                     {chapter?.assignment && (
                                       <span className=" flex gap-1 items-center h-max">
                                         <a href={chapter?.assignment} target="_blank" className="flex items-center border rounded-md gap-1 px-2">
-                                          <Assignment className="w-3 h-3"/>
+                                          <Assignment className="w-3 h-3" />
                                           <li className="text-[12px] md:text-[10px]">
 
                                             Assignment

@@ -33,8 +33,9 @@ const CourseCard = ({
   display,
   IsMinorDegreeCourse,
   credits,
+  courseCategory,
 }) => {
-  // console.log(_id);
+  console.log(courseCategory);
   const [mouseHovered, setMouseHovered] = useState(null);
   const [IsMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
@@ -53,7 +54,6 @@ const CourseCard = ({
   // console.log(description);
   return (
     <a
-      // style={{ padding: "10px" }}
       onMouseEnter={() => toggleHover(ind)}
       onMouseLeave={() => toggleHover(null)}
       href={`/detailcourse/${slug}`}
@@ -67,12 +67,6 @@ const CourseCard = ({
             : "auto",
       }}
     >
-      {/* {(userDetail?.blocked_courses?.includes(_id) || !display) && (
-{/*       {(userDetail?.blocked_courses?.includes(_id) || !display) && (
-        <span className="absolute top-0 left-0 h-[100%] w-[100%] z-[9] bg-[rgba(0,0,0,0.6)] rounded-xl grid place-items-center">
-          <IoIosLock size={"60"} color={"white"} />
-        </span>
-      )} */}
       {mouseHovered === ind && (
         <span className="bg-transparent p-4 absolute top-2 left-2 z-[9999]">
           {IsMuted ? (
@@ -99,6 +93,15 @@ const CourseCard = ({
             />
           )}
         </span>
+      )}
+      {courseCategory === "liveCourse" && (
+        <div className="bg-transparent p-4 absolute top-2 right-2 z-[99]">
+          <img
+            src="/liveclass.png"
+            alt="live class logo "
+            className="h-[30px] w-auto"
+          />
+        </div>
       )}
       <div className="h-fit aspect-[16/9] ">
         {mouseHovered === ind ? (
@@ -148,11 +151,18 @@ const CourseCard = ({
             </div>
           </div>
           <p className="font-pop h-10 font-semibold text-[16px] text-[#252641] xsm:text-[7px] md:text-[10px] md:h-6 xsm:mt-1 xsm:h-6">
-            {title.length > 40 ? title.slice(0, (window.innerWidth >=320 && window.innerWidth <=480) ? 20 :40) + "..." : title}
+            {title.length > 40
+              ? title.slice(
+                  0,
+                  window.innerWidth >= 320 && window.innerWidth <= 480 ? 20 : 40
+                ) + "..."
+              : title}
           </p>
-   {description && <p className="font-pop mt-2 text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px] md:h-10">
-            {description?.slice(0, 70)}..
-          </p>}
+          {description && (
+            <p className="font-pop mt-2 text-[14px] h-12 text-[#555555] xsm:hidden md:text-[8px] md:h-10">
+              {description?.slice(0, 70)}..
+            </p>
+          )}
         </div>
         <div className=" flex items-end justify-between 2xl:pb-2">
           <span className="flex flex-col">
