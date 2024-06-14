@@ -11,6 +11,7 @@ import Spinner from "../Spinner";
 import { TiTick } from "react-icons/ti";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import DCtestimonials from "./DCtestimonials";
+import { Link } from "react-router-dom";
 
 export default function DetailCourses() {
   const param = useParams();
@@ -118,9 +119,9 @@ export default function DetailCourses() {
           approved by recruiters worldwide. You can also customize it to your
           own needs and personality and hit 'Download'.
         </p>
-        <button className="rounded-full bg-[#1DBF73] text-[20px] text-white font-semibold py-2 px-8">
+        <Link to='/cv-builder' className="rounded-full bg-[#1DBF73] text-[20px] text-white font-semibold py-2 px-8">
           Create my Resume
-        </button>
+        </Link>
       </div>
       <div className="flex flex-col gap-14 py-16 px-[10%] bg-gradient-to-r from-[#0F2027] to-[#203A43]">
         <div className="flex gap-10 text-white font-pop font-semibold">
