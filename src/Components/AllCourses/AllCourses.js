@@ -1,9 +1,4 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import Img1 from "../../Assests/Images/searchbanner.png";
-import Img2 from "../../Assests/Images/creator.png";
-import Icon1 from "../../Assests/Icons/twitter.svg";
-import Icon2 from "../../Assests/Icons/facebook.svg";
-import Icon3 from "../../Assests/Icons/instagram.svg";
 import Search from "../../Assests/Icons/search.svg";
 import User1 from "../../Assests/Images/Saurabh Pal-Data Resolve.png";
 import User2 from "../../Assests/Images/Sumit.jpg";

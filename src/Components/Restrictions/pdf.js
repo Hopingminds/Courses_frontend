@@ -1,38 +1,52 @@
-// import React, { useEffect, useRef } from 'react';
-// import * as pdfjsLib from 'pdfjs-dist';
-// import 'pdfjs-dist/build/pdf.worker.entry';
-// import './pdf.css';
+import React, { useState } from 'react';
+import { Document, Page } from 'react-pdf';
 
-// const PdfViewer = () => {
-//   const containerRef = useRef(null);
-//   let url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712060733811-react%20full%20stack%20pdf.pdf'
+const PDFViewer = () => {
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  let pdfUrl='/davinder.pdf'
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+    setPageNumber(1);  // Reset to first page when a new document is loaded
+  }
 
-//   useEffect(() => {
-//     const container = containerRef.current;
+  function goToPreviousPage() {
+    setPageNumber(pageNumber - 1);
+  }
 
-//     pdfjsLib.getDocument(url).promise.then(pdf => {
-//       for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
-//         pdf.getPage(pageNumber).then(page => {
-//           const viewport = page.getViewport({ scale: 1 });
-//           const canvas = document.createElement('canvas');
-//           canvas.className = 'pdf-page';
-//           const context = canvas.getContext('2d');
-//           canvas.height = viewport.height;
-//           canvas.width = viewport.width;
-          
-//           const renderContext = {
-//             canvasContext: context,
-//             viewport: viewport
-//           };
-//           page.render(renderContext).promise.then(() => {
-//             container.appendChild(canvas);
-//           });
-//         });
-//       }
-//     });
-//   }, [url]);
+  function goToNextPage() {
+    setPageNumber(pageNumber + 1);
+  }
 
-//   return <div id="pdf-container" ref={containerRef}></div>;
-// };
+  return (
+    <div>
+      <Document
+        file={pdfUrl}
+        onLoadSuccess={onDocumentLoadSuccess}
+      >
+        <Page pageNumber={pageNumber} />
+      </Document>
+      <div>
+        <p>
+          Page {pageNumber} of {numPages}
+        </p>
+        <button
+          type="button"
+          disabled={pageNumber <= 1}
+          onClick={goToPreviousPage}
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          disabled={pageNumber >= numPages}
+          onClick={goToNextPage}
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+};
 
-// export default PdfViewer;
+export default PDFViewer;

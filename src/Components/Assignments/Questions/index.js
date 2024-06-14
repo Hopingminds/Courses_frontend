@@ -6,7 +6,6 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
 import toast, { Toaster } from "react-hot-toast";
-import Restriction from "../../Restrictions";
 
 export default function Question() {
   const [Selected, setSelected] = useState();
@@ -138,7 +137,7 @@ export default function Question() {
     const handleVisibilityChange = () => {
       if (document.hidden) {
         document.title = "Don't change the tab";
-        if (peoplewarning > 0) {
+        if (peoplewarning >= 0) {
           setpeoplewarning(peoplewarning - 1);
           alert(`You are not allowed to change the tab.`);
           enterFullScreen();
@@ -267,16 +266,19 @@ export default function Question() {
 
   useEffect(() => {
     if (personCount > 1) {
-      setpeoplewarning(peoplewarning-1);
-      enterFullScreen();
+      if(peoplewarning>=0){
+        alert(`${personCount} Person Detected in your camera frame. Only ${peoplewarning-1} warnings left!!`);
+
+      }  
+     
     } else if (personCount === 0) {
       if(peoplewarning>=0){
         alert(`${personCount} Person Detected in your camera frame. Only ${peoplewarning-1} warnings left!!`);
 
       }      
-      setpeoplewarning(peoplewarning-1);
-      enterFullScreen();
     }
+    setpeoplewarning(peoplewarning-1);
+    enterFullScreen();
   }, [personCount]);
 
   useEffect(() => {
