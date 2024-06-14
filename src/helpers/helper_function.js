@@ -74,6 +74,7 @@ export function getVideoDuration(videoUrl) {
 }
 
 export function checkAndDisable(data) {
+    console.log(data)
     data.disabled = false;
     // console.log(data)
     const currentDate = new Date();

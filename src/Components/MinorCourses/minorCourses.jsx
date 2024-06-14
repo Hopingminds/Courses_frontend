@@ -9,21 +9,21 @@ import Spinner from "../Spinner";
 
 const MinorCourse = () => {
   const [allCourses, setAllCourses] = useState([]);
-  const [show, setshow] = useState(false)
+  const [show, setshow] = useState(false);
   const [params, setparams] = useSearchParams();
   useEffect(() => {
     async function Fetchdata() {
       try {
-        setshow(true)
+        setshow(true);
         let category = params.get("category");
-      category = category.replace(/%20/g, " ");
-      const res = await axios.get(
-        `${BASE_URL}/courses?minordegree=true&category=${category}`
-      );
-      // console.log(res);
+        category = category.replace(/%20/g, " ");
+        const res = await axios.get(
+          `${BASE_URL}/courses?minordegree=true&category=${category}`
+        );
+        // console.log(res);
 
-      setAllCourses(res?.data?.courses);
-      setshow(false)
+        setAllCourses(res?.data?.courses);
+        setshow(false);
       } catch (error) {
         console.log(error);
       }
@@ -43,10 +43,22 @@ const MinorCourse = () => {
         </div>
         <div className="text-[16px] px-[5vw] text-white flex flex-col gap-3 md:text-[12px] xsm:text-[8px]">
           <p>
-          A specialised academic path with our industry tailored micro credential programs to help you master specific skillsets in just 20 credits. These also include a capstone project where you apply your skills to real-world challenges culminating in a showcase of your accomplishments and award of a minor degree at a prestigious Graduation Ceremony held at one of our partner Campuses. As a valued member of our community, you'll enjoy access to our extensive placement network with exclusive opportunities, industry events and 1-1 mentorship sessions.
+            A specialised academic path with our industry tailored micro
+            credential programs to help you master specific skillsets in just 20
+            credits. These also include a capstone project where you apply your
+            skills to real-world challenges culminating in a showcase of your
+            accomplishments and award of a minor degree at a prestigious
+            Graduation Ceremony held at one of our partner Campuses. As a valued
+            member of our community, you'll enjoy access to our extensive
+            placement network with exclusive opportunities, industry events and
+            1-1 mentorship sessions.
           </p>
           <p>
-          Your credits will be securely stored in the Academic Bank of Credit, aligning with national and international educational standards, including NEP, NCrF, UGC, and NCVET guidelines, thus empowering you with a globally recognized qualification that opens doors to boundless possibilities.
+            Your credits will be securely stored in the Academic Bank of Credit,
+            aligning with national and international educational standards,
+            including NEP, NCrF, UGC, and NCVET guidelines, thus empowering you
+            with a globally recognized qualification that opens doors to
+            boundless possibilities.
           </p>
         </div>
       </div>
@@ -74,7 +86,8 @@ const MinorCourse = () => {
               display={val?.display}
               IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
               credits={val?.credits}
-            // Pass category to CourseCard component
+              courseCategory={val?.courseCategory}
+              // Pass category to CourseCard component
             />
           );
         })}
