@@ -68,6 +68,8 @@ import ScheduledAssignments from '../Components/TeacherPanel/Assignment/Schedule
 import History from '../Components/TeacherPanel/Assignment/History/History.jsx'
 import Restriction from '../Components/Restrictions/index.js'
 import Pdfaudio from '../Components/Restrictions/pdfaudio.js'
+import PdfViewer from '../Components/Restrictions/fetch.js'
+import PDFReader from '../Components/Restrictions/fetch.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -155,6 +157,7 @@ const Router = () => {
                 <Route path='/postjob' element={<PostJobsForm />} />
                 <Route path='/jobpreview' element={<JobPreview />} />
                 <Route path='/pdf' element={<Pdfaudio />} />
+                <Route path='/pdftext' element={<PDFReader />} />
                 <Route path='/hrdashboard' element={<HRDashboard />} />
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
