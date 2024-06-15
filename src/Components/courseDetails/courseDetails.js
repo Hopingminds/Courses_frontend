@@ -358,6 +358,7 @@ export default function CDDetails() {
                   courseAssignment={courseAssignment}
                   totalLessons={totalLessons}
                   liveclass={Data?.liveClasses}
+                  slug={params?.slug}
                 />
               </div>
             </div>
