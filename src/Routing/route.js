@@ -67,6 +67,7 @@ import History from '../Components/TeacherPanel/Assignment/History/History.jsx'
 import LiveClassDetailPage from '../Components/LiveClass/liveclassDetail.jsx'
 import Pdfaudio from '../Components/Restrictions/pdfaudio.js'
 import PDFViewer from '../Components/Restrictions/pdf.js'
+import Instruction from '../Components/Assignments/Instruction/Instruction.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -133,6 +134,7 @@ const Router = () => {
                 <Route path='/privacy' element={<ReturnPolicy />} />
                 <Route path='/terms' element={<ShippingPolicy />} />
                 <Route path='/enterance' element={<Enterance />} />
+                <Route path='/instruction' element={<Instruction />} />
                 <Route path='/hire-from-us' element={<HireFromUs />} />
                 <Route path='/career' element={<CareerServices />} />
                 <Route path='/modal' element={<Modal />} />

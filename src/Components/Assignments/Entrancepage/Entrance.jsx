@@ -13,12 +13,12 @@ export default function Enterance(){
                     <div className="min-h-[30vh] w-[25vw] border border-[#1DBF73] flex flex-col justify-center items-center p-5 gap-y-5 rounded-xl xsm:w-full xsm:p-2 xsm:min-h-[200px]">
                         <div className="text-xl font-semibold">Solve Assignments</div>
                         <div className="text-sm text-gray-500">You'll need to solve assignments & meet a certain score to be eligible for the coding test.</div>
-                        <Link to='/modules' className="p-2 rounded-md bg-[#1DBF73] text-white">Start Assignment</Link>
+                        <Link to='/instruction' className="p-2 rounded-md bg-[#1DBF73] text-white">Start Assignment</Link>
                     </div>
                 <div className="min-h-[30vh] w-[25vw] border border-[#1DBF73] flex flex-col justify-center items-center p-5 gap-y-5 rounded-xl xsm:w-full xsm:p-2 xsm:min-h-[200px]">
                         <div className="text-xl font-semibold">Coding Test</div>
                         <div className="text-sm text-gray-500">Clear this coding test to become eligible for our Pay After Placement program.</div>
-                        <Link to='/modules' className="p-2 rounded-md bg-[#1DBF73] text-white">Crack The PAP</Link>
+                        <Link to='/instruction' className="p-2 rounded-md bg-[#1DBF73] text-white">Crack The PAP</Link>
                 </div>
                 </div>
             </div>
