@@ -49,7 +49,6 @@ import ManageJobsmain from '../Components/ManageJobs/ManageJobsmain.jsx'
 import PostJobsForm from '../Components/PostJobsForm/PostJobsForm.jsx'
 import CVBuilder from '../Components/cvBuilder/index.jsx'
 import JobPreview from '../Components/JobPreview/JobPreview.jsx'
-import PDFViewer from '../Components/pdfReader/index.js'
 import HRDashboard from '../Components/HRDashboard/index.jsx'
 import HRNavbar from '../Components/HRDashboard/HRNavbar/HRNavbar.jsx'
 import Internship from '../Components/Internship/Index.js'
@@ -65,11 +64,10 @@ import UserProfile from '../Components/TeacherPanel/UserProfile/UserProfile.jsx'
 import Assignment from '../Components/TeacherPanel/Assignment/Assignment.jsx'
 import ScheduledAssignments from '../Components/TeacherPanel/Assignment/ScheduledAssignments/ScheduledAssignments.jsx'
 import History from '../Components/TeacherPanel/Assignment/History/History.jsx'
-import Restriction from '../Components/Restrictions/index.js'
 import LiveClassDetailPage from '../Components/LiveClass/liveclassDetail.jsx'
 import Pdfaudio from '../Components/Restrictions/pdfaudio.js'
-import Test from '../Components/test/test.js'
-import EncryptComponent from '../Components/test/test2.js'
+import PDFViewer from '../Components/Restrictions/pdf.js'
+import Instruction from '../Components/Assignments/Instruction/Instruction.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -138,6 +136,7 @@ const Router = () => {
                 <Route path='/privacy' element={<ReturnPolicy />} />
                 <Route path='/terms' element={<ShippingPolicy />} />
                 <Route path='/enterance' element={<Enterance />} />
+                <Route path='/instruction' element={<Instruction />} />
                 <Route path='/hire-from-us' element={<HireFromUs />} />
                 <Route path='/career' element={<CareerServices />} />
                 <Route path='/modal' element={<Modal />} />
@@ -160,6 +159,7 @@ const Router = () => {
                 <Route path='/postjob' element={<PostJobsForm />} />
                 <Route path='/jobpreview' element={<JobPreview />} />
                 <Route path='/pdf' element={<Pdfaudio />} />
+                <Route path='/pdftext' element={<PDFViewer />} />
                 <Route path='/hrdashboard' element={<HRDashboard />} />
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
