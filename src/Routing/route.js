@@ -68,6 +68,8 @@ import History from '../Components/TeacherPanel/Assignment/History/History.jsx'
 import Restriction from '../Components/Restrictions/index.js'
 import LiveClassDetailPage from '../Components/LiveClass/liveclassDetail.jsx'
 import Pdfaudio from '../Components/Restrictions/pdfaudio.js'
+import Test from '../Components/test/test.js'
+import EncryptComponent from '../Components/test/test2.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -105,6 +107,8 @@ const Router = () => {
 
             {ReturnNavbar()}
             <Routes>
+                <Route path='/test' element={<Test />} />
+                <Route path='/test2' element={<EncryptComponent />} />
                 <Route path='/' element={<Home />} />
                 <Route path='/detailcourse/:slug' element={<DetailCourses />} />
                 <Route path='/about' element={<AboutUs />} />

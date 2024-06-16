@@ -3,6 +3,8 @@ import './success.css';
 import { Link } from 'react-router-dom';
 
 function Success() {
+
+
     return (
         <div className='thankpage my-5 xsm:mx-2 md:flex md:justify-center md:items-center xsm:flex xsm:justify-center'>
             <div className="thank-you">

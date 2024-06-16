@@ -39,7 +39,7 @@ export default function DetailCourses() {
     return (
         <div className="h-auto min-h-screen overflow-x-visible ">
             <div className=" px-[5%] mb-5 xsm:mx-0 ">
-                <div className='CCDetails-Header-main flex justify-between px-[5%] w-full xsm:mb-[4.5rem]' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.featured_image})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat",backgroundPosition:'center' }}>
+                <div className='CCDetails-Header-main flex justify-between px-[5%] w-full xsm:mb-[4.5rem]' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.featured_image})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat", backgroundPosition: 'center' }}>
                     <div className='CCDetails-Header-content-leftqw xsm:text-[10px]'>
                         <div className='CCDetails-Header-content-row1qw xsm:text-[10px]'>
                             <h2 className='font-pop  xsm:text-[10px]'>{Data?.title}</h2>
@@ -63,28 +63,7 @@ export default function DetailCourses() {
                                 </div>
                             ))}
                         </div>
-                        {/* <div className='CCDetails-Header-content-row2 w-[90%] xsm:mt-1 '>
-                            <div className='CCDetails-Header-content-row2-clock gap-1'>
-                                <img src="../Icons/clockfilled.svg" className=' xsm:w-[6px] xsm:h-[6px] md:w-[10px] md:h-[10px]' alt="clock"></img>
-                                <p className='font-nu text-white' > 2 Weeks</p>
-                            </div>
-                            <div className='CCDetails-Header-content-row2-hat gap-1'>
-                                <img src="../Icons/hat.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="hat"></img>
-                                <p className='font-nu'> 156 Students</p>
-                            </div>
-                            <div className='CCDetails-Header-content-row2-level gap-1'>
-                                <img src="../Icons/barchartgreen.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="bar-chart"></img>
-                                <p className='font-nu'> All levels</p>
-                            </div>
-                            <div className='CCDetails-Header-content-row2-files gap-1'>
-                                <img src="../Icons/files.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="files"></img>
-                                <p className='font-nu'> 20 Lessons</p>
-                            </div>
-                            <div className='CCDetails-Header-content-row2-faq gap-1'>
-                                <img src="../Icons/faq.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="faq"></img>
-                                <p className='font-nu'> 3 Quizzes</p>
-                            </div>
-                        </div> */}
+
                     </div>
                     <Commoncard Data={Data} />
                 </div>
