@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import Curriculum from "../Curriculum/Curriculum";
 import Instructor from "../Instructor/Instructor";
 import Faqs from "../Faqs/Faqs";
+import VideoTesttimonial from "./VideoTesttimonial";
 
 export default function DetailCourses() {
   const param = useParams();
@@ -290,25 +291,24 @@ export default function DetailCourses() {
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
             FAQs
             </h1>
-            <div className=" w-full">
+            <div className=" w-[95%] bg-[#E2FFF1] rounded-md px-6 py-6 flex flex-col gap-6 font-nu">
             {faqs.map((item, index) => (
-              <div key={index} className="faq1 w-full">
-                <div className=" w-full">
+              <div key={index} className="faq1 w-full  bg-white rounded-md">
+                <div className=" w-full ">
                   <div
                     onClick={() => ClickSection(index)}
-                    className="drop-top flex justify-between items-center w-full py-4 cursor-pointe xsm:py-3"
+                    className="drop-top  flex justify-between items-center w-full py-3 px-6 cursor-pointe xsm:py-3 cursor-pointer"
                   >
                     <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:w-2 xsm:h-2 md:h-3 md:w-3"></div>
-                      <p className="xsm:text-[8px] md:text-[14px]">
+                      <p className={`xsm:text-[8px] font-semibold md:text-[14px] ${item.isOpen && 'text-[#1DBF73]'}`}>
                         {item.question}
                       </p>
                     </div>
                     <div>
                       <img
-                        src="../Icons/papdropdown.svg"
+                        src="../Icons/faqarrow.svg"
                         alt=""
-                        className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 ${
+                        className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 transition-transform duration-300 ${
                           item.isOpen ? "rotate-up" : "rotate-down"
                         }`}
                       />
@@ -316,21 +316,18 @@ export default function DetailCourses() {
                   </div>
                   {item.isOpen && (
                     <div className="px-6 py-4 xsm:px-4 xsm:py-3">
-                      <p className="xsm:text-[8px] md:text-[14px]">
+                      <p className="xsm:text-[8px] text-[#555555] md:text-[14px]">
                         {item.answer}
                       </p>
                     </div>
                   )}
                 </div>
-                <hr className="border-[1px]" />
               </div>
             ))}
           </div>
           </div>
           <div className="flex flex-col gap-8">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
-            What They Say?
-            </h1>
+            <VideoTesttimonial/>
           </div>
         </div>
       </div>
