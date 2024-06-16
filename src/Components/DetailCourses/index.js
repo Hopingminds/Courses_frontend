@@ -146,7 +146,7 @@ export default function DetailCourses() {
                         </div> */}
           {/* </div> */}
           <h1 className="text-white text-4xl font-pop font-bold capitalize w-[60%]">
-            The Ultimate Guide to the best Full Stack Development
+            {Data?.title}
           </h1>
           <Commoncard Data={Data} />
         </div>
@@ -225,20 +225,12 @@ export default function DetailCourses() {
             </h1>
             <div className="flex flex-col gap-4 font-nu text-[#555555]">
               <p className="text-justify leading-7 tracking-wide">
-                This masterclass is meticulously designed to bridge the gap
-                between academic knowledge and industry demands in full-stack
-                web and mobile development. Students will embark on a
-                comprehensive journey through the realms of web development with
-                React and Django, coupled with mobile app development for
-                Android platforms. .......................
+                {Data?.overview}
               </p>
               <ul className="list-inside leading-7 tracking-wide pl-2">
-                <li>Understanding Front-end and Back-end</li>
-                <li>Tools and Technologies in Full Stack Development</li>
-                <li>Setting Up the Development Environment</li>
-                <li>Installing Necessary Software and Tools</li>
-                <li>Introduction to Version Control with Git and GitHub</li>
-                <li>Basics of Command Line Interface</li>
+              {Data?.whatWillILearn.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
               </ul>
             </div>
           </div>
@@ -253,10 +245,13 @@ export default function DetailCourses() {
             Learning outcome
             </h1>
             <ul className="list-inside leading-7 tracking-wide pl-2 font-nu text-[#555555]">
-                <li>Tools and Technologies in Full Stack Development</li>
+              {Data?.learningOutcome?.map((item, key) => (
+                <li key={key}>{item}</li>
+              ))}
+                {/* <li>Tools and Technologies in Full Stack Development</li>
                 <li>Setting Up the Development Environment</li>
                 <li>Installing Necessary Software and Tools</li>
-                <li>Introduction to Version Control with Git and GitHub</li>
+                <li>Introduction to Version Control with Git and GitHub</li> */}
               </ul>
           </div>
           <div className="flex flex-col gap-6">
@@ -264,10 +259,16 @@ export default function DetailCourses() {
             Average Packages
             </h1>
             <ul className="list-inside leading-7 tracking-wide pl-2 font-nu text-[#555555]">
-                <li>Tools and Technologies in Full Stack Development</li>
+              {Data?.companies?.map((company, key) =>(
+                <>
+                  <li>{company.companyName}</li>
+                  <li>{company.avgpkg.from} - {company.avgpkg.to}</li>
+                </>
+              ))}
+                {/* <li>Tools and Technologies in Full Stack Development</li>
                 <li>Setting Up the Development Environment</li>
                 <li>Installing Necessary Software and Tools</li>
-                <li>Introduction to Version Control with Git and GitHub</li>
+                <li>Introduction to Version Control with Git and GitHub</li> */}
               </ul>
           </div>
           <div className="flex flex-col gap-8">
