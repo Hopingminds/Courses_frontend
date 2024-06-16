@@ -12,12 +12,50 @@ import { TiTick } from "react-icons/ti";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import DCtestimonials from "./DCtestimonials";
 import { Link } from "react-router-dom";
+import Curriculum from "../Curriculum/Curriculum";
+import Instructor from "../Instructor/Instructor";
+import Faqs from "../Faqs/Faqs";
 
 export default function DetailCourses() {
   const param = useParams();
   const [Data, setData] = useState();
   let slug = param.slug;
   const [show, setshow] = useState(false);
+
+  const [faqs, setFaqs] = useState([
+    {
+      question: "How does the Pay after Placement model work?",
+      answer:
+        "Participants undergo training without upfront payment, only paying fees upon securing a job through the program.",
+      isOpen: false,
+    },
+    {
+      question:
+        "Is there a risk involved for participants in the Pay after Placement model?",
+      answer:
+      "Risk is low since payment depends on securing a job; usually, participants are not required to pay if they do not find employment",
+      isOpen: false,
+    },
+    {
+      question: "What are the advantages of the Pay after Placement model?",
+      answer:
+        "It lowers financial hurdles and aligns goals, ensuring providers are committed to the success of participants.",
+      isOpen: false,
+    },
+    {
+      question:
+        "What happens if a participant secures a job but can't pay immediately?",
+      answer:
+        "Flexible payment options, such as installment plans, are often provided to accommodate financial situations.",
+      isOpen: false,
+    },
+    {
+      question: "How do program providers ensure quality job placements?",
+      answer:
+        "Providers establish employer partnerships and offer career support to ensure placements align with participants' goals.",
+      isOpen: false,
+    },
+  ]);
 
   useEffect(() => {
     async function Fetchdata() {
@@ -37,11 +75,22 @@ export default function DetailCourses() {
     Fetchdata();
   }, []);
 
+  function ClickSection(id) {
+    const updatedFaqs = faqs.map((faq, index) => {
+      if (index === id) {
+        return { ...faq, isOpen: !faq.isOpen };
+      } else {
+        return { ...faq, isOpen: false };
+      }
+    });
+    setFaqs(updatedFaqs);
+  }
+
   return (
     <div className="h-auto min-h-screen overflow-x-visible ">
-      <div className=" px-[5%] mb-5 xsm:mx-0 ">
+      <div className="mb-5 xsm:mx-0 ">
         <div
-          className="CCDetails-Header-main flex justify-between px-[5%] w-full xsm:mb-[4.5rem]"
+          className="CCDetails-Header-main flex flex-col px-[8%] pt-24 w-full xsm:mb-[4.5rem]"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.featured_image})`,
             backgroundSize: "cover",
@@ -49,7 +98,7 @@ export default function DetailCourses() {
             backgroundPosition: "center",
           }}
         >
-          <div className="CCDetails-Header-content-leftqw xsm:text-[10px]">
+          {/* <div className="CCDetails-Header-content-leftqw xsm:text-[10px]">
             <div className="CCDetails-Header-content-row1qw xsm:text-[10px]">
               <h2 className="font-pop  xsm:text-[10px]">{Data?.title}</h2>
             </div>
@@ -71,8 +120,8 @@ export default function DetailCourses() {
                   <p>{item}</p>
                 </div>
               ))}
-            </div>
-            {/* <div className='CCDetails-Header-content-row2 w-[90%] xsm:mt-1 '>
+            </div> */}
+          {/* <div className='CCDetails-Header-content-row2 w-[90%] xsm:mt-1 '>
                             <div className='CCDetails-Header-content-row2-clock gap-1'>
                                 <img src="../Icons/clockfilled.svg" className=' xsm:w-[6px] xsm:h-[6px] md:w-[10px] md:h-[10px]' alt="clock"></img>
                                 <p className='font-nu text-white' > 2 Weeks</p>
@@ -94,10 +143,13 @@ export default function DetailCourses() {
                                 <p className='font-nu'> 3 Quizzes</p>
                             </div>
                         </div> */}
-          </div>
+          {/* </div> */}
+          <h1 className="text-white text-4xl font-pop font-bold capitalize w-[60%]">
+            The Ultimate Guide to the best Full Stack Development
+          </h1>
           <Commoncard Data={Data} />
         </div>
-        <Main />
+        {/* <Main /> */}
       </div>
       {show ? (
         <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
@@ -106,9 +158,9 @@ export default function DetailCourses() {
       ) : (
         ""
       )}
-      <RecommendedCourses />
+      {/* <RecommendedCourses /> */}
 
-      <div className="px-[5%] py-20 flex flex-col gap-4 font-pop justify-center text-center items-center">
+      {/* <div className="px-[5%] py-20 flex flex-col gap-4 font-pop justify-center text-center items-center">
         <p className="text-[#333333] text-[50px] font-bold">
           Create your professional{" "}
           <span className="text-[#1DBF73]">Resume</span> with our designs
@@ -122,8 +174,8 @@ export default function DetailCourses() {
         <Link to='/cv-builder' className="rounded-full bg-[#1DBF73] text-[20px] text-white font-semibold py-2 px-8">
           Create my Resume
         </Link>
-      </div>
-      <div className="flex flex-col gap-14 py-16 px-[10%] bg-gradient-to-r from-[#0F2027] to-[#203A43]">
+      </div> */}
+      {/* <div className="flex flex-col gap-14 py-16 px-[10%] bg-gradient-to-r from-[#0F2027] to-[#203A43]">
         <div className="flex gap-10 text-white font-pop font-semibold">
           <p className="text-[50px] w-[45%]">
             Make your career thrive with{" "}
@@ -161,8 +213,127 @@ export default function DetailCourses() {
             Connect With Us
           </button>
         </div>
+      </div> */}
+      {/* <DCtestimonials /> */}
+
+      <div className="flex justify-end px-[8%] py-6">
+        <div className="w-[62%] flex flex-col gap-16">
+          <div className="flex flex-col gap-6 capitalize">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+              Skills You Will Learn
+            </h1>
+            <div className="flex flex-col gap-4 font-nu text-[#555555]">
+              <p className="text-justify leading-7 tracking-wide">
+                This masterclass is meticulously designed to bridge the gap
+                between academic knowledge and industry demands in full-stack
+                web and mobile development. Students will embark on a
+                comprehensive journey through the realms of web development with
+                React and Django, coupled with mobile app development for
+                Android platforms. .......................
+              </p>
+              <ul className="list-inside leading-7 tracking-wide pl-2">
+                <li>Understanding Front-end and Back-end</li>
+                <li>Tools and Technologies in Full Stack Development</li>
+                <li>Setting Up the Development Environment</li>
+                <li>Installing Necessary Software and Tools</li>
+                <li>Introduction to Version Control with Git and GitHub</li>
+                <li>Basics of Command Line Interface</li>
+              </ul>
+            </div>
+          </div>
+          <div className="flex flex-col gap-8">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+              Curriculum
+            </h1>
+            <Curriculum />
+          </div>
+          <div className="flex flex-col gap-6">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+            Learning outcome
+            </h1>
+            <ul className="list-inside leading-7 tracking-wide pl-2 font-nu text-[#555555]">
+                <li>Tools and Technologies in Full Stack Development</li>
+                <li>Setting Up the Development Environment</li>
+                <li>Installing Necessary Software and Tools</li>
+                <li>Introduction to Version Control with Git and GitHub</li>
+              </ul>
+          </div>
+          <div className="flex flex-col gap-6">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+            Average Packages
+            </h1>
+            <ul className="list-inside leading-7 tracking-wide pl-2 font-nu text-[#555555]">
+                <li>Tools and Technologies in Full Stack Development</li>
+                <li>Setting Up the Development Environment</li>
+                <li>Installing Necessary Software and Tools</li>
+                <li>Introduction to Version Control with Git and GitHub</li>
+              </ul>
+          </div>
+          <div className="flex flex-col gap-8">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+            Instructor
+            </h1>
+            <Instructor />
+          </div>
+          <div className="flex flex-col gap-8 justify-center items-center">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+            Companies Worldwide
+            </h1>
+            <div className="flex justify-between w-full">
+              <img src='/Icons/byju.svg' className="w-40" />
+              <img src='/Icons/google.svg' className="w-40" />
+              <img src='/Icons/instamojo.svg' className="w-40" />
+              <img src='/Icons/dream11.svg' className="w-40" />
+            </div>
+          </div>
+          <div className="flex flex-col gap-8">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+            FAQs
+            </h1>
+            <div className=" w-full">
+            {faqs.map((item, index) => (
+              <div key={index} className="faq1 w-full">
+                <div className=" w-full">
+                  <div
+                    onClick={() => ClickSection(index)}
+                    className="drop-top flex justify-between items-center w-full py-4 cursor-pointe xsm:py-3"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:w-2 xsm:h-2 md:h-3 md:w-3"></div>
+                      <p className="xsm:text-[8px] md:text-[14px]">
+                        {item.question}
+                      </p>
+                    </div>
+                    <div>
+                      <img
+                        src="../Icons/papdropdown.svg"
+                        alt=""
+                        className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 ${
+                          item.isOpen ? "rotate-up" : "rotate-down"
+                        }`}
+                      />
+                    </div>
+                  </div>
+                  {item.isOpen && (
+                    <div className="px-6 py-4 xsm:px-4 xsm:py-3">
+                      <p className="xsm:text-[8px] md:text-[14px]">
+                        {item.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+                <hr className="border-[1px]" />
+              </div>
+            ))}
+          </div>
+          </div>
+          <div className="flex flex-col gap-8">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+            What They Say?
+            </h1>
+          </div>
+        </div>
       </div>
-      <DCtestimonials />
     </div>
   );
 }
