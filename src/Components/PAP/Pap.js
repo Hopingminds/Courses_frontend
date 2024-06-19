@@ -98,7 +98,7 @@ export default function Pap() {
       navigate("/enterance");
 
     } else {
-      localStorage.setItem('history',window.location.pathname);
+      localStorage.setItem('history',"/enterance");
       navigate("/login");
     }
   };
@@ -141,8 +141,7 @@ export default function Pap() {
                     Minimum CTC
                   </p>
                   <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] xsm:text-[7px] md:text-[12px] md:leading-tight">
-                    If your salary exceeds the CTC of ₹5,00,000/-, your monthly
-                    payments of PAP will start.
+                    If your salary exceeds the CTC of ₹3,00,000/-, your monthly payments of PAP will start.
                   </p>
                 </div>
               </div>
@@ -154,11 +153,10 @@ export default function Pap() {
               <div className="w-[90%]">
                 <div>
                   <p className="font-nu font-semibold text-[22px] xsm:text-[10px] md:text-[18px]">
-                    1 Year
+                    1 Year Assurance
                   </p>
                   <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] xsm:text-[7px] md:text-[12px] md:leading-tight">
-                    If you don’t get a job offer within 1 year of the course,
-                    you pay nothing for your learning at Hoping Minds.
+                    If you don’t get a job offer within 1 year of the course, your security amount will be refunded and you pay nothing for your learning at Hoping Minds.
                   </p>
                 </div>
               </div>
@@ -173,9 +171,7 @@ export default function Pap() {
                     Enforcement
                   </p>
                   <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] xsm:text-[7px] md:text-[12px] md:leading-tight">
-                    In the event you are not working or if your income drops
-                    below the CTC mentioned in the Pay After Placement Agreement
-                    the monthly payments pause.
+                  In the event you are not working or if your income drops below the CTC mentioned in the Pay After Placement Agreement in inicial 6 months from your joining, we make sure to provide the another opportunity with same or above package within 3 months.
                   </p>
                 </div>
               </div>
@@ -213,42 +209,38 @@ export default function Pap() {
             </div>
             <div className=" flex flex-col gap-6 xsm:gap-3 md:gap-4">
               <p className="font-nu text-[17px] xsm:text-[7px] md:text-[13px]">
-                These only take effect once you start earning above the PAP
-                threshold amount for your course.
+                These only take effect once you start earning above the PAP threshold amount for your course.
               </p>
               <div className="flex flex-col gap-6 ml-6 xsm:gap-2 xsm:ml-4 md:gap-2 ">
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
                   <p className="font-nu text-[17px] xsm:text-[7px] md:text-[13px]">
-                    Average CTC : &gt; 8Lpa
+                    Average CTC : 3.5 to  8Lpa
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
                   <p className="font-nu text-[17px] xsm:text-[7px] md:text-[13px]">
-                    Monthly Payable : ₹ 2,500
+                    One Time Payment
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
                   <p className="font-nu text-[17px] xsm:text-[7px] md:text-[13px]">
-                    Training Tenure : 4 Months
+                    Training Tenure : 3 Months
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
                   <p className="font-nu text-[17px] xsm:text-[7px] md:text-[13px]">
-                    Total Payable Fee : ₹ 1,50,000
+                    PAP Payable Amount : ₹ 60,000/-
                   </p>
                 </div>
               </div>
             </div>
             <div>
               <p className="font-nu text-[17px] xsm:text-[7px] md:text-[13px] ">
-                CTC (Cost to Company) is defined as the total gross income
-                earned, including but not permitted, to variable pay,
-                compensations and Employee Stock Ownership Plan (ESOP). Find out
-                more in the FAQ section.
+              CTC (Cost to Company) is defined as the total gross income earned, including but not permitted, to variable pay, compensations and Employee Stock Ownership Plan (ESOP). Find out more in the FAQ section.
               </p>
             </div>
           </div>
