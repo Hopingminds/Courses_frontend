@@ -1,20 +1,11 @@
 import "./Pageheader.css";
 import Commoncard from "./Commoncard";
-import Main from "../Main/Main";
-import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { COURSESURL } from "../confidential";
 import { BASE_URL } from "../../Api/api";
-import { jwtDecode } from "jwt-decode";
 import Spinner from "../Spinner";
-import { TiTick } from "react-icons/ti";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
-import DCtestimonials from "./DCtestimonials";
-import { Link } from "react-router-dom";
 import Curriculum from "../Curriculum/Curriculum";
 import Instructor from "../Instructor/Instructor";
-import Faqs from "../Faqs/Faqs";
 import VideoTesttimonial from "./VideoTesttimonial";
 
 export default function DetailCourses() {
@@ -34,7 +25,7 @@ export default function DetailCourses() {
       question:
         "Is there a risk involved for participants in the Pay after Placement model?",
       answer:
-      "Risk is low since payment depends on securing a job; usually, participants are not required to pay if they do not find employment",
+        "Risk is low since payment depends on securing a job; usually, participants are not required to pay if they do not find employment",
       isOpen: false,
     },
     {
@@ -228,9 +219,9 @@ export default function DetailCourses() {
                 {Data?.overview}
               </p>
               <ul className="list-inside leading-7 tracking-wide pl-2">
-              {Data?.whatWillILearn.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
+                {Data?.whatWillILearn.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
             </div>
           </div>
@@ -242,44 +233,44 @@ export default function DetailCourses() {
           </div>
           <div className="flex flex-col gap-6">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
-            Learning outcome
+              Learning outcome
             </h1>
             <ul className="list-inside leading-7 tracking-wide pl-2 font-nu text-[#555555]">
               {Data?.learningOutcome?.map((item, key) => (
                 <li key={key}>{item}</li>
               ))}
-                {/* <li>Tools and Technologies in Full Stack Development</li>
+              {/* <li>Tools and Technologies in Full Stack Development</li>
                 <li>Setting Up the Development Environment</li>
                 <li>Installing Necessary Software and Tools</li>
                 <li>Introduction to Version Control with Git and GitHub</li> */}
-              </ul>
+            </ul>
           </div>
           <div className="flex flex-col gap-6">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
-            Average Packages
+              Average Packages
             </h1>
             <ul className="list-inside leading-7 tracking-wide pl-2 font-nu text-[#555555]">
-              {Data?.companies?.map((company, key) =>(
+              {Data?.companies?.map((company, key) => (
                 <>
                   <li>{company.companyName}</li>
                   <li>{company.avgpkg.from} - {company.avgpkg.to}</li>
                 </>
               ))}
-                {/* <li>Tools and Technologies in Full Stack Development</li>
+              {/* <li>Tools and Technologies in Full Stack Development</li>
                 <li>Setting Up the Development Environment</li>
                 <li>Installing Necessary Software and Tools</li>
                 <li>Introduction to Version Control with Git and GitHub</li> */}
-              </ul>
+            </ul>
           </div>
           <div className="flex flex-col gap-8">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
-            Instructor
+              Instructor
             </h1>
             <Instructor />
           </div>
           <div className="flex flex-col gap-8 justify-center items-center">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
-            Companies Worldwide
+              Companies Worldwide
             </h1>
             <div className="flex justify-between w-full">
               <img src='/Icons/byju.svg' className="w-40" />
@@ -290,45 +281,44 @@ export default function DetailCourses() {
           </div>
           <div className="flex flex-col gap-8">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
-            FAQs
+              FAQs
             </h1>
             <div className=" w-[95%] bg-[#E2FFF1] rounded-md px-6 py-6 flex flex-col gap-6 font-nu">
-            {faqs.map((item, index) => (
-              <div key={index} className="faq1 w-full  bg-white rounded-md">
-                <div className=" w-full ">
-                  <div
-                    onClick={() => ClickSection(index)}
-                    className="drop-top  flex justify-between items-center w-full py-3 px-6 cursor-pointe xsm:py-3 cursor-pointer"
-                  >
-                    <div className="flex items-center gap-2">
-                      <p className={`xsm:text-[8px] font-semibold md:text-[14px] ${item.isOpen && 'text-[#1DBF73]'}`}>
-                        {item.question}
-                      </p>
+              {faqs.map((item, index) => (
+                <div key={index} className="faq1 w-full  bg-white rounded-md">
+                  <div className=" w-full ">
+                    <div
+                      onClick={() => ClickSection(index)}
+                      className="drop-top  flex justify-between items-center w-full py-3 px-6 cursor-pointe xsm:py-3 cursor-pointer"
+                    >
+                      <div className="flex items-center gap-2">
+                        <p className={`xsm:text-[8px] font-semibold md:text-[14px] ${item.isOpen && 'text-[#1DBF73]'}`}>
+                          {item.question}
+                        </p>
+                      </div>
+                      <div>
+                        <img
+                          src="../Icons/faqarrow.svg"
+                          alt=""
+                          className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 transition-transform duration-300 ${item.isOpen ? "rotate-up" : "rotate-down"
+                            }`}
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <img
-                        src="../Icons/faqarrow.svg"
-                        alt=""
-                        className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 transition-transform duration-300 ${
-                          item.isOpen ? "rotate-up" : "rotate-down"
-                        }`}
-                      />
-                    </div>
+                    {item.isOpen && (
+                      <div className="px-6 py-4 xsm:px-4 xsm:py-3">
+                        <p className="xsm:text-[8px] text-[#555555] md:text-[14px]">
+                          {item.answer}
+                        </p>
+                      </div>
+                    )}
                   </div>
-                  {item.isOpen && (
-                    <div className="px-6 py-4 xsm:px-4 xsm:py-3">
-                      <p className="xsm:text-[8px] text-[#555555] md:text-[14px]">
-                        {item.answer}
-                      </p>
-                    </div>
-                  )}
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           </div>
           <div className="flex flex-col gap-8">
-            <VideoTesttimonial/>
+            <VideoTesttimonial />
           </div>
         </div>
       </div>
