@@ -215,7 +215,7 @@ export default function Pap() {
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
                   <p className="font-nu text-[17px] xsm:text-[7px] md:text-[13px]">
-                    Average CTC : 3.5 to  8Lpa
+                    Average CTC : 5Lpa
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
@@ -230,11 +230,18 @@ export default function Pap() {
                     Training Tenure : 3 Months
                   </p>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
-                  <p className="font-nu text-[17px] xsm:text-[7px] md:text-[13px]">
-                    PAP Payable Amount : ₹ 60,000/-
-                  </p>
+                <div className="flex items-start gap-4">
+                  {/* <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div> */}
+                  <div className="font-nu text-[17px] xsm:text-[7px] md:text-[13px] flex items-start">
+                    <div className="flex items-center gap-4">
+                      <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
+                      <p>PAP Payable Amount : &nbsp;</p>
+                    </div>
+                    <div>
+                      <p>Upto 6 LPA INR 60,000/-</p>
+                      <p>Above 6 LPA INR 75,000/-</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -311,7 +318,7 @@ export default function Pap() {
               </button>
               <a
                 href={"/papagreement.pdf"}
-                tareget="_blank"
+                target="_blank"
                 className="bg-white text-black font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4 md:text-[14px]"
               >
                 View Agreement
