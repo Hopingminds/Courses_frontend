@@ -11,14 +11,14 @@ export default function Enterance(){
                 <div className="px-[5%]">Pay after Placement (PAP) is a way for dedicated students to join our industry oriented Full Stack courses without paying any fees upfront.</div>
                 <div className="flex justify-around items-center xsm:flex-col xsm:px-4 xsm:gap-3">
                     <div className="min-h-[30vh] w-[25vw] border border-[#1DBF73] flex flex-col justify-center items-center p-5 gap-y-5 rounded-xl xsm:w-full xsm:p-2 xsm:min-h-[200px]">
-                        <div className="text-xl font-semibold">Solve Assignments</div>
-                        <div className="text-sm text-gray-500">You'll need to solve assignments & meet a certain score to be eligible for the coding test.</div>
+                        <div className="text-xl font-semibold">Solve Assessments</div>
+                        <div className="text-sm text-gray-500">You'll need to solve assesments & meet a certain score to be eligible for the coding test.</div>
                         <Link to='/instruction' className="p-2 rounded-md bg-[#1DBF73] text-white">Start Assignment</Link>
                     </div>
                 <div className="min-h-[30vh] w-[25vw] border border-[#1DBF73] flex flex-col justify-center items-center p-5 gap-y-5 rounded-xl xsm:w-full xsm:p-2 xsm:min-h-[200px]">
                         <div className="text-xl font-semibold">Coding Test</div>
                         <div className="text-sm text-gray-500">Clear this coding test to become eligible for our Pay After Placement program.</div>
-                        <Link to='/instruction' className="p-2 rounded-md bg-[#1DBF73] text-white">Crack The PAP</Link>
+                        <div  className="p-2 rounded-md bg-[#1DBF73] text-white cursor-not-allowed opacity-50">Coming soon</div>
                 </div>
                 </div>
             </div>

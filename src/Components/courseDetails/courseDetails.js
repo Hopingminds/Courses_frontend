@@ -254,7 +254,10 @@ export default function CDDetails() {
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
                   <div className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]" style={{ borderRadius: "14px !important" }}>
                     {showSmallvideo || url?.toString().endsWith("pdf") ? (
-                      <iframe src={pdfurl} width="100%" height="100%" />
+                     <div className="relative">
+                         <iframe  src={pdfurl} width="100%" height="100%" />
+                         <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
+                     </div>
                     ) : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : (

@@ -10,59 +10,62 @@ const Instruction = () => {
 
   return (
     <div className="flex flex-col gap-8 p-[5%] py-10 font-pop">
+      <div className="font-semibold text-xl">Here are the online test instructions for an AI-proctored PAP (Pay After Placement) test, with additional alerts for specific behaviour</div>
       <div className="flex flex-col gap-4">
         <h1 className="text-2xl text-[#1dbf73] font-bold">
-          General Instructions
+        Getting Ready:
         </h1>
         <ul className="list-inside pl-6 flex flex-col gap-2">
-          <li>The duration of the examinatio is 20 minutes.</li>
-          <li>Read all questions carefully before answering.</li>
-          <li>Answer all questions in the space provided.</li>
-          <li>
-            Manage your time wisely; note the point value of each question.
-          </li>
-          <li>Review your answers before submitting the exam.</li>
-          <li>
-            Do not switch tabs during the exam. You will receive a warning each
-            time you switch tabs.
-          </li>
-          <li>
-            After receiving three warnings for switching tabs, your exam will be
-            terminated.
-          </li>
-          <li>
-            Camera detection is active during the exam. Ensure your camera is on
-            and functioning properly.
-          </li>
-          <li>
-            Only one person is allowed in the camera frame. Having more than one
-            person will result in disqualification.
-          </li>
-          <li>
-            Do not press any keys on the keyboard unless instructed to do so.
-          </li>
+          <li>Ensure you have a working webcam and microphone connected to your computer.</li>
+          <li>Find a quiet, well-lit room with a clean desk/table to take the test.</li>
+          <li>Close all other programs and browsers before starting the test.</li>
         </ul>
       </div>
       <div className="flex flex-col gap-4">
         <h1 className="text-2xl text-[#1dbf73] font-bold ">
-          Answering a Question
+        Launching the Test:
         </h1>
         <p>
-          For multiple-choice questions (MCQs):
           <ol className="list-inside list-decimal pl-6 flex flex-col gap-2 mt-2">
-            <li>Read each question thoroughly before selecting an answer.</li>
-            <li>Select the best possible answer from the given options.</li>
-            <li>
-              Use the mouse to click on the radio button or checkbox
-              corresponding to your choice.
-            </li>
-            <li>
-              Ensure your selection is saved before moving to the next question.
-            </li>
-            <li>
-              If you need to change an answer, click on a different option or
-              clear your previous selection if allowed.
-            </li>
+            <li>Log into the test portal using the provided credentials.</li>
+            <li>Follow the instructions to launch the AI proctoring software</li>
+          </ol>
+        </p>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-2xl text-[#1dbf73] font-bold ">
+        During the Test:
+        </h1>
+        <p>
+          <ol className="list-inside list-decimal pl-6 flex flex-col gap-2 mt-2">
+            <li>The AI proctor will continuously monitor you via webcam and microphone.</li>
+            <li>Do not leave the testing area or have unauthorized materials/devices nearby.</li>
+            <li>The AI will flag any suspicious behaviour for review</li>
+          </ol>
+        </p>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-2xl text-[#1dbf73] font-bold ">
+        Alerts:
+        </h1>
+        <p>
+          <ul className="list-inside list-decimal pl-6 flex flex-col gap-2 mt-2">
+            <li>3 Times Alert: If you leave the testing area or look away from the screen for an extended period, you will receive an alert.</li>
+            <li>2 Person Alert: If the AI detects a second person in the testing area, you will receive an alert.</li>
+            <li>Tab Change Alert: If you switch tabs or windows during the test, you will receive an alert.</li>
+            <li>New Window Alert: If you open a new window during the test, you will receive an alert.</li>
+            <li>Block User Alert: After 3 alerts for leaving the testing area or looking away, you will be blocked from continuing the test.</li>
+          </ul>
+        </p>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-2xl text-[#1dbf73] font-bold ">
+        Submitting the Test:
+        </h1>
+        <p>
+          <ol className="list-inside list-decimal pl-6 flex flex-col gap-2 mt-2">
+            <li>Once complete, click "Submit Test" and follow any additional instructions.</li>
+            <li>The AI proctor recording will be reviewed to ensure test integrity.</li>
           </ol>
         </p>
       </div>
