@@ -94,7 +94,7 @@ const CourseCard = ({
           )}
         </span>
       )}
-      {courseCategory === "liveCourse" && (
+      {/* {courseCategory === "liveCourse" && (
         <div className="bg-transparent p-4 absolute top-2 right-2 z-[99]">
           <img
             src="/liveclass.png"
@@ -102,7 +102,7 @@ const CourseCard = ({
             className="h-[30px] w-auto"
           />
         </div>
-      )}
+      )} */}
       <div className="h-fit aspect-[16/9] ">
         {mouseHovered === ind ? (
           <ReactPlayer

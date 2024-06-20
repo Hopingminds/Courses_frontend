@@ -27,7 +27,7 @@ export default function Pap() {
       question:
         "Is there a risk involved for participants in the Pay after Placement model?",
       answer:
-      "Risk is low since payment depends on securing a job; usually, participants are not required to pay if they do not find employment",
+        "Risk is low since payment depends on securing a job; usually, participants are not required to pay if they do not find employment",
       isOpen: false,
     },
     {
@@ -98,7 +98,7 @@ export default function Pap() {
       navigate("/enterance");
 
     } else {
-      localStorage.setItem('history',window.location.pathname);
+      localStorage.setItem('history', window.location.pathname);
       navigate("/login");
     }
   };
@@ -310,13 +310,20 @@ export default function Pap() {
                 your learning with Hoping Minds is completely free.
               </p>
             </div>
-            <div className="">
+            <div className="flex gap-4">
               <button
                 onClick={checkUserAuth}
                 className="bg-white text-black font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4 md:text-[14px]"
               >
-                Take A Tour
+                Start Test
               </button>
+              <a
+                href={"/papagreement.pdf"}
+                tareget="_blank"
+                className="bg-white text-black font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[10px] xsm:py-1 xsm:px-4 md:text-[14px]"
+              >
+                View Agreement
+              </a>
             </div>
           </div>
         </div>
@@ -345,9 +352,8 @@ export default function Pap() {
                       <img
                         src="../Icons/papdropdown.svg"
                         alt=""
-                        className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 ${
-                          item.isOpen ? "rotate-up" : "rotate-down"
-                        }`}
+                        className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 ${item.isOpen ? "rotate-up" : "rotate-down"
+                          }`}
                       />
                     </div>
                   </div>

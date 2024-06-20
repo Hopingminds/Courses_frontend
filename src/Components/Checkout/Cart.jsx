@@ -11,12 +11,14 @@ import {
   StateSelector,
   CitySelector,
 } from "volkeno-react-country-state-city";
+
 import "volkeno-react-country-state-city/dist/index.css";
 import toast, { Toaster } from "react-hot-toast";
 import { authenticateUser } from "../../helpers/helperapi";
 import { useContext } from "react";
 import { Globalinfo } from "../../App";
 import Spinner from "../Spinner";
+import { handleGenerateUrl } from "../../helpers/paymentHelpers";
 
 const CartCheckout = () => {
   const [country, setcountry] = useState("");
@@ -31,18 +33,15 @@ const CartCheckout = () => {
   const [courseId, setcourseId] = useState();
   const [Data, setData] = useState([]);
   const [total, settotal] = useState(0);
-  const [show, setshow] = useState(false)
+  const [show, setshow] = useState(false);
   const checkUserValidation = async () => {
     const isValidUser = await authenticateUser();
-    
+
     console.log(isValidUser);
     if (isValidUser !== 200) {
       localStorage.removeItem("COURSES_USER_TOKEN");
       toast.error("You have been Logged Out");
-      window.open(
-        `${AUTH_BASE_URL}/logout`,
-        "_self"
-      );
+      window.open(`${AUTH_BASE_URL}/logout`, "_self");
     }
   };
 
@@ -104,13 +103,20 @@ const CartCheckout = () => {
   const navigate = useNavigate();
 
   const handleContinueCheckout = async () => {
-      try {
-        setshow(true)
-        let url = BASE_URL + "/purchasecourse";
-        let url1 = BASE_URL + "/deletecart";
-        let orderDetails={name:userDetail.name,zip,gstnumber,country:country.capital,state:state.label,address}
-        // console.log(userDetail);
-          // console.log(orderDetails);
+    try {
+      setshow(true);
+      let url = BASE_URL + "/purchasecourse";
+      let url1 = BASE_URL + "/deletecart";
+      let orderDetails = {
+        name: userDetail.name,
+        zip,
+        gstnumber,
+        country: country.capital,
+        state: state.label,
+        address,
+      };
+      // console.log(userDetail);
+      // console.log(orderDetails);
 
       // console.log(courseId);
       setcourseId(temp);
@@ -127,27 +133,26 @@ const CartCheckout = () => {
       let response = await data.json();
       // console.log(response);
       if (response.success) {
-     if(!query.get("slug")){
-      let data1 = await fetch(url1, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + login,
-        },
-        body: JSON.stringify({ email: userDetail.email }),
-      });
-      let response1 = await data1.json();
-     }
-     toast.success(response.message);
-     setshow(false)
-     setTimeout(() => {
-       navigate("/success");
-     }, 1000);
-    }
-     else{
-      toast.error(response.message);
-     }
+        if (!query.get("slug")) {
+          let data1 = await fetch(url1, {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + login,
+            },
+            body: JSON.stringify({ email: userDetail.email }),
+          });
+          let response1 = await data1.json();
+        }
+        // toast.success(response.message);
+        setshow(false);
+        // setTimeout(() => {
+        //   navigate("/success");
+        // }, 1000);
+      } else {
+        toast.error(response.message);
+      }
       //   if (response.success) {
       //     toast.success(response.message);
       //     setTimeout(() => {
@@ -162,8 +167,6 @@ const CartCheckout = () => {
     } catch (error) {
       console.log(error);
     }
-
-      // console.log(response);
   };
 
   const loadRazorpay = () => {
@@ -171,49 +174,63 @@ const CartCheckout = () => {
       toast.error("Select country");
     } else if (!state) {
       toast.error("Select state");
-    } else if (!address || !zip ) {
+    } else if (!address || !zip) {
       toast.error("Every input must be filled");
     } else {
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.async = true;
-    document.body.appendChild(script);
-    script.onload = () => {
-      const options = {
-        // key: 'rzp_test_ovrL1ExhTWhDv2',
-        key: 'rzp_test_jmLsdK6FoWIRSe',
-        amount: total*100, // Amount in paisa
-        currency: 'INR',
-        name: 'Hoping minds',
-        description: 'Product description',
-        image: '',
-        height: "90vh",
-        handler: function(response) {
-          handleContinueCheckout()
-          // router.push('/profile?tab=booking-history')
-          // Handle success
-          // alert(response.razorpay_payment_id);
-        },
-        prefill: {
-          name: 'Customer Name',
-          email: 'customer@example.com',
-          contact: '8283929792'
-        },
-        theme: {
-          color: '#3399cc'
-        }
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.async = true;
+      document.body.appendChild(script);
+      script.onload = () => {
+        const options = {
+          // key: 'rzp_test_ovrL1ExhTWhDv2',
+          key: "rzp_test_jmLsdK6FoWIRSe",
+          amount: total * 100, // Amount in paisa
+          currency: "INR",
+          name: "Hoping minds",
+          description: "Product description",
+          image: "",
+          height: "90vh",
+          handler: function (response) {
+            handleContinueCheckout();
+            // router.push('/profile?tab=booking-history')
+            // Handle success
+            // alert(response.razorpay_payment_id);
+          },
+          prefill: {
+            name: "Customer Name",
+            email: "customer@example.com",
+            contact: "8283929792",
+          },
+          theme: {
+            color: "#3399cc",
+          },
+        };
+        const rzp = new window.Razorpay(options);
+        rzp.open();
       };
-      const rzp = new window.Razorpay(options);
-      rzp.open();
-    };
-  }
+    }
   };
+
+  const handlePayment = async () => {
+    handleGenerateUrl().then((res) => {
+      // console.log(res);
+      if (res) {
+        handleContinueCheckout();
+        window.location.href = res;
+      }
+    });
+  };
+
   return (
     <>
-         {show ? <div className='w-full h-screen z-20 fixed top-0 left-0 bg-[#b4cca1] opacity-80'>
-                <Spinner className='' />
-
-            </div> : ''}
+      {show ? (
+        <div className="w-full h-screen z-20 fixed top-0 left-0 bg-[#b4cca1] opacity-80">
+          <Spinner className="" />
+        </div>
+      ) : (
+        ""
+      )}
       {/* CheckOut start */}
       <div className="card-checkout mx-14 my-5 flex  gap-20 xsm:flex-col xsm:mx-0 xsm:px-[5%] xsm:gap-8 px-[2%] md:mx-[2%]">
         {/* Billing address start */}
@@ -268,145 +285,13 @@ const CartCheckout = () => {
               onInput={(e) => {
                 const value = e.target.value;
                 // Only allow digits
-                e.target.value = value.replace(/[^0-9]/g, '');
-            }}
+                e.target.value = value.replace(/[^0-9]/g, "");
+              }}
               type="number"
               placeholder="ZIP Code"
               className="w-[88%] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 xsm:w-[95%] md:text-[14px] md:w-[80%]"
             />
           </div>
-
-          {/* Payment Method */}
-          {/* <div>
-            <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mt-4 xsm:mb-1 md:text-[18px]">
-              Payment Method
-            </h1>
-            <div className="bg-green-100 rounded-md p-4 card-shadow xsm:py-2">
-              <p className="text-base green-color pb-4 xsm:text-[10px] xsm:pb-2 md:text-[14px]">
-                Select payment method
-              </p>
-              <div className="space-y-2 xsm:space-y-1 xsm:grid xsm:grid-cols-2">
-                <div className="py-1 cursor-not-allowed flex items-center">
-                  <input
-                    disabled
-                    type="radio"
-                    id="creditDebitCard"
-                    name="paymentMethod"
-                    value="creditDebitCard"
-                    className="mr-2 xsm:w-2"
-                  />
-                  <label
-                    className="text-gray-400 xsm:text-[8px] md:text-[14px]"
-                    htmlFor="creditDebitCard"
-                  >
-                    {" "}
-                    Credit/ Debit card
-                  </label>
-                </div>
-                <div className="py-1 cursor-not-allowed flex items-center">
-                  <input
-                    disabled
-                    type="radio"
-                    id="upi"
-                    name="paymentMethod"
-                    value="upi"
-                    className="mr-2 xsm:w-2"
-                  />
-                  <label
-                    className="text-gray-400 xsm:text-[8px] md:text-[14px]"
-                    htmlFor="upi"
-                  >
-                    {" "}
-                    UPI
-                  </label>
-                </div>
-                <div className="py-1 cursor-not-allowed flex items-center">
-                  <input
-                    disabled
-                    type="radio"
-                    id="netBanking"
-                    name="paymentMethod"
-                    value="netBanking"
-                    className="mr-2 xsm:w-2"
-                  />
-                  <label
-                    className="text-gray-400 xsm:text-[8px] md:text-[14px]"
-                    htmlFor="netBanking"
-                  >
-                    {" "}
-                    Net banking
-                  </label>
-                </div>
-                <div className="py-1 flex items-center">
-                  <input
-                    onChange={(e) => setPayment(e)}
-                    type="radio"
-                    id="cashOnDelivery"
-                    name="paymentMethod"
-                    value="cashOnDelivery"
-                    className="mr-2 xsm:w-2 outline-none"
-                  />
-                  <label className="xsm:text-[8px] md:text-[14px]" htmlFor="cashOnDelivery">
-                    {" "}
-                    Cash on Delivery
-                  </label>
-                </div>
-                <div className="py-1 cursor-not-allowed flex items-center">
-                  <input
-                    disabled
-                    type="radio"
-                    id="emi"
-                    name="paymentMethod"
-                    value="emi"
-                    className="mr-2 xsm:w-2"
-                  />
-                  <label
-                    className="text-gray-400 xsm:text-[8px] md:text-[14px]"
-                    htmlFor="emi"
-                  >
-                    {" "}
-                    EMI
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div> */}
-
-          {/* Order Details start*/}
-
-          {/* <div>
-                        <h1 className="text-xl font-bold mt-6 mb-3">Order Details</h1>
-                        <div className="bg-green-100 rounded-lg flex flex-col md:flex-row items-center card-shadow2">
-                            <img src="src/assets/images/Rectangle 32.png" alt="course" className="w-[230px] h-[140px] object-cover rounded-lg mt-4 md:mt-0 md:ml-4" />
-                            <div className="ml-4 my-3 md:ml-0">
-                                <h2 className="text-md font-semibold text-#252641 text-custom-color">AWS Certified Solutions Architect</h2>
-                                <p className="mt-1 text-sm md:text-base" style={{ color: "#696984" }}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, nostrum!</p>
-
-                                <div className="flex flex-col md:flex-row gap-3 md:gap-6 mt-4 md:mt-8">
-                                    <div className="flex items-center">
-                                        <img src="src/assets/Group 260.png" className="w-5 h-5" />
-                                        <p className="ml-2 text-sm md:text-base" style={{ color: "#696984" }}>Design</p>
-                                    </div>
-
-                                    <div className="flex items-center mt-1 md:mt-0">
-                                        <img src="src/assets/.png" className="w-5 h-5" />
-                                        <p className="ml-2 text-sm md:text-base" style={{ color: "#696984" }}>3 months</p>
-                                    </div>
-                                </div>
-                                <img src="src/assets/Group.png" className="w-full h-1 mt-4" />
-                                <div className="flex justify-between items-center mt-4">
-                                    <span className="flex items-center">
-                                        <Star className="w-5 h-5" />
-                                        <Star className="w-5 h-5" />
-                                        <Star className="w-5 h-5" />
-                                        <Star className="w-5 h-5" />
-                                        <Star className="w-5 h-5" />
-                                    </span>
-                                    <p className="ml-auto text-sm md:text-base font-bold">₹2000</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
 
           <div className="h-auto space-y-7 xsm:space-y-3">
             <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mb-0 xsm:mt-4 md:text-[18px]">
@@ -487,11 +372,15 @@ const CartCheckout = () => {
 
         {/* Summary start */}
         <div className="h-[100vh] w-[30%] xsm:w-full">
-          <span className=" text-xl font-bold xsm:text-[12px] md:text-[18px]">Summary</span>
+          <span className=" text-xl font-bold xsm:text-[12px] md:text-[18px]">
+            Summary
+          </span>
 
           {/* Summary div start*/}
           <div className="mt-5 mb-4 xsm:my-0">
-            <h1 className="text-base xsm:text-[10px] md:text-[14px]">Original Price:</h1>
+            <h1 className="text-base xsm:text-[10px] md:text-[14px]">
+              Original Price:
+            </h1>
             <div className="flex justify-between">
               <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
                 Including all the taxes
@@ -512,7 +401,7 @@ const CartCheckout = () => {
           <span className="flex justify-center xsm:mt-4 md:mt-4">
             <button
               className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px] md:text-[16px] md:px-8"
-              onClick={loadRazorpay}
+              onClick={handlePayment}
             >
               Continue Checkout
             </button>

@@ -11,18 +11,19 @@ import { RWebShare } from "react-web-share";
 import ReactPlayer from "react-player";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import { Tooltip } from "@mui/material";
+import { formatDate } from "../../helpers/helper_function";
 
 export default function Commoncard(props) {
   let { Data } = props;
   // console.log(Data);
   const [IsMuted, setIsMuted] = useState(true);
 
-  const {pathname}=useLocation()
+  const { pathname } = useLocation()
   let login = localStorage.getItem("COURSES_USER_TOKEN");
   let navigate = useNavigate();
   // const [Show, setShow] = useState(false)
 
-  const { setCartSize,cartSize } = useContext(Globalinfo);
+  const { setCartSize, cartSize } = useContext(Globalinfo);
 
 
   async function Addtocart(courseid) {
@@ -44,12 +45,12 @@ export default function Commoncard(props) {
         // console.log(response);
         if (response.success) {
           toast.success(response.msg);
-          setCartSize(cartSize +1);
+          setCartSize(cartSize + 1);
         } else {
           toast.error(response.msg);
         }
       } else {
-        localStorage.setItem('ADD_TO_CART_HISTORY',window.location.pathname);
+        localStorage.setItem('ADD_TO_CART_HISTORY', window.location.pathname);
         // console.log("add to cart withour log")
         navigate("/login");
       }
@@ -103,9 +104,9 @@ export default function Commoncard(props) {
   const handleContextMenu = (e) => {
     e.preventDefault(); // Prevent default context menu behavior
   };
-  
+  console.log(Data)
   return (
-    <div className="bg-[#E2FFF1] w-[33%] h-max my-20 p-6 rounded-xl flex flex-col  top-14 xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
+    <div className="bg-[#E2FFF1] w-[33%] h-max my-14 p-6 rounded-xl flex flex-col  top-10 xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
       <div className="h-max rounded-xl overflow-hidden bg-white md:h-[35%] relative">
         {
           <span className="bg-transparent p-4 absolute top-0 left-0 z-[99]">
@@ -135,7 +136,7 @@ export default function Commoncard(props) {
           </span>
         }
         <ReactPlayer
-        onContextMenu={handleContextMenu}
+          onContextMenu={handleContextMenu}
           height="100%"
           width="100%"
           url={Data?.featured_video}
@@ -158,17 +159,17 @@ export default function Commoncard(props) {
           <div className="gap-x-4 flex items-center xsm:gap-x-2 md:gap-x-2">
             {!purchasedCourses.includes(Data?._id) ? (
               <div className="space-x-4 flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
-              <Tooltip title="Add to Wishlist" arrow>
-                <button className="xsm:w-1 " onClick={() => Addtowishlist(Data?._id)}>
-                  <CiHeart className="w-6 h-6 xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
-                </button>
-              </Tooltip>
-              <Tooltip title="Add to Cart" arrow>
-                <button className="xsm:w-1 " onClick={() => Addtocart(Data?._id)}>
-                  <Cart className="xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
-                </button>
-              </Tooltip>
-            </div>
+                <Tooltip title="Add to Wishlist" arrow>
+                  <button className="xsm:w-1 " onClick={() => Addtowishlist(Data?._id)}>
+                    <CiHeart className="w-6 h-6 xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
+                  </button>
+                </Tooltip>
+                <Tooltip title="Add to Cart" arrow>
+                  <button className="xsm:w-1 " onClick={() => Addtocart(Data?._id)}>
+                    <Cart className="xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
+                  </button>
+                </Tooltip>
+              </div>
             ) : (
               ""
             )}
@@ -190,6 +191,12 @@ export default function Commoncard(props) {
             )}
           </div>
         </div>
+
+        {Data?.courseCategory === "liveCourse" && <>
+          {"Starting On -" + formatDate(Data?.liveClasses[0]?.date)}  at {(Data.liveClasses[0]?.time)}
+        </>
+        }
+
         <div className="flex flex-col gap-6 my-6 xsm:hidden md:gap-4 md:my-4">
           <div className="space-y-4 md:space-y-2">
             <p className="font-pop font-semibold md:text-[14px]">
@@ -234,7 +241,7 @@ export default function Commoncard(props) {
               <RWebShare
                 data={{
                   text: "Hoping Minds",
-                  url: "https://hopingminds.in"+pathname,
+                  url: "https://hopingminds.in" + pathname,
                   title: "Hoping Minds",
                 }}
                 onClick={() => console.log("shared successfully!")}

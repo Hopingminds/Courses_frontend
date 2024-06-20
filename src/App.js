@@ -103,13 +103,48 @@ function App() {
     setWishListData([]);
   }
 
+
+
+
+
+  // useEffect(() => {
+  //   checkPaymentStatus()
+
+  //   const originalFetch = window.fetch;
+
+  //   window.fetch = async function (...args) {
+  //     const response = await originalFetch(...args);
+  //     console.log('Request URL:', args[0]);
+  //     console.log('Request Options:', args[1]);
+
+  //     // Clone the response to read its body without affecting the original response
+  //     const clonedResponse = response.clone();
+  //     clonedResponse.json().then((data) => {
+  //       console.log('Response Payload:', data);
+  //     });
+
+  //     return response;
+  //   };
+  // }, [])
+
+
+  // const checkPaymentStatus = async () => {
+  //   try {
+  //     const res = await axios.get("https://hopingminds.in/")
+  //     console.log("Return response getting ****** ", res)
+  //   } catch (error) {
+  //     console.log("Errro is ************" + error);
+  //   }
+  // }
+
+
   return (
-    <Globalinfo.Provider value={{cartSize,setCartSize, cartData, Getadmindetails, adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
+    <Globalinfo.Provider value={{ cartSize, setCartSize, cartData, Getadmindetails, adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
       <div className='2xl:px-[17%]'>
-      {/* <div className="fixed right-0 bottom-4 z-[987656789]">
+        {/* <div className="fixed right-0 bottom-4 z-[987656789]">
            <ChatBot className="w-fit" />
       </div> */}
-      <Router />
+        <Router />
 
       </div>
     </Globalinfo.Provider>

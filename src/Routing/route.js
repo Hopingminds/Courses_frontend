@@ -105,6 +105,8 @@ const Router = () => {
 
             {ReturnNavbar()}
             <Routes>
+                {/* <Route path='/test' element={<Test />} /> */}
+                {/* <Route path='/test2' element={<EncryptComponent />} /> */}
                 <Route path='/' element={<Home />} />
                 <Route path='/detailcourse/:slug' element={<DetailCourses />} />
                 <Route path='/about' element={<AboutUs />} />
