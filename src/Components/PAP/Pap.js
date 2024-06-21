@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Img1 from "../../Assets/Images/papheaderbg.png";
-import styled from "styled-components";
 
 import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";

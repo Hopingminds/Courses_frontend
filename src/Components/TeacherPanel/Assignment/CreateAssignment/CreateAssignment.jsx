@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import Cross from '../../../../Assets/Icons/tpcross.svg'
 import ProgressBar from '@ramonak/react-progress-bar'
 import CreateAssignmentS1 from './CreateAssignmentS1'
-import CreateAssignmentFinal from './CreateAssignmentFinal'
-import CreateAssignmentS4 from './CreateAssignmentS4'
 import CreateAssignmentS3 from './CreateAssignmentS3'
 import CreateAssignmentS2 from './CreateAssignmentS2'
 

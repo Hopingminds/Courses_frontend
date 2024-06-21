@@ -1,4 +1,3 @@
-import ReactPlayer from "react-player";
 // import './hero.css'
 // import { ReactComponent as Cal } from '../../Assets/Icons/cal.svg'
 // import { ReactComponent as Email } from '../../Assets/Icons/email.svg'

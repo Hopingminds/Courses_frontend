@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { ReactComponent as Down } from "../../Assets/Icons/Down.svg";
 import { IoBookOutline } from "react-icons/io5";
 import { BASE_URL } from "../../Api/api";
-import { TiFolderOpen } from "react-icons/ti";
-import { Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { MdOutlineFileUpload } from "react-icons/md";
-import { MdClose, MdOutlineFileDownload } from "react-icons/md";
+import { MdClose } from "react-icons/md";
 import { useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { ReactComponent as Notes } from '../../Assets/Icons/notes.svg'

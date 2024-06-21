@@ -2,7 +2,6 @@ import React from "react";
 import Img1 from "../../Assests/Images/aboutus1.png";
 import Img2 from "../../Assests/Images/aboutus2.png";
 import Img3 from "../../Assests/Images/aboutus3.png";
-import Arrow from "../../Assests/Icons/aboutarrow.svg";
 import Num1 from "../../Assests/Icons/01.svg";
 import Num2 from "../../Assests/Icons/o2.svg";
 import Num3 from "../../Assests/Icons/03.svg";

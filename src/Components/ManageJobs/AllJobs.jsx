@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { MdRefresh } from "react-icons/md";
-import { FcCollaboration } from "react-icons/fc";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { Link, Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import { formatDate } from "../../helpers/helper_function";

@@ -1,16 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import "./courseDetails.css";
 import ReactPlayer from "react-player";
-import ChatBot from "../chatbot/chatbot";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
 import Coursecontents from "../Meeting/Coursecontents";
 import { jwtDecode } from "jwt-decode";
 import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
-import Main from "../Main/Main";
 import CourseNavigation from "../CourseNavigation/CourseNavigation";
-import { Link } from "react-router-dom";
-import SideBar from "./SideBar.jsx"
 import NewSideBar from "./NewSideBar.jsx";
 import { FiMenu } from "react-icons/fi";
 
@@ -22,7 +18,6 @@ export default function CDDetails() {
   const [Data, setData] = useState(null);
   const [completed_lessons, setcompleted_lessons] = useState([]);
   const [count, setcount] = useState(0);
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [ALLCHAPTER, setALLCHAPTER] = useState([]);
   const [courseId, setcourseId] = useState();
   const [courseAssignment, setCourseAssignment] = useState([]);
@@ -30,9 +25,7 @@ export default function CDDetails() {
   const [showSmallvideo, setshowSmallvideo] = useState(false)
   const [smallVideourl, setsmallVideourl] = useState('')
   const [pdfurl, setpdfurl] = useState('')
-  const [pageFullyRead, setPageFullyRead] = useState(false);
   const [url, seturl] = useState("");
-  const pdfRef = useRef(null);
   const params = useParams();
   let completed = [];
   let allchapters = [];

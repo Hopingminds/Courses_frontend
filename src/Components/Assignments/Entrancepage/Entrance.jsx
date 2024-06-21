@@ -18,7 +18,7 @@ export default function Enterance(){
                 <div className="min-h-[30vh] w-[25vw] border border-[#1DBF73] flex flex-col justify-center items-center p-5 gap-y-5 rounded-xl xsm:w-full xsm:p-2 xsm:min-h-[200px]">
                         <div className="text-xl font-semibold">Coding Test</div>
                         <div className="text-sm text-gray-500">Clear this coding test to become eligible for our Pay After Placement program.</div>
-                        <div  className="p-2 rounded-md bg-[#1DBF73] text-white cursor-not-allowed opacity-50">Coming soon</div>
+                        <div className="p-2 rounded-md bg-[#1DBF73] text-white cursor-not-allowed opacity-50">Coming soon</div>
                 </div>
                 </div>
             </div>

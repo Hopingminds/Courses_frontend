@@ -1,8 +1,6 @@
-import { useState } from "react";
 
 export default function Certificate(props) {
     // console.log(props);
-    const [count, setcount] = useState(false)
     let { courses } = props
     console.log(courses);
     

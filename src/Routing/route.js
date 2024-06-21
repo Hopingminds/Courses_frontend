@@ -69,6 +69,8 @@ import Pdfaudio from '../Components/Restrictions/pdfaudio.js'
 import PDFViewer from '../Components/Restrictions/pdf.js'
 import Instruction from '../Components/Assignments/Instruction/Instruction.jsx'
 import Assessmentinstruction from '../Components/Assessments/Instruction/assessmentInstruction.jsx'
+import AssessmentQuestion from '../Components/Assessments/Questions/index.js'
+import ProtectedAssessmentQuestion from '../Components/Assessments/ProtectedQuestions/index.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -156,6 +158,8 @@ const Router = () => {
                 <Route path='/code' element={<CodeEditor />} />
                 <Route path='/modules' element={<Modules />} />
                 <Route path='/questions' element={<Question />} />
+                <Route path='/assessmentquestions' element={<AssessmentQuestion />} />
+                <Route path='/prassessmentquestions' element={<ProtectedAssessmentQuestion />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/managejobs' element={<ManageJobsmain />} />
                 <Route path='/postjob' element={<PostJobsForm />} />

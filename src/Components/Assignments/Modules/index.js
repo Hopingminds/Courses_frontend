@@ -1,14 +1,11 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { FaGreaterThan } from "react-icons/fa6";
 import { PiWarningOctagonBold } from "react-icons/pi";
-import { Link } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import "./modules.css";
 import { useEffect, useRef, useState } from "react";
 import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
-import Webcam from "react-webcam";
 import { useNavigate } from "react-router-dom";
 
 export default function Modules() {

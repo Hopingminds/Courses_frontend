@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { RxDoubleArrowLeft, RxDoubleArrowRight } from "react-icons/rx";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import AllJobs from './AllJobs';
 import Draft from './Draft';
 

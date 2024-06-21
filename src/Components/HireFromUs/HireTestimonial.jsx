@@ -1,6 +1,5 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import React from 'react'
-import { useLocation } from "react-router-dom";
 import './hirefromus.css'
 import User11 from "../../Assests/Images/Aditya Sharma.jpg";
 import User7 from "../../Assests/Images/Tanisha Sharma.jpg";

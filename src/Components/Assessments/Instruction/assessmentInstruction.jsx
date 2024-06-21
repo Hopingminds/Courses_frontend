@@ -87,12 +87,21 @@ const Assessmentinstruction = () => {
         </label>
       </div>
       <div>
-      <Link to='/modules'
+      {/* prassessmentquestions */}
+        {
+            searchparams.get('pr')==="true1" ? <Link to={`/prassessmentquestions?assessmentId=${searchparams.get('assessmentId')}&pr=${searchparams.get('pr')}`}
+            className={`mt-4 px-4 py-2 bg-[#1dbf73] text-white font-bold rounded ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`} 
+            disabled={!isChecked}
+          >
+            Ready to Begin
+          </Link> : <Link to={`/assessmentquestions?assessmentId=${searchparams.get('assessmentId')}&pr=${searchparams.get('pr')}`}
         className={`mt-4 px-4 py-2 bg-[#1dbf73] text-white font-bold rounded ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`} 
         disabled={!isChecked}
       >
         Ready to Begin
       </Link>
+        }
+  
       </div>
     </div> 
   );

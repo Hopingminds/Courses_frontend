@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import Upload from '../../../../Assets/Icons/tpupload.svg'
 import Left from '../../../../Assets/Icons/tpassignmentleft.svg'
-import Cross from '../../../../Assets/Icons/tpassignmentcross.svg'
 
 const CreateAssignmentS4 = ({setShowStep, setCreateAssignment}) => {
     const [uploadedFiles, setUploadedFiles] = useState([]);

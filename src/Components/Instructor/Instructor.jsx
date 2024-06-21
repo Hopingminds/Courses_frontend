@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Instructor.css";
-import instructorImg from "../../Assets/instructor.png";
 import studentsIcon from "../../Assets/students.png";
 import lessonsIcon from "../../Assets/lessons.png";
 import Icon1 from "../../Assets/icon1.png";

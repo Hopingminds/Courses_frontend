@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Reviews.css";
-import Blank from "../../Assests/Images/rating-blank.png";
-import ratings from "../../Assets/ratings.png";
-import emptyratings from "../../Assets/emptyratings.png";
-import RatingsBar from "../ratingsBar/ratingsBar";
-import profile from "../../Assets/profile.png";
-import Reply from "../../Assets/Reply.png";
-import Comment from "../Comment/Comment";
+
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
 
