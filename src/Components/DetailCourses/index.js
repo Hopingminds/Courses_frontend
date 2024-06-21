@@ -7,6 +7,9 @@ import Spinner from "../Spinner";
 import Curriculum from "../Curriculum/Curriculum";
 import Instructor from "../Instructor/Instructor";
 import VideoTesttimonial from "./VideoTesttimonial";
+import { TiTick } from "react-icons/ti";
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import Included from "./included";
 
 export default function DetailCourses() {
   const param = useParams();
@@ -78,6 +81,8 @@ export default function DetailCourses() {
     setFaqs(updatedFaqs);
   }
 
+  console.log(Data?.curriculum)
+
   return (
     <div className="h-auto min-h-screen overflow-x-visible ">
       <div className="mb-5 xsm:mx-0 ">
@@ -90,7 +95,7 @@ export default function DetailCourses() {
             backgroundPosition: "center",
           }}
         >
-          {/* <div className="CCDetails-Header-content-leftqw xsm:text-[10px]">
+          <div className="CCDetails-Header-content-leftqw xsm:text-[10px]">
             <div className="CCDetails-Header-content-row1qw xsm:text-[10px]">
               <h2 className="font-pop  xsm:text-[10px]">{Data?.title}</h2>
             </div>
@@ -112,7 +117,8 @@ export default function DetailCourses() {
                   <p>{item}</p>
                 </div>
               ))}
-            </div> */}
+            </div>
+          </div>
           {/* <div className='CCDetails-Header-content-row2 w-[90%] xsm:mt-1 '>
                             <div className='CCDetails-Header-content-row2-clock gap-1'>
                                 <img src="../Icons/clockfilled.svg" className=' xsm:w-[6px] xsm:h-[6px] md:w-[10px] md:h-[10px]' alt="clock"></img>
@@ -136,10 +142,10 @@ export default function DetailCourses() {
                             </div>
                         </div> */}
           {/* </div> */}
-          <h1 className="text-white text-4xl font-pop font-bold capitalize w-[60%]">
+          {/* <h1 className="text-white text-4xl font-pop font-bold capitalize w-[60%]">
             {Data?.title}
-          </h1>
-          <Commoncard Data={Data} />
+          </h1> */}
+
         </div>
         {/* <Main /> */}
       </div>
@@ -208,30 +214,40 @@ export default function DetailCourses() {
       </div> */}
       {/* <DCtestimonials /> */}
 
-      <div className="flex justify-end px-[8%] py-6">
-        <div className="w-[62%] flex flex-col gap-16">
+      <div className="flex justify-between px-[8%] py-6">
+        <div className="w-[58%] flex flex-col gap-16">
           <div className="flex flex-col gap-6 capitalize">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
               Skills You Will Learn
             </h1>
             <div className="flex flex-col gap-4 font-nu text-[#555555]">
-              <p className="text-justify leading-7 tracking-wide">
-                {Data?.overview}
-              </p>
-              <ul className="list-inside leading-7 tracking-wide pl-2">
+
+              <ul className="list-inside leading-7 tracking-wide pl-2 grid grid-cols-2 gap-4  p-5 shadow-[0_4px_11px_0px_rgb(0, 0, 0))]" >
                 {Data?.whatWillILearn.map((item, index) => (
-                  <li key={index}>{item}</li>
+                  <li key={index} className="flex gap-2"> <img src="/Icons/shield.svg" className="h-[28px] w-auto" alt="" /> {item}</li>
                 ))}
               </ul>
             </div>
           </div>
           <div className="flex flex-col gap-8">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+              What's Included
+            </h1>
+            <Included curiculum={Data?.curriculum} />
+          </div>
+          <div className="flex flex-col gap-8">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+              Instructor
+            </h1>
+            <Instructor />
+          </div>
+          {/* <div className="flex flex-col gap-8">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
               Curriculum
             </h1>
             <Curriculum />
-          </div>
-          <div className="flex flex-col gap-6">
+          </div> */}
+          {/* <div className="flex flex-col gap-6">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
               Learning outcome
             </h1>
@@ -239,13 +255,13 @@ export default function DetailCourses() {
               {Data?.learningOutcome?.map((item, key) => (
                 <li key={key}>{item}</li>
               ))}
-              {/* <li>Tools and Technologies in Full Stack Development</li>
+              <li>Tools and Technologies in Full Stack Development</li>
                 <li>Setting Up the Development Environment</li>
                 <li>Installing Necessary Software and Tools</li>
-                <li>Introduction to Version Control with Git and GitHub</li> */}
+                <li>Introduction to Version Control with Git and GitHub</li>
             </ul>
-          </div>
-          <div className="flex flex-col gap-6">
+          </div> */}
+          {/* <div className="flex flex-col gap-6">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
               Average Packages
             </h1>
@@ -256,20 +272,15 @@ export default function DetailCourses() {
                   <li>{company.avgpkg.from} - {company.avgpkg.to}</li>
                 </>
               ))}
-              {/* <li>Tools and Technologies in Full Stack Development</li>
+              <li>Tools and Technologies in Full Stack Development</li>
                 <li>Setting Up the Development Environment</li>
                 <li>Installing Necessary Software and Tools</li>
-                <li>Introduction to Version Control with Git and GitHub</li> */}
+                <li>Introduction to Version Control with Git and GitHub</li>
             </ul>
-          </div>
-          <div className="flex flex-col gap-8">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
-              Instructor
-            </h1>
-            <Instructor />
-          </div>
-          <div className="flex flex-col gap-8 justify-center items-center">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+          </div> */}
+
+          {/* <div className="flex flex-col gap-8 justify-center items-center">
+            <h1 className="w-full text-left font-pop font-semibold text-[32px] text-[#0F2027]">
               Companies Worldwide
             </h1>
             <div className="flex justify-between w-full">
@@ -278,7 +289,7 @@ export default function DetailCourses() {
               <img src='/Icons/instamojo.svg' className="w-40" />
               <img src='/Icons/dream11.svg' className="w-40" />
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col gap-8">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
               FAQs
@@ -321,7 +332,11 @@ export default function DetailCourses() {
             <VideoTesttimonial />
           </div>
         </div>
+
+        <Commoncard Data={Data} />
+
       </div>
+
     </div>
   );
 }

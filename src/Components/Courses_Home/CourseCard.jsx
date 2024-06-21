@@ -7,9 +7,6 @@ import { cropString } from "../../helpers/helper_function";
 import ReactPlayer from "react-player";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import { Globalinfo } from "../../App";
-import { IoIosLock } from "react-icons/io";
-import { FaUserCircle } from "react-icons/fa";
-import abhishek from "../../Assets/Images/abhishek.jpeg";
 import { IoTrendingUpSharp } from "react-icons/io5";
 
 const CourseCard = ({

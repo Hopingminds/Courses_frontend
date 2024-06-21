@@ -106,7 +106,7 @@ export default function Commoncard(props) {
   };
   console.log(Data)
   return (
-    <div className="bg-[#E2FFF1] w-[33%] h-max my-14 p-6 rounded-xl flex flex-col  top-10 xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
+    <div className="bg-[#E2FFF1] w-[33%] h-max my-14 p-6 rounded-xl flex flex-col  relative -top-[50vh] xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
       <div className="h-max rounded-xl overflow-hidden bg-white md:h-[35%] relative">
         {
           <span className="bg-transparent p-4 absolute top-0 left-0 z-[99]">
@@ -148,49 +148,57 @@ export default function Commoncard(props) {
         />
       </div>
       <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1 md:gap-3 md:mt-4">
-        <p className="font-pop font-semibold xsm:text-[8px] md:text-[14px]">
-          {Data?.title}
-        </p>
-        <div className="flex justify-between items-center xsm:pb-1 ">
-          <p className="font-nu text-[16px] font-semibold xsm:text-[8px] md:text-[12px]">
-            ₹{Data?.base_price}
-          </p>
 
-          <div className="gap-x-4 flex items-center xsm:gap-x-2 md:gap-x-2">
-            {!purchasedCourses.includes(Data?._id) ? (
-              <div className="space-x-4 flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
-                <Tooltip title="Add to Wishlist" arrow>
-                  <button className="xsm:w-1 " onClick={() => Addtowishlist(Data?._id)}>
-                    <CiHeart className="w-6 h-6 xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
-                  </button>
-                </Tooltip>
-                <Tooltip title="Add to Cart" arrow>
-                  <button className="xsm:w-1 " onClick={() => Addtocart(Data?._id)}>
-                    <Cart className="xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
-                  </button>
-                </Tooltip>
-              </div>
-            ) : (
-              ""
-            )}
+        <div className="flex flex-col justify-between items-center xsm:pb-1 ">
+          <h2 className="font-nu text-[30px] font-semibold xsm:text-[8px] md:text-[12px]">
+            ₹{Data?.base_price}
+          </h2>
+
+          <div className="gap-y-4 flex w-full px-5 flex-col items-center xsm:gap-x-2 md:gap-x-2">
+
 
             {purchasedCourses.includes(Data?._id) ? (
               <Link
                 to={"/course/" + Data?.slug}
-                className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[8px] md:text-[14px] md:px-[8px] md:py-1"
+                className="bg-[#1DBF73] py-2 px-7 flex justify-center rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[8px] md:text-[14px] md:px-[8px] md:py-1"
               >
                 View Course
               </Link>
             ) : (
               <Link
                 to={login ? "/checkout?slug=" + Data?.slug : "/login"}
-                className="bg-[#1DBF73] py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
+                className="bg-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
               >
                 Buy Now
               </Link>
             )}
+            {!purchasedCourses.includes(Data?._id) ? (
+              <div className="space-x-4 w-full flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
+                {/* <Tooltip title="Add to Wishlist" arrow>
+                  <button className="xsm:w-1 " onClick={() => Addtowishlist(Data?._id)}>
+                    <CiHeart className="w-6 h-6 xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
+                  </button>
+                </Tooltip> */}
+                {/* <Tooltip title="Add to Cart" arrow>
+                  <button className="xsm:w-1 " >
+                    <Cart className="xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
+                  </button>
+                </Tooltip> */}
+                <div
+                  onClick={() => Addtocart(Data?._id)}
+                  className="border border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
+                >
+                  Add to cart
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
+        <h3 className="font-pop font-semibold xsm:text-[8px] md:text-[14px]">
+          {Data?.title}
+        </h3>
 
         {Data?.courseCategory === "liveCourse" && <>
           {"Starting On -" + formatDate(Data?.liveClasses[0]?.date)}  at {(Data.liveClasses[0]?.time)}
