@@ -19,7 +19,8 @@ export default function Coursecontents({
   handleToggleNotes,
   ALLCHAPTER,
   count,
-  courseCategory
+  courseCategory,
+  handleProject
 }) {
   const navigate = useNavigate();
   // console.log(completed_lessons)
@@ -268,6 +269,59 @@ export default function Coursecontents({
                           );
                         })}
                       </div>
+                      <div className="w-full border-t">
+                        <div className="font-semibold text-sm text-[#1DBF73] py-1">Live Classes</div>
+
+                        {val?.liveClasses?.map((chapter, index) => {
+                          // console.log(chapter);
+
+                          return (
+                            <div
+
+                              className={`flex flex-col justify-between border-t py-2 w-full`}
+                              key={index}
+                            >
+                              <span className="flex justify-between">
+                                <p onClick={courseCategory === "liveCourse" ? () => { } : () =>
+                                  handleActiveVideo(chapter?.meetingLink)
+                                } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
+                                  {index + 1}. {chapter?.topic}
+                                </p>
+                                <p className="font-pop  text-[11px] xsm:text-[8px] md:text-[10px]">
+                                  {chapter?.startDate?.split("T")[0]} {chapter?.time}
+                                </p>
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                    { val?.project?.length>0 && <div className="w-full border-t">
+                          <div className="font-semibold text-sm text-[#1DBF73] py-1">Projects</div>
+                          {val?.project?.map((chapter, index) => {
+                          // console.log(chapter);
+
+                          return (
+                            <div
+
+                              className={`flex flex-col justify-between border-t py-2 w-full`}
+                              key={index}
+                            >
+                              <span className="flex justify-between">
+                                <p onClick={courseCategory === "liveCourse" ? () => { } : () =>
+                                  handleProject(chapter?.projectInfoPdf)
+                                } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
+                                  {index + 1}. {chapter?.title}({chapter?.duration || '5 mins'})
+                                </p>
+
+                              </span>
+                              {/* <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
+                                  Duration-{chapter?.duration || '5 mins'}
+                                </p> */}
+                            </div>
+                          );
+                        })}
+                      </div>}
                     </div>
                   </div>
                 </div>

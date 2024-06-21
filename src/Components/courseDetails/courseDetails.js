@@ -185,13 +185,17 @@ export default function CDDetails() {
   };
 
   const handleToggleNotes = async (pdf, videourl) => {
-    console.log(pdfurl);
+    // console.log(pdfurl);
     setshowSmallvideo(true)
     // seturl(pdfurl)
     setpdfurl(pdf)
     setsmallVideourl(videourl)
   };
 
+  function handleProject(pdf){
+    setpdfurl(pdf)
+    setshowSmallvideo(true)
+  }
 
   function handleNext() {
     setshowSmallvideo(false)
@@ -247,10 +251,10 @@ export default function CDDetails() {
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
                   <div className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]" style={{ borderRadius: "14px !important" }}>
                     {showSmallvideo || url?.toString().endsWith("pdf") ? (
-                     <div className="relative">
+                    //  <div className="relative">
                          <iframe  src={pdfurl} width="100%" height="100%" />
-                         <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
-                     </div>
+                        //  <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
+                    //  </div>
                     ) : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : (
@@ -291,6 +295,7 @@ export default function CDDetails() {
                         courseId={courseId}
                         completed_lessons={completed_lessons}
                         setMenu={setMenu}
+                        handleProject={handleProject}
 
                       />
                     </div>
@@ -308,6 +313,7 @@ export default function CDDetails() {
                       handleToggleNotes={handleToggleNotes}
                       ALLCHAPTER={ALLCHAPTER}
                       count={count}
+                      handleProject={handleProject}
                     />
                   </div>
                 )}

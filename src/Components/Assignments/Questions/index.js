@@ -128,6 +128,7 @@ export default function Question() {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [escapePressed, setEscapePressed] = useState(false);
   const [personCount, setPersonCount] = useState(0);
+  const [cameraActive, setcameraActive] = useState(false)
   const contentRef = useRef(null);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -215,12 +216,20 @@ export default function Question() {
       setInterval(() => detectFrame(videoRef.current, model), 100);
     };
 
-    const startCamera = () => {
-      navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+    const startCamera = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         videoRef.current.srcObject = stream;
         videoRef.current.play().catch(err => console.error('Error playing video:', err));
+        setcameraActive(true)
         loadModelAndDetect();
-      }).catch(err => console.error('Error accessing camera:', err));
+      } catch (err) {
+        console.error('Error accessing camera:', err);
+        if (err.name === 'NotAllowedError' || err.name === 'NotFoundError') {
+         alert("You can't block the camera")
+     
+        }
+      }
     };
 
     const detectFrame = async (video, model) => {
@@ -272,7 +281,7 @@ export default function Question() {
       }  
      
     } else if (personCount === 0) {
-      if(peoplewarning>0){
+      if(peoplewarning>0 && cameraActive){
         alert(`Warning!! ${personCount} Person Detected in your camera frame.`);
       }      
     }
