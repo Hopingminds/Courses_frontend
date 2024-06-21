@@ -68,6 +68,9 @@ import LiveClassDetailPage from '../Components/LiveClass/liveclassDetail.jsx'
 import Pdfaudio from '../Components/Restrictions/pdfaudio.js'
 import PDFViewer from '../Components/Restrictions/pdf.js'
 import Instruction from '../Components/Assignments/Instruction/Instruction.jsx'
+import Assessmentinstruction from '../Components/Assessments/Instruction/assessmentInstruction.jsx'
+import AssessmentQuestion from '../Components/Assessments/Questions/index.js'
+import ProtectedAssessmentQuestion from '../Components/Assessments/ProtectedQuestions/index.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -115,7 +118,6 @@ const Router = () => {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/forgot-password' element={<Forgotpassword />} />
-
                 <Route path='/cart' element={< ShopingCart />} />
                 <Route path='/course' element={<AllCourses />} />
                 <Route path='/course/:slug' element={<CDDetails />} />
@@ -137,6 +139,7 @@ const Router = () => {
                 <Route path='/terms' element={<ShippingPolicy />} />
                 <Route path='/enterance' element={<Enterance />} />
                 <Route path='/instruction' element={<Instruction />} />
+                <Route path='/assessmentinstruction' element={<Assessmentinstruction />} />
                 <Route path='/hire-from-us' element={<HireFromUs />} />
                 <Route path='/career' element={<CareerServices />} />
                 <Route path='/modal' element={<Modal />} />
@@ -154,6 +157,8 @@ const Router = () => {
                 <Route path='/code' element={<CodeEditor />} />
                 <Route path='/modules' element={<Modules />} />
                 <Route path='/questions' element={<Question />} />
+                <Route path='/assessmentquestions' element={<AssessmentQuestion />} />
+                <Route path='/prassessmentquestions' element={<ProtectedAssessmentQuestion />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/managejobs' element={<ManageJobsmain />} />
                 <Route path='/postjob' element={<PostJobsForm />} />

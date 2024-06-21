@@ -1,12 +1,18 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { Link, useSearchParams } from "react-router-dom";
 
-const Instruction = () => {
+const Assessmentinstruction = () => {
     const [isChecked, setIsChecked] = useState(false);
 
     const handleCheckboxChange = () => {
       setIsChecked(!isChecked);
     };
+
+    const [searchparams,setsearchparams]=useSearchParams()
+   useEffect(() => {
+    console.log(searchparams.get('assessmentId'));
+   }, [])
+   
 
   return (
     <div className="flex flex-col gap-8 p-[5%] py-10 font-pop">
@@ -81,16 +87,25 @@ const Instruction = () => {
         </label>
       </div>
       <div>
-      <Link to='/modules'
+      {/* prassessmentquestions */}
+        {
+            searchparams.get('pr')==="true1" ? <Link to={`/prassessmentquestions?assessmentId=${searchparams.get('assessmentId')}&pr=${searchparams.get('pr')}`}
+            className={`mt-4 px-4 py-2 bg-[#1dbf73] text-white font-bold rounded ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`} 
+            disabled={!isChecked}
+          >
+            Ready to Begin
+          </Link> : <Link to={`/assessmentquestions?assessmentId=${searchparams.get('assessmentId')}&pr=${searchparams.get('pr')}`}
         className={`mt-4 px-4 py-2 bg-[#1dbf73] text-white font-bold rounded ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`} 
         disabled={!isChecked}
       >
         Ready to Begin
       </Link>
+        }
+  
       </div>
     </div> 
   );
 };
 
-export default Instruction;
+export default Assessmentinstruction;
  

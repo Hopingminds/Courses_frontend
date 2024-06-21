@@ -3,8 +3,7 @@ import Img1 from "../../Assests/Icons/hat-sub.svg";
 import Img2 from "../../Assests/Icons/couse-sub.svg";
 import Img3 from "../../Assests/Icons/bar-sub.svg";
 import Img4 from "../../Assests/Icons/Oval1-sub.svg";
-import Img5 from "../../Assests/Icons/Oval2-sub.svg";
-import Img6 from "../../Assests/Icons/Oval3-sub.svg";
+
 import ProgressBar from "@ramonak/react-progress-bar";
 import {
   CircularProgressbar,

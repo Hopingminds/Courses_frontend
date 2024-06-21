@@ -1,14 +1,11 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { FaGreaterThan } from "react-icons/fa6";
 import { PiWarningOctagonBold } from "react-icons/pi";
-import { Link } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import "./modules.css";
 import { useEffect, useRef, useState } from "react";
 import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
-import Webcam from "react-webcam";
 import { useNavigate } from "react-router-dom";
 
 export default function Modules() {
@@ -190,7 +187,7 @@ export default function Modules() {
   return (
     <>
       <div className="w-full flex justify-between px-[5%] py-5 xsm:flex-col">
-        <div className="w-[35%] h-[85vh] bg-[#d8f7e8] p-[2%] space-y-2 rounded-xl xsm:w-full xsm:h-fit xsm:px-[3%] xsm:py-[5%]">
+        {/* <div className="w-[35%] h-[85vh] bg-[#d8f7e8] p-[2%] space-y-2 rounded-xl xsm:w-full xsm:h-fit xsm:px-[3%] xsm:py-[5%]">
           <div className="text-3xl font-bold text-center">
             Pay After Placement
           </div>
@@ -204,7 +201,7 @@ export default function Modules() {
                 1
               </div>
               <div className="w-[85%] space-y-1 ">
-                <div className="font-semibold text-lg">Solve Assignments</div>
+                <div className="font-semibold text-lg">Solve Assessments</div>
                 <div className="text-sm">
                   You should complete assignments & score 550 to be eligible for
                   the Coding Test
@@ -227,18 +224,17 @@ export default function Modules() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div
-          className="w-[62%] h-[85vh]  p-2 space-y-5 overflow-y-auto modules xsm:w-full xsm:h-fit"
-          ref={modulesContainerRef}
+          className="w-full h-[85vh]  p-2 space-y-5 overflow-y-auto modules xsm:w-full xsm:h-fit"
+         
         >
           <div className="flex justify-between items-center">
             <div className="text-xl font-semibold text-gray-700">Modules</div>
-            {/* {Completed?<Link to='/result' className="bg-[#1DBF73] text-white p-2 rounded">View result</Link>:''} */}
           </div>
           <div className="flex flex-col space-y-5">
-            <div className="w-full border bg-gray-200 p-5  rounded-xl space-y-3">
+            {/* <div className="w-full border bg-gray-200 p-5  rounded-xl space-y-3">
               <div className="font-semibold">
                 Tracker Your Assignments Score
               </div>
@@ -250,10 +246,9 @@ export default function Modules() {
                   You need to solve all assignments to be eligible for the
                   coding test.
                 </div>
-                {/* <div>You need to score {testreport?.totalMarks} by solving assignments to be eligible for the coding test.</div> */}
                 <div className="font-semibold">Max Score : {testreport?.totalMarks}</div>
               </div>
-            </div>
+            </div> */}
             {modulesdata?.map((item, ind) => {
               return (
                 <>
@@ -293,24 +288,24 @@ export default function Modules() {
                         </div>
                       </div>
 
-                      <FaGreaterThan className="text-3xl text-gray-500 font-extralight" />
+                      {/* <FaGreaterThan className="text-3xl text-gray-500 font-extralight" /> */}
                     </div>
                   ) : (
                     // <div onClick={handleCamera}>
-                      <a
-                        href={`/questions?module_id=${item._id}&index=1`}
-                        className="w-full p-5 border  flex justify-between items-center rounded-xl"
+                      <div
+                       
+                        className="w-full p-5 border  flex justify-between items-center rounded-xl relative "
                       >
                         <div className="space-y-1 w-full">
-                          <div className="flex justify-between w-full">
+                          <div className="flex justify-between w-full ">
                             <div className="font-[500]">Module {ind + 1}</div>
                             {item?.isModuleCompleted ? (
-                              <div className="flex items-center space-x-2">
+                              <div className="flex items-center gap-2">
                                 <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
                                 <p>Completed</p>
                               </div>
                             ) : (
-                              <div className="flex items-center space-x-2">
+                              <div className="flex items-center gap-1 ">
                                 <PiWarningOctagonBold className="bg-red-500 rounded-full text-2xl text-white" />
                                 <p>Incomplete</p>
                               </div>
@@ -319,7 +314,7 @@ export default function Modules() {
                           <div className="font-semibold text-xl">
                             {item.module_name}
                           </div>
-                          <div className="flex  items-center  space-x-2">
+                          <div className="flex  items-center  gap-1">
                             <div style={{ width: "25px" }}>
                               <CircularProgressbar
                                 value={item?.progress}
@@ -335,8 +330,10 @@ export default function Modules() {
                           </div>
                         </div>
 
-                        <FaGreaterThan className="text-3xl text-gray-500 font-extralight" />
-                      </a>
+                        {/* <FaGreaterThan className="text-3xl text-gray-500 font-extralight" /> */}
+                        <a  href={`/questions?module_id=${item._id}&index=1`} className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5">Start</a>
+
+                      </div>
                     // </div>
                   )}
                 </>
@@ -344,7 +341,7 @@ export default function Modules() {
             })}
           </div>
 
-          <div className="w-full border rounded-t-xl">
+          {/* <div className="w-full border rounded-t-xl">
             <div className="p-5 bg-[#1DBF73] text-white rounded-t-xl">
               <div className="text-xs">PAY AFTER PLACEMENT</div>
               <div className="text-lg">Selection list : April Batch</div>
@@ -371,17 +368,8 @@ export default function Modules() {
                   </>
                 );
               })}
-
-              {/* <div className="flex justify-between w-full my-2">
-                        <div>1</div>
-                        <div>Davinder(828*******95)</div>
-                    </div>
-                    <div className="flex justify-between w-full my-2">
-                        <div>1</div>
-                        <div>Davinder(828*******95)</div>
-                    </div> */}
             </div>
-          </div>
+          </div> */}
         </div>
         {show ? (
           <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">

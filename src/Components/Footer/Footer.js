@@ -1,6 +1,5 @@
 import React from 'react';
 import Img1 from "../../Assests/Icons/footer1.svg";
-import Img2 from "../../Assests/Images/hmlogo.png";
 import Icon1 from "../../Assests/Icons/insta.svg";
 import Icon2 from "../../Assests/Icons/fb.svg";
 import Icon3 from "../../Assests/Icons/lkd.svg";

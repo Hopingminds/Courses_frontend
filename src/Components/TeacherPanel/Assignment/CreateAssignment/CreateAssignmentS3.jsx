@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Upload from '../../../../Assets/Icons/tpupload.svg'
-import Right from '../../../../Assets/Icons/tpassignmentright.svg'
 import Left from '../../../../Assets/Icons/tpassignmentleft.svg'
 import Cross from '../../../../Assets/Icons/tpassignmentcross.svg'
 

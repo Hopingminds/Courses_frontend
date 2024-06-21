@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import ProfileIcon from "../../Assets/Images/ProfileIcon.png";
-import { IoMdArrowDropdown } from "react-icons/io";
 import Edit from "../../Assests/Icons/edit.svg";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";

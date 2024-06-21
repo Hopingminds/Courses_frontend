@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../../Api/api';
 import { Link, useNavigate } from 'react-router-dom';
 
-const CNAssessment = () => {
+const CNAssessment = ({slug}) => {
     const [assessmentdata, setassessmentdata] = useState([]);
     // const [show, setshow] = useState(false);
     // const [Completed, setCompleted] = useState(false);
@@ -12,23 +12,18 @@ const CNAssessment = () => {
             try {
                 let token = localStorage.getItem("COURSES_USER_TOKEN");
                 // setshow(true);
-                let url = BASE_URL + "/getallmodules";
-                const data = await fetch(url, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-                });
-                const response = await data.json();
-                // console.log(response);
-                // setCompleted(response?.isTestCompleted);
-                if (response.success) {
-                // setshow(false);
-                localStorage.setItem('history',window.location.pathname);
+                if(token){
+                    let url = BASE_URL + "/courseassessments/"+slug;
+                    const data = await fetch(url, {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                    });
+                    const response = await data.json();
+                    setassessmentdata(response?.assessments);
                 }
-                console.log(response?.data);
-                console.log(response?.[0]?.module_name);
-                setassessmentdata(response?.data);
+               
                 // setshow(false)
             } catch (error) {
                 console.log(error);
@@ -36,6 +31,29 @@ const CNAssessment = () => {
         }
         Fetchdata();
     }, []);
+
+    function Time(dateString){
+        const date = new Date(dateString);
+        let hours = date.getUTCHours();
+        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+        // Extract hours, minutes, seconds, and milliseconds
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+
+        // Convert to 12-hour format
+        hours = hours % 12;
+        hours = hours ? hours : 12; // The hour '0' should be '12'
+        hours = String(hours).padStart(2, '0');
+
+// Format the time string
+        const time = `${hours}:${minutes} ${ampm}`;
+        return time;
+    }
+    function isDateBeforeNow(start,end) {
+        const startdate = new Date(start);
+        const enddate = new Date(end);
+        const now = new Date();
+        return startdate <= now && enddate>=now;
+      }
 
     return (
         <div className="bg-[#FFFFFF] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col gap-3 items-center ">
@@ -47,19 +65,22 @@ const CNAssessment = () => {
             </div>
             {assessmentdata?.map((item, ind) => (
                 <div key={ind} className="grid grid-cols-[1fr,1fr,1fr,1fr] w-full border border-[#E2FFF1] py-2 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
-                    <p className="font-pop font-medium text-center grid">{item.module_name}</p>
-                    <p className="font-pop font-medium text-center">12/6/23</p>
+                    <p className="font-pop font-medium text-center grid">{item?.assessmentName}</p>
+                    <p className="font-pop font-medium text-center">{item?.lastDate?.split("T")[0]}</p>
                     {/* <p className="font-pop font-medium text-center">{!item?.isTestCompleted?0:1}</p> */}
-                    <p className="font-pop font-medium text-center">11:59 PM</p>
-                    {!item?.isModuleCompleted
+                    <p className="font-pop font-medium text-center">{Time(item?.lastDate)}</p>
+
+                    {
+                    item?.isSubmited ? (<p className="font-pop font-medium text-center text-[#1FC074]">Completed</p>)
+                    : isDateBeforeNow(item?.startDate,item?.lastDate)
                         ?
-                            (<Link to={`/questions?module_id=${item._id}&index=1`} className="font-pop font-medium text-center">Start</Link>)
+                            (<Link to={`/assessmentinstruction?assessmentId=${item?._id}&pr=${item?.isProtected}1`} className="font-pop font-medium text-center">Start</Link>)
                         :
-                            (<p className="font-pop font-medium text-center text-[#1FC074]">Completed</p>)
+                            (<p className="font-pop font-medium text-center text-[#868585]">Expired</p>)
                     }
                     
                 </div>
-            ))}
+            ))} 
         </div>
     )
 }

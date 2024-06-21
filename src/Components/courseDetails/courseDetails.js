@@ -1,16 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import "./courseDetails.css";
 import ReactPlayer from "react-player";
-import ChatBot from "../chatbot/chatbot";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
 import Coursecontents from "../Meeting/Coursecontents";
 import { jwtDecode } from "jwt-decode";
 import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
-import Main from "../Main/Main";
 import CourseNavigation from "../CourseNavigation/CourseNavigation";
-import { Link } from "react-router-dom";
-import SideBar from "./SideBar.jsx"
 import NewSideBar from "./NewSideBar.jsx";
 import { FiMenu } from "react-icons/fi";
 
@@ -22,7 +18,6 @@ export default function CDDetails() {
   const [Data, setData] = useState(null);
   const [completed_lessons, setcompleted_lessons] = useState([]);
   const [count, setcount] = useState(0);
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [ALLCHAPTER, setALLCHAPTER] = useState([]);
   const [courseId, setcourseId] = useState();
   const [courseAssignment, setCourseAssignment] = useState([]);
@@ -30,9 +25,7 @@ export default function CDDetails() {
   const [showSmallvideo, setshowSmallvideo] = useState(false)
   const [smallVideourl, setsmallVideourl] = useState('')
   const [pdfurl, setpdfurl] = useState('')
-  const [pageFullyRead, setPageFullyRead] = useState(false);
   const [url, seturl] = useState("");
-  const pdfRef = useRef(null);
   const params = useParams();
   let completed = [];
   let allchapters = [];
@@ -192,13 +185,17 @@ export default function CDDetails() {
   };
 
   const handleToggleNotes = async (pdf, videourl) => {
-    console.log(pdfurl);
+    // console.log(pdfurl);
     setshowSmallvideo(true)
     // seturl(pdfurl)
     setpdfurl(pdf)
     setsmallVideourl(videourl)
   };
 
+  function handleProject(pdf){
+    setpdfurl(pdf)
+    setshowSmallvideo(true)
+  }
 
   function handleNext() {
     setshowSmallvideo(false)
@@ -254,7 +251,10 @@ export default function CDDetails() {
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
                   <div className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]" style={{ borderRadius: "14px !important" }}>
                     {showSmallvideo || url?.toString().endsWith("pdf") ? (
-                      <iframe src={pdfurl} width="100%" height="100%" />
+                    //  <div className="relative">
+                         <iframe  src={pdfurl} width="100%" height="100%" />
+                        //  <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
+                    //  </div>
                     ) : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : (
@@ -295,6 +295,7 @@ export default function CDDetails() {
                         courseId={courseId}
                         completed_lessons={completed_lessons}
                         setMenu={setMenu}
+                        handleProject={handleProject}
 
                       />
                     </div>
@@ -312,6 +313,7 @@ export default function CDDetails() {
                       handleToggleNotes={handleToggleNotes}
                       ALLCHAPTER={ALLCHAPTER}
                       count={count}
+                      handleProject={handleProject}
                     />
                   </div>
                 )}
@@ -358,6 +360,7 @@ export default function CDDetails() {
                   courseAssignment={courseAssignment}
                   totalLessons={totalLessons}
                   liveclass={Data?.liveClasses}
+                  slug={params?.slug}
                 />
               </div>
             </div>

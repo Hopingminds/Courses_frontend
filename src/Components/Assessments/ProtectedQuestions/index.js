@@ -7,15 +7,14 @@ import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
 import toast, { Toaster } from "react-hot-toast";
 
-export default function Question() {
+export default function ProtectedAssessmentQuestion() {
   const [Selected, setSelected] = useState();
   const [data, setdata] = useState([]);
   const [show, setshow] = useState(false);
   const [params, setparams] = useSearchParams();
   const [index, setindex] = useState(1);
   
-  const [tabwarning, settabwarning] = useState(0);
-  let [peoplewarning, setpeoplewarning] = useState(5);
+  let [peoplewarning, setpeoplewarning] = useState(4);
   let navigate = useNavigate();
   const [Length, setLength] = useState();
   let token = localStorage.getItem("COURSES_USER_TOKEN");
@@ -128,7 +127,6 @@ export default function Question() {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [escapePressed, setEscapePressed] = useState(false);
   const [personCount, setPersonCount] = useState(0);
-  const [cameraActive, setcameraActive] = useState(false)
   const contentRef = useRef(null);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -138,10 +136,10 @@ export default function Question() {
     const handleVisibilityChange = () => {
       if (document.hidden) {
         document.title = "Don't change the tab";
-        if (peoplewarning > 0) {
+        if (peoplewarning >= 0) {
           setpeoplewarning(peoplewarning - 1);
           alert(`You are not allowed to change the tab.`);
-          // enterFullScreen();
+          enterFullScreen();
         }
         audio.play().catch(error => console.error('Error playing audio:', error));
       } else {
@@ -157,58 +155,58 @@ export default function Question() {
     };
   }, [audio, peoplewarning]);
 
-  // const enterFullScreen = () => {
-  //   const content = document.documentElement;
-  //   if (content.requestFullscreen) {
-  //     content.requestFullscreen().then(() => {}).catch(err => console.error(err));
-  //   } else if (content.mozRequestFullScreen) {
-  //     content.mozRequestFullScreen().then(() => {}).catch(err => console.error(err));
-  //   } else if (content.webkitRequestFullscreen) {
-  //     content.webkitRequestFullscreen().then(() => {}).catch(err => console.error(err));
-  //   } else if (content.msRequestFullscreen) {
-  //     content.msRequestFullscreen().then(() => {}).catch(err => console.error(err));
-  //   }
-  // };
+  const enterFullScreen = () => {
+    const content = document.documentElement;
+    if (content.requestFullscreen) {
+      content.requestFullscreen().then(() => {}).catch(err => console.error(err));
+    } else if (content.mozRequestFullScreen) {
+      content.mozRequestFullScreen().then(() => {}).catch(err => console.error(err));
+    } else if (content.webkitRequestFullscreen) {
+      content.webkitRequestFullscreen().then(() => {}).catch(err => console.error(err));
+    } else if (content.msRequestFullscreen) {
+      content.msRequestFullscreen().then(() => {}).catch(err => console.error(err));
+    }
+  };
 
-  // useEffect(() => {
-  //   const handleFullScreenChange = () => {
-  //     const isFullScreenNow = !!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
-  //     if (!isFullScreenNow && escapePressed) {
-  //       alert('You have pressed the Escape key to exit full screen mode.');
-  //       enterFullScreen();
-  //       setEscapePressed(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const handleFullScreenChange = () => {
+      const isFullScreenNow = !!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+      if (!isFullScreenNow && escapePressed) {
+        alert('You have pressed the Escape key to exit full screen mode.');
+        enterFullScreen();
+        setEscapePressed(false);
+      }
+    };
 
-  //   document.addEventListener('fullscreenchange', handleFullScreenChange);
-  //   document.addEventListener('mozfullscreenchange', handleFullScreenChange);
-  //   document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
-  //   document.addEventListener('msfullscreenchange', handleFullScreenChange);
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullScreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
+    document.addEventListener('msfullscreenchange', handleFullScreenChange);
 
-  //   return () => {
-  //     document.removeEventListener('fullscreenchange', handleFullScreenChange);
-  //     document.removeEventListener('mozfullscreenchange', handleFullScreenChange);
-  //     document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
-  //     document.removeEventListener('msfullscreenchange', handleFullScreenChange);
-  //   };
-  // }, []);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullScreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullScreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
+      document.removeEventListener('msfullscreenchange', handleFullScreenChange);
+    };
+  }, []);
 
-  // useEffect(() => {
-  //   const detectDevTools = () => {
-  //     const devtools = /./;
-  //     devtools.toString = function() {
-  //       this.opened = true;
-  //     };
-  //     if (devtools.opened) {
-  //       alert('Developer tools are open. Taking screenshots is not allowed.');
-  //     }
-  //   };
+  useEffect(() => {
+    const detectDevTools = () => {
+      const devtools = /./;
+      devtools.toString = function() {
+        this.opened = true;
+      };
+      if (devtools.opened) {
+        alert('Developer tools are open. Taking screenshots is not allowed.');
+      }
+    };
 
-  //   window.addEventListener('devtoolschange', detectDevTools);
-  //   return () => {
-  //     window.removeEventListener('devtoolschange', detectDevTools);
-  //   };
-  // }, []);
+    window.addEventListener('devtoolschange', detectDevTools);
+    return () => {
+      window.removeEventListener('devtoolschange', detectDevTools);
+    };
+  }, []);
 
   useEffect(() => {
     const loadModelAndDetect = async () => {
@@ -216,20 +214,12 @@ export default function Question() {
       setInterval(() => detectFrame(videoRef.current, model), 100);
     };
 
-    const startCamera = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    const startCamera = () => {
+      navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
         videoRef.current.srcObject = stream;
         videoRef.current.play().catch(err => console.error('Error playing video:', err));
-        setcameraActive(true)
         loadModelAndDetect();
-      } catch (err) {
-        console.error('Error accessing camera:', err);
-        if (err.name === 'NotAllowedError' || err.name === 'NotFoundError') {
-         alert("You can't block the camera")
-     
-        }
-      }
+      }).catch(err => console.error('Error accessing camera:', err));
     };
 
     const detectFrame = async (video, model) => {
@@ -275,31 +265,30 @@ export default function Question() {
 
   useEffect(() => {
     if (personCount > 1) {
-      if(peoplewarning>0){
-        alert(`Warning!! ${personCount} Person Detected in your camera frame.`);
+      if(peoplewarning>=0){
+        alert(`${personCount} Person Detected in your camera frame. Only ${peoplewarning-1} warnings left!!`);
 
       }  
      
     } else if (personCount === 0) {
-      if(peoplewarning>0 && cameraActive){
-        alert(`Warning!! ${personCount} Person Detected in your camera frame.`);
+      if(peoplewarning>=0){
+        alert(`${personCount} Person Detected in your camera frame. Only ${peoplewarning-1} warnings left!!`);
+
       }      
     }
-   
-    setpeoplewarning((prev)=>prev-1);
-
-    // enterFullScreen();
+    setpeoplewarning(peoplewarning-1);
+    enterFullScreen();
   }, [personCount]);
 
   useEffect(() => {
-    if (peoplewarning < 0 ) {
+    if (peoplewarning <= 0 ) {
       handleClick();
     }
   }, [peoplewarning]);
 
-  // useEffect(() => {
-  //   enterFullScreen();
-  // }, [window.location.pathname]);
+  useEffect(() => {
+    enterFullScreen();
+  }, [window.location.pathname]);
 
   return (
     <>

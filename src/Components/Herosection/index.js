@@ -1,4 +1,3 @@
-import ReactPlayer from "react-player";
 // import './hero.css'
 // import { ReactComponent as Cal } from '../../Assets/Icons/cal.svg'
 // import { ReactComponent as Email } from '../../Assets/Icons/email.svg'
@@ -100,8 +99,6 @@ import Square from "../../Assests/Images/home-square.png";
 // import Img5 from "../../Assests/Images/stu5.jpg";
 // import Img6 from "../../Assests/Images/stu6.jpg";
 import { Link } from "react-router-dom";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 export default function Herosection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   let Img1 =

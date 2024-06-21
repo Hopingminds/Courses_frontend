@@ -11,6 +11,7 @@ const CourseNavigation = ({
   totalLessons,
   courseAssignment,
   liveclass,
+  slug
 }) => {
   const [activeComponent, setActiveComponent] = useState("Overview");
 
@@ -98,7 +99,7 @@ const CourseNavigation = ({
         />
       )}
       {activeComponent === "liveClass" && <LiveClass data={liveclass} />}
-      {activeComponent === "assessment" && <CNAssessment />}
+      {activeComponent === "assessment" && <CNAssessment slug={slug}/>}
     </div>
   );
 };

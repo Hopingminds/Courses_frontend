@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Curriculum.css";
 import arrowIcon from "../../Assets/arrow.png";
-import folderIcon from "../../Assets/folder.png";
 import { BASE_URL } from "../../Api/api";
 import { useParams } from "react-router-dom";
 import { RiVideoLine } from "react-icons/ri";

@@ -174,10 +174,6 @@ const AllCourses = () => {
     };
   }, []);
 
-  // console.log(SearchedData)
-
-
-
   const searchBarRef = useRef(null);
   const searchResultsRef = useRef(null);
 

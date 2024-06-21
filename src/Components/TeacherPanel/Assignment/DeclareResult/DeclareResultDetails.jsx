@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import Cross from '../../../../Assets/Icons/tpcross.svg'
-import Clock from '../../../../Assets/Icons/tpassignmentclock.svg'
-import Calender from '../../../../Assets/Icons/tpassignmentcalender.svg'
 import DRDetails from './DRDetails'
 import DRResult from './DRResult'
 import ConfirmPopUp from './ConfirmPopUp'

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef, useLayoutEffect, useEffect } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import './register.css';
 import axios from 'axios';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -11,7 +11,6 @@ import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { ReactComponent as Google } from '../../Assests/Icons/google.svg';
 import { ReactComponent as Linkedin } from '../../Assests/Icons/linkedin.svg';
 import { jwtDecode } from 'jwt-decode';
-import { authenticateUser } from '../../helpers/helperapi';
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
 const Register = () => {

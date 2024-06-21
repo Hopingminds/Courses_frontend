@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./minorCourse.css";
-import complete_bg from "../../Assets/Images/completion_bg.png";
 import CourseCard from "../Courses_Home/CourseCard";
 import { BASE_URL } from "../../Api/api";
 import axios from "axios";

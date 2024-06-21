@@ -1,7 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import ReactPlayer from "react-player";
-import { IoPlayCircle } from "react-icons/io5";
-import { IoPauseCircle } from "react-icons/io5";
 import {ReactComponent as Hm1} from '../../Assets/Icons/hm1.svg'
 import {ReactComponent as Hm2} from '../../Assets/Icons/hm2.svg'
 import {ReactComponent as Hm3} from '../../Assets/Icons/hm3.svg'

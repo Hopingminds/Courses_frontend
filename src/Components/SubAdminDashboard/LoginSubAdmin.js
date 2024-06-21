@@ -4,7 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { BASE_URL } from '../../Api/api';
 import { Globalinfo } from '../../App';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 const LoginSubAdmin = () => {
 

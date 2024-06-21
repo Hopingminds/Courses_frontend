@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
-import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
 
 const Basic = ({changeComponent,setFinalData}) => {

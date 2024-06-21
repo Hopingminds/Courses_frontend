@@ -9,7 +9,7 @@ import Banner from "../../Assests/Images/profileedit-banner.png";
 import ProfileIcon from "../../Assets/Images/ProfileIcon.png";
 import Edit from "../../Assests/Icons/edit.svg";
 import { Globalinfo } from "../../App";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { AUTH_BASE_URL, BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
