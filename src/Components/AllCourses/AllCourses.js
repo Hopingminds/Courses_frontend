@@ -129,32 +129,28 @@ const AllCourses = () => {
 
   };
 
-  function SearchData(e) {
+ async function SearchData(e) {
     let query = e.target.value;
-
+    let temp=[]
     if (query == "") {
       setSearchedData([]);
 
       setAllCourses(Data);
     } else {
-      setSearchedData(
-        allCourses?.filter((item) => {
-          const searchitem = query.toLowerCase();
-          const slug = item.slug.toLowerCase();
-          // console.log(slug);
-          // console.log(searchitem && (slug.includes(searchitem)));
-          return searchitem && slug.includes(searchitem);
+      const tempdata=await fetch(BASE_URL+'/search?title='+query)
+      const response=await tempdata.json();
+      
+      if(response.success){
+        response?.courses?.map((course)=>{
+        temp.push(course)
         })
-      );
-      setAllCourses(
-        allCourses?.filter((item) => {
-          const searchitem = query.toLowerCase();
-          const slug = item.slug.toLowerCase();
-          // console.log(slug);
-          // console.log(searchitem && (slug.includes(searchitem)));
-          return searchitem && slug.includes(searchitem);
-        })
-      );
+        // console.log(temp);
+        setSearchedData(temp);
+         setAllCourses(
+          response?.courses
+         );
+      }
+      
     }
   }
 
