@@ -372,6 +372,7 @@ export default function DetailCourses() {
           <Commoncard Data={Data} />
           <div className="bg-[#E2FFF1] my-4 p-6 rounded-xl flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:text-[10px]">
             <h2 className="text-2xl font-bold mb-4 xsm:text-[12px] xsm:leading-4">Average Packages</h2>
+            <div className="flex flex-col gap-3">
             {
               Data?.companies?.map((val, ind) => {
                 return (
@@ -382,6 +383,7 @@ export default function DetailCourses() {
                 )
               })
               }
+            </div>
             </div>
           
           <div>
