@@ -1,7 +1,7 @@
 import "./Pageheader.css";
 import Commoncard from "./Commoncard";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import { BASE_URL } from "../../Api/api";
 import Spinner from "../Spinner";
 import Curriculum from "../Curriculum/Curriculum";
@@ -10,13 +10,19 @@ import VideoTesttimonial from "./VideoTesttimonial";
 import { TiTick } from "react-icons/ti";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Included from "./included";
+import { Globalinfo } from "../../App";
+import { jwtDecode } from "jwt-decode";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function DetailCourses() {
   const param = useParams();
+  const navigate=useNavigate()
   const [Data, setData] = useState();
   let slug = param.slug;
+  const { userDetail } = useContext(Globalinfo);
   const [show, setshow] = useState(false);
-
+  const { setCartSize, cartSize } = useContext(Globalinfo);
   const [faqs, setFaqs] = useState([
     {
       question: "How does the Pay after Placement model work?",
@@ -80,16 +86,85 @@ export default function DetailCourses() {
     });
     setFaqs(updatedFaqs);
   }
+  let login = localStorage.getItem("COURSES_USER_TOKEN");
 
-  console.log(Data?.curriculum)
+  let purchasedCourses = [];
+  if (Data) {
+    userDetail?.purchased_courses?.forEach((val) => {
+      purchasedCourses.push(val?.course?._id);
+    });
+  }
+
+  async function Addtocart(courseid) {
+    try {
+      if (login) {
+        let token = jwtDecode(login);
+        let email = token.email;
+        let quantity = 1;
+        let url = BASE_URL + "/addtocart";
+        let data = await fetch(url, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, courseid, quantity }),
+        });
+        let response = await data.json();
+        // console.log(response);
+        if (response.success) {
+          toast.success(response.msg);
+          setCartSize(cartSize + 1);
+        } else {
+          toast.error(response.msg);
+        }
+      } else {
+        localStorage.setItem('ADD_TO_CART_HISTORY', window.location.pathname);
+        // console.log("add to cart withour log")
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function Addtowishlist(courseid) {
+    try {
+      if (login) {
+        let token = jwtDecode(login);
+        let email = token.email;
+        let url = BASE_URL + "/addtowishlist";
+        let data = await fetch(url, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, courseid }),
+        });
+        let response = await data.json();
+        // console.log(response);
+        if (response.success) {
+          toast.success(response.msg);
+        } else {
+          toast.error(response.msg);
+        }
+      } else {
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(Data?.companies)
 
   return (
     <div className="h-auto min-h-screen overflow-x-visible ">
       <div className="mb-5 xsm:mx-0 ">
         <div
-          className="CCDetails-Header-main flex flex-col px-[8%] pt-24 w-full xsm:mb-[4.5rem]"
+          className="CCDetails-Header-main flex flex-col px-[8%] pt-10 w-full xsm:mb-[4.5rem]"
           style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.featured_image})`,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.bannerImg})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
@@ -108,49 +183,41 @@ export default function DetailCourses() {
                 <FaStar />
                 <FaStarHalfAlt />
               </div>
-              <p>Based on feedback received from 250+ learners</p>
+              <p>(260+)</p>
             </div>
-            <div className="text-white mt-4 font-pop text-[14px] grid grid-cols-2 gap-2 xsm:hidden">
-              {Data?.whatWillILearn?.map((item, index) => (
-                <div key={index} className="flex gap-1 items-center">
-                  <TiTick className="w-5 h-5" />
-                  <p>{item}</p>
+            <div className="flex gap-5 mt-5">
+            {purchasedCourses.includes(Data?._id) ? (
+             <></>
+            ) : (
+              <div
+                    onClick={() => Addtowishlist(Data?._id)}
+                    className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
+              >
+                Add to Wishlist
+              </div>
+            )}
+            {!purchasedCourses.includes(Data?._id) ? (
+              <div className="space-x-4 w-fit flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
+
+                <div
+                  onClick={() => Addtocart(Data?._id)}
+                    className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
+                >
+                  Add to cart
                 </div>
-              ))}
+              </div>
+            ) : (
+              ""
+              )}
             </div>
           </div>
-          {/* <div className='CCDetails-Header-content-row2 w-[90%] xsm:mt-1 '>
-                            <div className='CCDetails-Header-content-row2-clock gap-1'>
-                                <img src="../Icons/clockfilled.svg" className=' xsm:w-[6px] xsm:h-[6px] md:w-[10px] md:h-[10px]' alt="clock"></img>
-                                <p className='font-nu text-white' > 2 Weeks</p>
-                            </div>
-                            <div className='CCDetails-Header-content-row2-hat gap-1'>
-                                <img src="../Icons/hat.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="hat"></img>
-                                <p className='font-nu'> 156 Students</p>
-                            </div>
-                            <div className='CCDetails-Header-content-row2-level gap-1'>
-                                <img src="../Icons/barchartgreen.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="bar-chart"></img>
-                                <p className='font-nu'> All levels</p>
-                            </div>
-                            <div className='CCDetails-Header-content-row2-files gap-1'>
-                                <img src="../Icons/files.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="files"></img>
-                                <p className='font-nu'> 20 Lessons</p>
-                            </div>
-                            <div className='CCDetails-Header-content-row2-faq gap-1'>
-                                <img src="../Icons/faq.svg" className=' xsm:w-[8px] xsm:h-[8px] md:w-[10px] md:h-[10px]' alt="faq"></img>
-                                <p className='font-nu'> 3 Quizzes</p>
-                            </div>
-                        </div> */}
-          {/* </div> */}
-          {/* <h1 className="text-white text-4xl font-pop font-bold capitalize w-[60%]">
-            {Data?.title}
-          </h1> */}
+         
 
         </div>
         {/* <Main /> */}
       </div>
       {show ? (
-        <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
+        <div className="w-full h-screen fixed top-0 left-0 bg-[#1DBF73]  z-[999999769]">
           <Spinner className="" />
         </div>
       ) : (
@@ -279,17 +346,17 @@ export default function DetailCourses() {
             </ul>
           </div> */}
 
-          {/* <div className="flex flex-col gap-8 justify-center items-center">
+          <div className="flex flex-col gap-8 justify-center items-center">
             <h1 className="w-full text-left font-pop font-semibold text-[32px] text-[#0F2027]">
               Companies Worldwide
             </h1>
             <div className="flex justify-between w-full">
-              <img src='/Icons/byju.svg' className="w-40" />
-              <img src='/Icons/google.svg' className="w-40" />
-              <img src='/Icons/instamojo.svg' className="w-40" />
-              <img src='/Icons/dream11.svg' className="w-40" />
+              <img src='/Icons/byju.svg' className="w-40" alt="byju" />
+              <img src='/Icons/google.svg' className="w-40" alt="google" />
+              <img src='/Icons/instamojo.svg' className="w-40" alt="instamojo" />
+              <img src='/Icons/dream11.svg' className="w-40" alt="dream11" />
             </div>
-          </div> */}
+          </div>
           <div className="flex flex-col gap-8">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
               FAQs
@@ -332,8 +399,26 @@ export default function DetailCourses() {
             <VideoTesttimonial />
           </div>
         </div>
+        <span className="w-[33%] relative -top-[50vh] h-fit">
+          <Commoncard Data={Data} />
+          <div className="bg-[#E2FFF1] my-4 p-6 rounded-xl flex flex-col   xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
+            <h2 className="text-2xl mb-4">Average Packages</h2>
+            {
+              Data?.companies?.map((val, ind) => {
+                return (
+                  <>
+                    <h3>{val?.companyName}</h3>
+                    <p>Average Package {`Rs. ${val?.avgpkg?.from} - Rs.${val?.avgpkg?.to}`}</p>
+                  </>
+                )
+              })
+              }
+          </div>
+          <div>
+            <img src="/Icons/certificate_Course.svg" alt="" />
+          </div>
 
-        <Commoncard Data={Data} />
+        </span>
 
       </div>
 

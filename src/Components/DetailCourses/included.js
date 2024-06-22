@@ -12,7 +12,7 @@ const Included = ({ curiculum }) => {
     const handleModalOpen = () => {
         setModalOpen(!modalOpen); // Toggle modalOpen state
     };
-
+//  console.log(curiculum)
 
     const data = [
         {
@@ -21,7 +21,7 @@ const Included = ({ curiculum }) => {
         },
         {
             svg: "/Icons/module.svg",
-            title: "32 Modules",
+            title: curiculum?.length + " Modules",
         },
         {
             svg: "/Icons/assignment.svg",
@@ -34,25 +34,32 @@ const Included = ({ curiculum }) => {
     ]
     // console.log(curiculum)
     const handleClick = (ind) => {
-        console.log(ind)
+        // console.log(ind)
         setModalOpen(true)
         if (ind === 0) {
             setType("Project")
             let temp = curiculum.map((val, ind) => { return  {title:val?.chapter_name , allData:val?.project} })
-            console.log(temp)
+            // console.log(temp)
             setCourseData(temp)
         }
         if (ind === 1) {
             setType("Module")
             let temp = curiculum.map((val, ind) => { return { title: val?.chapter_name, allData: val?.lessons } })
-            console.log(temp)
+            // console.log(temp)
             setCourseData(temp)
         }
         if (ind === 2) {
             setType("Assignment")
-            let temp = curiculum.map((val, ind) => { return { title: val?.chapter_name, allData: val?.lessons } })
-            console.log(temp)
+            let temp = curiculum?.map((val, ind) => { return { title: val?.chapter_name, allData: val?.lessons } })
+            // console.log(temp)
             setCourseData(temp)
+        }
+        if (ind === 3) {
+            setType("Notes")
+            let temp = curiculum.map((val, ind) => { return { title: val?.chapter_name, allData: val?.lessons } })
+            // console.log(temp)
+            setCourseData(temp)
+         
         }
     }
     

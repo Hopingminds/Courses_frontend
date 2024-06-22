@@ -6,7 +6,7 @@ import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
 const NewModal = ({ handleModalOpen,datas,type }) => {
     const [openDetails, setOpenDetails] = useState({});
-    console.log(datas)
+    console.log(type)
     
     useEffect(() => {
         // Add the no-scroll class to the body when the modal is open
@@ -66,26 +66,40 @@ const NewModal = ({ handleModalOpen,datas,type }) => {
                             </summary>
                             <div className="bg-white px-4 py-3 grid grid-cols-3 gap-3 items-center justify-between">
                                 {module?.allData?.map((lesson, index) => (
-                                    
-                                        
-                                        <div className="bg-[#F5F5F5] flex flex-col px-[2rem] py-[2rem] items-start rounded-md">
-                                            {type === "Project" && <>
+                                    <>
+                                            {type === "Project" && <div className="bg-[#F5F5F5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
                                                 <div className="flex gap-2 items-center">
                                                 <HiSquare3Stack3D className="text-green-500 h-[25px] w-auto"/>
 
                                                     <p className="font-semibold uppercase text-xl">{lesson.title}</p>
                                                 </div>
-                                               <a href={lesson.projectInfoPdf} className="font-semibold">Open Project</a>
-                                            </>}
-                                            {type === "Module" && <>
+                                               {/* <a href={lesson.projectInfoPdf} className="font-semibold">Open Project</a> */}
+                                            </div>}
+                                        {type === "Module" && <div className="bg-[#F5F5F5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
                                                 <div className="flex gap-2 items-center">
                                                 <HiSquare3Stack3D className="text-green-500 h-[25px] w-auto"/>
 
                                                     <p className="font-semibold uppercase text-sm">{lesson.lesson_name}</p>
                                                 </div>
-                                               {/* <a href={lesson.projectInfoPdf} className="font-semibold">Open Project</a> */}
-                                            </>}
-                                        </div>
+                                             
+                                        </div>}
+                                        {type === "Assignment" && lesson.assignment !== "" && <div className="bg-[#F5F5F5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
+                                            <div className="flex gap-2 items-center">
+                                                <HiSquare3Stack3D className="text-green-500 h-[25px] w-auto" />
+
+                                                <p className="font-semibold uppercase text-sm">{lesson.lesson_name}</p>
+                                            </div>
+                                         
+                                        </div>}
+                                        {type === "Notes" && lesson.notes !== "" && <div className="bg-[#F5F5F5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
+                                            <div className="flex gap-2 items-center">
+                                                <HiSquare3Stack3D className="text-green-500 h-[25px] w-auto" />
+
+                                                <p className="font-semibold uppercase text-sm">{lesson.lesson_name}</p>
+                                            </div>
+                                         
+                                        </div>}
+                                        </>
                                   
                                 ))}
                             </div>
