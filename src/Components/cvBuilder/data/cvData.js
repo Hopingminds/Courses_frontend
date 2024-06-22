@@ -1,15 +1,15 @@
 export const cvData = {
-  name: "Vivek Kumar",
+  name: "example",
   image: "",
   jobTitle: "Frontend Developer",
   location: "Mohali ,India",
-  email: "vivekr4400@gmail.com",
-  linkedIn: "https://linndin.com/kumarvivek07",
-  instagram: "https://instagram.com/vivek07___",
-  facebook: "https://facebook.com/vivek_kumar",
-  twitter: "vivek007",
-  github: "vivek",
-  website: "vivek.dev",
+  email: "example@gmail.com",
+  linkedIn: "https://linndin.com/example",
+  instagram: "https://instagram.com/example",
+  facebook: "https://facebook.com/example",
+  twitter: "example",
+  github: "example",
+  website: "example.dev",
   about:
     "After graduating from the programming department I have been working to be a **Front End Developer** for the last 1 year and I am looking for a job in this field. Because of my old job. ",
 
