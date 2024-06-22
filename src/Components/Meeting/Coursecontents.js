@@ -30,7 +30,7 @@ export default function Coursecontents({
   const [totallessons, setTotalLessons] = useState(0);
   const [openDropDown, setOpenDropdown] = useState("");
   let allchapters = [];
-  console.log(data);
+  // console.log(data);
 
   let completed = [];
   console.log(completed_lessons);

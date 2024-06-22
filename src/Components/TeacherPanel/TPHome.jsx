@@ -4,7 +4,7 @@ import Sidebar from './Sidebar/Sidebar'
 import Navbar from './Navbar/Navbar'
 import LiveClasses from './LiveClasses/LiveClasses'
 import AddCourses from './AddCourses/AddCourses'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 const TPHome = () => {
     const [selectedComponent, setSelectedComponent] = useState('dashboard');
@@ -12,7 +12,10 @@ const TPHome = () => {
     const handleSidebarItemClick = (component) => {
         setSelectedComponent(component);
     };
-    return (
+    let navigate=useNavigate()
+    return (<>
+        {
+             !localStorage.getItem("teachertoken") ? navigate('/teacherlogin') : 
         <div className='flex'>
             <div className='w-[20%] h-full sticky top-0'>
                 <Sidebar onItemClick={handleSidebarItemClick} selectedComponent={selectedComponent}/>
@@ -24,7 +27,8 @@ const TPHome = () => {
                 <Outlet/>
             </div>
         </div>
-    )
+}
+        </>)
 }
 
 export default TPHome

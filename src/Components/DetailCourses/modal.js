@@ -6,7 +6,7 @@ import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
 const NewModal = ({ handleModalOpen,datas,type }) => {
     const [openDetails, setOpenDetails] = useState({});
-    console.log(datas)
+    console.log(type)
     
     useEffect(() => {
         // Add the no-scroll class to the body when the modal is open
@@ -77,14 +77,30 @@ const NewModal = ({ handleModalOpen,datas,type }) => {
                                                 </div>
                                                <a href={lesson.projectInfoPdf} className="font-semibold xsm:text-[8px]">Open Project</a>
                                             </>}
-                                            {type === "Module" && <>
+                                            {type === "Module" && <div>
                                                 <div className="flex gap-2 items-center">
                                                 <HiSquare3Stack3D className="text-green-500 h-[25px] w-auto xsm:h-[18px]"/>
 
                                                     <p className="font-semibold uppercase text-sm xsm:text-[10px] xsm:leading-3">{lesson.lesson_name}</p>
                                                 </div>
-                                               {/* <a href={lesson.projectInfoPdf} className="font-semibold">Open Project</a> */}
-                                            </>}
+                                             
+                                        </div>}
+                                        {type === "Assignment" && lesson.assignment !== "" && <div className="bg-[#F5F5F5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
+                                            <div className="flex gap-2 items-center">
+                                                <HiSquare3Stack3D className="text-green-500 h-[25px] w-auto" />
+
+                                                <p className="font-semibold uppercase text-sm">{lesson.lesson_name}</p>
+                                            </div>
+                                         
+                                        </div>}
+                                        {type === "Notes" && lesson.notes !== "" && <div className="bg-[#F5F5F5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
+                                            <div className="flex gap-2 items-center">
+                                                <HiSquare3Stack3D className="text-green-500 h-[25px] w-auto" />
+
+                                                <p className="font-semibold uppercase text-sm">{lesson.lesson_name}</p>
+                                            </div>
+                                         
+                                        </div>}
                                         </div>
                                   
                                 ))}
