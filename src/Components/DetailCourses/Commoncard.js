@@ -152,7 +152,7 @@ export default function Commoncard(props) {
       <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1 md:gap-3 md:mt-4">
 
         <div className="flex flex-col justify-between items-center xsm:pb-1 ">
-          <h2 className="font-nu text-[30px] font-semibold xsm:text-[8px] md:text-[12px]">
+          <h2 className="font-nu text-[30px] font-bold xsm:text-[8px] md:text-[12px]">
             ₹{Data?.base_price}
           </h2>
 
@@ -171,7 +171,7 @@ export default function Commoncard(props) {
 
                   <div
                     onClick={() => Addtocart(Data?._id)}
-                    className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
+                    className="border cursor-pointer flex justify-center w-full py-2 px-10 rounded-full bg-[#1DBF73] text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
                   >
                     Add to cart
                   </div>

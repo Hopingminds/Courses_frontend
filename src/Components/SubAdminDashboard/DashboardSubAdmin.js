@@ -37,7 +37,7 @@ setdata(temp)
     <>
 
       <BannarSubAdmin />
-        <div className="flex flex-row">
+        <div className="grid grid-cols-[1fr_3.2fr] px-[8vw] my-[5vh]">
           <FilterSubAdmin data={data}  FetchData={FetchData} Statehandle={Statehandle}/>
           {/* <DataDashboard data={data} /> */}
     

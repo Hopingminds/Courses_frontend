@@ -80,7 +80,7 @@ const FilterSubAdmin = ({ FetchData,Statehandle }) => {
   };
 
   return (
-    <div className="bg-white flex flex-col gap-8 w-[20%] ml-5 py-3 sticky top-0 h-max">
+    <div className="bg-white flex flex-col gap-8 ml-5 py-3 sticky top-0 h-max">
       <div className="w-full flex justify-end">
         <button className="bg-[#1DBF73] text-white px-3 py-1 rounded " onClick={clearFilters}>Clear all</button>
       </div>

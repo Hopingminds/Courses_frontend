@@ -23,40 +23,7 @@ export default function DetailCourses() {
   const { userDetail } = useContext(Globalinfo);
   const [show, setshow] = useState(false);
   const { setCartSize, cartSize } = useContext(Globalinfo);
-  const [faqs, setFaqs] = useState([
-    {
-      question: "How does the Pay after Placement model work?",
-      answer:
-        "Participants undergo training without upfront payment, only paying fees upon securing a job through the program.",
-      isOpen: false,
-    },
-    {
-      question:
-        "Is there a risk involved for participants in the Pay after Placement model?",
-      answer:
-        "Risk is low since payment depends on securing a job; usually, participants are not required to pay if they do not find employment",
-      isOpen: false,
-    },
-    {
-      question: "What are the advantages of the Pay after Placement model?",
-      answer:
-        "It lowers financial hurdles and aligns goals, ensuring providers are committed to the success of participants.",
-      isOpen: false,
-    },
-    {
-      question:
-        "What happens if a participant secures a job but can't pay immediately?",
-      answer:
-        "Flexible payment options, such as installment plans, are often provided to accommodate financial situations.",
-      isOpen: false,
-    },
-    {
-      question: "How do program providers ensure quality job placements?",
-      answer:
-        "Providers establish employer partnerships and offer career support to ensure placements align with participants' goals.",
-      isOpen: false,
-    },
-  ]);
+  const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
     async function Fetchdata() {
@@ -65,8 +32,9 @@ export default function DetailCourses() {
         let url = BASE_URL + "/course/" + slug;
         const data = await fetch(url);
         const response = await data.json();
-        console.log(response);
+        // console.log(response);
         setData(response?.course);
+        setFaqs(response?.course?.faqs?.map((val)=>{return {question:val.question,answer:val.answer,isOpen:false}}))
         setshow(false);
       } catch (error) {
         console.log(error);
@@ -156,7 +124,7 @@ export default function DetailCourses() {
     }
   }
 
-  console.log(Data?.companies)
+  // console.log(Data?.companies)
 
   return (
     <div className="h-auto min-h-screen overflow-x-visible ">
@@ -217,7 +185,7 @@ export default function DetailCourses() {
         {/* <Main /> */}
       </div>
       {show ? (
-        <div className="w-full h-screen fixed top-0 left-0 bg-[#1DBF73]  z-[999999769]">
+        <div className="w-full h-screen fixed top-0 left-0 bg-[#eeeeee]  z-[999999769]">
           <Spinner className="" />
         </div>
       ) : (
@@ -300,7 +268,7 @@ export default function DetailCourses() {
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
               What's Included
             </h1>
-            <Included curiculum={Data?.curriculum} />
+            <Included curiculum={Data?.curriculum} title={Data?.title } />
           </div>
           <div className="flex flex-col gap-8">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
@@ -399,7 +367,7 @@ export default function DetailCourses() {
             <VideoTesttimonial />
           </div>
         </div>
-        <span className="w-[33%] relative -top-[50vh] h-fit">
+        <span className="w-[33%] h-fit  -translate-y-[18rem]">
           <Commoncard Data={Data} />
           <div className="bg-[#E2FFF1] my-4 p-6 rounded-xl flex flex-col   xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
             <h2 className="text-2xl mb-4">Average Packages</h2>

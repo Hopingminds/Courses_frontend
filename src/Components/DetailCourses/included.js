@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import NewModal from './modal'
 
 
-const Included = ({ curiculum }) => {
+const Included = ({ curiculum,title }) => {
 
     const [courseData, setCourseData] = useState();
     const [modalOpen, setModalOpen] = useState(false);
@@ -79,7 +79,7 @@ const Included = ({ curiculum }) => {
                 }
             </div>
             {modalOpen &&
-                <NewModal handleModalOpen={handleModalOpen} datas={courseData} type={type} />
+                <NewModal handleModalOpen={handleModalOpen} datas={courseData} type={type} title={title} />
             }
         </>
     )

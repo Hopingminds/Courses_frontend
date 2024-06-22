@@ -4,7 +4,7 @@ import { HiSquare3Stack3D } from "react-icons/hi2";
 
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
-const NewModal = ({ handleModalOpen,datas,type }) => {
+const NewModal = ({ handleModalOpen,datas,type ,title}) => {
     const [openDetails, setOpenDetails] = useState({});
     console.log(type)
     
@@ -23,14 +23,14 @@ const NewModal = ({ handleModalOpen,datas,type }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-gray-700 bg-opacity-20 backdrop-blur-lg">
-            <div className="relative p-4 w-full max-w-4xl max-h-[75vh] bg-[#E2FFF1] rounded-lg shadow dark:bg-gray-700 h-auto">
+        <div className="fixed inset-0 z-50 flex justify-center items-center w-full h-full text-black bg-[#E2FFF1] bg-opacity-20 backdrop-blur-lg">
+            <div className="relative p-4 w-full max-w-4xl max-h-[75vh] bg-[#E2FFF1] rounded-lg shadow h-auto">
                 {/* Modal header */}
-                <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 gap-4">
+                <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t gap-4">
                     <div>
-                        {/* <h3 className="text-3xl font-bold text-gray-900 dark:text-white capitalize flex flex-col gap-1">
-                            {data.title}
-                        </h3> */}
+                        <h3 className="text-3xl font-bold text-black  capitalize flex flex-col gap-1">
+                            {title}
+                        </h3>
                        
                     </div>
                     <div className="flex gap-4 items-center">
@@ -38,7 +38,7 @@ const NewModal = ({ handleModalOpen,datas,type }) => {
                         <button
                             type="button"
                             onClick={handleModalOpen}
-                            className="absolute top-4 right-4 font-bold text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-2xl w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            className="absolute top-4 right-4 font-bold text-black bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-2xl w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:text-white"
                             data-modal-hide="default-modal"
                         >
                             X
@@ -67,33 +67,33 @@ const NewModal = ({ handleModalOpen,datas,type }) => {
                             <div className="bg-white px-4 py-3 grid grid-cols-3 gap-3 items-center justify-between">
                                 {module?.allData?.map((lesson, index) => (
                                     <>
-                                            {type === "Project" && <div className="bg-[#F5F5F5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
+                                        {type === "Project" && <div className="bg-[#FFE5E5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
                                                 <div className="flex gap-2 items-center">
-                                                <HiSquare3Stack3D className="text-green-500 h-[25px] w-auto"/>
+                                                <img src={"/Icons/project.svg"} alt="project" className="text-green-500 h-[25px] w-auto"/>
 
                                                     <p className="font-semibold uppercase text-xl">{lesson.title}</p>
                                                 </div>
                                                {/* <a href={lesson.projectInfoPdf} className="font-semibold">Open Project</a> */}
                                             </div>}
-                                        {type === "Module" && <div className="bg-[#F5F5F5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
+                                        {type === "Module" && <div className="bg-[#FFE5E5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
                                                 <div className="flex gap-2 items-center">
-                                                <HiSquare3Stack3D className="text-green-500 h-[25px] w-auto"/>
+                                                <img src={"/Icons/module.svg"} alt="module" className="text-green-500 h-[25px] w-auto"/>
 
                                                     <p className="font-semibold uppercase text-sm">{lesson.lesson_name}</p>
                                                 </div>
                                              
                                         </div>}
-                                        {type === "Assignment" && lesson.assignment !== "" && <div className="bg-[#F5F5F5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
+                                        {type === "Assignment" && lesson.assignment !== "" && <div className="bg-[#FFE5E5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
                                             <div className="flex gap-2 items-center">
-                                                <HiSquare3Stack3D className="text-green-500 h-[25px] w-auto" />
+                                                <img src={"/Icons/assignment.svg"} alt="assignment" className="text-green-500 h-[25px] w-auto" />
 
                                                 <p className="font-semibold uppercase text-sm">{lesson.lesson_name}</p>
                                             </div>
                                          
                                         </div>}
-                                        {type === "Notes" && lesson.notes !== "" && <div className="bg-[#F5F5F5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
+                                        {type === "Notes" && lesson.notes !== "" && <div className="bg-[#FFE5E5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md">
                                             <div className="flex gap-2 items-center">
-                                                <HiSquare3Stack3D className="text-green-500 h-[25px] w-auto" />
+                                                <img src={"/Icons/notes.svg"} alt="Notes" className="text-green-500 h-[25px] w-auto" />
 
                                                 <p className="font-semibold uppercase text-sm">{lesson.lesson_name}</p>
                                             </div>

@@ -18,6 +18,9 @@
     #203a43 100%
   );
 }
+.alternatebg > div:nth-child(2n){
+   background-color: #E8E8E8;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

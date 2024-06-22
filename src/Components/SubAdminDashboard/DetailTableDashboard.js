@@ -14,7 +14,7 @@ const DetailTableDashboard = ({ data,FetchData }) => {
   // console.log(data);
   const [selectedFile, setSelectedFile] = useState(null);
   const [Coins, setCoins] = useState([])
-  console.log(data);
+  // console.log(data);
   async function Fetchdata(){
     let token=localStorage.getItem('token')
     if(token){
@@ -106,14 +106,14 @@ const DetailTableDashboard = ({ data,FetchData }) => {
           <button className='py-2 bg-[#1DBF73] text-white rounded mt-3 px-3' onClick={handleDownload}>Download format</button>
         </div>
         <div className='w-full flex justify-between'>
-          <div className='h-32 w-56 flex justify-center items-center shadow-xl'>
+          <div className='h-32 w-56 flex justify-center items-center border border-[#D0D0D0] rounded-md'>
             <Cap className='h-20 w-20' />
             <div className='flex flex-col '>
               <p className='font-bold text-center text-xl'>{data?.length}</p>
               <p className='text-xs font-semibold'>Enrolled students</p>
             </div>
           </div>
-          <div className='h-32 w-56 flex justify-center items-center shadow-xl gap-1'>
+          <div className='h-32 w-56 flex justify-center items-center border border-[#D0D0D0] rounded-md gap-1'>
             <Coin className='h-12 w-16' />
             <div className='flex flex-col '>
               <p className='font-bold text-center text-xl '><span className='text-gray-500 text-2xl flip-scale-2-hor-top'>{Coins?.used_coins}</span>/{Coins?.coins}</p>
@@ -121,7 +121,7 @@ const DetailTableDashboard = ({ data,FetchData }) => {
             </div>
           </div>
           <label htmlFor='fileInput' className='text-xs font-semibold cursor-pointer'>
-          <div className='h-32 w-56 flex justify-center items-center shadow-xl gap-1'>
+            <div className='h-32 w-56 flex justify-center items-center border border-[#D0D0D0] rounded-md gap-1'>
             <Upload className='h-16 w-12' />
             <div className='flex flex-col '>
                 Upload Sheet
@@ -136,7 +136,7 @@ const DetailTableDashboard = ({ data,FetchData }) => {
             </div>
           </div>
           </label>
-          <div onClick={exportToExcel} className='h-32 cursor-pointer w-56 flex justify-center items-center shadow-xl gap-1'>
+          <div onClick={exportToExcel} className='h-32 cursor-pointer w-56 flex justify-center items-center border border-[#D0D0D0] rounded-md gap-1'>
             <Download className='h-16 w-12' />
             <div className='flex flex-col '>
               <p className='text-xs font-semibold'>Download Sheets</p>
@@ -144,32 +144,32 @@ const DetailTableDashboard = ({ data,FetchData }) => {
           </div>
         </div>
         <div className='grid grid-cols-4 bg-[#000000] py-6 text-center w-full'>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Sr No.</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>CourseID</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Course title</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Category</p>
-          {/* <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Instructor</p> */}
-          {/* <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Action</p> */}
+          <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>Sr No.</p>
+          <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>CourseID</p>
+          <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>Course title</p>
+          <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>Category</p>
+          {/* <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>Instructor</p> */}
+          {/* <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>Action</p> */}
         </div>
         {Coins?.coursesAllotted?.map((row,index) => (
           <div key={row.id} className='grid grid-cols-4 bg-[#fff] py-3 text-center shadow-lg w-full'>
-            <p className='text-[#000] text-[16px] font-pop font-semibold'>{index+1}</p>
-            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row._id.slice(-10)}</p>
-            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.title}</p>
-            <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.category}</p>
+            <p className='text-[#000] text-[14px] font-pop font-semibold'>{index+1}</p>
+            <p className='text-[#000] text-[14px] font-pop font-semibold'>{row._id.slice(-10)}</p>
+            <p className='text-[#000] text-[14px] font-pop font-semibold'>{row.title}</p>
+            <p className='text-[#000] text-[14px] font-pop font-semibold'>{row.category}</p>
           </div>
         ))}
         <div className='grid grid-cols-6 bg-[#000000] py-6 text-center w-full mt-3'>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Student Id</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Name</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Batch</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Branch</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Status</p>
-          <p className='text-[#FFFFFF] text-[20px] font-pop font-semibold'>Action</p>
+          <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>Student Id</p>
+          <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>Name</p>
+          <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>Batch</p>
+          <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>Branch</p>
+          <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>Status</p>
+          <p className='text-[#FFFFFF] text-[17px] font-pop font-semibold'>Action</p>
         </div>
-        {/* Render table rows */} 
+        <div className='alternatebg'>
         {data?.map((row) => (
-          <div key={row.id} className='grid grid-cols-6 bg-[#fff] py-3 text-center shadow-lg w-full'>
+          <div key={row.id} className='grid grid-cols-6 bg-[#fff] py-3 text-center border border-[#E2E2E2] w-full'>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row._id.slice(-10)}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.name}</p>
             <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.batch || 2024}</p>
@@ -178,6 +178,7 @@ const DetailTableDashboard = ({ data,FetchData }) => {
             <Link to={`/college-studentdata?email=${row.email}`} className='text-[#000] text-[16px] font-pop font-semibold'>View</Link>
           </div>
         ))}
+        </div>
       </div>
     </>
   );
