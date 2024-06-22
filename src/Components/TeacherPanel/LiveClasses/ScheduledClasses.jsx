@@ -76,4 +76,5 @@ const ScheduledClasses = () => {
   );
 };
 
+
 export default ScheduledClasses;
