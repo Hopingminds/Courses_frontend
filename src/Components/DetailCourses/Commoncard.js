@@ -108,8 +108,8 @@ export default function Commoncard(props) {
   };
   // console.log(Data);
   return (
-    <div className="bg-[#E2FFF1] w-[full] h-max my-14 p-6 rounded-xl flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
-      <div className="h-[14rem] rounded-xl overflow-hidden bg-white md:h-[35%] relative">
+    <div className="bg-[#E2FFF1] w-[full] h-max my-14 p-6 rounded-xl flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:mb-8">
+      <div className="max-h-[14rem] h-fit rounded-xl overflow-hidden bg-white md:h-[35%] relative xsm:h-fit xsm:max-h-[6rem]">
         {
           <span className="bg-transparent p-4 absolute top-0 left-0 z-[99]">
             {IsMuted ? (
