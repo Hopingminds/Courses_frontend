@@ -12,6 +12,7 @@ import ReactPlayer from "react-player";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import { Tooltip } from "@mui/material";
 import { formatDate } from "../../helpers/helper_function";
+import { div } from "@tensorflow/tfjs";
 
 export default function Commoncard(props) {
   let { Data } = props;
@@ -104,9 +105,10 @@ export default function Commoncard(props) {
   const handleContextMenu = (e) => {
     e.preventDefault(); // Prevent default context menu behavior
   };
-  console.log(Data)
+  // console.log(Data)
   return (
-    <div className="bg-[#E2FFF1] w-[33%] h-max my-14 p-6 rounded-xl flex flex-col  relative -top-[50vh] xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
+  
+    <div className="bg-[#E2FFF1]  h-max mt-14 p-6 rounded-xl flex flex-col   xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
       <div className="h-max rounded-xl overflow-hidden bg-white md:h-[35%] relative">
         {
           <span className="bg-transparent p-4 absolute top-0 left-0 z-[99]">
@@ -165,35 +167,17 @@ export default function Commoncard(props) {
                 View Course
               </Link>
             ) : (
-              <Link
-                to={login ? "/checkout?slug=" + Data?.slug : "/login"}
-                className="bg-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
-              >
-                Buy Now
-              </Link>
-            )}
-            {!purchasedCourses.includes(Data?._id) ? (
-              <div className="space-x-4 w-full flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
-                {/* <Tooltip title="Add to Wishlist" arrow>
-                  <button className="xsm:w-1 " onClick={() => Addtowishlist(Data?._id)}>
-                    <CiHeart className="w-6 h-6 xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
-                  </button>
-                </Tooltip> */}
-                {/* <Tooltip title="Add to Cart" arrow>
-                  <button className="xsm:w-1 " >
-                    <Cart className="xsm:w-3 xsm:h-3 md:w-5 md:h-5" />
-                  </button>
-                </Tooltip> */}
-                <div
-                  onClick={() => Addtocart(Data?._id)}
-                  className="border border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
-                >
-                  Add to cart
+                <div className="space-x-4 w-full flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
+
+                  <div
+                    onClick={() => Addtocart(Data?._id)}
+                    className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
+                  >
+                    Add to cart
+                  </div>
                 </div>
-              </div>
-            ) : (
-              ""
             )}
+          
           </div>
         </div>
         <h3 className="font-pop font-semibold xsm:text-[8px] md:text-[14px]">
@@ -264,6 +248,7 @@ export default function Commoncard(props) {
         </div>
       </div>
       <Toaster position="top-center" />
-    </div>
+      </div>
+    
   );
 }

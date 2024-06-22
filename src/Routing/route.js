@@ -71,6 +71,9 @@ import Instruction from '../Components/Assignments/Instruction/Instruction.jsx'
 import Assessmentinstruction from '../Components/Assessments/Instruction/assessmentInstruction.jsx'
 import AssessmentQuestion from '../Components/Assessments/Questions/index.js'
 import ProtectedAssessmentQuestion from '../Components/Assessments/ProtectedQuestions/index.js'
+import CourseMedia from "../Components/TeacherPanel/CourseMedia/CourseMedia.jsx"
+import {AuthProvider} from "../Components/contexts/AuthContext.js"
+import Loginpage from '../Components/TeacherPanel/LoginPage/LoginPage.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -101,7 +104,7 @@ const Router = () => {
 
 
     return (
-
+    <AuthProvider>
         <BrowserRouter >
             <ScrollToTop />
             {/* <Navbar /> */}
@@ -169,25 +172,29 @@ const Router = () => {
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
 
-                <Route path='/teacherpanel' element={<TPHome />} >
-                    <Route index path='dashboard' element={<Dashboard />} />
-                    <Route path='liveclass' element={<LiveClasses />} />
-                    <Route path='addcourse' element={<AddCourses />} />
-                    <Route path='assignment' element={<Assignment />} >
-                        <Route index path='scheduledassignments' element={<ScheduledAssignments />} />
-                        <Route path='history' element={<History />} />
+                <Route path="/teacherlogin" element={<Loginpage/>}/>
+                <Route path="/teacherpanel" element={<TPHome/>}>
+                    {/* Redirect to /dashboard after login */}
+                    <Route path="dashboard" index element={<Dashboard />} />
+                    <Route path="tohome" element={<TPHome />} />
+                    <Route path="liveclass" element={<LiveClasses />} />
+                    <Route path="addcourse" element={<AddCourses />} />
+                    <Route path="assignment" element={<Assignment />}>
+                        <Route path="scheduledassignments" element={<ScheduledAssignments />} />
+                        <Route path="history" element={<History />} />
                     </Route>
-                    <Route path='batch' element={<Batches />} >
-                        <Route index path='courses' element={<Courses />} />
-                        <Route path='batches' element={<CourseBatches />} />
+                    <Route path="batch" element={<Batches />}>
+                        <Route path="courses" element={<Courses />} />
+                        <Route path="batches" element={<CourseBatches />} />
                     </Route>
-                    <Route path='userprofile' element={<UserProfile />} />
+                    <Route path="userprofile" element={<UserProfile />} />
+                    <Route path="media" element={<CourseMedia />} />
                 </Route>
             </Routes>
             {pathname.includes('college') || pathname.includes('teacherpanel') || pathname.includes('questions') ? <></> : <Footer />}
 
         </BrowserRouter >
-
+    </AuthProvider>
 
     )
 }

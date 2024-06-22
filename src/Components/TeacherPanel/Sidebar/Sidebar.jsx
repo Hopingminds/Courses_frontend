@@ -1,19 +1,19 @@
-import React from 'react'
-import Logo from '../../../Assets/Images/hmlogo.png'
-import Dashboard from '../../../Assets/Icons/tpdashboard.svg'
-import DashboardW from '../../../Assets/Icons/tpdashboardwhite.svg'
-import Live from '../../../Assets/Icons/tplive.svg'
-import LiveW from '../../../Assets/Icons/tplivewhite.svg'
-import Plus from '../../../Assets/Icons/tpplus.svg'
-import PlusW from '../../../Assets/Icons/tppluswhite.svg'
-import Assignment from '../../../Assets/Icons/tpassignment.svg'
-import AssignmentW from '../../../Assets/Icons/tpassignmentwhite.svg'
-import Batch from '../../../Assets/Icons/tpbatch.svg'
-import BatchW from '../../../Assets/Icons/tpbatchwhite.svg'
-import Doubts from '../../../Assets/Icons/tpquestion.svg'
-import DoubtsW from '../../../Assets/Icons/tpquestionwhite.svg'
-import Logout from '../../../Assets/Icons/tplogout.svg'
-import { Link, useLocation } from 'react-router-dom'
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import Logo from '../../../Assets/Images/hmlogo.png';
+import Dashboard from '../../../Assets/Icons/tpdashboard.svg';
+import DashboardW from '../../../Assets/Icons/tpdashboardwhite.svg';
+import Live from '../../../Assets/Icons/tplive.svg';
+import LiveW from '../../../Assets/Icons/tplivewhite.svg';
+import Plus from '../../../Assets/Icons/tpplus.svg';
+import PlusW from '../../../Assets/Icons/tppluswhite.svg';
+import Assignment from '../../../Assets/Icons/tpassignment.svg';
+import AssignmentW from '../../../Assets/Icons/tpassignmentwhite.svg';
+import Batch from '../../../Assets/Icons/tpbatch.svg';
+import BatchW from '../../../Assets/Icons/tpbatchwhite.svg';
+import Doubts from '../../../Assets/Icons/tpquestion.svg';
+import DoubtsW from '../../../Assets/Icons/tpquestionwhite.svg';
+import Logout from '../../../Assets/Icons/tplogout.svg';
 
 const Sidebar = ({ onItemClick, selectedComponent }) => {
     const location = useLocation();
@@ -22,7 +22,7 @@ const Sidebar = ({ onItemClick, selectedComponent }) => {
             <div>
                 <Link to={'/'} className='flex pl-4 w-full py-4 cursor-pointer'>
                     <img className='w-[55%]' src={Logo} alt="" />
-                </Link> 
+                </Link>
                 <div className='flex flex-col gap-2 px-4 w-full font-int text-[#808080] text-[14px]'>
                     <Link to={'dashboard'} onClick={() => onItemClick('dashboard')} className={`flex items-center gap-4 cursor-pointer  px-4 py-4 rounded-lg ${location.pathname=== '/teacherpanel/dashboard' ?'bg-[#7F7F7F] text-white':' '}`}>
                         <div>
@@ -33,21 +33,18 @@ const Sidebar = ({ onItemClick, selectedComponent }) => {
                     <Link to={'liveclass'} onClick={() => onItemClick('liveclass')} className={`flex items-center gap-4 cursor-pointer px-4 py-4 rounded-lg ${location.pathname=== '/teacherpanel/liveclass' ?'bg-[#7F7F7F] text-white':' '}`}>
                         <div>
                             {location.pathname=== '/teacherpanel/liveclass' ? <img className='w-4 h-4 invert-0' src={LiveW} alt="" /> :<img className='w-4 h-4' src={Live} alt="" />}
-                            
                         </div>
                         <p>Live Classes</p>
                     </Link>
                     <Link to={'addcourse'} onClick={() => onItemClick('addcourse')} className={`flex items-center gap-4 cursor-pointer px-4 py-4 rounded-lg ${location.pathname=== '/teacherpanel/addcourse' ?'bg-[#7F7F7F] text-white':' '}`}>
                         <div>
                             {location.pathname=== '/teacherpanel/addcourse' ? <img className='w-4 h-4 invert-0' src={PlusW} alt="" /> :<img className='w-4 h-4' src={Plus} alt="" />}
-                            
                         </div>
                         <p>Add course</p>
                     </Link>
                     <Link to={"/teacherpanel/assignment/scheduledassignments"} onClick={() => onItemClick('assignment')} className={`flex items-center gap-4 cursor-pointer px-4 py-4 rounded-lg ${location.pathname === "/teacherpanel/assignment/history" || location.pathname === "/teacherpanel/assignment/scheduledassignments" ?'bg-[#7F7F7F] text-white':' '}`}>
                         <div>
                             {location.pathname === "/teacherpanel/assignment/history" || location.pathname === "/teacherpanel/assignment/scheduledassignments" ? <img className='w-4 h-4 invert-0' src={AssignmentW} alt="" /> :<img className='w-4 h-4' src={Assignment} alt="" />}
-                            
                         </div>
                         <p>Assignments</p>
                     </Link>
@@ -57,10 +54,15 @@ const Sidebar = ({ onItemClick, selectedComponent }) => {
                         </div>
                         <p>Batches</p>
                     </Link>
+                    <Link to={'media'} onClick={() => onItemClick('media')} className={`flex items-center gap-4 cursor-pointer px-4 py-4 rounded-lg ${location.pathname === '/teacherpanel/media' ?'bg-[#7F7F7F] text-white':' '}`}>
+                        <div>
+                            {location.pathname === '/teacherpanel/media' ? <img className='w-4 h-4 invert-0' src={BatchW} alt="" /> :<img className='w-4 h-4' src={Batch} alt="" />}
+                        </div>
+                        <p>Course Media</p>
+                    </Link>
                     <div onClick={() => onItemClick('doubts')} className={`flex items-center gap-4 cursor-pointer px-4 py-4 rounded-lg ${location.pathname=== '/teacherpanel/doubts' ?'bg-[#7F7F7F] text-white':' '}`}>
                         <div>
                             {location.pathname=== '/teacherpanel/doubts' ? <img className='w-4 h-4 invert-0' src={DoubtsW} alt="" /> :<img className='w-4 h-4' src={Doubts} alt="" />}
-                            
                         </div>
                         <p>Doubts</p>
                     </div>
@@ -74,4 +76,4 @@ const Sidebar = ({ onItemClick, selectedComponent }) => {
     )
 }
 
-export default Sidebar
+export default Sidebar;
