@@ -248,9 +248,10 @@ const AllCourses = () => {
           </button>
         </div>
 
-        <div className="h-full w-full bg-gray-300">
+        <div className="h-full w-full bg-gray-300 video-container">
           <ReactPlayer
             onContextMenu={handleContextMenu}
+            playsinline={true}
             // url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
             url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
             height="100%"

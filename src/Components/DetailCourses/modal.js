@@ -49,11 +49,11 @@ const NewModal = ({ handleModalOpen,datas,type ,title}) => {
                 <div className="px-[1rem] py-[2rem] md:p-5 space-y-4 max-h-[65vh] overflow-y-auto no-scrollbar xsm:py-[1rem]">
                     {datas.map((module, index) => (
                         <details
-                            className="cursor-pointer"
+                            className="cursor-text"
                             key={index + 67}
                             onToggle={(e) => handleToggle(index, e.target.open)}
                         >
-                            <summary className="bg-[#FFE5E5] px-[1rem] py-[2rem] rounded-md text-xl font-bold capitalize flex justify-between items-center xsm:text-[12px] xsm:leading-3 xsm:p-[1rem]">
+                            <summary className="bg-[#FFE5E5] px-[1rem] py-[2rem] rounded-md text-xl font-bold capitalize flex justify-between items-center xsm:text-[12px] xsm:leading-3 xsm:p-[1rem] cursor-pointer">
                                 <p>
                                     {module.title}{" "}
                                     <span className="font-light text-black">{module.duration}</span>
@@ -71,7 +71,7 @@ const NewModal = ({ handleModalOpen,datas,type ,title}) => {
                                                 <div className="flex gap-2 items-center">
                                                 <img src={"/Icons/project.svg"} alt="project" className="text-green-500 h-[25px] w-auto xsm:h-[18px]"/>
 
-                                                    <p className="font-semibold uppercase text-xl xsm:text-[10px] xsm:leading-3">{lesson.title}</p>
+                                                    <p className=" capitalize text-xs xsm:text-[10px] xsm:leading-3">{lesson.title}</p>
                                                 </div>
                                                {/* <a href={lesson.projectInfoPdf} className="font-semibold">Open Project</a> */}
                                             </div>}
@@ -79,7 +79,7 @@ const NewModal = ({ handleModalOpen,datas,type ,title}) => {
                                                 <div className="flex gap-2 items-center">
                                                 <img src={"/Icons/module.svg"} alt="module" className="text-green-500 h-[25px] w-auto xsm:h-[18px]"/>
 
-                                                    <p className="font-semibold uppercase text-sm xsm:text-[10px] xsm:leading-3">{lesson.lesson_name}</p>
+                                                    <p className=" capitalize text-xs xsm:text-[10px] xsm:leading-3">{lesson.lesson_name}</p>
                                                 </div>
                                              
                                         </div>}
@@ -87,7 +87,7 @@ const NewModal = ({ handleModalOpen,datas,type ,title}) => {
                                             <div className="flex gap-2 items-center">
                                                 <img src={"/Icons/assignment.svg"} alt="assignment" className="text-green-500 h-[25px] w-auto xsm:h-[18px]" />
 
-                                                <p className="font-semibold uppercase text-sm">{lesson.lesson_name}</p>
+                                                <p className=" capitalize text-xs ">{lesson.lesson_name}</p>
                                             </div>
                                          
                                         </div>}
@@ -95,7 +95,7 @@ const NewModal = ({ handleModalOpen,datas,type ,title}) => {
                                             <div className="flex gap-2 items-center">
                                                 <img src={"/Icons/notes.svg"} alt="Notes" className="text-green-500 h-[25px] w-auto xsm:h-[18px]" />
 
-                                                <p className="font-semibold uppercase text-sm">{lesson.lesson_name}</p>
+                                                <p className=" capitalize text-xs">{lesson.lesson_name}</p>
                                             </div>
                                          
                                         </div>}

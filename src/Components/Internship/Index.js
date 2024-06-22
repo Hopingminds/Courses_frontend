@@ -260,7 +260,8 @@ const Internship = () => {
         <div className="h-full w-full bg-gray-300" >
           <ReactPlayer
             onContextMenu={handleContextMenu}
-
+            playsInline={true}
+           
             // url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
             url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716441485951-stock%20web_1compressed_1.mp4'
             height="100%"

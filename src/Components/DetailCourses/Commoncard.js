@@ -202,7 +202,7 @@ export default function Commoncard(props) {
             <div className="flex items-center space-x-4 md:space-x-2">
               <img className="w-[16px]" src="../Icons/graph.svg" />
               <p className="font-nu text-[#555555] text-[12px] md:text-[10px]">
-                32 modules
+                {Data?.curriculum?.length } modules
               </p>
             </div>
             <div className="flex items-center space-x-4 md:space-x-2">

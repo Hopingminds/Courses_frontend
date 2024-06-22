@@ -140,7 +140,8 @@ export default function DetailCourses() {
         >
           <div className="CCDetails-Header-content-leftqw xsm:text-[10px]">
             <div className="CCDetails-Header-content-row1qw xsm:text-[10px] xsm:w-[80%]">
-              <h2 className="font-pop  xsm:text-[10px]">{Data?.title}</h2>
+              <h2 className="font-pop  xsm:text-[10px] capitalize">{Data?.title}</h2>
+              <p className="line-clamp-2	text-white">{Data?.overview }</p>
             </div>
             <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-2 xsm:w-[80%]">
               <p>4.7</p>
@@ -151,7 +152,7 @@ export default function DetailCourses() {
                 <FaStar />
                 <FaStarHalfAlt />
               </div>
-              <p>(260+)</p>
+              {/* <p>(260+)</p> */}
             </div>
             <div className="flex gap-5 mt-5">
             {purchasedCourses.includes(Data?._id) ? (
@@ -319,10 +320,10 @@ export default function DetailCourses() {
               Companies Worldwide
             </h1>
             <div className="flex justify-between w-full">
-              <img src='/Icons/byju.svg' className="w-40" alt="byju" />
-              <img src='/Icons/google.svg' className="w-40" alt="google" />
-              <img src='/Icons/instamojo.svg' className="w-40" alt="instamojo" />
-              <img src='/Icons/dream11.svg' className="w-40" alt="dream11" />
+              <img src='/Icons/byju.svg' className="w-36" alt="byju" />
+              <img src='/Icons/google.svg' className="w-36" alt="google" />
+              <img src='/Icons/instamojo.svg' className="w-36" alt="instamojo" />
+              <img src='/Icons/dream11.svg' className="w-36" alt="dream11" />
             </div>
           </div> 
           <div className="flex flex-col gap-8 xsm:gap-4">
@@ -364,23 +365,25 @@ export default function DetailCourses() {
             </div>
           </div>
           <div className="flex flex-col gap-8">
-            <VideoTesttimonial />
+            <VideoTesttimonial data={Data?.testimonials} />
           </div>
         </div>
         <span className="w-[33%] h-fit  -translate-y-[20rem]">
           <Commoncard Data={Data} />
           <div className="bg-[#E2FFF1] my-4 p-6 rounded-xl flex flex-col   xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
-            <h2 className="text-2xl mb-4">Average Packages</h2>
+            <h2 className="text-2xl mb-4 font-bold">Average Packages</h2>
+            <div className="flex flex-col gap-3">
             {
               Data?.companies?.map((val, ind) => {
                 return (
-                  <>
-                    <h3>{val?.companyName}</h3>
-                    <p>Average Package {`Rs. ${val?.avgpkg?.from} - Rs.${val?.avgpkg?.to}`}</p>
-                  </>
+                  <div>
+                    <h3 className="font-semibold text-lg">{val?.companyName}</h3>
+                    <p>Average Package {` ${val?.avgpkg?.from} LPA - ${val?.avgpkg?.to} LPA`}</p>
+                  </div>
                 )
               })
               }
+            </div>
           </div>
           <div>
             <img src="/Icons/certificate_Course.svg" alt="" />
