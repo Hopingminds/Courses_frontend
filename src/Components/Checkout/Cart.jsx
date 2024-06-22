@@ -346,14 +346,14 @@ const CartCheckout = () => {
                       </div>
                       {/* <img src="src/assets/Group.png" className="w-[590px] h-[1px]" /> */}
                       <div className="flex justify-between items-center">
-                        <span className="flex mt-4 md:mt-0">
+                        <span className="flex mt-4 md:mt-0 xsm:mt-0">
                           <Star className="xsm:w-3 md:w-4 w-5" />
                           <Star className="xsm:w-3 md:w-4 w-5" />
                           <Star className="xsm:w-3 md:w-4 w-5" />
                           <Star className="xsm:w-3 md:w-4 w-5" />
                           <Star className="xsm:w-3 md:w-4 w-5" />
                         </span>
-                        <span className="mt-3 md:mt-0">
+                        <span className="mt-3 md:mt-0 xsm:mt-1">
                           <p className="flex justify-end mr-4 text-[18px] mt-[-3px] font-semibold xsm:text-[10px] md:text-[14px]">
                             ₹{item.course.base_price}
                           </p>

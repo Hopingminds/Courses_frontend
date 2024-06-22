@@ -130,7 +130,7 @@ export default function DetailCourses() {
     <div className="h-auto min-h-screen overflow-x-visible ">
       <div className="mb-5 xsm:mx-0 ">
         <div
-          className="CCDetails-Header-main flex flex-col px-[8%] pt-10 w-full xsm:mb-[4.5rem]"
+          className="CCDetails-Header-main flex flex-col px-[8%] pt-24 w-full xsm:pt-1"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.bannerImg})`,
             backgroundSize: "cover",
@@ -139,10 +139,10 @@ export default function DetailCourses() {
           }}
         >
           <div className="CCDetails-Header-content-leftqw xsm:text-[10px]">
-            <div className="CCDetails-Header-content-row1qw xsm:text-[10px]">
+            <div className="CCDetails-Header-content-row1qw xsm:text-[10px] xsm:w-[80%]">
               <h2 className="font-pop  xsm:text-[10px]">{Data?.title}</h2>
             </div>
-            <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-2">
+            <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-2 xsm:w-[80%]">
               <p>4.7</p>
               <div className="flex gap-1 items-center text-yellow-400">
                 <FaStar />
@@ -250,28 +250,28 @@ export default function DetailCourses() {
       {/* <DCtestimonials /> */}
 
       <div className="flex justify-between px-[8%] py-6">
-        <div className="w-[58%] flex flex-col gap-16">
-          <div className="flex flex-col gap-6 capitalize">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+        <div className="w-[58%] flex flex-col gap-16 xsm:gap-10">
+          <div className="flex flex-col gap-6 capitalize xsm:gap-4">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               Skills You Will Learn
             </h1>
             <div className="flex flex-col gap-4 font-nu text-[#555555]">
 
-              <ul className="list-inside leading-7 tracking-wide pl-2 grid grid-cols-2 gap-4  p-5 shadow-[0_4px_11px_0px_rgb(0, 0, 0))]" >
+              <ul className="list-inside leading-7 tracking-wide pl-2 grid grid-cols-2 gap-4  p-5 shadow-[0_4px_11px_0px_rgb(0, 0, 0))] xsm:pl-0 xsm:gap-2 xsm:text-[10px] xsm:p-2 xsm:leading-none xsm:tracking-tighter" >
                 {Data?.whatWillILearn.map((item, index) => (
-                  <li key={index} className="flex gap-2"> <img src="/Icons/shield.svg" className="h-[28px] w-auto" alt="" /> {item}</li>
+                  <li key={index} className="flex gap-2 xsm:gap-1"> <img src="/Icons/shield.svg" className="h-[28px] w-auto xsm:h-[18px]" alt="" /> {item}</li>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="flex flex-col gap-8">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+          <div className="flex flex-col gap-8 xsm:gap-4">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]  xsm:text-[14px]">
               What's Included
             </h1>
             <Included curiculum={Data?.curriculum} title={Data?.title } />
           </div>
-          <div className="flex flex-col gap-8">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+          <div className="flex flex-col gap-8 xsm:gap-2">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               Instructor
             </h1>
             <Instructor />
@@ -324,18 +324,18 @@ export default function DetailCourses() {
               <img src='/Icons/instamojo.svg' className="w-40" alt="instamojo" />
               <img src='/Icons/dream11.svg' className="w-40" alt="dream11" />
             </div>
-          </div>
-          <div className="flex flex-col gap-8">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
+          </div> */}
+          <div className="flex flex-col gap-8 xsm:gap-4">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               FAQs
             </h1>
-            <div className=" w-[95%] bg-[#E2FFF1] rounded-md px-6 py-6 flex flex-col gap-6 font-nu">
+            <div className=" w-[95%] bg-[#E2FFF1] rounded-md px-6 py-6 flex flex-col gap-6 font-nu xsm:w-[100%] xsm:p-2 xsm:gap-3">
               {faqs.map((item, index) => (
                 <div key={index} className="faq1 w-full  bg-white rounded-md">
                   <div className=" w-full ">
                     <div
                       onClick={() => ClickSection(index)}
-                      className="drop-top  flex justify-between items-center w-full py-3 px-6 cursor-pointe xsm:py-3 cursor-pointer"
+                      className="drop-top  flex justify-between items-center w-full py-3 px-6 cursor-pointe cursor-pointer xsm:px-4 xsm:py-2"
                     >
                       <div className="flex items-center gap-2">
                         <p className={`xsm:text-[8px] font-semibold md:text-[14px] ${item.isOpen && 'text-[#1DBF73]'}`}>

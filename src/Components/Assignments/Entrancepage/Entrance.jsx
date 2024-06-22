@@ -13,7 +13,7 @@ export default function Enterance(){
                     <div className="min-h-[30vh] w-[25vw] border border-[#1DBF73] flex flex-col justify-center items-center p-5 gap-y-5 rounded-xl xsm:w-full xsm:p-2 xsm:min-h-[200px]">
                         <div className="text-xl font-semibold">Solve Assessments</div>
                         <div className="text-sm text-gray-500">You'll need to solve assesments & meet a certain score to be eligible for the coding test.</div>
-                        <Link to='/instruction' className="p-2 rounded-md bg-[#1DBF73] text-white">Start Assignment</Link>
+                        <Link to='/instruction' className="p-2 rounded-md bg-[#1DBF73] text-white">Start Assessment</Link>
                     </div>
                 <div className="min-h-[30vh] w-[25vw] border border-[#1DBF73] flex flex-col justify-center items-center p-5 gap-y-5 rounded-xl xsm:w-full xsm:p-2 xsm:min-h-[200px]">
                         <div className="text-xl font-semibold">Coding Test</div>

@@ -38,7 +38,7 @@ function Instructor() {
         </div>
 
         <div className="instructor-content space-y-2 xsm:space-y-0 md:space-y-1">
-          <p className="font-mons font-semibold text-[22px] text-black">
+          <p className="font-mons font-semibold text-[22px] text-black xsm:text-[12px]">
             {Data?.instructor?.name}
           </p>
           {/* <p className='text-[14px]'>{Data?.instructor.about}</p> */}
@@ -55,7 +55,7 @@ function Instructor() {
         </div>
       </div>
 
-      <p className="text-[14px] text-black">{Data?.instructor?.bio}</p>
+      <p className="text-[14px] text-black xsm:text-justify">{Data?.instructor?.bio}</p>
       {/* <div className='links'>
         <p>Follow: </p>
         {iconPaths.map((icon, index) => (

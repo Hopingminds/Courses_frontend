@@ -66,13 +66,13 @@ const Included = ({ curiculum,title }) => {
 
     return (
         <>
-            <div className='grid grid-cols-4 gap-3'>
+            <div className='grid grid-cols-4 gap-3 xsm:grid-cols-2'>
                 {
                     data?.map((val, ind) => {
                         return (
-                            <div className='border border-green-500 rounded-[12px] flex flex-col justify-center items-center p-7 gap-2 cursor-pointer' key={ind} onClick={() => handleClick(ind)}>
-                                <img  src={val.svg} alt={val?.title} className='h-[40px] w-auto' />
-                                <h5 className='text-[1rem] font-semibold'>{val?.title}</h5>
+                            <div className='border border-green-500 rounded-[12px] flex flex-col justify-center items-center p-7 gap-2 cursor-pointer xsm:p-3' key={ind} onClick={() => handleClick(ind)}>
+                                <img  src={val.svg} alt={val?.title} className='h-[40px] w-auto xsm:h-6' />
+                                <h5 className='text-[1rem] font-semibold xsm:text-[0.6rem] text-center'>{val?.title}</h5>
                             </div>
                         )
                     })

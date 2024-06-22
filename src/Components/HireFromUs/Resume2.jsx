@@ -30,14 +30,14 @@ const Resume2 = () => {
         <p>
           <span className="text-[#1DBF73]">Roles</span> You Can Hire  From Us
         </p>
-        <div className="absolute left-[25%] top-[85%] md:left-[25%] xsm:left-[1%]">
+        <div className="absolute left-[25%] top-[85%] md:left-[25%] xsm:left-[10%]">
           <img
-            className="w-[70%] md:w-[50%] xsm:w-[30%]"
+            className="w-[70%] md:w-[50%] xsm:w-[25%]"
             src="../Icons/yellowcurve.svg"
             alt=""
           />
           <img
-            className="w-[70%] md:w-[50%] xsm:w-[30%] absolute top-[50%] rotate-[357deg]"
+            className="w-[70%] md:w-[50%] xsm:w-[25%] absolute top-[50%] rotate-[357deg]"
             src="../Icons/yellowcurve.svg"
             alt=""
           />

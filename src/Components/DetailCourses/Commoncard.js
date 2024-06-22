@@ -19,13 +19,12 @@ export default function Commoncard(props) {
   // console.log(Data);
   const [IsMuted, setIsMuted] = useState(true);
 
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
   let login = localStorage.getItem("COURSES_USER_TOKEN");
   let navigate = useNavigate();
   // const [Show, setShow] = useState(false)
 
   const { setCartSize, cartSize } = useContext(Globalinfo);
-
 
   async function Addtocart(courseid) {
     try {
@@ -51,7 +50,7 @@ export default function Commoncard(props) {
           toast.error(response.msg);
         }
       } else {
-        localStorage.setItem('ADD_TO_CART_HISTORY', window.location.pathname);
+        localStorage.setItem("ADD_TO_CART_HISTORY", window.location.pathname);
         // console.log("add to cart withour log")
         navigate("/login");
       }
@@ -105,10 +104,9 @@ export default function Commoncard(props) {
   const handleContextMenu = (e) => {
     e.preventDefault(); // Prevent default context menu behavior
   };
-  // console.log(Data)
+  console.log(Data);
   return (
-  
-    <div className="bg-[#E2FFF1]  h-max mt-14 p-6 rounded-xl flex flex-col   xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
+    <div className="bg-[#E2FFF1] w-[33%] h-max my-14 p-6 rounded-xl flex flex-col  relative -top-[350px] xsm:-top-[130px] xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
       <div className="h-max rounded-xl overflow-hidden bg-white md:h-[35%] relative">
         {
           <span className="bg-transparent p-4 absolute top-0 left-0 z-[99]">
@@ -150,15 +148,12 @@ export default function Commoncard(props) {
         />
       </div>
       <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1 md:gap-3 md:mt-4">
-
         <div className="flex flex-col justify-between items-center xsm:pb-1 ">
           <h2 className="font-nu text-[30px] font-bold xsm:text-[8px] md:text-[12px]">
             ₹{Data?.base_price}
           </h2>
 
           <div className="gap-y-4 flex w-full px-5 flex-col items-center xsm:gap-x-2 md:gap-x-2">
-
-
             {purchasedCourses.includes(Data?._id) ? (
               <Link
                 to={"/course/" + Data?.slug}
@@ -184,10 +179,14 @@ export default function Commoncard(props) {
           {Data?.title}
         </h3>
 
-        {Data?.courseCategory === "liveCourse" && <>
-          {"Starting On -" + formatDate(Data?.liveClasses[0]?.date)}  at {(Data.liveClasses[0]?.time)}
-        </>
-        }
+        <p className="xsm:text-[8px]">
+          {Data?.courseCategory === "liveCourse" && (
+            <>
+              {"Starting On -" + formatDate(Data?.liveClasses[0]?.date)} at{" "}
+              {Data.liveClasses[0]?.time}
+            </>
+          )}
+        </p>
 
         <div className="flex flex-col gap-6 my-6 xsm:hidden md:gap-4 md:my-4">
           <div className="space-y-4 md:space-y-2">
