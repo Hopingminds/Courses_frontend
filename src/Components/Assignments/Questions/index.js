@@ -298,7 +298,7 @@ export default function Question() {
   }, [personCount]);
 
   useEffect(() => {
-      if (peoplewarning <=0 && cameraActive && !camerablocked) {
+      if (peoplewarning <0 && cameraActive && !camerablocked) {
         handleClick();
       }
    
