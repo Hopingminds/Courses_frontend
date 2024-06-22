@@ -15,9 +15,10 @@ export default function Question() {
   const [index, setindex] = useState(1);
   
   const [tabwarning, settabwarning] = useState(0);
-  let [peoplewarning, setpeoplewarning] = useState(5);
+  let [peoplewarning, setpeoplewarning] = useState(3);
   let navigate = useNavigate();
   const [Length, setLength] = useState();
+  const [camerablocked, setcamerablocked] = useState()
   let token = localStorage.getItem("COURSES_USER_TOKEN");
 
   async function Fetchdata() {
@@ -139,10 +140,11 @@ export default function Question() {
       if (document.hidden) {
         document.title = "Don't change the tab";
         if (peoplewarning > 0) {
-          setpeoplewarning(peoplewarning - 1);
+          
           alert(`You are not allowed to change the tab.`);
           // enterFullScreen();
         }
+        setpeoplewarning(peoplewarning - 1);
         audio.play().catch(error => console.error('Error playing audio:', error));
       } else {
         document.title = 'Online Test';
@@ -155,7 +157,7 @@ export default function Question() {
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [audio, peoplewarning]);
+  }, [audio,peoplewarning]);
 
   // const enterFullScreen = () => {
   //   const content = document.documentElement;
@@ -223,11 +225,13 @@ export default function Question() {
         videoRef.current.play().catch(err => console.error('Error playing video:', err));
         setcameraActive(true)
         loadModelAndDetect();
+        setcamerablocked(false)
       } catch (err) {
-        console.error('Error accessing camera:', err);
+        // console.error('Error accessing camera:', err);
         if (err.name === 'NotAllowedError' || err.name === 'NotFoundError') {
-         alert("You can't block the camera")
-     
+          setcamerablocked(true)
+         alert("You can't block the camera.Give access to camera manually")
+          
         }
       }
     };
@@ -275,26 +279,29 @@ export default function Question() {
 
   useEffect(() => {
     if (personCount > 1) {
-      if(peoplewarning>0){
+      if(peoplewarning>=0 && cameraActive){
         alert(`Warning!! ${personCount} Person Detected in your camera frame.`);
-
+        setpeoplewarning((prev)=>prev-1);
       }  
      
     } else if (personCount === 0) {
-      if(peoplewarning>0 && cameraActive){
+      if(peoplewarning>=0 && cameraActive){
         alert(`Warning!! ${personCount} Person Detected in your camera frame.`);
+        setpeoplewarning((prev)=>prev-1);
+        
       }      
     }
-   
-    setpeoplewarning((prev)=>prev-1);
+
+    
 
     // enterFullScreen();
   }, [personCount]);
 
   useEffect(() => {
-    if (peoplewarning < 0 ) {
-      handleClick();
-    }
+      if (peoplewarning <=0 && cameraActive && !camerablocked) {
+        handleClick();
+      }
+   
   }, [peoplewarning]);
 
   // useEffect(() => {
@@ -303,7 +310,9 @@ export default function Question() {
 
   return (
     <>
-      <Toaster />
+    <Toaster />
+    {
+      !camerablocked ? 
       <div className="px-[6%] space-y-5 py-2 bg-white" ref={contentRef}>
         <div className='fixed bottom-0 left-0'>
           <div className='relative'>
@@ -374,7 +383,8 @@ export default function Question() {
             <Spinner />
           </div>
         )}
-      </div>
+      </div>:<div className="flex justify-center w-full h-screen items-center font-semibold">If you want to continue the test then first turn on the camera. </div>
+}
     </>
   );
 }
