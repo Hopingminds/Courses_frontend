@@ -143,17 +143,17 @@ function ShopingCart() {
                                                     <p className='font-mons text-[14px] 2xl:text-[14px] font-normal text-[#555555] xsm:text-[6px]'> {item?.course?.total_lessons} Lessons</p>
                                                 </div> */}
                           </div>
-                          <div>
+                          {/* <div>
                             <p className="font-mons text-[1vw] 2xl:text-[16px]   text-black font-semibold xsm:text-[7px]">
                               Save For Later
                             </p>
-                          </div>
+                          </div> */}
                         </div>
-                        <div className="flex justify-end flex-nowrap">
+                        {/* <div className="flex justify-end flex-nowrap">
                           <p className="font-mons text-[1vw]  mt-[0.6vw] text-black font-semibold 2xl:text-[16px] xsm:text-[7px]">
                             Move To Wishlist
                           </p>
-                        </div>
+                        </div> */}
                         <div>
                           <hr className="mt-[0.9vw] border-y-1 border-[#EAEAEA] " />
                         </div>
@@ -240,7 +240,7 @@ function ShopingCart() {
       ) : (
         ""
       )}
-      <Toaster position="top-center" />
+      <Toaster position="top-right" />
     </div>
   );
 }

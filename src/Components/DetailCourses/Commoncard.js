@@ -24,7 +24,7 @@ export default function Commoncard(props) {
   let navigate = useNavigate();
   // const [Show, setShow] = useState(false)
 
-  const { setCartSize, cartSize } = useContext(Globalinfo);
+  const { setCartSize, cartSize,GetCart } = useContext(Globalinfo);
 
   async function Addtocart(courseid) {
     try {
@@ -45,7 +45,8 @@ export default function Commoncard(props) {
         // console.log(response);
         if (response.success) {
           toast.success(response.msg);
-          setCartSize(cartSize + 1);
+          GetCart()
+          
         } else {
           toast.error(response.msg);
         }
@@ -76,6 +77,7 @@ export default function Commoncard(props) {
         // console.log(response);
         if (response.success) {
           toast.success(response.msg);
+          
         } else {
           toast.error(response.msg);
         }
