@@ -48,6 +48,9 @@ const VideoTesttimonial = ({ data }) => {
                           playing={true}
                           loop={true}
                           controls={false}
+                          onError={(e) =>
+                            console.error("ReactPlayer Error:", e)
+                          }
                         />
                         <div className="vt-onhover-overlay absolute top-[100%] bg-[#00000066] backdrop-blur-sm h-full flex flex-col gap-2 pt-8 px-2 xsm:pt-2 xsm:gap-1">
                           <div>
