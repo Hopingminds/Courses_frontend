@@ -104,10 +104,10 @@ export default function Commoncard(props) {
   const handleContextMenu = (e) => {
     e.preventDefault(); // Prevent default context menu behavior
   };
-  console.log(Data);
+  // console.log(Data);
   return (
-    <div className="bg-[#E2FFF1] w-[33%] h-max my-14 p-6 rounded-xl flex flex-col  relative -top-[350px] xsm:-top-[130px] xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
-      <div className="h-max rounded-xl overflow-hidden bg-white md:h-[35%] relative">
+    <div className="bg-[#E2FFF1] w-[full] h-max my-14 p-6 rounded-xl flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
+      <div className="h-[14rem] rounded-xl overflow-hidden bg-white md:h-[35%] relative">
         {
           <span className="bg-transparent p-4 absolute top-0 left-0 z-[99]">
             {IsMuted ? (

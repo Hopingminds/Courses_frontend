@@ -130,7 +130,7 @@ export default function DetailCourses() {
     <div className="h-auto min-h-screen overflow-x-visible ">
       <div className="mb-5 xsm:mx-0 ">
         <div
-          className="CCDetails-Header-main flex flex-col px-[8%] pt-24 w-full xsm:pt-1"
+          className="CCDetails-Header-main flex flex-col px-[8%] pt-12 w-full xsm:pt-1"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.bannerImg})`,
             backgroundSize: "cover",
@@ -324,7 +324,7 @@ export default function DetailCourses() {
               <img src='/Icons/instamojo.svg' className="w-40" alt="instamojo" />
               <img src='/Icons/dream11.svg' className="w-40" alt="dream11" />
             </div>
-          </div> */}
+          </div> 
           <div className="flex flex-col gap-8 xsm:gap-4">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               FAQs
@@ -367,7 +367,7 @@ export default function DetailCourses() {
             <VideoTesttimonial />
           </div>
         </div>
-        <span className="w-[33%] h-fit  -translate-y-[18rem]">
+        <span className="w-[33%] h-fit  -translate-y-[20rem]">
           <Commoncard Data={Data} />
           <div className="bg-[#E2FFF1] my-4 p-6 rounded-xl flex flex-col   xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
             <h2 className="text-2xl mb-4">Average Packages</h2>

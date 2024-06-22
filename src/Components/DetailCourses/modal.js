@@ -24,7 +24,7 @@ const NewModal = ({ handleModalOpen,datas,type ,title}) => {
 
     return (
         <div className="fixed inset-0 z-50 flex justify-center items-center w-full h-full text-black bg-[#E2FFF1] bg-opacity-20 backdrop-blur-lg">
-            <div className="relative p-4 w-full max-w-4xl max-h-[75vh] bg-[#E2FFF1] rounded-lg shadow h-auto xsm:w-[90%] xsm:p-2">
+            <div className="relative p-4 w-full max-w-4xl max-h-[78vh] bg-[#E2FFF1] rounded-lg shadow h-auto xsm:w-[90%] xsm:p-2">
                 {/* Modal header */}
                 <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t gap-4">
                     <div>
