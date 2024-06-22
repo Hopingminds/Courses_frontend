@@ -128,7 +128,7 @@ export default function DetailCourses() {
 
   return (
     <div className="h-auto min-h-screen overflow-x-visible ">
-      <div className="mb-5 xsm:mx-0 ">
+      <div className="mb-5 xsm:mx-0 xsm:mb-2">
         <div
           className="CCDetails-Header-main flex flex-col px-[8%] pt-12 w-full xsm:pt-1"
           style={{
@@ -139,10 +139,10 @@ export default function DetailCourses() {
           }}
         >
           <div className="CCDetails-Header-content-leftqw xsm:text-[10px]">
-            <div className="CCDetails-Header-content-row1qw xsm:text-[10px] xsm:w-[80%]">
+            <div className="CCDetails-Header-content-row1qw xsm:text-[10px] ">
               <h2 className="font-pop  xsm:text-[10px]">{Data?.title}</h2>
             </div>
-            <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-2 xsm:w-[80%]">
+            <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-1">
               <p>4.7</p>
               <div className="flex gap-1 items-center text-yellow-400">
                 <FaStar />
@@ -153,7 +153,7 @@ export default function DetailCourses() {
               </div>
               <p>(260+)</p>
             </div>
-            <div className="flex gap-5 mt-5">
+            <div className="flex gap-5 mt-5 xsm:mt-1 xsm:gap-3">
             {purchasedCourses.includes(Data?._id) ? (
              <></>
             ) : (
@@ -314,15 +314,15 @@ export default function DetailCourses() {
             </ul>
           </div> */}
 
-          <div className="flex flex-col gap-8 justify-center items-center">
-            <h1 className="w-full text-left font-pop font-semibold text-[32px] text-[#0F2027]">
+          <div className="flex flex-col gap-8 justify-center items-center xsm:gap-4">
+            <h1 className="w-full text-left font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               Companies Worldwide
             </h1>
-            <div className="flex justify-between w-full">
-              <img src='/Icons/byju.svg' className="w-40" alt="byju" />
-              <img src='/Icons/google.svg' className="w-40" alt="google" />
-              <img src='/Icons/instamojo.svg' className="w-40" alt="instamojo" />
-              <img src='/Icons/dream11.svg' className="w-40" alt="dream11" />
+            <div className="flex justify-between w-full xsm:gap-2">
+              <img src='/Icons/byju.svg' className="w-40 xsm:w-16" alt="byju" />
+              <img src='/Icons/google.svg' className="w-40 xsm:w-16" alt="google" />
+              <img src='/Icons/instamojo.svg' className="w-40 xsm:w-16" alt="instamojo" />
+              <img src='/Icons/dream11.svg' className="w-40 xsm:w-16" alt="dream11" />
             </div>
           </div> 
           <div className="flex flex-col gap-8 xsm:gap-4">
@@ -367,10 +367,10 @@ export default function DetailCourses() {
             <VideoTesttimonial />
           </div>
         </div>
-        <span className="w-[33%] h-fit  -translate-y-[20rem]">
+        <span className="w-[33%] h-fit  -translate-y-[20rem] xsm:-translate-y-[6rem]">
           <Commoncard Data={Data} />
-          <div className="bg-[#E2FFF1] my-4 p-6 rounded-xl flex flex-col   xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:w-[40%]">
-            <h2 className="text-2xl mb-4">Average Packages</h2>
+          <div className="bg-[#E2FFF1] my-4 p-6 rounded-xl flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:text-[10px]">
+            <h2 className="text-2xl mb-4 xsm:text-[12px] xsm:leading-4">Average Packages</h2>
             {
               Data?.companies?.map((val, ind) => {
                 return (

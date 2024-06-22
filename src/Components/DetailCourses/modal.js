@@ -28,7 +28,7 @@ const NewModal = ({ handleModalOpen,datas,type ,title}) => {
                 {/* Modal header */}
                 <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t gap-4">
                     <div>
-                        <h3 className="text-3xl font-bold text-black  capitalize flex flex-col gap-1">
+                        <h3 className="text-3xl font-bold text-black  capitalize flex flex-col gap-1 xsm:text-lg">
                             {title}
                         </h3>
                        
