@@ -22,7 +22,7 @@ export default function DetailCourses() {
   let slug = param.slug;
   const { userDetail } = useContext(Globalinfo);
   const [show, setshow] = useState(false);
-  const { setCartSize, cartSize } = useContext(Globalinfo);
+  const { setCartSize, cartSize,GetCart } = useContext(Globalinfo);
   const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
@@ -82,7 +82,8 @@ export default function DetailCourses() {
         // console.log(response);
         if (response.success) {
           toast.success(response.msg);
-          setCartSize(cartSize + 1);
+          // setCartSize(cartSize + 1);
+          GetCart()
         } else {
           toast.error(response.msg);
         }

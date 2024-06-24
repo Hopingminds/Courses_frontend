@@ -30,7 +30,7 @@ const CYPEducation = ({ setActiveDetail, user, setUser }) => {
             <div>
                 <p className='font-semibold'>Education</p>
             </div>
-            <div className='flex flex-col gap-4 px-12 py-6 w-full border border-[#00000050] rounded-xl'>
+            <div className='flex flex-col gap-4 px-12 py-6 w-full border border-[#00000050] rounded-xl xsm:p-4'>
                 <div className='flex flex-col gap-4 py-2 w-full'>
                     <div className='grid grid-cols-2 gap-8 w-full'>
                         <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
@@ -84,11 +84,11 @@ const CYPEducation = ({ setActiveDetail, user, setUser }) => {
                 </div>
             </div>
             <div className='flex justify-between items-end w-full'>
-                <div onClick={handlePrev} className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4 cursor-pointer xsm:gap-0'>
+                <div onClick={handlePrev} className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4 cursor-pointer xsm:gap-0 xsm:px-2 xsm:py-1'>
                     <img className='w-7 md:w-6 xsm:w-5' src="../Icons/resumeleftarrow.svg" alt="" />
                     <button className="text-white font-pop font-medium text-[18px] xsm:text-[10px] xsm:py-1 xsm:px-2 md:text-[14px]">Previous</button>
                 </div>
-                <div onClick={handleNext} className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4 cursor-pointer xsm:gap-0'>
+                <div onClick={handleNext} className='bg-[#1DBF73] flex items-center rounded-full px-4 py-2 gap-4 cursor-pointer xsm:gap-0 xsm:px-2 xsm:py-1'>
                     <button className="text-white font-pop font-medium text-[18px] xsm:text-[10px] xsm:py-1 xsm:px-2 md:text-[14px]">Next</button>
                     <img className='w-7 md:w-6 xsm:w-5' src="../Icons/resumerightarrow.svg" alt="" />
                 </div>

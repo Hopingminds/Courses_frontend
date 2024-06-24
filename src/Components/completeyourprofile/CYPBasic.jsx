@@ -27,7 +27,7 @@ const CYPBasic = ({ setActiveDetail, user, setUser }) => {
             <div>
                 <p className='font-semibold'>Basic</p>
             </div>
-            <div className='flex flex-col gap-4 px-12 py-6 w-full border border-[#00000050] rounded-xl '>
+            <div className='flex flex-col gap-4 px-12 py-6 w-full border border-[#00000050] rounded-xl xsm:p-4'>
                 <div className=''>
                     <div className='flex flex-col gap-1 text-[15px] md:text-[12px] xsm:text-[8px]'>
                         <label htmlFor="address" className='font-nu font-semibold '>Address <span className='text-red-500'>*</span></label>
