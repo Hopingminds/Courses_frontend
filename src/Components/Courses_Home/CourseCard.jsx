@@ -54,7 +54,7 @@ const CourseCard = ({
       onMouseEnter={() => toggleHover(ind)}
       onMouseLeave={() => toggleHover(null)}
       href={`/detailcourse/${slug}`}
-      className={`shadow-lg  max-w-sm font-pop rounded-2xl relative h-full 2xl:h-[450px] coursecardhome  bg-white px-3 py-3 xsm:rounded-md xsm:p-1 md:p-[6px] md:w-[95%] xsm:w-[100%] md:rounded-xl sm:p-2  ${
+      className={`shadow-xl  max-w-sm font-pop rounded-2xl relative h-full 2xl:h-[450px] coursecardhome  bg-white px-3 py-3 xsm:rounded-md xsm:p-1 md:p-[6px] md:w-[95%] xsm:w-[100%] md:rounded-xl sm:p-2  ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
       style={{
@@ -100,7 +100,7 @@ const CourseCard = ({
           />
         </div>
       )} */}
-      <div className="h-fit aspect-[16/9] ">
+      <div className="h-fit aspect-[16/10] ">
         {mouseHovered === ind ? (
           <ReactPlayer
             className=" rounded-t-2xl xsm:rounded-md border overflow-hidden"

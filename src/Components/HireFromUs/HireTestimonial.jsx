@@ -109,7 +109,7 @@ const HireTestimonial = () => {
                 <Splide
                     options={{
                         type: "loop",
-                        perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : 4,
+                        perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : (window.innerWidth >= 1025 && window.innerWidth <= 1599) ? 4 : 5,
                         pagination: false,
                         perMove: 1,
                         wheel: false,
@@ -163,7 +163,7 @@ const HireTestimonial = () => {
                 <Splide
                     options={{
                         type: "loop",
-                        perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : 4,
+                        perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : (window.innerWidth >= 1025 && window.innerWidth <= 1599) ? 4 : 5,
                         pagination: false,
                         perMove: 1,
                         wheel: false,
