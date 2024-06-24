@@ -8,13 +8,14 @@
 .afterclick{
     background-color: #1FC074;
     color: white;
+    font-size: 22px;
     /* border-radius: 9999px; */
     transition: all 0.4s ease-in-out;
 }
 .beforeclick{
     background-color: transparent;
-    color: black;
-    
+    color: #333333;
+    font-size: 22px;
     transition: all 0.4s ease-in-out;
 }
 .coursecardhome{
