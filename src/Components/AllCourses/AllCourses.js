@@ -8,7 +8,6 @@ import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
-import NewTestimonial from "../Testimonial/NewTestimonial";
 import Spinner from "../Spinner";
 import ReactPlayer from "react-player";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
@@ -22,7 +21,6 @@ import CourseCard from "../Courses_Home/CourseCard";
 import MinorDegree from "../MinorCourses/minordegree";
 import CountUp from 'react-countup';
 import Skeleton from "../Skeleton/Skeletoncard";
-import VideoSkeleton from "../Skeleton/videoskeleton";
 const AllCourses = () => {
   const [showAllCards, setShowAllCards] = useState(false);
   const [selectedUser, setSelectedUser] = useState(User1);
@@ -130,6 +128,7 @@ const AllCourses = () => {
   };
 
  async function SearchData(e) {
+  
     let query = e.target.value;
     let temp=[]
     if (query == "") {
@@ -137,6 +136,7 @@ const AllCourses = () => {
 
       setAllCourses(Data);
     } else {
+      try {
       const tempdata=await fetch(BASE_URL+'/search?title='+query)
       const response=await tempdata.json();
       
@@ -150,7 +150,9 @@ const AllCourses = () => {
           response?.courses
          );
       }
-      
+    } catch (error) {
+        console.log(error);
+    }
     }
   }
 
@@ -222,7 +224,7 @@ const AllCourses = () => {
               className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
                 }`}
             />
-            <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center" ref={searchResultsRef}>
+            <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center max-h-[30vh] overflow-y-auto pt-2" ref={searchResultsRef}>
               {SearchedData?.map((item, ind) => {
                 // console.log(item.);
                 return (
@@ -303,7 +305,7 @@ const AllCourses = () => {
       )} */}
       <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
-      <div id="CoursesContent" className="my-5 mx-[5%] grid grid-cols-4 gap-8 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] sm:grid-cols-3 sm:gap-4 md:my-[2%] md:gap-3 md:mx-[3%]">
+      <div id="CoursesContent" className="my-5 mx-[5%] grid grid-cols-4 gap-8 xsm:grid-cols-3 lg:grid-cols-3 lg:gap-10 xsm:gap-3 xsm:my-[4%] sm:grid-cols-3 sm:gap-4 md:my-[2%] md:gap-3 md:mx-[3%]">
         {!allCourses?.length && !show ? (
           <div className="flex justify-center  w-full mt-10">
             <div className="text-center font-semibold text-2xl w-full ">
@@ -318,7 +320,7 @@ const AllCourses = () => {
           (show && window.innerWidth <= 480) ? [1, 2, 3, 4, 5, 6].map((item) => {
             return (<Skeleton />)
           }) :
-            show && window.innerWidth > 480 ? [1, 2, 3, 4].map((item) => {
+            show && window.innerWidth > 480 ? [1, 2, 3].map((item) => {
               return (<Skeleton />)
             })
               : allCourses?.map((val, ind) => {

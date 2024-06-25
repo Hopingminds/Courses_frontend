@@ -36,10 +36,10 @@ const HireFromUs = () => {
 
   function handleHover() {
     // console.log("log");
-    if (count == 1) {
+    
       setshowpopup(true);
       // setcount(2)
-    }
+  
   }
 
   const handleChange = (e) => {
@@ -105,6 +105,7 @@ const HireFromUs = () => {
         const response = await data.json();
         if (response.success) {
           toast.success(response.message);
+          handleHover()
           // sethiredata({
           //     "name": "",
           //     "email": "",
@@ -311,22 +312,22 @@ const HireFromUs = () => {
             </div> */}
           </div>
           <div
-            onMouseEnter={handleHover}
+            
             className="w-[30%] self-end xsm:w-full "
           >
             <div className="bg-[#00000033]   rounded-xl  text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
               <div className="flex w-full rounded-t-xl mt-2 space-x-1">
                 <button
-                  className="w-[50%] ml-1 py-2 border-b-[2px] rounded-xl"
+                  className={`w-[50%] ml-1 py-2 border-b-[2px] rounded-xl `}
                   onClick={() => settab(2)}
                 >
-                  Login
+                  Corporate Login
                 </button>
                 <button
                   className="w-[50%] mr-1 py-2 border-b-[2px] rounded-xl"
                   onClick={() => settab(1)}
                 >
-                  Register
+                  Corporate Register
                 </button>
               </div>
               {/* <div className="flex justify-center text-center">
