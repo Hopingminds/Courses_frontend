@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import { ReactComponent as Cart } from "../../Assets/Icons/cartblack.svg";
-import { CiHeart } from "react-icons/ci";
+import { ReactComponent as Fb } from "../../Assets/Icons/details_fb.svg";
+import { ReactComponent as Whatsapp } from "../../Assets/Icons/details_whatsapp.svg";
+import { ReactComponent as Insta } from "../../Assets/Icons/details_insta.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Globalinfo } from "../../App";
 import { BASE_URL } from "../../Api/api";
@@ -12,7 +13,6 @@ import ReactPlayer from "react-player";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import { Tooltip } from "@mui/material";
 import { formatDate } from "../../helpers/helper_function";
-import { div } from "@tensorflow/tfjs";
 
 export default function Commoncard(props) {
   let { Data } = props;
@@ -108,8 +108,8 @@ export default function Commoncard(props) {
   };
   // console.log(Data);
   return (
-    <div className="bg-[#E2FFF1] w-[full] h-max my-14 p-6 rounded-xl flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:mb-8">
-      <div className="max-h-[14rem] h-fit rounded-xl overflow-hidden bg-white md:h-[35%] relative xsm:h-fit xsm:max-h-[6rem]">
+    <div className="bg-[#E2FFF1] w-[full] h-max my-14 p-6 rounded-t-lg flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:mb-8">
+      <div className="max-h-[14rem] h-fit rounded-t-xl overflow-hidden bg-white md:h-[35%] relative xsm:h-fit xsm:max-h-[6rem]">
         {
           <span className="bg-transparent p-4 absolute top-0 left-0 z-[99]">
             {IsMuted ? (
@@ -177,20 +177,21 @@ export default function Commoncard(props) {
           
           </div>
         </div>
-        <h3 className="font-pop font-semibold xsm:text-[8px] md:text-[14px]">
+        <h3 className="font-pop text-[1.35rem] capitalize font-semibold xsm:text-[8px] md:text-[14px]">
           {Data?.title}
         </h3>
 
-        <p className="xsm:text-[8px]">
+        
           {Data?.courseCategory === "liveCourse" && (
             <>
+            <p className="xsm:text-[8px]">
               {"Starting On -" + formatDate(Data?.liveClasses[0]?.date)} at{" "}
               {Data.liveClasses[0]?.time}
+              </p>
             </>
           )}
-        </p>
 
-        <div className="flex flex-col gap-6 my-6 xsm:hidden md:gap-4 md:my-4">
+        <div className="flex flex-col gap-6 my-2 xsm:hidden md:gap-4 md:my-4">
           <div className="space-y-4 md:space-y-2">
             <p className="font-pop font-semibold md:text-[14px]">
               This Course Includes
@@ -230,7 +231,7 @@ export default function Commoncard(props) {
             <p className="font-pop font-semibold md:text-[14px]">
               Share this course
             </p>
-            <div className="flex space-x-4 ">
+            <div className="flex space-x-4 h-max w-full">
               <RWebShare
                 data={{
                   text: "Hoping Minds",
@@ -239,7 +240,36 @@ export default function Commoncard(props) {
                 }}
                 onClick={() => console.log("shared successfully!")}
               >
-                <IoIosShareAlt className="h-6 w-6 cursor-pointer md:h-4 " />
+                <Fb className="h-6 w-6 cursor-pointer md:h-4 " />
+                {/* <Insta className="h-6 w-6 cursor-pointer md:h-4 " /> */}
+                {/* <Whatsapp className="h-6 w-6 cursor-pointer md:h-4 " /> */}
+              
+              </RWebShare>
+              <RWebShare
+                data={{
+                  text: "Hoping Minds",
+                  url: "https://hopingminds.in" + pathname,
+                  title: "Hoping Minds",
+                }}
+                onClick={() => console.log("shared successfully!")}
+              >
+                {/* <Fb className="h-6 w-6 cursor-pointer md:h-4 " /> */}
+                <Insta className="h-6 w-6 cursor-pointer md:h-4 " />
+                {/* <Whatsapp className="h-6 w-6 cursor-pointer md:h-4 " /> */}
+              
+              </RWebShare>
+              <RWebShare
+                data={{
+                  text: "Hoping Minds",
+                  url: "https://hopingminds.in" + pathname,
+                  title: "Hoping Minds",
+                }}
+                onClick={() => console.log("shared successfully!")}
+              >
+                {/* <Fb className="h-6 w-6 cursor-pointer md:h-4 " /> */}
+                {/* <Insta className="h-6 w-6 cursor-pointer md:h-4 " /> */}
+                <Whatsapp className="h-6 w-fit cursor-pointer md:h-4 " />
+              
               </RWebShare>
               {/* <Link to={'https://www.facebook.com/share/Z3c1iwpnxsDk3YJH/?mibextid=qi2Omg'}><img className="w-[12px]" src="../Icons/facebook.svg" /></Link> */}
               {/* <Link to={'https://www.instagram.com/hopingminds_?igsh=MWxvN2F5YmM0aW1lYQ=='}><img className="w-[20px]" src="../Icons/instagram.svg" /></Link> */}
