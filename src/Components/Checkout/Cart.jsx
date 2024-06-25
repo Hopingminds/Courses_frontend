@@ -115,12 +115,8 @@ const CartCheckout = () => {
         state: state.label,
         address,
       };
-      // console.log(userDetail);
-      // console.log(orderDetails);
-
-      // console.log(courseId);
+     
       setcourseId(temp);
-      // console.log(temp);
       let data = await fetch(url, {
         method: "PUT",
         headers: {
@@ -143,7 +139,7 @@ const CartCheckout = () => {
             },
             body: JSON.stringify({ email: userDetail.email }),
           });
-          let response1 = await data1.json();
+          // let response1 = await data1.json();
         }
         // toast.success(response.message);
         setshow(false);
@@ -169,49 +165,50 @@ const CartCheckout = () => {
     }
   };
 
-  const loadRazorpay = () => {
-    if (!country) {
-      toast.error("Select country");
-    } else if (!state) {
-      toast.error("Select state");
-    } else if (!address || !zip) {
-      toast.error("Every input must be filled");
-    } else {
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      script.async = true;
-      document.body.appendChild(script);
-      script.onload = () => {
-        const options = {
-          // key: 'rzp_test_ovrL1ExhTWhDv2',
-          key: "rzp_test_jmLsdK6FoWIRSe",
-          amount: total * 100, // Amount in paisa
-          currency: "INR",
-          name: "Hoping minds",
-          description: "Product description",
-          image: "",
-          height: "90vh",
-          handler: function (response) {
-            handleContinueCheckout();
-            // router.push('/profile?tab=booking-history')
-            // Handle success
-            // alert(response.razorpay_payment_id);
-          },
-          prefill: {
-            name: "Customer Name",
-            email: "customer@example.com",
-            contact: "8283929792",
-          },
-          theme: {
-            color: "#3399cc",
-          },
-        };
-        const rzp = new window.Razorpay(options);
-        rzp.open();
-      };
-    }
-  };
+  // const loadRazorpay = () => {
+  //   if (!country) {
+  //     toast.error("Select country");
+  //   } else if (!state) {
+  //     toast.error("Select state");
+  //   } else if (!address || !zip) {
+  //     toast.error("Every input must be filled");
+  //   } else {
+  //     const script = document.createElement("script");
+  //     script.src = "https://checkout.razorpay.com/v1/checkout.js";
+  //     script.async = true;
+  //     document.body.appendChild(script);
+  //     script.onload = () => {
+  //       const options = {
+  //         // key: 'rzp_test_ovrL1ExhTWhDv2',
+  //         key: "rzp_test_jmLsdK6FoWIRSe",
+  //         amount: total * 100, // Amount in paisa
+  //         currency: "INR",
+  //         name: "Hoping minds",
+  //         description: "Product description",
+  //         image: "",
+  //         height: "90vh",
+  //         handler: function (response) {
+  //           handleContinueCheckout();
+  //           // router.push('/profile?tab=booking-history')
+  //           // Handle success
+  //           // alert(response.razorpay_payment_id);
+  //         },
+  //         prefill: {
+  //           name: "Customer Name",
+  //           email: "customer@example.com",
+  //           contact: "8283929792",
+  //         },
+  //         theme: {
+  //           color: "#3399cc",
+  //         },
+  //       };
+  //       const rzp = new window.Razorpay(options);
+  //       rzp.open();
+  //     };
+  //   }
+  // };
 
+  console.log(total)
   const handlePayment = async () => {
     if (!country) {
       toast.error("Select country");
@@ -219,14 +216,22 @@ const CartCheckout = () => {
       toast.error("Select state");
     } else if (!address || !zip) {
       toast.error("Every input must be filled");
-    }else{
-    handleGenerateUrl().then((res) => {
-      // console.log(res);
-      if (res) {
+    } else {
+      
+      if (total === 0) {
         handleContinueCheckout();
-        window.location.href = res;
+        navigate('/success')
       }
-    });
+      else {
+        
+        handleGenerateUrl().then((res) => {
+          // console.log(res);
+          if (res) {
+            handleContinueCheckout();
+            window.location.href = res;
+          }
+        });
+      }
   }
   };
 
