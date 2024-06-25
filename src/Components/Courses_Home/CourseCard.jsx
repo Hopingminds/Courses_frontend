@@ -133,7 +133,7 @@ const CourseCard = ({
           <div className="flex justify-between items-center min-h-[30%] sm:min-h-[20%] md:min-h-0">
             <div className="flex items-center space-x-3 max-w-[80%] xsm:max-w-[70%] xsm:space-x-1 sm:space-x-1 md:space-x-2 md:max-w-[70%]">
               {/* <FaUserCircle  className="text-2xl  xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"/> */}
-              <img
+              <img alt=""
                 className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] sm:w-5 sm:h-5 md:h-4 md:w-4 rounded-full"
                 src={profile}
               />
@@ -143,7 +143,7 @@ const CourseCard = ({
             </div>
             <div>
               <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[6px] sm:text-[10px] md:text-[10px]">
-                ₹ {price}
+               {price==0 ? "Free" : "₹" + price}
               </p>
             </div>
           </div>

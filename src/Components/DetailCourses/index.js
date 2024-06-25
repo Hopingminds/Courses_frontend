@@ -280,43 +280,7 @@ export default function DetailCourses() {
             </h1>
             <Instructor />
           </div>
-          {/* <div className="flex flex-col gap-8">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
-              Curriculum
-            </h1>
-            <Curriculum />
-          </div> */}
-          {/* <div className="flex flex-col gap-6">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
-              Learning outcome
-            </h1>
-            <ul className="list-inside leading-7 tracking-wide pl-2 font-nu text-[#555555]">
-              {Data?.learningOutcome?.map((item, key) => (
-                <li key={key}>{item}</li>
-              ))}
-              <li>Tools and Technologies in Full Stack Development</li>
-                <li>Setting Up the Development Environment</li>
-                <li>Installing Necessary Software and Tools</li>
-                <li>Introduction to Version Control with Git and GitHub</li>
-            </ul>
-          </div> */}
-          {/* <div className="flex flex-col gap-6">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]">
-              Average Packages
-            </h1>
-            <ul className="list-inside leading-7 tracking-wide pl-2 font-nu text-[#555555]">
-              {Data?.companies?.map((company, key) => (
-                <>
-                  <li>{company.companyName}</li>
-                  <li>{company.avgpkg.from} - {company.avgpkg.to}</li>
-                </>
-              ))}
-              <li>Tools and Technologies in Full Stack Development</li>
-                <li>Setting Up the Development Environment</li>
-                <li>Installing Necessary Software and Tools</li>
-                <li>Introduction to Version Control with Git and GitHub</li>
-            </ul>
-          </div> */}
+         
 
           <div className="flex flex-col gap-8 justify-center items-center xsm:gap-4">
             <h1 className="w-full text-left font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
@@ -330,7 +294,7 @@ export default function DetailCourses() {
             </div>
           </div> 
 
-         <PackageCarousel/>
+          <PackageCarousel data={Data?.companies} />
 
        { faqs?.length &&  <div className="flex flex-col gap-8 xsm:gap-4">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
@@ -376,25 +340,17 @@ export default function DetailCourses() {
         </div>
         <span className="w-[33%] h-fit -translate-y-[20rem] xsm:-translate-y-[6rem] ">
           <Commoncard Data={Data} />
-          <div className="sticky top-[10vh]">
-          <div className="bg-[#E2FFF1] my-4 p-6 rounded-xl flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:text-[10px]">
-            <h2 className="text-2xl font-bold mb-4 xsm:text-[12px] xsm:leading-4">Average Packages</h2>
-            <div className="flex flex-col gap-3">
-            {
-              Data?.companies?.map((val, ind) => {
-                return (
-                  <div>
-                    <h3 className="font-semibold text-lg">{val?.companyName}</h3>
-                    <p className=" text-sm">Average Package {` ${val?.avgpkg?.from} LPA - ${val?.avgpkg?.to} LPA`}</p>
-                  </div>
-                )
-              })
-              }
-            </div>
-            </div>
+          <div className="sticky top-[10vh] flex flex-col gap-[2rem]">
+         
           <div>
             <img src="/Icons/certificate_Course.svg" alt="" />
             </div>
+            {/* <div className="p-[15px] border border-black rounded-[16px] flex flex-col gap-4 items-center">
+              <h3 className="text-black text-[1.3rem] text-center font-semibold">
+                Create your professional <span className="text-[#1DBF73]">Resume</span>  with our designs
+              </h3>
+              <button className="bg-[#1DBF73] rounded-lg px-3 py-1 text-white font-semibold">Create Your Resume</button>
+            </div> */}
           </div>
 
         </span>

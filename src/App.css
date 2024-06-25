@@ -62,3 +62,32 @@
   background-size: contain !important;
   background-repeat: no-repeat !important;
 }
+#carousel__arr{
+  position: relative;
+}
+
+#carousel__arr .splide__arrow.splide__arrow--prev {
+  background-color: rgba(29, 191, 115,0.5);
+  color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  position: absolute;
+  left: -1vw;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--body);
+}
+
+
+#carousel__arr .splide__arrow.splide__arrow--next {
+  background-color: rgba(29, 191, 115,0.5);
+  color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  position: absolute;
+  right: -1vw;
+  top: 50%;
+  transform: translateY(-50%);
+}
