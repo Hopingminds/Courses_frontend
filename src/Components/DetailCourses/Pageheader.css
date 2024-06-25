@@ -204,11 +204,14 @@
 .vt-onhover-overlay {
   left: 0;
   right: 0;
-  opacity: 0;
+  opacity: 1;
   transition: all 0.5s ease;
+  z-index: -1;
+  
 }
 
 .vt-card:hover .vt-onhover-overlay {
   top: 0;
   opacity: 1;
+  z-index: 9998;
 }

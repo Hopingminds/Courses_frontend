@@ -141,7 +141,7 @@ export default function DetailCourses() {
         >
           <div className="CCDetails-Header-content-leftqw xsm:text-[10px]">
             <div className="CCDetails-Header-content-row1qw xsm:text-[10px] xsm:w-[80%]">
-              <h2 className="font-pop  xsm:text-[10px] capitalize">{Data?.title}</h2>
+              <h2 className="font-pop text-[1.5rem] xsm:text-[10px] capitalize">{Data?.title}</h2>
               <p className="line-clamp-2	text-white">{Data?.overview }</p>
             </div>
             <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-1">
@@ -253,15 +253,16 @@ export default function DetailCourses() {
 
       <div className="flex justify-between px-[8%] py-6">
         <div className="w-[58%] flex flex-col gap-16 xsm:gap-10">
-          <div className="flex flex-col gap-6 capitalize xsm:gap-4">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
+          <div className="flex flex-col p-[1rem_2rem] gap-4 capitalize xsm:gap-4 shadow-[0px_4px_11px_0px_#0000001C]
+">
+            <h1 className="font-pop font-semibold text-[19px] text-[#0F2027] xsm:text-[14px]">
               Skills You Will Learn
             </h1>
             <div className="flex flex-col gap-4 font-nu text-[#555555]">
 
               <ul className="list-inside leading-7 tracking-wide pl-2 grid grid-cols-2 gap-4  p-5 shadow-[0_4px_11px_0px_rgb(0, 0, 0))] xsm:pl-0 xsm:gap-2 xsm:text-[10px] xsm:p-2 xsm:leading-none xsm:tracking-tighter" >
                 {Data?.whatWillILearn.map((item, index) => (
-                  <li key={index} className="flex gap-2 xsm:gap-1"> <img src="/Icons/shield.svg" className="h-[28px] w-auto xsm:h-[18px]" alt="" /> {item}</li>
+                  <li key={index} className="flex gap-2 xsm:gap-1"> <img src="/Icons/shield.svg" className="h-[22px] w-auto xsm:h-[18px]" alt="" /> {item}</li>
                 ))}
               </ul>
             </div>
@@ -331,15 +332,15 @@ export default function DetailCourses() {
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               FAQs
             </h1>
-            <div className=" w-[95%] bg-[#E2FFF1] rounded-md px-6 py-6 flex flex-col gap-6 font-nu xsm:w-[100%] xsm:p-2 xsm:gap-3">
+            <div className=" w-[95%]  rounded-md px-0 py-6 flex flex-col gap-6 font-nu xsm:w-[100%] xsm:p-2 xsm:gap-3">
               {faqs.map((item, index) => (
                 <div key={index} className="faq1 w-full  bg-white rounded-md">
                   <div className=" w-full ">
                     <div
                       onClick={() => ClickSection(index)}
-                      className="drop-top  flex justify-between items-center w-full py-3 px-6 cursor-pointe cursor-pointer xsm:px-4 xsm:py-2"
+                      className="drop-top  flex justify-between items-center w-full py-3 px-2 cursor-pointe cursor-pointer xsm:px-4 xsm:py-2"
                     >
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 relative pl-5 before:content-['\2022'] before:absolute before:left-0 before:text-black">
                         <p className={`xsm:text-[8px] font-semibold md:text-[14px] ${item.isOpen && 'text-[#1DBF73]'}`}>
                           {item.question}
                         </p>
@@ -369,8 +370,9 @@ export default function DetailCourses() {
             <VideoTesttimonial data={Data?.testimonials} />
           </div>
         </div>
-        <span className="w-[33%] h-fit  -translate-y-[20rem] xsm:-translate-y-[6rem]">
+        <span className="w-[33%] h-fit -translate-y-[20rem] xsm:-translate-y-[6rem] ">
           <Commoncard Data={Data} />
+          <div className="sticky top-[10vh]">
           <div className="bg-[#E2FFF1] my-4 p-6 rounded-xl flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:text-[10px]">
             <h2 className="text-2xl font-bold mb-4 xsm:text-[12px] xsm:leading-4">Average Packages</h2>
             <div className="flex flex-col gap-3">
@@ -379,16 +381,16 @@ export default function DetailCourses() {
                 return (
                   <div>
                     <h3 className="font-semibold text-lg">{val?.companyName}</h3>
-                    <p>Average Package {` ${val?.avgpkg?.from} LPA - ${val?.avgpkg?.to} LPA`}</p>
+                    <p className=" text-sm">Average Package {` ${val?.avgpkg?.from} LPA - ${val?.avgpkg?.to} LPA`}</p>
                   </div>
                 )
               })
               }
             </div>
             </div>
-          
           <div>
             <img src="/Icons/certificate_Course.svg" alt="" />
+            </div>
           </div>
 
         </span>
