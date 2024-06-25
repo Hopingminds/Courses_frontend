@@ -224,7 +224,7 @@ const AllCourses = () => {
               className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
                 }`}
             />
-            <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center max-h-[30vh] overflow-y-auto pt-2" ref={searchResultsRef}>
+           {SearchedData?.length ? <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center max-h-[30vh] overflow-y-auto pt-2" ref={searchResultsRef}>
               {SearchedData?.map((item, ind) => {
                 // console.log(item.);
                 return (
@@ -239,7 +239,7 @@ const AllCourses = () => {
                   </>
                 );
               })}
-            </div>
+            </div> : ''}
           </div>
           <button className="text-[#ffffff] text-[22px] flex flex-row gap-2 justify-center items-center font-pop bg-[#1DBF73] rounded-md py-1 px-4 xsm:rounded-r-md xsm:text-[10px] xsm:py-0 xsm:px-2 md:text-[14px] md:rounded-r-lg">
             <span> <img src={Search} className="w-12 h-8 md:w-10 md:h-6 xsm:w-6 xsm:h-2" /> </span>Search

@@ -101,23 +101,46 @@ import Square from "../../Assests/Images/home-square.png";
 import { Link } from "react-router-dom";
 export default function Herosection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  let Img1 =
-    "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442041699-stu1.jpg";
-  let Img2 =
-    "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442058362-stu2.jpg";
-  let Img3 =
-    "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442067452-stu3.jpg";
-  let Img4 =
-    "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442077323-stu4.jpg";
-  let Img5 =
-    "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442130415-stu5.jpg";
-  let Img6 =
-    "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442141861-stu6.jpg";
-  const images = [Img1, Img2, Img3, Img4, Img5, Img6];
+  // let Img1 =
+  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442041699-stu1.jpg";
+  // let Img2 =
+  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442058362-stu2.jpg";
+  // let Img3 =
+  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442067452-stu3.jpg";
+  // let Img4 =
+  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442077323-stu4.jpg";
+  // let Img5 =
+  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442130415-stu5.jpg";
+  // let Img6 =
+  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442141861-stu6.jpg";
+  let Img1='/instructors/1p.webp'
+  let Img2='/instructors/2p.webp'
+  let Img3='/instructors/3p.webp'
+  let Img4='/instructors/4p.webp'
+  let Img5='/instructors/5p.webp'
+  let Img6='/instructors/6p.webp'
+  let Img7='/instructors/7p.webp'
+  let Img8='/instructors/8p.webp'
+  let Img9='/instructors/9p.webp'
+  let Img10='/instructors/10p.webp'
+  let Img11='/instructors/11p.webp'
+  let Img12='/instructors/12p.webp'
+  let Img13='/instructors/13p.webp'
+  let Img14='/instructors/14p.webp'
+  let Img15='/instructors/15p.webp'
+  let Img16='/instructors/16p.webp'
+  let Img17='/instructors/17p.webp'
+  let Img18='/instructors/18p.webp'
+  const images1 = [Img1, Img2, Img3];
+  const images2 = [Img4, Img5, Img6];
+  const images3 = [Img7, Img8, Img9];
+  const images4 = [Img10, Img11, Img12];
+  const images5 = [Img13, Img14, Img15];
+  const images6 = [Img16, Img17, Img18];
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 6);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 3);
     }, 3000);
 
     return () => clearInterval(intervalId);
@@ -207,26 +230,56 @@ export default function Herosection() {
             />
           </div>
 
-          <div className="flex flex-row gap-8 lg:gap-5 md:gap-3 xsm:gap-2 sm:gap-3">
-            <div className="flex flex-col gap-5 items-end lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:hidden">
-              <div className="h-80 w-72 rounded-t-[4rem] rounded-br-[4rem] rounded-bl-[12rem] overflow-hidden scale-in-center md:h-40 md:w-32 xsm:h-20 xsm:w-16 sm:h-24 sm:w-20 lg:h-48 lg:w-40">
+          <div className="flex flex-row gap-8 lg:gap-5 md:gap-3 xsm:gap-2 sm:gap-3  ">
+            <div className="flex flex-col gap-5 items-end lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:hidden ">
+              <div className="h-52 w-44">
                 <img
-                  src={images[currentImageIndex]}
-                  className="h-80 w-72 object-cover object-center md:h-40 md:w-32 xsm:h-20 xsm:w-16 lg:h-48 lg:w-40 sm:h-24 sm:w-20"
+                  src={images6[currentImageIndex]}
+                  className="h-full w-full"
                 />
               </div>
-              <div className="h-40 w-40 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center lg:h-28 lg:w-28 md:h-20 md:w-20 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-12 xsm:w-12 sm:h-16 sm:w-16 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
+              <div className="h-36 w-28">
                 <img
-                  src={images[(currentImageIndex + 1) % 6]}
-                  className="h-40 w-40 object-cover object-center md:h-20 md:w-20 xsm:h-12 xsm:w-12 lg:h-28 lg:w-28 sm:h-16 sm:w-16"
+                  src={images2[currentImageIndex]}
+                  className="f-full w-full"
                 />
               </div>
             </div>
-            <div className="flex flex-col gap-5 lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:hidden">
-              <div className="h-40 w-40 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center sm:h-16 sm:w-16 lg:h-28 lg:w-28 md:h-20 md:w-20 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-12 xsm:w-12 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
+            <div className="flex flex-col  gap-1 items-end lg:gap-1 md:gap-2 sm:gap-2 xsm:gap-2 xsm:hidden ">
+            <div className="h-32 w-28">
+                <img
+                  src={images3[currentImageIndex]}
+                  className=" "
+                />
+              </div>
+              <div className=" ">
+                <img
+                  src={images1[currentImageIndex]}
+                  className="h-full w-full"
+                />
+              </div>
+           
+            </div>
+            <div className="flex flex-col gap-5 items-end lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:hidden ">
+            <div className="  ">
+                <img
+                  src={images5[currentImageIndex]}
+                  className=" "
+                />
+              </div>
+              <div className="h-32 w-28">
+                <img
+                  src={images4[currentImageIndex]}
+                  className=""
+                />
+              </div>
+           
+            </div>
+            {/* <div className="flex flex-col gap-5 lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:hidden">
+              <div className=" rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center sm:h-16 sm:w-16 lg:h-28 lg:w-28 md:h-20 md:w-20 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-12 xsm:w-12 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
                 <img
                   src={images[(currentImageIndex + 2) % 6]}
-                  className="h-40 w-40 object-cover object-center md:h-20 md:w-20 xsm:h-12 xsm:w-12 lg:h-28 lg:w-28 sm:h-16 sm:w-16"
+                  className=" object-cover object-center md:h-20 md:w-20 xsm:h-12 xsm:w-12 lg:h-28 lg:w-28 sm:h-16 sm:w-16"
                 />
               </div>
               <div className="rounded-[4rem] h-80 w-40 overflow-hidden scale-in-center sm:h-28 sm:w-16 lg:h-48 lg:w-28 md:h-40 md:w-20 md:rounded-[2.3rem] xsm:h-24 xsm:w-12 xsm:rounded-[1.3rem]">
@@ -237,10 +290,10 @@ export default function Herosection() {
               </div>
             </div>
             <div className="flex flex-col-reverse gap-5 lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2">
-              <div className="h-40 w-40 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center sm:h-16 sm:w-16 lg:h-28 lg:w-28 md:h-20 md:w-20 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-16 xsm:w-16 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
+              <div className=" rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center sm:h-16 sm:w-16 lg:h-28 lg:w-28 md:h-20 md:w-20 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-16 xsm:w-16 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
                 <img
                   src={images[(currentImageIndex + 4) % 6]}
-                  className="h-40 w-40 object-cover object-center md:h-20 md:w-20 xsm:h-16 xsm:w-16 lg:h-28 lg:w-28 sm:h-16 sm:w-16"
+                  className=" object-cover object-center md:h-20 md:w-20 xsm:h-16 xsm:w-16 lg:h-28 lg:w-28 sm:h-16 sm:w-16"
                 />
               </div>
               <div className="rounded-[4rem] h-80 w-40 overflow-hidden scale-in-center sm:h-28 sm:w-16 lg:h-48 lg:w-28 md:h-40 md:w-20 md:rounded-[2.3rem] xsm:h-28 xsm:w-16 xsm:rounded-[1.3rem]">
@@ -249,7 +302,7 @@ export default function Herosection() {
                   className="h-80 w-40 object-cover object-center md:h-40 md:w-20 xsm:h-28 xsm:w-16 lg:h-48 lg:w-28 sm:h-28 sm:w-16"
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
