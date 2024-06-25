@@ -14,6 +14,7 @@ import { Globalinfo } from "../../App";
 import { jwtDecode } from "jwt-decode";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import PackageCarousel from "./packageCarousel";
 
 export default function DetailCourses() {
   const param = useParams();
@@ -139,9 +140,9 @@ export default function DetailCourses() {
             backgroundPosition: "center",
           }}
         >
-          <div className="CCDetails-Header-content-leftqw xsm:text-[10px]">
+          <div className="CCDetails-Header-content-leftqw  xsm:text-[10px] pb-2">
             <div className="CCDetails-Header-content-row1qw xsm:text-[10px] xsm:w-[80%]">
-              <h2 className="font-pop text-[1.5rem] xsm:text-[10px] capitalize">{Data?.title}</h2>
+              <h2 className="font-pop text-[1.2rem] xsm:text-[10px] capitalize">{Data?.title}</h2>
               <p className="line-clamp-2	text-white">{Data?.overview }</p>
             </div>
             <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-1">
@@ -328,7 +329,10 @@ export default function DetailCourses() {
               <img src='/Icons/dream11.svg' className="w-36" alt="dream11" />
             </div>
           </div> 
-       { faqs.length &&  <div className="flex flex-col gap-8 xsm:gap-4">
+
+         <PackageCarousel/>
+
+       { faqs?.length &&  <div className="flex flex-col gap-8 xsm:gap-4">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               FAQs
             </h1>
@@ -354,7 +358,7 @@ export default function DetailCourses() {
                         />
                       </div>
                     </div>
-                    {item.isOpen && (
+                    {item?.isOpen && (
                       <div className="px-6 py-4 xsm:px-4 xsm:py-3">
                         <p className="xsm:text-[8px] text-[#555555] md:text-[14px]">
                           {item.answer}
@@ -366,7 +370,7 @@ export default function DetailCourses() {
               ))}
             </div>
           </div>}
-          {Data?.testimonials.length && <div className="flex flex-col gap-8">
+          {Data?.testimonials?.length && <div className="flex flex-col gap-8">
             <VideoTesttimonial data={Data?.testimonials} />
           </div>}
         </div>

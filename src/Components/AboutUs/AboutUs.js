@@ -23,29 +23,27 @@ const AboutUs = () => {
               <span className="text-[#1DBF73] "> Hoping Minds </span> providing
               the best opportunities to the students around the glob.
             </p>
-            <p className="text-[#1E1E1E] text-[20px]  leading-[24px] text-justify xsm:text-[15px] font-pop">
-              Hoping Minds, is a E Learning platform involved in User Experience
-              and User Interface Training and Consulting. It was started in 2023
-              and passionate towards User Interface Design/ User Experience
-              Design, Human Computer Interaction Design. Humanoid is gushing
-              towards competence to acquire knowledge and have a wide
-              understanding towards the sphere through the foremost courses in
-              the area of UI/UX Design, by strengthening up your skills, for
-              your golden future . Humanoid is gushing towards competence to
-              acquire knowledge and have a wide understanding towards the sphere
-              through the foremost courses in the area of UI/UX Design, by
-              strengthening up your skills, for your golden future
+            <p className="text-[#1E1E1E] text-[17px]  leading-[24px] text-justify xsm:text-[15px] font-pop">
+              HopingMinds is working to transform India’s educational system into an outcome-oriented system by
+              helping students identify, train for and get placed in growing career paths.
+              We run industry-oriented, holistic development programs based on real time industry requirements
+              of our partner firms to maximise placement outcomes and enable our students to build aspirational
+              careers. We have successfully run 30+ training programs PAN India covering over 10,000 students and
+              are backed by established investors from India, UK and USA.
+              HopingMinds has been established by driven young entrepreneurs with prestigious IIT and IIM
+              backgrounds along with combined sectoral experience of 30 years in the counselling, training, and
+              placement ecosystem.
             </p>
           </div>
           <div className="flex justify-center items-center w-[40%] relative xsm:hidden">
             <div className="bg-[#E2FFF1] text-[#E2FFF1] rounded-xl w-[68%] h-[80%]">
               .
             </div>
-            <img
+            <img alt=""
               src={Img1}
               className="absolute top-3 right-20 rounded-xl object-contain w-[55%]"
             />
-            <img
+            <img alt=""
               src={Img2}
               className="absolute bottom-3 left-20 rounded-xl object-contain w-[55%]"
             />
@@ -54,7 +52,7 @@ const AboutUs = () => {
       </div>
       <div className="flex flex-row gap-36 px-24 py-10 xsm:px-4 xsm:gap-0 xsm:py-2">
         <div className="flex w-[35%]  justify-center items-center xsm:hidden">
-          <img src={Img3} className=" w-[88%] h-[60%] " />
+          <img src={Img3} alt="" className=" w-[88%] h-[60%] " />
         </div>
         <div className="flex flex-col gap-3 w-[45%] py-6 pb-36 xsm:w-[100%] xsm:pb-0 xsm:mx-auto">
           <p className="text-[#22B286] text-[32px] font-poppins font-bold xsm:text-center xsm:text-[26px]">
@@ -65,61 +63,66 @@ const AboutUs = () => {
               We are always working to provide you best of the features in all
               aspects.
             </p>
-            <div className="flex flex-col gap-4 text-[#1E1E1E] text-[20px]  leading-[24px] xsm:text-[15px] font-pop">
+            <div className="flex flex-col gap-4 text-[#1E1E1E] text-[17px]  leading-[24px] xsm:text-[15px] font-pop">
               <p>
-                Hoping Minds the chief determination is to clear the minds of
-                our students about their goals, while making them consistent in
-                their ambitions and pushing them to be confident for their
-                journey towards the course of time.
+                HopingMinds is an NSDC and Swayam Plus accredited partner with course certification and
+                monitoring done on the Skill India Portal. We have been awarded by the Dynamic World Education
+                Community and are an active participant in Kaushal Melas across India.
               </p>
               <p>
-                You will find every little thing on the internet in just a click
-                of hand, but here we admire that without knowledge and practice
-                the internet may even also fail you in your life.
+                We have the capability to run specialised programs based on opportunities such as our recent
+                program for Oil & Gas field engineers in Jorhat, Assam; Electrical vehicles Design & Repair for JBM;
+                ongoing program for Electric Vehicle Systems, Design and SMR with Okaya; AI programs with
+                NetSmartz, ITBD, TCS, Chandigarh Group of Colleges, Chitkara University, PTU, HPTU and many more.
               </p>
             </div>
           </div>
-          {/* <button className="text-[#FFFFFF] text-[20px] font-Nunito Sans bg-[#1DBF73] rounded-full flex flex-row gap-2 items-center justify-center px-2 w-auto py-2 mt-4">
-            Learn More{" "}
-            <span>
-              {" "}
-              <img src={Arrow} />{" "}
-            </span>{" "}
-          </button> */}
+        
         </div>
       </div>
       <div className="flex flex-col justify-center items-center gap-6 py-16 pb-40 xsm:pb-2 ">
         <p className="text-[#1DBF73] text-[32px] font-poppins font-semibold xsm:text-center xsm:text-[26px]">Our Benefits</p>
         <p className="text-[#141414] text-[40px] font-poppins font-semibold w-[45%] flex text-center xsm:text-[22px] xsm:w-full xsm:leading-normal xsm:text-center ">By Joining Hoping Minds Platform, One Can Avail a Lot Of Benefits.</p>
-        <p className="text-[#1E1E1E] text-[24px] font-Nunito Sans w-[38%] text-center xsm:w-full xsm:text-[15px] font-pop">Install our top-rated dropshipping app to your e-commerce site and get access to US Suppliers, AliExpress vendors, and the best.</p>
+        <p className="text-[#1E1E1E] text-[18px] font-Nunito Sans w-[78%] text-center xsm:w-full xsm:text-[15px] font-pop">HopingMinds’ learning experience has been developed in consultation with learners to build a highly
+          engaging & gamified program whilst allowing for flexibility by leveraging a load of digital initiatives.
+          We have our own Learning Management System, mobile application, testing solution and interview
+          platform to ensure quality delivery and assessments. The firm believes in smaller batches to ensure
+          individual attention to all learners, thus prioritizing quality of development over quantity of students.
+          Exposure to industry experts is another critical component of our learning experience to ensure high
+          motivation, real time insights, industry exposure & enable students to apply concepts effectively</p>
+        <p className="text-[#1E1E1E] text-[18px] font-Nunito Sans w-[78%] text-center xsm:w-full xsm:text-[15px] font-pop">
+          We have 200+ industry partners across India and abroad that we work closely with for placements.
+          Our dedicated placement coordinators work day in and day out to identify requirements from these
+          partners and also help tailor our programs on an agile basis to meet them.
+        </p>
         <div className="grid grid-cols-3 gap-6 w-[80%] pt-6 xsm:flex xsm:flex-col xsm:w-full xsm:px-4">
           <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6 xsm:w-full">
-            <img src={Num1} className="w-[15%]" />
+            <img src={Num1} alt="" className="w-[15%]" />
             <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Standardization</p>
             <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">When working in a global workplace, it’s often difficult to gauge learners’ training experiences, which are ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
           </div>
           <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
-            <img src={Num2} className="w-[15%]" />
+            <img src={Num2} alt="" className="w-[15%]" />
             <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Reduced Costs</p>
             <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">With hoping minds, there’s no cost to reproduce materials and, thanks to mobile learning and microlearning ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
           </div>
           <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6">
-            <img src={Num3} className="w-[15%]" />
+            <img src={Num3} alt="" className="w-[15%]" />
             <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">More Customization</p>
             <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">Just like learners aren’t one-size-fits-all, learning is not a one-size-fits-all experience. By using different ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
           </div>
           <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
-            <img src={Num4} className="w-[15%]" />
+            <img src={Num4} alt="" className="w-[15%]" />
             <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Affordable Pricing</p>
             <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">With hoping minds, there’s no cost to reproduce materials and, thanks to mobile learning and microlearning ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
           </div>
           <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6">
-            <img src={Num5} className="w-[15%]" />
+            <img src={Num5} alt="" className="w-[15%]" />
             <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Learner Satisfaction</p>
             <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">If you really want students to retain what they learn, you’ll need to aim for high satisfaction rates. Bad ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
           </div>
           <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
-            <img src={Num6} className="w-[15%]" />
+            <img src={Num6} alt="" className="w-[15%]" />
             <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Multimedia Materials</p>
             <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">One of the main reasons why custom eLearning is effective is that it’s the perfect delivery method for ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
           </div>
