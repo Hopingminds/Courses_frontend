@@ -128,7 +128,7 @@ const HireFromUs = () => {
   return (
     <>
       <Toaster position="top-center" />
-      {showpopup && count == 1 ? (
+      {showpopup && count === 1 ? (
         <div
           onClick={handleClose}
           className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center"
@@ -137,6 +137,7 @@ const HireFromUs = () => {
             <div className="flex justify-end">
               <button onClick={handleClose}>
                 <img
+                  alt="hirecard"
                   src={Close}
                   className="w-8 h-8 md:w-6 md:h-6 xsm:w-4 xsm:h-4"
                 />
@@ -151,9 +152,6 @@ const HireFromUs = () => {
                 up-to-date, maintaining our high standards of accuracy.
               </p>
             </div>
-            {/* <Link to='/profile' className='flex justify-center'>
-                        <button className='font-pop font-semibold text-[16px] text-white bg-[#1DBF73] rounded-lg p-4'>Complete Now</button>
-                    </Link> */}
           </div>
         </div>
       ) : (
@@ -311,20 +309,21 @@ const HireFromUs = () => {
               </div>
             </div> */}
           </div>
-          <div
-            
-            className="w-[30%] self-end xsm:w-full "
-          >
-            <div className="bg-[#00000033]   rounded-xl  text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
+          <div className="w-[30%] self-end xsm:w-full ">
+            <div className="bg-[#00000033] rounded-xl  text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
               <div className="flex w-full rounded-t-xl mt-2 space-x-1">
                 <button
-                  className={`w-[50%] ml-1 py-2 border-b-[2px] rounded-xl `}
+                  className={`w-[50%] ml-1 py-2  rounded-xl ${
+                    tab === 2 ? "border-b-[2px]" : "border-b-[1px]"
+                  } `}
                   onClick={() => settab(2)}
                 >
                   Corporate Login
                 </button>
                 <button
-                  className="w-[50%] mr-1 py-2 border-b-[2px] rounded-xl"
+                  className={`w-[50%] mr-1 py-2  rounded-xl ${
+                    tab === 1 ? "border-b-[2px]" : "border-b-[1px]"
+                  }`}
                   onClick={() => settab(1)}
                 >
                   Corporate Register
@@ -333,7 +332,7 @@ const HireFromUs = () => {
               {/* <div className="flex justify-center text-center">
                 <p className="font-pop font-semibold text-[20px] md:text-[14px] xsm:text-[16px]">Share Your Hiring Requirements</p>
               </div> */}
-              {tab == 1 ? (
+              {tab === 1 ? (
                 <div
                   className="flex flex-col gap-2 px-6 
                 h-[350px] xsm:h-[300px]"
@@ -479,7 +478,7 @@ const HireFromUs = () => {
                 </div>
               )}
 
-              <div className="flex justify-center px-6 mb-1">
+              <div className="flex justify-center px-6 mb-3">
                 <Link
                   target="_blank"
                   to="https://wa.me/qr/S3LVDB3Y3SB3H1"
