@@ -13,13 +13,18 @@ export default function Question() {
   const [show, setshow] = useState(false);
   const [params, setparams] = useSearchParams();
   const [index, setindex] = useState(1);
-  
+  const [audioAlert, setAudioAlert] = useState(false);
   const [tabwarning, settabwarning] = useState(0);
   let [peoplewarning, setpeoplewarning] = useState(3);
   let navigate = useNavigate();
   const [Length, setLength] = useState();
   const [camerablocked, setcamerablocked] = useState()
   let token = localStorage.getItem("COURSES_USER_TOKEN");
+  const audioContextRef = useRef(null);
+  const analyserRef = useRef(null);
+  const dataArrayRef = useRef(null);
+  const sourceRef = useRef(null);
+  const audioIntervalRef = useRef(null);
 
   async function Fetchdata() {
     try {
@@ -133,6 +138,7 @@ export default function Question() {
   const contentRef = useRef(null);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+  const maxVolumeRef = useRef(0);
   const allowedwarnings = 3;
 
   useEffect(() => {
@@ -304,6 +310,41 @@ export default function Question() {
    
   }, [peoplewarning]);
 
+  const handleAudioMonitoring = async () => {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      try {
+        
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        let temp=true;
+        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+        analyserRef.current = audioContextRef.current.createAnalyser();
+        analyserRef.current.fftSize = 256;
+        sourceRef.current = audioContextRef.current.createMediaStreamSource(stream);
+        sourceRef.current.connect(analyserRef.current);
+        dataArrayRef.current = new Uint8Array(analyserRef.current.frequencyBinCount);
+        audioIntervalRef.current = setInterval(() => {
+          analyserRef.current.getByteFrequencyData(dataArrayRef.current);
+          const volume = dataArrayRef.current[0];
+          console.log(temp,dataArrayRef.current[0]);
+          if (volume > 50 && temp ) {
+           temp=false;
+          alert('High volume detected');
+          // Stop the audio stream immediately
+          stream.getTracks().forEach(track => track.stop());
+          clearInterval(audioIntervalRef.current);
+          // setTimeout(() => setAudioAlert(false), 3000);
+          }
+        }, 1000);
+      } catch (err) {
+        console.error('Error accessing microphone:', err);
+      }
+    }
+  };
+
+  useEffect(() => {
+    handleAudioMonitoring();
+    return () => clearInterval(audioIntervalRef.current);
+  }, [audioAlert]);
   // useEffect(() => {
   //   enterFullScreen();
   // }, [window.location.pathname]);
