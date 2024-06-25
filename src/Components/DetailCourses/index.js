@@ -131,7 +131,7 @@ export default function DetailCourses() {
     <div className="h-auto min-h-screen overflow-x-visible ">
       <div className="mb-5 xsm:mx-0 xsm:mb-2">
         <div
-          className="CCDetails-Header-main flex flex-col px-[8%] pt-12 w-full xsm:pt-1"
+          className="CCDetails-Header-main flex flex-col pl-[10vw]  w-full xsm:pt-1"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.bannerImg})`,
             backgroundSize: "cover",
@@ -184,7 +184,7 @@ export default function DetailCourses() {
          
 
         </div>
-        {/* <Main /> */}
+       
       </div>
       {show ? (
         <div className="w-full h-screen fixed top-0 left-0 bg-[#eeeeee]  z-[999999769]">
@@ -328,7 +328,7 @@ export default function DetailCourses() {
               <img src='/Icons/dream11.svg' className="w-36" alt="dream11" />
             </div>
           </div> 
-          <div className="flex flex-col gap-8 xsm:gap-4">
+       { faqs.length &&  <div className="flex flex-col gap-8 xsm:gap-4">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               FAQs
             </h1>
@@ -365,10 +365,10 @@ export default function DetailCourses() {
                 </div>
               ))}
             </div>
-          </div>
-          <div className="flex flex-col gap-8">
+          </div>}
+          {Data?.testimonials.length && <div className="flex flex-col gap-8">
             <VideoTesttimonial data={Data?.testimonials} />
-          </div>
+          </div>}
         </div>
         <span className="w-[33%] h-fit -translate-y-[20rem] xsm:-translate-y-[6rem] ">
           <Commoncard Data={Data} />

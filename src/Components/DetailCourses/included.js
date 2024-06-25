@@ -9,8 +9,10 @@ const Included = ({ curiculum,title }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [type, setType] = useState("");
 
-    const handleModalOpen = () => {
-        setModalOpen(!modalOpen); // Toggle modalOpen state
+    const handleModalOpen = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+       setModalOpen(!modalOpen); // Toggle modalOpen state
     };
 //  console.log(curiculum)
 

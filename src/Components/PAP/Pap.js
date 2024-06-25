@@ -333,7 +333,7 @@ export default function Pap() {
             </p>
           </div>
           <div className=" w-full">
-            {faqs.map((item, index) => (
+            {/* {faqs.map((item, index) => (
               <div key={index} className="faq1 w-full">
                 <div className=" w-full">
                   <div
@@ -364,6 +364,37 @@ export default function Pap() {
                   )}
                 </div>
                 <hr className="border-[1px]" />
+              </div>
+            ))} */}
+            {faqs.map((item, index) => (
+              <div key={index} className="faq1 w-full  bg-white rounded-md">
+                <div className=" w-full ">
+                  <div
+                    onClick={() => ClickSection(index)}
+                    className="drop-top  flex justify-between items-center w-full py-3 px-2 cursor-pointe cursor-pointer xsm:px-4 xsm:py-2"
+                  >
+                    <div className="flex items-center gap-2 relative pl-5 before:content-['\2022'] before:absolute before:left-0 before:text-black">
+                      <p className={`xsm:text-[8px] font-semibold md:text-[14px] ${item.isOpen && 'text-[#1DBF73]'}`}>
+                        {item.question}
+                      </p>
+                    </div>
+                    <div>
+                      <img
+                        src="../Icons/faqarrow.svg"
+                        alt=""
+                        className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 transition-transform duration-300 ${item.isOpen ? "rotate-up" : "rotate-down"
+                          }`}
+                      />
+                    </div>
+                  </div>
+                  {item.isOpen && (
+                    <div className="px-6 py-4 xsm:px-4 xsm:py-3">
+                      <p className="xsm:text-[8px] text-[#555555] md:text-[14px]">
+                        {item.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
