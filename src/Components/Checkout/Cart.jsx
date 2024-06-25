@@ -213,6 +213,13 @@ const CartCheckout = () => {
   };
 
   const handlePayment = async () => {
+    if (!country) {
+      toast.error("Select country");
+    } else if (!state) {
+      toast.error("Select state");
+    } else if (!address || !zip) {
+      toast.error("Every input must be filled");
+    }else{
     handleGenerateUrl().then((res) => {
       // console.log(res);
       if (res) {
@@ -220,6 +227,7 @@ const CartCheckout = () => {
         window.location.href = res;
       }
     });
+  }
   };
 
   return (

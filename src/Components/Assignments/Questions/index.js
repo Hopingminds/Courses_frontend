@@ -311,40 +311,53 @@ export default function Question() {
   }, [peoplewarning]);
 
   const handleAudioMonitoring = async () => {
+    let temp=true;
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       try {
-        
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        let temp=true;
         audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
         analyserRef.current = audioContextRef.current.createAnalyser();
         analyserRef.current.fftSize = 256;
         sourceRef.current = audioContextRef.current.createMediaStreamSource(stream);
         sourceRef.current.connect(analyserRef.current);
         dataArrayRef.current = new Uint8Array(analyserRef.current.frequencyBinCount);
-        audioIntervalRef.current = setInterval(() => {
+        
+        const detectVolume = () => {
           analyserRef.current.getByteFrequencyData(dataArrayRef.current);
           const volume = dataArrayRef.current[0];
-          console.log(temp,dataArrayRef.current[0]);
-          if (volume > 50 && temp ) {
-           temp=false;
-          alert('High volume detected');
-          // Stop the audio stream immediately
-          stream.getTracks().forEach(track => track.stop());
-          clearInterval(audioIntervalRef.current);
-          // setTimeout(() => setAudioAlert(false), 3000);
+  
+          console.log("Current volume:", volume);
+  
+          if (volume > 50 && temp) {
+            alert('High volume detected');
+            temp=false;
+            setpeoplewarning(peoplewarning-1)
+  
+            // Stop the audio stream immediately
+            stream.getTracks().forEach(track => track.stop());
+            clearInterval(audioIntervalRef.current);
+  
+            // Reset the volume to 0 instantly
+            dataArrayRef.current[0] = 0;
+  
+            // Restart audio monitoring after 2 seconds
+            setTimeout(() => {
+              handleAudioMonitoring();
+            }, 2000);
           }
-        }, 1000);
+        };
+  
+        audioIntervalRef.current = setInterval(detectVolume, 1000);
       } catch (err) {
         console.error('Error accessing microphone:', err);
       }
     }
   };
-
+  
   useEffect(() => {
     handleAudioMonitoring();
     return () => clearInterval(audioIntervalRef.current);
-  }, [audioAlert]);
+  }, []);
   // useEffect(() => {
   //   enterFullScreen();
   // }, [window.location.pathname]);

@@ -111,8 +111,8 @@ const Internship = () => {
       } else {
         setshow(true);
 
-        const res = await axios.get(`${BASE_URL}/courses`);
-        console.log(res?.data?.courses);
+        const res = await axios.get(`${BASE_URL}/courses?type=internship`);
+        // console.log(res?.data?.courses);
 
 
         setAllCourses(res?.data?.courses);
@@ -133,32 +133,32 @@ const Internship = () => {
 
   };
 
-  function SearchData(e) {
+  async function SearchData(e) {
+  
     let query = e.target.value;
-
+    let temp=[]
     if (query == "") {
       setSearchedData([]);
 
       setAllCourses(Data);
     } else {
-      setSearchedData(
-        allCourses?.filter((item) => {
-          const searchitem = query.toLowerCase();
-          const slug = item.slug.toLowerCase();
-          // console.log(slug);
-          // console.log(searchitem && (slug.includes(searchitem)));
-          return searchitem && slug.includes(searchitem);
+      try {
+      const tempdata=await fetch(BASE_URL+'/search?title='+query)
+      const response=await tempdata.json();
+      
+      if(response.success){
+        response?.courses?.map((course)=>{
+        temp.push(course)
         })
-      );
-      setAllCourses(
-        allCourses?.filter((item) => {
-          const searchitem = query.toLowerCase();
-          const slug = item.slug.toLowerCase();
-          // console.log(slug);
-          // console.log(searchitem && (slug.includes(searchitem)));
-          return searchitem && slug.includes(searchitem);
-        })
-      );
+        // console.log(temp);
+        setSearchedData(temp);
+         setAllCourses(
+          response?.courses
+         );
+      }
+    } catch (error) {
+        console.log(error);
+    }
     }
   }
 
@@ -232,7 +232,7 @@ const Internship = () => {
               className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
                 }`}
             />
-            <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center" ref={searchResultsRef}>
+         { SearchedData && <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center max-h-[30vh] overflow-y-auto pt-2" ref={searchResultsRef}>
               {SearchedData?.map((item, ind) => {
                 // console.log(item.);
                 return (
@@ -247,7 +247,7 @@ const Internship = () => {
                   </>
                 );
               })}
-            </div>
+            </div>}
           </div>
           <button className="text-[#ffffff] text-[22px] flex flex-row gap-2 justify-center items-center font-pop bg-[#1DBF73] rounded-md py-1 px-4 xsm:rounded-r-md xsm:text-[10px] xsm:py-0 xsm:px-2 md:text-[14px] md:rounded-r-lg">
             <span> <img src={Search} className="w-12 h-8 md:w-10 md:h-6 xsm:w-6 xsm:h-2" /> </span>Search
@@ -318,13 +318,13 @@ const Internship = () => {
       )}
       <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
-      <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
+      <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 lg:grid-cols-3 lg:gap-10 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
         {
         show ? [1,2,3,4].map((item)=>{
           return(<Skeleton/>)
         })  :
         
-        allCourses?.filter((course) => { return course.courseType === 'internship' })?.map((val, ind) => {
+        allCourses?.map((val, ind) => {
           return (
             <CourseCard
               key={val?.title}
