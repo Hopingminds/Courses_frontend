@@ -61,7 +61,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Data Scientist</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                Senior Manager@ Data Innovation ,Bill INC.,USA, Gold Medalist at BITS Pilani, Dubai, with 9+ years of experience in data science. Currently managing a credit portfolio of approximately $3 billion.
+                Senior Manager@ Data Innovation ,Bill INC.,USA, Gold Medalist at BITS Pilani, Dubai, with 9+ years of experience in data science. 
                 </div>
               </div>
             </SplideSlide>
@@ -118,7 +118,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                A UGC-Net qualified academic with 15 years of teaching and 18 years in retail communications. Currently, she's a faculty member at Delhi Skills and Entrepreneurship University, designing and teaching BBA Retail courses. She has managed marketing for 7500+ touchpoints and worked with clients like Samsung, Lavie, and Adidas at Cheil Worldwide.
+                A UGC-Net qualified academic with 15 years of teaching and 18 years in retail communications. 
                 </div>
               </div>
             </SplideSlide>
@@ -135,7 +135,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                SEO Manager at Sogolytics with over 14 years of experience, increasing organic traffic by 30%. He specializes in keyword research, technical SEO audits, content optimization, and link-building. He also mentors students as an SEO Instructor at Kraftshala. Previously, he worked at Eduonix and eClerx in SEO and digital marketing roles.
+                SEO Manager at Sogolytics with over 14 years of experience, increasing organic traffic by 30%. He specializes in keyword research.
                 </div>
               </div>
             </SplideSlide>
@@ -152,7 +152,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                Data scientist at PayPal and an alumnus of IIT (BHU), Varanasi. His expertise includes data analysis, machine learning, and big data technologies, contributing to advanced data solutions at PayPal.
+                Data scientist at PayPal and an alumnus of IIT (BHU), Varanasi. His expertise includes data analysis
                 </div>
               </div>
             </SplideSlide>
@@ -257,7 +257,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                Senior Manager@ Data Innovation ,Bill INC.,USA, Gold Medalist at BITS Pilani, Dubai, with 9+ years of experience in data science. Currently managing a credit portfolio of approximately $3 billion.
+                Senior Manager@ Data Innovation ,Bill INC.,USA, Gold Medalist at BITS Pilani, Dubai, with 9+ years of experience in data science. 
                 </div>
               </div>
             </SplideSlide>
@@ -274,7 +274,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                Currently holding the position of Senior Mobile App Developer at Roadzen, Mobile App Developer with more than a decade of experience in the field of mobile technology and application development. Worked on numerous projects that involved both Android and iOS platforms, mastering a range of technologies including Swift, Kotlin, React Native, and Flutter.
+                Currently holding the position of Senior Mobile App Developer at Roadzen, Mobile App Developer with more than a decade of experience in the field of mobile technology 
                 </div>
               </div>
             </SplideSlide>
@@ -291,7 +291,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                Worked with leading technology firms such as Google and Blinkit. Her expertise lies in building AI solutions and user experience design, with a strong emphasis on innovation and customer-centric solutions.
+                Worked with leading technology firms such as Google and Blinkit. Her expertise lies in building AI solutions 
                 </div>
               </div>
             </SplideSlide>
@@ -325,7 +325,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                Atul Chhabra brings over three decades of experience in the telecommunications and IT sectors. A former Director at Verizon and an IIT Delhi alumnus, he is known for his strategic vision and leadership in technology management.
+                Atul Chhabra brings over three decades of experience in the telecommunications and IT sectors. A former Director at Verizon 
                 </div>
               </div>
             </SplideSlide>
@@ -342,7 +342,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                Google Certified Trainer with expertise in Analytics and Automation Trainings. Working as Data analyst in Infosys. Also holding a Microsoft Certified Educator designation. Proficient in Advanced Excel, Power BI, Tableau, VBA, Power Platform, Power Apps, and Power Automate. Bringing over 14 years of extensive experience to the table.
+                Google Certified Trainer with expertise in Analytics and Automation Trainings. Working as Data analyst in Infosys. Also holding a Microsoft Certified Educator designation.
                 </div>
               </div>
             </SplideSlide>
@@ -359,7 +359,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                Accomplished Assistant Professor at Thapar University, with more than eleven years of experience in academia and industry-related research. As an IIM Lucknow alumni, this educator brings a blend of rigorous academic training and practical insights into the classroom, fostering an enriching learning environment for students.
+                Accomplished Assistant Professor at Thapar University, with more than eleven years of experience in academia and industry-related research. As an IIM Lucknow alumni
                 </div>
               </div>
             </SplideSlide>
@@ -376,7 +376,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                An entrepreneur and Corporate Training Strategist, Security Researcher/Trainer, AWS/Azure Trainer, Certified Ethical Hacker (CEH), Offensive Security Certified Professional (OSCP), having conducted 350+ trainings and educated 15,000+ students.
+                An entrepreneur and Corporate Training Strategist, Security Researcher/Trainer, AWS/Azure Trainer, Certified Ethical Hacker (CEH)
                 </div>
               </div>
             </SplideSlide>
@@ -393,7 +393,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                A Lead AI Engineer with a comprehensive background from BITS, this professional specializes in the forefront of Generative AI technologies. Major focus areas are Generative AI (GenAI), Large Language Models (LLM), Responsible AI Governance (RAG), AI Use Cases.
+                A Lead AI Engineer with a comprehensive background from BITS, this professional specializes in the forefront of Generative AI technologies.
                 </div>
               </div>
             </SplideSlide>
@@ -410,7 +410,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                A Blockchain Consultant and Trainer with over six years of experience. She specializes in Blockchain Technology, Python programming, and Generative AI, and has developed comprehensive courses and technical content. Nikita has worked with TimesPro EdTech, Kiwi Technologies, Whitehat Jr., Ebix Technologies, and ITC Infotech.
+                A Blockchain Consultant and Trainer with over six years of experience. She specializes in Blockchain Technology, Python programming, and Generative AI
                 </div>
               </div>
             </SplideSlide>
@@ -427,7 +427,7 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[10px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center text-[#fff] xsm:text-[8px] md:text-[12px]">
-                The Vice President at BlockVerse Academy, specializing in Blockchain, Data Science, Machine Learning, Cloud Computing, and Cyber Security. With over eight years of experience, she has worked with Blockchain Council, Simplilearn, BYJU'S FutureSchool, and WhiteHat Jr., excelling in content strategy and technical training.
+                The Vice President at BlockVerse Academy, specializing in Blockchain, Data Science, Machine Learning, Cloud Computing, and Cyber Security.
                 </div>
               </div>
             </SplideSlide>
