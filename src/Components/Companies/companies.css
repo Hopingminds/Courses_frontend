@@ -13,7 +13,7 @@
 
 .logo {
     position: absolute;
-    height: 80px;
+    height: 100px;
     width: fit;
     top: 0;
     left: 50%;
@@ -76,7 +76,7 @@
     } */
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1025px) and (max-width: 1599px) {
     .slider-container {
         height: 90px;
     }

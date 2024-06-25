@@ -69,7 +69,7 @@ function ShopingCart() {
           </h2>
         </div>
       </div>
-      <div className="flex justify-between items-start mt-10 min-h-[70vh] h-auto  px-[3%] xsm:flex-col xsm:justify-start xsm:h-auto xsm:gap-8 xsm:my-6 md:h-auto md:my-10">
+      <div className="flex justify-between items-start my-10 min-h-[70vh] h-auto  px-[3%] xsm:flex-col xsm:justify-start xsm:h-auto xsm:gap-8 xsm:my-6 md:h-auto md:my-10">
         <div className="w-[75%] space-y-10 xsm:w-[100%] xsm:space-y-4 md:space-y-8">
           {Data?.length > 0 ? (
             Data?.map((item) => {

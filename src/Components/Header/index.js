@@ -119,7 +119,7 @@ export default function Navbar() {
         <Link to="/" onClick={Top} className=" cursor-pointer">
           <img
             src="/logo.png"
-            className="h-[50px] w-auto xsm:w-[50px] xsm:h-[25px] sm:w-[40px] sm:h-[27px] md:w-[70px] md:h-[30px]"
+            className="h-[50px] w-auto xsm:w-[50px] xsm:h-[25px] sm:w-[50px] sm:h-[27px] md:w-[70px] md:h-[30px]"
             alt="Logo"
           />
         </Link>
@@ -188,7 +188,7 @@ export default function Navbar() {
                       >
                         <Cart
                           style={{ color: "white" }}
-                          className=" text-white xsm:h-[15px] xsm:w-[15px] md:h-[20px] md:w-[20px]"
+                          className=" text-white xsm:h-[15px] xsm:w-[15px] sm:h-[28px] sm:w-[28px] md:h-[20px] md:w-[20px]"
                         />
                         <div className="absolute -right-2 -top-3 bg-[#1DBF73] text-white rounded-full w-4 h-4 flex justify-center">
                           <p className="text-[12px] font-normal">{cartSize}</p>
@@ -211,11 +211,11 @@ export default function Navbar() {
                         {userDetail?.profile ? (
                           <img
                             src={userDetail?.profile}
-                            className="h-9 w-9 rounded-full object-cover xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px]"
+                            className="h-9 w-9 rounded-full object-cover xsm:h-[25px] xsm:w-[25px] sm:h-[28px] sm:w-[28px] md:h-[30px] md:w-[30px]"
                             alt="Profile"
                           />
                         ) : (
-                          <Account className="w-9 h-9 rounded-full xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" />
+                          <Account className="w-9 h-9 rounded-full xsm:h-[25px] xsm:w-[25px] sm:h-[28px] sm:w-[28px] md:h-[30px] md:w-[30px] z-20" />
                         )}
                       </div>
                     </span>
