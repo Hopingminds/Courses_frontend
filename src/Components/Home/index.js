@@ -65,9 +65,9 @@ export default function Home() {
 
       {showPopup && (
         <Link to={"/cv-builder"}>
-          <div className="fixed bottom-20 right-0 bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] text-white py-4 px-6 drop-shadow-xl rounded-l-md xsm:py-2 xsm:px-4 xsm:bottom-6 md:bottom-8 md:py-3 md:px-5">
+          <div className="fixed bottom-20 right-0 bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] text-white py-4 px-6 drop-shadow-xl rounded-l-md xsm:py-2 xsm:px-4 xsm:bottom-8 sm:bottom-10 sm:py-3 sm:px-5 md:bottom-12 md:py-3 md:px-5">
             <button className="italic flex justify-center items-center">
-              <span className="xsm:text-[10px] md:text-[14px]">
+              <span className="xsm:text-[10px] sm:text-[12px] md:text-[14px]">
                 Build Your Resume
               </span>
             </button>

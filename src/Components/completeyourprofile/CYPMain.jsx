@@ -13,7 +13,7 @@ const CYPMain = ({setCompleteProfile,user, setUser}) => {
     const[finalData, setFinalData] = useState([]);
 
     return (
-        <div className='flex justify-between  pl-[7%] pr-[20%]'>
+        <div className='flex justify-between  pl-[7%] pr-[20%] xsm:pr-[10%] xsm:gap-2'>
             <div className='flex flex-col items-center gap-4 font-pop text-[16px] font-semibold'>
                 <div className='flex flex-col items-center gap-2 cursor-pointer' onClick={() => setActiveDetail('Basic')}>
                     <img className='w-32' src={Step1} alt="" />

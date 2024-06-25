@@ -168,14 +168,14 @@ export default function Herosection() {
   return (
     <>
     <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] xsm:pt-5 h-[37.2vw] xsm:h-[250px]">
-      <div className="flex flex-col gap-10 xl:gap-12 xsm:gap-2 sm:gap-6">
-        <div className="text-[20px] leading-10  text-white font-pop text-wrap w-[90%] sm:text-[14px] xl:text-[26px] md:text-[16px] md:leading-6 sm:leading-6 xsm:text-[10px] xsm:leading-4 xsm:text-balance">
+      <div className="flex flex-col gap-10 xl:gap-12 xsm:gap-2 sm:gap-4 md:gap-8 lg:gap-10">
+        <div className="text-[20px] leading-10  text-white font-pop text-wrap w-[90%] sm:text-[10px] sm:leading-5 xl:text-[26px] lg:text-[16px] lg:leading-7 md:text-[14px] md:leading-6 xsm:text-[10px] xsm:leading-4 xsm:text-balance">
           Unlock Opportunities with 200+ Leading Corporates, Master Skills
           with Industry Experts, and Stay up-skilled with our Annually
           Updated Curriculum; Experience Personalized Career Coaching and
           Exclusive Networking Events!
         </div>
-        <div className="text-[18px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap sm:h-10 sm:text-[12px] xl:text-[24px] md:text-[18px] xsm:text-[9px] xsm:h-8">
+        <div className="text-[18px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap sm:h-10 sm:text-[12px] xl:text-[24px] lg:text-[18px] md:text-[16px] md:h-12 xsm:text-[9px] xsm:h-8">
           <span className="text-white">High Impact</span>
           {displayText}
         </div>
@@ -207,46 +207,46 @@ export default function Herosection() {
             />
           </div>
 
-          <div className="flex flex-row gap-8 md:gap-4 xsm:gap-2 sm:gap-3">
-            <div className="flex flex-col gap-5 items-end md:gap-3 xsm:gap-2 xsm:hidden">
-              <div className="h-64 w-56 rounded-t-[4rem] rounded-br-[4rem] rounded-bl-[12rem] overflow-hidden scale-in-center md:h-52 md:w-44 xsm:h-20 xsm:w-16 sm:h-24 sm:w-20 lg:h-60 lg:w-52">
+          <div className="flex flex-row gap-8 lg:gap-5 md:gap-3 xsm:gap-2 sm:gap-3">
+            <div className="flex flex-col gap-5 items-end lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:hidden">
+              <div className="h-80 w-72 rounded-t-[4rem] rounded-br-[4rem] rounded-bl-[12rem] overflow-hidden scale-in-center md:h-40 md:w-32 xsm:h-20 xsm:w-16 sm:h-24 sm:w-20 lg:h-48 lg:w-40">
                 <img
                   src={images[currentImageIndex]}
-                  className="h-64 w-56 object-cover object-center md:h-52 md:w-44 xsm:h-20 xsm:w-16 lg:h-60 lg:w-52 sm:h-24 sm:w-20"
+                  className="h-80 w-72 object-cover object-center md:h-40 md:w-32 xsm:h-20 xsm:w-16 lg:h-48 lg:w-40 sm:h-24 sm:w-20"
                 />
               </div>
-              <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center lg:h-30 lg:w-30 md:h-24 md:w-24 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-12 xsm:w-12 sm:h-16 sm:w-16 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
+              <div className="h-40 w-40 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center lg:h-28 lg:w-28 md:h-20 md:w-20 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-12 xsm:w-12 sm:h-16 sm:w-16 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
                 <img
                   src={images[(currentImageIndex + 1) % 6]}
-                  className="h-36 w-36 object-cover object-center md:h-24 md:w-24 xsm:h-12 xsm:w-12 lg:h-30 lg:w-30 sm:h-16 sm:w-16"
+                  className="h-40 w-40 object-cover object-center md:h-20 md:w-20 xsm:h-12 xsm:w-12 lg:h-28 lg:w-28 sm:h-16 sm:w-16"
                 />
               </div>
             </div>
-            <div className="flex flex-col gap-5 md:gap-3 xsm:gap-2 xsm:hidden">
-              <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center sm:h-16 sm:w-16 lg:h-30 lg:w-30 md:h-24 md:w-24 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-12 xsm:w-12 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
+            <div className="flex flex-col gap-5 lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:hidden">
+              <div className="h-40 w-40 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center sm:h-16 sm:w-16 lg:h-28 lg:w-28 md:h-20 md:w-20 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-12 xsm:w-12 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
                 <img
                   src={images[(currentImageIndex + 2) % 6]}
-                  className="h-36 w-36 object-cover object-center md:h-24 md:w-24 xsm:h-12 xsm:w-12 lg:h-30 lg:w-30 sm:h-16 sm:w-16"
+                  className="h-40 w-40 object-cover object-center md:h-20 md:w-20 xsm:h-12 xsm:w-12 lg:h-28 lg:w-28 sm:h-16 sm:w-16"
                 />
               </div>
-              <div className="rounded-[4rem] h-72 w-36 overflow-hidden scale-in-center sm:h-28 sm:w-16 lg:h-64 lg:w-30 md:h-56 md:w-24 md:rounded-[2.3rem] xsm:h-24 xsm:w-12 xsm:rounded-[1.3rem]">
+              <div className="rounded-[4rem] h-80 w-40 overflow-hidden scale-in-center sm:h-28 sm:w-16 lg:h-48 lg:w-28 md:h-40 md:w-20 md:rounded-[2.3rem] xsm:h-24 xsm:w-12 xsm:rounded-[1.3rem]">
                 <img
                   src={images[(currentImageIndex + 3) % 6]}
-                  className="h-72 w-36 object-cover object-center md:h-56 md:w-24 xsm:h-24 xsm:w-12 sm:h-28 sm:w-16 lg:h-64 lg:w-30"
+                  className="h-80 w-40 object-cover object-center md:h-40 md:w-20 xsm:h-24 xsm:w-12 sm:h-28 sm:w-16 lg:h-48 lg:w-28"
                 />
               </div>
             </div>
-            <div className="flex flex-col-reverse gap-5 md:gap-3 xsm:gap-2">
-              <div className="h-36 w-36 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center sm:h-16 sm:w-16 lg:h-30 lg:w-30 md:h-24 md:w-24 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-16 xsm:w-16 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
+            <div className="flex flex-col-reverse gap-5 lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2">
+              <div className="h-40 w-40 rounded-t-[3.8rem] rounded-bl-[3.8rem] overflow-hidden scale-in-center sm:h-16 sm:w-16 lg:h-28 lg:w-28 md:h-20 md:w-20 md:rounded-t-[2.3rem] md:rounded-bl-[2.3rem] xsm:h-16 xsm:w-16 xsm:rounded-t-[1.3rem] xsm:rounded-bl-[1.3rem]">
                 <img
                   src={images[(currentImageIndex + 4) % 6]}
-                  className="h-36 w-36 object-cover object-center md:h-24 md:w-24 xsm:h-16 xsm:w-16 lg:h-30 lg:w-30 sm:h-16 sm:w-16"
+                  className="h-40 w-40 object-cover object-center md:h-20 md:w-20 xsm:h-16 xsm:w-16 lg:h-28 lg:w-28 sm:h-16 sm:w-16"
                 />
               </div>
-              <div className="rounded-[4rem] h-72 w-36 overflow-hidden scale-in-center sm:h-28 sm:w-16 lg:h-64 lg:w-30 md:h-56 md:w-24 md:rounded-[2.3rem] xsm:h-28 xsm:w-16 xsm:rounded-[1.3rem]">
+              <div className="rounded-[4rem] h-80 w-40 overflow-hidden scale-in-center sm:h-28 sm:w-16 lg:h-48 lg:w-28 md:h-40 md:w-20 md:rounded-[2.3rem] xsm:h-28 xsm:w-16 xsm:rounded-[1.3rem]">
                 <img
                   src={images[(currentImageIndex + 5) % 6]}
-                  className="h-72 w-36 object-cover object-center md:h-56 md:w-24 xsm:h-28 xsm:w-16 lg:h-64 lg:w-30 sm:h-28 sm:w-16"
+                  className="h-80 w-40 object-cover object-center md:h-40 md:w-20 xsm:h-28 xsm:w-16 lg:h-48 lg:w-28 sm:h-28 sm:w-16"
                 />
               </div>
             </div>

@@ -141,7 +141,7 @@ const Testimonial = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between pt-20 px-[10%] pb-28 xsm:px-[5%] xsm:pt-4 xsm:pb-8 xsm:gap-4 sm:p-8 md:pb-14 md:pt-6">
+      <div className="flex flex-row justify-between pt-24 px-[10%] pb-40 xsm:px-[5%] xsm:pt-4 xsm:pb-8 xsm:gap-4 sm:p-8 md:pb-14 md:pt-6">
         {/* left */}
         <div className="flex flex-col gap-4 w-[45%] xsm:gap-2">
           <div className="flex flex-row gap-4 items-center xsm:gap-2 xsm:pl-2">

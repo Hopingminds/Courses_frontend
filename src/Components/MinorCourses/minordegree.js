@@ -16,10 +16,10 @@ export default function MinorDegree(){
     }, [])
     
     return(<>
-    <div className="my-6 xsm:pt-4 xsm:my-0 xsm:px-[2%] md:my-4 px-[5%]">
+    <div className="my-4 pt-14 xsm:pt-4 xsm:my-0 xsm:px-[2%] md:my-4 px-[5%]">
                 <p className="font-pop font-semibold text-[30px] xsm:text-[14px] md:text-[20px]">For Minor Degree</p>
             </div>
-    <div className="grid grid-cols-4 gap-5 px-[5%] py-5 xsm:grid-cols-2">
+    <div className="pb-20 grid grid-cols-4 gap-5 px-[5%] py-5 xsm:grid-cols-2">
     {
         allcategories?.map((item)=>{
             return(<>

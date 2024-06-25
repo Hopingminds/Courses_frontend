@@ -106,14 +106,14 @@ const OurFeatures = () => {
       
       `}
       </style>
-      <div className="pb-8 pt-6 xsm:pt-4 xsm:pb-3 md:pb-3">
+      <div className="pt-6 xsm:pt-4 xsm:pb-3 md:pb-3">
         <div className="add_gradient flex flex-col gap-12  py-10 pb-16 px-28 xsm:px-[5%] xsm:gap-2 xsm:pb-[3%] xsm:py-[5%] sm:px-[5%] sm:pb-10 sm:gap-8 md:px-[5%] md:gap-4 md:pb-10 lg:px-[5%]">
           <div className="flex flex-col gap-4 justify-center items-center xsm:gap-2 md:gap-3">
-            <p className="text-[36px] text-white font-pop font-semibold xsm:text-[12px] sm:text-[20px] md:text-[30px] lg:text-[32px]">
+            <p className="text-[40px] text-white font-pop font-semibold xsm:text-[12px] sm:text-[20px] md:text-[30px] lg:text-[32px]">
               Our <span className="text-[#33EFA0]"> Features </span>{" "}
             </p>
             {/* <p className="text-[#696984] text-[20px] font-pop text-center xsm:text-[7px]">Unleash Your Potential</p> */}
-            <p className="text-white text-[20px] font-pop text-center xsm:text-[7px] sm:text-[12px] md:text-[14px] md:w-[70%] lg:text-[16px]">
+            <p className="text-white text-[30px] font-pop text-center xsm:text-[7px] sm:text-[12px] md:text-[14px] md:w-[70%] lg:text-[16px]">
               Explore Our Feature-Rich Toolbox for a Seamless, Engaging, and Rewarding Learning Journey Like Never Before!
             </p>
           </div>
