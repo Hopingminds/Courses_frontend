@@ -74,7 +74,7 @@ export default function MyLearning() {
         let login = localStorage.getItem('COURSES_USER_TOKEN')
         // console.log(login)
         if (!login) {
-            navigate('/login')
+            navigate('/login-2')
         }
         else {
             const token = localStorage.getItem('COURSES_USER_TOKEN');

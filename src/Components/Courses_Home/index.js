@@ -110,7 +110,7 @@ const Courses_Home = () => {
         </div>
         <div className="flex justify-end w-full items-center">
           <Link
-            to={selectedCategory == "All Courses" ? "/course" : "/course?category=" + selectedCategory}
+            to={selectedCategory == "All Courses" ? "/courses" : "/courses?category=" + selectedCategory}
             className="text-[#1DBF73] text-[16px] font-bold xsm:text-[8px] sm:text-[12px] md:text-[14px] md:pr-3"
           >
             See all

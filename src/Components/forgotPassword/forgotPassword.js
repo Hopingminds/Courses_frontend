@@ -54,7 +54,7 @@ const Forgotpassword = () => {
                 toast.success("Password reset Successfull")
 
                 setTimeout(() => {
-                    navigate('/login')
+                    navigate('/login-2')
 
                 }, 1000);
 

@@ -67,7 +67,7 @@ const Login = () => {
                             if (res.data.userDetails.purchased_courses.length > 0) {
                                 navigate('/learning');
                             } else {
-                                navigate('/course');
+                                navigate('/courses');
                             }
                         }
                     } catch (error) {
@@ -121,7 +121,7 @@ const Login = () => {
                     <div className='flex flex-col w-[65%] gap-4 xsm:w-[90%] md:w-[100%]'>
                         <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 '>
                             <button className='bg-transparent cursor-pointer Loginactive' >Login</button>
-                            <button className='bg-transparent cursor-pointer Logininactive' onClick={() => navigate('/register')}>Register</button>
+                            <button className='bg-transparent cursor-pointer Logininactive' onClick={() => navigate('/register-user')}>Register</button>
                         </div>
                         <div className='flex flex-col gap-4'>
                             <div>
@@ -149,7 +149,7 @@ const Login = () => {
                             </div>
                             <div className='flex items-center '>
                                 <p className='font-pop text-[14px] md:text-[10px] xsm:text-[10px]'>New Here ?</p>
-                                <Link to={'/register'}><h5 className='text-[#1dbf73] md:text-[12px] xsm:text-[12px]'>Sign Up</h5></Link>
+                                <Link to={'/register-user'}><h5 className='text-[#1dbf73] md:text-[12px] xsm:text-[12px]'>Sign Up</h5></Link>
                             </div>
                             <div className='flex flex-col gap-2 items-center'>
 

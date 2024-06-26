@@ -217,7 +217,7 @@ const Register = () => {
                     if (res.data.userDetails.purchased_courses.length > 0) {
                         navigate('/learning');
                     } else {
-                        navigate('/course');
+                        navigate('/courses');
                     }
                 } catch (error) {
                     console.log(error);
@@ -266,7 +266,7 @@ const Register = () => {
                     {/* <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p> */}
                     <div className='flex flex-col w-[75%] gap-4 xsm:w-[95%] items-center md:w-[90%]'>
                         <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 w-[40%] md:w-[50%] xsm:w-[50%]'>
-                            <button className='bg-transparent cursor-pointer Logininactive' onClick={() => navigate('/login')} >Login</button>
+                            <button className='bg-transparent cursor-pointer Logininactive' onClick={() => navigate('/login-2')} >Login</button>
                             <button className='bg-transparent cursor-pointer Loginactive' >Register</button>
                         </div>
                         {/* inputs */}
@@ -391,7 +391,7 @@ const Register = () => {
                             <div className='flex items-center gap-1'>
                                 <p className='font-pop text-[14px] md:text-[10px] xsm:text-[10px]'>Already registered ? </p>
                                 {/* Sign up link */}
-                                <Link to={'/login'}>  <h5 className='text-[#1dbf73] md:text-[12px] xsm:text-[12px]'>Login</h5></Link>
+                                <Link to={'/login-2'}>  <h5 className='text-[#1dbf73] md:text-[12px] xsm:text-[12px]'>Login</h5></Link>
                                 {/* Social media login buttons */}
                             </div>
                             <div className='flex flex-col gap-2 items-center'>

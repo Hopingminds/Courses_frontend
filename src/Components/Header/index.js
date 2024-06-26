@@ -140,9 +140,9 @@ export default function Navbar() {
                       Home
                     </Link>
                     <Link
-                      to="/course"
+                      to="/courses"
                       onClick={Top}
-                      className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${location.pathname === "/course" ? " font-bold text-[#1DBF73]" : ""
+                      className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${location.pathname === "/courses" ? " font-bold text-[#1DBF73]" : ""
                         }`}
                     >
                       Courses
@@ -223,13 +223,13 @@ export default function Navbar() {
                 ) : (
                   <div className="flex flex-col gap-6 space-x-5 items-center xsm:space-x-1 xsm:pl-1 sm:pl-0 sm:space-x-3">
                     <Link
-                      to="/login"
+                      to="/login-2"
                       className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop ${location.pathname === "/learning" ? " font-bold text-[#1DBF73]" : ""
                         }`}                >
                       Log in
                     </Link>
                     <Link
-                      to="/register"
+                      to="/register-user"
                       className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop ${location.pathname === "/learning" ? " font-bold text-[#1DBF73]" : ""
                         }`}                >
                       Sign Up
@@ -249,9 +249,9 @@ export default function Navbar() {
                     Home
                   </Link>
                   <Link
-                    to={"/course"}
+                    to={"/courses"}
                     onClick={Top}
-                    className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${location.pathname === "/course"
+                    className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${location.pathname === "/courses"
                       ? " font-bold text-[#1DBF73]"
                       : ""
                       }`}
@@ -351,13 +351,13 @@ export default function Navbar() {
               ) : (
                 <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-1 sm:pl-0 sm:space-x-3">
                   <Link
-                    to={"/login"}
+                    to={"/login-2"}
                     className="bg-[#1DBF73] px-7 rounded-full text-white py-1 sm:text-[10px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
                   >
                     Log in
                   </Link>
                   <Link
-                    to={"/register"}
+                    to={"/register-user"}
                     className="bg-white px-7 rounded-full text-black py-1 sm:text-[10px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
                   >
                     Sign Up

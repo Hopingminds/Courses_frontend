@@ -91,7 +91,7 @@ export default function DetailCourses() {
       } else {
         localStorage.setItem('ADD_TO_CART_HISTORY', window.location.pathname);
         // console.log("add to cart withour log")
-        navigate("/login");
+        navigate("/login-2");
       }
     } catch (error) {
       console.log(error);
@@ -119,7 +119,7 @@ export default function DetailCourses() {
           toast.error(response.msg);
         }
       } else {
-        navigate("/login");
+        navigate("/login-2");
       }
     } catch (error) {
       console.log(error);

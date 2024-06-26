@@ -47,12 +47,12 @@ const Footer = () => {
                     <div className='flex flex-col gap-8 xsm:gap-2 sm:gap-6' >
                         <p className='text-white text-[20px] font-pop font-semibold xsm:text-[10px] sm:text-[12px] md:text-[14px]'>PROGRAMS</p>
                         <div className='flex flex-col gap-3 xsm:gap-1 md:gap-2' onClick={Top}>
-                            <Link to='/course?category=Management' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Management</Link>
-                            <Link to='/course?category=Finance' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Finance</Link>
-                            <Link to='/course?category=Full Stack Development' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Full Stack Development</Link>
-                            <Link to='/course?category=AI/ML' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>AI/ML</Link>
-                            <Link to='/course?category=Networking' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Networking</Link>
-                            <Link to='/course?category=Data Science' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Data Science</Link>
+                            <Link to='/courses?category=Management' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Management</Link>
+                            <Link to='/courses?category=Finance' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Finance</Link>
+                            <Link to='/courses?category=Full Stack Development' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Full Stack Development</Link>
+                            <Link to='/courses?category=AI/ML' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>AI/ML</Link>
+                            <Link to='/courses?category=Networking' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Networking</Link>
+                            <Link to='/courses?category=Data Science' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Data Science</Link>
                         </div>
                     </div>
                     <div className='flex flex-col gap-8 xsm:gap-2 sm:gap-6'>
