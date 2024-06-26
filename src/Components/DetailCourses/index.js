@@ -126,7 +126,6 @@ export default function DetailCourses() {
     }
   }
 
-  // console.log(Data?.companies)
 
   return (
     <div className="h-auto min-h-screen overflow-x-visible ">
@@ -280,6 +279,8 @@ export default function DetailCourses() {
             </h1>
             <Instructor />
           </div>
+
+
          
 
           <div className="flex flex-col gap-8 justify-center items-center xsm:gap-4">
