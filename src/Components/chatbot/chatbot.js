@@ -51,7 +51,7 @@ const ChatBot = () => {
         };
 
         const generateResponse = (chatElement, data) => {
-            const API_URL = "https://api.hopingminds.in/api/get-bot-response";
+            const API_URL = "https://api.hopingminds.com/api/get-bot-response";
             const messageElement = chatElement.querySelector("p");
 
             axios.post(API_URL, { user_input: data }).then((response) => {

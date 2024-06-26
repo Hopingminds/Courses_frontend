@@ -41,6 +41,7 @@ const CartCheckout = () => {
     zip,
     gstnumber
   })
+  console.log(userDetail);
   const [warnings, setwarnings] = useState({
     name:false,
     country:false,
@@ -236,7 +237,7 @@ setinputData((prev) => ({
 
   // console.log(total)
   const handlePayment = async () => {
- 
+     const userData = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
   
       // toast.error("Select state");
       if (!inputData.name) {
@@ -272,22 +273,27 @@ setinputData((prev) => ({
         // toast.error("Select country");
       
       // toast.error("Every input must be filled");
-    } else {
-      
-      if (total === 0) {
-        handleContinueCheckout();
-        navigate('/success')
-      }
-      else {
+      } else {
+        console.log(state)
+        console.log(
+          `https://payme.hopingminds.in/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone}&name=${userDetail?.name}&address=${inputData.address}&zip=${inputData.zip}&country=${country}&state=${state}&gstNumber=${inputData?.gstnumber}`
+        );
+       window.location.href = `https://payme.hopingminds.in/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone}&name=${userDetail?.name}&address=${inputData.address.replace(/\s/g, "")}&zip=${inputData.zip}&country=${country}&state=${state}&gstNumber=${inputData?.gstnumber}`;
         
-        handleGenerateUrl().then((res) => {
-          // console.log(res);
-          if (res) {
-            handleContinueCheckout();
-            window.location.href = res;
-          }
-        });
-      }
+      // if (total === 0) {
+      //   handleContinueCheckout();
+      //   navigate('/success')
+      // }
+      // else {
+        
+        // handleGenerateUrl().then((res) => {
+        //   // console.log(res);
+        //   if (res) {
+        //     handleContinueCheckout();
+        //     window.location.href = res;
+        //   }
+        // });
+      // }
   }
   };
 
