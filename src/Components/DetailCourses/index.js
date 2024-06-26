@@ -141,7 +141,7 @@ export default function DetailCourses() {
         >
           <div className="CCDetails-Header-content-leftqw  xsm:text-[10px] pb-2">
             <div className="CCDetails-Header-content-row1qw xsm:text-[10px] xsm:w-[80%]">
-              <h2 className="font-pop text-[1.2rem] xsm:text-[10px] capitalize">{Data?.title}</h2>
+              <h2 className="font-pop text-[1.2rem] xsm:text-[10px] capitalize">{Data?.title?.length>80 ? Data?.title?.slice(0,80)?.join("...") : Data?.title}</h2>
               <p className="line-clamp-2	text-white">{Data?.overview }</p>
             </div>
             <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-1">
@@ -253,7 +253,7 @@ export default function DetailCourses() {
 
       <div className="flex justify-between px-[8%] py-6">
         <div className="w-[58%] flex flex-col gap-16 xsm:gap-10">
-          <div className="flex flex-col p-[1rem_2rem] gap-4 capitalize xsm:gap-4 shadow-[0px_4px_11px_0px_#0000001C]
+          {Data?.whatWillILearn?.length ? <div className="flex flex-col p-[1rem_2rem] gap-4 capitalize xsm:gap-4 shadow-[0px_4px_11px_0px_#0000001C]
 ">
             <h1 className="font-pop font-semibold text-[19px] text-[#0F2027] xsm:text-[14px]">
               Skills You Will Learn
@@ -261,18 +261,18 @@ export default function DetailCourses() {
             <div className="flex flex-col gap-4 font-nu text-[#555555]">
 
               <ul className="list-inside leading-7 tracking-wide pl-2 grid grid-cols-2 gap-4  p-5 shadow-[0_4px_11px_0px_rgb(0, 0, 0))] xsm:pl-0 xsm:gap-2 xsm:text-[10px] xsm:p-2 xsm:leading-none xsm:tracking-tighter" >
-                {Data?.whatWillILearn.map((item, index) => (
+                {Data?.whatWillILearn?.map((item, index) => (
                   <li key={index} className="flex gap-2 xsm:gap-1"> <img src="/Icons/shield.svg" className="h-[22px] w-auto xsm:h-[18px]" alt="" /> {item}</li>
                 ))}
               </ul>
             </div>
-          </div>
-          <div className="flex flex-col gap-8 xsm:gap-4">
+          </div>:''}
+          {Data?.curriculum && <div className="flex flex-col gap-8 xsm:gap-4">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]  xsm:text-[14px]">
               What's Included
             </h1>
             <Included curiculum={Data?.curriculum} title={Data?.title } />
-          </div>
+          </div>}
           <div className="flex flex-col gap-8 xsm:gap-2">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               Instructor
@@ -295,8 +295,8 @@ export default function DetailCourses() {
             </div>
           </div> 
 
-          <PackageCarousel data={Data?.companies} />
-
+          {Data?.companies && <PackageCarousel data={Data?.companies} />
+}
        { faqs?.length &&  <div className="flex flex-col gap-8 xsm:gap-4">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               FAQs
