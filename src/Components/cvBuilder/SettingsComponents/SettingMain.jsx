@@ -11,14 +11,14 @@ const SettingMain = () => {
         <h1 className="text-2xl font-bold">Resume Builder</h1>
 
         <div className="flex flex-col mt-4">
-          <div className="flex space-x-2 ">
-            <SetEmpty />
+          {/* <div className="flex space-x-2 ">
+             <SetEmpty />
             <SetSample />
-          </div>
-          <motion.div
+          </div> */}
+          {/* <motion.div
             layout
             className="w-44 h-1 mx-auto mt-2 bg-gray-200 rounded-full"
-          />
+          /> */}
 
           <div className="mt-5">
             <h1 className="text-xl font-bold">Templates</h1>
@@ -27,7 +27,7 @@ const SettingMain = () => {
               <TemplateSwitcher value={2} />
               <TemplateSwitcher value={3} />
               <TemplateSwitcher value={4} />
-              <TemplateSwitcher value={5} />
+              {/* <TemplateSwitcher value={5} /> */}
             </div>
           </div>
         </div>

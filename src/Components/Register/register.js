@@ -351,6 +351,7 @@ const Register = () => {
                                         value={user.college}
                                         onChange={SearchData}
                                         onKeyDown={(e) => handleKeyDown(e, passwordRef)}
+                                        autocomplete="off"
                                     />
                                     <div className='w-full collegescroll min-h-[0px] max-h-[200px] overflow-y-auto absolute  z-20 bg-[#eafff5]  '>
                                         {
