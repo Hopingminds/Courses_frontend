@@ -34,10 +34,36 @@ const CartCheckout = () => {
   const [Data, setData] = useState([]);
   const [total, settotal] = useState(0);
   const [show, setshow] = useState(false);
+
+  const [inputData, setinputData] = useState({
+    name,
+    address,
+    zip,
+    gstnumber
+  })
+  const [warnings, setwarnings] = useState({
+    name:false,
+    country:false,
+    state:false,
+    address:false,
+    zip:false
+  })
+
+  const handleInputchange=(e)=>{
+let {name,value}=e.target;
+setwarnings((prevWarnings) => ({
+  ...prevWarnings,
+  [name]: false
+}));
+setinputData((prev) => ({
+  ...prev,
+  [name]: value
+}));
+  }
   const checkUserValidation = async () => {
     const isValidUser = await authenticateUser();
 
-    console.log(isValidUser);
+    // console.log(isValidUser);
     if (isValidUser !== 200) {
       localStorage.removeItem("COURSES_USER_TOKEN");
       toast.error("You have been Logged Out");
@@ -208,14 +234,44 @@ const CartCheckout = () => {
   //   }
   // };
 
-  console.log(total)
+  // console.log(total)
   const handlePayment = async () => {
-    if (!country) {
-      toast.error("Select country");
-    } else if (!state) {
-      toast.error("Select state");
-    } else if (!address || !zip) {
-      toast.error("Every input must be filled");
+ 
+  
+      // toast.error("Select state");
+      if (!inputData.name) {
+        setwarnings((prevWarnings) => ({
+          ...prevWarnings,
+          ['name']: true
+        }));
+      } 
+   else if (!inputData.address) {
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ['address']: true
+      }));
+    } 
+    else if (!inputData.zip) {
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ['zip']: true
+      }));
+    }
+    else if (!state) {
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ['state']: true
+      }));
+    }
+
+      else if (!country) {
+        setwarnings((prevWarnings) => ({
+          ...prevWarnings,
+          ['country']: true
+        }));
+        // toast.error("Select country");
+      
+      // toast.error("Every input must be filled");
     } else {
       
       if (total === 0) {
@@ -259,8 +315,9 @@ const CartCheckout = () => {
               name="country"
               placeholder="Select a country"
               value={country}
-              className=""
-              styleContainer={{ padding: "0px !important" }}
+              className={warnings.country?'border border-red-500':''}
+              styleContainer={{ padding: "0px !important" , border:`${warnings.country ?'1px solid red' : ''}`}}
+
             />
 
             <StateSelector
@@ -268,33 +325,41 @@ const CartCheckout = () => {
               value={state}
               countryPlaceholder="Select state"
               onChange={handleStateChange}
-              styleContainer={{ width: "400px !important" }}
+              className={warnings.state?'border border-red-500':''}
+              styleContainer={{ width: "400px !important",border:`${warnings.state ?'1px solid red' : ''}` }}
             />
           </div>
           <div className="flex space-x-10 grid grid-cols-2 xsm:justify-between xsm:gap-0 xsm:space-x-2">
             <input
-              value={name}
-              onChange={(e) => setname(e.target.value)}
+              value={inputData.name}
+              onChange={handleInputchange}
               placeholder="Name"
-              className="w-full py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
+              required   
+              name="name"          
+              className={`w-full py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px] ${warnings.name ? 'border border-red-500' : ''}`}
             />
             <input
-              value={gstnumber}
-              onChange={(e) => setgstnumber(e.target.value)}
+              value={inputData.gstnumber}
+              name="gstnumber"
+              onChange={handleInputchange}
               placeholder="GST No.(optional)"
               className="w-[88%] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 xsm:w-[95%] md:text-[14px] md:w-[80%]"
             />
           </div>
           <div className="flex space-x-10 grid grid-cols-2 xsm:justify-between xsm:gap-0 xsm:space-x-2">
             <input
-              value={address}
-              onChange={(e) => setaddress(e.target.value)}
+             value={inputData.address}
+              name="address"
+              onChange={handleInputchange}
               placeholder="Address"
-              className="w-full py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px]"
+              required
+              className={`w-full py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px] ${warnings.address ? 'border border-red-500' : ''}`}
             />
             <input
-              value={zip}
-              onChange={(e) => setzip(e.target.value)}
+              value={inputData.zip}
+              name="zip"
+              required
+              onChange={handleInputchange}
               onInput={(e) => {
                 const value = e.target.value;
                 // Only allow digits
@@ -302,7 +367,7 @@ const CartCheckout = () => {
               }}
               type="number"
               placeholder="ZIP Code"
-              className="w-[88%] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 xsm:w-[95%] md:text-[14px] md:w-[80%]"
+              className={`w-[88%] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 xsm:w-[95%] md:text-[14px] md:w-[80%] ${warnings.zip ? 'border border-red-500' : ''}`}
             />
           </div>
 

@@ -188,7 +188,7 @@ const Testimonial = () => {
               />
               </div>
               <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[95%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md xsm:top-[69%] md:">
-                {testimonials.map((testimonial, index) => (
+                {testimonials?.map((testimonial, index) => (
                   <div
                     key={index}
                     className={`bg-[#1DBF73] text-[rgb(29,191,115)] w-12 rounded-l-xl xsm:w-4 sm:w-6 md:w-8 lg:w-10 ${index === currentIndex ? "" : "hidden"

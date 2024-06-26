@@ -96,7 +96,7 @@ export default function Question() {
     }
   }
 
-  async function handleClick() {
+  async function handleClick(status,remarks) {
     try {
       let url = `${BASE_URL}/submitmodule`;
       const data = await fetch(url, {
@@ -305,7 +305,7 @@ export default function Question() {
 
   useEffect(() => {
       if (peoplewarning <0 && cameraActive && !camerablocked) {
-        handleClick();
+        handleClick(true,'Cheating attempt detected during the online test. Disciplinary action will follow.');
       }
    
   }, [peoplewarning]);
@@ -424,7 +424,7 @@ export default function Question() {
                   Save
                 </button>
                 {Length === parseInt(params.get("index")) && (
-                  <button className="py-2 px-4 rounded-xl bg-[#1DBF73] text-white" onClick={handleClick}>
+                  <button className="py-2 px-4 rounded-xl bg-[#1DBF73] text-white" onClick={()=>handleClick(false,'')}>
                     Finish
                   </button>
                 )}

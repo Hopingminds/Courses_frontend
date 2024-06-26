@@ -292,7 +292,7 @@ const ProfilEdit = () => {
                 </div>
                 <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
                   <input
-                    type="text"
+                    type="number"
                     className="outline-none w-full bg-transparent placeholder:text-[#c6c3c3]"
                     placeholder="Phone Number"
                     name="phone"

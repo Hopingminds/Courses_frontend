@@ -32,7 +32,7 @@ const CourseCard = ({
   credits,
   courseCategory,
 }) => {
-  console.log(courseCategory);
+  // console.log(courseCategory);
   const [mouseHovered, setMouseHovered] = useState(null);
   const [IsMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);

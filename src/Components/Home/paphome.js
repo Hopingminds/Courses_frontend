@@ -24,7 +24,7 @@ const PapHome = () => {
                     <p className='text-[#3C3C3CE5] text-center text-[22px] leading-7 tracking-wider xsm:text-[7px] xsm:text-balance sm:text-[8px] md:text-[8px] lg:text-[14px] font-pop xl:text-[14px]'>You get a job before you pay any fees. It's a simple, stress-free, and risk-free approach. No job means no charges, ensuring peace of mind.</p>
                 </div>
             </div>
-            <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full xsm:text-[8px] xsm:py-1 xsm:px-3 sm:text-[10px] sm:py-2 sm:px-3 md:text-[12px] md:py-2 md:px-4 font-pop xsm:mt-0' onClick={() => navigate('/pap')}>Find Out ?</button>
+            <button className='px-6 py-3 text-white bg-[#1DBF73] rounded-full xsm:text-[8px] xsm:py-1 xsm:px-3 sm:text-[10px] sm:py-2 sm:px-3 md:text-[12px] md:py-2 md:px-4 font-pop xsm:mt-0 button-resume' onClick={() => navigate('/pap')}>Find Out ?</button>
         </div>
     )
 }

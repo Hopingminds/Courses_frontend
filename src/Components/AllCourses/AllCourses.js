@@ -126,7 +126,19 @@ const AllCourses = () => {
     setIsMuted((prev) => !prev);
 
   };
-
+  const debounce = (func, wait) => {
+    let timeout;
+    
+    return function(...args) {
+      const context = this;
+      
+      clearTimeout(timeout);
+      
+      timeout = setTimeout(() => {
+        func.apply(context, args);
+      }, wait);
+    };
+  };
  async function SearchData(e) {
   
     let query = e.target.value;
@@ -137,15 +149,16 @@ const AllCourses = () => {
       setAllCourses(Data);
     } else {
       try {
-      const tempdata=await fetch(BASE_URL+'/search?title='+query)
+      const tempdata=await fetch(BASE_URL+'/courses?search='+query)
       const response=await tempdata.json();
+      console.log(response);
       
       if(response.success){
-        response?.courses?.map((course)=>{
-        temp.push(course)
-        })
+        // response?.courses?.map((course)=>{
+        // temp.push(course)
+        // })
         // console.log(temp);
-        setSearchedData(temp);
+        setSearchedData(response?.courses);
          setAllCourses(
           response?.courses
          );
@@ -155,7 +168,8 @@ const AllCourses = () => {
     }
     }
   }
-
+  const debouncedSearchData = debounce(SearchData, 300);
+// const debouncedSearchData = debounce(SearchData, 300);
   const handleCourseClick = (courseTitle) => {
     setSelectedCourse(courseTitle);
   };
@@ -200,6 +214,7 @@ const AllCourses = () => {
   setTimeout(() => {
     setloaded(false)
   }, 1000);
+  
   return (
     <>
       <head>
@@ -220,7 +235,7 @@ const AllCourses = () => {
               type="text"
               placeholder="Search for course"
               ref={searchBarRef}
-              onChange={SearchData}
+              onChange={debouncedSearchData}
               className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
                 }`}
             />
@@ -230,7 +245,7 @@ const AllCourses = () => {
                 return (
                   <>
                     <Link
-                      key={ind}
+                      
                       to={"/detailcourse/" + item.slug}
                       className="text-left pl-2 py-1 border-b-[2px]"
                     >
