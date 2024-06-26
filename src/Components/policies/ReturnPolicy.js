@@ -164,7 +164,6 @@ const Wrapper = styled.div`
     width: 70%;
     margin: 0 auto;
     padding: 2% 5%;
-    
     background-color: white;
     h2 {
       text-align: center;
