@@ -95,7 +95,7 @@ const AboutUs = () => {
           Our dedicated placement coordinators work day in and day out to identify requirements from these
           partners and also help tailor our programs on an agile basis to meet them.
         </p>
-        <div className="grid grid-cols-3 gap-6 w-[80%] pt-6 xsm:flex xsm:flex-col xsm:w-full xsm:px-4">
+        {/* <div className="grid grid-cols-3 gap-6 w-[80%] pt-6 xsm:flex xsm:flex-col xsm:w-full xsm:px-4">
           <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6 xsm:w-full">
             <img src={Num1} alt="" className="w-[15%]" />
             <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Standardization</p>
@@ -126,7 +126,7 @@ const AboutUs = () => {
             <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Multimedia Materials</p>
             <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">One of the main reasons why custom eLearning is effective is that it’s the perfect delivery method for ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
