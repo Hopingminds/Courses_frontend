@@ -19,12 +19,12 @@ import DetailCompany from "../Companies/Detailcompanies";
 
 export default function DetailCourses() {
   const param = useParams();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [Data, setData] = useState();
   let slug = param.slug;
   const { userDetail } = useContext(Globalinfo);
   const [show, setshow] = useState(false);
-  const { setCartSize, cartSize,GetCart } = useContext(Globalinfo);
+  const { setCartSize, cartSize, GetCart } = useContext(Globalinfo);
   const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
@@ -36,7 +36,15 @@ export default function DetailCourses() {
         const response = await data.json();
         // console.log(response);
         setData(response?.course);
-        setFaqs(response?.course?.faqs?.map((val)=>{return {question:val.question,answer:val.answer,isOpen:false}}))
+        setFaqs(
+          response?.course?.faqs?.map((val) => {
+            return {
+              question: val.question,
+              answer: val.answer,
+              isOpen: false,
+            };
+          })
+        );
         setshow(false);
       } catch (error) {
         console.log(error);
@@ -85,12 +93,12 @@ export default function DetailCourses() {
         if (response.success) {
           toast.success(response.msg);
           // setCartSize(cartSize + 1);
-          GetCart()
+          GetCart();
         } else {
           toast.error(response.msg);
         }
       } else {
-        localStorage.setItem('ADD_TO_CART_HISTORY', window.location.pathname);
+        localStorage.setItem("ADD_TO_CART_HISTORY", window.location.pathname);
         // console.log("add to cart withour log")
         navigate("/login-2");
       }
@@ -127,7 +135,6 @@ export default function DetailCourses() {
     }
   }
 
-
   return (
     <div className="h-auto min-h-screen overflow-x-visible ">
       <div className="mb-5 xsm:mx-0 xsm:mb-2">
@@ -142,8 +149,12 @@ export default function DetailCourses() {
         >
           <div className="CCDetails-Header-content-leftqw  xsm:text-[10px] pb-2">
             <div className="CCDetails-Header-content-row1qw xsm:text-[10px] xsm:w-[80%]">
-              <h2 className="font-pop text-[1.2rem] xsm:text-[10px] capitalize">{Data?.title?.length>80 ? Data?.title?.slice(0,80)?.join("...") : Data?.title}</h2>
-              <p className="line-clamp-2	text-white">{Data?.overview }</p>
+              <h2 className="font-pop text-[1.2rem] xsm:text-[10px] capitalize">
+                {Data?.title?.length > 80
+                  ? Data?.title?.slice(0, 80)?.join("...")
+                  : Data?.title}
+              </h2>
+              <p className="line-clamp-2	text-white">{Data?.overview}</p>
             </div>
             <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-1">
               <p>4.7</p>
@@ -157,35 +168,31 @@ export default function DetailCourses() {
               {/* <p>(260+)</p> */}
             </div>
             <div className="flex gap-5 mt-5 xsm:mt-1 xsm:gap-3">
-            {purchasedCourses.includes(Data?._id) ? (
-             <></>
-            ) : (
-              <div
-                    onClick={() => Addtowishlist(Data?._id)}
-                    className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
-              >
-                Add to Wishlist
-              </div>
-            )}
-            {!purchasedCourses.includes(Data?._id) ? (
-              <div className="space-x-4 w-fit flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
-
+              {purchasedCourses.includes(Data?._id) ? (
+                <></>
+              ) : (
                 <div
-                  onClick={() => Addtocart(Data?._id)}
-                    className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
+                  onClick={() => Addtowishlist(Data?._id)}
+                  className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
                 >
-                  Add to cart
+                  Add to Wishlist
                 </div>
-              </div>
-            ) : (
-              ""
+              )}
+              {!purchasedCourses.includes(Data?._id) ? (
+                <div className="space-x-4 w-fit flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
+                  <div
+                    onClick={() => Addtocart(Data?._id)}
+                    className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
+                  >
+                    Add to cart
+                  </div>
+                </div>
+              ) : (
+                ""
               )}
             </div>
           </div>
-         
-
         </div>
-       
       </div>
       {show ? (
         <div className="w-full h-screen fixed top-0 left-0 bg-[#eeeeee]  z-[999999769]">
@@ -254,35 +261,47 @@ export default function DetailCourses() {
 
       <div className="flex justify-between px-[8%] py-6">
         <div className="w-[58%] flex flex-col gap-16 xsm:gap-10">
-          {Data?.whatWillILearn?.length>0 ? <div className="flex flex-col p-[1rem_2rem] gap-4 capitalize xsm:gap-4 shadow-[0px_4px_11px_0px_#0000001C]
-">
-            <h1 className="font-pop font-semibold text-[19px] text-[#0F2027] xsm:text-[14px]">
-              Skills You Will Learn
-            </h1>
-            <div className="flex flex-col gap-4 font-nu text-[#555555]">
-
-              <ul className="list-inside leading-7 tracking-wide pl-2 grid grid-cols-2 gap-4  p-5 shadow-[0_4px_11px_0px_rgb(0, 0, 0))] xsm:pl-0 xsm:gap-2 xsm:text-[10px] xsm:p-2 xsm:leading-none xsm:tracking-tighter" >
-                {Data?.whatWillILearn?.map((item, index) => (
-                  <li key={index} className="flex gap-2 xsm:gap-1"> <img src="/Icons/shield.svg" className="h-[22px] w-auto xsm:h-[18px]" alt="" /> {item}</li>
-                ))}
-              </ul>
+          {Data?.whatWillILearn?.length > 0 ? (
+            <div
+              className="flex flex-col p-[1rem_2rem] gap-4 capitalize xsm:gap-4 shadow-[0px_4px_11px_0px_#0000001C]
+"
+            >
+              <h1 className="font-pop font-semibold text-[19px] text-[#0F2027] xsm:text-[14px]">
+                Skills You Will Learn
+              </h1>
+              <div className="flex flex-col gap-4 font-nu text-[#555555]">
+                <ul className="list-inside leading-7 tracking-wide pl-2 grid grid-cols-2 gap-4  p-5 shadow-[0_4px_11px_0px_rgb(0, 0, 0))] xsm:pl-0 xsm:gap-2 xsm:text-[10px] xsm:p-2 xsm:leading-none xsm:tracking-tighter">
+                  {Data?.whatWillILearn?.map((item, index) => (
+                    <li key={index} className="flex gap-2 xsm:gap-1">
+                      {" "}
+                      <img
+                        src="/Icons/shield.svg"
+                        className="h-[22px] w-auto xsm:h-[18px]"
+                        alt=""
+                      />{" "}
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>:''}
-          {Data?.curriculum?.length>0 && <div className="flex flex-col gap-8 xsm:gap-4">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]  xsm:text-[14px]">
-              What's Included
-            </h1>
-            <Included curiculum={Data?.curriculum} title={Data?.title } />
-          </div>}
+          ) : (
+            ""
+          )}
+          {Data?.curriculum?.length > 0 && (
+            <div className="flex flex-col gap-8 xsm:gap-4">
+              <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]  xsm:text-[14px]">
+                What's Included
+              </h1>
+              <Included curiculum={Data?.curriculum} title={Data?.title} />
+            </div>
+          )}
           <div className="flex flex-col gap-8 xsm:gap-2">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
+            <h1 className="font-pop font-se-mibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               Instructor
             </h1>
             <Instructor />
           </div>
-
-
-         
 
           <div className="flex flex-col gap-8 justify-center items-center xsm:gap-4">
             <h1 className="w-full text-left font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
@@ -297,51 +316,59 @@ export default function DetailCourses() {
             </div> */}
           </div> 
 
-          {Data?.companies && <PackageCarousel data={Data?.companies} />
-}
-       { faqs?.length>0 &&  <div className="flex flex-col gap-8 xsm:gap-4">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
-              FAQs
-            </h1>
-            <div className=" w-[95%]  rounded-md px-0 py-6 flex flex-col gap-6 font-nu xsm:w-[100%] xsm:p-2 xsm:gap-3">
-              {faqs.map((item, index) => (
-                <div key={index} className="faq1 w-full  bg-white rounded-md">
-                  <div className=" w-full ">
-                    <div
-                      onClick={() => ClickSection(index)}
-                      className="drop-top  flex justify-between items-center w-full py-3 px-2 cursor-pointe cursor-pointer xsm:px-4 xsm:py-2"
-                    >
-                      <div className="flex items-center gap-2 relative pl-5 before:content-['\2022'] before:absolute before:left-0 before:text-black">
-                        <p className={`xsm:text-[8px] font-semibold md:text-[14px] ${item.isOpen && 'text-[#1DBF73]'}`}>
-                          {item.question}
-                        </p>
-                      </div>
-                      <div>
-                        <img
-                          src="../Icons/faqarrow.svg"
-                          alt=""
-                          className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 transition-transform duration-300 ${item.isOpen ? "rotate-up" : "rotate-down"
+          {Data?.companies && <PackageCarousel data={Data?.companies} />}
+          {faqs?.length > 0 && (
+            <div className="flex flex-col gap-8 xsm:gap-4">
+              <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
+                FAQs
+              </h1>
+              <div className=" w-[95%]  rounded-md px-0 py-6 flex flex-col gap-6 font-nu xsm:w-[100%] xsm:p-2 xsm:gap-3">
+                {faqs.map((item, index) => (
+                  <div key={index} className="faq1 w-full  bg-white rounded-md">
+                    <div className=" w-full ">
+                      <div
+                        onClick={() => ClickSection(index)}
+                        className="drop-top  flex justify-between items-center w-full py-3 px-2 cursor-pointe cursor-pointer xsm:px-4 xsm:py-2"
+                      >
+                        <div className="flex items-center gap-2 relative pl-5 before:content-['\2022'] before:absolute before:left-0 before:text-black">
+                          <p
+                            className={`xsm:text-[8px] font-semibold md:text-[14px] ${
+                              item.isOpen && "text-[#1DBF73]"
                             }`}
-                        />
+                          >
+                            {item.question}
+                          </p>
+                        </div>
+                        <div>
+                          <img
+                            src="../Icons/faqarrow.svg"
+                            alt=""
+                            className={`arrow-icon xsm:h-3 xsm:w-3 md:h-4 md:w-4 transition-transform duration-300 ${
+                              item.isOpen ? "rotate-up" : "rotate-down"
+                            }`}
+                          />
+                        </div>
                       </div>
+                      {item?.isOpen && (
+                        <div className="px-6 py-4 xsm:px-4 xsm:py-3">
+                          <p className="xsm:text-[8px] text-[#555555] md:text-[14px]">
+                            {item.answer}
+                          </p>
+                        </div>
+                      )}
                     </div>
-                    {item?.isOpen && (
-                      <div className="px-6 py-4 xsm:px-4 xsm:py-3">
-                        <p className="xsm:text-[8px] text-[#555555] md:text-[14px]">
-                          {item.answer}
-                        </p>
-                      </div>
-                    )}
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>}
-          {Data?.testimonials?.length>0 && <div className="flex flex-col gap-8">
-            <VideoTesttimonial data={Data?.testimonials} />
-          </div>}
+          )}
+          {Data?.testimonials?.length > 0 && (
+            <div className="flex flex-col gap-8">
+              <VideoTesttimonial data={Data?.testimonials} />
+            </div>
+          )}
         </div>
-        <span className="w-[33%] h-fit -translate-y-[20rem] xsm:-translate-y-[6rem] ">
+        <span className="w-[33%] h-[1000px] -translate-y-[20rem] xsm:-translate-y-[6rem] ">
           <Commoncard Data={Data} />
           <div className="sticky top-[10vh] flex flex-col gap-[2rem]">
          
@@ -358,9 +385,7 @@ export default function DetailCourses() {
           </div>
 
         </span>
-
       </div>
-
     </div>
   );
 }

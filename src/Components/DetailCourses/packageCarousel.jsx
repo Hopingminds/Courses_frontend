@@ -44,20 +44,20 @@ const PackageCarousel = ({data}) => {
                 key={index}
                 className="bg-[radial-gradient(373.45%_1637.9%_at_223.96%_217.23%,_rgba(29,_191,_115,_0.3)_0%,_rgba(255,_255,_255,_0.3)_100%)] rounded-[10px] border border-[#1DBF73]"
               >
-                <div className="p-4 flex h-full flex-col justify-between">
+                <div className="p-4 flex h-full flex-col justify-between font-nu gap-5">
                   <span>
-                    <h3 className="text-[12px] font-semibold">
+                    <h3 className="text-[12px] font-bold">
                       {val?.companyName}
                     </h3>
-                    <h5 className="text-gray-400 text-[10px]"> (Fresher)</h5>
+                    <h5 className="text-[#808080] text-[10px]"> (Fresher)</h5>
                   </span>
-                  <span>
-                    <h3 className=" text-lg">
+                  <span className='flex flex-col'>
+                    <span className=" text-lg font-bold ">
                       {" "}
-                      {Math.ceil(val?.avgpkg?.from + val?.avgpkg?.to) / 2 + 
+                      {"₹"+Math.ceil(val?.avgpkg?.from + val?.avgpkg?.to) / 2 + 
                         " LPA"}
-                    </h3>
-                    <h5>{` ${val?.avgpkg?.from} LPA - ₹ ${val?.avgpkg?.to}   LPA`}</h5>
+                    </span>
+                    <span className='text-[0.8rem] font-semibold'>{` ₹${val?.avgpkg?.from} - ${val?.avgpkg?.to}/LPA`}</span>
                   </span>
                 </div>
               </SplideSlide>
