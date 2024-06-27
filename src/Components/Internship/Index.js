@@ -232,7 +232,7 @@ const Internship = () => {
               className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
                 }`}
             />
-         { SearchedData.length ? <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center max-h-[30vh] overflow-y-auto pt-2" ref={searchResultsRef}>
+         { SearchedData.length ? <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center  pt-2" ref={searchResultsRef}>
               {SearchedData?.map((item, ind) => {
                 // console.log(item.);
                 return (

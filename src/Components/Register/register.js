@@ -62,7 +62,10 @@ const Register = () => {
         // Test the email against the pattern
         return emailPattern.test(email);
     }
-
+    function validateAlphabets(input) {
+        const regex = /^[a-zA-Z]*$/; // Regular expression to match only alphabets
+        return regex.test(input);
+    }
     const handleNumChange = (number) => {
         setcountrycode(number);
         if (number && number.length >= 9 && number.length <= 14) {
@@ -190,6 +193,7 @@ const Register = () => {
             toast.error('Enter valid Email');
             return;
         }
+        
         if(!validatePassword(user.password)){
             toast.error('Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
             return;
@@ -200,6 +204,14 @@ const Register = () => {
         }
         if (!validateCollege(user.college)) {
             toast.error('Enter valid College Name');
+            return;
+        }
+        if(!validateAlphabets(user.degree)){
+            toast.error("Degree must contains only alphabets")
+            return;
+        }
+        if(!validateAlphabets(user.name)){
+            toast.error("Name must contains only alphabets")
             return;
         }
 
