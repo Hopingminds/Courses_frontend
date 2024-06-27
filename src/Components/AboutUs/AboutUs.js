@@ -24,28 +24,32 @@ const AboutUs = () => {
               the best opportunities to the students around the glob.
             </p>
             <p className="text-[#1E1E1E] text-[17px]  leading-[24px] text-justify xsm:text-[15px] font-pop">
-              HopingMinds is working to transform India’s educational system into an outcome-oriented system by
-              helping students identify, train for and get placed in growing career paths.
-              We run industry-oriented, holistic development programs based on real time industry requirements
-              of our partner firms to maximise placement outcomes and enable our students to build aspirational
-              careers. We have successfully run 30+ training programs PAN India covering over 10,000 students and
-              are backed by established investors from India, UK and USA.
-              HopingMinds has been established by driven young entrepreneurs with prestigious IIT and IIM
-              backgrounds along with combined sectoral experience of 30 years in the counselling, training, and
-              placement ecosystem.
+              HopingMinds is working to transform India’s educational system
+              into an outcome-oriented system by helping students identify,
+              train for and get placed in growing career paths. We run
+              industry-oriented, holistic development programs based on real
+              time industry requirements of our partner firms to maximise
+              placement outcomes and enable our students to build aspirational
+              careers. We have successfully run 30+ training programs PAN India
+              covering over 10,000 students and are backed by established
+              investors from India, UK and USA. HopingMinds has been established
+              by driven young entrepreneurs with prestigious IIT and IIM
+              backgrounds along with combined sectoral experience of 30 years in
+              the counselling, training, and placement ecosystem.
             </p>
           </div>
-          <div className="flex justify-center items-center w-[40%] relative xsm:hidden">
-            <div className="bg-[#E2FFF1] text-[#E2FFF1] rounded-xl w-[68%] h-[80%]">
-              .
-            </div>
-            <img alt=""
+
+          <div className="flex justify-center items-center relative xsm:hidden lg:w-[28%] xl:w-[40%] lg:right-[4rem]">
+            <div className="bg-[#E2FFF1] text-[#E2FFF1] rounded-xl w-[68%] lg:h-[20%] h-[80%] lg:w-[68%] xl:w-[68%]"></div>
+            <img
+              alt=""
               src={Img1}
-              className="absolute top-3 right-20 rounded-xl object-contain w-[55%]"
+              className="absolute top-3 lg:top-[37.5%] right-[1rem] rounded-xl object-contain w-[55%] lg:w-[55%] xl:w-[55%]"
             />
-            <img alt=""
+            <img
+              alt=""
               src={Img2}
-              className="absolute bottom-3 left-20 rounded-xl object-contain w-[55%]"
+              className="absolute bottom-3 lg:bottom-[37.5%] left-[1rem] rounded-xl object-contain w-[55%] lg:w-[55%] xl:w-[55%]"
             />
           </div>
         </div>
@@ -63,37 +67,52 @@ const AboutUs = () => {
               We are always working to provide you best of the features in all
               aspects.
             </p>
-            <div className="flex flex-col gap-4 text-[#1E1E1E] text-[17px]  leading-[24px] xsm:text-[15px] font-pop">
+            <div className="text-[#1E1E1E] text-[17px]  leading-[24px] text-justify xsm:text-[15px] font-pop">
               <p>
-                HopingMinds is an NSDC and Swayam Plus accredited partner with course certification and
-                monitoring done on the Skill India Portal. We have been awarded by the Dynamic World Education
-                Community and are an active participant in Kaushal Melas across India.
+                HopingMinds is an NSDC and Swayam Plus accredited partner with
+                course certification and monitoring done on the Skill India
+                Portal. We have been awarded by the Dynamic World Education
+                Community and are an active participant in Kaushal Melas across
+                India.
               </p>
               <p>
-                We have the capability to run specialised programs based on opportunities such as our recent
-                program for Oil & Gas field engineers in Jorhat, Assam; Electrical vehicles Design & Repair for JBM;
-                ongoing program for Electric Vehicle Systems, Design and SMR with Okaya; AI programs with
-                NetSmartz, ITBD, TCS, Chandigarh Group of Colleges, Chitkara University, PTU, HPTU and many more.
+                We have the capability to run specialised programs based on
+                opportunities such as our recent program for Oil & Gas field
+                engineers in Jorhat, Assam; Electrical vehicles Design & Repair
+                for JBM; ongoing program for Electric Vehicle Systems, Design
+                and SMR with Okaya; AI programs with NetSmartz, ITBD, TCS,
+                Chandigarh Group of Colleges, Chitkara University, PTU, HPTU and
+                many more.
               </p>
             </div>
           </div>
-        
         </div>
       </div>
       <div className="flex flex-col justify-center items-center gap-6 py-16 pb-40 xsm:pb-2 ">
-        <p className="text-[#1DBF73] text-[32px] font-poppins font-semibold xsm:text-center xsm:text-[26px]">Our Benefits</p>
-        <p className="text-[#141414] text-[40px] font-poppins font-semibold w-[45%] flex text-center xsm:text-[22px] xsm:w-full xsm:leading-normal xsm:text-center ">By Joining Hoping Minds Platform, One Can Avail a Lot Of Benefits.</p>
-        <p className="text-[#1E1E1E] text-[18px] font-Nunito Sans w-[78%] text-center xsm:w-full xsm:text-[15px] font-pop">HopingMinds’ learning experience has been developed in consultation with learners to build a highly
-          engaging & gamified program whilst allowing for flexibility by leveraging a load of digital initiatives.
-          We have our own Learning Management System, mobile application, testing solution and interview
-          platform to ensure quality delivery and assessments. The firm believes in smaller batches to ensure
-          individual attention to all learners, thus prioritizing quality of development over quantity of students.
-          Exposure to industry experts is another critical component of our learning experience to ensure high
-          motivation, real time insights, industry exposure & enable students to apply concepts effectively</p>
-        <p className="text-[#1E1E1E] text-[18px] font-Nunito Sans w-[78%] text-center xsm:w-full xsm:text-[15px] font-pop">
-          We have 200+ industry partners across India and abroad that we work closely with for placements.
-          Our dedicated placement coordinators work day in and day out to identify requirements from these
-          partners and also help tailor our programs on an agile basis to meet them.
+        <p className="text-[#1DBF73] text-[32px] font-poppins font-semibold xsm:text-center xsm:text-[26px]">
+          Our Benefits
+        </p>
+        <p className="text-[#141414] text-[40px] font-poppins font-semibold w-[45%] flex text-center xsm:text-[22px] xsm:w-full lg:w-full xsm:leading-normal xsm:text-center ">
+          By Joining Hoping Minds Platform, One Can Avail a Lot Of Benefits.
+        </p>
+        <p className="text-[#1E1E1E] text-[17px]  leading-[24px] text-justify xsm:text-[15px] xsm:p-4 font-pop">
+          HopingMinds’ learning experience has been developed in consultation
+          with learners to build a highly engaging & gamified program whilst
+          allowing for flexibility by leveraging a load of digital initiatives.
+          We have our own Learning Management System, mobile application,
+          testing solution and interview platform to ensure quality delivery and
+          assessments. The firm believes in smaller batches to ensure individual
+          attention to all learners, thus prioritizing quality of development
+          over quantity of students. Exposure to industry experts is another
+          critical component of our learning experience to ensure high
+          motivation, real time insights, industry exposure & enable students to
+          apply concepts effectively
+        </p>
+        <p className="text-[#1E1E1E] text-[17px]  leading-[24px] text-justify xsm:text-[15px] xsm:p-4 font-pop">
+          We have 200+ industry partners across India and abroad that we work
+          closely with for placements. Our dedicated placement coordinators work
+          day in and day out to identify requirements from these partners and
+          also help tailor our programs on an agile basis to meet them.
         </p>
         {/* <div className="grid grid-cols-3 gap-6 w-[80%] pt-6 xsm:flex xsm:flex-col xsm:w-full xsm:px-4">
           <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6 xsm:w-full">

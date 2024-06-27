@@ -8,7 +8,7 @@ import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../Api/api";
 
-const Navbar = ({  }) => {
+const Navbar = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -19,7 +19,6 @@ const Navbar = ({  }) => {
     phone: "",
     experience: "",
     profile: "",
- 
   });
 
   function handleShowMenu() {
@@ -28,7 +27,7 @@ const Navbar = ({  }) => {
 
   useEffect(() => {
     const fetchInstructorDetails = async () => {
-      const email = "dummy@gmail.com"; // Replace with the dynamic email as needed
+      const email = "dummy@gmail.com"; 
       const token = localStorage.getItem("teachertoken");
 
       try {
@@ -62,6 +61,30 @@ const Navbar = ({  }) => {
       ...instructor,
       [name]: value,
     });
+  };
+
+  const handleLogout = async () => {
+    const token = localStorage.getItem("teachertoken");
+    
+    try {
+      const response = await fetch(`${BASE_URL}/logout`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to log out");
+      }
+
+      // Clear local storage and navigate to the login page
+      localStorage.removeItem("teachertoken");
+      navigate("/login");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
 
   function goToProfile() {
@@ -100,7 +123,10 @@ const Navbar = ({  }) => {
                 </div>
                 <p>My Profile</p>
               </div>
-              <div className="flex items-center gap-2 py-2 px-4">
+              <div
+                onClick={handleLogout}
+                className="flex items-center gap-2 py-2 px-4 cursor-pointer"
+              >
                 <div className="bg-[#FFEDED] p-2 rounded-full">
                   <img className="w-4 h-4" src={Logout} alt="" />
                 </div>
