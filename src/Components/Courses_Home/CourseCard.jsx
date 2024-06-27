@@ -194,7 +194,7 @@ const CourseCard = ({
                 src="../Icons/RCClock.svg"
               />
               <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] sm:text-[8px] sm:leading-none md:text-[6px]">
-                45 Hours
+                {price==0 ? '5 Hours' : '45 Hours'}
               </p>
             </div>
           </span>

@@ -33,7 +33,7 @@ export default function DetailCourses() {
         let url = BASE_URL + "/course/" + slug;
         const data = await fetch(url);
         const response = await data.json();
-        // console.log(response);
+        console.log(response);
         setData(response?.course);
         setFaqs(response?.course?.faqs?.map((val)=>{return {question:val.question,answer:val.answer,isOpen:false}}))
         setshow(false);
@@ -253,7 +253,7 @@ export default function DetailCourses() {
 
       <div className="flex justify-between px-[8%] py-6">
         <div className="w-[58%] flex flex-col gap-16 xsm:gap-10">
-          {Data?.whatWillILearn?.length ? <div className="flex flex-col p-[1rem_2rem] gap-4 capitalize xsm:gap-4 shadow-[0px_4px_11px_0px_#0000001C]
+          {Data?.whatWillILearn?.length>0 ? <div className="flex flex-col p-[1rem_2rem] gap-4 capitalize xsm:gap-4 shadow-[0px_4px_11px_0px_#0000001C]
 ">
             <h1 className="font-pop font-semibold text-[19px] text-[#0F2027] xsm:text-[14px]">
               Skills You Will Learn
@@ -267,7 +267,7 @@ export default function DetailCourses() {
               </ul>
             </div>
           </div>:''}
-          {Data?.curriculum && <div className="flex flex-col gap-8 xsm:gap-4">
+          {Data?.curriculum?.length>0 && <div className="flex flex-col gap-8 xsm:gap-4">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]  xsm:text-[14px]">
               What's Included
             </h1>
@@ -297,7 +297,7 @@ export default function DetailCourses() {
 
           {Data?.companies && <PackageCarousel data={Data?.companies} />
 }
-       { faqs?.length &&  <div className="flex flex-col gap-8 xsm:gap-4">
+       { faqs?.length>0 &&  <div className="flex flex-col gap-8 xsm:gap-4">
             <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               FAQs
             </h1>
@@ -335,7 +335,7 @@ export default function DetailCourses() {
               ))}
             </div>
           </div>}
-          {Data?.testimonials?.length && <div className="flex flex-col gap-8">
+          {Data?.testimonials?.length>0 && <div className="flex flex-col gap-8">
             <VideoTesttimonial data={Data?.testimonials} />
           </div>}
         </div>

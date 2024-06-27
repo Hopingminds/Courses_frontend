@@ -72,9 +72,9 @@ const Included = ({ curiculum,title }) => {
                 {
                     data?.map((val, ind) => {
                         return (
-                            <div className='border border-green-500 rounded-[12px] flex flex-col justify-center items-center p-7 gap-3 cursor-pointer xsm:p-3' key={ind} onClick={() => handleClick(ind)}>
+                            <div className='border border-green-500 rounded-[12px] flex flex-col justify-center items-center p-7 gap-3 cursor-pointer xsm:p-3 hover:bg-black group' key={ind} onClick={() => handleClick(ind)}>
                                 <img  src={val.svg} alt={val?.title} className='h-[40px] w-auto xsm:h-6' />
-                                <h5 className='text-[0.9rem] font-semibold xsm:text-[0.6rem] text-center'>{val?.title}</h5>
+                                <h5 className='text-[0.9rem] font-semibold xsm:text-[0.6rem] text-center group-hover:text-white'>{val?.title}</h5>
                             </div>
                         )
                     })

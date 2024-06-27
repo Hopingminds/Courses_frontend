@@ -9,7 +9,7 @@ import Skeleton from "../Skeleton/Skeletoncard";
 // import { COURSESURL } from '../Confidential';
 
 const Courses_Home = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All Courses");
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedCourse, setSelectedCourse] = useState("");
   const [cardsToShow, setCardsToShow] = useState(4); // State to keep track of number of cards to display
   const [showAllCards, setShowAllCards] = useState(false);
@@ -33,7 +33,7 @@ const Courses_Home = () => {
   }, []);
 
   let filteredCourses =
-    selectedCategory === "All Courses"
+    selectedCategory === "All"
       ? courses
       : courses.filter((course) => course.category === selectedCategory);
 
@@ -86,15 +86,15 @@ const Courses_Home = () => {
       {/* <h1 className='text-[40px] mt-16 font-semibold' style={{ textAlign: 'center' }}> Our Feature Courses</h1> */}
 
       <div className="h-[100%] w-full px-16 py-8 font-pop bg-[#E2FFF1] sm:px-4 xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-6 md:space-y-2">
-        <div className="h-12 md:h-8 sm:h-8 xsm:h-6 flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-2 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px] sm:space-x-4 sm:gap-y-2 sm:text-[10px] sm:flex-wrap md:text-[12px] md:space-x-6">
+        <div className="h-12 md:h-8 sm:h-8 xsm:h-6 flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-1 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px] sm:space-x-4 sm:gap-y-2 sm:text-[10px] sm:flex-wrap md:text-[12px] md:space-x-6">
           {[
-            "All Courses",
+            "All",
             "Full Stack Development",
             "AI/ML",
             "Data Science",
             "Management",
             "Networking",
-          ].slice(0,(window.innerWidth >=320 && window.innerWidth<=480 ? 5 : 6)).map((category) => (
+          ].slice(0,(window.innerWidth >=320 && window.innerWidth<=480 ? 4 : 6)).map((category) => (
             <button
               key={category}
               onClick={() => handleCategoryClick(category)}
@@ -110,7 +110,7 @@ const Courses_Home = () => {
         </div>
         <div className="flex justify-end w-full items-center">
           <Link
-            to={selectedCategory == "All Courses" ? "/course" : "/course?category=" + selectedCategory}
+            to={selectedCategory == "All" ? "/course" : "/course?category=" + selectedCategory}
             className="text-[#1DBF73] text-[16px] font-bold xsm:text-[8px] sm:text-[12px] md:text-[14px] md:pr-3"
           >
             See all
