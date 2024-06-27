@@ -15,6 +15,7 @@ import { jwtDecode } from "jwt-decode";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import PackageCarousel from "./packageCarousel";
+import DetailCompany from "../Companies/Detailcompanies";
 
 export default function DetailCourses() {
   const param = useParams();
@@ -306,17 +307,14 @@ export default function DetailCourses() {
             <h1 className="w-full text-left font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
               Companies Worldwide
             </h1>
-            <div className="flex justify-between w-full">
-              <img src="/Icons/byju.svg" className="w-36" alt="byju" />
-              <img src="/Icons/google.svg" className="w-36" alt="google" />
-              <img
-                src="/Icons/instamojo.svg"
-                className="w-36"
-                alt="instamojo"
-              />
-              <img src="/Icons/dream11.svg" className="w-36" alt="dream11" />
-            </div>
-          </div>
+            <DetailCompany/>
+            {/* <div className="flex justify-between w-full">
+              <img src='/Icons/byju.svg' className="w-36" alt="byju" />
+              <img src='/Icons/google.svg' className="w-36" alt="google" />
+              <img src='/Icons/instamojo.svg' className="w-36" alt="instamojo" />
+              <img src='/Icons/dream11.svg' className="w-36" alt="dream11" />
+            </div> */}
+          </div> 
 
           {Data?.companies && <PackageCarousel data={Data?.companies} />}
           {faqs?.length > 0 && (
@@ -373,19 +371,19 @@ export default function DetailCourses() {
         <span className="w-[33%] h-[1000px] -translate-y-[20rem] xsm:-translate-y-[6rem] ">
           <Commoncard Data={Data} />
           <div className="sticky top-[10vh] flex flex-col gap-[2rem]">
-            <div className="flex flex-col gap-[2rem]">
-              <div className="sticky top-[10vh]">
-                <img src="/Icons/certificate_Course.svg" alt="" />
-              </div>
-              {/* Uncomment this section to include additional content */}
-              {/* <div className="p-[15px] border border-black rounded-[16px] flex flex-col gap-4 items-center">
-        <h3 className="text-black text-[1.3rem] text-center font-semibold">
-          Create your professional <span className="text-[#1DBF73]">Resume</span> with our designs
-        </h3>
-        <button className="bg-[#1DBF73] rounded-lg px-3 py-1 text-white font-semibold">Create Your Resume</button>
-      </div> */}
+         
+          <div>
+            <img src="/Icons/certificate_Course.svg" alt="" />
+            </div>
+            <div className="p-[15px] border border-black rounded-[16px] flex flex-col gap-4 items-center">
+              <h3 className="text-black text-[1.3rem] text-center font-semibold">
+                Create your professional <span className="text-[#1DBF73]">Resume</span>  with our designs
+              </h3>
+              <Link to='/cv-builder' className="bg-[#1DBF73] button-resume rounded-lg px-3 py-1 text-white font-semibold">Create Your Resume</Link>
+              <img src='/detailcertificate.png'/>
             </div>
           </div>
+
         </span>
       </div>
     </div>
