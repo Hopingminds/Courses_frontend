@@ -8,7 +8,7 @@ const VideoTesttimonial = ({ data }) => {
   data=data?.map((val)=>{return {...val,isPlaying:false}})
   
   const [newdata,setNewData]=useState(data)
-  console.log(data)
+  // console.log(data)
    const handleContextMenu = (e) => {
      e.preventDefault(); // Prevent default context menu behavior
   };

@@ -126,12 +126,12 @@ const Testimonial = () => {
   ];
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 10000);
-    return () => clearInterval(timer);
-  }, [testimonials.length]);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  //   }, 10000);
+  //   return () => clearInterval(timer);
+  // }, [testimonials.length]);
 
   const handleArrow2Click = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);

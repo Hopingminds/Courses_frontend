@@ -198,7 +198,7 @@ export default function Herosection() {
           Updated Curriculum; Experience Personalized Career Coaching and
           Exclusive Networking Events!
         </div>
-        <div className="text-[18px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap sm:h-10 sm:text-[12px] xl:text-[24px] lg:text-[18px] md:text-[16px] md:h-12 xsm:text-[9px] xsm:h-8">
+        <div className="text-[20px] text-[#1DBF73] h-16 w-[75%] font-pop text-wrap sm:h-10 sm:text-[12px] xl:text-[24px] lg:text-[20px] md:text-[16px] md:h-12 xsm:text-[9px] xsm:h-8">
           <span className="text-white">High Impact</span>
           {displayText}
         </div>

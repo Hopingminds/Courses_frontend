@@ -19,6 +19,7 @@ const TestimonialInner = ({ val }) => {
           <ReactPlayer
              height="100%"
               width="100%"
+              className=""
               url={val?.reviewVideo}
               playing={isPlay}
               loop={true}
