@@ -118,8 +118,8 @@ const Login = () => {
                 </div>
                 <div className='flex flex-col items-center my-16 w-[45%] gap-4 xsm:w-full md:my-12'>
                     {/* <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p> */}
-                    <div className='flex flex-col w-[65%] gap-4 xsm:w-[90%] md:w-[100%]'>
-                        <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 '>
+                    <div className='flex flex-col w-[65%] gap-4 xsm:w-[90%] md:w-[100%] '>
+                        <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 xl:w-[60%]'>
                             <button className='bg-transparent cursor-pointer Loginactive' >Login</button>
                             <button className='bg-transparent cursor-pointer Logininactive' onClick={() => navigate('/register-user')}>Register</button>
                         </div>
