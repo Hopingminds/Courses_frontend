@@ -14,7 +14,7 @@ const TestimonialInner = ({ val }) => {
     };
 
   return (
-      <div className=" w-full object-cover h-[260px] border rounded-xl overflow-hidden flex flex-col justify-end xsm:h-[180px]">
+      <div className=" w-full object-cover xl:h-[450px] md:h-[260px] md:w-[150px] lg:h-[310px] border rounded-xl overflow-hidden flex flex-col justify-end xsm:h-[180px]">
           <div className='vt-card relative'>
           <ReactPlayer
              height="100%"
