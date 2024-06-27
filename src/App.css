@@ -73,7 +73,7 @@
   width: 35px;
   border-radius: 50%;
   position: absolute;
-  left: -1vw;
+  left: -2vw;
   top: 50%;
   transform: translateY(-50%);
   color: var(--body);
@@ -87,7 +87,7 @@
   width: 35px;
   border-radius: 50%;
   position: absolute;
-  right: -1vw;
+  right: -2vw;
   top: 50%;
   transform: translateY(-50%);
 }

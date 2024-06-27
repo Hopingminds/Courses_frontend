@@ -18,8 +18,8 @@ import Img17 from "../../Assests/Images/Manikant Kandukuri.jpg";
 import Img18 from "../../Assests/Images/Nikita S Kotme.jpg";
 import Img19 from "../../Assests/Images/KajalSingh.jpg";
 import React from "react";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/splide/dist/css/splide.min.css';
 
 export default function Newinstructor() {
   return (
@@ -45,8 +45,6 @@ export default function Newinstructor() {
               autoplay: true,
               interval: 3000,
               speed: 5000,
-              // delay: 1,
-              // pauseOnHover: true,
               drag: true,
               gap: "1rem",
             }}

@@ -77,7 +77,14 @@ const Register = () => {
         });
     };
     
-    
+    const validatePassword = (password) => {
+        const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+        if (!regex.test(password)) {
+        //   return "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+        return false;
+    }
+        return true;
+      };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -93,6 +100,7 @@ const Register = () => {
                     setIsEmailValid(true);
                     // console.log('asdfgdsfgh')
                 }
+
                 else{
                     setIsEmailValid(false);
                 }
@@ -143,7 +151,7 @@ const Register = () => {
 
         let hasErrors = false;
         const newErrors = {};
-        console.log(user)
+        // console.log(user)
 
         for (const key in user) {
             if (user[key].trim() == '') {
@@ -154,7 +162,7 @@ const Register = () => {
             }
         }
         setErrors(newErrors);
-        console.log(newErrors)
+        // console.log(newErrors)
 
         if (hasErrors) {
             const firstErrorInput = Object.keys(newErrors)[0];
@@ -180,6 +188,10 @@ const Register = () => {
 
         if (!validateEmail(user.email)) {
             toast.error('Enter valid Email');
+            return;
+        }
+        if(!validatePassword(user.password)){
+            toast.error('Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
             return;
         }
         if (!(countrycode.length > 8 && countrycode.length < 15)) {

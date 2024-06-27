@@ -33,7 +33,7 @@ export default function DetailCourses() {
         let url = BASE_URL + "/course/" + slug;
         const data = await fetch(url);
         const response = await data.json();
-        console.log(response);
+        // console.log(response);
         setData(response?.course);
         setFaqs(response?.course?.faqs?.map((val)=>{return {question:val.question,answer:val.answer,isOpen:false}}))
         setshow(false);
