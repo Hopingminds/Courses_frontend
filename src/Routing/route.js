@@ -118,11 +118,11 @@ const Router = () => {
                 <Route path='/about' element={<AboutUs />} />
                 <Route path='/profile' element={<ProfilEdit />} />
                 <Route path='/learning' element={<MyLearning />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
+                <Route path='/login-2' element={<Login />} />
+                <Route path='/register-user' element={<Register />} />
                 <Route path='/forgot-password' element={<Forgotpassword />} />
                 <Route path='/cart' element={< ShopingCart />} />
-                <Route path='/course' element={<AllCourses />} />
+                <Route path='/courses' element={<AllCourses />} />
                 <Route path='/course/:slug' element={<CDDetails />} />
                 <Route path='/liveclass/:slug' element={<LiveClassDetailPage />} />
                 <Route path='/checkout' element={<CartCheckout />} />
@@ -184,7 +184,7 @@ const Router = () => {
                         <Route path="history" element={<History />} />
                     </Route>
                     <Route path="batch" element={<Batches />}>
-                        <Route path="courses" element={<Courses />} />
+                        {/* <Route path="courses" element={<Courses />} /> */}
                         <Route path="batches" element={<CourseBatches />} />
                     </Route>
                     <Route path="userprofile" element={<UserProfile />} />

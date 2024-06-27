@@ -41,7 +41,7 @@ const CartCheckout = () => {
     zip,
     gstnumber
   })
-  console.log(userDetail);
+  // console.log(userDetail);
   const [warnings, setwarnings] = useState({
     name:false,
     country:false,
@@ -274,11 +274,23 @@ setinputData((prev) => ({
       
       // toast.error("Every input must be filled");
       } else {
-        console.log(state)
+        console.log(country)
         console.log(
-          `https://payme.hopingminds.in/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone}&name=${userDetail?.name}&address=${inputData.address}&zip=${inputData.zip}&country=${country}&state=${state}&gstNumber=${inputData?.gstnumber}`
+          `https://payme.hopingminds.in/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone}&name=${userDetail?.name}&address=${inputData.address}&zip=${inputData.zip}&country=${country?.name}&state=${state.name}&gstNumber=${inputData?.gstnumber}`
         );
-       window.location.href = `https://payme.hopingminds.in/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone}&name=${userDetail?.name}&address=${inputData.address.replace(/\s/g, "")}&zip=${inputData.zip}&country=${country}&state=${state}&gstNumber=${inputData?.gstnumber}`;
+       window.location.href = `https://payme.hopingminds.in/api/v1/make-payment?userID=${
+         userData?.userID
+       }&email=${userDetail?.email}&phone=${
+         userDetail?.phone
+       }&name=${userDetail?.name?.replace(
+         /\s/g,
+         "%20"
+       )}&address=${inputData.address.replace(/\s/g, "%20")}&zip=${
+         inputData.zip
+       }&country=${country?.name?.replace(/\s/g, "%20")}&state=${state?.name.replace(
+         /\s/g,
+         "%20"
+       )}&gstNumber=${inputData?.gstnumber}`;
         
       // if (total === 0) {
       //   handleContinueCheckout();

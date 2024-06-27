@@ -98,7 +98,7 @@ export default function Pap() {
 
     } else {
       localStorage.setItem('history',"/enterance");
-      navigate("/login");
+      navigate("/login-2");
     }
   };
 

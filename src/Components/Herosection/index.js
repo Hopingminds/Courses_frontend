@@ -207,7 +207,7 @@ export default function Herosection() {
             ""
           ) : (
             <Link
-              to="/login"
+              to="/login-2"
               className="text-white z-20 text-[16px] font-nu font-bold bg-[#1DBF73] rounded-full py-2 px-10 sm:px-6 sm:py-1 sm:text-[12px] xl:text-[20px] md:text-[14px] md:px-8 xsm:text-[9px] xsm:py-[0.2rem] xsm:px-4"
             >
               Join Now
