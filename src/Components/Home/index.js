@@ -14,6 +14,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BuildCV from "./BuildCV";
 import Companies2 from "../Companies/Companies2";
+import Benefits from "./benefits_sm";
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
@@ -56,7 +57,8 @@ export default function Home() {
         <Companies2 />
         <Courses_Home />
         <WhatHM />
-        <OurFeatures />
+        {window.innerWidth >= 600 ? <OurFeatures />:
+          <Benefits /> } 
         <PapHome />
         <Certificate />
         <BuildCV />

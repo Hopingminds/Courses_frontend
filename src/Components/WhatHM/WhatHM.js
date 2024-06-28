@@ -63,14 +63,14 @@ const WhatHM = () => {
             innovators.
           </p>
         </div>
-        <div className="flex flex-row gap-20 justify-center sm:mt-4 sm:gap-6 xsm:gap-4 mt-8 xsm:mt-2 md:mt-4 md:gap-10 lg:gap-14">
+        <div className="flex flex-row gap-20 justify-around sm:mt-4 sm:gap-6 xsm:gap-4 mt-8 xsm:mt-2 md:mt-4 md:gap-10 lg:gap-14">
           <div
-            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden sm:w-[30%] sm:h-[140px] xsm:w-[35%] xsm:h-[100px] xsm:rounded-lg md:w-[30%] md:h-[180px] lg:w-[35%] lg:h-[280px] relative"
+            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden sm:w-[30%] sm:h-[140px] xsm:h-[30vh] xsm:rounded-lg md:w-[30%] md:h-[180px] lg:w-[35%] lg:h-[280px] relative xsm:w-full"
             onClick={() => handlePlay(0)}
           >
             <ReactPlayer
               onContextMenu={handleContextMenu}
-              className={"w-full h-full md:w-[30%] lg:w-[30%] lg:h-[200px] rounded-3xl aspect-auto"}
+              className={"w-full h-full md:w-[30%] lg:w-[30%] lg:h-[200px] rounded-3xl aspect-auto xsm:w-[90%]"}
               url="/Corporate1.mp4"
               playing={playingIndex === 0}
               loop={true}
@@ -109,7 +109,7 @@ const WhatHM = () => {
             )} */}
           </div>
           <div
-            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden sm:w-[30%] sm:h-[140px] xsm:w-[35%] xsm:h-[100px] xsm:rounded-lg md:w-[30%] md:h-[180px] lg:w-[35%] lg:h-[280px] relative"
+            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden sm:w-[30%] sm:h-[140px] xsm:w-[42%] xsm:h-[100px] xsm:rounded-lg md:w-[30%] md:h-[180px] lg:w-[35%] lg:h-[280px] relative xsm:hidden"
             onClick={() => handlePlay(1)}
           >
             <ReactPlayer

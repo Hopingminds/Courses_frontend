@@ -141,19 +141,19 @@ const Testimonial = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between pt-24 px-[10%] pb-40 xsm:px-[5%] xsm:pt-4 xsm:pb-8 xsm:gap-4 sm:p-8 md:pb-14 md:pt-6">
+      <div className="flex flex-row justify-between pt-24 px-[10%] pb-40 xsm:px-[5%] xsm:pt-4 xsm:pb-8 xsm:gap-4 sm:p-8 md:pb-14 md:pt-6 xsm:flex-col">
         {/* left */}
-        <div className="flex flex-col gap-4 w-[45%] xsm:gap-2">
+        <div className="flex flex-col gap-4 w-[45%] xsm:gap-2 xsm:w-[90%]">
           <div className="flex flex-row gap-4 items-center xsm:gap-2 xsm:pl-2">
             <hr className="border border-[black] w-16 xsm:w-6 sm:w-10 md:w-12 lg:w-14" />
-            <p className=" text-[18px] font-pop xsm:text-[6px] sm:text-[8px] md:text-[10px] lg:text-[14px]">
+            <p className=" text-[18px] font-pop xsm:text-[10px] sm:text-[8px] md:text-[10px] lg:text-[14px]">
               TESTIMONIAL
             </p>
           </div>
-          <p className="text-[#1DBF73] text-[36px]  font-pop font-semibold xsm:text-[10px] xsm:pl-2 sm:text-[20px] md:text-[30px] lg:text-[34px]">
+          <p className="text-[#1DBF73] text-[36px]  font-pop font-semibold xsm:text-[16px] xsm:pl-2 sm:text-[20px] md:text-[30px] lg:text-[34px]">
             What They Say?
           </p>
-          <div className="flex flex-col gap-4 text-[#696984] text-[18px] text-justify font-poppins xsm:text-[6px] xsm:gap-0 sm:text-[10px] md:text-[12px] lg:text-[16px]">
+          <div className="flex flex-col gap-4 text-[#696984] text-[18px] text-justify font-poppins xsm:text-[12px] xsm:gap-0 sm:text-[10px] md:text-[12px] lg:text-[16px]">
             {/* <div className="flex flex-col gap-4 text-[#696984] text-[18px] text-justify font-poppins xsm:text-[6px] xsm:gap-0"> */}
             <p>
             HopingMinds has earned the trust of over 100 corporations, more than 50 universities, and over 10,000 students based on their positive experiences and successful outcomes. Our community continues to grow, thanks to the proven results and confidence shared by our partners and learners.
@@ -179,15 +179,15 @@ const Testimonial = () => {
           </div>
 
           {/* right */}
-          <div className="relative w-[45%]">
+          <div className="relative w-[45%] xsm:w-[90%]">
             <div className="relative ">
-              <div className="w-[70%] h-[54vh] rounded-3xl xsm:h-[60%] sm:h-[50%] md:h-[40%] md:w-[80%] lg:h-[60%]">
+              <div className="w-[70%] h-[54vh] rounded-3xl xsm:h-[60%] sm:h-[50%] md:h-[40%] md:w-[80%] lg:h-[60%] xsm:w-[100%]">
               <img
                 src={testimonials[currentIndex].image}
-                className="w-[100%] h-[100%]  rounded-3xl xsm:rounded-md xsm:w-[80%] xsm:h-[120px] sm:w-[80%] sm:h-[200px] md:h-[280px] md:w-[80%] lg:h-[320px]"
+                className="w-[100%] h-[100%]  rounded-3xl xsm:rounded-md xsm:w-auto xsm:h-[30vh] sm:w-[80%] sm:h-[200px] md:h-[280px] md:w-[80%] lg:h-[320px]"
               />
               </div>
-              <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[95%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md xsm:top-[69%] md:">
+              <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[95%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md xsm:top-[70%] md:">
                 {testimonials?.map((testimonial, index) => (
                   <div
                     key={index}
@@ -205,13 +205,13 @@ const Testimonial = () => {
                   >
                     <hr className="h-[60%]  border border-[rgb(189,189,209)] absolute top-3 xsm:top-2 xsm:h-[30%]" />
                     <div className="flex flex-col justify-between gap-4 px-4 py-3 xsm:px-2 xsm:py-2 xsm:gap-1 md:gap-2">
-                      <p className="text-[#5F5F7E] text-[16px] font-pop leading-6 text-left xsm:text-[6px] xsm:leading-[1] xsm:tracking-tight sm:text-[8px] sm:leading-none md:text-[10px] md:leading-tight lg:text-[14px] lg:leading-none">
+                      <p className="text-[#5F5F7E] text-[16px] font-pop leading-6 text-left xsm:text-[9px] xsm:leading-[1] xsm:tracking-tight sm:text-[8px] sm:leading-none md:text-[10px] md:leading-tight lg:text-[14px] lg:leading-none">
                         {testimonial.text}
                       </p>
                       <div className="flex flex-col ">
                       <div className="flex flex-row justify-between items-center ">
                         <div className="flex space-x-1">
-                          <p className="text-[#5F5F7E] text-[18px] font-pop font-semibold xsm:text-[4px] sm:text-[6px] md:text-[8px] lg:text-[16px]">
+                          <p className="text-[#5F5F7E] text-[18px] font-pop font-semibold xsm:text-[7px] sm:text-[6px] md:text-[8px] lg:text-[16px]">
                             {/* Gloria Rose */}
                             {testimonial.author}
                           </p>
@@ -235,7 +235,7 @@ const Testimonial = () => {
                         </p> */}
                         </div>
                       </div>
-                      <p className="text-[#5F5F7E] text-[16px] font-pop xsm:text-[4px] sm:text-[6px] md:text-[8px] lg:text-[12px]">
+                      <p className="text-[#5F5F7E] text-[16px] font-pop xsm:text-[6px] sm:text-[6px] md:text-[8px] lg:text-[12px]">
                             {/* Gloria Rose */}
                             {testimonial.company}
                           </p>
@@ -248,7 +248,7 @@ const Testimonial = () => {
 
             {/* arrrow */}
             <div
-              className="w-[60px] h-[60px] absolute bg-[#ffffff] rounded-full right-[25%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[36%] sm:w-[30px] sm:h-[30px] sm:top-[35%] sm:right-[38%] md:w-[40px] md:h-[40px] md:right-[30%] lg:w-[50px] lg:h-[50px]"
+              className="w-[60px] h-[60px] absolute bg-[#ffffff] rounded-full right-[25%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[28%] sm:w-[30px] sm:h-[30px] sm:top-[35%] sm:right-[38%] md:w-[40px] md:h-[40px] md:right-[30%] lg:w-[50px] lg:h-[50px]"
               style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }}
               onClick={handleArrow2Click}
             >
