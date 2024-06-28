@@ -328,10 +328,12 @@ export default function Question() {
   
           console.log("Current volume:", volume);
   
-          if (volume > 50 && temp) {
-            alert('High volume detected');
+          if (volume > 20 && temp) {
+            alert('You are not allowed to speak during the test.');
             temp=false;
-            setpeoplewarning(peoplewarning-1)
+            console.log(peoplewarning-1);
+            
+            setpeoplewarning((prev)=>prev-1);
   
             // Stop the audio stream immediately
             stream.getTracks().forEach(track => track.stop());
