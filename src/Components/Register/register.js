@@ -283,18 +283,18 @@ const Register = () => {
     return (
         <>
             <div className='flex overflow-hidden'>
-                <div className='w-[40%] flex items-center justify-end relative xsm:hidden '>
-                    <img className='w-[75%] object-cover absolute top-10 ' src='../login_bg.png' />
+                <div className='xl:h-[75vh]  w-[40%] flex items-center justify-end relative xsm:hidden '>
+                    <img className='w-[75%]  object-cover absolute top-10 ' src='../login_bg.png' alt='' />
                 </div>
-                <div className='flex flex-col items-center my-16 w-[60%] gap-4 xsm:w-full md:my-12'>
+                <div className='flex flex-col items-center my-16 w-[60%] gap-4 xl:my-[9rem] xsm:w-full md:my-12'>
                     {/* <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p> */}
                     <div className='flex flex-col w-[75%] gap-4 xsm:w-[95%] items-center md:w-[90%]'>
-                        <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 w-[40%] md:w-[50%] xsm:w-[50%]'>
+                        <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 w-[40%] md:w-[50%] xsm:w-[50%] xl:w-[35%]'>
                             <button className='bg-transparent cursor-pointer Logininactive' onClick={() => navigate('/login-2')} >Login</button>
                             <button className='bg-transparent cursor-pointer Loginactive' >Register</button>
                         </div>
                         {/* inputs */}
-                        <div className='flex flex-col gap-4 grid grid-cols-2 gap-4 xsm:px-[5%]'>
+                        <div className='flex flex-col gap-4 grid grid-cols-2  xsm:px-[5%]'>
                             <div>
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Name  <span className='text-red-500'>*</span></p>
                                 <input
