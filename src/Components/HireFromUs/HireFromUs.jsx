@@ -128,7 +128,7 @@ const HireFromUs = () => {
       ['company']: true
     }));
     } 
-   else if(!hiredata.email){
+   else if(!validateEmail(hiredata.email)){
     console.log(warnings);
     setwarnings((prevWarnings) => ({
       ...prevWarnings,
@@ -435,7 +435,7 @@ const HireFromUs = () => {
                       name="email"
                       id="study"
                       className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${warnings.email ? 'border border-red-500' : ''}`}
-                      type="text"
+                      type="email"
                       placeholder="Enter Email"
                     />
                   </div>
@@ -452,7 +452,7 @@ const HireFromUs = () => {
                       id="time"
                       name="phone"
                       className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${warnings.phone ? 'border border-red-500' : ''}`}
-                      type="text"
+                      type="number"
                       placeholder="Enter your Mobile number"
                     />
                   </div>

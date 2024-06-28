@@ -74,6 +74,7 @@ import ProtectedAssessmentQuestion from '../Components/Assessments/ProtectedQues
 import CourseMedia from "../Components/TeacherPanel/CourseMedia/CourseMedia.jsx"
 import {AuthProvider} from "../Components/contexts/AuthContext.js"
 import Loginpage from '../Components/TeacherPanel/LoginPage/LoginPage.jsx'
+import MyTimer from '../Components/mytimer.js'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -128,6 +129,7 @@ const Router = () => {
                 <Route path='/checkout' element={<CartCheckout />} />
                 <Route path='/AssignmentMeet' element={<AssignmentMeet />} />
                 <Route path='/AssignmentStart' element={<AssignmentStart />} />
+                <Route path='/MyTimer' element={<MyTimer />} />
 
                 <Route path='/college-login' element={<SubAdmin />} />
                 <Route path='/college-dashboard' element={<DashboardSubAdmin />} />

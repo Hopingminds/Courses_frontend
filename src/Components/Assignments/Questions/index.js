@@ -138,9 +138,35 @@ export default function Question() {
   const contentRef = useRef(null);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+  const [phoneDetected, setPhoneDetected] = useState(false);
+  const [timer, setTimer] = useState(1800);
   const maxVolumeRef = useRef(0);
   const allowedwarnings = 3;
 
+  const startTimer = () => {
+  
+    const timerInterval = setInterval(() => {
+      setTimer(prevTimer => prevTimer - 1); // Decrease timer by 1 second
+    }, 60000); // Update timer every second
+
+    // Clean up the interval on unmount or timer reaching 0
+    return () => clearInterval(timerInterval);
+  };
+  useEffect(() => {
+    // console.log("hello"+timer);
+   if(Math.floor(timer / 60)<=0){
+    alert("Time's up")
+    handleClick(true,"Time's up");
+   }
+  }, [timer])
+  
+
+  useEffect(() => {
+    if(params.get("index")==1){
+      startTimer()
+    }
+  }, [params.get("index")])
+  
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
@@ -246,6 +272,7 @@ export default function Question() {
       if (video && video.readyState === 4) {
         const predictions = await model.detect(video);
         drawBoundingBoxes(predictions);
+        checkForPhone(predictions);
         countPersons(predictions);
       }
     };
@@ -272,6 +299,10 @@ export default function Question() {
     const countPersons = (predictions) => {
       const count = predictions.filter(prediction => prediction.class === 'person').length;
       setPersonCount(count);
+    };
+    const checkForPhone = (predictions) => {
+      const phoneDetected = predictions.some(prediction => prediction.class === 'cell phone');
+      setPhoneDetected(phoneDetected);
     };
 
     startCamera();
@@ -326,12 +357,14 @@ export default function Question() {
           analyserRef.current.getByteFrequencyData(dataArrayRef.current);
           const volume = dataArrayRef.current[0];
   
-          console.log("Current volume:", volume);
+          // console.log("Current volume:", volume);
   
-          if (volume > 50 && temp) {
-            alert('High volume detected');
+          if (volume > 20 && temp) {
+            alert('You are not allowed to speak during the test.');
             temp=false;
-            setpeoplewarning(peoplewarning-1)
+            // console.log(peoplewarning-1);
+            
+            setpeoplewarning((prev)=>prev-1);
   
             // Stop the audio stream immediately
             stream.getTracks().forEach(track => track.stop());
@@ -358,9 +391,29 @@ export default function Question() {
     handleAudioMonitoring();
     return () => clearInterval(audioIntervalRef.current);
   }, []);
+
+  useEffect(() => {
+    if (phoneDetected) {
+      alert("Phones are not allowed during test");
+      setpeoplewarning((prev)=>prev-1);
+    }
+  }, [phoneDetected]);
+  // useEffect(() => {
+  //   const handleKeyPress = (event) => {
+  //     alert("You are not allowed to use keyboard keys.");
+  //     event.preventDefault(); // Prevent the default action
+  //   };
+
+  //   document.addEventListener('keydown', handleKeyPress);
+
+  //   return () => {
+  //     document.removeEventListener('keydown', handleKeyPress);
+  //   };
+  // }, []);
   // useEffect(() => {
   //   enterFullScreen();
   // }, [window.location.pathname]);
+
 
   return (
     <>
@@ -368,6 +421,7 @@ export default function Question() {
     {
       !camerablocked ? 
       <div className="px-[6%] space-y-5 py-2 bg-white" ref={contentRef}>
+  
         <div className='fixed bottom-0 left-0'>
           <div className='relative'>
             <video ref={videoRef} width="200" height="180" className='rounded-xl' style={{ display: 'block' }} />
@@ -378,6 +432,9 @@ export default function Question() {
           <div onClick={handlePrev} className="flex items-center space-x-3 cursor-pointer">
             <FaArrowLeft />
             <p className="font-semibold">Go Back to {data?.module} Module</p>
+          </div>
+          <div className=" bg-white p-2 rounded-lg shadow-md">
+          Time Remaining: {Math.floor(timer / 60)} mins
           </div>
           <div className="flex items-center space-x-3">
             <FaLessThan
