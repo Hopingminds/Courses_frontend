@@ -193,22 +193,9 @@ export default function Question() {
     };
   }, [audio,peoplewarning]);
 
-  const enterFullScreen = () => {
-    const elem = document.documentElement;
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) { // Firefox
-      elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { // IE/Edge
-      elem.msRequestFullscreen();
-    }
-  };
 
-  useEffect(() => {
-    enterFullScreen();
-  }, []);
+
+
   useEffect(() => {
     const loadModelAndDetect = async () => {
       const model = await cocoSsd.load();
@@ -385,7 +372,7 @@ export default function Question() {
   //   enterFullScreen();
   // }, [window.location.pathname]);
 
-
+  // const array = Array.from({ length: Length }, (_, index) => index);
   return (
     <>
     <Toaster />
@@ -393,7 +380,13 @@ export default function Question() {
       camerablocked ? <div className="flex justify-center w-full h-screen items-center font-semibold">If you want to continue the test then first turn on the camera. </div>
 : micblocked ? <div className="flex justify-center w-full h-screen items-center font-semibold">If you want to continue the test then first turn on the microphone. </div> :
       <div className="px-[6%] space-y-5 py-2 bg-white" ref={contentRef}>
-  
+        {/* <div className="h-[600px] w-16 border fixed right-1 overflow-auto">
+        
+      {  array.map((num) => {
+          return(<div className="h-5 w-5 shadow-lg border">{num}</div>)
+        })}
+      
+        </div> */}
         <div className='fixed bottom-0 left-0'>
           <div className='relative'>
             <video ref={videoRef} width="200" height="180" className='rounded-xl' style={{ display: 'block' }} />
