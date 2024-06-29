@@ -25,6 +25,7 @@ export default function Question() {
   const dataArrayRef = useRef(null);
   const sourceRef = useRef(null);
   const audioIntervalRef = useRef(null);
+  const [micblocked, setmicblocked] = useState()
 
   async function Fetchdata() {
     try {
@@ -83,6 +84,7 @@ export default function Question() {
   function Nextquestion() {
     if (index <= Length) {
       Fetchdata();
+      setSelected("");
       setindex(index + 1);
       navigate(`/questions?module_id=${params.get("module_id")}&index=${index + 1}`);
     }
@@ -191,59 +193,22 @@ export default function Question() {
     };
   }, [audio,peoplewarning]);
 
-  // const enterFullScreen = () => {
-  //   const content = document.documentElement;
-  //   if (content.requestFullscreen) {
-  //     content.requestFullscreen().then(() => {}).catch(err => console.error(err));
-  //   } else if (content.mozRequestFullScreen) {
-  //     content.mozRequestFullScreen().then(() => {}).catch(err => console.error(err));
-  //   } else if (content.webkitRequestFullscreen) {
-  //     content.webkitRequestFullscreen().then(() => {}).catch(err => console.error(err));
-  //   } else if (content.msRequestFullscreen) {
-  //     content.msRequestFullscreen().then(() => {}).catch(err => console.error(err));
-  //   }
-  // };
+  const enterFullScreen = () => {
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { // Firefox
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE/Edge
+      elem.msRequestFullscreen();
+    }
+  };
 
-  // useEffect(() => {
-  //   const handleFullScreenChange = () => {
-  //     const isFullScreenNow = !!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
-  //     if (!isFullScreenNow && escapePressed) {
-  //       alert('You have pressed the Escape key to exit full screen mode.');
-  //       enterFullScreen();
-  //       setEscapePressed(false);
-  //     }
-  //   };
-
-  //   document.addEventListener('fullscreenchange', handleFullScreenChange);
-  //   document.addEventListener('mozfullscreenchange', handleFullScreenChange);
-  //   document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
-  //   document.addEventListener('msfullscreenchange', handleFullScreenChange);
-
-  //   return () => {
-  //     document.removeEventListener('fullscreenchange', handleFullScreenChange);
-  //     document.removeEventListener('mozfullscreenchange', handleFullScreenChange);
-  //     document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
-  //     document.removeEventListener('msfullscreenchange', handleFullScreenChange);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   const detectDevTools = () => {
-  //     const devtools = /./;
-  //     devtools.toString = function() {
-  //       this.opened = true;
-  //     };
-  //     if (devtools.opened) {
-  //       alert('Developer tools are open. Taking screenshots is not allowed.');
-  //     }
-  //   };
-
-  //   window.addEventListener('devtoolschange', detectDevTools);
-  //   return () => {
-  //     window.removeEventListener('devtoolschange', detectDevTools);
-  //   };
-  // }, []);
-
+  useEffect(() => {
+    enterFullScreen();
+  }, []);
   useEffect(() => {
     const loadModelAndDetect = async () => {
       const model = await cocoSsd.load();
@@ -335,7 +300,7 @@ export default function Question() {
   }, [personCount]);
 
   useEffect(() => {
-      if (peoplewarning <0 && cameraActive && !camerablocked) {
+      if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked) {
         handleClick(true,'Cheating attempt detected during the online test. Disciplinary action will follow.');
       }
    
@@ -359,7 +324,7 @@ export default function Question() {
   
           // console.log("Current volume:", volume);
   
-          if (volume > 20 && temp) {
+          if (volume > 30 && temp) {
             alert('You are not allowed to speak during the test.');
             temp=false;
             // console.log(peoplewarning-1);
@@ -381,8 +346,14 @@ export default function Question() {
         };
   
         audioIntervalRef.current = setInterval(detectVolume, 1000);
+        setmicblocked(false)
       } catch (err) {
-        console.error('Error accessing microphone:', err);
+        if (err.name === 'NotAllowedError' || err.name === 'NotFoundError') {
+          // setcamerablocked(true)
+          setmicblocked(true)
+         alert("You can't block the microphone.Give access to microphone manually")
+          
+        }
       }
     }
   };
@@ -419,7 +390,8 @@ export default function Question() {
     <>
     <Toaster />
     {
-      !camerablocked ? 
+      camerablocked ? <div className="flex justify-center w-full h-screen items-center font-semibold">If you want to continue the test then first turn on the camera. </div>
+: micblocked ? <div className="flex justify-center w-full h-screen items-center font-semibold">If you want to continue the test then first turn on the microphone. </div> :
       <div className="px-[6%] space-y-5 py-2 bg-white" ref={contentRef}>
   
         <div className='fixed bottom-0 left-0'>
@@ -494,7 +466,7 @@ export default function Question() {
             <Spinner />
           </div>
         )}
-      </div>:<div className="flex justify-center w-full h-screen items-center font-semibold">If you want to continue the test then first turn on the camera. </div>
+      </div>
 }
     </>
   );
