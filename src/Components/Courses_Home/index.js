@@ -41,7 +41,7 @@ const Courses_Home = () => {
     function handleResize() {
       // Check screen size and set the number of cards to show
       if (window.innerWidth <= 480) {
-        setCardsToShow(3); // For screens smaller than 480px, show only 4 cards
+        setCardsToShow(4); // For screens smaller than 480px, show only 4 cards
       } else if (window.innerWidth >= 481 && window.innerWidth <= 720) {
         setCardsToShow(3);
       } else if (window.innerWidth >= 1500 && window.innerWidth <= 1999) {
@@ -63,6 +63,7 @@ const Courses_Home = () => {
   }, []);
 
   const handleCategoryClick = (category) => {
+    
     setSelectedCategory(category);
     setSelectedCourse("");
     // setCardsToShow(4); 
@@ -86,7 +87,7 @@ const Courses_Home = () => {
       {/* <h1 className='text-[40px] mt-16 font-semibold' style={{ textAlign: 'center' }}> Our Feature Courses</h1> */}
 
       <div className="h-[100%] w-full px-16 py-8 font-pop bg-[#E2FFF1] sm:px-4 xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-6 md:space-y-2">
-        <div className="h-12 md:h-8 sm:h-8 xsm:h-6 flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-1 xsm:flex-wrap xsm:gap-y-2 xsm:gap-x-[1px] xsm:justify-between xsm:text-[8px] sm:space-x-4 sm:gap-y-2 sm:text-[10px] sm:flex-wrap md:text-[12px] md:space-x-6">
+        <div className="h-12 md:h-8 sm:h-8 xsm:h-16 flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-1 xsm:flex-nowrap xsm:gap-y-2 xsm:gap-x-[8px] xsm:justify-between xsm:text-[8px] sm:space-x-4 sm:gap-y-2 sm:text-[10px] sm:flex-wrap md:text-[12px] md:space-x-6 xsm:overflow-x-auto xsm:w-[90vw] xsm:overflow-y-hidden xsm:py-2">
           {[
             "All",
             "Full Stack Development",
@@ -94,30 +95,31 @@ const Courses_Home = () => {
             "Data Science",
             "Management",
             "Networking",
-          ].slice(0,(window.innerWidth >=320 && window.innerWidth<=480 ? 4 : 6)).map((category) => (
+            // "Free"
+          ].slice(0,(window.innerWidth >=320 && window.innerWidth<=480 ? 6 : 6)).map((category) => (
             <button
               key={category}
               onClick={() => handleCategoryClick(category)}
               className={
                 selectedCategory === category
-                  ? "px-5 py-2 afterclick rounded-full xsm:py-1 sm:py-1"
-                  : "beforeclick"
+                  ? "px-5 py-2 afterclick rounded-full xsm:py-1 sm:py-[4px] xsm:px-4"
+                  : "beforeclick whitespace-nowrap"
               }
             >
               {category}
             </button>
           ))}
         </div>
-        <div className="flex justify-end w-full items-center">
+        <div className="flex justify-end w-full items-center xsm:hidden">
           <Link
             to={selectedCategory == "All" ? "/courses" : "/courses?category=" + selectedCategory}
             className="text-[#1DBF73] text-[16px] font-bold xsm:text-[8px] sm:text-[12px] md:text-[14px] md:pr-3"
           >
-            See all
+            More
           </Link>
         </div>
-        {/* <div className="text-[#333333] text-[20px] mt-1">Our training covers everything you need for a successful career, from basic job skills to advanced tech know-how.</div> */}
-        <div className="my-4 grid grid-cols-4 gap-4 xsm:grid-cols-3 xsm:gap-3 xsm:my-[2%] sm:grid-cols-3 md:gap-3 xl:grid-cols-5 xl:gap-7">
+       
+        <div className="my-4 grid grid-cols-4 gap-4  xsm:gap-3 xsm:my-[2%] sm:grid-cols-3 md:gap-3 xl:grid-cols-5 xl:gap-7 xsm:grid-cols-2">
           {" "}
           {/* Changed flex to flex-wrap */}
           {

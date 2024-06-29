@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { HiSquare3Stack3D } from "react-icons/hi2";
-// import { dummy } from "./data";
 
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
@@ -23,8 +21,8 @@ const NewModal = ({ handleModalOpen,datas,type ,title}) => {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex justify-center items-center w-full h-full text-black bg-[#E2FFF1] bg-opacity-20 backdrop-blur-lg">
-            <div className="relative p-4 w-full max-w-4xl max-h-[78vh] bg-[#E2FFF1] rounded-lg shadow h-auto xsm:w-[90%] xsm:p-2" >
+        <div className="fixed inset-0 cursor-pointer z-50 flex justify-center items-center w-full h-full text-black bg-[#E2FFF1] bg-opacity-20 backdrop-blur-lg" onClick={handleModalOpen}>
+            <div className="relative p-4 w-full max-w-4xl max-h-[78vh] bg-[#E2FFF1] rounded-lg shadow h-auto xsm:w-[90%] xsm:p-2" onClick={(e) => { e.preventDefault(); e.stopPropagation() }} >
                 <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t gap-4">
                     <div>
                         <h3 className="text-3xl font-bold text-black  capitalize flex flex-col gap-1 xsm:text-lg">

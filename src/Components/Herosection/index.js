@@ -101,18 +101,7 @@ import Square from "../../Assests/Images/home-square.png";
 import { Link } from "react-router-dom";
 export default function Herosection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  // let Img1 =
-  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442041699-stu1.jpg";
-  // let Img2 =
-  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442058362-stu2.jpg";
-  // let Img3 =
-  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442067452-stu3.jpg";
-  // let Img4 =
-  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442077323-stu4.jpg";
-  // let Img5 =
-  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442130415-stu5.jpg";
-  // let Img6 =
-  //   "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716442141861-stu6.jpg";
+
   let Img1='/instructors/1p.webp'
   let Img2='/instructors/2p.webp'
   let Img3='/instructors/3p.webp'
@@ -191,7 +180,7 @@ export default function Herosection() {
   return (
     <>
     <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] xsm:pt-5 h-[37.2vw] xsm:h-[250px]">
-      <div className="flex flex-col gap-10 xl:gap-12 xsm:gap-2 sm:gap-4 md:gap-8 lg:gap-10">
+      <div className="w-[60%] flex flex-col gap-10 xl:gap-12 xsm:gap-2 sm:gap-4 md:gap-8 lg:gap-10">
         <div className="text-[20px] leading-10  text-white font-pop text-wrap w-[90%] sm:text-[10px] sm:leading-5 xl:text-[26px] lg:text-[16px] lg:leading-7 md:text-[14px] md:leading-6 xsm:text-[10px] xsm:leading-4 xsm:text-balance">
           Unlock Opportunities with 200+ Leading Corporates, Master Skills
           with Industry Experts, and Stay up-skilled with our Annually
@@ -216,10 +205,11 @@ export default function Herosection() {
         </div>
       </div>
 
-      <div className=" flex flex-col gap-6 w-[50%] md:gap-2 xsm:gap-1">
+      <div className="flex flex-col gap-6 h-max w-[40%] md:gap-2 xsm:gap-1">
         <div className="flex flex-row gap-2 justify-end">
           <div className="flex flex-col justify-end pb-6">
-            <img
+              <img
+                alt=""
               src={Square}
               className="square w-12 h-12 animate-ping md:w-8 md:h-8 xsm:w-4 xsm:h-4"
               style={{
@@ -231,29 +221,31 @@ export default function Herosection() {
           </div>
 
           <div className="flex flex-row gap-8 lg:gap-5 md:gap-3 xsm:gap-2 sm:gap-3  ">
-            <div className="flex flex-col gap-5 items-end lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:hidden ">
-              <div className="h-52 w-44">
-                <img
+              <div className=" flex flex-col gap-5 items-end justify-between lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:items-center">
+              <div className="h-52 w-44 xsm:h-20 xsm:w-auto">
+                  <img
+                  alt=""
                   src={images6[currentImageIndex]}
                   className="h-full w-full"
                 />
               </div>
-              <div className="h-36 w-28">
-                <img
+                <div className="h-36 w-28 xsm:h-16 xsm:w-auto">
+                  <img
+                    alt=""
                   src={images2[currentImageIndex]}
                   className="f-full w-full"
                 />
               </div>
             </div>
-            <div className="flex flex-col  gap-1 items-end lg:gap-1 md:gap-2 sm:gap-2 xsm:gap-2 xsm:hidden ">
-            <div className="h-32 w-28">
-                <img
+            <div className="h-full flex flex-col gap-1 items-end justify-between lg:gap-1 md:gap-2 sm:gap-2 xsm:gap-2 xsm:items-center">
+                <div className="h-32 w-28 xsm:h-12 xsm:w-auto">
+                <img alt=""
                   src={images3[currentImageIndex]}
                   className=" "
                 />
               </div>
-              <div className=" ">
-                <img
+                <div className="xsm:h-20 xsm:w-auto">
+                <img alt=""
                   src={images1[currentImageIndex]}
                   className="h-full w-full"
                 />
