@@ -283,27 +283,27 @@ const AllCourses = () => {
 
         </div>
 
-        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-28 text-white  absolute bottom-0 items-center xsm:h-10 xsm:space-x-5 md:h-16 md:space-x-12">
-          <div className="text-white xsm:flex xsm:flex-col">
+        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-28 text-white font-pop  absolute bottom-0 items-center xsm:h-10 xsm:space-x-3 md:h-16 md:space-x-12">
+          <div className="text-white xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">
 
-            <div className="text-center text-xl font-semibold xsm:text-[6px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={28725} />+</div>
-            <div className="xsm:text-[6px] md:text-[14px]">Students Enrolled</div>
+            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={28725} />+</div>
+            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Students Enrolled</div>
           </div>
-          <div className="xsm:flex xsm:flex-col">
-            <div className="text-center text-xl font-semibold xsm:text-[6px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={5000} />+</div>
-            <div className="xsm:text-[6px] md:text-[14px]">Students Placed</div>
+          <div className="xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">
+            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={5000} />+</div>
+            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Students Placed</div>
           </div>
-          {/* <div className="xsm:flex xsm:flex-col">
-            <div className="text-center text-xl font-semibold xsm:text-[6px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={175} />+</div>
-            <div className="xsm:text-[6px] md:text-[14px]">Courses Enrolled</div>
+          {/* <div className="xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">
+            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={175} />+</div>
+            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Courses Enrolled</div>
           </div> */}
-          <div className="xsm:flex xsm:flex-col">
-            <div className="text-center text-xl font-semibold xsm:text-[6px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={626} />+</div>
-            <div className="xsm:text-[6px] md:text-[14px]">Industry Experts</div>
+          <div className="xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">
+            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={626} />+</div>
+            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Industry Experts</div>
           </div>
-          <div className="xsm:flex xsm:flex-col">
-            <div className="text-center text-xl font-semibold xsm:text-[6px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={256} />+</div>
-            <div className="xsm:text-[6px] md:text-[14px]">Corporate Partners</div>
+          <div className="xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">
+            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={256} />+</div>
+            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Corporate Partners</div>
           </div>
         </div>
       </div>
@@ -320,7 +320,7 @@ const AllCourses = () => {
       )} */}
       <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
-      <div id="CoursesContent" className="my-5 mx-[5%] grid grid-cols-4 gap-8 xsm:grid-cols-3 lg:grid-cols-3 lg:gap-10 xsm:gap-3 xsm:my-[4%] sm:grid-cols-3 sm:gap-4 md:my-[2%] md:gap-3 md:mx-[3%]">
+      <div id="CoursesContent" className="my-5 mx-[5%] grid grid-cols-4 gap-8 xsm:grid-cols-2 lg:grid-cols-3 lg:gap-10 xsm:gap-3 xsm:my-[4%] sm:grid-cols-3 sm:gap-4 md:my-[2%] md:gap-3 md:mx-[3%]">
         {!allCourses?.length && !show ? (
           <div className="flex justify-center  w-full mt-10">
             <div className="text-center font-semibold text-2xl w-full ">
@@ -447,10 +447,10 @@ const AllCourses = () => {
             <div className="flex flex-row justify-between">
               <div className="flex flex-col gap-8 w-[65%] xsm:gap-2">
                 <div className="flex flex-col gap-3 xsm:gap-0">
-                  <p className="text-[#252641] text-[24px] font-pop font-semibold xsm:text-[6px]">
+                  <p className="text-[#252641] text-[24px] font-pop font-semibold xsm:text-[10px]">
                     {userData[selectedUser]?.email}
                   </p>
-                  <p className="text-[#696984] text-[16px] font-pop xsm:text-[6px]">
+                  <p className="text-[#696984] text-[16px] font-pop xsm:text-[10px]">
                     {userData[selectedUser]?.description1}
                   </p>
                <p className="text-[#696984] text-[16px] font-pop xsm:hidden">
