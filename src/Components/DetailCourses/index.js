@@ -139,7 +139,7 @@ export default function DetailCourses() {
     <div className="h-auto min-h-screen overflow-x-visible ">
       <div className="mb-5 xsm:mx-0 xsm:mb-2">
         <div
-          className="CCDetails-Header-main flex flex-col pl-[10vw]  w-full xsm:pt-1"
+          className="CCDetails-Header-main flex flex-col pl-[10vw]  w-full xsm:pt-1 xsm:h-[60vh] object-right"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url(${Data?.bannerImg})`,
             backgroundSize: "cover",
@@ -149,12 +149,12 @@ export default function DetailCourses() {
         >
           <div className="CCDetails-Header-content-leftqw  xsm:text-[10px] pb-2">
             <div className="CCDetails-Header-content-row1qw xsm:text-[10px] xsm:w-[80%]">
-              <h2 className="font-pop text-[1.2rem] xsm:text-[10px] capitalize">
+              <h2 className="font-pop text-[36px] text-white xsm:text-[20px] capitalize xsm:line-clamp-2">
                 {Data?.title?.length > 80
                   ? Data?.title?.slice(0, 80)?.join("...")
                   : Data?.title}
               </h2>
-              <p className="line-clamp-2	text-white">{Data?.overview}</p>
+              <p className="line-clamp-2 font-normal	text-white xsm:line-clamp-3">{Data?.overview}</p>
             </div>
             <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-1">
               <p>4.7</p>
@@ -167,13 +167,13 @@ export default function DetailCourses() {
               </div>
               {/* <p>(260+)</p> */}
             </div>
-            <div className="flex gap-5 mt-5 xsm:mt-1 xsm:gap-3">
+            <div className="flex gap-5 mt-5 xsm:mt-1 xsm:gap-3 xsm:hidden">
               {purchasedCourses.includes(Data?._id) ? (
                 <></>
               ) : (
                 <div
                   onClick={() => Addtowishlist(Data?._id)}
-                  className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
+                  className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
                 >
                   Add to Wishlist
                 </div>
@@ -182,7 +182,7 @@ export default function DetailCourses() {
                 <div className="space-x-4 w-fit flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
                   <div
                     onClick={() => Addtocart(Data?._id)}
-                    className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
+                    className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
                   >
                     Add to cart
                   </div>
@@ -201,78 +201,22 @@ export default function DetailCourses() {
       ) : (
         ""
       )}
-      {/* <RecommendedCourses /> */}
+     
 
-      {/* <div className="px-[5%] py-20 flex flex-col gap-4 font-pop justify-center text-center items-center">
-        <p className="text-[#333333] text-[50px] font-bold">
-          Create your professional{" "}
-          <span className="text-[#1DBF73]">Resume</span> with our designs
-        </p>
-        <p className="text-[#333333] text-[20px] font-medium">
-          You can pick one of our handcrafted resume templates.You can start
-          building your resume in less than 5 minutes, using predefined sections
-          approved by recruiters worldwide. You can also customize it to your
-          own needs and personality and hit 'Download'.
-        </p>
-        <Link to='/cv-builder' className="rounded-full bg-[#1DBF73] text-[20px] text-white font-semibold py-2 px-8">
-          Create my Resume
-        </Link>
-      </div> */}
-      {/* <div className="flex flex-col gap-14 py-16 px-[10%] bg-gradient-to-r from-[#0F2027] to-[#203A43]">
-        <div className="flex gap-10 text-white font-pop font-semibold">
-          <p className="text-[50px] w-[45%]">
-            Make your career thrive with{" "}
-            <span className="text-[#1DBF73]"> Hoping Minds !</span>
-          </p>
-          <div className="flex gap-10 justify-between text-center">
-            <div className="flex flex-col justify-center items-center gap-2 px-4 py-6 bw-border rounded-xl text-[22px]">
-              <div className="rounded-full bg-[#1DBF73] h-16 w-16 flex justify-center items-center">
-                <img src="../Icons/hire-user.svg" className="w-10" />
-              </div>
-              <p>
-                Lifetime Career <br /> Support
-              </p>
-            </div>
-            <div className="flex flex-col justify-center items-center gap-2 px-4 py-6 bw-border rounded-xl text-[22px]">
-              <div className="rounded-full bg-[#1DBF73] h-16 w-16 flex justify-center items-center">
-                <img src="../Icons/hire-user.svg" className="w-10" />
-              </div>
-              <p>
-                Lifetime Career <br /> Support
-              </p>
-            </div>
-            <div className="flex flex-col justify-center items-center gap-2 px-4 py-6 bw-border rounded-xl text-[22px]">
-              <div className="rounded-full bg-[#1DBF73] h-16 w-16 flex justify-center items-center">
-                <img src="../Icons/hire-user.svg" className="w-10" />
-              </div>
-              <p>
-                Lifetime Career <br /> Support
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <button className="rounded-full bg-[#1DBF73] text-white text-[22px] font-bold border border-white py-1 px-4">
-            Connect With Us
-          </button>
-        </div>
-      </div> */}
-      {/* <DCtestimonials /> */}
-
-      <div className="flex justify-between px-[8%] py-6">
-        <div className="w-[58%] flex flex-col gap-16 xsm:gap-10">
+      <div className="flex justify-between px-[8%] py-6 xsm:flex-col-reverse">
+        <div className="w-[58%] flex flex-col gap-16 xsm:gap-10 xsm:w-[100%]">
           {Data?.whatWillILearn?.length > 0 ? (
             <div
               className="flex flex-col p-[1rem_2rem] gap-4 capitalize xsm:gap-4 shadow-[0px_4px_11px_0px_#0000001C]
 "
             >
-              <h1 className="font-pop font-semibold text-[19px] text-[#0F2027] xsm:text-[14px]">
+              <h1 className="font-pop font-semibold text-[19px] text-[#0F2027] xsm:text-[18px]">
                 Skills You Will Learn
               </h1>
               <div className="flex flex-col gap-4 font-nu text-[#555555]">
-                <ul className="list-inside leading-7 tracking-wide pl-2 grid grid-cols-2 gap-4  p-5 shadow-[0_4px_11px_0px_rgb(0, 0, 0))] xsm:pl-0 xsm:gap-2 xsm:text-[10px] xsm:p-2 xsm:leading-none xsm:tracking-tighter">
+                <ul className="list-inside leading-7 tracking-wide pl-2 grid grid-cols-2 gap-4  p-5 shadow-[0_4px_11px_0px_rgb(0, 0, 0))] xsm:pl-0  xsm:leading-none xsm:grid-cols-1 xsm:gap-[10px]">
                   {Data?.whatWillILearn?.map((item, index) => (
-                    <li key={index} className="flex gap-2 xsm:gap-1">
+                    <li key={index} className="flex gap-2 xsm:gap-1 xsm:text-[12px] xsm:leading-[18px]">
                       {" "}
                       <img
                         src="/Icons/shield.svg"
@@ -290,36 +234,31 @@ export default function DetailCourses() {
           )}
           {Data?.curriculum?.length > 0 && (
             <div className="flex flex-col gap-8 xsm:gap-4">
-              <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]  xsm:text-[14px]">
+              <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]  xsm:text-[18px]">
                 What's Included
               </h1>
               <Included curiculum={Data?.curriculum} title={Data?.title} />
             </div>
           )}
           <div className="flex flex-col gap-8 xsm:gap-2">
-            <h1 className="font-pop font-se-mibold text-[32px] text-[#0F2027] xsm:text-[14px]">
+            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[18px]">
               Instructor
             </h1>
             <Instructor />
           </div>
 
           <div className="flex flex-col gap-8 justify-center items-center xsm:gap-4">
-            <h1 className="w-full text-left font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
+            <h1 className="w-full text-left font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[18px]">
               Companies Worldwide
             </h1>
             <DetailCompany/>
-            {/* <div className="flex justify-between w-full">
-              <img src='/Icons/byju.svg' className="w-36" alt="byju" />
-              <img src='/Icons/google.svg' className="w-36" alt="google" />
-              <img src='/Icons/instamojo.svg' className="w-36" alt="instamojo" />
-              <img src='/Icons/dream11.svg' className="w-36" alt="dream11" />
-            </div> */}
+           
           </div> 
 
           {Data?.companies && <PackageCarousel data={Data?.companies} />}
           {faqs?.length > 0 && (
             <div className="flex flex-col gap-8 xsm:gap-4">
-              <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[14px]">
+              <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[18px]">
                 FAQs
               </h1>
               <div className=" w-[95%]  rounded-md px-0 py-6 flex flex-col gap-6 font-nu xsm:w-[100%] xsm:p-2 xsm:gap-3">
@@ -328,11 +267,11 @@ export default function DetailCourses() {
                     <div className=" w-full ">
                       <div
                         onClick={() => ClickSection(index)}
-                        className="drop-top  flex justify-between items-center w-full py-3 px-2 cursor-pointe cursor-pointer xsm:px-4 xsm:py-2"
+                        className="drop-top  flex justify-between items-center w-full py-3 px-2 cursor-pointe cursor-pointer xsm:px-4 xsm:py-2 xsm:gap-4"
                       >
                         <div className="flex items-center gap-2 relative pl-5 before:content-['\2022'] before:absolute before:left-0 before:text-black">
                           <p
-                            className={`xsm:text-[8px] font-semibold md:text-[14px] ${
+                            className={`xsm:text-[13px] font-semibold md:text-[14px] ${
                               item.isOpen && "text-[#1DBF73]"
                             }`}
                           >
@@ -351,7 +290,7 @@ export default function DetailCourses() {
                       </div>
                       {item?.isOpen && (
                         <div className="px-6 py-4 xsm:px-4 xsm:py-3">
-                          <p className="xsm:text-[8px] text-[#555555] md:text-[14px]">
+                          <p className="xsm:text-[12px] text-[#555555] md:text-[14px]">
                             {item.answer}
                           </p>
                         </div>
@@ -368,14 +307,14 @@ export default function DetailCourses() {
             </div>
           )}
         </div>
-        <span className="w-[33%] h-[1000px] -translate-y-[20rem] xsm:-translate-y-[6rem] ">
+        <span className="w-[33%] h-[1000px] -translate-y-[20rem] xsm:-translate-y-[13rem] xsm:w-[100%] xsm:h-fit xsm:mb-[-10rem] ">
           <Commoncard Data={Data} />
-          <div className="sticky top-[10vh] flex flex-col gap-[2rem]">
+          <div className=" flex flex-col gap-[2rem]">
          
-          <div>
+          <div className="xsm:hidden">
             <img src="/Icons/certificate_Course.svg" alt="" />
             </div>
-            <div className="p-[15px] border border-black rounded-[16px] flex flex-col gap-4 items-center">
+            <div className="p-[15px] border border-black rounded-[16px] flex flex-col gap-4 items-center xsm:hidden">
               <h3 className="text-black text-[1.3rem] text-center font-semibold">
                 Create your professional <span className="text-[#1DBF73]">Resume</span>  with our designs
               </h3>

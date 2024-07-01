@@ -74,7 +74,7 @@ const DetailCompany = () => {
     }, []);
 
     return (
-                <div className="flex justify-center xsm:gap-3 w-full">
+                <div className="flex justify-center xsm:gap-3 w-full xsm:justify-between">
                     {logosSets.slice(0,4).map((logos, setIndex) => (
                         <div key={setIndex} className="slider-container w-[100%] xsm:w-[15%] md:w-[15%]">
                             {logos.map((logo, index) => (
@@ -83,8 +83,8 @@ const DetailCompany = () => {
                                     src={logo.src}
                                     alt={`Company Logo ${index}`}
                                     style={{
-                                        height: window.innerWidth<=480 ? '21px' : logo.height,
-                                        width: logo.width
+                                        height: window.innerWidth<=480 ? '32px' : logo.height,
+                                        width: "auto"
                                     }}
                                     className={index === currentLogoIndexes[setIndex] ? 'logo active' : 'logo'}
                                 />

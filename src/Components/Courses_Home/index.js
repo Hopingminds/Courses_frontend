@@ -87,7 +87,7 @@ const Courses_Home = () => {
       {/* <h1 className='text-[40px] mt-16 font-semibold' style={{ textAlign: 'center' }}> Our Feature Courses</h1> */}
 
       <div className="h-[100%] w-full px-16 py-8 font-pop bg-[#E2FFF1] sm:px-4 xsm:px-2 xsm:py-4 xsm:mt-0 xsm:space-y-0 md:px-6 md:space-y-2">
-        <div className="h-12 md:h-8 sm:h-8 xsm:h-16 flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-1 xsm:flex-nowrap xsm:gap-y-2 xsm:gap-x-[8px] xsm:justify-between xsm:text-[8px] sm:space-x-4 sm:gap-y-2 sm:text-[10px] sm:flex-wrap md:text-[12px] md:space-x-6 xsm:overflow-x-auto xsm:w-[90vw] xsm:overflow-y-hidden xsm:py-2">
+        <div className="h-12 md:h-8 sm:h-8 xsm:h-fit flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-1 xsm:flex-nowrap xsm:gap-y-2 xsm:gap-x-[8px] xsm:justify-between xsm:text-[8px] sm:space-x-4 sm:gap-y-2 sm:text-[10px] sm:flex-wrap md:text-[12px] md:space-x-6 xsm:overflow-x-auto xsm:w-[90vw] xsm:overflow-y-hidden xsm:py-[6px]">
           {[
             "All",
             "Full Stack Development",
@@ -102,8 +102,8 @@ const Courses_Home = () => {
               onClick={() => handleCategoryClick(category)}
               className={
                 selectedCategory === category
-                  ? "px-5 py-2 afterclick rounded-full xsm:py-1 sm:py-[4px] xsm:px-4"
-                  : "beforeclick whitespace-nowrap"
+                  ? "px-5 py-[6px] afterclick rounded-full xsm:py-1 sm:py-[4px] xsm:px-4 whitespace-nowrap"
+                  : "beforeclick whitespace-nowrap py-[6px]"
               }
             >
               {category}

@@ -44,18 +44,18 @@ function Instructor() {
           {/* <p className='text-[14px]'>{Data?.instructor.about}</p> */}
 
           <div className="students text-black">
-            <img src={studentsIcon} />
+            <img alt="" src={studentsIcon} />
             <p>156 Students</p>
           </div>
 
           <div className="lessons text-black">
-            <img src={lessonsIcon} />
+            <img alt="" src={lessonsIcon} />
             <p>20 Lessons</p>
           </div>
         </div>
       </div>
 
-      <p className="text-[14px] text-black xsm:text-justify">{Data?.instructor?.bio}</p>
+      <p className="text-[14px] text-black xsm:text-justify xsm:text-[12px]">{Data?.instructor?.bio}</p>
       {/* <div className='links'>
         <p>Follow: </p>
         {iconPaths.map((icon, index) => (
