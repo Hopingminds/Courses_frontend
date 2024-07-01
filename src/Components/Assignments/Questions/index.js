@@ -41,6 +41,7 @@ export default function Question() {
         setdata(response.data);
         setLength(response.length);
       } else {
+        localStorage.removeItem('lastminute')
         navigate("/submitted");
       }
     } catch (error) {
@@ -112,6 +113,7 @@ export default function Question() {
       });
       const response = await data.json();
       if (response.success) {
+        localStorage.removeItem('lastminute')
         toast.success("Submitted Successfully");
         window.location.replace('/submitted');
       } else {
@@ -141,33 +143,43 @@ export default function Question() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [phoneDetected, setPhoneDetected] = useState(false);
-  const [timer, setTimer] = useState(1800);
+  const [timer, setTimer] = useState(() => {
+    const storedTimer = localStorage.getItem('lastminute');
+    return storedTimer ? parseInt(storedTimer) : 30;
+  });
   const maxVolumeRef = useRef(0);
   const allowedwarnings = 3;
-
+let tempstate=true;
   const startTimer = () => {
   
     const timerInterval = setInterval(() => {
+      localStorage.setItem('lastminute',timer-1)
       setTimer(prevTimer => prevTimer - 1); // Decrease timer by 1 second
     }, 60000); // Update timer every second
 
     // Clean up the interval on unmount or timer reaching 0
     return () => clearInterval(timerInterval);
   };
+
+  
   useEffect(() => {
     // console.log("hello"+timer);
-   if(Math.floor(timer / 60)<=0){
+   if(timer<=0){
     alert("Time's up")
+    localStorage.removeItem('lastminute')
     handleClick(true,"Time's up");
    }
   }, [timer])
   
 
-  useEffect(() => {
-    if(params.get("index")==1){
-      startTimer()
-    }
-  }, [params.get("index")])
+        useEffect(() => {
+          if(tempstate){
+           tempstate=false;
+           console.log("hello");
+           startTimer()
+         
+          }
+           }, [])
   
   useEffect(() => {
     const handleVisibilityChange = () => {
@@ -275,7 +287,7 @@ export default function Question() {
      
     } else if (personCount === 0) {
       if(peoplewarning>=0 && cameraActive){
-        alert(`Warning!! ${personCount} Person Detected in your camera frame.`);
+        alert(`Warning!! Your face should be clearly visible infront of camera.`);
         setpeoplewarning((prev)=>prev-1);
         
       }      
@@ -311,7 +323,7 @@ export default function Question() {
   
           // console.log("Current volume:", volume);
   
-          if (volume > 30 && temp) {
+          if (volume > 100 && temp) {
             alert('You are not allowed to speak during the test.');
             temp=false;
             // console.log(peoplewarning-1);
@@ -399,7 +411,7 @@ export default function Question() {
             <p className="font-semibold">Go Back to {data?.module} Module</p>
           </div>
           <div className=" bg-white p-2 rounded-lg shadow-md">
-          Time Remaining: {Math.floor(timer / 60)} mins
+          Time Remaining: {timer} mins
           </div>
           <div className="flex items-center space-x-3">
             <FaLessThan
