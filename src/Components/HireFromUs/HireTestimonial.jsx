@@ -98,7 +98,7 @@ const HireTestimonial = () => {
 
   return (
     <div>
-        <div className='py-[4%] text-white font-pop font-semibold text-[40px] text-center md:text-[20px] xsm:text-[14px] '>
+        <div className='py-[4%] text-white font-pop font-semibold text-[40px] text-center md:text-[20px] xsm:text-[18px] '>
             <p>Hear directly from <span className='text-[#1DBF73]'>our students.</span> </p>
          
         </div>
@@ -109,7 +109,7 @@ const HireTestimonial = () => {
                 <Splide
                     options={{
                         type: "loop",
-                        perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : (window.innerWidth >= 1025 && window.innerWidth <= 1599) ? 4 : 5,
+                        perPage: window.innerWidth <= 480 ? 1.5 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : (window.innerWidth >= 1025 && window.innerWidth <= 1599) ? 4 : 5,
                         pagination: false,
                         perMove: 1,
                         wheel: false,
@@ -119,7 +119,7 @@ const HireTestimonial = () => {
                         speed: 5500,
                         delay: 1,
                         pauseOnHover: false,
-                        drag: false,
+                        drag: true,
                         swipeThreshold: false,
                         gap:'1rem',
                     }}>
@@ -127,12 +127,12 @@ const HireTestimonial = () => {
                     <SplideSlide>
                         <div
                             key={index}
-                            className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#e2dfdf] text-[#4C4646]':'bg-[#4C4646] text-white'}`}>
+                            className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#4C4646] text-[#fff]':'bg-[#fff] text-[#4C4646]'}`}>
                             <div>
-                                <img className={`w-4 md:w-3 xsm:w2 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
+                                <img className={`w-4 md:w-3 xsm:w2 ${index%2 === 0 ?' ':' hire-icon-color-invert'}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
                             <div className='h-[70%]'>
-                                <p className='text-[12px] font-pop md:text-[10px] xsm:text-[8px]'>{data.text}</p>
+                                <p className='text-[12px] font-pop md:text-[10px] xsm:text-[11px]'>{data.text}</p>
                             </div>
                             <div className='flex items-center gap-2'>
                                 <div className='rounded-full'>
@@ -140,7 +140,7 @@ const HireTestimonial = () => {
                                 </div>
                                 <div>
                                     <div>
-                                        <p className='font-pop font-semibold text-[12px] md:text-[10px] xsm:text-[8px]'>{data.name}</p>
+                                        <p className='font-pop font-semibold text-[12px] md:text-[10px] xsm:text-[12px]'>{data.name}</p>
                                     </div>
                                     <div className='flex gap-1'>
                                         {[...Array(data.star)].map( () => {
@@ -163,7 +163,7 @@ const HireTestimonial = () => {
                 <Splide
                     options={{
                         type: "loop",
-                        perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : (window.innerWidth >= 1025 && window.innerWidth <= 1599) ? 4 : 5,
+                        perPage: window.innerWidth <= 480 ? 1.5 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : (window.innerWidth >= 1025 && window.innerWidth <= 1599) ? 4 : 5,
                         pagination: false,
                         perMove: 1,
                         wheel: false,
@@ -174,7 +174,7 @@ const HireTestimonial = () => {
                         direction:'rtl',
                         right: true, // Set rtl option to true to move from left to right
                         pauseOnHover: false,
-                        drag: false,
+                        drag: true,
                         swipeThreshold: false,
                         gap:'1rem',
                     }}>
@@ -187,7 +187,7 @@ const HireTestimonial = () => {
                                 <img className={`w-4 md:w-3 xsm:w-2 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
                             <div className='h-[70%]'>
-                                <p className='text-[12px] font-pop text-left md:text-[10px] xsm:text-[8px]'>{data.text}</p>
+                                <p className='text-[12px] font-pop text-left md:text-[10px] xsm:text-[11px]'>{data.text}</p>
                             </div>
                             <div className='flex flex-row-reverse items-center gap-2'>
                                 <div className='rounded-full'>
@@ -195,7 +195,7 @@ const HireTestimonial = () => {
                                 </div>
                                 <div>
                                     <div>
-                                        <p className='font-pop font-semibold text-left text-[12px] md:text-[10px] xsm:text-[8px]'>{data.name}</p>
+                                        <p className='font-pop font-semibold text-left text-[12px] md:text-[10px] xsm:text-[12px]'>{data.name}</p>
                                     </div>
                                     <div className='flex flex-row-reverse gap-1'>
                                         {[...Array(data.star)].map( () => {

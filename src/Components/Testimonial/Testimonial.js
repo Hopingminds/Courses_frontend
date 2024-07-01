@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from "react";
-import Arrow from "../../Assests/Icons/testimonialarrow.svg";
+import React, { useState} from "react";
 import Arrow2 from "../../Assests/Icons/tarrow2.svg";
-import Img1 from "../../Assests/Images/testimonial1.png";
-import Img2 from "../../Assests/Images/testimonial2.png";
 import { useNavigate } from "react-router-dom";
 
 const Testimonial = () => {
@@ -17,14 +14,7 @@ const Testimonial = () => {
       image: '/ajitesh.jpeg',
       company: 'Google',
     },
-    // {
-    //   text: "It's not often that I come across an Ed-Tech firm as transformative as Hoping Minds. I've had the pleasure of collaborating with them to enhance our educational initiatives. Hoping Minds' commitment to excellence, higher packages and their passion for advancing in the field of education is commendable.",
-    //   author: "Navdeepak Sandhu",
-    // empty:2,//   
-    // stars: 3,
-    //   reviews: 4,
-    //   image: Img2,
-    // },
+  
     {
       text: "Right from the recruitment and interview process,we were able to see a different level of professionalism in Hm's candidates. It is great to see freshers demonstrating corperate mapopally.",
       author: "Lakshay S",
@@ -126,13 +116,6 @@ const Testimonial = () => {
   ];
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-  //   }, 10000);
-  //   return () => clearInterval(timer);
-  // }, [testimonials.length]);
-
   const handleArrow2Click = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
@@ -163,28 +146,16 @@ const Testimonial = () => {
               <p>
               Having worked in the ed-tech space, I understand the challenges of creating products that are both innovative and practical. HopingMinds excels in this regard, offering solutions that are forward-thinking yet grounded in real classroom needs. They serve as a model for how ed-tech firms should operate.
               </p></div>
-            {/* <p className="text-[#696984] text-[18px] font-pop xsm:text-[6px]">
-            Are you too? Please give your assessment
-          </p> */}
-            {/* <div className="flex flex-row">
-            <div className="w-[45%] border border-[#49BBBD] text-[#49BBBD] text-[16px] font-poppins flex justify-between items-center rounded-full">
-              <div className="flex justify-center items-center pl-4">
-                <p className="cursor-pointer">Write your assessment</p>
-              </div>
-              <div className="w-[20%] h-[100%] py-5 border border-[#49BBBD] rounded-full flex justify-center cursor-pointer">
-                <img src={Arrow} className="self-center" />
-              </div>
-            </div>
-          </div> */}
+           
           </div>
 
           {/* right */}
           <div className="relative w-[45%] xsm:w-[90%]">
             <div className="relative ">
               <div className="w-[70%] h-[54vh] rounded-3xl xsm:h-[60%] sm:h-[50%] md:h-[40%] md:w-[80%] lg:h-[60%] xsm:w-[100%]">
-              <img
+              <img alt=""
                 src={testimonials[currentIndex].image}
-                className="w-[100%] h-[100%]  rounded-3xl xsm:rounded-md xsm:w-auto xsm:h-[30vh] sm:w-[80%] sm:h-[200px] md:h-[280px] md:w-[80%] lg:h-[320px]"
+                className="w-[100%] h-[100%]  rounded-3xl xsm:rounded-md xsm:w-[50vw] object-cover xsm:h-auto sm:w-[80%] sm:h-[200px] md:h-[280px] md:w-[80%] lg:h-[320px]"
               />
               </div>
               <div className="absolute  flex flex-row gap-5 justify-center rounded-xl shadow-lg w-[95%] min-h-[37%] bg-[#ffffff] right-0 top-[75%] xsm:gap-2 xsm:rounded-md xsm:top-[70%] md:">
@@ -248,11 +219,11 @@ const Testimonial = () => {
 
             {/* arrrow */}
             <div
-              className="w-[60px] h-[60px] absolute bg-[#ffffff] rounded-full right-[25%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:right-[28%] sm:w-[30px] sm:h-[30px] sm:top-[35%] sm:right-[38%] md:w-[40px] md:h-[40px] md:right-[30%] lg:w-[50px] lg:h-[50px]"
+              className="w-[60px] h-[60px] absolute bg-[#ffffff] rounded-full right-[25%] top-[42%] flex justify-center items-center text-3xl text-[#1EA4CE] font-bold cursor-pointer xsm:w-[20px] xsm:h-[20px] xsm:left-[48vw] sm:w-[30px] sm:h-[30px] sm:top-[35%] sm:right-[38%] md:w-[40px] md:h-[40px] md:right-[30%] lg:w-[50px] lg:h-[50px]"
               style={{ filter: "drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))" }}
               onClick={handleArrow2Click}
             >
-              <img src={Arrow2} className="self-center w-5 h-5 xsm:w-[8px] xsm:h-[8px] sm:w-[10px] sm:h-[10px] md:w-[12px] md:h-[12px] lg:w-4 lg:h-4" />
+              <img src={Arrow2} alt="" className="self-center w-5 h-5 xsm:w-[8px] xsm:h-[8px] sm:w-[10px] sm:h-[10px] md:w-[12px] md:h-[12px] lg:w-4 lg:h-4" />
             </div>
           </div>
         </div>

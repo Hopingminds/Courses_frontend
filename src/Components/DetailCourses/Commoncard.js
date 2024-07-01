@@ -77,7 +77,6 @@ export default function Commoncard(props) {
         // console.log(response);
         if (response.success) {
           toast.success(response.msg);
-          
         } else {
           toast.error(response.msg);
         }
@@ -88,6 +87,7 @@ export default function Commoncard(props) {
       console.log(error);
     }
   }
+
 
   const { userDetail } = useContext(Globalinfo);
 
@@ -109,7 +109,7 @@ export default function Commoncard(props) {
   // console.log(Data);
   return (
     <div className="bg-[#E2FFF1] w-[full] h-max my-14 p-6 rounded-t-lg flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:mb-8">
-      <div className="max-h-[14rem] h-fit rounded-t-xl overflow-hidden bg-white md:h-[35%] relative xsm:h-fit xsm:max-h-[6rem]">
+      <div className="max-h-[14rem] h-fit rounded-t-xl overflow-hidden bg-white md:h-[35%] relative xsm:h-fit xsm:max-h-[12rem]">
         {
           <span className="bg-transparent p-4 absolute top-0 left-0 z-[99]">
             {IsMuted ? (
@@ -149,9 +149,9 @@ export default function Commoncard(props) {
           className="mix-blend-multiply"
         />
       </div>
-      <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1 md:gap-3 md:mt-4">
+      <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1 md:gap-3 md:mt-4 xsm:px-[1rem]">
         <div className="flex flex-col justify-between items-center xsm:pb-1 ">
-          <h2 className="font-nu text-[30px] font-bold xsm:text-[8px] md:text-[12px]">
+          <h2 className="font-nu text-[30px] font-bold xsm:text-[32px] md:text-[12px]">
             ₹{Data?.base_price}
           </h2>
 
@@ -159,25 +159,31 @@ export default function Commoncard(props) {
             {purchasedCourses.includes(Data?._id) ? (
               <Link
                 to={"/course/" + Data?.slug}
-                className="bg-[#1DBF73] py-2 px-7 flex justify-center rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[8px] md:text-[14px] md:px-[8px] md:py-1"
+                className="bg-[#1DBF73] py-2 px-7 flex justify-center rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1"
               >
                 View Course
               </Link>
             ) : (
-                <div className="space-x-4 w-full flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
+                <div className="space-x-4 w-full flex xsm:flex-col xsm:gap-[10px] items-center md:space-x-2  xsm:mr-1">
 
                   <div
                     onClick={() => Addtocart(Data?._id)}
-                    className="border cursor-pointer flex justify-center w-full py-2 px-10 rounded-full bg-[#1DBF73] text-white font-nu font-bold xsm:px-[5px] xsm:py-[2px] xsm:text-[7px] md:text-[14px] md:px-[8px] md:py-1 "
+                    className="border cursor-pointer flex justify-center w-full py-2 px-10 rounded-full bg-[#1DBF73] text-white font-nu font-bold xsm:px-[5px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
                   >
                     Add to cart
+                  </div>
+                  <div
+                    onClick={() => Addtowishlist(Data?._id)}
+                    className=" hidden xsm:flex cursor-pointer justify-center w-full py-2 px-10 rounded-full border border-[#1DBF73] text-[#1DBF73] font-nu font-bold xsm:px-[5px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
+                  >
+                    Add to Wishlist
                   </div>
                 </div>
             )}
           
           </div>
         </div>
-        <h3 className="font-pop text-[1.35rem] capitalize font-semibold xsm:text-[8px] md:text-[14px]">
+        <h3 className="font-pop text-[1.35rem] capitalize font-semibold xsm:text-[17px] md:text-[14px]">
           {Data?.title}
         </h3>
 
@@ -191,7 +197,7 @@ export default function Commoncard(props) {
             </>
           )}
 
-        <div className="flex flex-col gap-6 my-2 xsm:hidden md:gap-4 md:my-4">
+        <div className="flex flex-col gap-6 my-2 md:gap-4 md:my-4">
           <div className="space-y-4 md:space-y-2">
             <p className="font-pop font-semibold md:text-[14px]">
               This Course Includes
@@ -231,7 +237,7 @@ export default function Commoncard(props) {
             <p className="font-pop font-semibold md:text-[14px]">
               Share this course
             </p>
-            <div className="flex space-x-4 h-max w-full">
+            <div className="flex space-x-4 h-max w-full xsm:gap-4">
               <RWebShare
                 data={{
                   text: "Hoping Minds",

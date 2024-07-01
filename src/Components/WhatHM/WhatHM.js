@@ -55,7 +55,7 @@ const WhatHM = () => {
           </p>
         </div> */}
         <div className="flex justify-center">
-          <p className="text-[#696984] text-[20px] font-pop w-[70%] text-center leading-12 xl:text-[22px] lg:text-[16px] sm:text-[10px] xsm:text-[7px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
+          <p className="text-[#696984] text-[20px] font-pop w-[70%] text-center leading-12 xl:text-[22px] lg:text-[16px] sm:text-[10px] xsm:text-[12px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
             Welcome to HopingMinds, your gateway to a brighter future. As an
             esteemed partner of the <span className="font-semibold">National Skill Development Corporation
               (NSDC)</span>, we stand at the forefront of transformative education,
@@ -65,12 +65,12 @@ const WhatHM = () => {
         </div>
         <div className="flex flex-row gap-20 justify-around sm:mt-4 sm:gap-6 xsm:gap-4 mt-8 xsm:mt-2 md:mt-4 md:gap-10 lg:gap-14">
           <div
-            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden sm:w-[30%] sm:h-[140px] xsm:h-[30vh] xsm:rounded-lg md:w-[30%] md:h-[180px] lg:w-[35%] lg:h-[280px] relative xsm:w-full"
+            className="w-[500px] h-[350px] 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden sm:w-[30%] sm:h-[140px] xsm:h-[30vh] xsm:rounded-lg md:w-[30%] md:h-[180px] lg:w-[35%] lg:h-[280px] relative xsm:w-full"
             onClick={() => handlePlay(0)}
           >
             <ReactPlayer
               onContextMenu={handleContextMenu}
-              className={"w-full h-full md:w-[30%] lg:w-[30%] lg:h-[200px] rounded-3xl aspect-auto xsm:w-[90%]"}
+              className={"w-full h-full md:w-[30%] lg:w-[30%] lg:h-[200px] aspect-auto xsm:w-[80%] overflow-hidden"}
               url="/Corporate1.mp4"
               playing={playingIndex === 0}
               loop={true}
@@ -109,7 +109,7 @@ const WhatHM = () => {
             )} */}
           </div>
           <div
-            className="w-[500px] h-[350px] bg-black 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden sm:w-[30%] sm:h-[140px] xsm:w-[42%] xsm:h-[100px] xsm:rounded-lg md:w-[30%] md:h-[180px] lg:w-[35%] lg:h-[280px] relative xsm:hidden"
+            className="w-[500px] h-[350px] 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden sm:w-[30%] sm:h-[140px] xsm:w-[42%] xsm:h-[100px] xsm:rounded-lg md:w-[30%] md:h-[180px] lg:w-[35%] lg:h-[280px] relative xsm:hidden"
             onClick={() => handlePlay(1)}
           >
             <ReactPlayer

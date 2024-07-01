@@ -16,16 +16,16 @@ export default function MinorDegree(){
     }, [])
     
     return(<>
-    <div className="my-4 pt-14 xsm:pt-4 xsm:my-0 xsm:px-[2%] md:my-4 px-[5%]">
-                <p className="font-pop font-semibold text-[30px] xsm:text-[14px] md:text-[20px]">For Minor Degree</p>
+    <div className="my-4 pt-14 xsm:pt-4 xsm:mb-0 xsm:px-[2%] md:my-4 px-[5%]">
+                <p className="font-pop font-semibold text-[30px] xsm:text-[18px] md:text-[20px]">For Minor Degree</p>
             </div>
-    <div className="pb-20 grid grid-cols-4 gap-5 px-[5%] py-5 xsm:grid-cols-2">
+    <div className="pb-20 grid grid-cols-4 gap-5 px-[5%] py-5 xsm:grid-cols-2 xsm:gap-3 xsm:pb-10">
     {
         allcategories?.map((item)=>{
             return(<>
             <Link to='/minorCourse?minordegree=true&category=Full Stack Development' className="border shadow-2xl rounded-xl">
                 <img src={item?.Category_image} className="h-[28vh] rounded-t-xl w-full xsm:h-[15vh] md:h-[20vh]"/>
-                <div className="font-bold text-xl text-center my-10 xsm:my-5 xsm:text-[14px] md:text-lg md:my-8 ">{item?.Category_Name}</div>
+                <div className="font-bold text-xl text-center my-10 xsm:my-5 xsm:text-[12px] md:text-lg md:my-8 ">{item?.Category_Name}</div>
             </Link>
             </>)
         })

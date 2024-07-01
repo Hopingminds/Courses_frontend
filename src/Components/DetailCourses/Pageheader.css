@@ -22,12 +22,6 @@
   width: 55%;
 }
 
-.CCDetails-Header-content-row1qw h2 {
-  font-weight: 600;
-  font-size: 36px;
-  text-align: left;
-  color: #fff;
-}
 
 .CCDetails-Header-content-row2 {
   display: flex;
@@ -126,16 +120,13 @@
   }
 
   .CCDetails-Header-main {
-    height: 110px;
+    height: 50vh;
   }
 
   .CCDetails-Header-content-leftqw {
-    width: 70%;
+    width: 100%;
   }
 
-  .CCDetails-Header-content-row1qw h2 {
-    font-size: 10px;
-  }
 
   .CCDetails-Header-content-row2 {
     gap: 3px;
@@ -146,7 +137,7 @@
   }
 
   .CCDetails-Header-content-row2-clock p {
-    font-size: 6px !important;
+    font-size: 12px !important;
   }
 
   .CCDetails-Header-content-row2-hat p {
