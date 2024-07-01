@@ -119,7 +119,7 @@ export default function Navbar() {
         <Link to="/" onClick={Top} className=" cursor-pointer">
           <img
             src="/logo.png"
-            className="h-[50px] w-auto xsm:w-[50px] xsm:h-[25px] sm:w-[50px] sm:h-[27px] md:w-[70px] md:h-[30px]"
+            className="h-[50px] w-auto xsm:w-auto xsm:h-[27px] sm:w-[50px] sm:h-[27px] md:w-[70px] md:h-[30px]"
             alt="Logo"
           />
         </Link>

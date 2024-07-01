@@ -21,8 +21,8 @@ const NewModal = ({ handleModalOpen,datas,type ,title}) => {
     };
 
     return (
-        <div className="fixed inset-0 cursor-pointer z-50 flex justify-center items-center w-full h-full text-black bg-[#E2FFF1] bg-opacity-20 backdrop-blur-lg" onClick={handleModalOpen}>
-            <div className="relative p-4 w-full max-w-4xl max-h-[78vh] bg-[#E2FFF1] rounded-lg shadow h-auto xsm:w-[90%] xsm:p-2" onClick={(e) => { e.preventDefault(); e.stopPropagation() }} >
+        <div className="fixed inset-0 cursor-pointer z-50 flex justify-center items-center w-full h-full text-black bg-[#E2FFF1] bg-opacity-20 backdrop-blur-lg">
+            <div className="relative p-4 w-full max-w-4xl max-h-[78vh] bg-[#E2FFF1] rounded-lg shadow h-auto xsm:w-[90%] xsm:p-2"  >
                 <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t gap-4">
                     <div>
                         <h3 className="text-3xl font-bold text-black  capitalize flex flex-col gap-1 xsm:text-lg">
@@ -50,10 +50,10 @@ const NewModal = ({ handleModalOpen,datas,type ,title}) => {
                             key={index + 67}
                             onToggle={(e) => handleToggle(index, e.target.open)}
                         >
-                            <summary className="bg-[#FFE5E5] px-[1rem] py-[1rem] rounded-md text-xl font-bold capitalize flex justify-between items-center xsm:text-[12px] xsm:leading-3 xsm:p-[1rem] cursor-pointer">
+                            <summary className="bg-[#FFE5E5] px-[1rem] py-[1rem] rounded-md text-xl font-bold capitalize flex justify-between items-center xsm:text-[12px] xsm:leading-[17px] xsm:p-[1rem] cursor-pointer">
                                 <p>
                                     {module.title}{" "}
-                                    <span className="font-light text-black">{module.duration}</span>
+                                    <span className="font-light text-black leading-[17px] ">{module.duration}</span>
                                 </p>
                                 {openDetails[index] ? (
                                     <MdKeyboardArrowUp className="text-2xl font-semibold" />
@@ -61,22 +61,22 @@ const NewModal = ({ handleModalOpen,datas,type ,title}) => {
                                     <MdKeyboardArrowDown className="text-2xl font-semibold" />
                                 )}
                             </summary>
-                            <div className="bg-white px-4 py-3 grid grid-cols-3 gap-3 items-center justify-between xsm:grid-cols-2">
+                            <div className="bg-white px-4 py-3 grid grid-cols-3 gap-3 items-center justify-between xsm:grid-cols-1">
                                 {module?.allData?.map((lesson, index) => (
                                     <>
                                         {type === "Project" && <div className="bg-[#FFE5E5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md xsm:p-[1rem]">
                                                 <div className="flex gap-2 items-center">
-                                                <img src={"/Icons/project.svg"} alt="project" className="text-green-500 h-[25px] w-auto xsm:h-[18px]"/>
+                                                <img src={"/Icons/project.svg"} alt="project" className="text-green-500 h-[25px] w-auto xsm:h-[28px]"/>
 
-                                                    <p className=" capitalize text-xs xsm:text-[10px] xsm:leading-3">{lesson.title}</p>
+                                                    <p className=" capitalize text-xs xsm:text-[12px] xsm:leading-[18px] xsm:font-semibold">{lesson.title}</p>
                                                 </div>
                                                {/* <a href={lesson.projectInfoPdf} className="font-semibold">Open Project</a> */}
                                             </div>}
                                         {type === "Module" && <div className="bg-[#FFE5E5] flex flex-col justify-center px-[2rem] py-[2rem] items-start rounded-md xsm:p-[1rem] ">
                                                 <div className="flex gap-2 items-center">
-                                                <img src={"/Icons/module.svg"} alt="module" className="text-green-500 h-[25px] w-auto xsm:h-[18px]"/>
+                                                <img src={"/Icons/module.svg"} alt="module" className="text-green-500 h-[25px] w-auto xsm:h-[28px]"/>
 
-                                                    <p className=" capitalize text-xs xsm:text-[10px] xsm:leading-3">{lesson.lesson_name}</p>
+                                                    <p className=" capitalize text-xs xsm:text-[12px] xsm:leading-[18px] xsm:font-semibold">{lesson.lesson_name}</p>
                                                 </div>
                                              
                                         </div>}

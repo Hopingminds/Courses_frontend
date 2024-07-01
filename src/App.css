@@ -91,3 +91,14 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+@media(max-width:500px){
+  #carousel__arr .splide__arrow.splide__arrow--prev {
+display: none;
+}
+
+
+#carousel__arr .splide__arrow.splide__arrow--next {
+  display: none;
+}
+}
