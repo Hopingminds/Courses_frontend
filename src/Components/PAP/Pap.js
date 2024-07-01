@@ -125,7 +125,7 @@ export default function Pap() {
         </div>
         {/* Agreement */}
         <div className="flex justify-between px-[5%] xsm:flex-col xsm:gap-4">
-          <div className="w-[55%] mt-10 flex flex-col gap-4 xsm:mt-5 xsm:w-[80%] md:mt-8">
+          <div className="w-[55%] mt-10 flex flex-col gap-4 xsm:mt-5 xsm:w-[90%] md:mt-8">
             <div>
               <p className="font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px] md:text-[22px]">
                 How This Works ?
@@ -201,7 +201,7 @@ export default function Pap() {
               <img className="w-[75%] h-full xsm:w-[260px] xsm:h-[180px]" src={window.innerwidth > 480 ? Img2 : Img4} />
             </div>
           </div>
-          <div className="w-[55%] flex flex-col gap-3 mt-4 xsm:gap-2 xsm:w-[80%] md:gap-4">
+          <div className="w-[55%] flex flex-col gap-3 mt-4 xsm:gap-2 xsm:w-[90%] md:gap-4">
             <div>
               <p className="font-pop font-semibold text-[28px] text-[#2D3436] xsm:text-[12px] xsm:font-bold md:text-[24px]">
                 Course Fee

@@ -12,18 +12,18 @@ import Num6 from "../../Assests/Icons/06.svg";
 const AboutUs = () => {
   return (
     <>
-      <div className="flex flex-col gap-4 pl-24 pr-4 py-16 xsm:px-4 xsm:py-5">
-        <p className="text-[#1DBF73] text-[64px] font-poppins  font-semibold xsm:text-[26px] xsm:text-center">
+      <div className="flex flex-col gap-4 px-[5%] py-16 xsm:py-10">
+        <p className="text-[#1DBF73] text-[64px] font-pop font-semibold xsm:text-[18px] xsm:text-center">
           About Us
         </p>
-        <div className="flex flex-row justify-between ">
-          <div className="flex flex-col gap-6 w-[50%] pb-28 pt-6 xsm:pt-2 xsm:w-full xsm:pb-2">
-            <p className="text-[#141414] text-[40px] font-poppins font-semibold leading-[50px] xsm:text-[22px] xsm:leading-normal xsm:text-center">
+        <div className="flex flex-row justify-between xsm:flex-col">
+          <div className="flex flex-col gap-6 w-[50%] pb-28 pt-6 xsm:pt-0 xsm:w-full xsm:pb-8 xsm:gap-4">
+            <p className="text-[#141414] text-[48px] font-pop font-semibold leading-[50px] xsm:text-[12px] xsm:leading-normal xsm:text-center">
               {" "}
               <span className="text-[#1DBF73] "> Hoping Minds </span> providing
               the best opportunities to the students around the glob.
             </p>
-            <p className="text-[#1E1E1E] text-[17px]  leading-[24px] text-justify xsm:text-[15px] font-pop">
+            <p className="text-[#1E1E1E] text-[20px]  leading-[24px] text-justify xsm:text-[11px] font-nu xsm:leading-4">
               HopingMinds is working to transform India’s educational system
               into an outcome-oriented system by helping students identify,
               train for and get placed in growing career paths. We run
@@ -39,35 +39,36 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <div className="flex justify-center items-center relative xsm:hidden lg:w-[28%] xl:w-[40%] lg:right-[4rem]">
+          <div className="flex justify-center items-center relative lg:w-[28%] xl:w-[40%] lg:right-[4rem] xsm:h-64 xsm:py-8">
             <div className="bg-[#E2FFF1] text-[#E2FFF1] rounded-xl w-[68%] lg:h-[20%] h-[80%] lg:w-[68%] xl:w-[68%]"></div>
             <img
               alt=""
               src={Img1}
-              className="absolute top-3 lg:top-[37.5%] right-[1rem] rounded-xl object-contain w-[55%] lg:w-[55%] xl:w-[55%]"
+              className="absolute top-3 lg:top-[37.5%] right-[1rem] rounded-xl object-contain w-[55%] lg:w-[55%] xl:w-[55%] xsm:top-0"
             />
             <img
               alt=""
               src={Img2}
-              className="absolute bottom-3 lg:bottom-[37.5%] left-[1rem] rounded-xl object-contain w-[55%] lg:w-[55%] xl:w-[55%]"
+              className="absolute bottom-3 lg:bottom-[37.5%] left-[1rem] rounded-xl object-contain w-[55%] lg:w-[55%] xl:w-[55%] xsm:bottom-0"
             />
           </div>
         </div>
       </div>
-      <div className="flex flex-row gap-36 px-24 py-10 xsm:px-4 xsm:gap-0 xsm:py-2">
-        <div className="flex w-[35%]  justify-center items-center xsm:hidden">
-          <img src={Img3} alt="" className=" w-[88%] h-[60%] " />
+      <div className="flex flex-row gap-36 px-[5%] py-10 xsm:gap-0 xsm:py-2 xsm:flex-col-reverse">
+        <div className="flex w-[35%] justify-center items-center relative xsm:h-56 xsm:w-[100%] xsm:mt-6">
+          <div className="w-[90%] h-full bg-[#E2FFF1] rounded-lg xsm:w-[70%]"></div>
+          <img src={Img3} alt="" className="absolute top-12 w-[80%] xsm:w-[60%] xsm:top-6" />
         </div>
-        <div className="flex flex-col gap-3 w-[45%] py-6 pb-36 xsm:w-[100%] xsm:pb-0 xsm:mx-auto">
-          <p className="text-[#22B286] text-[32px] font-poppins font-bold xsm:text-center xsm:text-[26px]">
+        <div className="flex flex-col gap-3 w-[45%] py-6 xsm:w-[100%] xsm:pb-0 xsm:mx-auto">
+          <p className="text-[#22B286] text-[32px] font-pop font-bold xsm:text-center xsm:text-[18px]">
             Features
           </p>
-          <div className="flex flex-col gap-3">
-            <p className="text-[#141414] text-[40px] leading-[50px] font-poppins xsm:text-[22px] xsm:leading-normal xsm:text-center font-semibold">
+          <div className="flex flex-col gap-5">
+            <p className="text-[#141414] text-[48px] leading-[54px] font-pop xsm:text-[12px] xsm:leading-normal xsm:text-center font-semibold">
               We are always working to provide you best of the features in all
               aspects.
             </p>
-            <div className="text-[#1E1E1E] text-[17px]  leading-[24px] text-justify xsm:text-[15px] font-pop">
+            <div className="text-[#1E1E1E] text-[20px] flex flex-col gap-4 leading-[24px] text-justify xsm:text-[11px] font-nu xsm:leading-4">
               <p>
                 HopingMinds is an NSDC and Swayam Plus accredited partner with
                 course certification and monitoring done on the Skill India
@@ -88,14 +89,14 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center gap-6 py-16 pb-40 xsm:pb-2 ">
-        <p className="text-[#1DBF73] text-[32px] font-poppins font-semibold xsm:text-center xsm:text-[26px]">
+      <div className="flex flex-col justify-center items-center gap-6 px-[5%] py-20 pb-40 xsm:pb-10 xsm:gap-4">
+        <p className="text-[#1DBF73] text-[32px] font-pop font-semibold xsm:text-center xsm:text-[18px]">
           Our Benefits
         </p>
-        <p className="text-[#141414] text-[40px] font-poppins font-semibold w-[45%] flex text-center xsm:text-[22px] xsm:w-full lg:w-full xsm:leading-normal xsm:text-center ">
+        <p className="text-[#141414] text-[48px] font-pop font-semibold w-[80%] flex text-center xsm:text-[12px] xsm:w-full lg:w-full xsm:leading-normal xsm:text-center ">
           By Joining Hoping Minds Platform, One Can Avail a Lot Of Benefits.
         </p>
-        <p className="text-[#1E1E1E] text-[17px]  leading-[24px] text-justify xsm:text-[15px] xsm:p-4 font-pop">
+        <p className="text-[#1E1E1E] text-[20px]  leading-[24px] text-justify xsm:text-[11px] font-nu xsm:leading-4">
           HopingMinds’ learning experience has been developed in consultation
           with learners to build a highly engaging & gamified program whilst
           allowing for flexibility by leveraging a load of digital initiatives.
@@ -108,7 +109,7 @@ const AboutUs = () => {
           motivation, real time insights, industry exposure & enable students to
           apply concepts effectively
         </p>
-        <p className="text-[#1E1E1E] text-[17px]  leading-[24px] text-justify xsm:text-[15px] xsm:p-4 font-pop">
+        <p className="text-[#1E1E1E] text-[20px]  leading-[24px] text-justify xsm:text-[11px] font-nu xsm:leading-4">
           We have 200+ industry partners across India and abroad that we work
           closely with for placements. Our dedicated placement coordinators work
           day in and day out to identify requirements from these partners and
