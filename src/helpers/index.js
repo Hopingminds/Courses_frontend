@@ -8,6 +8,14 @@ export const validateEmail = (email) => {
         );
 };
 
+export const validateMobileNumber = (number) => {
+    return String(number)
+        .match(
+            /^\d{10}$/
+        );
+};
+
+
 const collegeRegex = /^[a-zA-Z0-9\s(),:-]+$/;
 
 export const validateCollege = (name) => {
