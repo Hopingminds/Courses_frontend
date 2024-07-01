@@ -33,56 +33,56 @@ const Footer = () => {
                 className="w-auto h-[50px] xsm:w-[40%] xsm:h-[10%] sm:w-[45%] sm:h-[30px] md:w-[60%]  cursor-pointer" alt=""
               />
             </div>
-            <p className="text-white text-[12px] font-pop text-balance w-[90%] xsm:text-[10px] sm:text-[10px] md:text-[12px] md:w-[90%] md:pl-2">
+            <p className="text-white text-[12px] font-pop text-balance w-[90%] xsm:w-[100%] xsm:text-[11px] sm:text-[10px] md:text-[12px] md:w-[90%] md:pl-2">
               HopingMinds offers holistic development programs designed to
               position students in high-growth roles through our network of over
               200+ corporate partners. Our tailored approach ensures you're not
               just prepared, but primed for success in your chosen field.
             </p>
           </div>
-          <div className="flex justify-between w-[70%] xsm:grid xsm:grid-cols-2 xsm:gap-x-4 xsm:gap-y-8 xsm:w-[100%]">
+          <div className="flex justify-between w-[70%] xsm:grid xsm:grid-cols-2 xsm:gap-x-4 xsm:gap-y-8 xsm:w-[90%]">
             <div className="flex flex-col gap-8 xsm:gap-2 sm:gap-6">
-              <p className="text-white text-[20px] font-pop font-semibold xsm:text-[10px] sm:text-[12px] md:text-[14px]">
+              <p className="text-white text-[20px] font-pop font-semibold xsm:text-[12px] sm:text-[12px] md:text-[14px]">
                 GET HELP
               </p>
               <div className="flex flex-col gap-3 xsm:gap-1 md:gap-2">
-                {/* <Link className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px]'>Contact Us</p> */}
+                {/* <Link className='text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px]'>Contact Us</p> */}
                 <Link
                   to="/privacy"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   to="/terms"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   Terms and Conditions
                 </Link>
                 <Link
                   to="/pap"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   Pay After Placement
                 </Link>
-                {/* <Link to='/career' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Career</Link> */}
+                {/* <Link to='/career' className='text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]'>Career</Link> */}
                 <Link
                   to="/about"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   About
                 </Link>
-                {/* <Link to='/hire-from-us' className='text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]'>Hire From Us</Link> */}
+                {/* <Link to='/hire-from-us' className='text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]'>Hire From Us</Link> */}
                 <Link
                   to="/cv-builder"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   CV Builder
                 </Link>
               </div>
             </div>
             <div className="flex flex-col gap-8 xsm:gap-2 sm:gap-6">
-              <p className="text-white text-[20px] font-pop font-semibold xsm:text-[10px] sm:text-[12px] md:text-[14px]">
+              <p className="text-white text-[20px] font-pop font-semibold xsm:text-[12px] sm:text-[12px] md:text-[14px]">
                 PROGRAMS
               </p>
               <div
@@ -91,54 +91,54 @@ const Footer = () => {
               >
                 <Link
                   to="/courses?category=Management"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   Management
                 </Link>
                 <Link
                   to="/courses?category=Finance"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   Finance
                 </Link>
                 <Link
                   to="/courses?category=Full Stack Development"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   Full Stack Development
                 </Link>
                 <Link
                   to="/courses?category=AI/ML"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   AI/ML
                 </Link>
                 <Link
                   to="/courses?category=Networking"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   Networking
                 </Link>
                 <Link
                   to="/courses?category=Data Science"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   Data Science
                 </Link>
               </div>
             </div>
             <div className="flex flex-col gap-8 xsm:gap-2 sm:gap-6">
-              <p className="text-white text-[20px] font-pop font-semibold xsm:text-[10px] sm:text-[12px] md:text-[14px]">
+              <p className="text-white text-[20px] font-pop font-semibold xsm:text-[12px] sm:text-[12px] md:text-[14px]">
                 CONTACT US
               </p>
               <div className="flex flex-col gap-3 xsm:gap-1 md:gap-2">
-                <p className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]">
-                  Tel: +91 91931 00050 , +91 76579 22600
-                </p>
+                <div className="text-white text-[16px] font-pop flex flex-row xsm:flex-col  xsm:text-[11px] sm:text-[9px] md:text-[10px]">
+                  <p>Tel: +91 91931 00050 ,<p></p> +91 76579 22600</p>
+                </div>
                 <Link
                   to="mailto:support@hopingminds.com"
                   target="_blank"
-                  className="text-white text-[16px] font-pop xsm:text-[8px] sm:text-[9px] md:text-[10px]"
+                  className="text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]"
                 >
                   Mail: support@hopingminds.com
                 </Link>
@@ -150,7 +150,7 @@ const Footer = () => {
                     {" "}
                     <img
                       src={Icon1}
-                      className="w-[30px] h-[30px] xsm:w-[15px] xsm:h-[15px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px]"
+                      className="w-[30px] h-[30px] xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px]"
                     />
                   </Link>
                   <Link
@@ -160,7 +160,7 @@ const Footer = () => {
                     {" "}
                     <img
                       src={Icon2}
-                      className="w-[32px] h-[32px] xsm:w-[15px] xsm:h-[15px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px]"
+                      className="w-[32px] h-[32px] xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px]"
                     />
                   </Link>
                   <Link
@@ -169,7 +169,7 @@ const Footer = () => {
                   >
                     <img
                       src={Icon3}
-                      className="w-[30px] h-[30px] xsm:w-[15px] xsm:h-[15px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px]"
+                      className="w-[30px] h-[30px] xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px]"
                     />
                   </Link>
                   <Link
@@ -179,7 +179,7 @@ const Footer = () => {
                     {" "}
                     <img
                       src={Icon4}
-                      className="w-[36px] h-[36px] xsm:w-[16px] xsm:h-[16px] sm:w-[18px] sm:h-[18px] md:w-[20px] md:h-[20px]"
+                      className="w-[36px] h-[36px] xsm:w-[18px] xsm:h-[18px] sm:w-[18px] sm:h-[18px] md:w-[20px] md:h-[20px]"
                     />
                   </Link>
                 </div>
@@ -190,9 +190,9 @@ const Footer = () => {
         <div className="flex flex-row gap-2 items-center justify-center xsm:gap-1">
           <img
             src={Img1}
-            className=" xsm:w-[15px] xsm:h-[15px] sm:w-[16px] sm:h-[16px] md:w-[16px] md:h-[16px]"
+            className=" xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[16px] md:h-[16px]"
           />
-          <p className="text-white text-[16px] font-pop font-semibold xsm:text-[10px] sm:text-[11px] md:text-[12px]">
+          <p className="text-white text-[16px] font-pop font-semibold xsm:text-[12px] sm:text-[11px] md:text-[12px]">
             KATINA SKILLS PRIVATE LIMITED 2023
           </p>
         </div>
