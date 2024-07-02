@@ -123,7 +123,7 @@ export default function Newinstructor() {
             <SplideSlide>
               <div className="space-y-2 flex flex-col justify-center text-center xsm:w-full xsm:space-y-0">
                 <div className="h-[200px] w-[200px]  mx-auto xsm:w-16 xsm:h-16 md:w-28 md:h-28">
-                  <img
+                  <img 
                     src={Img3}
                     className="rounded-full w-full h-full object-cover"
                   />

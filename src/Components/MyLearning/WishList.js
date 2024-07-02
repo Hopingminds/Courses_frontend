@@ -60,7 +60,7 @@ export default function WishList() {
                 className=" px-4 py-4 mt-2 h-[350px] rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:rounded-md xsm:p-2 xsm:h-full md:p-3 md:h-full"
               >
                 <div className="h-[55%] xsm:h-[45%] md:h-[40%]">
-                  <img
+                  <img alt=""
                     className="w-full h-full rounded-lg"
                     src={item.course?.featured_image}
                   />
@@ -69,7 +69,7 @@ export default function WishList() {
                 <div className="space-y-2 mt-2 xsm:mt-0 xsm:space-y-1">
                   <div className="flex justify-between mt-3 min-h-[30%] xsm:mt-1 md:mt-0 items-center">
                     <div className="flex items-center space-x-3 max-w-[80%] xsm:space-x-1 md:space-x-1">
-                      <img
+                      <img alt=""
                         className="w-[32px] h-[32px] rounded-full xsm:w-4 xsm:h-4 md:w-5 md:h-5"
                         src={item?.course?.instructor?.profile}
                       />
@@ -83,13 +83,13 @@ export default function WishList() {
                       </p>
                     </div>
                   </div>
-                  <p className="font-pop font-semibold text-[18px] text-[#252641] xsm:text-[8px] md:text-[14px]">
+                    <p className="font-pop font-semibold text-[18px] text-[#252641] xsm:text-[8px] md:text-[14px] line-clamp-2">
                     {item?.course?.title}
                   </p>
                   </div>
                   <div className=" flex flex-row items-center justify-between">
                     <div className="flex space-x-2 items-center xsm:space-x-0 md:space-x-1">
-                      <img
+                      <img alt=""
                         className="w-[16px] h-[16px] xsm:w-2 xsm:h-2 md:w-3 md:h-3"
                         src="../Icons/RCDesign.svg"
                       />
@@ -98,7 +98,7 @@ export default function WishList() {
                       </p>
                     </div>
                     <div className="flex space-x-2 items-center xsm:space-x-0 md:space-x-1">
-                      <img
+                      <img alt=""
                         className="w-[16px] h-[16px] text-[#555555] xsm:w-2 xsm:h-2 md:w-3 md:h-3"
                         src="../Icons/RCClock.svg"
                       />
