@@ -58,7 +58,7 @@ export default function Newinstructor() {
                   Akarshan Puri
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Data Scientist</div> */}
-                <div className="font-nu text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 Senior Manager@ Data Innovation ,Bill INC.,USA, Gold Medalist at BITS Pilani, Dubai, with 9+ years of experience in data science. 
                 </div>
               </div>
@@ -72,7 +72,7 @@ export default function Newinstructor() {
                   Aditya Sen
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="font-nu text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                   Associate Director – Cognisant UK, ex Infosys, ex Wipro
                   Experience – Clean Tech, Digital Transformation
                 </div>
@@ -87,7 +87,7 @@ export default function Newinstructor() {
                   Mohit Banka
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="tfont-nu ext-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 Worked with industry giants like Amazon and Microsoft. His experience includes Data visualization , with a focus on creating scalable solutions for tech giants.
                 </div>
               </div>
@@ -101,7 +101,7 @@ export default function Newinstructor() {
                   Hardik Mehta
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className= "font-nu text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className= "text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                   Senior Manager Wipro Product Management
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function Newinstructor() {
                   Praachee Bhargava
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="font-nu text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 A UGC-Net qualified academic with 15 years of teaching and 18 years in retail communications. 
                 </div>
               </div>
@@ -129,10 +129,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                  Sadafont-nu shiv Pal
+                  Sadashiv Pal
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 SEO Manager at Sogolytics with over 14 years of experience, increasing organic traffic by 30%. He specializes in keyword research.
                 </div>
               </div>
@@ -146,10 +146,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                  Huzefa font-nu Lohawala
+                  Huzefa Lohawala
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 Data scientist at PayPal and an alumnus of IIT (BHU), Varanasi. His expertise includes data analysis
                 </div>
               </div>
@@ -163,10 +163,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                  Saloni Cfont-nu hanauria
+                  Saloni Chanauria
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                   Full Stack Developer & Trainer @ BigBoxx Academy | 7+years
                   Experience
                 </div>
@@ -181,10 +181,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                  Tanweefont-nu  Hargave
+                  Tanwee Hargave
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                   Co-Founder and Research Lead | 8+years Experience
                 </div>
               </div>
@@ -198,10 +198,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                  Lalfont-nu it Arora
+                  Lalit Arora
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                   Professor at Entrepreneurship Development Institute of India
                   (EDII), |20+years Experiece
                 </div>
@@ -216,10 +216,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                  Dr.Anfont-nu ju Mehta
+                  Dr.Anju Mehta
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                   Instructor with 22+years Experience
                 </div>
               </div>
@@ -233,10 +233,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                  Mohd Asad font-nu Siddiqui
+                  Mohd Asad Siddiqui
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                   Professor at GD Goenka University (Gurgaon) | 12+ years
                   Experience
                 </div>
@@ -251,10 +251,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                  Abhishek Cfont-nu houdhary
+                  Abhishek Choudhary
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 Senior Manager@ Data Innovation ,Bill INC.,USA, Gold Medalist at BITS Pilani, Dubai, with 9+ years of experience in data science. 
                 </div>
               </div>
@@ -268,10 +268,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Sofont-nu umen Das
+                Soumen Das
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 Currently holding the position of Senior Mobile App Developer at Roadzen, Mobile App Developer with more than a decade of experience in the field of mobile technology 
                 </div>
               </div>
@@ -285,10 +285,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Tuhfont-nu ina Jain
+                Tuhina Jain
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 Worked with leading technology firms such as Google and Blinkit. Her expertise lies in building AI solutions 
                 </div>
               </div>
@@ -302,10 +302,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Somirofont-nu n Mitra 
+                Somiron Mitra 
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 Over 17 years of experience in the fashion and e-commerce industry, currently managing operations at Myntra. His expertise includes strategic planning and operational efficiency.
                 </div>
               </div>
@@ -319,10 +319,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Atul font-nu Chhabra 
+                Atul Chhabra 
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 Atul Chhabra brings over three decades of experience in the telecommunications and IT sectors. A former Director at Verizon 
                 </div>
               </div>
@@ -336,10 +336,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                font-nu Prashant
+                Prashant
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 Google Certified Trainer with expertise in Analytics and Automation Trainings. Working as Data analyst in Infosys. Also holding a Microsoft Certified Educator designation.
                 </div>
               </div>
@@ -353,10 +353,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Sofont-nu nia Garg
+                Sonia Garg
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 Accomplished Assistant Professor at Thapar University, with more than eleven years of experience in academia and industry-related research. As an IIM Lucknow alumni
                 </div>
               </div>
@@ -370,10 +370,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Tajfont-nu war Khan
+                Tajwar Khan
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 An entrepreneur and Corporate Training Strategist, Security Researcher/Trainer, AWS/Azure Trainer, Certified Ethical Hacker (CEH)
                 </div>
               </div>
@@ -387,10 +387,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Manikant Kfont-nu andukuri
+                Manikant Kandukuri
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 A Lead AI Engineer with a comprehensive background from BITS, this professional specializes in the forefront of Generative AI technologies.
                 </div>
               </div>
@@ -404,10 +404,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Nikita font-nu S Kotme 
+                Nikita S Kotme 
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 A Blockchain Consultant and Trainer with over six years of experience. She specializes in Blockchain Technology, Python programming, and Generative AI
                 </div>
               </div>
@@ -421,10 +421,10 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Kajfont-nu al Singh
+                Kajal Singh
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className="text-center text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                 The Vice President at BlockVerse Academy, specializing in Blockchain, Data Science, Machine Learning, Cloud Computing, and Cyber Security.
                 </div>
               </div>

@@ -129,7 +129,7 @@ const HireTestimonial = () => {
                             key={index}
                             className={`w-full p-4 rounded-lg flex flex-col gap-2 h-full  ${index%2 === 0 ?'bg-[#4C4646] text-[#fff]':'bg-[#fff] text-[#4C4646]'}`}>
                             <div>
-                                <img className={`w-4 md:w-3 xsm:w2 ${index%2 === 0 ?' hire-icon-color-invert':' '}`} src="../Icons/hireinvertedcomma.svg" alt="" />
+                                <img className={`w-4 md:w-3 xsm:w2 ${index%2 === 0 ?' ':' hire-icon-color-invert'}`} src="../Icons/hireinvertedcomma.svg" alt="" />
                             </div>
                             <div className='h-[70%]'>
                                 <p className='text-[12px] font-pop md:text-[10px] xsm:text-[11px]'>{data.text}</p>

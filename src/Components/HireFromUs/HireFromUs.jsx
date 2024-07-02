@@ -13,7 +13,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { BASE_URL } from "../../Api/api";
 import HireTable from "./HireTable";
 import Close from "../../Assests/Images/close.png";
-import { validateEmail } from "../../helpers";
+import { validateEmail ,validateMobileNumber} from "../../helpers";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Companies from "../Companies";
@@ -135,7 +135,7 @@ const HireFromUs = () => {
       ['email']: true
     }));
     } 
-   else if(!hiredata.phone){
+   else if(!validateMobileNumber(hiredata.phone)){
     setwarnings((prevWarnings) => ({
       ...prevWarnings,
       ['phone']: true
@@ -454,7 +454,8 @@ const HireFromUs = () => {
                       className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${warnings.phone ? 'border border-red-500' : ''}`}
                       type="number"
                       placeholder="Enter your Mobile number"
-                    />
+                      maxLength={10}
+                    />  
                   </div>
                   <div className="px-6 mt-2">
                     <button
