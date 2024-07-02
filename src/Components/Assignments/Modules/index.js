@@ -51,50 +51,50 @@ export default function Modules() {
     }
     Fetchdata();
   }, []);
-  useEffect(() => {
-    async function Fetchscores() {
-      try {
-        let token = localStorage.getItem("COURSES_USER_TOKEN");
-        setshow(true);
-        let url = BASE_URL + "/gettestreport";
-        const data = await fetch(url, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const response = await data.json();
-        settestreport(response?.testReport);
-        // console.log(response);
-        // setCompleted(response?.isTestCompleted)
-        if (response.success) {
-          setshow(false);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    Fetchscores();
-  }, []);
-  useEffect(() => {
-    async function Fetchallstudents() {
-      try {
-        setshow(true);
-        let url = BASE_URL + "/testsubmitteduserslist";
-        const data = await fetch(url);
-        const response = await data.json();
-        setstudentslist(response?.data);
-        // console.log(response);
-        // setCompleted(response?.isTestCompleted)
-        if (response.success) {
-          setshow(false);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    Fetchallstudents();
-  }, []);
+  // useEffect(() => {
+  //   async function Fetchscores() {
+  //     try {
+  //       let token = localStorage.getItem("COURSES_USER_TOKEN");
+  //       setshow(true);
+  //       let url = BASE_URL + "/gettestreport";
+  //       const data = await fetch(url, {
+  //         method: "GET",
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
+  //       const response = await data.json();
+  //       settestreport(response?.testReport);
+  //       // console.log(response);
+  //       // setCompleted(response?.isTestCompleted)
+  //       if (response.success) {
+  //         setshow(false);
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   Fetchscores();
+  // }, []);
+  // useEffect(() => {
+  //   async function Fetchallstudents() {
+  //     try {
+  //       setshow(true);
+  //       let url = BASE_URL + "/testsubmitteduserslist";
+  //       const data = await fetch(url);
+  //       const response = await data.json();
+  //       setstudentslist(response?.data);
+  //       // console.log(response);
+  //       // setCompleted(response?.isTestCompleted)
+  //       if (response.success) {
+  //         setshow(false);
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   Fetchallstudents();
+  // }, []);
 
   const handleStartButtonClick = () => {
     // Scroll the modules container to the top
@@ -186,7 +186,7 @@ export default function Modules() {
 
   return (
     <>
-      <div className="w-full flex justify-between px-[5%] py-5 xsm:flex-col">
+      <div className="w-full flex justify-between px-[5%] py-5 xsm:flex-col font-pop">
         {/* <div className="w-[35%] h-[85vh] bg-[#d8f7e8] p-[2%] space-y-2 rounded-xl xsm:w-full xsm:h-fit xsm:px-[3%] xsm:py-[5%]">
           <div className="text-3xl font-bold text-center">
             Pay After Placement
@@ -257,17 +257,20 @@ export default function Modules() {
                       <div className="space-y-1 w-full">
                         <div className="flex justify-between w-full">
                           <div className="font-[500]">Module {ind + 1}</div>
-                          {item?.isModuleCompleted ? (
+                          {item?.isModuleCompleted && !item?.isSuspended ? (
                             <div className="flex items-center space-x-2">
                               <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
                               <p>Completed</p>
                             </div>
-                          ) : (
+                          ) :
+                          item?.isSuspended ?
+                          (
                             <div className="flex items-center space-x-2">
                               <PiWarningOctagonBold className="bg-red-500 rounded-full text-2xl text-white" />
-                              <p>Incomplete</p>
+                              <p>Suspended</p>
                             </div>
-                          )}
+                          )                        
+                        :''}
                         </div>
                         <div className="font-semibold text-xl">
                           {item.module_name}
@@ -280,7 +283,7 @@ export default function Modules() {
                             />
                           </div>
                           <div className="text-sm text-gray-500">
-                            Progress : {item?.progress}%
+                            Progress : {item?.progress?.toFixed(2)}%
                           </div>
                         </div>
                         <div className="text-gray-400">
@@ -304,12 +307,15 @@ export default function Modules() {
                                 <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
                                 <p>Completed</p>
                               </div>
-                            ) : (
-                              <div className="flex items-center gap-1 ">
+                            ) :
+                            item?.isSuspended ?
+                            (
+                              <div className="flex items-center space-x-2">
                                 <PiWarningOctagonBold className="bg-red-500 rounded-full text-2xl text-white" />
-                                <p>Incomplete</p>
+                                <p>Suspended</p>
                               </div>
-                            )}
+                            )                        
+                          :''}
                           </div>
                           <div className="font-semibold text-xl">
                             {item.module_name}
@@ -322,7 +328,7 @@ export default function Modules() {
                               />
                             </div>
                             <div className="text-sm text-gray-500">
-                              Progress : {item?.progress}%
+                            Progress : {item?.progress?.toFixed(2)}%
                             </div>
                           </div>
                           <div className="text-gray-400">
@@ -331,7 +337,7 @@ export default function Modules() {
                         </div>
 
                         {/* <FaGreaterThan className="text-3xl text-gray-500 font-extralight" /> */}
-                        <a  href={`/questions?module_id=${item._id}&index=1`} className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5">Start</a>
+                        <a  href={`/questions?module_id=${item._id}&index=1&t=${item?.timelimit}`} className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5">Start</a>
 
                       </div>
                     // </div>

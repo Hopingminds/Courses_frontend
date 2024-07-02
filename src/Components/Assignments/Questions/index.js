@@ -67,7 +67,8 @@ export default function Question() {
         body: JSON.stringify({
           questionID: data.question._id,
           moduleID: params.get("module_id"),
-          answer: Selected,
+          answer: Selected
+          
         }),
       });
       const response = await data1.json();
@@ -87,7 +88,7 @@ export default function Question() {
       Fetchdata();
       setSelected("");
       setindex(index + 1);
-      navigate(`/questions?module_id=${params.get("module_id")}&index=${index + 1}`);
+      navigate(`/questions?module_id=${params.get("module_id")}&index=${index + 1}&t=${params.get('t')}`);
     }
   }
 
@@ -95,7 +96,7 @@ export default function Question() {
     if (index >= 1) {
       Fetchdata();
       setindex(index - 1);
-      navigate(`/questions?module_id=${params.get("module_id")}&index=${index - 1}`);
+      navigate(`/questions?module_id=${params.get("module_id")}&index=${index - 1}&t=${params.get('t')}`);
     }
   }
 
@@ -109,7 +110,7 @@ export default function Question() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ moduleID: params.get("module_id") }),
+        body: JSON.stringify({ moduleID: params.get("module_id"),status:status }),
       });
       const response = await data.json();
       if (response.success) {
@@ -145,7 +146,7 @@ export default function Question() {
   const [phoneDetected, setPhoneDetected] = useState(false);
   const [timer, setTimer] = useState(() => {
     const storedTimer = localStorage.getItem('lastminute');
-    return storedTimer ? parseInt(storedTimer) : 30;
+    return storedTimer ? parseInt(storedTimer) : parseInt(params.get('t'));
   });
   const maxVolumeRef = useRef(0);
   const allowedwarnings = 3;
@@ -175,7 +176,7 @@ let tempstate=true;
         useEffect(() => {
           if(tempstate){
            tempstate=false;
-           console.log("hello");
+          //  console.log("hello");
            startTimer()
          
           }
@@ -387,10 +388,11 @@ let tempstate=true;
   // const array = Array.from({ length: Length }, (_, index) => index);
   return (
     <>
+    <div onContextMenu={(e)=>e.preventDefault()}>
     <Toaster />
     {
-      camerablocked ? <div className="flex justify-center w-full h-screen items-center font-semibold">If you want to continue the test then first turn on the camera. </div>
-: micblocked ? <div className="flex justify-center w-full h-screen items-center font-semibold">If you want to continue the test then first turn on the microphone. </div> :
+      camerablocked ? <div className="flex justify-center w-full h-screen items-center font-semibold font-pop">If you want to continue the test then first turn on the camera. </div>
+: micblocked ? <div className="flex justify-center w-full h-screen items-center font-semibold font-pop">If you want to continue the test then first turn on the microphone. </div> :
       <div className="px-[6%] space-y-5 py-2 bg-white" ref={contentRef}>
         {/* <div className="h-[600px] w-16 border fixed right-1 overflow-auto">
         
@@ -399,13 +401,13 @@ let tempstate=true;
         })}
       
         </div> */}
-        <div className='fixed bottom-0 left-0'>
+        <div className='fixed bottom-0 left-0 font-pop'>
           <div className='relative'>
             <video ref={videoRef} width="200" height="180" className='rounded-xl' style={{ display: 'block' }} />
             <canvas ref={canvasRef} width="200" height="180" className='absolute top-0' />
           </div>
         </div>
-        <div className="flex justify-between items-center border p-3 rounded-lg">
+        <div className="flex justify-between items-center border p-3 rounded-lg font-pop">
           <div onClick={handlePrev} className="flex items-center space-x-3 cursor-pointer">
             <FaArrowLeft />
             <p className="font-semibold">Go Back to {data?.module} Module</p>
@@ -424,7 +426,7 @@ let tempstate=true;
             />
           </div>
         </div>
-        <div className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5">
+        <div className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5 font-pop">
           <div className="w-[60%] rounded-xl border h-full shadow-xl xsm:w-full">
             <div className="border-b-[2px] p-3 font-semibold">{data?.module}</div>
             <div className="p-3 text-lg text-gray-700">{data?.question?.question}</div>
@@ -472,7 +474,9 @@ let tempstate=true;
           </div>
         )}
       </div>
+      
 }
+</div>
     </>
   );
 }

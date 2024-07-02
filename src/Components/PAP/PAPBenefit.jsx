@@ -43,16 +43,16 @@ const PAPBenefit = () => {
             </p>
           </div>
           <div
-            onClick={() => handleSectionClick("Placement Assistance")}
-            onMouseEnter={() => handleSectionClick("Placement Assistance")}
-            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[25%] right-[-25%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-31%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Placement Assistance" ? "bg-[#615F5F]" : "bg-black"}`}
+            onClick={() => handleSectionClick("Career Assistance")}
+            onMouseEnter={() => handleSectionClick("Career Assistance")}
+            className={`flex gap-[1rem]  cursor-pointer max-w-[15vw] h-20 border rounded-[3rem] p-2 pr-4 place-items-center absolute top-[25%] right-[-25%]  xsm:h-10 xsm:max-w-[26vw] xsm:gap-1 xsm:p-1 xsm:right-[-31%] md:h-14 md:gap-2 md:max-w-[18vw] ${activeSection === "Career Assistance" ? "bg-[#615F5F]" : "bg-black"}`}
           >
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
               <QualityEdu className="h-[40px] w-[40px] xsm:h-[13px] xsm:w-[13px] md:h-[26px] md:w-[26px]" />
             </span>
             <p className="text-white text-[14px] xsm:text-[8px] md:text-[10px]">
-              Placement Assistance
+            Career Assistance
             </p>
           </div>
           <div
@@ -99,7 +99,7 @@ const PAPBenefit = () => {
           <div className="h-[260px] aspect-square p-5  text-white grid place-items-center text-balance xsm:h-[150px] xsm:text-[8px] md:text-[14px] md:h-[30vh]">
             <p>{activeSection === "100% Placement Guarantee"
               ? "Securing your future is our promise. With our 100% Placement Guarantee, you can embark on your journey knowing we are committed to your success every step of the way."
-              : activeSection === "Placement Assistance"
+              : activeSection === "Career Assistance"
               ? "Our extensive support network is designed to guarantee your success. Benefit from access to resources, mentorship, and networking opportunities that will help you achieve your desired placement with ease."
               : activeSection === "Financial Flexibility"
               ? "Flexible financing options are tailored to your needs. Our Pay After Placement program ensures that you can pursue your goals without financial stress. Empower your journey with our adaptable payment solutions."

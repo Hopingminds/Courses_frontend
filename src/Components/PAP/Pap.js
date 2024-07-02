@@ -138,7 +138,7 @@ export default function Pap() {
               <div className="w-[90%]">
                 <div>
                   <p className="font-nu font-semibold text-[22px] xsm:text-[12px] md:text-[18px]">
-                    Minimum CTC
+                  Average CTC
                   </p>
                   <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] xsm:text-[11px] md:text-[12px] md:leading-tight">
                     If your salary exceeds the CTC of ₹3,00,000/-, your monthly payments of PAP will start.
@@ -215,7 +215,7 @@ export default function Pap() {
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
                   <p className="font-nu text-[17px] xsm:text-[11px] md:text-[13px]">
-                    Average CTC : 5Lpa
+                    Average CTC : We offer an average CTC of ₹5,00,000/- LPA.
                   </p>
                 </div>
                 <div className="flex items-center gap-4">

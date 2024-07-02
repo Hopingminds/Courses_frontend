@@ -82,7 +82,7 @@ const Instruction = () => {
       </div>
       <div>
       <Link to='/modules'
-        className={`mt-4 px-4 py-2 bg-[#1dbf73] text-white font-bold rounded ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`} 
+        className={`mt-4 px-4 py-2 bg-[#1dbf73] text-white font-bold rounded ${isChecked ? '' : 'opacity-50 cursor-not-allowed pointer-events-none'}`} 
         disabled={!isChecked}
       >
         Ready to Begin
