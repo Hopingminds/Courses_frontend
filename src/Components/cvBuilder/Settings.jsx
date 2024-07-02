@@ -9,7 +9,7 @@ import Education from "./SettingsComponents/Education";
 const Settings = () => {
   return (
     <AnimatePresence>
-      <motion.div layout className="p-7 relative w-[450px] xsm:w-[100vw] xsm:p-3 xsm:bg-slate-300">
+      <motion.div layout className="p-7 pb-0 relative w-[450px] xsm:w-[100vw] xsm:p-3 xsm:bg-slate-300 max-h-[105vh] overflow-y-auto">
         <SettingMain />
         <About />
         <Skills />

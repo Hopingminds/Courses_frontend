@@ -178,7 +178,7 @@ const CV3 = () => {
         {[cv.cv].map((item, index) => {
           return (
             <div key={index}>
-              {/* <section id="about">
+              <section id="about">
                 <h1 className="text-xl font-semibold">{item.name}</h1>
                 <h4 className=" text-gray-400 pb-1 text-sm font-medium">
                   {item.jobTitle}
@@ -189,7 +189,7 @@ const CV3 = () => {
                 <ReactMarkdown className="myList text-[0.705rem] mt-1 text-gray-700  ">
                   {item.about}
                 </ReactMarkdown>
-              </section> */}
+              </section>
 
               <section className="mt-8 relative">
                 <h3 className={titles}>Experience</h3>

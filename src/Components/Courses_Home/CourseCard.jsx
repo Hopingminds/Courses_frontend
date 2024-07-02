@@ -54,7 +54,7 @@ const CourseCard = ({
       onMouseEnter={() => toggleHover(ind)}
       onMouseLeave={() => toggleHover(null)}
       href={`/detailcourse/${slug}`}
-      className={`shadow-xl  max-w-sm font-pop rounded-2xl relative h-full 2xl:h-[450px] coursecardhome  bg-white px-3 py-3 xsm:rounded- xsm:p-1 md:p-[6px] md:w-[95%] xsm:w-[100%] md:rounded-xl sm:p-2  ${
+      className={`shadow-xl  max-w-sm font-pop rounded-2xl relative pb-[50px] h-full 2xl:h-[450px] coursecardhome  bg-white px-3 py-3 xsm:rounded- xsm:p-1 md:p-[6px] md:w-[95%] xsm:w-[100%] md:rounded-xl sm:p-2  ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
       style={{
@@ -128,7 +128,7 @@ const CourseCard = ({
           />
         )}
       </div>
-      <div className="flex flex-col gap-6 justify-between xsm:gap-1 sm:gap-3 md:gap-0 md:mt-0 xsm:mt-0 xsm:p-2">
+      <div className="flex flex-col gap-6 justify-between xsm:gap-1 sm:gap-3 md:gap-0 md:mt-0 xsm:mt-0 xsm:p-2  border">
         <div className="flex flex-col justify-between gap-1 mt-2 xsm:mt-1 xsm:gap-1 sm:gap-2 md:gap-0">
           <div className="flex justify-between items-center min-h-[30%] sm:min-h-[20%] md:min-h-0">
             <div className="flex items-center space-x-3 max-w-[80%] xsm:max-w-[70%] xsm:space-x-1 sm:space-x-1 md:space-x-2 md:max-w-[70%]">
@@ -149,12 +149,7 @@ const CourseCard = ({
             </div>
           </div>
           <p className="line-clamp-2  w-full font-pop font-semibold text-[16px] text-[#252641] xsm:text-[12px] sm:text-[12px] sm:leading-none sm:h-6 md:text-[10px] md:h-6 xsm:mt-1  xsm:line-clamp-2">
-            {/* {title.length > 40
-              ? title.slice(
-                  0,
-                  window.innerWidth >= 320 && window.innerWidth <= 480 ? 20 : 40
-                ) + "..."
-              : title} */}
+           
             {title}
           </p>
           {description && (
@@ -163,7 +158,7 @@ const CourseCard = ({
             </p>
           )}
         </div>
-        <div className=" flex items-start justify-between 2xl:pb-2 sm:flex-wrap">
+        <div className=" flex items-start justify-between 2xl:pb-2 sm:flex-wrap absolute bottom-[10px] w-full border">
           <span className="flex flex-col w-[70%]">
             {credits ? (
               <div className="flex space-x-2 items-center xsm:space-x-1 sm:space-x-1">
