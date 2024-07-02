@@ -195,13 +195,15 @@ const ProfilEdit = () => {
   };
   const handleLogOut = async () => {
     localStorage.removeItem("COURSES_USER_TOKEN");
-    getUserDetails();
-    clearCart();
-    clearWishList();
-    window.open(
-			`${AUTH_BASE_URL}/logout`,
-			"_self"
-		);
+    window.location.replace('/login-2')
+    // navigate('/login-2')
+    // getUserDetails();
+    // clearCart();
+    // clearWishList();
+    // window.open(
+		// 	`${AUTH_BASE_URL}/logout`,
+		// 	"_self"
+		// );
   };
 
   const handleChange = (e) => {
