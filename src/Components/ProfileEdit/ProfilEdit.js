@@ -23,7 +23,6 @@ import AvtarModal from "./AvtarModal";
 const ProfilEdit = () => {
   const [showTooltip, setShowTooltip] = useState(false);
 
-
   const handleMouseEnter = () => {
     setShowTooltip(true);
   };
@@ -116,6 +115,7 @@ const ProfilEdit = () => {
 
   const fileInputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   let token = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
 
@@ -147,6 +147,11 @@ const ProfilEdit = () => {
     }
     Fetchdata();
   }, []);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+ 
 
   const handleEditClick = () => {
     fileInputRef.current.click();
@@ -285,32 +290,32 @@ const ProfilEdit = () => {
               />
             </div>
 
-            <div
+            {/* <div
               className="absolute w-[40px] h-[40px] bg-[#E2FFF1] text-[#E2FFF1] shadow-sm rounded-full top-[65%] left-[0%] flex justify-center items-center cursor-pointer xsm:w-[20px] xsm:h-[20px]"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
+              onClick={handleShowModal}
             >
               <img
                 src={Avtar}
+                alt="Avatar"
                 className="w-[30px] h-[30px] xsm:w-[15px] xsm:h-[15px] rounded-2xl"
-                // onClick={handleEditClick}
               />
               <input
                 type="file"
                 accept="image/*"
                 style={{ display: "none" }}
                 ref={fileInputRef}
-                // onChange={handleFileChange}
+                onChange={handleFileChange}
               />
-              {isModalOpen && <AvtarModal onClose={handleCloseModal} />}
-            </div>
+            </div> */}
 
             {/* Tooltip */}
-            {showTooltip && (
+            {/* {showTooltip && (
               <div className="absolute bg-black text-white text-xs py-1 px-2 rounded-lg top-[70%] left-[40px]">
                 Add Your Avatar
               </div>
-            )}
+            )} */}
           </div>
         </div>
         {completeProfile === "Profile" && (
