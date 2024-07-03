@@ -7,9 +7,10 @@ import React, {
 } from "react";
 import Banner from "../../Assests/Images/profileedit-banner.png";
 import ProfileIcon from "../../Assets/Images/ProfileIcon.png";
+import Avtar from "../../Assests/Icons/Avtar.jpg";
 import Edit from "../../Assests/Icons/edit.svg";
 import { Globalinfo } from "../../App";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AUTH_BASE_URL, BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
@@ -17,14 +18,25 @@ import toast, { Toaster } from "react-hot-toast";
 import Spinner from "../Spinner";
 import { authenticateUser } from "../../helpers/helperapi";
 import CYPMain from "../completeyourprofile/CYPMain";
+import AvtarModal from "./AvtarModal";
 
 const ProfilEdit = () => {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+
+  const handleMouseEnter = () => {
+    setShowTooltip(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false);
+  };
   const navigate = useNavigate();
   const [btnLoader, setbtnLoader] = useState(false);
   const [show, setshow] = useState(false);
   const [data, setData] = useState([]);
   const [uploadLoader, setUploadLoader] = useState(false);
-  const [completeProfile,setCompleteProfile] = useState("Profile");
+  const [completeProfile, setCompleteProfile] = useState("Profile");
 
   const checkUserValidation = async () => {
     const isValidUser = await authenticateUser();
@@ -32,10 +44,7 @@ const ProfilEdit = () => {
     if (isValidUser !== 200) {
       localStorage.removeItem("COURSES_USER_TOKEN");
       toast.error("You have been Logged Out");
-      window.open(
-        `${AUTH_BASE_URL}/logout`,
-        "_self"
-      );
+      window.open(`${AUTH_BASE_URL}/logout`, "_self");
     }
   };
 
@@ -53,44 +62,52 @@ const ProfilEdit = () => {
     stream: "",
     yearofpass: "",
     bio: "",
-    address:'',
-    city:'',
-    state:'',
-    degree:'',
-    college:'',
-    yearofpass:'',
-    percentage:'',
-    trainingInternships:[{
-      companyName:'',
-      postName:'',
-      location:'',
-      duration:{
-        from:'',
-        to:'',
+    address: "",
+    city: "",
+    state: "",
+    degree: "",
+    college: "",
+    yearofpass: "",
+    percentage: "",
+    trainingInternships: [
+      {
+        companyName: "",
+        postName: "",
+        location: "",
+        duration: {
+          from: "",
+          to: "",
+        },
       },
-    }],
-    projects:[{
-      projectName:'',
-      projectRole:'',
-      projectDescription:'',
-    }],
-    certifications:[{
-      certificateName:'',
-      certifiedBy:'',
-    }],
-    skills:[{
-      skill:'',
-      skill_lever:'',
-    }],
-    profileLinks:{
-      hackerRank:'',
-      github:'',
-      linkedIn:'',
-      codeChef:'',
-      leetCode:'',
-      geekForGeeks:'',
+    ],
+    projects: [
+      {
+        projectName: "",
+        projectRole: "",
+        projectDescription: "",
+      },
+    ],
+    certifications: [
+      {
+        certificateName: "",
+        certifiedBy: "",
+      },
+    ],
+    skills: [
+      {
+        skill: "",
+        skill_lever: "",
+      },
+    ],
+    profileLinks: {
+      hackerRank: "",
+      github: "",
+      linkedIn: "",
+      codeChef: "",
+      leetCode: "",
+      geekForGeeks: "",
     },
-    isProfileComplete:false,
+    isProfileComplete: false,
   });
 
   // console.log(user)
@@ -133,6 +150,9 @@ const ProfilEdit = () => {
 
   const handleEditClick = () => {
     fileInputRef.current.click();
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   const handleFileChange = async (e) => {
@@ -195,15 +215,15 @@ const ProfilEdit = () => {
   };
   const handleLogOut = async () => {
     localStorage.removeItem("COURSES_USER_TOKEN");
-    window.location.replace('/login-2')
+    window.location.replace("/login-2");
     // navigate('/login-2')
     // getUserDetails();
     // clearCart();
     // clearWishList();
     // window.open(
-		// 	`${AUTH_BASE_URL}/logout`,
-		// 	"_self"
-		// );
+    // 	`${AUTH_BASE_URL}/logout`,
+    // 	"_self"
+    // );
   };
 
   const handleChange = (e) => {
@@ -214,11 +234,15 @@ const ProfilEdit = () => {
 
   const handleEditProfileClick = () => {
     setCompleteProfile("completeprofile");
-  }
+  };
 
   return (
     <>
-      <div className={`flex flex-col gap-0 pb-60 xsm:gap-6 xsm:pb-20 ${completeProfile === "completeprofile"?'justify-between':''}`}>
+      <div
+        className={`flex flex-col gap-0 pb-60 xsm:gap-6 xsm:pb-20 ${
+          completeProfile === "completeprofile" ? "justify-between" : ""
+        }`}
+      >
         <div className="relative flex justify-center h-[280px] xsm:h-[100px] md:h-[220px]">
           <img
             src={Banner}
@@ -233,6 +257,7 @@ const ProfilEdit = () => {
               Log Out{" "}
             </button>
           </div>
+
           <div className="absolute w-[160px] h-[160px] rounded-full top-28 xsm:h-[80px] xsm:w-[80px] xsm:top-10 bg-[#FFFFFF] md:w-[120px] md:h-[120px] md:top-24">
             {uploadLoader ? (
               <div className="grid items-center justify-center h-[100%] w-[100%]">
@@ -240,18 +265,12 @@ const ProfilEdit = () => {
               </div>
             ) : (
               <img
-                src={
-                  user.profile
-                    ? user.profile
-                    : ProfileIcon
-                }
+                src={user.profile ? user.profile : ProfileIcon}
                 className="w-full h-full rounded-full object-cover xsm:h-[80px] xsm:w-[80px]"
               />
             )}
-            <div
-              className="absolute w-[40px] h-[40px] bg-[#E2FFF1] text-[#E2FFF1] shadow-sm rounded-full top-[65%] right-[0%] flex justify-center items-center cursor-pointer
-            xsm:w-[20px] xsm:h-[20px]"
-            >
+
+            <div className="absolute w-[40px] h-[40px] bg-[#E2FFF1] text-[#E2FFF1] shadow-sm rounded-full top-[65%] right-[0%] flex justify-center items-center cursor-pointer xsm:w-[20px] xsm:h-[20px]">
               <img
                 src={Edit}
                 className="w-[20px] h-[20px] xsm:w-[10px] xsm:h-[10px]"
@@ -265,9 +284,36 @@ const ProfilEdit = () => {
                 onChange={handleFileChange}
               />
             </div>
+
+            <div
+              className="absolute w-[40px] h-[40px] bg-[#E2FFF1] text-[#E2FFF1] shadow-sm rounded-full top-[65%] left-[0%] flex justify-center items-center cursor-pointer xsm:w-[20px] xsm:h-[20px]"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <img
+                src={Avtar}
+                className="w-[30px] h-[30px] xsm:w-[15px] xsm:h-[15px] rounded-2xl"
+                // onClick={handleEditClick}
+              />
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                ref={fileInputRef}
+                // onChange={handleFileChange}
+              />
+              {isModalOpen && <AvtarModal onClose={handleCloseModal} />}
+            </div>
+
+            {/* Tooltip */}
+            {showTooltip && (
+              <div className="absolute bg-black text-white text-xs py-1 px-2 rounded-lg top-[70%] left-[40px]">
+                Add Your Avatar
+              </div>
+            )}
           </div>
         </div>
-        {completeProfile === "Profile" &&
+        {completeProfile === "Profile" && (
           <div>
             <div className="flex justify-center mt-20 xsm:mt-6 md:mt-16">
               <div className="grid grid-cols-2 justify-between gap-x-40 gap-y-8 w-[80%] xsm:gap-x-8 xsm:gap-y-3 md:gap-x-28 md:gap-y-6">
@@ -357,9 +403,9 @@ const ProfilEdit = () => {
                 <button
                   onClick={handleEditProfileClick}
                   className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-2 py-1 w-[100%] flex justify-center items-center text-center xsm:text-[10px] md:text-[16px]"
-              >
-                <p>Complete Your Profile</p>  
-              </button>
+                >
+                  <p>Complete Your Profile</p>
+                </button>
               </div>
             </div>
             <div className="flex justify-center pt-10 xsm:pt-0 xsm:mt-2">
@@ -371,8 +417,14 @@ const ProfilEdit = () => {
               </button>
             </div>
           </div>
-        }
-        { completeProfile === "completeprofile" && <CYPMain setCompleteProfile={setCompleteProfile} setUser={setUser} user={user} /> }
+        )}
+        {completeProfile === "completeprofile" && (
+          <CYPMain
+            setCompleteProfile={setCompleteProfile}
+            setUser={setUser}
+            user={user}
+          />
+        )}
         {show ? (
           <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
             <Spinner className="" />

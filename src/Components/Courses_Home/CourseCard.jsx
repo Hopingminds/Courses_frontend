@@ -114,7 +114,7 @@ const CourseCard = ({
             config={{
               file: {
                 attributes: {
-                  controlsList: "nodownload", // Disable download option
+                  controlsList: "nodownload", 
                 },
               },
             }}
@@ -128,7 +128,7 @@ const CourseCard = ({
           />
         )}
       </div>
-      <div className="flex flex-col gap-6 justify-between xsm:gap-1 sm:gap-3 md:gap-0 md:mt-0 xsm:mt-0 xsm:p-2  border">
+      <div className="flex flex-col gap-6 justify-between xsm:gap-1 sm:gap-3 md:gap-0 md:mt-0 xsm:mt-0 xsm:p-2 ">
         <div className="flex flex-col justify-between gap-1 mt-2 xsm:mt-1 xsm:gap-1 sm:gap-2 md:gap-0">
           <div className="flex justify-between items-center min-h-[30%] sm:min-h-[20%] md:min-h-0">
             <div className="flex items-center space-x-3 max-w-[80%] xsm:max-w-[70%] xsm:space-x-1 sm:space-x-1 md:space-x-2 md:max-w-[70%]">
@@ -158,7 +158,7 @@ const CourseCard = ({
             </p>
           )}
         </div>
-        <div className=" flex items-start justify-between 2xl:pb-2 sm:flex-wrap absolute bottom-[10px] w-full border">
+        <div className=" flex items-start justify-between 2xl:pb-2 sm:flex-wrap absolute bottom-[10px] w-[90%] ">
           <span className="flex flex-col w-[70%]">
             {credits ? (
               <div className="flex space-x-2 items-center xsm:space-x-1 sm:space-x-1">
