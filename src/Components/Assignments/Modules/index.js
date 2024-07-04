@@ -231,7 +231,7 @@ export default function Modules() {
          
         >
           <div className="flex justify-between items-center">
-            <div className="text-xl font-semibold text-gray-700">Modules</div>
+            <div className="text-xl font-semibold text-gray-700">PAY AFTER PLACEMENT</div>
           </div>
           <div className="flex flex-col space-y-5">
             {/* <div className="w-full border bg-gray-200 p-5  rounded-xl space-y-3">
@@ -256,7 +256,7 @@ export default function Modules() {
                     <div className="w-full p-5 border  flex justify-between items-center rounded-xl">
                       <div className="space-y-1 w-full">
                         <div className="flex justify-between w-full">
-                          <div className="font-[500]">Module {ind + 1}</div>
+                          <div className="font-[500]">PAP Assessment</div>
                           {item?.isModuleCompleted && !item?.isSuspended ? (
                             <div className="flex items-center space-x-2">
                               <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
@@ -301,7 +301,7 @@ export default function Modules() {
                       >
                         <div className="space-y-1 w-full">
                           <div className="flex justify-between w-full ">
-                            <div className="font-[500]">Module {ind + 1}</div>
+                            <div className="font-[500]">PAP Assessment</div>
                             {item?.isModuleCompleted ? (
                               <div className="flex items-center gap-2">
                                 <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
