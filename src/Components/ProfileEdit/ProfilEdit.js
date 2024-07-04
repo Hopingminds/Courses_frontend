@@ -18,7 +18,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Spinner from "../Spinner";
 import { authenticateUser } from "../../helpers/helperapi";
 import CYPMain from "../completeyourprofile/CYPMain";
-// import AvtarModal from "./AvtarModal";
+import AvtarModal from "./AvtarModal";
 
 const ProfilEdit = () => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -109,13 +109,13 @@ const ProfilEdit = () => {
     isProfileComplete: false,
   });
 
-  // console.log(user)
+  console.log(user);
   const { userDetail, getUserDetails, clearCart, clearWishList } =
     useContext(Globalinfo);
 
   const fileInputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   let token = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
 
@@ -148,17 +148,10 @@ const ProfilEdit = () => {
     Fetchdata();
   }, []);
 
-  // const handleShowModal = () => {
-  //   setShowModal(true);
-  // };
- 
-
-  const handleEditClick = () => {
+  const handleEditClick = (e) => {
+    e.stopPropagation();
     fileInputRef.current.click();
   };
-  // const handleCloseModal = () => {
-  //   setIsModalOpen(false);
-  // };
 
   const handleFileChange = async (e) => {
     setUploadLoader(true);
@@ -240,6 +233,20 @@ const ProfilEdit = () => {
   const handleEditProfileClick = () => {
     setCompleteProfile("completeprofile");
   };
+  // const handleShowModal = () => {
+  //   setShowModal(true);
+  // };
+
+  const handleShowModal = (e) => {
+    const targetTagName = e.target.tagName.toLowerCase();
+    if (targetTagName === "img") {
+      setShowModal(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -290,11 +297,9 @@ const ProfilEdit = () => {
               />
             </div>
 
-            {/* <div
+            <div
               className="absolute w-[40px] h-[40px] bg-[#E2FFF1] text-[#E2FFF1] shadow-sm rounded-full top-[65%] left-[0%] flex justify-center items-center cursor-pointer xsm:w-[20px] xsm:h-[20px]"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onClick={handleShowModal}
+              onClick={(e) => handleShowModal(e)}
             >
               <img
                 src={Avtar}
@@ -308,14 +313,24 @@ const ProfilEdit = () => {
                 ref={fileInputRef}
                 onChange={handleFileChange}
               />
-            </div> */}
+            </div>
 
-            {/* Tooltip */}
-            {/* {showTooltip && (
+            {showModal && (
+              <AvtarModal
+                onClose={handleCloseModal}
+                handleEditClick={handleEditClick}
+                updateProfilePicture={(imageUrl) =>
+                  setUser({ ...user, profile: imageUrl })
+                }
+              />
+            )}
+
+            {/* Tooltip  */}
+            {showTooltip && (
               <div className="absolute bg-black text-white text-xs py-1 px-2 rounded-lg top-[70%] left-[40px]">
                 Add Your Avatar
               </div>
-            )} */}
+            )}
           </div>
         </div>
         {completeProfile === "Profile" && (
