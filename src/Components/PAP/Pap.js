@@ -133,7 +133,7 @@ export default function Pap() {
             </div>
             <div className="flex items-center gap-4 xsm:gap-2 xsm:items-start">
               <div className="w-[7%] xsm:w-[10%]">
-                <img src="../Icons/handwithmoney.svg" className="w-full h-full" />
+                <img src="../Icons/handwithmoney.svg" className="w-full h-full" alt="icon" />
               </div>
               <div className="w-[90%]">
                 <div>
@@ -148,7 +148,7 @@ export default function Pap() {
             </div>
             <div className="flex items-center gap-4 xsm:gap-2 xsm:items-start">
               <div className="w-[7%] xsm:w-[10%]">
-                <img src="../Icons/greencalender.svg" className="w-full h-full" />
+                <img src="../Icons/greencalender.svg" className="w-full h-full" alt="icon" />
               </div>
               <div className="w-[90%]">
                 <div>
@@ -163,7 +163,7 @@ export default function Pap() {
             </div>
             <div className="flex items-center gap-4 xsm:gap-2 xsm:items-start">
               <div className="w-[7%] xsm:w-[10%]">
-                <img src="../Icons/electricbolt.svg" className="w-full h-full" />
+                <img src="../Icons/electricbolt.svg" className="w-full h-full" alt="icon" />
               </div>
               <div className="w-[90%]">
                 <div>
@@ -178,16 +178,16 @@ export default function Pap() {
             </div>
           </div>
           <div className="w-[40%] relative xsm:h-60 xsm:w-[100%] xsm:flex xsm:justify-center">
-            <div className="absolute left-[37%] top-[5%] z-10 xsm:left-[45%] xsm:top-[0%]">
+            <div className="absolute left-[37%] top-[5%] z-10 xsm:left-[45%] xsm:top-[0%] xl:left-[56%]">
               <img
                 className="w-[310px] h-[180px] xsm:w-[250px] xsm:h-[120px] md:w-[210px] md:h-[120px]"
-                src="../img/papagreeimg1.png"
+                src="../img/papagreeimg1.png" alt=""
               />
             </div>
             <div className="absolute top-[60%] z-10 md:top-[52%] xsm:left-0 xsm:w-[55%] xsm:top-[55%]">
               <img
                 className="w-[310px] h-[180px] xsm:w-[250px] xsm:h-[120px] md:w-[210px] md:h-[120px]"
-                src={Img3}
+                src={Img3} alt=""
               />
             </div>
             <div className="bg-[#E2FFF1] rounded-xl w-[70%] h-[80%] absolute left-[25%] top-[20%] xsm:h-[70%] xsm:left-[15%] md:h-[60%] md:left-[20%]"></div>
@@ -198,7 +198,7 @@ export default function Pap() {
           <div className="w-[40%] relative mt-12 xsm:w-[100%] xsm:flex xsm:pl-7 xsm:mt-6 md:mt-8">
             <div className="bg-[#E2FFF1] rounded-xl w-[75%] h-full absolute top-[-12%] left-[10%] z-[-2] xsm:left-[16%] xsm:top-[-10%]"></div>
             <div className="z-10 h-full">
-              <img className="w-[75%] h-full xsm:w-[260px] xsm:h-[180px]" src={window.innerwidth > 480 ? Img2 : Img4} />
+              <img className="w-[75%] h-full xsm:w-[260px] xsm:h-[180px]" alt="course fee" src={window.innerwidth > 480 ? Img2 : Img4} />
             </div>
           </div>
           <div className="w-[55%] flex flex-col gap-3 mt-4 xsm:gap-2 xsm:w-[90%] md:gap-4">
@@ -312,14 +312,15 @@ export default function Pap() {
             <div className="flex gap-4 hover:gap-8">
               <button
                 onClick={checkUserAuth}
-                className="bg-white text-black hover:bg-[#1DBF73] hover:text-white hover:scale-125 font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[12px] xsm:py-1 xl:py-4 xsm:px-4 md:text-[14px]"
+                className="bg-white text-black hover:bg-[#1DBF73] hover:text-white hover:scale-125 font-pop font-medium text-[18px] px-8 py-2 rounded-full xsm:text-[12px] xsm:py-1 xl:py-3 xsm:px-4 md:text-[14px]"
               >
                 Start Test
               </button>
               <a
                 href={"/papagreement.pdf"}
                 target="_blank"
-                className="bg-white text-black hover:bg-[#1DBF73] hover:text-white hover:scale-125 font-pop font-medium text-[18px] px-6 py-2 rounded-full xsm:text-[12px] xsm:py-1 xl:py-4 xsm:px-4 md:text-[14px]"
+                rel="noreferrer"
+                className="bg-white text-black hover:bg-[#1DBF73] hover:text-white hover:scale-125 font-pop font-medium text-[18px] px-8 py-2 rounded-full xsm:text-[12px] xsm:py-1 xl:py-3 xsm:px-4 md:text-[14px]"
               >
                 View Agreement
               </a>
