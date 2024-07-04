@@ -119,7 +119,7 @@ const Courses_Home = () => {
           </Link>
         </div>
        
-        <div className="my-4 grid grid-cols-4 gap-4  xsm:gap-3 xsm:my-[2%] sm:grid-cols-3 md:gap-3 xl:grid-cols-5 xl:gap-7 xsm:grid-cols-2">
+        <div className="my-4 grid grid-cols-4 gap-4  xsm:gap-3 xsm:my-[2%] sm:grid-cols-3 md:gap-3 xl:grid-cols-5 xl:gap-7 xsm:grid-cols-1">
           {" "}
           {/* Changed flex to flex-wrap */}
           {

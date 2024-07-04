@@ -61,7 +61,7 @@ const MinorCourse = () => {
           </p>
         </div>
       </div>
-      <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-3 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
+      <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-1 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
         {allCourses?.map((val, ind) => {
           return (
             <CourseCard
