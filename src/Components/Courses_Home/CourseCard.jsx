@@ -158,7 +158,7 @@ const CourseCard = ({
             </p>
           )}
         </div>
-        <div className=" flex items-start justify-between 2xl:pb-2 sm:flex-wrap absolute bottom-[10px] w-[90%] ">
+        <div className=" flex items-start justify-between 2xl:pb-2 sm:flex-wrap xl:absolute bottom-[10px] w-[90%] ">
           <span className="flex flex-col w-[70%]">
             {credits ? (
               <div className="flex space-x-2 items-center xsm:space-x-1 sm:space-x-1">
@@ -174,7 +174,7 @@ const CourseCard = ({
             <div className="flex space-x-2 items-start xsm:space-x-1 sm:space-x-1">
               <img
                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] sm:w-3 sm:h-3 md:h-3 md:w-3"
-                src="../Icons/RCDesign.svg"
+                src="../Icons/RCDesign.svg" alt="icon"
               />
               <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[8px] sm:text-[8px] sm:leading-none md:text-[6px]">
                 {category}
@@ -186,6 +186,7 @@ const CourseCard = ({
               <img
                 className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px] sm:w-3 sm:h-3 md:h-2 md:w-2"
                 src="../Icons/RCClock.svg"
+                alt=""
               />
               <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[8px] sm:text-[8px] sm:leading-none md:text-[6px]">
                 {price == 0 ? "5 Hours" : "45 Hours"}
