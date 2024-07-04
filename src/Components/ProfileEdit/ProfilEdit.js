@@ -18,7 +18,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Spinner from "../Spinner";
 import { authenticateUser } from "../../helpers/helperapi";
 import CYPMain from "../completeyourprofile/CYPMain";
-import AvtarModal from "./AvtarModal";
+// import AvtarModal from "./AvtarModal";
 
 const ProfilEdit = () => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -115,7 +115,7 @@ const ProfilEdit = () => {
 
   const fileInputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
   let token = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
 
@@ -148,17 +148,17 @@ const ProfilEdit = () => {
     Fetchdata();
   }, []);
 
-  const handleShowModal = () => {
-    setShowModal(true);
-  };
+  // const handleShowModal = () => {
+  //   setShowModal(true);
+  // };
  
 
   const handleEditClick = () => {
     fileInputRef.current.click();
   };
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  // const handleCloseModal = () => {
+  //   setIsModalOpen(false);
+  // };
 
   const handleFileChange = async (e) => {
     setUploadLoader(true);
