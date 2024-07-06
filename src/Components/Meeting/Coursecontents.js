@@ -124,6 +124,8 @@ export default function Coursecontents({
     // Programmatically trigger click event of file input element
     fileInputRef.current.click();
   };
+ 
+  
 
   return (
     <div className="bg-[#E2FFF1] rounded-3xl xsm:absolute xsm:top-[3rem] xsm:right-0 xsm:w-[80vw] xsm:h-screen xsm:overflow-y-auto">
@@ -269,7 +271,7 @@ export default function Coursecontents({
                           );
                         })}
                       </div>
-                      <div className="w-full border-t">
+                      {/* <div className="w-full border-t">
                         <div className="font-semibold text-sm text-[#1DBF73] py-1">Live Classes</div>
 
                         {val?.liveClasses?.map((chapter, index) => {
@@ -294,7 +296,7 @@ export default function Coursecontents({
                             </div>
                           );
                         })}
-                      </div>
+                      </div> */}
 
                     { val?.project?.length>0 && <div className="w-full border-t">
                           <div className="font-semibold text-sm text-[#1DBF73] py-1">Projects</div>

@@ -59,10 +59,12 @@ export default function CDDetails() {
           response?.data?.course?.curriculum?.forEach((val) => {
             val?.lessons?.map((it) => {
               // console.log("it",val);
-              allchapters.push({
-                video: it?.video,
-                _id: it?._id,
-              });
+                allchapters.push({
+                  video: it?.video,
+                  _id: it?._id,
+                  isLiveClass:it?.isLiveClass
+                });
+              
             });
           });
         }
@@ -207,7 +209,12 @@ export default function CDDetails() {
     }
 
   }
-
+  useEffect(() => {
+    if(ALLCHAPTER[count]?.isLiveClass){
+      setcount((prev)=>prev+1)
+      handleVideoEnded()
+    }
+  }, [count])
   return (
     <>
       <div className="flex justify-between gap-5">
