@@ -19,6 +19,7 @@ import { useContext } from "react";
 import { Globalinfo } from "../../App";
 import Spinner from "../Spinner";
 import { handleGenerateUrl } from "../../helpers/paymentHelpers";
+import axios from "axios";
 
 const CartCheckout = () => {
   const [country, setcountry] = useState("");
@@ -34,6 +35,7 @@ const CartCheckout = () => {
   const [Data, setData] = useState([]);
   const [total, settotal] = useState(0);
   const [show, setshow] = useState(false);
+  const [paymentLink, setPaymentLink] = useState(null);
 
   const [inputData, setinputData] = useState({
     name,
@@ -273,10 +275,11 @@ setinputData((prev) => ({
       toast.error("Select State");
     } else {
       console.log(country);
-      console.log(
-        `https://payme.hopingminds.in/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone}&name=${userDetail?.name}&address=${inputData.address}&zip=${inputData.zip}&country=${country?.name}&state=${state.name}&gstNumber=${inputData?.gstnumber}`
-      );
-      window.location.href = `https://payme.hopingminds.in/api/v1/make-payment?userID=${
+      // console.log(
+      //   `https://payme.hopingminds.in/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone}&name=${userDetail?.name}&address=${inputData.address}&zip=${inputData.zip}&country=${country?.name}&state=${state.name}&gstNumber=${inputData?.gstnumber}`
+      // );
+
+      const Linksend = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
         userData?.userID
       }&email=${userDetail?.email}&phone=${
         userDetail?.phone
@@ -291,6 +294,26 @@ setinputData((prev) => ({
       )}&state=${state?.name.replace(/\s/g, "%20")}&gstNumber=${
         inputData?.gstnumber
       }`;
+
+      async function handlesomething(){
+        const res = await axios.get(Linksend);
+        if(res.status == 200){
+          setPaymentLink(res.data.payment_link);
+        }
+        else{
+          toast.error("Too many requests.");
+        }     
+      }
+      handlesomething();
+      // if (response.success) {
+      //   setData(response.data);
+      //   Total(response.data);
+      //   toast.success(response.message);
+      //   setCartSize(cartSize-1);
+      //   setshow(false);
+      // } else {
+      //   toast.error(response.message);
+      // }
 
       // if (total === 0) {
       //   handleContinueCheckout();
@@ -501,6 +524,9 @@ setinputData((prev) => ({
             >
               Continue Checkout
             </button>
+            <a href={`${paymentLink}`}>
+              confirm Payment
+            </a>
           </span>
           {/* Summary div end*/}
         </div>
