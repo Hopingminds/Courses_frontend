@@ -2,14 +2,15 @@ import React, { useState } from 'react'
 import AllJobs from './AllJobs';
 import Draft from './Draft';
 
-const JobsMain = () => {
+const JobsMain = ({filteredJobs}) => {
+  // console.log(filteredJobs);
   const [showPage, setShowPage] = useState("AllJobs");
   return (
     <div className='w-[70%]'>
         {/* Header */}
         <div className='border-b flex justify-between '>
           <div className='flex gap-6'>
-            <button className={`text-[13px] py-2 ${showPage==="AllJobs"?'border-b-4 border-green-500 font-semibold':''}`} onClick={() => setShowPage("AllJobs")}>All Jobs <span>4</span></button>
+            <button className={`text-[13px] py-2 ${showPage==="AllJobs"?'border-b-4 border-green-500 font-semibold':''}`} onClick={() => setShowPage("AllJobs")}>All Jobs <span>{filteredJobs.length}</span></button>
             {/* <button className={`text-[13px] py-2 ${showPage==="drafts"?'border-b-4 border-green-500 font-semibold':''}`} onClick={() => setShowPage("drafts")}>Drafts</button> */}
           </div>
           {/* <div className='flex py-2 gap-6'>
@@ -39,7 +40,7 @@ const JobsMain = () => {
         </div>
         {/* content */}
         <div>
-          {showPage=== "AllJobs" ? <AllJobs/>:<Draft/>}
+          {showPage=== "AllJobs" ? <AllJobs filteredJobs={filteredJobs}/>:<Draft/>}
           
         </div>
     </div>

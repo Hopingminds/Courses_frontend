@@ -96,9 +96,9 @@ const Courses_Home = () => {
             "Management",
             "Networking",
             // "Free"
-          ].slice(0,(window.innerWidth >=320 && window.innerWidth<=480 ? 6 : 6)).map((category) => (
+          ].slice(0,(window.innerWidth >=320 && window.innerWidth<=480 ? 6 : 6)).map((category,index) => (
             <button
-              key={category}
+              key={category+index}
               onClick={() => handleCategoryClick(category)}
               className={
                 selectedCategory === category
@@ -119,7 +119,7 @@ const Courses_Home = () => {
           </Link>
         </div>
        
-        <div className="my-4 grid grid-cols-4 gap-4  xsm:gap-3 xsm:my-[2%] sm:grid-cols-3 md:gap-3 xl:grid-cols-5 xl:gap-7 xsm:grid-cols-1">
+        <div className="my-4 grid grid-cols-4 gap-4  xsm:gap-3 xsm:my-[2%] sm:grid-cols-3 md:gap-3 xl:grid-cols-5 xl:gap-7 xsm:grid-cols-1 xsm:mx-[0.7rem]">
           {" "}
           {/* Changed flex to flex-wrap */}
           {

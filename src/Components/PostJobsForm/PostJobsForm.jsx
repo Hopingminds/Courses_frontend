@@ -179,15 +179,15 @@ const PostJobsForm = () => {
       location: addedLocations[0],
       work_experience: formData?.workExperience,
       annual_salary_range: formData?.annualSalaryRange,
-      company_industry: "",
+      company_industry: formData?.companyIndustry,
       educational_qualification: formData?.educationalQualification,
       specialization: formData?.specialization,
       interview_mode: formData?.interviewmode,
       about_company: formData?.aboutCompany,
-      company_website_link: "",
+      company_website_link: formData.websiteurl,
       company_address: formData?.companyAddress,
       key_skills: addedSkills,
-      job_description: jd,
+      job_description: jd,  
     };
 
     console.log("Submitting Form Data:", newFormData);
@@ -267,14 +267,16 @@ const PostJobsForm = () => {
   };
 
   return (
-    <div className="bg-[#e6e6e6] py-[3%] px-[20%] pr">
+    <div className="bg-[#e6e6e6] py-[3%] px-[20%] xsm:px-[10%] pr">
       <div className="bg-[#fafafa] ">
-        <div className="bg-white px-4 py-2 text-[12px] font-pop flex flex-col gap-6 w-full">
+        <div className="bg-white px-4 py-2 text-[12px] font-pop flex flex-col gap-6 w-full ">
           {/* Heading */}
           <div className="flex flex-col ">
-            <p className="text-[24px] text-gray-600">Post a Job Vacancy</p>
+            <p className="text-[24px] text-gray-600 xsm:text-center xsm:text-[18px]">
+              Post a Job Vacancy
+            </p>
           </div>
-          <div className="relative w-[160px] h-[160px] rounded-full  xsm:h-[80px] xsm:w-[80px] xsm:top-10 bg-[#FFFFFF] md:w-[120px] md:h-[120px] md:top-24 mx-auto">
+          <div className="relative w-[160px] h-[160px] rounded-full  xsm:h-[80px] xsm:w-[80px] xsm:top-1 bg-[#FFFFFF] md:w-[120px] md:h-[120px] md:top-24 mx-auto xsm:mb-10">
             {uploadLoader ? (
               <div className="grid items-center justify-center h-[100%] w-[100%]">
                 <p>uploading... </p>{" "}
@@ -282,6 +284,7 @@ const PostJobsForm = () => {
             ) : (
               <img
                 src={formData.logoUrl ? formData.logoUrl : ProfileIcon}
+                alt="profile"
                 className="w-full h-full rounded-full object-cover xsm:h-[80px] xsm:w-[80px]"
               />
             )}
@@ -293,6 +296,7 @@ const PostJobsForm = () => {
                 src={Edit}
                 className=" absolute w-[20px] h-[20px] xsm:w-[10px] xsm:h-[10px]"
                 onClick={handleEditClick}
+                alt=""
               />
               <input
                 type="file"
@@ -304,7 +308,7 @@ const PostJobsForm = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-[1.5fr,1fr] gap-4">
+          <div className="grid grid-cols-[1.5fr,1fr] gap-4 xsm:grid-cols-1 xsm:font-pop">
             <div>
               <p className="font-pop font-semibold ">
                 Job title / Designation{" "}
@@ -313,7 +317,7 @@ const PostJobsForm = () => {
               <input
                 type="text"
                 placeholder="Enter the Job Title"
-                className="border outline-none px-4 py-2 text-[14px] w-full "
+                className="border outline-none px-4 py-2 text-[14px] xsm:text-[12px] w-full xsm:text-[12px] "
                 value={formData.position}
                 onChange={handleChange}
                 name="position"
@@ -327,7 +331,7 @@ const PostJobsForm = () => {
               </p>
               <select
                 name="employment_type"
-                className="border outline-none px-2 py-2 text-[14px] w-full"
+                className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
                 value={formData.employment_type}
                 onChange={handleChange}
               >
@@ -367,7 +371,7 @@ const PostJobsForm = () => {
             <input
               type="text"
               placeholder="Add skills that are crucial for this job"
-              className="border outline-none px-2 py-4 text-[14px] w-full"
+              className="border outline-none px-2 py-4 xsm:py-3 text-[14px] xsm:text-[12px] w-full"
               value={keySkill}
               onChange={(e) => setKeySkill(e.target.value)}
               onKeyPress={(e) => handleKeyPress(e, handleAddSkill)}
@@ -396,7 +400,7 @@ const PostJobsForm = () => {
             </div>
           )}
           {/* Company Name */}
-          <div className="w-[65%]">
+          <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop font-semibold ">
               Company Name
               <span className="text-red-500 text-[16px]">*</span>
@@ -404,21 +408,21 @@ const PostJobsForm = () => {
             <input
               type="text"
               placeholder="Enter the Company Name"
-              className="border outline-none px-4 py-2 text-[14px] w-full"
+              className="border outline-none px-4 py-2 text-[14px] xsm:text-[12px] w-full"
               value={formData.company}
               onChange={handleChange}
               name="company"
             />
           </div>
           {/* Department & Role category */}
-          <div className="w-[65%]">
+          <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop  font-semibold">
               Department & Role category{" "}
               <span className="text-red-500 text-[16px]">*</span>
             </p>
             <select
               name="departmentRoleCategory"
-              className="border outline-none px-2 py-2 text-[14px] w-full"
+              className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
               value={formData.departmentRoleCategory}
               onChange={handleChange}
             >
@@ -455,13 +459,13 @@ const PostJobsForm = () => {
             </select>
           </div>
           {/* Work mode */}
-          <div className="w-[65%]">
+          <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop  font-semibold">
               Work mode <span className="text-red-500 text-[16px]">*</span>
             </p>
             <select
               name="workMode"
-              className="border outline-none px-2 py-2 text-[14px] w-full"
+              className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
               value={formData.workMode}
               onChange={handleChange}
             >
@@ -480,7 +484,7 @@ const PostJobsForm = () => {
             </select>
           </div>
           {/* Job location */}
-          <div className="w-[65%]">
+          <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop font-semibold">
               Job Location{" "}
               <span className="font-normal">
@@ -491,7 +495,7 @@ const PostJobsForm = () => {
             <input
               type="text"
               placeholder="Add locations"
-              className="border outline-none px-4 py-2 text-[14px] w-full"
+              className="border outline-none px-4 py-2 text-[14px] xsm:text-[12px] w-full"
               value={jobLocation}
               onChange={(e) => setJobLocation(e.target.value)}
               onKeyPress={(e) => handleKeyPress(e, handleAddLocation)}
@@ -520,7 +524,7 @@ const PostJobsForm = () => {
             </div>
           )}
           {/* Work experience */}
-          <div className="w-[65%]">
+          <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop font-semibold">
               Work experience (years){" "}
               <span className="text-red-500 text-[16px]">*</span>
@@ -528,7 +532,7 @@ const PostJobsForm = () => {
             <div className="flex items-center gap-2">
               <select
                 name="minExperience"
-                className="border outline-none px-2 py-2 text-[14px] w-full"
+                className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
                 value={formData.workExperience.min}
                 onChange={handleChange}
               >
@@ -548,7 +552,7 @@ const PostJobsForm = () => {
               <p className="text-gray-500 text-[16px]">To</p>
               <select
                 name="maxExperience"
-                className="border outline-none px-2 py-2 text-[14px] w-full"
+                className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
                 value={formData.workExperience.max}
                 onChange={handleChange}
               >
@@ -571,7 +575,7 @@ const PostJobsForm = () => {
             </div>
           </div>
           {/* Annual salary range */}
-          <div className="w-[65%]">
+          <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop font-semibold">
               Annual salary range{" "}
               <span className="text-red-500 text-[16px]">*</span>
@@ -579,7 +583,7 @@ const PostJobsForm = () => {
             <div className="flex items-center gap-2">
               <select
                 name="currency"
-                className="border outline-none px-2 py-2 text-[14px]"
+                className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px]"
                 value={formData.annualSalaryRange.currency}
                 onChange={handleChange}
               >
@@ -593,7 +597,7 @@ const PostJobsForm = () => {
               </select>
               <select
                 name="minSalary"
-                className="border outline-none px-2 py-2 text-[14px] w-full"
+                className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
                 value={formData.annualSalaryRange.minSalary}
                 onChange={handleChange}
               >
@@ -608,7 +612,7 @@ const PostJobsForm = () => {
               <p className="text-gray-500 text-[16px]">To</p>
               <select
                 name="maxSalary"
-                className="border outline-none px-2 py-2 text-[14px] w-full"
+                className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
                 value={formData.annualSalaryRange.maxSalary}
                 onChange={handleChange}
               >
@@ -623,14 +627,14 @@ const PostJobsForm = () => {
             </div>
           </div>
           {/* Company industry */}
-          <div className="w-[65%]">
+          <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop  font-semibold">
               Company industry{" "}
               <span className="text-red-500 text-[16px]">*</span>
             </p>
             <select
               name="companyIndustry"
-              className="border outline-none px-2 py-2 text-[14px] w-full"
+              className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
               value={formData.companyIndustry}
               onChange={handleChange}
             >
@@ -661,14 +665,14 @@ const PostJobsForm = () => {
             </select>
           </div>
           {/* Educational qualification */}
-          <div className="w-[65%]">
+          <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop  font-semibold">
               Educational qualification
               <span className="text-red-500 text-[16px]">*</span>
             </p>
             <select
               name="educationalQualification"
-              className="border outline-none px-2 py-2 text-[14px] w-full"
+              className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
               value={formData.educationalQualification}
               onChange={handleChange}
             >
@@ -687,7 +691,7 @@ const PostJobsForm = () => {
             </select>
           </div>
           {/* Specialization */}
-          <div className="w-[65%]">
+          <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop font-semibold ">
               Specialization
               <span className="text-red-500 text-[16px]">*</span>
@@ -695,29 +699,35 @@ const PostJobsForm = () => {
             <input
               type="text"
               placeholder="Enter Your Specialization"
-              className="border outline-none px-4 py-2 text-[14px] w-full "
+              className="border outline-none px-4 py-2 text-[14px] xsm:text-[12px] w-full "
               value={formData.specialization}
               onChange={handleChange}
               name="specialization"
             />
           </div>
           {/* Interview Mode */}
-          <div className="w-[65%]">
+          <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop  font-semibold">
               Interview Mode
               <span className="text-red-500 text-[16px]">*</span>
             </p>
             <select
               name="interviewmode"
-              className="border outline-none px-2 py-2 text-[14px] w-full"
+              className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
               value={formData.interviewmode}
               onChange={handleChange}
             >
-              <option className="border-none" value="Under Graduate" selected>
+              <option className="border-none" value="" selected>
+                Interview Mode
+              </option>
+              <option className="border-none" value="Virtual" selected>
                 Virtual
               </option>
               <option className="border-none" value="Walk-In">
                 Walk-In
+              </option>
+              <option className="border-none" value="Remote">
+                Remote
               </option>
             </select>
           </div>
@@ -743,7 +753,7 @@ const PostJobsForm = () => {
             <textarea
               type="text"
               placeholder="Tell us about your Company"
-              className="border outline-none px-4 py-2 text-[14px] w-full "
+              className="border outline-none px-4 py-2 text-[14px] xsm:text-[12px] w-full "
               value={formData.aboutCompany}
               onChange={handleChange}
               name="aboutCompany"
@@ -758,7 +768,7 @@ const PostJobsForm = () => {
             <input
               type="text"
               placeholder="Company Link/Url"
-              className="border outline-none px-4 py-2 text-[14px] w-full "
+              className="border outline-none px-4 py-2 text-[14px] xsm:text-[12px] w-full "
               value={formData.websiteurl}
               onChange={handleChange}
               name="websiteurl"
@@ -773,7 +783,7 @@ const PostJobsForm = () => {
             <input
               type="text"
               placeholder="Company Address"
-              className="border outline-none px-4 py-2 text-[14px] w-full "
+              className="border outline-none px-4 py-2 text-[14px] xsm:text-[12px] w-full "
               value={formData.companyAddress}
               onChange={handleChange}
               name="companyAddress"
@@ -782,7 +792,7 @@ const PostJobsForm = () => {
           <div className="flex justify-center">
             <button
               onClick={handleSubmit}
-              className="font-pop text-[18px] w-max text-white bg-[#1FC074] px-16 py-2 rounded-xl "
+              className="font-pop text-[18px] w-max text-white bg-[#1FC074] px-16 py-2 rounded-xl xsm:text-[12px] xsm:px-6"
             >
               Post Job
             </button>

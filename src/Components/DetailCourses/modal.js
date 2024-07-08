@@ -30,15 +30,15 @@ const NewModal = ({ handleModalOpen, handleModalClose, datas, type, title }) => 
             <div className="relative p-4 w-full max-w-4xl max-h-[78vh] bg-[#E2FFF1] rounded-lg shadow h-auto xsm:w-[90%] xsm:p-2">
                 <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t gap-4">
                     <div>
-                        <h3 className="text-3xl font-bold text-black capitalize flex flex-col gap-1 xsm:text-lg">
+                        <p className="text-3xl font-bold text-black capitalize flex flex-col gap-1 xsm:text-[14px]">
                             {title}
-                        </h3>
+                        </p>
                     </div>
                     <div className="flex gap-4 items-center">
                         <button
                             type="button"
                             onClick={handleModalClose}
-                            className="absolute top-4 right-4 font-bold text-black bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-2xl w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:text-white"
+                            className="absolute top-4 right-4 font-bold text-black bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg xsm:xl text-2xl w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:text-white"
                             data-modal-hide="default-modal"
                         >
                             X
@@ -50,7 +50,7 @@ const NewModal = ({ handleModalOpen, handleModalClose, datas, type, title }) => 
                     {datas.map((module, index) => (
                         <details
                             className="cursor-text"
-                            key={index + 67}
+                            key={"c" + index}
                             onToggle={(e) => handleToggle(index, e.target.open)}
                         >
                             <summary className="bg-[#FFE5E5] px-[1rem] py-[1rem] rounded-md text-xl font-bold capitalize flex justify-between items-center xsm:text-[12px] xsm:leading-[17px] xsm:p-[1rem] cursor-pointer">
