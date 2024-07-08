@@ -26,6 +26,10 @@ export default function CDDetails() {
   const [smallVideourl, setsmallVideourl] = useState('')
   const [pdfurl, setpdfurl] = useState('')
   const [url, seturl] = useState("");
+  const [starttime, setstarttime] = useState()
+  const [endtime, setendtime] = useState()
+  const [showLive, setshowLive] = useState(false)
+  const [showend, setshowend] = useState(false)
   const params = useParams();
   let completed = [];
   let allchapters = [];
@@ -62,7 +66,8 @@ export default function CDDetails() {
                 allchapters.push({
                   video: it?.video,
                   _id: it?._id,
-                  isLiveClass:it?.isLiveClass
+                  isLiveClass:it?.isLiveClass,
+                  liveClass:it?.liveClass
                 });
               
             });
@@ -85,12 +90,12 @@ export default function CDDetails() {
   }, []);
   const handleKeyDown = (e) => {
     console.log(e.key);
-    if (e.metaKey) {
-      alert("Screenshot is not allowed")
-      e.preventDefault()
-      return false;
-      // e.preventDefault(); // Prevent default behavior for Win Key + PrtSc
-    }
+    // if (e.metaKey) {
+    //   alert("Screenshot is not allowed")
+    //   e.preventDefault()
+    //   return false;
+    //   // e.preventDefault(); // Prevent default behavior for Win Key + PrtSc
+    // }
   };
 
   // useEffect hook to add event listeners when the component mounts
@@ -209,10 +214,61 @@ export default function CDDetails() {
     }
 
   }
+  function formatDate(dateString) {
+    const dateObj = new Date(dateString);
+    
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const year = dateObj.getFullYear();
+
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June", 
+        "July", "August", "September", "October", "November", "December"
+    ];
+    const month = monthNames[dateObj.getMonth()];
+
+    let hours = dateObj.getHours();
+    const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    
+    const time = `${hours}.${minutes}${ampm}`;
+
+    return `${day} ${month} ${year} ${time}`;
+}
+
+// Example usage
+
+// console.log(formattedDate); // Output: "08 July 2024 2.30pm"
+
   useEffect(() => {
     if(ALLCHAPTER[count]?.isLiveClass){
-      setcount((prev)=>prev+1)
-      handleVideoEnded()
+      let today=new Date()
+      let startdate=new Date(ALLCHAPTER[count]?.liveClass.startDate);
+      let enddate=new Date(ALLCHAPTER[count]?.liveClass.endDate);
+      console.log(startdate);
+      if(startdate>today){
+        setshowLive(true)
+        // console.log("yess");
+        let tmp=formatDate(startdate)
+        setstarttime(tmp)
+       
+      }
+      else if(enddate>today){
+        setshowLive(false)
+        setshowend(true)
+        let tmp=formatDate(enddate)
+        setendtime(tmp)
+      }
+      else{
+        setshowLive(false)
+        setshowend(false)
+        setcount((prev)=>prev+1)
+        handleVideoEnded()
+      }
+      // if()
+      
     }
   }, [count])
   return (
@@ -262,7 +318,10 @@ export default function CDDetails() {
                          <iframe  src={pdfurl} width="100%" height="100%" />
                         //  <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
                     //  </div>
-                    ) : url?.toString().endsWith("mp3") ? (
+                    ) :
+                    showLive ? <div className="flex justify-center items-center">Live Class Will Start On {starttime}</div>:
+                    showend ? <div className="flex justify-center items-center">Live Class Will End On {endtime}</div>
+                    : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : (
 
