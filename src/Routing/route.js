@@ -75,6 +75,7 @@ import CourseMedia from "../Components/TeacherPanel/CourseMedia/CourseMedia.jsx"
 import {AuthProvider} from "../Components/contexts/AuthContext.js"
 import Loginpage from '../Components/TeacherPanel/LoginPage/LoginPage.jsx'
 import MyTimer from '../Components/mytimer.js'
+import PaymentFailed from '../Components/PaymentFailed/PayementFailed.jsx'
 
 const Router = () => {
     let pathname = window.location.pathname;
@@ -173,6 +174,7 @@ const Router = () => {
                 <Route path='/hrdashboard' element={<HRDashboard />} />
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
+                <Route path='/error' element={<PaymentFailed />} />
 
                 <Route path="/teacherlogin" element={<Loginpage/>}/>
                 <Route path="/teacherpanel" element={<TPHome/>}>
