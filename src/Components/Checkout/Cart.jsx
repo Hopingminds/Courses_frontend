@@ -36,6 +36,7 @@ const CartCheckout = () => {
   const [total, settotal] = useState(0);
   const [show, setshow] = useState(false);
   const [paymentLink, setPaymentLink] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const [inputData, setinputData] = useState({
     name,
@@ -239,98 +240,94 @@ setinputData((prev) => ({
 
   // console.log(total)
   const handlePayment = async () => {
-     const userData = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
+    const userData = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
   
-      // toast.error("Select state");
-      if (!inputData.name) {
-        setwarnings((prevWarnings) => ({
-          ...prevWarnings,
-          ['name']: true
-        }));
-      } 
-   else if (!inputData.address) {
-      setwarnings((prevWarnings) => ({
-        ...prevWarnings,
-        ['address']: true
-      }));
-    } 
-    else if (!inputData.zip) {
-      setwarnings((prevWarnings) => ({
-        ...prevWarnings,
-        ["zip"]: true,
-      }));
-    } else if (!country) {
-      setwarnings((prevWarnings) => ({
-        ...prevWarnings,
-        ["country"]: true,
-      }));
-      toast.error("Select country");
-
-      // toast.error("Every input must be filled");
-    } else if (!state) {
-      setwarnings((prevWarnings) => ({
-        ...prevWarnings,
-        ["state"]: true,
-      }));
-      toast.error("Select State");
-    } else {
-      console.log(country);
-      // console.log(
-      //   `https://payme.hopingminds.in/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone}&name=${userDetail?.name}&address=${inputData.address}&zip=${inputData.zip}&country=${country?.name}&state=${state.name}&gstNumber=${inputData?.gstnumber}`
-      // );
-
-      const Linksend = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
-        userData?.userID
-      }&email=${userDetail?.email}&phone=${
-        userDetail?.phone
-      }&name=${userDetail?.name?.replace(
-        /\s/g,
-        "%20"
-      )}&address=${inputData.address.replace(/\s/g, "%20")}&zip=${
-        inputData.zip
-      }&country=${country?.name?.replace(
-        /\s/g,
-        "%20"
-      )}&state=${state?.name.replace(/\s/g, "%20")}&gstNumber=${
-        inputData?.gstnumber
-      }`;
-
-      async function handlesomething(){
-        const res = await axios.get(Linksend);
-        if(res.status == 200){
-          setPaymentLink(res.data.payment_link);
-        }
-        else{
-          toast.error("Too many requests.");
-        }     
-      }
-      handlesomething();
-      // if (response.success) {
-      //   setData(response.data);
-      //   Total(response.data);
-      //   toast.success(response.message);
-      //   setCartSize(cartSize-1);
-      //   setshow(false);
-      // } else {
-      //   toast.error(response.message);
-      // }
-
-      // if (total === 0) {
-      //   handleContinueCheckout();
-      //   navigate('/success')
-      // }
-      // else {
-
-      // handleGenerateUrl().then((res) => {
-      //   // console.log(res);
-      //   if (res) {
-      //     handleContinueCheckout();
-      //     window.location.href = res;
-      //   }
-      // });
-      // }
+    // Validate inputs
+    if (!inputData.name) {
+      setwarnings(prevWarnings => ({ ...prevWarnings, name: true }));
+      return; // Early return on missing name
     }
+    if (!inputData.address) {
+      setwarnings(prevWarnings => ({ ...prevWarnings, address: true }));
+      return; // Early return on missing address
+    }
+    if (!inputData.zip) {
+      setwarnings(prevWarnings => ({ ...prevWarnings, zip: true }));
+      return; // Early return on missing zip
+    }
+    if (!country) {
+      setwarnings(prevWarnings => ({ ...prevWarnings, country: true }));
+      toast.error("Select country");
+      return; // Early return on missing country
+    }
+    if (!state) {
+      setwarnings(prevWarnings => ({ ...prevWarnings, state: true }));
+      toast.error("Select State");
+      return; // Early return on missing state
+    }
+    
+    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone}&name=${userDetail?.name?.replace(/\s/g,"%20")}&address=${inputData.address.replace(/\s/g,"%20")}&zip=${inputData.zip}&country=${country?.name?.replace(/\s/g,"%20")}&state=${state?.name.replace(/\s/g,"%20")}&gstNumber=${inputData?.gstnumber || "000"}`;
+    console.log(paymentUrl)
+    async function handlePaymentUrl(){
+      try {
+        const res = await axios.get(paymentUrl);
+    
+        if (res.status === 200) {
+          toast.success("Please confirm your purchase")
+          setPaymentLink(res.data.payment_link);
+          setShowModal(true);
+        } else {
+          toast.error("Unexpected response status.");
+          setPaymentLink(null);
+        }
+      } catch (error) {
+        setPaymentLink(null);
+        if (error.response) {
+          // Server responded with a status other than 200
+          if (error.response.status === 429) {
+            toast.error("Too many requests. Please try again later.");
+          } else {
+            toast.error(`Error: ${error.response.status} - ${error.response.data.message}`);
+          }
+        } else if (error.request) {
+          // Request was made but no response was received
+          toast.error("Network error. Please check your internet connection.");
+        } else {
+          // Something happened in setting up the request
+          toast.error(`Error: ${error.message}`);
+        }
+      }    
+    }
+    handlePaymentUrl();
+    // else {
+    //   const Linksend = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
+    //     userData?.userID
+    //   }&email=${userDetail?.email}&phone=${
+    //     userDetail?.phone
+    //   }&name=${userDetail?.name?.replace(
+    //     /\s/g,
+    //     "%20"
+    //   )}&address=${inputData.address.replace(/\s/g, "%20")}&zip=${
+    //     inputData.zip
+    //   }&country=${country?.name?.replace(
+    //     /\s/g,
+    //     "%20"
+    //   )}&state=${state?.name.replace(/\s/g, "%20")}&gstNumber=${
+    //     inputData?.gstnumber
+    //   }`;
   };
+
+  const handleConfirm = () =>{
+    if(paymentLink){
+      setShowModal(false);
+      window.location.href = paymentLink;
+    }else{
+      toast.error("Too many requests. Please try again later.");
+    }
+  }
+  const closeConfirm = () => {
+    setShowModal(false);
+  }
 
   return (
     <>
@@ -524,14 +521,46 @@ setinputData((prev) => ({
             >
               Continue Checkout
             </button>
-            <a href={`${paymentLink}`}>
+            {/* <a href={`${paymentLink}`}>
               confirm Payment
-            </a>
+            </a> */}
           </span>
           {/* Summary div end*/}
         </div>
         {/* Summary end */}
       </div>
+      {showModal &&
+        <div id="modelConfirm" className="fixed  z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 ">
+            <div className="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
+
+                <div className="flex justify-end p-2">
+                    <button onClick={closeConfirm} type="button"
+                        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fillRule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clipRule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div className="p-6 pt-0 text-center">
+                    <h3 className="text-xl font-normal text-gray-500 mt-5 mb-6">Please confirm your purchase</h3>
+                    <a href="#"  onClick={handleConfirm}
+                        className="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
+                        Yes, I'm sure
+                    </a>
+                    <a href="#" onClick={closeConfirm}
+                        className="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center"
+                        data-modal-toggle="delete-user-modal">
+                        No, cancel
+                    </a>
+                </div>
+
+            </div>
+        </div>
+      }
+      
       <Toaster position="top-center" />
       {/* CheckOut end */}
     </>
