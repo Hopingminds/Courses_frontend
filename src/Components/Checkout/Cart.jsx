@@ -86,75 +86,53 @@ setinputData((prev) => ({
 
   let login = localStorage.getItem("COURSES_USER_TOKEN");
   let temp = [];
-  function Total(data) {
+
+  function calculateTotals(data) {
     let price = 0;
-    data.map((item) => {
-      price += item.course.base_price;
-    });
-    settotal(price);
-    // console.log(price *0.09);
-    // setGst()
-  }
-
-  function GSTAmount(){
-    let priceAfterGST = (total - discountPrice)*1.18;
-    let gstAmount = priceAfterGST - (total - discountPrice); 
-    console.log(gstAmount)
-    setSgst(gstAmount/2)
-    setGst(gstAmount/2)
-    setFinalPrice(total+gstAmount);
-  }
-
-  function discountApplied(data){
     let disprice = 0;
+
     data.forEach((item) => {
       let basePrice = item.course.base_price;
       let discountPercentage = item.course.discount_percentage;
       let discountedPrice = basePrice * (1 - (discountPercentage / 100));
+      price += basePrice;
       disprice += (basePrice - discountedPrice);
     });
-    console.log(disprice);
+
+    settotal(price);
     setDiscountPrice(disprice);
-    console.log(total);
-    GSTAmount()
-    
-  }  
+
+    let priceAfterGST = (price - disprice) * 1.18;
+    let gstAmount = priceAfterGST - (price - disprice);
+
+    setSgst(gstAmount / 2);
+    setGst(gstAmount / 2);
+    setFinalPrice((price-disprice) + gstAmount);
+  }
+
 
   
 
   useEffect(() => {
-    async function Fetchdata() {
-      //   console.log(query.get('slug'));
+    async function fetchData() {
       if (login) {
         let slug = query.get("slug");
         let token = jwtDecode(login);
+        let url = slug ? `${BASE_URL}/course/${slug}` : `${BASE_URL}/getcart?email=${token.email}`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+
         if (slug) {
-          let url = BASE_URL + "/course/" + slug;
-          //   console.log(url);
-          const data = await fetch(url);
-          const response = await data.json();
-          // setData(response?.cart)
-          // Total(response?.cart)
-          // console.log(Array(response?.course));
-          setData(Array(response));
-          // setcourseId([...courseId],response?.course?._id)
-
-          // setcourseId(temp)
-          Total(Array(response));
-          discountApplied(Array(response));
+          setData([data]);
+          calculateTotals([data]);
         } else {
-          let url = BASE_URL + "/getcart?email=" + token.email;
-
-          const data = await fetch(url);
-          const response = await data.json();
-          setData(response?.cart);
-          Total(response?.cart);
-          discountApplied(response?.cart);
-            console.log(response?.cart);
+          setData(data.cart);
+          calculateTotals(data.cart);
         }
       }
     }
-    Fetchdata();
+    fetchData();
   }, []);
   const handleCountryChange = (e) => {
     setcountry(e);
@@ -529,14 +507,11 @@ setinputData((prev) => ({
 
           {/* Summary div start*/}
           <div className="mt-5 mb-4 xsm:my-0">
-            <h1 className="text-base xsm:text-[10px] md:text-[14px]">
+            <div className="flex justify-between">
+            <h1 className="text-base font-semibold xsm:text-[10px] md:text-[14px]">
               Original Price:
             </h1>
-            <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
-                Including all the taxes
-              </p>
-              <p className="xsm:text-[12px] md:text-[14px]">₹{total}</p>
+              <p className="xsm:text-[12px] md:text-[14px] font-semibold">₹{total}</p>
             </div>
           </div>
           <hr />
@@ -549,7 +524,7 @@ setinputData((prev) => ({
             </div>
             <div className="flex justify-between">
               <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
-                GST Added
+                CGST Added
               </p>
               <p className="xsm:text-[12px] md:text-[14px]">₹{gst}</p>
             </div>
@@ -559,14 +534,20 @@ setinputData((prev) => ({
               </p>
               <p className="xsm:text-[12px] md:text-[14px]">₹{sgst}</p>
             </div>
+            <div className="flex justify-between">
+              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
+                Total GST
+              </p>
+              <p className="xsm:text-[12px] md:text-[14px]">₹{sgst+gst}</p>
+            </div>
           </div>
           <div className="mt-5 mb-4 xsm:my-0">
-            <h1 className="text-base xsm:text-[10px] md:text-[14px]">Total:</h1>
+            <h1 className="text-base xsm:text-[10px] md:text-[14px] font-semibold">Total:</h1>
             <div className="flex justify-between">
               <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
                 Including all the taxes
               </p>
-              <p className="xsm:text-[12px] md:text-[14px]">₹{finalPrice}</p>
+              <p className="xsm:text-[12px] md:text-[14px] font-semibold">₹{finalPrice}</p>
             </div>
           </div>
           <span className="flex justify-center xsm:mt-4 md:mt-4">
