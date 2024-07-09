@@ -198,15 +198,20 @@ export default function Coursecontents({
                               key={index}
                             >
                               <span className="flex justify-between">
+                                {
+                                  chapter?.isLiveClass ?
+                                <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px] text-red-500 ">
+                                  {index + 1}. {chapter?.lesson_name} (Live)
+                                </p>:
                                 <p onClick={courseCategory === "liveCourse" ? () => { } : () =>
                                   completed.includes(chapter._id) &&
                                   handleActiveVideo(chapter?.video)
                                 } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
                                   {index + 1}. {chapter?.lesson_name}
-                                </p>
-                                <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
-                                  {chapter?.duration}
-                                </p>
+                                </p>}
+                                {/* <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
+                                  {chapter?.duration}Mins
+                                </p> */}
                               </span>
 
                               {(chapter?.notes || chapter?.assignment) && (
@@ -227,7 +232,7 @@ export default function Coursecontents({
                                     {chapter?.notes && (
                                       <span className=" flex justify-between items-center px-2 border rounded-md h-max">
 
-                                        <div onClick={() => handleToggleNotes(chapter?.notes, ALLCHAPTER[count]?.video)} className="flex items-center gap-1">
+                                        <div onClick={() => completed.includes(chapter._id)? handleToggleNotes(chapter?.notes, ALLCHAPTER[count]?.video): ""} className="flex items-center gap-1">
                                           <Notes className="w-3 h-3" />
                                           <li className="text-[12px] md:text-[10px]">
                                             Notes
