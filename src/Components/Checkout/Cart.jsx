@@ -20,6 +20,7 @@ import { Globalinfo } from "../../App";
 import Spinner from "../Spinner";
 import { handleGenerateUrl } from "../../helpers/paymentHelpers";
 import axios from "axios";
+import { data } from "@tensorflow/tfjs";
 
 const CartCheckout = () => {
   const [country, setcountry] = useState("");
@@ -37,6 +38,10 @@ const CartCheckout = () => {
   const [show, setshow] = useState(false);
   const [paymentLink, setPaymentLink] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [discountPrice, setDiscountPrice] = useState(0);
+  const [gst, setGst] = useState(0);
+  const [sgst, setSgst] = useState(0);
+  const [finalPrice, setFinalPrice] = useState(0);
 
   const [inputData, setinputData] = useState({
     name,
@@ -87,7 +92,35 @@ setinputData((prev) => ({
       price += item.course.base_price;
     });
     settotal(price);
+    // console.log(price *0.09);
+    // setGst()
   }
+
+  function GSTAmount(){
+    let priceAfterGST = (total - discountPrice)*1.18;
+    let gstAmount = priceAfterGST - (total - discountPrice); 
+    console.log(gstAmount)
+    setSgst(gstAmount/2)
+    setGst(gstAmount/2)
+    setFinalPrice(total+gstAmount);
+  }
+
+  function discountApplied(data){
+    let disprice = 0;
+    data.forEach((item) => {
+      let basePrice = item.course.base_price;
+      let discountPercentage = item.course.discount_percentage;
+      let discountedPrice = basePrice * (1 - (discountPercentage / 100));
+      disprice += (basePrice - discountedPrice);
+    });
+    console.log(disprice);
+    setDiscountPrice(disprice);
+    console.log(total);
+    GSTAmount()
+    
+  }  
+
+  
 
   useEffect(() => {
     async function Fetchdata() {
@@ -108,6 +141,7 @@ setinputData((prev) => ({
 
           // setcourseId(temp)
           Total(Array(response));
+          discountApplied(Array(response));
         } else {
           let url = BASE_URL + "/getcart?email=" + token.email;
 
@@ -115,7 +149,8 @@ setinputData((prev) => ({
           const response = await data.json();
           setData(response?.cart);
           Total(response?.cart);
-          //   console.log(response);
+          discountApplied(response?.cart);
+            console.log(response?.cart);
         }
       }
     }
@@ -506,12 +541,32 @@ setinputData((prev) => ({
           </div>
           <hr />
           <div className="mt-5 mb-4 xsm:my-0">
+            <div className="flex justify-between">
+              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
+                Discount Added 
+              </p>
+              <p className="xsm:text-[12px] md:text-[14px]">-₹{discountPrice}</p>
+            </div>
+            <div className="flex justify-between">
+              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
+                GST Added
+              </p>
+              <p className="xsm:text-[12px] md:text-[14px]">₹{gst}</p>
+            </div>
+            <div className="flex justify-between">
+              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
+                SGST Added
+              </p>
+              <p className="xsm:text-[12px] md:text-[14px]">₹{sgst}</p>
+            </div>
+          </div>
+          <div className="mt-5 mb-4 xsm:my-0">
             <h1 className="text-base xsm:text-[10px] md:text-[14px]">Total:</h1>
             <div className="flex justify-between">
               <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
                 Including all the taxes
               </p>
-              <p className="xsm:text-[12px] md:text-[14px]">₹{total}</p>
+              <p className="xsm:text-[12px] md:text-[14px]">₹{finalPrice}</p>
             </div>
           </div>
           <span className="flex justify-center xsm:mt-4 md:mt-4">
