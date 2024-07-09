@@ -266,7 +266,7 @@ setinputData((prev) => ({
       return; // Early return on missing state
     }
     
-    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone}&name=${userDetail?.name?.replace(/\s/g,"%20")}&address=${inputData.address.replace(/\s/g,"%20")}&zip=${inputData.zip}&country=${country?.name?.replace(/\s/g,"%20")}&state=${state?.name.replace(/\s/g,"%20")}&gstNumber=${inputData?.gstnumber || "000"}`;
+    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone || "0000000000"}&name=${userDetail?.name?.replace(/\s/g,"%20")}&address=${inputData.address.replace(/\s/g,"%20")}&zip=${inputData.zip}&country=${country?.name?.replace(/\s/g,"%20")}&state=${state?.name.replace(/\s/g,"%20")}&gstNumber=${inputData?.gstnumber || "000"}`;
     console.log(paymentUrl)
     async function handlePaymentUrl(){
       try {
