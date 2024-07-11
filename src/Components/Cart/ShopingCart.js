@@ -70,14 +70,17 @@ function ShopingCart() {
         </div>
       </div>
       <div className="flex justify-between items-start my-10 min-h-[70vh] h-auto  px-[3%] xsm:flex-col xsm:justify-start xsm:h-auto xsm:gap-8 xsm:my-6 md:h-auto md:my-10">
-        <div className="w-[70%] space-y-10 xl:space-y-4 xsm:w-[100%] xsm:space-y-4 md:space-y-4">
+        <div className="w-[70%] md:w-[68%] space-y-10  xl:space-y-4 xsm:w-[100%] xsm:space-y-4 md:space-y-4">
           {Data?.length > 0 ? (
-            Data?.map((item , index) => {
+            Data?.map((item, index) => {
               return (
                 <>
-                  <div className="w-full bg-[#fff] border  border-[#858181] xsm:mx-0  px-6 shadow-xl rounded-xl xsm:p-2 md:p-2 mx-[2rem] py-5" >
-                    <div className="flex items-center xl:h-[18vh] h-[15vh] rounded-[1.2vw] xsm:h-[60px] 2xl:w-[900px] 2xl:h-[240px] md:h-[10vh]" key={"cour"+index}>
-                      <div className="w-[50%] xl:w-[35%] 2xl:w-[600px] md:w-[35%] md:h-[90%] xl:h-[80%] xsm:h-[90%]">
+                  <div className="w-full bg-[#fff] border  border-[#858181] xsm:mx-0  px-6 shadow-xl rounded-xl xsm:p-2 md:p-2 mx-[2rem] py-5">
+                    <div
+                      className="flex items-center xl:h-[18vh] h-[15vh] rounded-[1.2vw] xsm:h-[250px] 2xl:w-[900px] 2xl:h-[240px] md:h-[10vh]  xsm:flex-col "
+                      key={"cour" + index}
+                    >
+                      <div className="w-[50%] xl:w-[35%] 2xl:w-[600px] md:w-[35%] md:h-[90%] xl:h-[80%] xsm:h-[60%] xsm:w-[100%] ">
                         <img
                           className="w-[100%] h-[100%] rounded-xl object-cover "
                           src={item?.course?.featured_image}
@@ -88,43 +91,49 @@ function ShopingCart() {
                         {/* <div>
                                 <p className='font-mons text-[0.8vw] 2xl:text-[14px]'><span className='text-[#555555]'>by</span> Determined-instructure</p>
                             </div> */}
-                        <div className="flex flex-nowrap justify-between items-center font-pop text-[#252641]">
-                          <div className="space-y-2 md:space-y-1">
-                            <p className="text-[1.5vw] font-semibold  2xl:text-[18px] xl:text-[24px] xsm:text-[10px]">
+                        <div className="flex xsm:flex-col flex-nowrap justify-between items-center font-pop text-[#252641] ">
+                          <div className="space-y-2 md:space-y-1 xsm:space-y-0 xsm:flex xsm:justify-between xsm:mt-1 xsm:gap-2 xsm:px-4">
+                            <p className="text-[1.5vw] md:text-[14px] font-semibold  2xl:text-[18px] xl:text-[24px] xsm:text-[14px] xsm:font-normal">
                               {item?.course?.title?.slice(0, 60)}..
                             </p>
-                            <p className="text-[#696984] text-md w-[100%] xsm:hidden md:text-[10px]">
+                            <p className="font-mons text-[1.2vw] font-semibold text-[black] xl:text-[18px] xl:font-normal 2xl:text-[20px] xsm:text-[20px] xl:hidden md:hidden lg:hidden sm:hidden 2xl:hidden xsm:font-normal">
+                              ₹{item?.course?.base_price}
+                            </p>
+                            <p className="text-[#696984] text-md w-[100%] md:text-[10px] xsm:hidden">
                               {item?.course?.overview.slice(0, 60)}..{" "}
                             </p>
                           </div>
-                          <div>
+                          <div className="xsm:flex xsm:gap-12 xsm:flex-row-reverse xsm:px-0">
                             <p
                               onClick={() => Removecart(item?.course?._id)}
-                              className="cursor-pointer text-[1vw] 2xl:text-[16px] xl:text-[17px]  mt-[1vw] xsm:text-[7px] md:text-[12px] "
+                              className="cursor-pointer text-[1vw] 2xl:text-[16px] xl:text-[17px]  mt-[1vw] xsm:mt-0 xsm:text-[11px] md:text-[12px] "
                             >
                               Remove
+                            </p>
+                            <p className="text-[#696984] font-pop text-[10px]  hidden xsm:block ">
+                              {item?.course?.overview.slice(0, 40)}...{" "}
                             </p>
                           </div>
                         </div>
                         <div className="flex flex-nowrap justify-between items-center">
-                          <div className="flex gap-6 my-[0.5vw] w-[60%] 2xl:w-full 2xl:text-[11px] xsm:gap-2">
+                          <div className="flex gap-6 my-[0.5vw] w-[60%] 2xl:w-full 2xl:text-[11px] xsm:gap-20 xsm:mx-4 ">
                             <div className="flex space-x-2 items-center xsm:space-x-1">
                               <img
-                                className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
+                                className="w-[16px] h-[16px] xsm:w-[11px] xsm:h-[11px]  md:h-3 md:w-3"
                                 src="../Icons/design.svg"
                                 alt="icon"
                               />
-                              <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[9px]">
+                              <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[11px] md:text-[9px]">
                                 design
                               </p>
                             </div>
                             <div className="flex space-x-2 items-center xsm:space-x-0">
                               <img
-                                className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
+                                className="w-[16px] h-[16px] xsm:w-[11px] xsm:h-[11px] md:h-2 md:w-2"
                                 src="../Icons/clock2.svg"
                                 alt="icon"
                               />
-                              <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[9px]">
+                              <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[11px] md:text-[9px]">
                                 45 Hours
                               </p>
                             </div>
@@ -158,9 +167,9 @@ function ShopingCart() {
                           </p>
                         </div> */}
                         <div>
-                          <hr className=" border-y-1 border-[#EAEAEA] " />
+                          <hr className=" border-y-1 border-[#EAEAEA] xsm:hidden" />
                         </div>
-                        <div className="flex justify-between mt-[0.8vw] flex-wrap">
+                        <div className="flex justify-between mt-[0.8vw] flex-wrap xsm:hidden">
                           <div>
                             <div className="flex">
                               <img
@@ -191,7 +200,7 @@ function ShopingCart() {
                             </div>
                           </div>
                           <div>
-                            <p className="font-Inter text-[1.2vw] font-semibold text-[black] xl:text-[18px] xl:font-normal 2xl:text-[20px] xsm:text-[8px]">
+                            <p className="font-Inter text-[1.2vw] font-semibold text-[black] xl:text-[18px] xl:font-normal 2xl:text-[20px] xsm:text-[8px] xsm:hidden ">
                               ₹{item?.course?.base_price}
                             </p>
                           </div>
@@ -210,47 +219,55 @@ function ShopingCart() {
         </div>
 
         {Data?.length > 0 && (
-          <div className="w-[26%] md:w-[24%]  h-max flex flex-col justify-around space-y-4 font-pop p-6 rounded-xl xsm:w-[100%] xsm:px-3 xsm:space-y-1 md:space-y-[6px] border xl:space-y-6 border-[#000]">
-            <h1 className="font-outfit  font-semibold text-[1.7vw]  2xl:text-[24px] xsm:text-[12px] xsm:font-bold">
+          <div className="w-[26%] md:w-[27%]  h-max flex flex-col justify-around space-y-4 font-pop p-6 rounded-xl xsm:w-[100%] xsm:px-3 xsm:space-y-1 md:space-y-[6px] border xl:space-y-2
+           border-[#000]">
+            <h1 className="font-semibold text-[1.7vw] xl:text-[32px] 2xl:text-[24px] xsm:text-[32px] md:text-[28px] xsm:font-semibold font-pop">
               Summary
             </h1>
+            <p className="font-nu font-semibold xl:font-normal text-[2vw] xl:text-[24px] 2xl:text-[24px] xsm:text-[24px] md:text-[18px] xsm:font-normal ">
+              Original Price
+            </p>
             {/* <div className="flex xsm:flex-col  justify-between"> */}
-              <div className="flex justify-between items-center space-y-4 font-nu xl:space-y-2 xsm:space-y-0 xsm:flex xsm:flex-row xsm:justify-between md:space-y-0">
-                <p className=" font-semibold xl:font-normal text-[2vw] 2xl:text-[24px] xsm:text-[12px] xsm:font-bold xl:text-[1.2rem] md:text-[13px]">
-                  Original Price
-                </p>
-                <p className="font-mons font-semibold xl:font-normal text-[1.7vw] 2xl:text-[20px] xsm:text-[12px] xsm:font-bold xl:text-[22px] md:text-[13px]">
-                  ₹{total}
-                </p>
-              </div>
-              <div>
-              <p className=" text-[1vw] text-[#1DBF73] 2xl:text-[16px] xsm:text-[8px] xl:text-[0.9rem] xl:font-normal">
-                  Including all the taxes
-                </p>
-              </div>
+            {
+              Data.map((item,index)=>(
+            <div className="flex justify-between items-center space-y-4 font-nu xl:space-y-0 xsm:space-y-0 xsm:px-2  xl:pl-4 xsm:flex xsm:flex-row xsm:justify-between md:space-y-0 " key={index+"c"}>
+              <p className="font-mons font-semibold xl:font-normal text-[1.7vw] 2xl:text-[20px] xsm:text-[15px] xsm:font-normal xl:text-[18px] md:text-[9px]">
+              {item?.course?.title.slice(0,27)}...
+              </p>
+              <p className="font-mons font-semibold xl:font-normal text-[1.7vw] 2xl:text-[20px] xsm:text-[19px] xsm:font-normal xl:text-[24px] md:text-[11px]">
+              ₹{item?.course?.base_price}
+              </p>
+            </div>
+              ))
+            }
+            <div>
+              <p className=" text-[1vw] text-[#1DBF73] 2xl:text-[16px] xsm:text-[12px] xl:text-[0.9rem] xl:font-normal ">
+                Including all the taxes
+              </p>
+            </div>
             {/* </div> */}
             <div>
               <hr className=" border-y-1 border-[#EAEAEA] " />
             </div>
             {/* <div className="flex xsm:flex-col justify-between"> */}
             <div className="flex justify-between items-center space-y-4 font-nu xl:space-y-2 xsm:space-y-0 xsm:flex xsm:flex-row xsm:justify-between md:space-y-0">
-                <p className=" font-semibold xl:font-normal text-[2vw] 2xl:text-[24px] xsm:text-[12px] xsm:font-bold xl:text-[1.2rem] md:text-[13px]">
-                  Total
-                </p>
-                <p className="font-mons font-semibold xl:font-normal text-[1.7vw] 2xl:text-[20px] xsm:text-[12px] xsm:font-bold xl:text-[22px] md:text-[13px]">
-                  ₹{total}
-                </p>
-              </div>
-              <div>
-                <p className=" text-[1vw] text-[#1DBF73] xsm:font-semibold 2xl:text-[16px]  xsm:text-[8px] xl:text-[0.9rem] ">
+              <p className="xl:font-normal text-[2vw] 2xl:text-[24px] xsm:text-[18px] font-nu xsm:font-noraml xl:text-[24px] md:text-[13px]">
+                Total
+              </p>
+              <p className="font-mons font-semibold xl:font-normal text-[1.7vw] 2xl:text-[20px] xsm:text-[20px] xsm:font-normal xl:text-[24px] md:text-[13px]">
+                ₹{total}
+              </p>
+            </div>
+            <div>
+              <p className=" text-[1vw] text-[#1DBF73] xsm:font-normal 2xl:text-[16px]  xsm:text-[12px] xl:text-[0.9rem] ">
                 By completing your purchase you agree to terms of services
-                </p>
-              </div>
+              </p>
+            </div>
             {/* </div> */}
             <div className="flex justify-center">
               <Link
                 to="/checkout"
-                className="mt-[1.6vw] xl:mt-0 font-nu text-[1.7vw] px-[4vw] py-[0.5vw] bg-[#1DBF73] text-[#fff] border-none rounded-full 2xl:text-[24px] xsm:text-[10px] capitalize xl:text-[22px] md:text-[15px] md:px-[2vw] xsm:py-2 xsm:px-8"
+                className="mt-[1.6vw] xl:mt-0 font-nu text-[1.7vw] px-[4vw] py-[0.5vw] bg-[#1DBF73] text-[#fff] border-none rounded-full 2xl:text-[24px] capitalize xl:text-[22px] md:text-[15px] md:px-[2vw] xsm:py-2 xsm:px-8 xsm:text-[18px]"
                 type=""
               >
                 Checkout
