@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
+import DatePicker from "react-datepicker"
 
 const INITIAL_FORM_STATE = {
   logoUrl: "",
@@ -23,6 +24,8 @@ const INITIAL_FORM_STATE = {
   interviewmode: "",
   aboutCompany: "",
   websiteurl: "",
+  publishDate:"",
+  lastDate:"",
   companyAddress: "",
   jobDescription: "",
 };
@@ -56,6 +59,8 @@ const PostJobsForm = () => {
     specialization: "",
     aboutCompany: "",
     websiteurl: "",
+    publishDate:"",
+    lastDate:"",
     companyAddress: "",
     jobDescription: "",
   });
@@ -147,6 +152,8 @@ const PostJobsForm = () => {
       "specialization",
       "aboutCompany",
       "websiteurl",
+      "publishDate",
+      "lastDate",
       "companyAddress",
     ];
 
@@ -187,6 +194,8 @@ const PostJobsForm = () => {
       about_company: formData?.aboutCompany,
       company_website_link: formData.websiteurl,
       company_address: formData?.companyAddress,
+      publishDate: formData?.publishDate,
+      lastDate: formData?.lastDate,
       key_skills: addedSkills,
       job_description: jd,
     };
@@ -268,9 +277,9 @@ const PostJobsForm = () => {
   };
 
   return (
-    <div className="bg-[#e6e6e6] py-[3%] px-[20%] xsm:px-[10%] pr">
+    <div className="bg-[#e6e6e6] py-[3%] px-[20%] xsm:px-[10%] pr ">
       <div className="bg-[#fafafa] ">
-        <div className="bg-white px-4 py-2 text-[12px] font-pop flex flex-col gap-6 w-full ">
+        <div className="bg-white px-12 py-2 text-[12px] font-pop flex flex-col gap-6 w-full ">
           {/* Heading */}
           <div className="flex flex-col ">
             <p className="text-[24px] text-gray-600 xsm:text-center xsm:text-[18px]">
@@ -575,6 +584,23 @@ const PostJobsForm = () => {
               </select>
             </div>
           </div>
+
+          {/* Start and end date  */}
+          <div className="w-[65%] xsm:w-[100%]">
+            <p className="font-pop font-semibold">
+              Dates{" "}
+              <span className="text-red-500 text-[16px]">*</span>
+            </p>
+            <div className="flex items-center gap-5">
+            <p className="text-gray-500 text-[16px] ">From</p>
+              <input className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full" name="publishDate" value={formData?.publishDate} onChange={handleChange} type="date" placeholder="Post Date" defaultValue={new Date()}/>
+              <p className="text-gray-500 text-[16px]">To</p>
+              <input className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full" name="lastDate" value={formData?.lastDate} onChange={handleChange} type="date" placeholder="Expire Date" defaultValue={new Date()}/>
+
+            </div>
+          </div>
+
+
           {/* Annual salary range */}
           <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop font-semibold">
@@ -604,7 +630,9 @@ const PostJobsForm = () => {
               >
                 {/* Add options for minimum salary range */}
                 {/* Example: */}
-                <option value="" selected>starting salary</option>
+                <option value="" selected>
+                  starting salary
+                </option>
                 <option value="100000">1,00,000</option>
                 <option value="200000">2,00,000</option>
                 <option value="300000">3,00,000</option>
@@ -626,7 +654,9 @@ const PostJobsForm = () => {
               >
                 {/* Add options for maximum salary range */}
                 {/* Example: */}
-                <option value="" selected>starting salary</option>
+                <option value="" selected>
+                  starting salary
+                </option>
                 <option value="200000">2,00,000</option>
                 <option value="300000">3,00,000</option>
                 <option value="400000">4,00,000</option>
@@ -640,8 +670,9 @@ const PostJobsForm = () => {
               </select>
             </div>
           </div>
+
           {/* Company industry */}
-          <div className="w-[65%] xsm:w-[100%]">
+          <div className="w-[65%] xsm:w-[100%] ">
             <p className="font-pop  font-semibold">
               Company industry{" "}
               <span className="text-red-500 text-[16px]">*</span>
@@ -678,6 +709,7 @@ const PostJobsForm = () => {
               </option>
             </select>
           </div>
+
           {/* Educational qualification */}
           <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop  font-semibold">
