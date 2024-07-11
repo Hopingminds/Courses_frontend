@@ -6,6 +6,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
 import axios from "axios";
 import { formatDate } from "../../helpers/helper_function";
+import { applyJob, getAllJobAplicants } from '../../helpers/helperapi'
+import toast, { Toaster } from "react-hot-toast";
 
 const JobPreview = () => {
   const [loader, setLoader] = useState(true);
@@ -32,13 +34,32 @@ const JobPreview = () => {
       setLoader(false);
     }
   };
+  const handleApply = async (e, id) => {
+    // e.stopPropagation();
+    // e.preventDefault();
+    try {
+        const res = await applyJob(id)
+        console.log(res)
+        if (res) {
 
+            toast.success('You have Successfully Applied')
+        }
+        else {
+            toast.error("Error while applying")
+        }
+    } catch (error) {
+        toast.error("Error while applying")
+    }
+
+
+}
   useEffect(() => {
     getJobDetails();
   }, []);
 
   return (
     <div className="bg-[#f7f7f7] px-[12%] py-[3%]">
+      <Toaster/>
       <div className="bg-white border font-pop rounded-2xl">
         {/* Heading */}
         <div className="px-8 py-4 border-b  flex flex-col gap-1">
@@ -59,8 +80,8 @@ const JobPreview = () => {
               <div className="flex items-center gap-3">
                 <GiWallet fontSize={"1.3rem"} className="text-gray-500" />
                 <p className="font-nu text-[12px]">
-                  ₹{jobDetails?.annual_salary_range?.from}-{" "}
-                  {jobDetails?.annual_salary_range?.to}
+                  {jobDetails?.annual_salary_range?.from}-{" "}
+                  {jobDetails?.annual_salary_range?.to} LPA
                 </p>
               </div>
               <div className="flex items-center gap-3">
@@ -68,11 +89,11 @@ const JobPreview = () => {
                   fontSize={"1.3rem"}
                   className="text-gray-500"
                 />
-                <p className="font-nu text-[12px]">{jobDetails?.location}</p>
+                <p className="font-nu text-[12px]">{jobDetails?.company_address}</p>
               </div>
             </div>
             <div className="flex items-end">
-              <button className="font-medium text-[20px] bg-green-400 text-white px-6 py-1 rounded-full">
+              <button onClick={(e)=>handleApply(e,searchParams.get("jobid"))} className="font-medium text-[20px] bg-green-400 text-white px-6 py-1 rounded-full">
                 Apply Now
               </button>
             </div>
@@ -85,9 +106,9 @@ const JobPreview = () => {
                 {formatDate(jobDetails?.publishDate)}
               </span>
             </p>
-            <p className="font-nu text-[14px]">
+            {/* <p className="font-nu text-[14px]">
               Openings: <span className="font-semibold">1</span>{" "}
-            </p>
+            </p> */}
           </div>
         </div>
         {/* Job Information */}

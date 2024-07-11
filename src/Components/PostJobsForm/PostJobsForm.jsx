@@ -15,8 +15,8 @@ const INITIAL_FORM_STATE = {
   departmentRoleCategory: "",
   company: "",
   workMode: "",
-  workExperience: { minExperience: "", maxExperience: "" },
-  annualSalaryRange: { currency: "INR", minSalary: "", maxSalary: "" },
+  workExperience: { from: "", to: "" },
+  annualSalaryRange: { currency: "INR", from: "", to: "" },
   companyIndustry: "",
   educationalQualification: "",
   specialization: "",
@@ -44,11 +44,11 @@ const PostJobsForm = () => {
     departmentRoleCategory: "",
     company: "",
     workMode: "",
-    workExperience: { minExperience: "", maxExperience: "" },
+    workExperience: { from: "", to: "" },
     annualSalaryRange: {
       currency: "INR",
-      minSalary: "10000",
-      maxSalary: "50000",
+      from: "100000",
+      to: "1000000",
     },
     companyIndustry: "",
     educationalQualification: "",
@@ -59,19 +59,20 @@ const PostJobsForm = () => {
     companyAddress: "",
     jobDescription: "",
   });
+  const handleSalary = (e) => {
+    const { name, value } = e.target;
 
+    setFormData({
+      ...formData,
+      annualSalaryRange: {
+        ...formData.annualSalaryRange,
+        [name]: value,
+      },
+    });
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "currency" || name === "minSalary" || name === "maxSalary") {
-      // Update annualSalaryRange state when currency or salary values change
-      setFormData({
-        ...formData,
-        annualSalaryRange: {
-          ...formData.annualSalaryRange,
-          [name]: value,
-        },
-      });
-    } else if (name === "minExperience" || name === "maxExperience") {
+    if (name === "from" || name === "to") {
       // Update workExperience state when min/max experience changes
       setFormData({
         ...formData,
@@ -136,10 +137,10 @@ const PostJobsForm = () => {
       "departmentRoleCategory",
       "company",
       "workMode",
-      "workExperience.minExperience",
-      "workExperience.maxExperience",
-      "annualSalaryRange.minSalary",
-      "annualSalaryRange.maxSalary",
+      "workExperience.from",
+      "workExperience.to",
+      "annualSalaryRange.from",
+      "annualSalaryRange.to",
       "companyIndustry",
       "educationalQualification",
       "interviewmode",
@@ -187,7 +188,7 @@ const PostJobsForm = () => {
       company_website_link: formData.websiteurl,
       company_address: formData?.companyAddress,
       key_skills: addedSkills,
-      job_description: jd,  
+      job_description: jd,
     };
 
     console.log("Submitting Form Data:", newFormData);
@@ -531,9 +532,9 @@ const PostJobsForm = () => {
             </p>
             <div className="flex items-center gap-2">
               <select
-                name="minExperience"
+                name="from"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
-                value={formData.workExperience.min}
+                value={formData.workExperience.from}
                 onChange={handleChange}
               >
                 {/* Add options for minimum years of experience */}
@@ -551,9 +552,9 @@ const PostJobsForm = () => {
               </select>
               <p className="text-gray-500 text-[16px]">To</p>
               <select
-                name="maxExperience"
+                name="to"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
-                value={formData.workExperience.max}
+                value={formData.workExperience.to}
                 onChange={handleChange}
               >
                 {/* Add options for maximum years of experience */}
@@ -585,7 +586,7 @@ const PostJobsForm = () => {
                 name="currency"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px]"
                 value={formData.annualSalaryRange.currency}
-                onChange={handleChange}
+                onChange={handleSalary}
               >
                 {/* Add options for currency selection */}
                 {/* Example: */}
@@ -596,32 +597,45 @@ const PostJobsForm = () => {
                 {/* Add more currency options as needed */}
               </select>
               <select
-                name="minSalary"
+                name="from"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
-                value={formData.annualSalaryRange.minSalary}
-                onChange={handleChange}
+                value={formData.annualSalaryRange.from}
+                onChange={handleSalary}
               >
                 {/* Add options for minimum salary range */}
                 {/* Example: */}
-                <option value="10000" selected>
-                  10,000
-                </option>
-                <option value="20000">20,000</option>
+                <option value="" selected>starting salary</option>
+                <option value="100000">1,00,000</option>
+                <option value="200000">2,00,000</option>
+                <option value="300000">3,00,000</option>
+                <option value="400000">4,00,000</option>
+                <option value="500000">5,00,000</option>
+                <option value="600000">6,00,000</option>
+                <option value="700000">7,00,000</option>
+                <option value="800000">8,00,000</option>
+                <option value="900000">9,00,000</option>
+                <option value="1000000">10,00,000</option>
                 {/* Add more salary options as needed */}
               </select>
               <p className="text-gray-500 text-[16px]">To</p>
               <select
-                name="maxSalary"
+                name="to"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
-                value={formData.annualSalaryRange.maxSalary}
-                onChange={handleChange}
+                value={formData.annualSalaryRange.to}
+                onChange={handleSalary}
               >
                 {/* Add options for maximum salary range */}
                 {/* Example: */}
-                <option value="50000" selected>
-                  50,000
-                </option>
-                <option value="100000">100,000</option>
+                <option value="" selected>starting salary</option>
+                <option value="200000">2,00,000</option>
+                <option value="300000">3,00,000</option>
+                <option value="400000">4,00,000</option>
+                <option value="500000">5,00,000</option>
+                <option value="600000">6,00,000</option>
+                <option value="700000">7,00,000</option>
+                <option value="800000">8,00,000</option>
+                <option value="900000">9,00,000</option>
+                <option value="1000000">10,00,000</option>
                 {/* Add more salary options as needed */}
               </select>
             </div>
