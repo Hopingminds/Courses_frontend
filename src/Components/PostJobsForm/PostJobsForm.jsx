@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
-import DatePicker from "react-datepicker"
 
 const INITIAL_FORM_STATE = {
   logoUrl: "",

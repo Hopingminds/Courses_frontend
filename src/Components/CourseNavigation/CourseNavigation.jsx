@@ -28,7 +28,7 @@ const CourseNavigation = ({
   };
   return (
     <div className="w-full min-h-[540px] mt-[20px] xsm:w-full">
-      <div className="grid grid-cols-6 border w-full overflow-hidden border-[#EAEAEA] font-nu font-semibold text-[16px] xsm:text-[10px] leading-[24px] rounded-t-[20px] xsm:w-full">
+      <div className="grid grid-cols-5 border w-full overflow-hidden border-[#EAEAEA] font-nu font-semibold text-[16px] xsm:text-[10px] leading-[24px] rounded-t-[20px] xsm:w-full">
         <button
           className={`btn_corners_first py-[12px]  ${
             activeComponent === "Overview" ? "bg-[#1FC074] text-[#FFFFFF]" : ""
@@ -67,14 +67,14 @@ const CourseNavigation = ({
         >
           MyStats
         </button>
-        <button
+        {/* <button
           className={`btn_border py-[12px] border-l border-[#EAEAEA] ${
             activeComponent === "liveClass" ? "bg-[#1FC074] text-[#FFFFFF]" : ""
           }`}
           onClick={() => renderComponent("liveClass")}
         >
           Live Class
-        </button>
+        </button> */}
         <button
           className={`btn_corners_last py-[12px] border-l border-[#EAEAEA] ${
             activeComponent === "assessment" ? "bg-[#1FC074] text-[#FFFFFF]" : ""
@@ -98,7 +98,7 @@ const CourseNavigation = ({
           courseAssignment={courseAssignment}
         />
       )}
-      {activeComponent === "liveClass" && <LiveClass data={liveclass} />}
+      {/* {activeComponent === "liveClass" && <LiveClass data={liveclass} />} */}
       {activeComponent === "assessment" && <CNAssessment slug={slug}/>}
     </div>
   );

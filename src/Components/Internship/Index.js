@@ -413,7 +413,7 @@ const Internship = () => {
 
       {/* recommended cards */}
       <RecommendedCourses />
-      <MinorDegree />
+      {/* <MinorDegree /> */}
       {/* <div className="flex flex-col gap-10 bg-[#E2FFF1] px-28 py-16 xsm:px-[5%] xsm:py-[5%] xsm:gap-2">
         <p className="text-[#000000] text-[30px] font-pop font-semibold xsm:text-[8px]">
           What our students have to say

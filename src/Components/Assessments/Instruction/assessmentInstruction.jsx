@@ -89,12 +89,12 @@ const Assessmentinstruction = () => {
       <div>
       {/* prassessmentquestions */}
         {
-            searchparams.get('pr')==="true1" ? <Link to={`/prassessmentquestions?assessmentId=${searchparams.get('assessmentId')}&pr=${searchparams.get('pr')}`}
+            searchparams.get('pr')==="true1" ? <Link to={`/prassessmentquestions?assessmentId=${searchparams.get('assessmentId')}&pr=${searchparams.get('pr')}&index=1`}
             className={`mt-4 px-4 py-2 bg-[#1dbf73] text-white font-bold rounded ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`} 
             disabled={!isChecked}
           >
             Ready to Begin
-          </Link> : <Link to={`/assessmentquestions?assessmentId=${searchparams.get('assessmentId')}&pr=${searchparams.get('pr')}`}
+          </Link> : <Link to={`/assessmentquestions?assessmentId=${searchparams.get('assessmentId')}&pr=${searchparams.get('pr')}&index=1`}
         className={`mt-4 px-4 py-2 bg-[#1dbf73] text-white font-bold rounded ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`} 
         disabled={!isChecked}
       >
