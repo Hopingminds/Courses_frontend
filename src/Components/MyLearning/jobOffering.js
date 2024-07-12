@@ -10,7 +10,29 @@ const JobOffering = ({ courses }) => {
 
   const [jobOpeningData, setJobOpeningData] = useState();
   const [isApplied, setIsApplied] = useState(false);
+  function formatDate(dateString) {
+    const dateObj = new Date(dateString);
+    
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const year = dateObj.getFullYear();
 
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June", 
+        "July", "August", "September", "October", "November", "December"
+    ];
+    const month = monthNames[dateObj.getMonth()];
+
+    let hours = dateObj.getHours();
+    const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    
+    const time = `${hours}.${minutes}${ampm}`;
+
+    return `${day} ${month} ${year} ${time}`;
+}
   useEffect(() => {
     getAllJobAplicants();
     fetchUserData();
@@ -76,7 +98,7 @@ const JobOffering = ({ courses }) => {
                   key={ind}
                   className="h-[12rem] w-full flex flex-row gap-4 bg-[#E2FFF1] p-4 mt-4 rounded-2xl justify-between shadow-2xl shadow-[#D9D9D9] xsm:p-2 xsm:rounded-lg xsm:h-[10vh] md:mt-0 md:p-3"
                 >
-                  <div className="w-[25%] rounded-2xl">
+                  <div className="w-[35%] rounded-2xl">
                     <img
                       className="w-full h-full rounded-xl xsm:rounded-lg object-cover "
                       src={item?.logoUrl}
@@ -90,7 +112,7 @@ const JobOffering = ({ courses }) => {
                       <p className="font-pop text-[#555555] text-[13px] xsm:hidden md:text-[10px]">
                         {item.company}
                       </p>
-                      <div className="flex space-x-36 xsm:space-x-10 md:space-x-16">
+                      <div className="flex gap-20 xsm:space-x-10 md:space-x-16">
                         <div className="flex space-x-2 items-center xsm:space-x-1">
                           <img
                             className="w-[16px] h-[16px] xsm:w-3 xsm:h-3 md:w-4 md:h-4 object-cover"
@@ -109,22 +131,22 @@ const JobOffering = ({ courses }) => {
                             {item.interview_mode}
                           </p>
                         </div>
-                        <p className="font-semibold text-sm">{item.annual_salary_range.from}-{item.annual_salary_range.from} LPA</p>
+                        <p className=" text-sm">₹{item.annual_salary_range.from}-{item.annual_salary_range.from} LPA</p>
                       </div>
                     </div>
-                    <div className="flex space-x-2 items-center xsm:space-x-1 w-[70%]">
-                      <h3 className="text-sm font-semibold">Expiry Date</h3>
+                    <div className="flex gap-2 items-center xsm:space-x-1 w-[70%]">
+                      <h3 className="text-[14px] font-semibold">Job expires on</h3>
 
-                      <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
-                        {new Date(item.lastDate).toISOString().split("T")[0]}
+                      <p className="font-pop text-[14px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
+                        {formatDate(item.lastDate)}
                       </p>
                     </div>
 
 
-                    <div className="flex space-x-2 items-center xsm:space-x-1 w-[50%]">
-                      <h3 className="text-sm font-semibold">Position</h3>
+                    <div className="flex gap-2 items-center xsm:space-x-1 w-[70%]">
+                      <h3 className="text-[14px] font-semibold">Position</h3>
 
-                      <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
+                      <p className="font-pop text-[14px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
                         
                         {item.position}
                       </p>

@@ -49,8 +49,8 @@ const PostJobsForm = () => {
     workExperience: { from: "", to: "" },
     annualSalaryRange: {
       currency: "INR",
-      from: "100000",
-      to: "1000000",
+      from: "",
+      to: "",
     },
     companyIndustry: "",
     educationalQualification: "",
@@ -199,7 +199,7 @@ const PostJobsForm = () => {
       job_description: jd,
     };
 
-    console.log("Submitting Form Data:", newFormData);
+    // console.log("Submitting Form Data:", newFormData);
 
     postAJob(newFormData);
 
@@ -209,7 +209,7 @@ const PostJobsForm = () => {
     setJd("");
     setKeySkill("");
     setJobLocation("");
-    toast.success("Job Posted Successfully");
+    // toast.success("Job Posted Successfully");
 
     setTimeout(() => {
       navigate("/managejobs");
@@ -228,7 +228,7 @@ const PostJobsForm = () => {
           },
         }
       );
-      console.log(res);
+      // console.log(res);
       toast.success("Job Posted Successfully");
     } catch (error) {
       console.log(error);
@@ -539,55 +539,29 @@ const PostJobsForm = () => {
               <span className="text-red-500 text-[16px]">*</span>
             </p>
             <div className="flex items-center gap-2">
-              <select
+              <input
                 name="from"
+                type="number"
+                 placeholder="Years"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
                 value={formData.workExperience.from}
                 onChange={handleChange}
-              >
-                {/* Add options for minimum years of experience */}
-                {/* Example: */}
-                <option value="0" selected>
-                  0
-                </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                {/* Add more options as needed */}
-              </select>
+              />               
               <p className="text-gray-500 text-[16px]">To</p>
-              <select
-                name="to"
+              <input
+                name="to" type="number"
+                placeholder="Years"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
                 value={formData.workExperience.to}
                 onChange={handleChange}
-              >
-                {/* Add options for maximum years of experience */}
-                {/* Example: */}
-                <option value="1" selected>
-                  1
-                </option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10+">10+</option>
-                {/* Add more options as needed */}
-              </select>
+              />
             </div>
           </div>
 
           {/* Start and end date  */}
           <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop font-semibold">
-              Dates{" "}
+             Registeration Dates{" "}
               <span className="text-red-500 text-[16px]">*</span>
             </p>
             <div className="flex items-center gap-5">
@@ -607,75 +581,33 @@ const PostJobsForm = () => {
               <span className="text-red-500 text-[16px]">*</span>
             </p>
             <div className="flex items-center gap-2">
-              <select
+              {/* <select
                 name="currency"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px]"
                 value={formData.annualSalaryRange.currency}
                 onChange={handleSalary}
               >
-                {/* Add options for currency selection */}
-                {/* Example: */}
                 <option value="INR" selected>
                   LPA
                 </option>
-                {/* Add more currency options as needed */}
-              </select>
-              <select
+              </select> */}
+              <input
                 name="from"
+                type="number"
+                placeholder="LPA"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
                 value={formData.annualSalaryRange.from}
                 onChange={handleSalary}
-              >
-                {/* Add options for minimum salary range */}
-                {/* Example: */}
-                <option value="" selected>
-                  Starting salary
-                </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-               
-                {/* Add more salary options as needed */}
-              </select>
+              />
               <p className="text-gray-500 text-[16px]">To</p>
-              <select
+              <input
                 name="to"
+                  type="number"
+                  placeholder="LPA"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
                 value={formData.annualSalaryRange.to}
                 onChange={handleSalary}
-              >
-                {/* Add options for maximum salary range */}
-                {/* Example: */}
-                <option value="" selected>
-                  Ending salary
-                </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                {/* Add more salary options as needed */}
-              </select>
+              />
             </div>
           </div>
 
