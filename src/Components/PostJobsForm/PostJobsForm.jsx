@@ -15,8 +15,8 @@ const INITIAL_FORM_STATE = {
   departmentRoleCategory: "",
   company: "",
   workMode: "",
-  workExperience: { from: "", to: "" },
-  annualSalaryRange: { currency: "INR", from: "", to: "" },
+  workExperience: { from: "", to: "",isFresher:false },
+  annual_salary_range: { currency: "INR", from: "", to: "" },
   companyIndustry: "",
   educationalQualification: "",
   specialization: "",
@@ -27,6 +27,9 @@ const INITIAL_FORM_STATE = {
   lastDate:"",
   companyAddress: "",
   jobDescription: "",
+  annualSalary: "",
+  uptoPackage: "",
+  key_skills:[]
 };
 
 const PostJobsForm = () => {
@@ -39,6 +42,8 @@ const PostJobsForm = () => {
   const [addedSkills, setAddedSkills] = useState([]);
   const [jobLocation, setJobLocation] = useState("");
   const [addedLocations, setAddedLocations] = useState([]);
+  const [experiencetype, setexperiencetype] = useState("Fresher")
+  const [salaryType, setsalaryType] = useState("Salary Range")
   const [formData, setFormData] = useState({
     logoUrl: "",
     position: "",
@@ -46,8 +51,8 @@ const PostJobsForm = () => {
     departmentRoleCategory: "",
     company: "",
     workMode: "",
-    workExperience: { from: "", to: "" },
-    annualSalaryRange: {
+    workExperience: { from: "", to: "",isFresher:true },
+    annual_salary_range: {
       currency: "INR",
       from: "",
       to: "",
@@ -61,15 +66,69 @@ const PostJobsForm = () => {
     publishDate:"",
     lastDate:"",
     companyAddress: "",
+    annualSalary: "",
+  uptoPackage: "",
+  salaryType: "",
     jobDescription: "",
+    key_skills:[]
   });
+
+  const jobTitles = [
+    "Assistant Software Engineer",
+    "Web Engineer Trainee",
+    "Jr System Administrator",
+    "SDE/ React Dev.",
+    "Jr. Software Engineer Trainee / Jr. QA Trainee",
+    "Software Associate",
+    "Trainee QA",
+    "Software Consultant",
+    "Associate Business Analyst",
+    "Admission Counsellor",
+    "Business Development Associate",
+    "Coordinator Tech. Support/ Engineering Assistant/ Coordinator: EV Services",
+    "Fashion Consultant- Assisted Business",
+    "DEVOPS & SRE",
+    "System Developer",
+    "Software Engineer Trainee",
+    "Frontend Developer",
+    "Jr. Software Developer",
+    "Jr. Research and data mining analyst",
+    "Business Development Executive",
+    "DotNet Developer",
+    "Client Relationship",
+    "Software Developer",
+    "Software Development Engineer",
+    "Jr, Java Developer/ Full Stack Developer",
+    "Full Stack Developer/Strategy & Operations Executive & Business Development Executiv/Electronics Associate Engineer",
+    "Application Developer Associate /Application Engineer Associate",
+    "Sales",
+    "Intern- Frontend Developer and Intern- Backend Developer",
+    "Trainee, Information Security/Software Developer",
+    "SDE, UI/UX",
+    "Jr. DevOps Engineer",
+    "Backend Engineer and Full Stack Engineer",
+    "Cyber Security Associate",
+    "MERN Stack Developer/Python Developer",
+    "Web Developer / Web Designer",
+    "Software Developement Executive/Associate Software Developer",
+    "Support Trainee",
+    "BDE",
+    "BDA",
+    "Application Engineer 1",
+    "Full Stack Web Developer",
+    "Interns-Data Analyst, Business Development, Sales and Marketing, D 365 BC Functional Consultant, D 365 CE Functional Consultant, D 365 FO Functional Consultant, D 365 BC Developer, D 365 FO Developer and .Net Developer",
+    "International- Customer Service",
+    "Frontend Web Technologies Intern, Marketing Research and Business Development Executive",
+    "Cloud Admininstration Intern"
+];
+
   const handleSalary = (e) => {
     const { name, value } = e.target;
 
     setFormData({
       ...formData,
-      annualSalaryRange: {
-        ...formData.annualSalaryRange,
+      annual_salary_range: {
+        ...formData.annual_salary_range,
         [name]: value,
       },
     });
@@ -83,6 +142,7 @@ const PostJobsForm = () => {
         workExperience: {
           ...formData.workExperience,
           [name]: value,
+          isFresher:false
         },
       });
     } else {
@@ -105,6 +165,7 @@ const PostJobsForm = () => {
     const updatedSkills = addedSkills.filter(
       (skill) => skill !== skillToRemove
     );
+
     setAddedSkills(updatedSkills);
   };
 
@@ -129,12 +190,12 @@ const PostJobsForm = () => {
     }
   };
 
-  console.log(formData);
-  console.log(addedLocations);
+  // console.log(formData);
+  // console.log(addedLocations);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-
+    // console.log(addedSkills);
     const requiredFields = [
       "position",
       "employmentType",
@@ -143,8 +204,8 @@ const PostJobsForm = () => {
       "workMode",
       "workExperience.from",
       "workExperience.to",
-      "annualSalaryRange.from",
-      "annualSalaryRange.to",
+      "annual_salary_range.from",
+      "annual_salary_range.to",
       "companyIndustry",
       "educationalQualification",
       "interviewmode",
@@ -154,6 +215,10 @@ const PostJobsForm = () => {
       "publishDate",
       "lastDate",
       "companyAddress",
+      "annualSalary",
+      "uptoPackage",
+      "salaryType",
+
     ];
 
     // Check if any required field is empty
@@ -183,9 +248,9 @@ const PostJobsForm = () => {
       company: formData?.company,
       role_category: formData?.departmentRoleCategory,
       work_mode: formData?.workMode,
-      location: addedLocations[0],
+      company_address: addedLocations[0],
       work_experience: formData?.workExperience,
-      annual_salary_range: formData?.annualSalaryRange,
+      annual_salary_range: formData?.annual_salary_range,
       company_industry: formData?.companyIndustry,
       educational_qualification: formData?.educationalQualification,
       specialization: formData?.specialization,
@@ -194,26 +259,29 @@ const PostJobsForm = () => {
       company_website_link: formData.websiteurl,
       company_address: formData?.companyAddress,
       publishDate: formData?.publishDate,
+      annualSalary: formData?.annualSalary,
+      uptoPackage: formData?.uptoPackage,
       lastDate: formData?.lastDate,
+      salaryType: salaryType,
       key_skills: addedSkills,
       job_description: jd,
     };
-
+// console.log("newformdata",newFormData);
     // console.log("Submitting Form Data:", newFormData);
 
-    postAJob(newFormData);
+   await postAJob(newFormData);
 
-    setFormData(INITIAL_FORM_STATE);
-    setAddedSkills([]);
-    setAddedLocations([]);
-    setJd("");
-    setKeySkill("");
-    setJobLocation("");
+    // setFormData(INITIAL_FORM_STATE);
+    // setAddedSkills([]);
+    // setAddedLocations([]);
+    // setJd("");
+    // setKeySkill("");
+    // setJobLocation("");
     // toast.success("Job Posted Successfully");
 
-    setTimeout(() => {
-      navigate("/managejobs");
-    }, 2000);
+    // setTimeout(() => {
+    //   navigate("/managejobs");
+    // }, 2000);
   };
 
   const postAJob = async (newFormData) => {
@@ -383,7 +451,7 @@ const PostJobsForm = () => {
               className="border outline-none px-2 py-4 xsm:py-3 text-[14px] xsm:text-[12px] w-full"
               value={keySkill}
               onChange={(e) => setKeySkill(e.target.value)}
-              onKeyPress={(e) => handleKeyPress(e, handleAddSkill)}
+              onKeyDown={(e) => handleKeyPress(e, handleAddSkill)}
             />
           </div>
           {/* Display added key skills as tags */}
@@ -426,7 +494,7 @@ const PostJobsForm = () => {
           {/* Department & Role category */}
           <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop  font-semibold">
-              Department & Role category{" "}
+              Role category{" "}
               <span className="text-red-500 text-[16px]">*</span>
             </p>
             <select
@@ -438,33 +506,9 @@ const PostJobsForm = () => {
               <option className="border-none" value="" selected disabled hidden>
                 Select Your Department Role
               </option>
-              <option
-                className="border-none"
-                value="Engineering - Software & QA"
-              >
-                Engineering - Software & QA
-              </option>
-              <option
-                className="border-none"
-                value="Customer Success, Service & Operations"
-              >
-                Customer Success, Service & Operations
-              </option>
-              <option className="border-none" value="IT & Information Security">
-                IT & Information Security
-              </option>
-              <option className="border-none" value="Human Resources">
-                Human Resources
-              </option>
-              <option className="border-none" value="Marketing & Communication">
-                Marketing & Communication
-              </option>
-              <option
-                className="border-none"
-                value="Sales & Business Development"
-              >
-                Sales & Business Development
-              </option>
+              {jobTitles?.map((item,ind)=>{
+               return <option key={ind} className="border-none" value={item}>{item}</option>
+              })}
             </select>
           </div>
           {/* Work mode */}
@@ -507,7 +551,7 @@ const PostJobsForm = () => {
               className="border outline-none px-4 py-2 text-[14px] xsm:text-[12px] w-full"
               value={jobLocation}
               onChange={(e) => setJobLocation(e.target.value)}
-              onKeyPress={(e) => handleKeyPress(e, handleAddLocation)}
+              onKeyDown={(e) => handleKeyPress(e, handleAddLocation)}
             />
           </div>
           {/* Display added job locations as tags */}
@@ -539,6 +583,18 @@ const PostJobsForm = () => {
               <span className="text-red-500 text-[16px]">*</span>
             </p>
             <div className="flex items-center gap-2">
+              <select
+                 
+                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
+                 value={experiencetype}
+                 onChange={(e)=>setexperiencetype(e.target.value)}
+              >
+                <option value="Fresher">Fresher</option>
+                <option value="Experienced">Experienced</option>
+              </select>
+              {
+                experiencetype==="Experienced" ?
+              <>
               <input
                 name="from"
                 type="number"
@@ -554,7 +610,7 @@ const PostJobsForm = () => {
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
                 value={formData.workExperience.to}
                 onChange={handleChange}
-              />
+              /></>:''}
             </div>
           </div>
 
@@ -577,26 +633,38 @@ const PostJobsForm = () => {
           {/* Annual salary range */}
           <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop font-semibold">
-              Annual salary range{" "}
+              Annual salary {" "}
               <span className="text-red-500 text-[16px]">*</span>
             </p>
             <div className="flex items-center gap-2">
+            <select
+                 
+                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
+                 value={salaryType}
+                 onChange={(e)=>setsalaryType(e.target.value)}
+              >
+                <option value="Salary Range">Salary Range</option>
+                <option value="Fixed Package">Fixed Package</option>
+                <option value="Upto">Upto</option>
+              </select>
               {/* <select
                 name="currency"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px]"
-                value={formData.annualSalaryRange.currency}
+                value={formData.annual_salary_range.currency}
                 onChange={handleSalary}
               >
                 <option value="INR" selected>
                   LPA
                 </option>
               </select> */}
+              {salaryType=="Salary Range" ?
+              <>
               <input
                 name="from"
                 type="number"
                 placeholder="LPA"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
-                value={formData.annualSalaryRange.from}
+                value={formData.annual_salary_range.from}
                 onChange={handleSalary}
               />
               <p className="text-gray-500 text-[16px]">To</p>
@@ -605,9 +673,28 @@ const PostJobsForm = () => {
                   type="number"
                   placeholder="LPA"
                 className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
-                value={formData.annualSalaryRange.to}
+                value={formData.annual_salary_range.to}
                 onChange={handleSalary}
               />
+              </>:
+              salaryType=="Salary Range" ?
+              <input
+              name="annualSalary"
+                type="number"
+                placeholder="LPA"
+              className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
+              value={formData.annualSalary}
+              onChange={handleChange}
+            />:      <input
+            name="uptoPackage"
+              type="number"
+              placeholder="LPA"
+            className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
+            value={formData.uptoPackage}
+            onChange={handleChange}
+          />
+              }
+              
             </div>
           </div>
 
@@ -703,9 +790,6 @@ const PostJobsForm = () => {
               value={formData.interviewmode}
               onChange={handleChange}
             >
-              <option className="border-none" value="" selected>
-                Interview Mode
-              </option>
               <option className="border-none" value="Virtual" selected>
                 Virtual
               </option>

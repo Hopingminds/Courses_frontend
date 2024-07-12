@@ -88,9 +88,10 @@ const JobOffering = ({ courses }) => {
           )}
 
           {jobOpeningData?.map((item, ind) => {
-            let expiry=new Date(item.lastDate);
+            let expiry=new Date(item?.lastDate);
             let today=new Date()
             let check=expiry<today;
+            // console.log("keyskills",item?.key_skills);
             return (
               <>
                 <div
@@ -107,10 +108,10 @@ const JobOffering = ({ courses }) => {
                   <div className="w-full flex flex-col justify-between">
                     <div className="space-y-2 xsm:space-y-1">
                       <p className="font-pop font-semibold text-[18px] xsm:text-[12px] md:text-[16px]">
-                        {item.position}
+                        {item?.position}
                       </p>
                       <p className="font-pop text-[#555555] text-[13px] xsm:hidden md:text-[10px]">
-                        {item.company}
+                        {item?.company}
                       </p>
                       <div className="flex gap-20 xsm:space-x-10 md:space-x-16">
                         <div className="flex space-x-2 items-center xsm:space-x-1">
@@ -119,44 +120,47 @@ const JobOffering = ({ courses }) => {
                             src="../Icons/RCDesign.svg"
                           />
                           <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
-                            {item.company_address}
+                            {item?.interview_mode}
                           </p>
                         </div>
-                        <div className="flex space-x-2 items-center xsm:space-x-1">
-                          <img
-                            className="w-[16px] h-[16px] xsm:w-3 xsm:h-3 md:w-4 md:h-4 object-cover"
-                            src="../Icons/RCDesign.svg"
-                          />
-                          <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
-                            {item.interview_mode}
-                          </p>
-                        </div>
-                        <p className=" text-sm">₹{item.annual_salary_range.from}-{item.annual_salary_range.from} LPA</p>
+                        {item.salaryType=="Salary Range" ?<p className=" text-sm">₹{item?.annual_salary_range.from}-{item?.annual_salary_range.from} LPA</p>:
+                        item.salaryType=="Upto" ?<p className=" text-sm">Upto ₹{item?.uptoPackage} LPA</p>:
+                        <p className=" text-sm">₹{item?.annualSalary} LPA</p>
+}
                       </div>
                     </div>
+                    <div className="flex space-x-2 items-center xsm:space-x-1">
+                        <p className="text-[14px] font-semibold">Skills required</p>
+                        {item?.key_skills?.map((it)=>{
+                          return<p className="font-pop capitalize text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
+                            {it},
+                              </p>
+                            })}
+                         
+                        </div>
                     <div className="flex gap-2 items-center xsm:space-x-1 w-[70%]">
                       <h3 className="text-[14px] font-semibold">Job expires on</h3>
 
                       <p className="font-pop text-[14px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
-                        {formatDate(item.lastDate)}
+                        {formatDate(item?.lastDate)}
                       </p>
                     </div>
 
 
-                    <div className="flex gap-2 items-center xsm:space-x-1 w-[70%]">
+                    {/* <div className="flex gap-2 items-center xsm:space-x-1 w-[70%]">
                       <h3 className="text-[14px] font-semibold">Position</h3>
 
                       <p className="font-pop text-[14px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
                         
-                        {item.position}
+                        {item?.position}
                       </p>
-                    </div>
+                    </div> */}
                   </div>
-                  <div className="flex w-[25%] justify-end  justify-self-end items-start md:mt-2">
+                  <div className="flex flex-col w-[25%] justify-start gap-3 justify-self-start items-start md:mt-2">
                     {!isApplied && (
                       <button
-                        onClick={(e) => handleApply(e, item._id)}
-                        className={`bg-[#1DBF73] py-2 px-6 mr-12 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 ${check ? 'cursor-not-allowed opacity-50 pointer-events-none':''}`}
+                        onClick={(e) => handleApply(e, item?._id)}
+                        className={`bg-[#1DBF73] py-1 px-6 mr-12 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 ${check ? 'cursor-not-allowed opacity-50 pointer-events-none':''}`}
                       >
                         Apply
                       </button>
@@ -164,7 +168,7 @@ const JobOffering = ({ courses }) => {
 
                     <button
                       onClick={() => navigate("/jobpreview?jobid=" + item?._id)}
-                      className={`bg-[#3064d4] py-2 px-6 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 ${check ? 'cursor-not-allowed opacity-50 pointer-events-none':''}`}
+                      className={`bg-transparent text-[#1DBF73] py-1 px-6 rounded-full border border-[#1DBF73] text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 `}
                     >
                       View
                     </button>
