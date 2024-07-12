@@ -23,7 +23,7 @@ const JobOffering = ({ courses }) => {
           Authorization: `Bearer ${localStorage.getItem("COURSES_USER_TOKEN")}`,
         },
       });
-      console.log(res.data?.jobOpenings);
+      // console.log(res.data?.jobOpenings);
       setJobOpeningData(res?.data?.jobOpenings);
     } catch (error) {
       console.log(error);
@@ -35,7 +35,7 @@ const JobOffering = ({ courses }) => {
     e.preventDefault();
     try {
       const res = await applyJob(id);
-      console.log(res);
+      // console.log(res);
       if (res) {
         toast.success("You have Successfully Applied");
       } else {
@@ -51,7 +51,7 @@ const JobOffering = ({ courses }) => {
       <div className="px-[5%] my-[3%] flex gap-10 space-y-8 justify-between xsm:flex-col-reverse xsm:mt-3">
         <div
           className={`flex flex-col justify-between xsm:w-[100%] md:w-[65%] md:gap-3 ${
-            !jobOpeningData ? "w-full" : "w-[50%]"
+            !jobOpeningData ? "w-full" : "w-[60%]"
           }`}
         >
           {!jobOpeningData ? (
@@ -66,6 +66,9 @@ const JobOffering = ({ courses }) => {
           )}
 
           {jobOpeningData?.map((item, ind) => {
+            let expiry=new Date(item.lastDate);
+            let today=new Date()
+            let check=expiry<today;
             return (
               <>
                 <div
@@ -79,7 +82,7 @@ const JobOffering = ({ courses }) => {
                       src={item?.logoUrl}
                     />
                   </div>
-                  <div className="w-[60%] flex flex-col justify-between">
+                  <div className="w-full flex flex-col justify-between">
                     <div className="space-y-2 xsm:space-y-1">
                       <p className="font-pop font-semibold text-[18px] xsm:text-[12px] md:text-[16px]">
                         {item.position}
@@ -94,7 +97,7 @@ const JobOffering = ({ courses }) => {
                             src="../Icons/RCDesign.svg"
                           />
                           <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
-                            {item.location}
+                            {item.company_address}
                           </p>
                         </div>
                         <div className="flex space-x-2 items-center xsm:space-x-1">
@@ -106,10 +109,11 @@ const JobOffering = ({ courses }) => {
                             {item.interview_mode}
                           </p>
                         </div>
+                        <p className="font-semibold text-sm">{item.annual_salary_range.from}-{item.annual_salary_range.from} LPA</p>
                       </div>
                     </div>
-                    <div className="flex space-x-2 items-center xsm:space-x-1 w-[50%]">
-                      <h3>Expiry Date</h3>
+                    <div className="flex space-x-2 items-center xsm:space-x-1 w-[70%]">
+                      <h3 className="text-sm font-semibold">Expiry Date</h3>
 
                       <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
                         {new Date(item.lastDate).toISOString().split("T")[0]}
@@ -118,7 +122,7 @@ const JobOffering = ({ courses }) => {
 
 
                     <div className="flex space-x-2 items-center xsm:space-x-1 w-[50%]">
-                      <h3>Position</h3>
+                      <h3 className="text-sm font-semibold">Position</h3>
 
                       <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
                         
@@ -130,7 +134,7 @@ const JobOffering = ({ courses }) => {
                     {!isApplied && (
                       <button
                         onClick={(e) => handleApply(e, item._id)}
-                        className="bg-[#1DBF73] py-2 px-6 mr-12 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1"
+                        className={`bg-[#1DBF73] py-2 px-6 mr-12 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 ${check ? 'cursor-not-allowed opacity-50 pointer-events-none':''}`}
                       >
                         Apply
                       </button>
@@ -138,7 +142,7 @@ const JobOffering = ({ courses }) => {
 
                     <button
                       onClick={() => navigate("/jobpreview?jobid=" + item?._id)}
-                      className="bg-[#3064d4] py-2 px-6 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1"
+                      className={`bg-[#3064d4] py-2 px-6 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 ${check ? 'cursor-not-allowed opacity-50 pointer-events-none':''}`}
                     >
                       View
                     </button>

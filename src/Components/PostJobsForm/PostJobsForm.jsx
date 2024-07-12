@@ -616,9 +616,8 @@ const PostJobsForm = () => {
                 {/* Add options for currency selection */}
                 {/* Example: */}
                 <option value="INR" selected>
-                  ₹
+                  LPA
                 </option>
-                <option value="USD">$</option>
                 {/* Add more currency options as needed */}
               </select>
               <select
@@ -630,18 +629,23 @@ const PostJobsForm = () => {
                 {/* Add options for minimum salary range */}
                 {/* Example: */}
                 <option value="" selected>
-                  starting salary
+                  Starting salary
                 </option>
-                <option value="100000">1,00,000</option>
-                <option value="200000">2,00,000</option>
-                <option value="300000">3,00,000</option>
-                <option value="400000">4,00,000</option>
-                <option value="500000">5,00,000</option>
-                <option value="600000">6,00,000</option>
-                <option value="700000">7,00,000</option>
-                <option value="800000">8,00,000</option>
-                <option value="900000">9,00,000</option>
-                <option value="1000000">10,00,000</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+               
                 {/* Add more salary options as needed */}
               </select>
               <p className="text-gray-500 text-[16px]">To</p>
@@ -654,17 +658,22 @@ const PostJobsForm = () => {
                 {/* Add options for maximum salary range */}
                 {/* Example: */}
                 <option value="" selected>
-                  starting salary
+                  Ending salary
                 </option>
-                <option value="200000">2,00,000</option>
-                <option value="300000">3,00,000</option>
-                <option value="400000">4,00,000</option>
-                <option value="500000">5,00,000</option>
-                <option value="600000">6,00,000</option>
-                <option value="700000">7,00,000</option>
-                <option value="800000">8,00,000</option>
-                <option value="900000">9,00,000</option>
-                <option value="1000000">10,00,000</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
                 {/* Add more salary options as needed */}
               </select>
             </div>
