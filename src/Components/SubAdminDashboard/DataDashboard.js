@@ -70,8 +70,8 @@ data?.purchased_courses?.map((item)=>{
               style={{borderImage:'linear-gradient(toright,#36AE8F,#1A35DD47,#32AF8B)1'}}
             >
               <CircularProgressbar
-                value={(complete/data?.purchased_courses?.length)*100 || 0}
-                text={`${(complete/data?.purchased_courses?.length)*100 || 0}%`}
+                value={((complete/data?.purchased_courses?.length)*100 ).toFixed(2)|| 0}
+                text={`${((complete/data?.purchased_courses?.length)*100).toFixed(2) || 0}%`}
                 styles={buildStyles({
                   strokeLinecap: "butt",
                   pathColor: "#1DBF73",
@@ -88,7 +88,7 @@ data?.purchased_courses?.map((item)=>{
                     Completed
                   </p>
                   <p className="font-nu font-semibold text-[#243465] text-[16px]">
-                    {(complete/data?.purchased_courses?.length)*100 || 0}%
+                    {((complete/data?.purchased_courses?.length)*100).toFixed(2) || 0}%
                   </p>
                 </div>
               </div>
@@ -147,7 +147,7 @@ data?.purchased_courses?.map((item)=>{
               baseBgColor="#EDF2F7"
               labelColor="white"
               labelSize="13px"
-              customLabel={`${(item?.completed_lessons?.length/count)*100 || 0}%`}
+              customLabel={`${((item?.completed_lessons?.length/count)*100).toFixed(2) || 0}%`}
               />
             </div>
           </div>

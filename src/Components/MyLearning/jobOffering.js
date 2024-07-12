@@ -125,7 +125,7 @@ const JobOffering = ({ courses }) => {
                         </div>
                         {item.salaryType=="Salary Range" ?<p className=" text-sm">₹{item?.annual_salary_range.from}-{item?.annual_salary_range.from} LPA</p>:
                         item.salaryType=="Upto" ?<p className=" text-sm">Upto ₹{item?.uptoPackage} LPA</p>:
-                        <p className=" text-sm">₹{item?.annualSalary} LPA</p>
+                        <p className="text-sm">₹{item?.annualSalary} LPA</p>
 }
                       </div>
                     </div>

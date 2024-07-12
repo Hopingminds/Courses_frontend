@@ -31,48 +31,13 @@ const INITIAL_FORM_STATE = {
   uptoPackage: "",
   key_skills:[]
 };
-
+const degrees={
+  "B.Tech/B.E":["CSE","ECE","IT","Any"],
+  "MCA":[],
+  "BCA":[],
+  "MBA":["HR","Marketing"],
+}
 const PostJobsForm = () => {
-  const navigate = useNavigate();
-  const fileInputRef = useRef(null);
-  const [uploadLoader, setUploadLoader] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [jd, setJd] = useState("");
-  const [keySkill, setKeySkill] = useState("");
-  const [addedSkills, setAddedSkills] = useState([]);
-  const [jobLocation, setJobLocation] = useState("");
-  const [addedLocations, setAddedLocations] = useState([]);
-  const [experiencetype, setexperiencetype] = useState("Fresher")
-  const [salaryType, setsalaryType] = useState("Salary Range")
-  const [formData, setFormData] = useState({
-    logoUrl: "",
-    position: "",
-    employment_type: "",
-    departmentRoleCategory: "",
-    company: "",
-    workMode: "",
-    workExperience: { from: "", to: "",isFresher:true },
-    annual_salary_range: {
-      currency: "INR",
-      from: "",
-      to: "",
-    },
-    companyIndustry: "",
-    educationalQualification: "",
-    interviewmode: "",
-    specialization: "",
-    aboutCompany: "",
-    websiteurl: "",
-    publishDate:"",
-    lastDate:"",
-    companyAddress: "",
-    annualSalary: "",
-  uptoPackage: "",
-  salaryType: "",
-    jobDescription: "",
-    key_skills:[]
-  });
-
   const jobTitles = [
     "Assistant Software Engineer",
     "Web Engineer Trainee",
@@ -121,6 +86,48 @@ const PostJobsForm = () => {
     "Frontend Web Technologies Intern, Marketing Research and Business Development Executive",
     "Cloud Admininstration Intern"
 ];
+  const navigate = useNavigate();
+  const fileInputRef = useRef(null);
+  const [uploadLoader, setUploadLoader] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [jd, setJd] = useState("");
+  const [keySkill, setKeySkill] = useState("");
+  const [addedSkills, setAddedSkills] = useState([]);
+  const [jobLocation, setJobLocation] = useState("");
+  const [addedLocations, setAddedLocations] = useState([]);
+  const [experiencetype, setexperiencetype] = useState("Fresher")
+  const [salaryType, setsalaryType] = useState("Salary Range")
+  const [formData, setFormData] = useState({
+    logoUrl: "",
+    position: "",
+    employment_type: "Full Time, Permanent",
+    departmentRoleCategory: jobTitles[0],
+    company: "",
+    workMode: "In office",
+    workExperience: { from: "", to: "",isFresher:true },
+    annual_salary_range: {
+      currency: "INR",
+      from: "",
+      to: "",
+    },
+    companyIndustry: "IT Services & Consulting",
+    educationalQualification: "Under Graduate",
+    interviewmode: "Virtual",
+    specialization: "CSE",
+    aboutCompany: "",
+    websiteurl: "",
+    publishDate:"",
+    lastDate:"",
+    companyAddress: "",
+    annualSalary: "",
+  uptoPackage: "",
+  salaryType: "",
+  degree: "B.Tech",
+    jobDescription: "",
+    key_skills:[]
+  });
+
+ 
 
   const handleSalary = (e) => {
     const { name, value } = e.target;
@@ -218,6 +225,7 @@ const PostJobsForm = () => {
       "annualSalary",
       "uptoPackage",
       "salaryType",
+      "degree",
 
     ];
 
@@ -262,6 +270,7 @@ const PostJobsForm = () => {
       annualSalary: formData?.annualSalary,
       uptoPackage: formData?.uptoPackage,
       lastDate: formData?.lastDate,
+      degree: formData?.degree,
       salaryType: salaryType,
       key_skills: addedSkills,
       job_description: jd,
@@ -677,7 +686,7 @@ const PostJobsForm = () => {
                 onChange={handleSalary}
               />
               </>:
-              salaryType=="Salary Range" ?
+              salaryType=="Fixed Package" ?
               <input
               name="annualSalary"
                 type="number"
@@ -749,9 +758,6 @@ const PostJobsForm = () => {
               value={formData.educationalQualification}
               onChange={handleChange}
             >
-              <option className="border-none" value="12th" selected>
-                12th
-              </option>
               <option className="border-none" value="Under Graduate">
                 Under Graduate
               </option>
@@ -763,21 +769,46 @@ const PostJobsForm = () => {
               </option>
             </select>
           </div>
-          {/* Specialization */}
           <div className="w-[65%] xsm:w-[100%]">
+            <p className="font-pop  font-semibold">
+              Degree
+              <span className="text-red-500 text-[16px]">*</span>
+            </p>
+            <select
+              name="degree"
+              className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
+              value={formData.degree}
+              onChange={handleChange}
+            >
+              {Object.entries(degrees).map(([key, value]) => (
+                <option className="border-none" value={key}>
+               {key}
+               </option>
+               ))}
+              
+            </select>
+          </div>
+          {/* Specialization */}
+         {degrees[formData.degree]?.length>0 ? <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop font-semibold ">
               Specialization
               <span className="text-red-500 text-[16px]">*</span>
             </p>
-            <input
-              type="text"
-              placeholder="Enter Your Specialization"
-              className="border outline-none px-4 py-2 text-[14px] xsm:text-[12px] w-full "
+            <select
+              name="specialization"
+              className="border outline-none px-2 py-2 text-[14px] xsm:text-[12px] w-full"
               value={formData.specialization}
               onChange={handleChange}
-              name="specialization"
-            />
-          </div>
+            >
+              {degrees[formData.degree]?.map((item)=>{
+                return(  <option className="border-none" value={item}>
+                  {item}
+               </option>)
+              })}
+              
+              
+            </select>
+          </div>:''}
           {/* Interview Mode */}
           <div className="w-[65%] xsm:w-[100%]">
             <p className="font-pop  font-semibold">

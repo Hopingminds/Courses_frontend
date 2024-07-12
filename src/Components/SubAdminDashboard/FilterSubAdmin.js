@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BASE_URL } from "../../Api/api";
 
-const FilterSubAdmin = ({ FetchData,Statehandle }) => {
+const FilterSubAdmin = ({ FetchData, Statehandle }) => {
   const [degree, setDegree] = useState("");
   const [stream, setStream] = useState("");
   const [profileCompleted, setProfileCompleted] = useState("");
@@ -12,16 +12,16 @@ const FilterSubAdmin = ({ FetchData,Statehandle }) => {
     const { name, value } = event.target;
     switch (name) {
       case "degree":
-        setDegree(value);
+        setDegree((prev) => (prev === value ? "" : value));
         break;
       case "stream":
-        setStream(value);
+        setStream((prev) => (prev === value ? "" : value));
         break;
       case "status":
-        setInvitation(value);
+        setInvitation((prev) => (prev === value ? "" : value));
         break;
       case "profilestatus":
-        setProfileCompleted(value);
+        setProfileCompleted((prev) => (prev === value ? "" : value));
         break;
       default:
         break;
@@ -125,11 +125,11 @@ const FilterSubAdmin = ({ FetchData,Statehandle }) => {
         </div>
         <div className="flex flex-col pl-5 gap-3 mt-2" id={3}>
           <div className="flex items-center gap-2">
-            <input onChange={handleRadioChange} type="radio" name="status" id="Accepted" value={true} checked={invitation === "true"} className="h-6 w-6 text-lg" />
+            <input onChange={handleRadioChange} type="radio" name="status" id="Accepted" value="true" checked={invitation === "true"} className="h-6 w-6 text-lg" />
             <label htmlFor="Accepted">Accepted</label>
           </div>
           <div className="flex items-center gap-2">
-            <input onChange={handleRadioChange} type="radio" name="status" id="Pending" value={false} checked={invitation === "false"} className="h-6 w-6 text-lg" />
+            <input onChange={handleRadioChange} type="radio" name="status" id="Pending" value="false" checked={invitation === "false"} className="h-6 w-6 text-lg" />
             <label htmlFor="Pending">Pending</label>
           </div>
         </div>
@@ -141,11 +141,11 @@ const FilterSubAdmin = ({ FetchData,Statehandle }) => {
         </div>
         <div className="flex flex-col pl-5 gap-3 mt-2" id={4}>
           <div className="flex items-center gap-2">
-            <input onChange={handleRadioChange} type="radio" name="profilestatus" id="Complete" value={true} checked={profileCompleted === "true"} className="h-6 w-6 text-lg" />
+            <input onChange={handleRadioChange} type="radio" name="profilestatus" id="Complete" value="true" checked={profileCompleted === "true"} className="h-6 w-6 text-lg" />
             <label htmlFor="Complete">Complete</label>
           </div>
           <div className="flex items-center gap-2">
-            <input onChange={handleRadioChange} type="radio" name="profilestatus" id="Incomplete" value={false} checked={profileCompleted === "false"} className="h-6 w-6 text-lg" />
+            <input onChange={handleRadioChange} type="radio" name="profilestatus" id="Incomplete" value="false" checked={profileCompleted === "false"} className="h-6 w-6 text-lg" />
             <label htmlFor="Incomplete">Incomplete</label>
           </div>
         </div>

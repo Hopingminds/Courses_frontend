@@ -15,7 +15,7 @@ const JobPreview = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const getJobDetails = async () => {
-    console.log(searchParams.get("jobid"));
+    // console.log(searchParams.get("jobid"));
     setLoader(false);
     try {
       const res = await axios.get(
@@ -26,7 +26,7 @@ const JobPreview = () => {
           },
         }
       );
-      console.log(res.data);
+      // console.log(res.data);
       setJobdetails(res?.data?.jobOpenings);
     } catch (error) {
       console.log(error);
@@ -39,7 +39,7 @@ const JobPreview = () => {
     // e.preventDefault();
     try {
         const res = await applyJob(id)
-        console.log(res)
+        // console.log(res)
         if (res) {
 
             toast.success('You have Successfully Applied')
@@ -71,18 +71,19 @@ const JobPreview = () => {
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-3">
                 <FaBriefcase fontSize={"1.3rem"} className="text-gray-500" />
+                {jobDetails?.work_experience?.isFresher?
                 <p className="font-nu text-[12px]">
                   {" "}
-                  {jobDetails?.work_experience?.from}-
-                  {jobDetails?.work_experience?.to} Years
-                </p>
+                  Fresher
+                  {/* {jobDetails?.work_experience?.isFresher ? 'Fresher':`${jobDetails?.work_experience?.from}-${jobDetails?.work_experience?.to} Years`} */}
+                </p>:<p className="font-nu text-[12px]">{jobDetails?.work_experience?.from}-{jobDetails?.work_experience?.to} Years</p>}
               </div>
               <div className="flex items-center gap-3">
                 <GiWallet fontSize={"1.3rem"} className="text-gray-500" />
-                <p className="font-nu text-[12px]">
-                  {jobDetails?.annual_salary_range?.from}-{" "}
-                  {jobDetails?.annual_salary_range?.to} LPA
-                </p>
+                {jobDetails.salaryType=="Salary Range" ?<p className="font-nu text-[12px]">₹{jobDetails?.annual_salary_range.from}-{jobDetails?.annual_salary_range.from} LPA</p>:
+                        jobDetails.salaryType=="Upto" ?<p className="font-nu text-[12px]" >Upto ₹{jobDetails?.uptoPackage} LPA</p>:
+                        <p className="font-nu text-[12px]">₹{jobDetails?.annualSalary} LPA</p>}
+
               </div>
               <div className="flex items-center gap-3">
                 <FaMapLocationDot
