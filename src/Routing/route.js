@@ -90,10 +90,7 @@ const Router = () => {
         else if ((pathname.includes('hrdashboard') || pathname.includes('managejobs') || pathname.includes('jobpreview') || pathname.includes('postjob'))) {
             return <HRNavbar />
         }
-        else if ((pathname.includes('teacherpanel'))) {
-            return <></>
-        }
-        else if (pathname.includes('questions')) {
+        else if ((pathname.includes('teacherpanel')) || pathname.includes('questions') || pathname.includes('assessmentquestions') || pathname.includes('prassessmentquestions')) {
             return <></>
         }
         else {
@@ -103,8 +100,6 @@ const Router = () => {
         }
 
     }
-
-
     return (
     <AuthProvider>
         <BrowserRouter >
@@ -195,7 +190,7 @@ const Router = () => {
                     <Route path="media" element={<CourseMedia />} />
                 </Route>
             </Routes>
-            {pathname.includes('college') || pathname.includes('teacherpanel') || pathname.includes('questions') ? <></> : <Footer />}
+            {pathname.includes('college') || pathname.includes('teacherpanel') || pathname.includes('questions') || pathname.includes('assessmentquestions') || pathname.includes('prassessmentquestions')? <></> : <Footer />}
 
         </BrowserRouter >
     </AuthProvider>

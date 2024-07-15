@@ -11,7 +11,7 @@ const HRNavbar = () => {
     let navigate=useNavigate()
     function handleLogout(){
         localStorage.removeItem('hrtoken')
-        navigate('/hire-from-us')
+        window.location.replace('/hire-from-us')
     }
     return (
         <div className='bg-[#0F2027] flex justify-between items-center px-[5%] h-20 xsm:min-w-[397px]'>

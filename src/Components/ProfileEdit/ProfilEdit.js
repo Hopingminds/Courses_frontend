@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import Banner from "../../Assests/Images/profileedit-banner.png";
+import Cookies from 'js-cookie';
 import ProfileIcon from "../../Assets/Images/ProfileIcon.png";
 import Avtar from "../../Assests/Icons/Avtar.jpg";
 import Edit from "../../Assests/Icons/edit.svg";
@@ -213,6 +214,10 @@ const ProfilEdit = () => {
   };
   const handleLogOut = async () => {
     localStorage.removeItem("COURSES_USER_TOKEN");
+    const allCookies = Cookies.get();
+  Object.keys(allCookies).forEach(cookieName => {
+    Cookies.remove(cookieName);
+  });
     window.location.replace("/login-2");
     // navigate('/login-2')
     // getUserDetails();

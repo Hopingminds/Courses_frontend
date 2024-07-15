@@ -71,10 +71,10 @@ const CNAssessment = ({slug}) => {
                     <p className="font-pop font-medium text-center">{Time(item?.lastDate)}</p>
 
                     {
-                    item?.isSubmited ? (<p className="font-pop font-medium text-center text-[#1FC074]">Completed</p>)
+                    item?.resultDetails?.isSubmitted ? (<p className="font-pop font-medium text-center text-[#1FC074]">Completed</p>)
                     : isDateBeforeNow(item?.startDate,item?.lastDate)
                         ?
-                            (<Link to={`/assessmentinstruction?assessmentId=${item?._id}&pr=${item?.isProtected}1`} className="font-pop font-medium text-center">Start</Link>)
+                            (<Link to={`/assessmentinstruction?assessmentId=${item?._id}&pr=${item?.isProtected}1&t=${item?.timelimit}`} className="font-pop font-medium text-center">Start</Link>)
                         :
                             (<p className="font-pop font-medium text-center text-[#868585]">Expired</p>)
                     }

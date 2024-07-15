@@ -36,11 +36,11 @@ export default function ProtectedAssessmentQuestion() {
         headers: { Authorization: `Bearer ${token}` },
       });
       const response = await data.json();
-      
+      console.log(response);
       if (response.success) {
         setshow(false);
-        setdata(response.data);
-        setLength(response.length);
+        setdata(response?.data);
+        setLength(response?.length);
       } else {
         localStorage.removeItem('lastminute')
         navigate("/submitted");
@@ -56,7 +56,7 @@ export default function ProtectedAssessmentQuestion() {
 
   const handleSubmit = async () => {
     try {
-      let url = `${BASE_URL}/submittestanswer`;
+      let url = `${BASE_URL}/submitassessmentanswer`;
       setshow(true);
       const data1 = await fetch(url, {
         method: "PUT",
@@ -66,8 +66,8 @@ export default function ProtectedAssessmentQuestion() {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          questionID: data.question._id,
-          moduleID: params.get("module_id"),
+          questionID: data._id,
+          assessment_id: params.get("assessmentId"),
           answer: Selected
           
         }),
@@ -77,7 +77,7 @@ export default function ProtectedAssessmentQuestion() {
         setindex(index + 1);
         setshow(false);
         setSelected("");
-        navigate(`/prassessmentquestions?module_id=${params.get("module_id")}&index=${index + 1}`);
+        navigate(`/prassessmentquestions?assessmentId=${params.get("assessmentId")}&index=${index + 1}`);
       }
     } catch (error) {
       console.log(error);
@@ -89,7 +89,7 @@ export default function ProtectedAssessmentQuestion() {
       Fetchdata();
       setSelected("");
       setindex(index + 1);
-      navigate(`/prassessmentquestions?module_id=${params.get("module_id")}&index=${index + 1}&t=${params.get('t')}`);
+      navigate(`/prassessmentquestions?assessmentId=${params.get("assessmentId")}&index=${index + 1}`);
     }
   }
 
@@ -97,13 +97,13 @@ export default function ProtectedAssessmentQuestion() {
     if (index >= 1) {
       Fetchdata();
       setindex(index - 1);
-      navigate(`/prassessmentquestions?module_id=${params.get("module_id")}&index=${index - 1}&t=${params.get('t')}`);
+      navigate(`/prassessmentquestions?assessmentId=${params.get("assessmentId")}&index=${index - 1}`);
     }
   }
 
   async function handleClick(status,remarks) {
     try {
-      let url = `${BASE_URL}/submitmodule`;
+      let url = `${BASE_URL}/submitassessment`;
       const data = await fetch(url, {
         method: "PUT",
         headers: {
@@ -111,7 +111,7 @@ export default function ProtectedAssessmentQuestion() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ moduleID: params.get("module_id"),status:status }),
+        body: JSON.stringify({ assessment_id: params.get("assessmentId"),remarks:remarks,status:status }),
       });
       const response = await data.json();
       if (response.success) {
@@ -409,10 +409,10 @@ let tempstate=true;
           </div>
         </div>
         <div className="flex justify-between items-center border p-3 rounded-lg font-pop">
-          <div onClick={handlePrev} className="flex items-center space-x-3 cursor-pointer">
+          {/* <div onClick={handlePrev} className="flex items-center space-x-3 cursor-pointer">
             <FaArrowLeft />
             <p className="font-semibold">Go Back to {data?.module} Module</p>
-          </div>
+          </div> */}
           <div className=" bg-white p-2 rounded-lg shadow-md">
           Time Remaining: {timer} mins
           </div>
@@ -430,27 +430,27 @@ let tempstate=true;
         <div className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5 font-pop">
           <div className="w-[60%] rounded-xl border h-full shadow-xl xsm:w-full">
             <div className="border-b-[2px] p-3 font-semibold">{data?.module}</div>
-            <div className="p-3 text-lg text-gray-700">{data?.question?.question}</div>
+            <div className="p-3 text-lg text-gray-700">{data?.question}</div>
           </div>
           <div className="w-[35%] rounded-xl border min-h-full shadow-xl overflow-y-auto xsm:w-full xsm:min-h-[50vh] xsm:h-fit">
             <div className="border-b-[2px] p-3 font-semibold">Options</div>
             <div className="flex flex-col p-5 gap-y-5">
-              {data?.question?.options && Object.entries(data.question.options).map(([key, value]) => (
+              {data?.options && data?.options?.map((item) => (
                 <label
-                  key={key}
-                  onClick={() => !data?.isSubmitted ? setSelected(key.toString()) : ""}
-                  htmlFor={key.toString()}
-                  className={`${Selected === key.toString() || data?.submittedAnswer === key.toString() ? "border-[#1DBF73]" : ""} flex p-3 border rounded-lg space-x-2 cursor-pointer`}
+                  key={item?._id}
+                  onClick={() => !data?.isSubmitted ? setSelected(item?.option) : ""}
+                  htmlFor={item?.option}
+                  className={`${Selected === item.option || data?.submittedAnswer === item?.option ? "border-[#1DBF73]" : ""} flex p-3 border rounded-lg space-x-2 cursor-pointer`}
                 >
                   <input
                     name="option"
-                    id={key.toString()}
+                    id={item?.option}
                     type="radio"
-                    checked={data?.isSubmitted ? data.submittedAnswer === key.toString() : Selected === key.toString()}
+                    checked={data?.isSubmitted ? data.submittedAnswer === item?.option : Selected === item?.option}
                     className="accent-[#1DBF73]"
                     readOnly
                   />
-                  <p>{value}</p>
+                  <p>{item?.option}</p>
                 </label>
               ))}
               <div className="flex justify-end space-x-2">

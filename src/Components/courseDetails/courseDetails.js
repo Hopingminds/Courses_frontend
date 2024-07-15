@@ -202,6 +202,7 @@ export default function CDDetails() {
   function handleProject(pdf){
     setpdfurl(pdf)
     setshowSmallvideo(true)
+    setsmallVideourl(ALLCHAPTER[count]?.video)
   }
 
   function handleNext() {
@@ -247,7 +248,7 @@ export default function CDDetails() {
       let today=new Date()
       let startdate=new Date(ALLCHAPTER[count]?.liveClass.startDate);
       let enddate=new Date(ALLCHAPTER[count]?.liveClass.endDate);
-      console.log(startdate);
+      // console.log(startdate);
       if(startdate>today){
         setshowLive(true)
         // console.log("yess");
