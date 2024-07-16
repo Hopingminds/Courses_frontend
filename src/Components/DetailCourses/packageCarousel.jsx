@@ -54,10 +54,10 @@ const PackageCarousel = ({data}) => {
                   <span className='flex flex-col'>
                     <span className=" text-lg font-bold ">
                       {" "}
-                      {"₹"+Math.ceil(val?.avgpkg?.from + val?.avgpkg?.to) / 2 + 
+                      {""+Math.ceil(val?.avgpkg?.from + val?.avgpkg?.to) / 2 + 
                         " LPA"}
                     </span>
-                    <span className='text-[0.8rem] font-semibold'>{` ₹${val?.avgpkg?.from} - ${val?.avgpkg?.to}/LPA`}</span>
+                    <span className='text-[0.8rem] font-semibold'>{` ${val?.avgpkg?.from} LPA To ${val?.avgpkg?.to} LPA`}</span>
                   </span>
                 </div>
               </SplideSlide>

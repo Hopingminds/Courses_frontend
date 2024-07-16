@@ -218,7 +218,7 @@ const ProfilEdit = () => {
   Object.keys(allCookies).forEach(cookieName => {
     Cookies.remove(cookieName);
   });
-    window.location.replace("/login-2");
+  window.open(`${AUTH_BASE_URL}/logout`, "_self");
     // navigate('/login-2')
     // getUserDetails();
     // clearCart();

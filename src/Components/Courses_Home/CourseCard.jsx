@@ -50,10 +50,10 @@ const CourseCard = ({
 
   // console.log(description);
   return (
-    <a
+    <Link
       onMouseEnter={() => toggleHover(ind)}
       onMouseLeave={() => toggleHover(null)}
-      href={`/detailcourse/${slug}`}
+      to={`/detailcourse/${slug}`}
       className={`shadow-xl  max-w-sm font-pop rounded-2xl relative pb-[50px] h-full 2xl:h-[450px] coursecardhome  bg-white px-3 py-3 xsm:rounded- xsm:p-1 md:p-[6px] md:w-[95%] xsm:w-[100%] md:rounded-xl sm:p-2  ${
         isSelected ? "border-2 border-blue-500" : ""
       }`}
@@ -195,7 +195,7 @@ const CourseCard = ({
           </span>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 

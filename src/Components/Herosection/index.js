@@ -92,6 +92,9 @@ import { useEffect, useState } from "react";
 import "./hero.css";
 import Circle from "../../Assests/Images/home-circle.png";
 import Square from "../../Assests/Images/home-square.png";
+import '@splidejs/react-splide/css';
+import '@splidejs/splide/dist/css/splide.min.css';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 // import Img1 from "../../Assests/Images/stu1.jpg";
 // import Img2 from "../../Assests/Images/stu2.jpg";
 // import Img3 from "../../Assests/Images/stu3.jpg";
@@ -204,8 +207,22 @@ export default function Herosection() {
           )}
         </div>
       </div>
-
+      
       <div className="flex flex-col gap-6 h-max w-[40%] md:gap-2 xsm:gap-1">
+
+      {/* <Splide
+                    options={{
+                      type: "loop",
+                      perPage: 1,
+                      pagination: false,
+                      perMove: 1,
+                      autoplay: true,
+                      interval: 2000,
+                      speed: 1000,
+                      pauseOnHover: false,
+                      arrows: false,
+                    }} >
+<SplideSlide> */}
         <div className="flex flex-row gap-2 justify-end">
           <div className="flex flex-col justify-end pb-6">
               <img
@@ -297,7 +314,29 @@ export default function Herosection() {
             </div> */}
           </div>
         </div>
-      </div>
+      
+{/* </SplideSlide>
+<SplideSlide>
+<img className="h-full" src="/herosection/hr1.webp"/>
+</SplideSlide>
+<SplideSlide>
+<img className="h-full" src="/herosection/hr2.webp"/>
+</SplideSlide>
+<SplideSlide>
+<img className="h-full" src="/herosection/hr3.webp"/>
+</SplideSlide>
+<SplideSlide>
+<img className="h-full" src="/herosection/hr4.webp"/>
+</SplideSlide>
+<SplideSlide>
+<img className="h-full" src="/herosection/hr5.webp"/>
+</SplideSlide>
+<SplideSlide>
+<img className="h-full" src="/herosection/hr6.webp"/>
+</SplideSlide>
+                    </Splide> */}
+
+                    </div>
     </div> 
     </>
   );

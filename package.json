@@ -14,6 +14,7 @@
     "@mui/x-charts": "^6.19.8",
     "@ramonak/react-progress-bar": "^5.2.0",
     "@splidejs/react-splide": "^0.7.12",
+    "@splidejs/splide": "^4.1.4",
     "@tensorflow-models/coco-ssd": "^2.2.3",
     "@tensorflow/tfjs": "^4.20.0",
     "@testing-library/jest-dom": "^5.17.0",

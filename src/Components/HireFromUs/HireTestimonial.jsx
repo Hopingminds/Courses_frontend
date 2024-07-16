@@ -99,7 +99,7 @@ const HireTestimonial = () => {
   return (
     <div>
         <div className='py-[4%] text-white font-pop font-semibold text-[40px] text-center md:text-[20px] xsm:text-[18px] '>
-            <p>Hear directly from <span className='text-[#1DBF73]'>our students.</span> </p>
+            <p>If They Found a Way,<span className='text-[#1DBF73]'>So Will You!</span> </p>
          
         </div>
         {/* splide */}

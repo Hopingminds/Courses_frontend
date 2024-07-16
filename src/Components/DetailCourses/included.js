@@ -59,10 +59,10 @@ const Included = ({ curiculum, title }) => {
 
     return (
         <>
-            <div className="grid grid-cols-4 gap-3 xsm:grid-cols-2">
+            <div className="grid grid-cols-4 gap-3 xsm:grid-cols-2  ">
                 {data?.map((val, ind) => (
                     <div
-                        className="border border-green-500 rounded-[12px] flex flex-col justify-center items-center p-7 gap-3 cursor-pointer xsm:p-3"
+                        className="border border-green-500 rounded-[12px] flex flex-col justify-center items-center p-7 gap-3 cursor-pointer xsm:p-3 hover:shadow-2xl"
                         key={ind}
                         onClick={() => handleClick(ind)}
                     >

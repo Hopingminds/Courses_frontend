@@ -283,7 +283,7 @@ export default function Navbar() {
                   <a
                     href={location.pathname == "/" ? "#" : "/pap"}
                     onClick={ScrollToPap}
-                    className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] cursor-pointer md:text-[14px] font-pop ${location.pathname === "#pap"
+                    className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] cursor-pointer md:text-[14px] font-pop ${location.pathname === "/pap"
                       ? " font-bold text-[#1DBF73]"
                       : ""
                       }`}
@@ -352,13 +352,13 @@ export default function Navbar() {
                 <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-1 sm:pl-0 sm:space-x-3">
                   <Link
                     to={"/login-2"}
-                    className="bg-[#1DBF73] px-7 rounded-full text-white py-1 sm:text-[10px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
+                    className="bg-[#1DBF73] text-center w-24 rounded-full text-white py-1 sm:text-[10px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
                   >
                     Log in
                   </Link>
                   <Link
                     to={"/register-user"}
-                    className="bg-white px-7 rounded-full text-black py-1 sm:text-[10px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
+                    className="bg-white w-24 text-center rounded-full text-black py-1 sm:text-[10px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
                   >
                     Sign Up
                   </Link>
