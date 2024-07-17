@@ -179,3 +179,6 @@
     height: 10px;
   }
 }
+.list-disc-custom li::marker {
+  color: #1DBF73; 
+}

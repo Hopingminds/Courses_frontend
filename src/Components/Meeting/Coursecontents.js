@@ -33,7 +33,7 @@ export default function Coursecontents({
   // console.log(data);
 
   let completed = [];
-  console.log("completed_lesson",completed_lessons);
+  // console.log("completed_lesson",completed_lessons);
   if (completed_lessons) {
     completed_lessons?.map((val) => {
       completed.push(val);
@@ -186,7 +186,7 @@ export default function Coursecontents({
                     <div id={ind + 1} className="pt-2 py-2 px-4">
                       <div className="w-full">
                         {val?.lessons?.map((chapter, index) => {
-                          console.log("index"+index,completed_lessons?.includes(chapter?._id))
+                          // console.log("index"+index,completed_lessons?.includes(chapter?._id))
                           return (
                             <div
 

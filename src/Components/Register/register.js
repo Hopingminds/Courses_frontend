@@ -13,6 +13,7 @@ import { ReactComponent as Linkedin } from '../../Assests/Icons/linkedin.svg';
 import { jwtDecode } from 'jwt-decode';
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
+import OTPVerificationModal from './otp';
 const Register = () => {
     const navigate = useNavigate();
     const { getUserDetails, cartData } = useContext(Globalinfo);
@@ -21,8 +22,63 @@ const Register = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const [countrycode, setcountrycode] = useState('')
     const [SearchedData, setSearchedData] = useState([])
+    const [verified, setverified] = useState(false)
 
-    console.log("cardatata",cartData);
+    // console.log("cardatata",cartData);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleVerify = async(otp) => {
+    console.log('OTP:', otp);
+    if(verified){
+        try {
+            const res = await axios.post(`${BASE_URL}/register`, {
+                name: user.name,
+                email: user.email,
+                phone: countrycode,
+                college: user.college,
+                degree: user.degree,
+                stream: user.stream,
+                password: user.password,
+            });
+            getUserDetails();
+            localStorage.setItem('COURSES_USER_TOKEN', res.data.token);
+            toast.success("Registered Successfully");
+            if (res.status) {
+                const decoded = jwtDecode(res.data.token);
+                try {
+                    const res = await axios.get(`${BASE_URL}/user/${decoded.email}`);
+                    if (res.data.userDetails.purchased_courses.length > 0) {
+                        navigate('/learning');
+                    } else {
+                        navigate('/courses');
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+
+
+
+        } catch (error) {
+            toast.error(error.response.data.error.error);
+        } finally {
+            setBtnLoader(false);
+        }
+    }
+    else{
+        toast.error("Verify your phone number")
+    }
+    // Add your OTP verification logic here
+    closeModal();
+  };
 
     const nameRef = useRef(null);
     const emailRef = useRef(null);
@@ -63,7 +119,7 @@ const Register = () => {
         return emailPattern.test(email);
     }
     function validateAlphabets(input) {
-        const regex = /^[a-zA-Z]*$/; // Regular expression to match only alphabets
+        const regex = /^[a-zA-Z\s]*$/; // Regular expression to match only alphabets and spaces
         return regex.test(input);
     }
     const handleNumChange = (number) => {
@@ -182,13 +238,6 @@ const Register = () => {
             return;
         }
 
-
-
-        // 
-        // console.log(countrycode.length);
-
-        //    console.log( countrycode.replace(/\D/g, ''));
-
         if (!validateEmail(user.email)) {
             toast.error('Enter valid Email');
             return;
@@ -219,42 +268,11 @@ const Register = () => {
             toast.error("Enter Valid Credentials");
             return;
         }
-        setBtnLoader(true);
         countrycode.replace(/\D/g, '')
-        try {
-            const res = await axios.post(`${BASE_URL}/register`, {
-                name: user.name,
-                email: user.email,
-                phone: countrycode,
-                college: user.college,
-                degree: user.degree,
-                stream: user.stream,
-                password: user.password,
-            });
-            getUserDetails();
-            localStorage.setItem('COURSES_USER_TOKEN', res.data.token);
-            toast.success("Registered Successfully");
-            if (res.status) {
-                const decoded = jwtDecode(res.data.token);
-                try {
-                    const res = await axios.get(`${BASE_URL}/user/${decoded.email}`);
-                    if (res.data.userDetails.purchased_courses.length > 0) {
-                        navigate('/learning');
-                    } else {
-                        navigate('/courses');
-                    }
-                } catch (error) {
-                    console.log(error);
-                }
-            }
-
-
-
-        } catch (error) {
-            toast.error(error.response.data.error.error);
-        } finally {
-            setBtnLoader(false);
-        }
+        openModal()
+        // setBtnLoader(true);
+       
+        
     };
 
 
@@ -282,6 +300,11 @@ const Register = () => {
     }
     return (
         <>
+        <OTPVerificationModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        onVerify={handleVerify}
+      />
             <div className='flex overflow-hidden'>
                 <div className='xl:h-[75vh]  w-[40%] flex items-center justify-end relative xsm:hidden '>
                     <img className='w-[75%]  object-cover absolute top-10 ' src='../login_bg.png' alt='' />
@@ -410,7 +433,7 @@ const Register = () => {
                         </div>
                         <div className='flex flex-col items-center gap-4 md:gap-3 xsm:gap-3'>
                             <div className=''>
-                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold md:text-[14px] md:py-1 xsm:text-[12px] xsm:py-1" onClick={handleRegister}>{btnLoader ? "Loading..." : "Sign Up"}</button>
+                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold md:text-[14px] md:py-1 xsm:text-[12px] xsm:py-1" onClick={openModal}>{btnLoader ? "Loading..." : "Sign Up"}</button>
                             </div>
                             <div className='flex items-center gap-1'>
                                 <p className='font-pop text-[14px] md:text-[10px] xsm:text-[10px]'>Already registered ? </p>

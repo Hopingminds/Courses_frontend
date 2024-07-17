@@ -34,9 +34,10 @@ export default function CDDetails() {
   const params = useParams();
   let completed = [];
   let allchapters = [];
-
+let temp=true;
   useEffect(() => {
     async function Fetchdata() {
+      temp=false;
       let login = localStorage.getItem("COURSES_USER_TOKEN");
       if (login) {
         let token = jwtDecode(login);
@@ -81,21 +82,27 @@ export default function CDDetails() {
         setData(response?.data?.course);
         completed = [...new Set(completed)];
         let videoindex = completed.length;
-        setcount(videoindex-1)
-        // console.log("length",allchapters.length,completed.length);
-        console.log("data",allchapters,completed);
-        // if(allchapters.length==completed.length){
-        //   seturl(allchapters[0]?.video);
-        // }
-        // else{
+        
+        console.log("length",allchapters,response?.data?.completed_lessons?.length);
+        // console.log("data",allchapters,completed);
+        if( allchapters?.length===response?.data?.completed_lessons?.length){
+          console.log("hello");
+          seturl(allchapters[0]?.video);
+          setcount(0)
+        }
+        else{
+          console.log("hi");
           seturl(allchapters[videoindex - 1]?.video);
-        // }
+          setcount(videoindex-1)
+        }
         setcompleted_lessons(completed);
         setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
       }
     }
-    Fetchdata();
+    if(temp){
+      Fetchdata();
+    }
   }, []);
   const handleKeyDown = (e) => {
     console.log(e.key);
@@ -106,7 +113,15 @@ export default function CDDetails() {
     //   // e.preventDefault(); // Prevent default behavior for Win Key + PrtSc
     // }
   };
+  const countLessons = () => {
+    let temp = 0;
+    Data?.curriculum?.forEach((val) => {
+      temp += val?.lessons?.length;
+    });
+    return temp;
+  };
 
+  let totalLessons = countLessons();
   // useEffect hook to add event listeners when the component mounts
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
@@ -130,8 +145,10 @@ export default function CDDetails() {
   // console.log(allchapters);
   const handleVideoEnded = async () => {
     // console.log(count + 1);
+    // console.log(totalLessons,ALLCHAPTER.length);
     setshowSmallvideo(false)
-    seturl(ALLCHAPTER[count + 1]?.video);
+    seturl(ALLCHAPTER[(count + 1)%ALLCHAPTER.length]?.video);
+    if(ALLCHAPTER?.length<totalLessons){
     let temp = completed_lessons;
     temp.push(ALLCHAPTER[count + 1]?._id);
     // console.log(count);v
@@ -153,13 +170,16 @@ export default function CDDetails() {
         });
         const response = await data1.json();
 
-        setcount((prev)=>prev+1);
+        
 
         // console.log(response);
-      }
+    
+    }
     } catch (error) {
       console.log(error);
     }
+  }
+  setcount((prev)=>prev+1);
   };
 
   function ClickSection(id) {
@@ -187,15 +207,7 @@ export default function CDDetails() {
     // console.log("Menu toggled");
     // }
   };
-  const countLessons = () => {
-    let temp = 0;
-    Data?.curriculum?.forEach((val) => {
-      temp += val?.lessons?.length;
-    });
-    return temp;
-  };
 
-  let totalLessons = countLessons();
   // console.log("Count",totalLessons);
   const handleContextMenu = (e) => {
     e.preventDefault(); // Prevent default context menu behavior

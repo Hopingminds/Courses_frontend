@@ -143,7 +143,7 @@ const Internship = () => {
       setAllCourses(Data);
     } else {
       try {
-      const tempdata=await fetch(BASE_URL+'/search?title='+query)
+      const tempdata=await fetch(BASE_URL+'/search?title='+query+'&category=internship')
       const response=await tempdata.json();
       
       if(response.success){

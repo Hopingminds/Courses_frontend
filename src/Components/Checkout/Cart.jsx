@@ -280,39 +280,38 @@ setinputData((prev) => ({
     }
     
     const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone || "0000000000"}&name=${userDetail?.name?.replace(/\s/g,"%20")}&address=${inputData.address.replace(/\s/g,"%20")}&zip=${inputData.zip}&country=${country?.name?.replace(/\s/g,"%20")}&state=${state?.name.replace(/\s/g,"%20")}&gstNumber=${inputData?.gstnumber || "000"}`;
-    // console.log(paymentUrl)
-    handleContinueCheckout()
-    // async function handlePaymentUrl(){
-    //   try {
-    //     const res = await axios.get(paymentUrl);
+    console.log(paymentUrl)
+    async function handlePaymentUrl(){
+      try {
+        const res = await axios.get(paymentUrl);
     
-    //     if (res.status === 200) {
-    //       toast.success("Please confirm your purchase")
-    //       setPaymentLink(res.data.payment_link);
-    //       setShowModal(true);
-    //     } else {
-    //       toast.error("Unexpected response status.");
-    //       setPaymentLink(null);
-    //     }
-    //   } catch (error) {
-    //     setPaymentLink(null);
-    //     if (error.response) {
-    //       // Server responded with a status other than 200
-    //       if (error.response.status === 429) {
-    //         toast.error("Too many requests. Please try again later.");
-    //       } else {
-    //         toast.error(`Error: ${error.response.status} - ${error.response.data.message}`);
-    //       }
-    //     } else if (error.request) {
-    //       // Request was made but no response was received
-    //       toast.error("Network error. Please check your internet connection.");
-    //     } else {
-    //       // Something happened in setting up the request
-    //       toast.error(`Error: ${error.message}`);
-    //     }
-    //   }    
-    // }
-    // handlePaymentUrl();
+        if (res.status === 200) {
+          toast.success("Please confirm your purchase")
+          setPaymentLink(res.data.payment_link);
+          setShowModal(true);
+        } else {
+          toast.error("Unexpected response status.");
+          setPaymentLink(null);
+        }
+      } catch (error) {
+        setPaymentLink(null);
+        if (error.response) {
+          // Server responded with a status other than 200
+          if (error.response.status === 429) {
+            toast.error("Too many requests. Please try again later.");
+          } else {
+            toast.error(`Error: ${error.response.status} - ${error.response.data.message}`);
+          }
+        } else if (error.request) {
+          // Request was made but no response was received
+          toast.error("Network error. Please check your internet connection.");
+        } else {
+          // Something happened in setting up the request
+          toast.error(`Error: ${error.message}`);
+        }
+      }    
+    }
+    handlePaymentUrl();
     // else {
     //   const Linksend = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
     //     userData?.userID
@@ -554,7 +553,7 @@ setinputData((prev) => ({
           <span className="flex justify-center xsm:mt-4 md:mt-4">
             <button
               className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px] md:text-[16px] md:px-8"
-              onClick={handlePayment}
+              onClick={handleContinueCheckout}
             >
               Continue Checkout
             </button>
