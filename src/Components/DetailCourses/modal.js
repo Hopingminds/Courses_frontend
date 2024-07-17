@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
 
 const NewModal = ({ handleModalOpen, handleModalClose, datas, type, title }) => {
-    const [openDetails, setOpenDetails] = useState({});
+    const [openDetails, setOpenDetails] = useState({0:true});
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -52,6 +52,7 @@ const NewModal = ({ handleModalOpen, handleModalClose, datas, type, title }) => 
                         <details
                             className="cursor-text"
                             key={"c" + index}
+                            open={openDetails[index]}
                             onToggle={(e) => handleToggle(index, e.target.open)}
                         >
                             <summary className="bg-[#FFE5E5] px-[1rem] py-[1rem] rounded-md text-xl font-bold capitalize flex justify-between items-center xsm:text-[12px] xsm:leading-[17px] xsm:p-[1rem] cursor-pointer">
