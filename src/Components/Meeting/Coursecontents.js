@@ -48,7 +48,7 @@ export default function Coursecontents({
     setTotalLessons(temp);
   };
 
-  console.log(courseCategory)
+  // console.log(courseCategory)
 
   useEffect(() => {
     countLessons();
@@ -244,13 +244,13 @@ export default function Coursecontents({
 
                                     {chapter?.assignment && (
                                       <span className=" flex gap-1 items-center h-max">
-                                        <a href={chapter?.assignment} target="_blank" className="flex items-center border rounded-md gap-1 px-2">
+                                        <div onClick={() => completed.includes(chapter._id)? handleToggleNotes(chapter?.assignment, ALLCHAPTER[count]?.video): ""} href={chapter?.assignment} target="_blank" className="flex items-center border rounded-md gap-1 px-2">
                                           <Assignment className="w-3 h-3" />
                                           <li className="text-[12px] md:text-[10px]">
 
                                             Assignment
                                           </li>
-                                        </a>
+                                        </div>
                                         <span className="flex gap-2 border rounded-md px-2 py-1 relative ">
                                           <MdOutlineFileUpload
                                             size={16}
@@ -315,8 +315,8 @@ export default function Coursecontents({
                               key={index}
                             >
                               <span className="flex justify-between">
-                                <p onClick={courseCategory === "liveCourse" ? () => { } : () =>
-                                  handleProject(chapter?.projectInfoPdf)
+                                <p onClick={() =>
+                                  handleProject(chapter)
                                 } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
                                   {index + 1}. {chapter?.title}({chapter?.duration || '5 mins'})
                                 </p>

@@ -45,7 +45,7 @@ function Instructor() {
 
           <div className="students text-black">
             <img alt="" src={studentsIcon} />
-            <p>4000+ Students</p>
+            <p>4279 Students</p>
           </div>
 
           <div className="lessons text-black">

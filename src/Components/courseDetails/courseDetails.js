@@ -30,6 +30,7 @@ export default function CDDetails() {
   const [endtime, setendtime] = useState()
   const [showLive, setshowLive] = useState(false)
   const [showend, setshowend] = useState(false)
+  const [meetinglink, setmeetinglink] = useState('')
   const params = useParams();
   let completed = [];
   let allchapters = [];
@@ -112,6 +113,7 @@ export default function CDDetails() {
 
 
   function handleActiveVideo(url) {
+    setshowLive(false)
     // console.log(url);
     setshowSmallvideo(false)
     seturl(url);
@@ -199,10 +201,31 @@ export default function CDDetails() {
     setsmallVideourl(videourl)
   };
 
-  function handleProject(pdf){
-    setpdfurl(pdf)
-    setshowSmallvideo(true)
-    setsmallVideourl(ALLCHAPTER[count]?.video)
+  function handleProject(project){
+    let today=new Date()
+      let startdate=new Date(project?.startDate);
+      let enddate=new Date(project?.endDate);
+      setmeetinglink(project?.projectInfoPdf)
+      // console.log(startdate);
+      if(startdate>today){
+        setshowLive(true)
+        // console.log("yess");
+        let tmp=formatDate(startdate)
+        setstarttime(tmp)
+       
+      }
+      else if(enddate>today){
+        setshowLive(false)
+        setshowend(true)
+        let tmp=formatDate(enddate)
+        setendtime(tmp)
+      }
+      else{
+        setshowLive(false)
+        setshowend(false)
+        // setcount((prev)=>prev+1)
+        handleVideoEnded()
+      }
   }
 
   function handleNext() {
@@ -320,12 +343,13 @@ export default function CDDetails() {
                         //  <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
                     //  </div>
                     ) :
-                    showLive ? <div className="flex justify-center items-center">Live Class Will Start On {starttime}</div>:
-                    showend ? <div className="flex justify-center items-center">Live Class Will End On {endtime}</div>
+                    showLive ? <div className="text-center flex flex-col"><p>Live Class Will Start On {starttime}.</p>
+                    <p className="font-semibold">Meeting link: {meetinglink}</p></div>:
+                    showend ? <div className="text-center flex flex-col"><p>Live Class Will End On {endtime}.</p>
+                    <p className="font-semibold">Meeting link: {meetinglink}</p></div>
                     : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : (
-
                       <ReactPlayer
                         onContextMenu={handleContextMenu}
                         height="auto"
@@ -357,12 +381,15 @@ export default function CDDetails() {
                   menu ? (
                     <div className="w-[45%] h-[80vh] overflow-y-auto ">
                       <Coursecontents
-                        handleActiveVideo={handleActiveVideo}
-                        data={Data?.curriculum}
-                        courseId={courseId}
-                        completed_lessons={completed_lessons}
-                        setMenu={setMenu}
-                        handleProject={handleProject}
+                      handleActiveVideo={handleActiveVideo}
+                      data={Data?.curriculum}
+                      courseId={courseId}
+                      completed_lessons={completed_lessons}
+                      setMenu={setMenu}
+                      handleToggleNotes={handleToggleNotes}
+                      ALLCHAPTER={ALLCHAPTER}
+                      count={count}
+                      handleProject={handleProject}
 
                       />
                     </div>
