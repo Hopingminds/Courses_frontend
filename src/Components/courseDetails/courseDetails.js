@@ -81,7 +81,15 @@ export default function CDDetails() {
         setData(response?.data?.course);
         completed = [...new Set(completed)];
         let videoindex = completed.length;
-        seturl(allchapters[videoindex - 1]?.video);
+        setcount(videoindex-1)
+        // console.log("length",allchapters.length,completed.length);
+        console.log("data",allchapters,completed);
+        // if(allchapters.length==completed.length){
+        //   seturl(allchapters[0]?.video);
+        // }
+        // else{
+          seturl(allchapters[videoindex - 1]?.video);
+        // }
         setcompleted_lessons(completed);
         setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
@@ -145,7 +153,7 @@ export default function CDDetails() {
         });
         const response = await data1.json();
 
-        setcount(count + 1);
+        setcount((prev)=>prev+1);
 
         // console.log(response);
       }

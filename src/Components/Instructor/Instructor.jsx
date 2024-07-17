@@ -45,7 +45,7 @@ function Instructor() {
 
           <div className="students text-black">
             <img alt="" src={studentsIcon} />
-            <p>4279 Students</p>
+            <p>{4000+Data?.instructor?.noOfStudents} Students</p>
           </div>
 
           <div className="lessons text-black">
@@ -56,6 +56,12 @@ function Instructor() {
       </div>
 
       <p className="text-[14px] text-black xsm:text-justify xsm:text-[12px]">{Data?.instructor?.bio}</p>
+      <ul>
+       
+        <li>{Data?.instructor?.experience}</li>
+        <li></li>
+        <li></li>
+      </ul>
       {/* <div className='links'>
         <p>Follow: </p>
         {iconPaths.map((icon, index) => (

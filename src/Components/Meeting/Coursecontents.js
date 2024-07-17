@@ -33,7 +33,7 @@ export default function Coursecontents({
   // console.log(data);
 
   let completed = [];
-  console.log(completed_lessons);
+  console.log("completed_lesson",completed_lessons);
   if (completed_lessons) {
     completed_lessons?.map((val) => {
       completed.push(val);
@@ -186,12 +186,11 @@ export default function Coursecontents({
                     <div id={ind + 1} className="pt-2 py-2 px-4">
                       <div className="w-full">
                         {val?.lessons?.map((chapter, index) => {
-                          // console.log(chapter);
-
+                          console.log("index"+index,completed_lessons?.includes(chapter?._id))
                           return (
                             <div
 
-                              className={courseCategory === "liveCourse" ? "" : `flex flex-col justify-between border-t py-2 w-full ${!completed?.includes(chapter?._id)
+                              className={courseCategory === "liveCourse" ? "" : `flex flex-col justify-between border-t py-2 w-full ${!completed_lessons?.includes(chapter?._id)
                                 ? "cursor-not-allowed text-gray-300"
                                 : ""
                                 }`}
@@ -203,8 +202,8 @@ export default function Coursecontents({
                                 <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px] text-red-500 ">
                                   {index + 1}. {chapter?.lesson_name} (Live)
                                 </p>:
-                                <p onClick={courseCategory === "liveCourse" ? () => { } : () =>
-                                  completed.includes(chapter._id) &&
+                                <p onClick={ () =>
+                                  completed_lessons.includes(chapter._id) &&
                                   handleActiveVideo(chapter?.video)
                                 } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
                                   {index + 1}. {chapter?.lesson_name}
@@ -232,7 +231,7 @@ export default function Coursecontents({
                                     {chapter?.notes && (
                                       <span className=" flex justify-between items-center px-2 border rounded-md h-max">
 
-                                        <div onClick={() => completed.includes(chapter._id)? handleToggleNotes(chapter?.notes, ALLCHAPTER[count]?.video): ""} className="flex items-center gap-1">
+                                        <div onClick={() => completed_lessons.includes(chapter._id)? handleToggleNotes(chapter?.notes, ALLCHAPTER[count]?.video): ""} className="flex items-center gap-1">
                                           <Notes className="w-3 h-3" />
                                           <li className="text-[12px] md:text-[10px]">
                                             Notes
@@ -244,7 +243,7 @@ export default function Coursecontents({
 
                                     {chapter?.assignment && (
                                       <span className=" flex gap-1 items-center h-max">
-                                        <div onClick={() => completed.includes(chapter._id)? handleToggleNotes(chapter?.assignment, ALLCHAPTER[count]?.video): ""} href={chapter?.assignment} target="_blank" className="flex items-center border rounded-md gap-1 px-2">
+                                        <div onClick={() => completed_lessons.includes(chapter._id)? handleToggleNotes(chapter?.assignment, ALLCHAPTER[count]?.video): ""} href={chapter?.assignment} target="_blank" className="flex items-center border rounded-md gap-1 px-2">
                                           <Assignment className="w-3 h-3" />
                                           <li className="text-[12px] md:text-[10px]">
 
