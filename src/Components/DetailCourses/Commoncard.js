@@ -172,11 +172,7 @@ export default function Commoncard(props) {
                   >
                     Add to cart
                   </div>:
-                  <div
-                  className="border cursor-pointer flex justify-center w-full py-2 px-10 rounded-full bg-[#1DBF73] text-white font-nu font-bold xsm:px-[5px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
-                >
-                  Added to cart already!
-                </div>}
+                 ""}
                   <div
                     onClick={() => Addtowishlist(Data?._id)}
                     className=" hidden xsm:flex cursor-pointer justify-center w-full py-2 px-10 rounded-full border border-[#1DBF73] text-[#1DBF73] font-nu font-bold xsm:px-[5px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "

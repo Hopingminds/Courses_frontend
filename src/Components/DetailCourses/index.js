@@ -187,15 +187,7 @@ export default function DetailCourses() {
                     Add to cart
                   </div>
                 </div>
-              ) : (
-                <div className="space-x-4 w-fit flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
-                <div
-                  className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
-                >
-                  Added to cart already!
-                </div>
-              </div>
-              )}
+              ) : ""}
             </div>
           </div>
         </div>
