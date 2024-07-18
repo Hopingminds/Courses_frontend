@@ -42,7 +42,7 @@ const CartCheckout = () => {
   const [gst, setGst] = useState(0);
   const [sgst, setSgst] = useState(0);
   const [finalPrice, setFinalPrice] = useState(0);
-
+  const [city, setCity] = useState("");
   const [inputData, setinputData] = useState({
     name,
     address,
@@ -380,15 +380,16 @@ setinputData((prev) => ({
               styleContainer={{ width: "400px !important",border:`${warnings.state ?'1px solid red' : ''}` }}
             />
           </div>
-          <div className="flex space-x-10 grid grid-cols-2 xsm:justify-between xsm:gap-0 xsm:space-x-2">
-            <input
-              value={inputData.name}
-              onChange={handleInputchange}
-              placeholder="Name"
-              required   
-              name="name"          
-              className={`w-full py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px] ${warnings.name ? 'border border-red-500' : ''}`}
-            />
+          <div className=" space-x-10 grid grid-cols-2 xsm:justify-between xsm:gap-0 xsm:space-x-2">
+            {state?
+          <CitySelector
+          country={country}
+          state={state}
+          value={city}
+          onChange={setCity}
+          placeholder="Select a city"
+          styleContainer={{ padding: "0px !important" }}
+        />:''}
             <input
               value={inputData.gstnumber}
               name="gstnumber"
@@ -553,7 +554,7 @@ setinputData((prev) => ({
           <span className="flex justify-center xsm:mt-4 md:mt-4">
             <button
               className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px] md:text-[16px] md:px-8"
-              onClick={handleContinueCheckout}
+              onClick={handlePayment}
             >
               Continue Checkout
             </button>

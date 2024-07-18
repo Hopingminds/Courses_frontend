@@ -4,9 +4,10 @@ import { Globalinfo } from "../../App";
 import { ReactComponent as Account } from "../../Assets/Icons/account.svg";
 import { ReactComponent as Cart } from "../../Assets/Icons/cart.svg";
 import { Tooltip } from "@mui/material";
-import { BASE_URL } from "../../Api/api";
+import { AUTH_BASE_URL, BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import { FiMenu, FiX } from "react-icons/fi";  // Import hamburger and close icons
+import Cookies from 'js-cookie';
 
 export default function Navbar() {
   const [profile, setProfile] = useState("");
@@ -62,6 +63,22 @@ export default function Navbar() {
   useEffect(() => {
     return setIsMenuOpen(false);
   }, [location.pathname])
+  const handleLogOut = async () => {
+    localStorage.removeItem("COURSES_USER_TOKEN");
+    const allCookies = Cookies.get();
+  Object.keys(allCookies).forEach(cookieName => {
+    Cookies.remove(cookieName);
+  });
+  window.open(`${AUTH_BASE_URL}/logout`, "_self");
+    // navigate('/login-2')
+    // getUserDetails();
+    // clearCart();
+    // clearWishList();
+    // window.open(
+    // 	`${AUTH_BASE_URL}/logout`,
+    // 	"_self"
+    // );
+  };
 
   // console.log(location.pathname)
 
@@ -198,16 +215,17 @@ export default function Navbar() {
                   </>
                 )}
                 {userDetail?._id ? (
-                  <Link
-                    to="/profile"
+                  <div
+                    
                     className=" xsm:pl-2 md:pl-1"
                     style={{ cursor: "pointer" }}
                   >
                     <span>
                       <div className="custom-tooltip">
-                        <span className="tooltiptext text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] italic">
-                          Complete Your Profile
-                        </span>
+                      <span className="tooltiptext flex flex-col gap-3 p-2 text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] italic">
+                        <Link to="/profile"> {userDetail?.name?.split(' ')[0]} Complete Your Profile</Link>
+                        <button onClick={handleLogOut} className="text-[#FFFFFF]  text-[16px] font-nu bg-[#1DBF73] rounded-full px-3 py-1 xsm:text-[8px] xsm:px-2 md:text-[16px] md:px-2">Log Out</button>
+                      </span>
                         {userDetail?.profile ? (
                           <img
                             src={userDetail?.profile}
@@ -219,7 +237,7 @@ export default function Navbar() {
                         )}
                       </div>
                     </span>
-                  </Link>
+                  </div>
                 ) : (
                   <div className="flex flex-col gap-6 space-x-5 items-center xsm:space-x-1 xsm:pl-1 sm:pl-0 sm:space-x-3">
                     <Link
@@ -323,16 +341,17 @@ export default function Navbar() {
                 </>
               )}
               {userDetail?._id ? (
-                <Link
-                  to="/profile"
+                <div
+                  
                   className=" xsm:pl-2 md:pl-1"
                   style={{ cursor: "pointer" }}
                 >
                   {" "}
                   <span>
                     <div className="custom-tooltip">
-                      <span className="tooltiptext text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] italic">
-                        Complete Your Profile
+                      <span className="tooltiptext flex flex-col gap-3 p-2 text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] italic">
+                        <Link to="/profile"> {userDetail?.name?.split(' ')[0]} Complete Your Profile</Link>
+                        <button onClick={handleLogOut} className="text-[#FFFFFF]  text-[16px] font-nu bg-[#1DBF73] rounded-full px-3 py-1 xsm:text-[8px] xsm:px-2 md:text-[16px] md:px-2">Log Out</button>
                       </span>
                       {/* <div className="h-8 w-8 rounded-full border"><img src={profile} className="h-full w-full" /></div> */}
                       {/* <Account className="xsm:h-[25px] xsm:w-[25px] md:h-[30px] md:w-[30px] z-20" /> */}
@@ -347,7 +366,7 @@ export default function Navbar() {
                       )}
                     </div>
                   </span>{" "}
-                </Link>
+                </div>
               ) : (
                 <div className="flex space-x-5 pl-4 xsm:space-x-1 xsm:pl-1 sm:pl-0 sm:space-x-3">
                   <Link

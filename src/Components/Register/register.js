@@ -29,20 +29,41 @@ const Register = () => {
 
   const openModal = async() => {
     countrycode.replace(/\D/g, '')
+
     try {
+        // const check=await fetch(BASE_URL+'/validatevalues',{
+        //     method:'POST',
+        //     headers:{
+        //         'Content-type':'application/json'
+        //     },
+        //     body:JSON.stringify({email:user.email,phone:countrycode})
+        // })
+        // const checkresponse=await check.json()
+        // if(!checkresponse.success){
+        //     toast.error(checkresponse.message)
+        //     return;
+        // }
+      
         const data=await fetch(BASE_URL+'/sendmobileotp',{
             method:'POST',
             headers:{
                 'Content-type':'application/json',
             },
-            body:JSON.stringify({mobileNo:"8283929792"})
+            body:JSON.stringify({mobileNo:countrycode})
         })
-        const response=await data.json()
-        console.log(response);
+        const response=await data.json();
+        // console.log(response);
+        if(response?.success){
+            toast.success(response?.message);
+            setIsModalOpen(true);
+        }
+        else{
+            toast.error(response?.message)
+        }
     } catch (error) {
         console.log(error);
     }
-    // setIsModalOpen(true);
+    // 
   };
 
   const closeModal = () => {
@@ -50,8 +71,30 @@ const Register = () => {
   };
 
   const handleVerify = async(otp) => {
-    console.log('OTP:', otp);
-    if(verified){
+    // console.log('OTP:', otp);
+    let response={}
+    try {
+        const data=await fetch(BASE_URL+'/verfiynumberotp',{
+            method:'POST',
+            headers:{
+                'Content-type':"application/json"
+            },
+            body:JSON.stringify({mobileNo:countrycode,otp:otp})
+        })
+       response=await data.json()
+        console.log(response);
+        if(response.success){
+            toast.success(response.message)
+
+        }
+        else{
+            toast.error(response.message)
+        }
+        closeModal()
+    } catch (error) {
+        console.log(error);
+    }
+    if(response.success){
         try {
             const res = await axios.post(`${BASE_URL}/register`, {
                 name: user.name,
@@ -64,12 +107,13 @@ const Register = () => {
             });
             getUserDetails();
             localStorage.setItem('COURSES_USER_TOKEN', res.data.token);
-            toast.success("Registered Successfully");
-            if (res.status) {
+            
+            if (res.status==200) {
+                toast.success("Registered Successfully");
                 const decoded = jwtDecode(res.data.token);
                 try {
                     const res = await axios.get(`${BASE_URL}/user/${decoded.email}`);
-                    if (res.data.userDetails.purchased_courses.length > 0) {
+                    if (res?.data?.userDetails?.purchased_courses.length > 0) {
                         navigate('/learning');
                     } else {
                         navigate('/courses');
@@ -78,20 +122,27 @@ const Register = () => {
                     console.log(error);
                 }
             }
+            else{
+                toast.error(res?.error?.error)
+            }
+        }
+        catch{
 
-
-
-        } catch (error) {
-            toast.error(error.response.data.error.error);
-        } finally {
-            setBtnLoader(false);
         }
     }
-    else{
-        toast.error("Verify your phone number")
-    }
+
+
+    //     } catch (error) {
+    //         toast.error(error.response.data.error.error);
+    //     } finally {
+    //         setBtnLoader(false);
+    //     }
+    // }
+    // else{
+    //     toast.error("Verify your phone number")
+    // }
     // Add your OTP verification logic here
-    closeModal();
+    // closeModal();
   };
 
     const nameRef = useRef(null);
@@ -133,9 +184,10 @@ const Register = () => {
         return emailPattern.test(email);
     }
     function validateAlphabets(input) {
-        const regex = /^[a-zA-Z\s]*$/; // Regular expression to match only alphabets and spaces
+        const regex = /^[a-zA-Z\s.]*$/; // Regular expression to match alphabets, spaces, and dots
         return regex.test(input);
     }
+    
     const handleNumChange = (number) => {
         setcountrycode(number);
         if (number && number.length >= 9 && number.length <= 14) {
@@ -447,7 +499,7 @@ const Register = () => {
                         </div>
                         <div className='flex flex-col items-center gap-4 md:gap-3 xsm:gap-3'>
                             <div className=''>
-                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold md:text-[14px] md:py-1 xsm:text-[12px] xsm:py-1" onClick={openModal}>{btnLoader ? "Loading..." : "Sign Up"}</button>
+                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold md:text-[14px] md:py-1 xsm:text-[12px] xsm:py-1" onClick={handleRegister}>{btnLoader ? "Loading..." : "Sign Up"}</button>
                             </div>
                             <div className='flex items-center gap-1'>
                                 <p className='font-pop text-[14px] md:text-[10px] xsm:text-[10px]'>Already registered ? </p>

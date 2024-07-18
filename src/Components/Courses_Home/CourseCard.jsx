@@ -31,6 +31,7 @@ const CourseCard = ({
   IsMinorDegreeCourse,
   credits,
   courseCategory,
+  discount
 }) => {
   // console.log(courseCategory);
   const [mouseHovered, setMouseHovered] = useState(null);
@@ -142,10 +143,16 @@ const CourseCard = ({
                 {name}
               </p>
             </div>
-            <div>
-              <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[13px] sm:text-[10px] md:text-[10px]">
+            <div className="flex gap-2">
+
+              {/* <p className="font-pop font-semibold italic text-[#1DBF73] text-[16px] xsm:text-[13px] sm:text-[10px] md:text-[10px]">{discount}% off</p> */}
+            { discount ? <strike className="font-pop font-semibold text-gray-400 italic text-[14px] xsm:text-[11px] sm:text-[8px] md:text-[8px]">
                 {price == 0 ? "Free" : "₹" + price}
+              </strike>:""}
+              <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[13px] sm:text-[10px] md:text-[10px]">
+                {price == 0 ? "Free" : "₹" + parseFloat(price-(price*(discount/100)))}
               </p>
+       
             </div>
           </div>
           <p className="line-clamp-2  w-full font-pop font-semibold text-[16px] text-[#252641] xsm:text-[12px] sm:text-[12px] sm:leading-none sm:h-6 md:text-[10px] md:h-6 xsm:mt-1  xsm:line-clamp-2">

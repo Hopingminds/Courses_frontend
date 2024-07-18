@@ -55,7 +55,8 @@ const OTPVerificationModal = ({ isOpen, onRequestClose, onVerify, onResend }) =>
   const handleResend = () => {
     setTimer(60);
     setIsResendDisabled(true);
-    onResend();
+    onVerify()
+    // onResend();
   };
 
   return (
@@ -93,10 +94,10 @@ const OTPVerificationModal = ({ isOpen, onRequestClose, onVerify, onResend }) =>
             </button>
           </div>
           <div className="flex justify-between items-center mt-4">
-            <span className="text-gray-600">Resend OTP in {timer}s</span>
+            {timer >0 ? <span className="text-gray-600">Resend OTP in {timer}s</span>:''}
             <button
               type="button"
-              onClick={handleResend}
+              onClick={onVerify}
               disabled={isResendDisabled}
               className={`text-[#1DBF73] ${isResendDisabled ? 'cursor-not-allowed' : ''}`}
             >

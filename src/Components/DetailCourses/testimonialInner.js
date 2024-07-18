@@ -23,12 +23,12 @@ const TestimonialInner = ({ val }) => {
               url={val?.reviewVideo}
               playing={isPlay}
               loop={true}
-              controls={false}
+              controls={true}
               onError={(e) =>
                   console.error("ReactPlayer Error:", e)
               }
           />
-          <div className="vt-onhover-overlay absolute top-[100%] bg-[#00000066] backdrop-blur-sm h-full flex flex-col justify-center gap-2 pt-8 px-2 xsm:pt-2 xsm:gap-1">
+          {/* <div className="vt-onhover-overlay absolute top-[100%] bg-[#00000066] backdrop-blur-sm h-full flex flex-col justify-center gap-2 pt-8 px-2 xsm:pt-2 xsm:gap-1">
               <div>
                   <img
                       src="../Icons/VTcomma.svg"
@@ -39,7 +39,7 @@ const TestimonialInner = ({ val }) => {
               <p className="text-[#F5F5F5] text-[15px] xsm:text-[8px] xsm:leading-3">
                   {val?.review}
               </p>
-              </div>
+              </div> */}
           </div>
           <div className="flex justify-between items-center bg-[#000000BF] backdrop-blur-sm font-nu px-4 py-2 xsm:px-2">
               <div className="flex flex-col">

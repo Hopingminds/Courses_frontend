@@ -364,6 +364,7 @@ const AllCourses = () => {
                     IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
                     credits={val?.credits}
                     courseCategory={val?.courseCategory}
+                    discount={val?.discount_percentage}
                   // Pass category to CourseCard component
                   />
                 );
