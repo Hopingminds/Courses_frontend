@@ -148,7 +148,7 @@ let temp=true;
     // console.log(totalLessons,ALLCHAPTER.length);
     setshowSmallvideo(false)
     seturl(ALLCHAPTER[(count + 1)%ALLCHAPTER.length]?.video);
-    if(ALLCHAPTER?.length<totalLessons){
+    if(ALLCHAPTER?.length>completed_lessons.length){
     let temp = completed_lessons;
     temp.push(ALLCHAPTER[count + 1]?._id);
     // console.log(count);v
