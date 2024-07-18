@@ -27,8 +27,22 @@ const Register = () => {
     // console.log("cardatata",cartData);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openModal = async() => {
+    countrycode.replace(/\D/g, '')
+    try {
+        const data=await fetch(BASE_URL+'/sendmobileotp',{
+            method:'POST',
+            headers:{
+                'Content-type':'application/json',
+            },
+            body:JSON.stringify({mobileNo:"8283929792"})
+        })
+        const response=await data.json()
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
+    // setIsModalOpen(true);
   };
 
   const closeModal = () => {
