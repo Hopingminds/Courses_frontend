@@ -45,7 +45,8 @@ function Instructor() {
 
           <div className="students text-black">
             <img alt="" src={studentsIcon} />
-            <p>{4000+Data?.instructor?.noOfStudents} Students</p>
+           
+            <p>{Data?.instructor?.noOfStudents ? 4000+Data?.instructor?.noOfStudents:4000} Students</p>
           </div>
 
           <div className="lessons text-black">
@@ -58,7 +59,7 @@ function Instructor() {
       <p className="text-[14px] text-black xsm:text-justify xsm:text-[12px]">{Data?.instructor?.bio}</p>
       <ul className="text-[14px] space-y-1 list-disc list-disc-custom font-mons mt-1">
        
-        <li><strong>Experience </strong>{Data?.instructor?.experience}</li>
+        {Data?.instructor?.experience ? <li><strong>Experience </strong>{Data?.instructor?.experience} </li>:''}
         <li><strong>Extensive Experties </strong>{Data?.instructor?.experties}</li>
         <li><strong>Prior Working Experience </strong>{Data?.instructor?.workExperience}</li>
         
