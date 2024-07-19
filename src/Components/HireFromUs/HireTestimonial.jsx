@@ -13,6 +13,19 @@ import User4 from "../../Assests/Images/Amritpal Protiviti GDU 5.7.png";
 import User5 from "../../Assests/Images/Ravinder Singh.jpg";
 import User6 from "../../Assests/Images/Rupak Yadav.jpg";
 
+import UserNew1 from "../../Assests/Images/New_Imgs/Aarzoo- RegisterKaro.jpeg";
+import UserNew2 from "../../Assests/Images/New_Imgs/Akshita Thakur-Technossus.jpg";
+import UserNew3 from "../../Assests/Images/New_Imgs/Kirandeep Kaur- deFacto.jpeg";
+import UserNew4 from "../../Assests/Images/New_Imgs/Manish Bhandari- deFacto.jpeg";
+import UserNew5 from "../../Assests/Images/New_Imgs/Ishita- deFacto.jpeg";
+import UserNew6 from "../../Assests/Images/New_Imgs/Ankush- deFacto.jpg";
+import UserNew7 from "../../Assests/Images/New_Imgs/Gungun-deFacto.jpeg";
+import UserNew8 from "../../Assests/Images/New_Imgs/Harveen Kaur- deFacto.jpeg";
+import UserNew9 from "../../Assests/Images/New_Imgs/Loveena-deFacto.jpeg";
+import UserNew10 from "../../Assests/Images/New_Imgs/Manik Garg-deFacto.png";
+import UserNew11 from "../../Assests/Images/New_Imgs/Arjit Dixit- deFacto.jpeg";
+import UserNew12 from "../../Assests/Images/New_Imgs/Suraj Kumar Thakur-deFacto.jpeg";
+
 
 const HireTestimonial = () => {
 
@@ -87,13 +100,102 @@ const HireTestimonial = () => {
             emptystar:0,
             image: User2,
         },
+        // {
+        //     text:'Being a recent Computer Science graduate from Jaypee University, MP,I faced job challenges post-college. Enrolling in Hoping Minds for personal development and placement training, I swiftly secured a System Developer role at Data Resolve, grateful for their transformative assistance in my professional journey.',
+        //     name:'SAURABH PAL',
+        //     star:5,
+        //     emptystar:0,
+        //     image: User1,
+        // },
+      
+    ]
+
+    const tempdata2 = [
         {
-            text:'Being a recent Computer Science graduate from Jaypee University, MP,I faced job challenges post-college. Enrolling in Hoping Minds for personal development and placement training, I swiftly secured a System Developer role at Data Resolve, grateful for their transformative assistance in my professional journey.',
-            name:'SAURABH PAL',
+            text:"I'm incredibly grateful to the team at Hoping Minds for their unwavering support and dedication in helping me secure a placement. Their expertise, guidance, and encouragement were instrumental in navigating through the challenges and uncertainties.'",
+            name:'Aarzoo',
             star:5,
             emptystar:0,
-            image: User1,
+            image: UserNew1,
         },
+        {
+            text:'Hi My name is  Akshita Thakur .I am a full stack developer Trainee at Hoping Minds, I have very good  experience at Hoping Minds . The instructors here are very knowledgeable and supporting. The hands-on approach helps me to  gain practical skills that are directly applicable to the industry.',
+            name:'Akshita Thakur',
+            star:5,
+            emptystar:0,
+            image: UserNew2,
+        },
+        {
+            text:" It was a great experience learning at Hoping minds . I started my journey at Hoping minds as Data science intern . The trainers and mentors at Hoping minds helped me enhance my technical as well as interpersonal skills .",
+            name:'Kirandeep kaur',
+            star:5,
+            emptystar:0,
+            image: UserNew3,
+        },
+        {
+            text:'My six-month training at Hoping Minds has been exceptional. The curriculum is comprehensive and the instructors are knowledgeable and supportive. The hands-on projects have enhanced my practical skills, and the career workshops have boosted my confidence in job hunting. ',
+            name:'Manish bhandari',
+            star:5,
+            emptystar:0,
+            image: UserNew4,
+        },
+        {
+            text:'I had a great experience here over in hoping minds. The trainer assigned to us for our course was throughly well versed with the field as he was a senior developer. He made sure we all practice what is being taught. Placement committee tried their best to grab as much opportunities they could',
+            name:'Ishita',
+            star:5,
+            emptystar:0,
+            image: UserNew5,
+        },
+        {
+            text:"I had a fantastic experience as a Data Science intern at Hoping Minds. The instructors were knowledgeable and supportive, making complex topics easy to understand. The hands-on projects were invaluable, giving me real-world experience. Additionally, they actively call companies to the institute for placements, providing excellent support in helping students get placed in the industry. ",
+            name:'Ankush',
+            star:5,
+            emptystar:0,
+            image: UserNew6,
+        },
+        {
+            text:'Six-month internship at Hoping Minds, Mohali, offered dynamic growth environment. Mentorship in Cybersecurity, practical applications honed problem-solving. Emphasis on continuous learning, supportive culture. Grateful for guidance shaping confident professional. ',
+            name:'Gungun',
+            star:5,
+            emptystar:0,
+            image: UserNew7,
+        },
+        {
+            text:"My name is Harveen Kaur, a BE Computer Science final-year student from Chitkara University. Hoping Minds full stack training program is well-regarded for its comprehensive curriculum and strong industry connections. Training helped me to gain technical skills as well as the soft skills.",
+            name:'Harveen Kaur',
+            star:5,
+            emptystar:0,
+            image: UserNew8,
+        },
+        {
+            text:"It was an amazing experience learning at Hoping minds . I started my journey at Hoping minds as Full stack intern . The trainers and mentors at Hoping minds helped me enhance my technical as well as interpersonal skills . ",
+            name:'Loveena',
+            star:5,
+            emptystar:0,
+            image: UserNew9,
+        },
+        {
+            text:"Hoping Minds 'comprehensive training approach is focused on technical skills, aptitude development, and personality enhancement, making it a truly holistic experience. The skilled trainers provided engaging sessions and personalized attention, ensuring I grasped concepts thoroughly. ",
+            name:'Manik Garg',
+            star:5,
+            emptystar:0,
+            image: UserNew10,
+        },
+        {
+            text:"It was my immense luck and fortune to be the part of Hoping Minds where I can grow. The entire faculty and mentors leaves no stone unturned to shape one's future. My 6 months at Hoping Minds have been a wonderful experience of learning with prolific exposure to outside. Huge respect, love and devotion for entire faculty members and teachers.",
+            name:'Arjit Dixit',
+            star:5,
+            emptystar:0,
+            image: UserNew11,
+        },
+        {
+            text:'placement-oriented Cloud Computing Course, which I joined  in  December 2023, was pivotal in landing my dream role as a Software Developer at De Facto Infotech. The expert-led curriculum, hands-on projects, and personalized career support equipped me with essential skills and confidence. Their commitment to student success, including resume building and interview preparation, made a significant difference. ',
+            name:'Suraj Kumar Thakur',
+            star:5,
+            emptystar:0,
+            image: UserNew12,
+        },
+       
     ]
 
   return (
@@ -178,7 +280,7 @@ const HireTestimonial = () => {
                         swipeThreshold: false,
                         gap:'1rem',
                     }}>
-                    {tempdata.slice(0).reverse().map((data,index)=>(
+                    {tempdata2.slice(0).reverse().map((data,index)=>(
                     <SplideSlide>
                         <div
                             key={index}
