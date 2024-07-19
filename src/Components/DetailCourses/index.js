@@ -16,6 +16,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import PackageCarousel from "./packageCarousel";
 import DetailCompany from "../Companies/Detailcompanies";
+import axios from "axios";
 
 export default function DetailCourses() {
   const param = useParams();
@@ -26,7 +27,7 @@ export default function DetailCourses() {
   const [show, setshow] = useState(false);
   const { setCartSize, cartSize, GetCart } = useContext(Globalinfo);
   const [faqs, setFaqs] = useState([]);
-
+  const [alreadyInCart, setAlreadyInCart] = useState(false);
   useEffect(() => {
     async function Fetchdata() {
       try {
@@ -36,6 +37,7 @@ export default function DetailCourses() {
         const response = await data.json();
         // console.log(response);
         setData(response?.course);
+        CheckCourseInCart(response?.course._id)
         setFaqs(
           response?.course?.faqs?.map((val) => {
             return {
@@ -94,8 +96,9 @@ export default function DetailCourses() {
           toast.success(response.msg);
           // setCartSize(cartSize + 1);
           GetCart();
+          CheckCourseInCart(courseid)
         } else {
-          toast.error(response.msg);
+          // toast.error(response.msg);getcart?email
         }
       } else {
         localStorage.setItem("ADD_TO_CART_HISTORY", window.location.pathname);
@@ -131,6 +134,34 @@ export default function DetailCourses() {
         navigate("/login-2");
       }
     } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function CheckCourseInCart(courseid){
+    try {
+      if (login) {
+        const token = localStorage.getItem("COURSES_USER_TOKEN");
+        const response = await axios.get(`${BASE_URL}/iscourseincart/${courseid}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+        console.log(response.data); // Assuming response.data contains server's response
+        
+        if (response.data.success) {
+          setAlreadyInCart(true);
+        } else {
+          setAlreadyInCart(false);
+        }
+      } else {
+        // Handle case when user is not logged in
+        // console.log("User is not logged in.");
+        setAlreadyInCart(false); // Assuming you want to reset state if not logged in
+      }
+    } catch (error) {
+      setAlreadyInCart(false);
       console.log(error);
     }
   }
@@ -180,12 +211,18 @@ export default function DetailCourses() {
               )}
               {!purchasedCourses.includes(Data?._id) ? (
                 <div className="space-x-4 w-fit flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
-                  <div
-                    onClick={() => Addtocart(Data?._id)}
-                    className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
-                  >
-                    Add to cart
-                  </div>
+                  {alreadyInCart ?
+                    (<div onClick={() => navigate("/cart")} className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 ">
+                        Go to Cart
+                    </div>)
+                    :
+                    (<div
+                      onClick={() => Addtocart(Data?._id)}
+                      className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
+                    >
+                      Add to cart
+                    </div>)
+                  }
                 </div>
               ) : ""}
             </div>
@@ -306,7 +343,7 @@ export default function DetailCourses() {
           )}
         </div>
         <span className="w-[33%] h-[1000px] -translate-y-[20rem] xsm:-translate-y-[13rem] xsm:w-[100%] xsm:h-fit xsm:mb-[-10rem] ">
-          <Commoncard Data={Data} />
+          <Commoncard Data={Data} alreadyInCart={alreadyInCart} CheckCourseInCart={CheckCourseInCart} />
           <div className=" flex flex-col gap-[2rem]">
          
           <div className="xsm:hidden">

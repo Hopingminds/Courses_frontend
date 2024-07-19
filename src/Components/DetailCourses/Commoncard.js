@@ -16,6 +16,8 @@ import { formatDate } from "../../helpers/helper_function";
 
 export default function Commoncard(props) {
   let { Data } = props;
+  let { alreadyInCart } = props;
+  let { CheckCourseInCart } = props;
   // console.log(Data);
   const [IsMuted, setIsMuted] = useState(true);
 
@@ -46,7 +48,7 @@ export default function Commoncard(props) {
         if (response.success) {
           toast.success(response.msg);
           GetCart()
-          
+          CheckCourseInCart(courseid)
         } else {
           toast.error(response.msg);
         }
@@ -166,13 +168,20 @@ export default function Commoncard(props) {
             ) : (
                 <div className="space-x-4 w-full flex xsm:flex-col xsm:gap-[10px] items-center md:space-x-2  xsm:mr-1">
                     {!purchasedCourses.includes(Data?._id)?
-                  <div
-                    onClick={() => Addtocart(Data?._id)}
-                    className="border cursor-pointer flex justify-center w-full py-2 px-10 rounded-full bg-[#1DBF73] text-white font-nu font-bold xsm:px-[5px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
-                  >
-                    Add to cart
-                  </div>:
-                 ""}
+                      (alreadyInCart ?
+                        (<div onClick={() => navigate("/cart")} className="border cursor-pointer flex justify-center w-full py-2 px-10 rounded-full bg-[#1DBF73] text-white font-nu font-bold xsm:px-[5px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 ">
+                            Go to Cart
+                        </div>)
+                        :
+                        (<div
+                          onClick={() => Addtocart(Data?._id)}
+                          className="border cursor-pointer flex justify-center w-full py-2 px-10 rounded-full bg-[#1DBF73] text-white font-nu font-bold xsm:px-[5px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
+                        >
+                          Add to cart
+                        </div>)
+                      )
+                      :
+                    ""}
                   <div
                     onClick={() => Addtowishlist(Data?._id)}
                     className=" hidden xsm:flex cursor-pointer justify-center w-full py-2 px-10 rounded-full border border-[#1DBF73] text-[#1DBF73] font-nu font-bold xsm:px-[5px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "

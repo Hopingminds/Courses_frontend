@@ -31,18 +31,33 @@ const Register = () => {
     countrycode.replace(/\D/g, '')
 
     try {
-        // const check=await fetch(BASE_URL+'/validatevalues',{
-        //     method:'POST',
-        //     headers:{
-        //         'Content-type':'application/json'
-        //     },
-        //     body:JSON.stringify({email:user.email,phone:countrycode})
-        // })
-        // const checkresponse=await check.json()
-        // if(!checkresponse.success){
-        //     toast.error(checkresponse.message)
-        //     return;
-        // }
+        const check=await fetch(BASE_URL+'/validatevalues',{
+            method:'POST',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify({email:user.email,phone:countrycode})
+        })
+        const checkresponse=await check.json()
+        console.log(checkresponse)
+        if(!checkresponse.success){
+            if(checkresponse?.errors?.email && checkresponse?.errors?.phone){
+                toast.error("Both Email and Phone are already existing")
+                return;
+            }
+            else if(checkresponse?.errors?.email){
+                toast.error(checkresponse?.errors?.email)
+                return;
+            }
+            else if(checkresponse?.errors?.phone){
+                toast.error(checkresponse?.errors?.phone)
+                return;
+            }
+            else{
+                toast.error(checkresponse?.msg)
+                return;
+            }
+        }
       
         const data=await fetch(BASE_URL+'/sendmobileotp',{
             method:'POST',
@@ -96,7 +111,7 @@ const Register = () => {
     }
     if(response.success){
         try {
-            const res = await axios.post(`${BASE_URL}/register`, {
+            const res = await axios.put(`${BASE_URL}/register`, {
                 name: user.name,
                 email: user.email,
                 phone: countrycode,

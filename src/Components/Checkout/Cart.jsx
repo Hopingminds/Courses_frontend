@@ -107,7 +107,7 @@ setinputData((prev) => ({
 
     setSgst(gstAmount / 2);
     setGst(gstAmount / 2);
-    setFinalPrice((price-disprice) + gstAmount);
+    setFinalPrice((price-disprice));
   }
 
 
@@ -190,7 +190,7 @@ setinputData((prev) => ({
         //   navigate("/success");
         // }, 1000);
       } else {
-        toast.error(response.message);
+        // toast.error(response.message);
       }
       //   if (response.success) {
       //     toast.success(response.message);
@@ -256,10 +256,10 @@ setinputData((prev) => ({
     const userData = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
   
     // Validate inputs
-    if (!inputData.name) {
-      setwarnings(prevWarnings => ({ ...prevWarnings, name: true }));
-      return; // Early return on missing name
-    }
+    // if (!inputData.name) {
+    //   setwarnings(prevWarnings => ({ ...prevWarnings, name: true }));
+    //   return; // Early return on missing name
+    // }
     if (!inputData.address) {
       setwarnings(prevWarnings => ({ ...prevWarnings, address: true }));
       return; // Early return on missing address
@@ -279,7 +279,16 @@ setinputData((prev) => ({
       return; // Early return on missing state
     }
     
-    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone || "0000000000"}&name=${userDetail?.name?.replace(/\s/g,"%20")}&address=${inputData.address.replace(/\s/g,"%20")}&zip=${inputData.zip}&country=${country?.name?.replace(/\s/g,"%20")}&state=${state?.name.replace(/\s/g,"%20")}&gstNumber=${inputData?.gstnumber || "000"}`;
+    function getLast10Digits(number) {
+        // Using modulus to get the last 10 digits
+        return number % 10000000000;
+    }
+  
+    let number = userDetail?.phone;
+    let last10Digits = getLast10Digits(number);
+
+
+    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${last10Digits || "0000000000"}&name=${userDetail?.name?.replace(/\s/g,"%20")}&address=${inputData.address.replace(/\s/g,"%20")}&zip=${inputData.zip}&country=${country?.name?.replace(/\s/g,"%20")}&state=${state?.name.replace(/\s/g,"%20")}&gstNumber=${inputData?.gstnumber || "000"}`;
     console.log(paymentUrl)
     async function handlePaymentUrl(){
       try {
@@ -522,24 +531,6 @@ setinputData((prev) => ({
                 Discount Added 
               </p>
               <p className="xsm:text-[12px] md:text-[14px]">-₹{discountPrice}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
-                CGST Added
-              </p>
-              <p className="xsm:text-[12px] md:text-[14px]">₹{gst}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
-                SGST Added
-              </p>
-              <p className="xsm:text-[12px] md:text-[14px]">₹{sgst}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
-                Total GST
-              </p>
-              <p className="xsm:text-[12px] md:text-[14px]">₹{sgst+gst}</p>
             </div>
           </div>
           <div className="mt-5 mb-4 xsm:my-0">
