@@ -256,10 +256,10 @@ setinputData((prev) => ({
     const userData = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
   
     // Validate inputs
-    if (!inputData.name) {
-      setwarnings(prevWarnings => ({ ...prevWarnings, name: true }));
-      return; // Early return on missing name
-    }
+    // if (!inputData.name) {
+    //   setwarnings(prevWarnings => ({ ...prevWarnings, name: true }));
+    //   return; // Early return on missing name
+    // }
     if (!inputData.address) {
       setwarnings(prevWarnings => ({ ...prevWarnings, address: true }));
       return; // Early return on missing address
