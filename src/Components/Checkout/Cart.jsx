@@ -107,7 +107,7 @@ setinputData((prev) => ({
 
     setSgst(gstAmount / 2);
     setGst(gstAmount / 2);
-    setFinalPrice((price-disprice) + gstAmount);
+    setFinalPrice((price-disprice));
   }
 
 
@@ -531,24 +531,6 @@ setinputData((prev) => ({
                 Discount Added 
               </p>
               <p className="xsm:text-[12px] md:text-[14px]">-₹{discountPrice}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
-                CGST Added
-              </p>
-              <p className="xsm:text-[12px] md:text-[14px]">₹{gst}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
-                SGST Added
-              </p>
-              <p className="xsm:text-[12px] md:text-[14px]">₹{sgst}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
-                Total GST
-              </p>
-              <p className="xsm:text-[12px] md:text-[14px]">₹{sgst+gst}</p>
             </div>
           </div>
           <div className="mt-5 mb-4 xsm:my-0">
