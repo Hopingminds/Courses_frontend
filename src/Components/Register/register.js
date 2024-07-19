@@ -111,7 +111,7 @@ const Register = () => {
     }
     if(response.success){
         try {
-            const res = await axios.post(`${BASE_URL}/register`, {
+            const res = await axios.put(`${BASE_URL}/register`, {
                 name: user.name,
                 email: user.email,
                 phone: countrycode,
