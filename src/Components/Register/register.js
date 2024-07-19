@@ -41,20 +41,22 @@ const Register = () => {
         const checkresponse=await check.json()
         console.log(checkresponse)
         if(!checkresponse.success){
-            if(checkresponse.errors.email && checkresponse.errors.phone){
-                toast.error(checkresponse.errors.email +"\n"+checkresponse.errors.phone)
+            if(checkresponse?.errors?.email && checkresponse?.errors?.phone){
+                toast.error("Both Email and Phone are already existing")
                 return;
             }
-            else if(checkresponse.errors.email){
-                toast.error(checkresponse.errors.email)
+            else if(checkresponse?.errors?.email){
+                toast.error(checkresponse?.errors?.email)
                 return;
             }
-            else if(checkresponse.errors.phone){
-                toast.error(checkresponse.errors.phone)
+            else if(checkresponse?.errors?.phone){
+                toast.error(checkresponse?.errors?.phone)
                 return;
             }
-            toast.error(checkresponse.message)
-            return;
+            else{
+                toast.error(checkresponse?.msg)
+                return;
+            }
         }
       
         const data=await fetch(BASE_URL+'/sendmobileotp',{
