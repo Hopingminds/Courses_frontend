@@ -9,7 +9,7 @@ import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
 import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import NewSideBar from "./NewSideBar.jsx";
 import { FiMenu } from "react-icons/fi";
-
+import DrawerNavbar from "./DrawerNavbar.jsx";
 
 export default function CDDetails() {
   const [clicked, setclicked] = useState(false);
@@ -22,22 +22,23 @@ export default function CDDetails() {
   const [courseId, setcourseId] = useState();
   const [courseAssignment, setCourseAssignment] = useState([]);
   const [courseLessons, setCourseLessons] = useState([]);
-  const [showSmallvideo, setshowSmallvideo] = useState(false)
-  const [smallVideourl, setsmallVideourl] = useState('')
-  const [pdfurl, setpdfurl] = useState('')
+  const [showSmallvideo, setshowSmallvideo] = useState(false);
+  const [smallVideourl, setsmallVideourl] = useState("");
+  const [pdfurl, setpdfurl] = useState("");
   const [url, seturl] = useState("");
-  const [starttime, setstarttime] = useState()
-  const [endtime, setendtime] = useState()
-  const [showLive, setshowLive] = useState(false)
-  const [showend, setshowend] = useState(false)
-  const [meetinglink, setmeetinglink] = useState('')
+  const [starttime, setstarttime] = useState();
+  const [endtime, setendtime] = useState();
+  const [showLive, setshowLive] = useState(false);
+  const [showend, setshowend] = useState(false);
+  const [meetinglink, setmeetinglink] = useState("");
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const params = useParams();
   let completed = [];
   let allchapters = [];
-let temp=true;
+  let temp = true;
   useEffect(() => {
     async function Fetchdata() {
-      temp=false;
+      temp = false;
       let login = localStorage.getItem("COURSES_USER_TOKEN");
       if (login) {
         let token = jwtDecode(login);
@@ -65,13 +66,12 @@ let temp=true;
           response?.data?.course?.curriculum?.forEach((val) => {
             val?.lessons?.map((it) => {
               // console.log("it",val);
-                allchapters.push({
-                  video: it?.video,
-                  _id: it?._id,
-                  isLiveClass:it?.isLiveClass,
-                  liveClass:it?.liveClass
-                });
-              
+              allchapters.push({
+                video: it?.video,
+                _id: it?._id,
+                isLiveClass: it?.isLiveClass,
+                liveClass: it?.liveClass,
+              });
             });
           });
         }
@@ -82,25 +82,28 @@ let temp=true;
         setData(response?.data?.course);
         completed = [...new Set(completed)];
         let videoindex = completed.length;
-        
-        console.log("length",allchapters,response?.data?.completed_lessons?.length);
+
+        console.log(
+          "length",
+          allchapters,
+          response?.data?.completed_lessons?.length
+        );
         // console.log("data",allchapters,completed);
-        if( allchapters?.length===response?.data?.completed_lessons?.length){
+        if (allchapters?.length === response?.data?.completed_lessons?.length) {
           console.log("hello");
           seturl(allchapters[0]?.video);
-          setcount(0)
-        }
-        else{
+          setcount(0);
+        } else {
           console.log("hi");
           seturl(allchapters[videoindex - 1]?.video);
-          setcount(videoindex-1)
+          setcount(videoindex - 1);
         }
         setcompleted_lessons(completed);
         setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
       }
     }
-    if(temp){
+    if (temp) {
       Fetchdata();
     }
   }, []);
@@ -124,21 +127,20 @@ let temp=true;
   let totalLessons = countLessons();
   // useEffect hook to add event listeners when the component mounts
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
     // document.addEventListener('keyup', (e)=>{
     //   navigator.clipboard.writeText('')
     //   alert('Screenshot is not allowed')
     // });
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [])
-
+  }, []);
 
   function handleActiveVideo(url) {
-    setshowLive(false)
+    setshowLive(false);
     // console.log(url);
-    setshowSmallvideo(false)
+    setshowSmallvideo(false);
     seturl(url);
   }
 
@@ -146,40 +148,37 @@ let temp=true;
   const handleVideoEnded = async () => {
     // console.log(count + 1);
     // console.log(totalLessons,ALLCHAPTER.length);
-    setshowSmallvideo(false)
-    seturl(ALLCHAPTER[(count + 1)%ALLCHAPTER.length]?.video);
-    if(ALLCHAPTER?.length>completed_lessons.length){
-    let temp = completed_lessons;
-    temp.push(ALLCHAPTER[count + 1]?._id);
-    // console.log(count);v
-    setcompleted_lessons(temp);
+    setshowSmallvideo(false);
+    seturl(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.video);
+    if (ALLCHAPTER?.length > completed_lessons.length) {
+      let temp = completed_lessons;
+      temp.push(ALLCHAPTER[count + 1]?._id);
+      // console.log(count);v
+      setcompleted_lessons(temp);
 
-    try {
-      let login = localStorage.getItem("COURSES_USER_TOKEN");
-      if (login) {
-        let url = BASE_URL + "/lessoncompleted";
-        let bodydata = { courseId, lessonId: ALLCHAPTER[count]?._id };
-        const data1 = await fetch(url, {
-          method: "PUT",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + login,
-          },
-          body: JSON.stringify(bodydata),
-        });
-        const response = await data1.json();
+      try {
+        let login = localStorage.getItem("COURSES_USER_TOKEN");
+        if (login) {
+          let url = BASE_URL + "/lessoncompleted";
+          let bodydata = { courseId, lessonId: ALLCHAPTER[count]?._id };
+          const data1 = await fetch(url, {
+            method: "PUT",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + login,
+            },
+            body: JSON.stringify(bodydata),
+          });
+          const response = await data1.json();
 
-        
-
-        // console.log(response);
-    
+          // console.log(response);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  setcount((prev)=>prev+1);
+    setcount((prev) => prev + 1);
   };
 
   function ClickSection(id) {
@@ -215,159 +214,180 @@ let temp=true;
 
   const handleToggleNotes = async (pdf, videourl) => {
     // console.log(pdfurl);
-    setshowSmallvideo(true)
+    setshowSmallvideo(true);
     // seturl(pdfurl)
-    setpdfurl(pdf)
-    setsmallVideourl(videourl)
+    setpdfurl(pdf);
+    setsmallVideourl(videourl);
   };
 
-  function handleProject(project){
-    let today=new Date()
-      let startdate=new Date(project?.startDate);
-      let enddate=new Date(project?.endDate);
-      setmeetinglink(project?.projectInfoPdf)
-      // console.log(startdate);
-      if(startdate>today){
-        setshowLive(true)
-        // console.log("yess");
-        let tmp=formatDate(startdate)
-        setstarttime(tmp)
-       
-      }
-      else if(enddate>today){
-        setshowLive(false)
-        setshowend(true)
-        let tmp=formatDate(enddate)
-        setendtime(tmp)
-      }
-      else{
-        setshowLive(false)
-        setshowend(false)
-        // setcount((prev)=>prev+1)
-        handleVideoEnded()
-      }
+  function handleProject(project) {
+    let today = new Date();
+    let startdate = new Date(project?.startDate);
+    let enddate = new Date(project?.endDate);
+    setmeetinglink(project?.projectInfoPdf);
+    // console.log(startdate);
+    if (startdate > today) {
+      setshowLive(true);
+      // console.log("yess");
+      let tmp = formatDate(startdate);
+      setstarttime(tmp);
+    } else if (enddate > today) {
+      setshowLive(false);
+      setshowend(true);
+      let tmp = formatDate(enddate);
+      setendtime(tmp);
+    } else {
+      setshowLive(false);
+      setshowend(false);
+      // setcount((prev)=>prev+1)
+      handleVideoEnded();
+    }
   }
 
   function handleNext() {
-    setshowSmallvideo(false)
+    setshowSmallvideo(false);
     if (count == completed_lessons.length) {
-      handleVideoEnded()
-    }
-    else {
+      handleVideoEnded();
+    } else {
       seturl(ALLCHAPTER[count + 1]?.video);
     }
-
   }
   function formatDate(dateString) {
     const dateObj = new Date(dateString);
-    
-    const day = String(dateObj.getDate()).padStart(2, '0');
+
+    const day = String(dateObj.getDate()).padStart(2, "0");
     const year = dateObj.getFullYear();
 
     const monthNames = [
-        "January", "February", "March", "April", "May", "June", 
-        "July", "August", "September", "October", "November", "December"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
     const month = monthNames[dateObj.getMonth()];
 
     let hours = dateObj.getHours();
-    const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+    const minutes = String(dateObj.getMinutes()).padStart(2, "0");
 
-    const ampm = hours >= 12 ? 'pm' : 'am';
+    const ampm = hours >= 12 ? "pm" : "am";
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
-    
+
     const time = `${hours}.${minutes}${ampm}`;
 
     return `${day} ${month} ${year} ${time}`;
-}
+  }
 
-// Example usage
+  // Example usage
 
-// console.log(formattedDate); // Output: "08 July 2024 2.30pm"
+  // console.log(formattedDate); // Output: "08 July 2024 2.30pm"
 
   useEffect(() => {
-    if(ALLCHAPTER[count]?.isLiveClass){
-      let today=new Date()
-      let startdate=new Date(ALLCHAPTER[count]?.liveClass.startDate);
-      let enddate=new Date(ALLCHAPTER[count]?.liveClass.endDate);
+    if (ALLCHAPTER[count]?.isLiveClass) {
+      let today = new Date();
+      let startdate = new Date(ALLCHAPTER[count]?.liveClass.startDate);
+      let enddate = new Date(ALLCHAPTER[count]?.liveClass.endDate);
       // console.log(startdate);
-      if(startdate>today){
-        setshowLive(true)
+      if (startdate > today) {
+        setshowLive(true);
         // console.log("yess");
-        let tmp=formatDate(startdate)
-        setstarttime(tmp)
-       
-      }
-      else if(enddate>today){
-        setshowLive(false)
-        setshowend(true)
-        let tmp=formatDate(enddate)
-        setendtime(tmp)
-      }
-      else{
-        setshowLive(false)
-        setshowend(false)
-        setcount((prev)=>prev+1)
-        handleVideoEnded()
+        let tmp = formatDate(startdate);
+        setstarttime(tmp);
+      } else if (enddate > today) {
+        setshowLive(false);
+        setshowend(true);
+        let tmp = formatDate(enddate);
+        setendtime(tmp);
+      } else {
+        setshowLive(false);
+        setshowend(false);
+        setcount((prev) => prev + 1);
+        handleVideoEnded();
       }
       // if()
-      
     }
-  }, [count])
+  }, [count]);
   return (
     <>
       <div className="flex justify-between gap-5">
         {/* side menu */}
-        <div className='w-[20%] sticky top-20 h-max xsm:hidden'>
+        <div className="w-[20%] z-50 sticky top-20 h-max xsm:hidden">
           {/* <SideBar /> */}
-          <NewSideBar />
+          {/* <NewSideBar /> */}
+          <DrawerNavbar />
         </div>
 
         <div className="w-[85%] xsm:w-full ">
           <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] md:pr-[5%] md:h-[50vh] xsm:px-4">
-            {showSmallvideo && <div className="fixed bottom-0 left-0 z-20 rounded-xl">
-              <ReactPlayer
-                onContextMenu={handleContextMenu}
-                height="200px"
-                width="250px"
-                borderRadius="14px"
-                className="shadow-2xl rounded-xl"
-                style={{ borderRadius: "14px !important" }}
-                playing={true}
-                controls={true}
-                autoPlay={true}
-                url={smallVideourl}
-                onDuration={handleDuration}
-                onEnded={handleVideoEnded}
-                config={{
-                  file: {
-                    attributes: {
-                      controlsList: "nodownload",
+            {showSmallvideo && (
+              <div className="fixed bottom-0 left-0 z-20 rounded-xl">
+                <ReactPlayer
+                  onContextMenu={handleContextMenu}
+                  height="200px"
+                  width="250px"
+                  borderRadius="14px"
+                  className="shadow-2xl rounded-xl"
+                  style={{ borderRadius: "14px !important" }}
+                  playing={true}
+                  controls={true}
+                  autoPlay={true}
+                  url={smallVideourl}
+                  onDuration={handleDuration}
+                  onEnded={handleVideoEnded}
+                  config={{
+                    file: {
+                      attributes: {
+                        controlsList: "nodownload",
+                      },
                     },
-                  },
-                }}
-
+                  }}
+                />
+              </div>
+            )}
+            {window.innerWidth <= 480 ? (
+              <FiMenu
+                className="absolute top-14 right-1 "
+                onClick={() => setMenu(true)}
+                size={24}
               />
-            </div>}
-            {
-              window.innerWidth <= 480 ? <FiMenu className="absolute top-14 right-1 " onClick={() => setMenu(true)} size={24} /> : <></>
-            }
+            ) : (
+              <></>
+            )}
             <div className="flex gap-20 xsm:gap-0">
               <div className="CCD-content flex gap-5 pt-10">
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
-                  <div className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]" style={{ borderRadius: "14px !important" }}>
+                  <div
+                    className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
+                    style={{ borderRadius: "14px !important" }}
+                  >
                     {showSmallvideo || url?.toString().endsWith("pdf") ? (
-                    //  <div className="relative">
-                         <iframe  src={pdfurl} width="100%" height="100%" />
-                        //  <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
+                      //  <div className="relative">
+                      <iframe src={pdfurl} width="100%" height="100%" />
+                    ) : //  <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
                     //  </div>
-                    ) :
-                    showLive ? <div className="text-center flex flex-col"><p>Live Class Will Start On {starttime}.</p>
-                    <p className="font-semibold">Meeting link: {meetinglink}</p></div>:
-                    showend ? <div className="text-center flex flex-col"><p>Live Class Will End On {endtime}.</p>
-                    <p className="font-semibold">Meeting link: {meetinglink}</p></div>
-                    : url?.toString().endsWith("mp3") ? (
+                    showLive ? (
+                      <div className="text-center flex flex-col">
+                        <p>Live Class Will Start On {starttime}.</p>
+                        <p className="font-semibold">
+                          Meeting link: {meetinglink}
+                        </p>
+                      </div>
+                    ) : showend ? (
+                      <div className="text-center flex flex-col">
+                        <p>Live Class Will End On {endtime}.</p>
+                        <p className="font-semibold">
+                          Meeting link: {meetinglink}
+                        </p>
+                      </div>
+                    ) : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : (
                       <ReactPlayer
@@ -390,10 +410,8 @@ let temp=true;
                             },
                           },
                         }}
-
                       />
                     )}
-
                   </div>
                 </div>
 
@@ -401,16 +419,15 @@ let temp=true;
                   menu ? (
                     <div className="w-[45%] h-[80vh] overflow-y-auto ">
                       <Coursecontents
-                      handleActiveVideo={handleActiveVideo}
-                      data={Data?.curriculum}
-                      courseId={courseId}
-                      completed_lessons={completed_lessons}
-                      setMenu={setMenu}
-                      handleToggleNotes={handleToggleNotes}
-                      ALLCHAPTER={ALLCHAPTER}
-                      count={count}
-                      handleProject={handleProject}
-
+                        handleActiveVideo={handleActiveVideo}
+                        data={Data?.curriculum}
+                        courseId={courseId}
+                        completed_lessons={completed_lessons}
+                        setMenu={setMenu}
+                        handleToggleNotes={handleToggleNotes}
+                        ALLCHAPTER={ALLCHAPTER}
+                        count={count}
+                        handleProject={handleProject}
                       />
                     </div>
                   ) : (
@@ -434,7 +451,10 @@ let temp=true;
               </div>
             </div>
           </div>
-          <div id="ScrollToTop" className=" w-[65%] pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]">
+          <div
+            id="ScrollToTop"
+            className=" w-[65%] pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]"
+          >
             <div className="CCD-Header-container flex justify-evenly">
               <div className="w-[100%] xsm:mb-10">
                 <div className=" mt-8 xsm:mt-0 md:mt-0">
