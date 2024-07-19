@@ -98,7 +98,7 @@ export default function DetailCourses() {
           GetCart();
           CheckCourseInCart(courseid)
         } else {
-          toast.error(response.msg);
+          // toast.error(response.msg);getcart?email
         }
       } else {
         localStorage.setItem("ADD_TO_CART_HISTORY", window.location.pathname);

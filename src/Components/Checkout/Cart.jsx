@@ -190,7 +190,7 @@ setinputData((prev) => ({
         //   navigate("/success");
         // }, 1000);
       } else {
-        toast.error(response.message);
+        // toast.error(response.message);
       }
       //   if (response.success) {
       //     toast.success(response.message);
@@ -279,7 +279,16 @@ setinputData((prev) => ({
       return; // Early return on missing state
     }
     
-    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${userDetail?.phone || "0000000000"}&name=${userDetail?.name?.replace(/\s/g,"%20")}&address=${inputData.address.replace(/\s/g,"%20")}&zip=${inputData.zip}&country=${country?.name?.replace(/\s/g,"%20")}&state=${state?.name.replace(/\s/g,"%20")}&gstNumber=${inputData?.gstnumber || "000"}`;
+    function getLast10Digits(number) {
+        // Using modulus to get the last 10 digits
+        return number % 10000000000;
+    }
+  
+    let number = userDetail?.phone;
+    let last10Digits = getLast10Digits(number);
+
+
+    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${last10Digits || "0000000000"}&name=${userDetail?.name?.replace(/\s/g,"%20")}&address=${inputData.address.replace(/\s/g,"%20")}&zip=${inputData.zip}&country=${country?.name?.replace(/\s/g,"%20")}&state=${state?.name.replace(/\s/g,"%20")}&gstNumber=${inputData?.gstnumber || "000"}`;
     console.log(paymentUrl)
     async function handlePaymentUrl(){
       try {
