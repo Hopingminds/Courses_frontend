@@ -52,12 +52,12 @@ const PackageCarousel = ({data}) => {
                     <h5 className="text-[#808080] text-[10px]"> (Fresher)</h5>
                   </span>
                   <span className='flex flex-col'>
-                    <span className=" text-lg font-bold ">
+                    {/* <span className=" text-lg font-bold ">
                       {" "}
                       {""+Math.ceil(val?.avgpkg?.from + val?.avgpkg?.to) / 2 + 
                         " LPA"}
-                    </span>
-                    <span className='text-[0.8rem] font-semibold'>{` ${val?.avgpkg?.from} LPA To ${val?.avgpkg?.to} LPA`}</span>
+                    </span> */}
+                    <span className='text-[1rem] font-bold'>{` ${val?.avgpkg?.from} LPA To ${val?.avgpkg?.to} LPA`}</span>
                   </span>
                 </div>
               </SplideSlide>

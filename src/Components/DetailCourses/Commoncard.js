@@ -108,6 +108,29 @@ export default function Commoncard(props) {
   const handleContextMenu = (e) => {
     e.preventDefault(); // Prevent default context menu behavior
   };
+  function formatDate(dateString) {
+    const dateObj = new Date(dateString);
+    
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const year = dateObj.getFullYear();
+
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June", 
+        "July", "August", "September", "October", "November", "December"
+    ];
+    const month = monthNames[dateObj.getMonth()];
+
+    let hours = dateObj.getHours();
+    const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    
+    const time = `${hours}.${minutes}${ampm}`;
+
+    return `${day} ${month} ${year} ${time}`;
+}
   // console.log(Data);
   return (
     <div className="bg-[#E2FFF1] w-[full] h-max my-14 p-6 rounded-t-lg flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:mb-8">
@@ -158,10 +181,12 @@ export default function Commoncard(props) {
           </h2>
 
           <div className="gap-y-4 flex w-full px-5 flex-col items-center xsm:gap-x-2 md:gap-x-2">
+            {new Date(Data?.courseStartDate) > new Date() ? <p className="text-sm text-gray-400">Your batch will be start on {formatDate(Data?.courseStartDate)}</p>:''}
+            {/* <p>Your batch will be start on {Data?.courseStartDate > new Date()}</p> */}
             {purchasedCourses.includes(Data?._id) ? (
               <Link
                 to={"/course/" + Data?.slug}
-                className="bg-[#1DBF73] py-2 px-7 flex justify-center rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1"
+                className={`${new Date(Data?.courseStartDate) > new Date() ? 'pointer-events-none opacity-50 cursor-not-allowed':''} bg-[#1DBF73] py-2 px-7 flex justify-center rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1`}
               >
                 View Course
               </Link>

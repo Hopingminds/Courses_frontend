@@ -222,8 +222,9 @@ export default function Navbar() {
                   >
                     <span>
                       <div className="custom-tooltip">
-                      <span className="tooltiptext flex flex-col gap-3 p-2 text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] italic">
-                        <Link to="/profile"> {userDetail?.name?.split(' ')[0]} Complete Your Profile</Link>
+                      <span className="tooltiptext flex flex-col gap-3 p-2 text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] ">
+                        <p >{userDetail?.name?.split(' ')[0]}</p>
+                       {userDetail?.isProfileComplete ? <Link className="text-[#1DBF73] italic" to="/profile">View Profile</Link> :<Link className="text-[#1DBF73] italic"  to="/profile" >Complete Your Profile</Link>}
                         <button onClick={handleLogOut} className="text-[#FFFFFF]  text-[16px] font-nu bg-[#1DBF73] rounded-full px-3 py-1 xsm:text-[8px] xsm:px-2 md:text-[16px] md:px-2">Log Out</button>
                       </span>
                         {userDetail?.profile ? (
@@ -349,8 +350,9 @@ export default function Navbar() {
                   {" "}
                   <span>
                     <div className="custom-tooltip">
-                      <span className="tooltiptext flex flex-col gap-3 p-2 text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] italic">
-                        <Link to="/profile"> {userDetail?.name?.split(' ')[0]} Complete Your Profile</Link>
+                      <span className="tooltiptext flex flex-col gap-3 p-2 text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43]">
+                        <p >{userDetail?.name?.split(' ')[0]}</p>
+                       {userDetail?.isProfileComplete ? <Link className="text-[#1DBF73] italic" to="/profile">View Profile</Link> :<Link className="text-[#1DBF73] italic"  to="/profile">Complete Your Profile</Link>}
                         <button onClick={handleLogOut} className="text-[#FFFFFF]  text-[16px] font-nu bg-[#1DBF73] rounded-full px-3 py-1 xsm:text-[8px] xsm:px-2 md:text-[16px] md:px-2">Log Out</button>
                       </span>
                       {/* <div className="h-8 w-8 rounded-full border"><img src={profile} className="h-full w-full" /></div> */}
