@@ -4,6 +4,7 @@ import Instructor from "../Instructor/Instructor";
 import CNAssignment from "./CNAssignment";
 import CNMyStats from "./CNMyStats";
 import LiveClass from "../LiveClass";
+
 import CNAssessment from "./CNAssessment";
 
 const CourseNavigation = ({
@@ -14,6 +15,7 @@ const CourseNavigation = ({
   slug
 }) => {
   const [activeComponent, setActiveComponent] = useState("Overview");
+  console.log(courseLessons);
 
   const renderComponent = (componentName) => {
     setActiveComponent(componentName);
