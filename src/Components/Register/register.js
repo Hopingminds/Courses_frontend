@@ -53,10 +53,6 @@ const Register = () => {
                 toast.error(checkresponse?.errors?.phone)
                 return;
             }
-            else{
-                toast.error(checkresponse?.msg)
-                return;
-            }
         }
       
         const data=await fetch(BASE_URL+'/sendmobileotp',{
@@ -111,7 +107,7 @@ const Register = () => {
     }
     if(response.success){
         try {
-            const res = await axios.put(`${BASE_URL}/register`, {
+            const res = await axios.post(`${BASE_URL}/register`, {
                 name: user.name,
                 email: user.email,
                 phone: countrycode,
@@ -123,7 +119,7 @@ const Register = () => {
             getUserDetails();
             localStorage.setItem('COURSES_USER_TOKEN', res.data.token);
             
-            if (res.status==200) {
+            if (res.status==200 || res.status==201) {
                 toast.success("Registered Successfully");
                 const decoded = jwtDecode(res.data.token);
                 try {
