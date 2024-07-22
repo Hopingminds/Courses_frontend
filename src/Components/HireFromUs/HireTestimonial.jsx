@@ -40,21 +40,21 @@ const HireTestimonial = () => {
         {
             text:'Placed at Virtuos Digital via Hoping Minds. Transitioned from tech novice to adept with insights into corporate culture. Grateful for guidance from teachers and placement coordinators, fostering a valuable learning journey.',
             name:'LOVNEET KAUR ',
-            star:5,
+            star:3,
             emptystar:0,
             image: User10,
         },
         {
             text:'Placed in Dubai startup, 5 LPA as backend engineer. Grateful to Hoping Minds via college for training, support, and preparation. Their guidance aligned me with industry demands, aiding in the pursuit of my dreams.',
             name:'Poonam Saliya ',
-            star:5,
+            star:4,
             emptystar:0,
             image: User9,
         },
         {
             text:'Joining Hoping Minds for cyber security training was pivotal. The supportive environment, dedicated placement team, and excellent teachers facilitated my journey to a job at Cyber Assure Company. Grateful for the growth, friendships, and opportunities gained.',
             name:'Simran Singh',
-            star:5,
+            star:3,
             emptystar:0,
             image: User8,
         },
@@ -68,7 +68,7 @@ const HireTestimonial = () => {
         {
             text:' Hoping Minds transformed my naive knowledge, providing a roadmap and problem- solving approach. Guidance from teachers and placement coordinators, including mock tests, prepared me for interviews. Grateful for the learning journey.',
             name:'Rupak Yadav',
-            star:5,
+            star:4,
             emptystar:0,
             image: User6,
         },
@@ -89,14 +89,14 @@ const HireTestimonial = () => {
         {
             text:"Hoping Minds' dedicated efforts and comprehensive job assistance program transformed me from a hopeful job seeker to a proud employee. Their personalized approach, insightful counseling, and invaluable support led to securing my first job and equipped me for future career success.",
             name:'KHUSHPREET KAUR',
-            star:5,
+            star:4,
             emptystar:0,
             image: User3,
         },
         {
             text:'HopingMinds played a crucial role in securing my first job, providing unwavering support, essential skills, and invaluable guidance. Their exceptional job placement assistance led me to a role aligned with my aspirations, illuminating my path to success.',
             name:'SUMIT VERMA',
-            star:5,
+            star:4,
             emptystar:0,
             image: User2,
         },
@@ -121,7 +121,7 @@ const HireTestimonial = () => {
         {
             text:'Hi My name is  Akshita Thakur .I am a full stack developer Trainee at Hoping Minds, I have very good  experience at Hoping Minds . The instructors here are very knowledgeable and supporting. The hands-on approach helps me to  gain practical skills that are directly applicable to the industry.',
             name:'Akshita Thakur',
-            star:5,
+            star:4,
             emptystar:0,
             image: UserNew2,
         },
@@ -142,7 +142,7 @@ const HireTestimonial = () => {
         {
             text:'I had a great experience here over in hoping minds. The trainer assigned to us for our course was throughly well versed with the field as he was a senior developer. He made sure we all practice what is being taught. Placement committee tried their best to grab as much opportunities they could',
             name:'Ishita',
-            star:5,
+            star:4,
             emptystar:0,
             image: UserNew5,
         },

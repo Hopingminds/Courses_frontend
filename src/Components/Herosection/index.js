@@ -175,8 +175,11 @@ export default function Herosection() {
       }, 100);
       return () => clearInterval(interval);
     } else {
-      setDisplayText(staticText);
-      setCurrentIndex(0);
+      const timeout = setTimeout(() => {
+        setDisplayText(staticText);
+        setCurrentIndex(0);
+      }, 2000);
+      return () => clearTimeout(timeout);
     }
   }, [currentIndex, remainingText.length, staticText]);
 

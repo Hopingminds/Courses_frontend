@@ -182,7 +182,7 @@ export default function Commoncard(props) {
           </h2>
 
           <div className="gap-y-4 flex w-full px-5 flex-col items-center xsm:gap-x-2 md:gap-x-2">
-            {new Date(Data?.courseStartDate) > new Date() ? <p className="text-sm text-gray-400">Your batch will be start on {formatDate(Data?.courseStartDate)}</p>:''}
+            {new Date(Data?.courseStartDate) > new Date() ? <p className="text-sm text-gray-400">Upcoming Batch {formatDate(Data?.courseStartDate)}</p>:''}
             {/* <p>Your batch will be start on {Data?.courseStartDate > new Date()}</p> */}
             {purchasedCourses.includes(Data?._id) ? (
               <Link

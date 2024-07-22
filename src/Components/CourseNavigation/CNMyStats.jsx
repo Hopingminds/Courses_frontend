@@ -26,11 +26,11 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
   const calculateAverageProgress = (completedAssignments, completedLessons) => {
     const totalCompleted = completedAssignments + completedLessons;
     return totalCompleted > 0
-      ? ((completedAssignments + completedLessons) / 2).toFixed(2)
+      ? ((percentageLesson + percentageAssignment) / 2).toFixed(2)
       : 0;
   };
 
-  console.log(completedAssignments);
+  // console.log(completedAssignments);
 
   return (
     <div className="bg-[#FFFFFF] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col items-center gap-2 ">
@@ -53,10 +53,7 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
               const roundedValue = Math.round(value);
               return (
                 <CircularProgressbarWithChildren
-                  value={calculateAverageProgress(
-                    completedLessons || 0,
-                    completedAssignments || 0
-                  )}
+                  value={percentageLesson}
                   strokeWidth={3}
                   styles={buildStyles({
                     pathColor: "#FB67CA",
@@ -117,7 +114,7 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
             }}
           </AnimatedProgressProvider>
         </div>
-        <div className="flex flex-col items-start w-[30%] xsm:flex-col xsm:mt-0 xsm:space-x-0 xsm:gap-3 xsm:items-start md:mt-6 md:space-x-8">
+        <div className="flex flex-col items-start w-[40%]  xsm:flex-col xsm:mt-0 xsm:space-x-0 xsm:gap-3 xsm:items-start md:mt-6 md:space-x-8">
           <div className="flex justify-between items-center w-full">
             <div className="flex space-x-2 items-center md:space-x-1">
               <img
@@ -125,11 +122,11 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
                 src="../Icons/MSpinkcircle.svg"
               />
               <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px]">
-                Completed
+                Percentage
               </p>
             </div>
             <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px]">
-              {calculateAverageProgress(completedLessons, completedAssignments)}
+              {percentageLesson}
               %
             </p>
           </div>
@@ -140,11 +137,11 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
                 src="../Icons/MSorangecircle.svg"
               />
               <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px]">
-                Assignment
+                Total Lessons
               </p>
             </div>
             <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px]">
-              {percentageAssignment}%
+              {totalLessons}
             </p>
           </div>
           <div className="flex justify-between items-center w-full">
@@ -154,11 +151,11 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
                 src="../Icons/MSbluecircle.svg"
               />
               <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px]">
-                Lessons
+               Completed Lessons
               </p>
             </div>
             <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px]">
-              {percentageLesson}%
+              {completedLessons}
             </p>
           </div>
         </div>

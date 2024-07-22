@@ -15,7 +15,9 @@ const CourseNavigation = ({
   slug
 }) => {
   const [activeComponent, setActiveComponent] = useState("Overview");
-  console.log(courseLessons);
+  // console.log("courseLessons",courseLessons);
+  // console.log("totalLessons",totalLessons);
+  // console.log("courseAssignment",courseAssignment);
 
   const renderComponent = (componentName) => {
     setActiveComponent(componentName);

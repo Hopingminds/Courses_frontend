@@ -290,13 +290,13 @@ export default function DetailCourses() {
            
           </div> 
 
-          {Data?.companies && <PackageCarousel data={Data?.companies} />}
+          {Data?.companies?.length > 0 && <PackageCarousel data={Data?.companies} />}
           {faqs?.length > 0 && (
             <div className="flex flex-col gap-8 xsm:gap-4">
               <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[18px]">
                 FAQs
               </h1>
-              <div className=" w-[95%]  rounded-md px-0 py-6 flex flex-col gap-6 font-nu xsm:w-[100%] xsm:p-2 xsm:gap-3">
+              <div className=" w-[95%]  rounded-md px-0  flex flex-col gap-6 font-nu xsm:w-[100%] xsm:p-2 xsm:gap-3">
                 {faqs.map((item, index) => (
                   <div key={index} className="faq1 w-full  bg-white rounded-md">
                     <div className=" w-full ">

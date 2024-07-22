@@ -17,7 +17,7 @@ const Included = ({ curiculum, title }) => {
     const data = [
         {
             svg: '/Icons/project.svg',
-            title: ' Project Files',
+            title: ' Projects',
         },
         {
             svg: '/Icons/module.svg',

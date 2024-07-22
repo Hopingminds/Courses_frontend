@@ -71,6 +71,7 @@ export default function CDDetails() {
                 _id: it?._id,
                 isLiveClass: it?.isLiveClass,
                 liveClass: it?.liveClass,
+                lesson_name:it?.lesson_name
               });
             });
           });
@@ -83,18 +84,18 @@ export default function CDDetails() {
         completed = [...new Set(completed)];
         let videoindex = completed.length;
 
-        console.log(
-          "length",
-          allchapters,
-          response?.data?.completed_lessons?.length
-        );
+        // console.log(
+        //   "length",
+        //   allchapters,
+        //   response?.data?.completed_lessons?.length
+        // );
         // console.log("data",allchapters,completed);
         if (allchapters?.length === response?.data?.completed_lessons?.length) {
-          console.log("hello");
+          // console.log("hello");
           seturl(allchapters[0]?.video);
           setcount(0);
         } else {
-          console.log("hi");
+          // console.log("hi");
           seturl(allchapters[videoindex - 1]?.video);
           setcount(videoindex - 1);
         }
@@ -450,6 +451,7 @@ export default function CDDetails() {
                 )}
               </div>
             </div>
+            <div className="font-bold text-lg">{ALLCHAPTER[count]?.lesson_name}</div>
           </div>
           <div
             id="ScrollToTop"
@@ -481,6 +483,8 @@ export default function CDDetails() {
                     )}
                   </div>
                 </div>
+
+               
 
                 {/* <div className="CCD-Main-container mt-10 px-2 text-justify xsm:mt-0 xsm:py-3 xsm:px-1 md:mt-4">
                   <div className="CCD-Main-container-content">

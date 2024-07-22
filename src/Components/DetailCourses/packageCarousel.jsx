@@ -53,7 +53,7 @@ const PackageCarousel = ({ data }) => {
               </SplideSlide>
             ))}
           </Splide>
-          <button
+          {/* <button
             className="absolute top-1/2 left-0 transform -translate-y-1/2 px-3 py-2 bg-gray-300 text-white rounded-full h-[40px] w-[40px] hover:bg-gray-400 transition duration-300"
             onClick={() => splideRef.current?.splide.go('<')}
           >
@@ -64,7 +64,7 @@ const PackageCarousel = ({ data }) => {
             onClick={() => splideRef.current?.splide.go('>')}
           >
             <FaChevronRight />
-          </button>
+          </button> */}
         </>
       ) : (
         <div className="hidden">
