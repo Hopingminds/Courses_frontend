@@ -96,12 +96,14 @@ const Register = () => {
         console.log(response);
         if(response.success){
             toast.success(response.message)
-
+            closeModal()
         }
-        else{
+        else if(response.success === false && response.validotp === false ){
             toast.error(response.message)
         }
-        closeModal()
+        else if(response.success === false && response.expiredotp === true ){
+            toast.error(response.message)
+        }
     } catch (error) {
         console.log(error);
     }
