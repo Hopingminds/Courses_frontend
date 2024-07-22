@@ -271,7 +271,7 @@ const ProfilEdit = () => {
               className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-10 py-1 xsm:text-[8px] xsm:px-4 md:text-[16px] md:px-6"
               onClick={handleLogOut}
             >
-              Log Out{" "}
+              Log Out{" "}s
             </button>
           </div>
 

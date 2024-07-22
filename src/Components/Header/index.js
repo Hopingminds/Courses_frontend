@@ -89,22 +89,23 @@ export default function Navbar() {
         .custom-tooltip {
             position: relative;
             display: inline-block;
+           
         }
         
         .custom-tooltip .tooltiptext {
             visibility: hidden;
-            width: 120px;
-            background-color: black;
+            width: 160px;
+            background-color: white;
             color: white;
             text-align: center;
             border-radius: 6px;
-            padding: 5px 0;
+            padding: 5px 10px 10px 10px;
             position: absolute;
             z-index: 1;
-            top: 130%;
+            top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            opacity: 0;
+            opacity: 1;
             transition: opacity 0.3s;
         }
         
@@ -113,7 +114,7 @@ export default function Navbar() {
             position: absolute;
             bottom: 100%;
             left: 50%;
-            margin-left: -5px;
+            margin-left: -10px;
             border-width: 5px;
             border-style: solid;
             border-color: transparent transparent black transparent;
@@ -128,6 +129,7 @@ export default function Navbar() {
           .navbar-menu {
             flex-direction: column;
             align-items: center;
+            
           }
         }
         `}
@@ -224,7 +226,7 @@ export default function Navbar() {
                       <div className="custom-tooltip">
                       <span className="tooltiptext flex flex-col gap-3 p-2 text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] ">
                         <p >{userDetail?.name?.split(' ')[0]}</p>
-                       {userDetail?.isProfileComplete ? <Link className="text-[#1DBF73] italic" to="/profile">View Profile</Link> :<Link className="text-[#1DBF73] italic"  to="/profile" >Complete Your Profile</Link>}
+                       {userDetail?.isProfileComplete ? <Link className="text-[#1DBF73] font-semibold" to="/profile">View Profile</Link> :<Link className="text-[#1DBF73] "  to="/profile" >Profile</Link>}
                         <button onClick={handleLogOut} className="text-[#FFFFFF]  text-[16px] font-nu bg-[#1DBF73] rounded-full px-3 py-1 xsm:text-[8px] xsm:px-2 md:text-[16px] md:px-2">Log Out</button>
                       </span>
                         {userDetail?.profile ? (
@@ -350,9 +352,9 @@ export default function Navbar() {
                   {" "}
                   <span>
                     <div className="custom-tooltip">
-                      <span className="tooltiptext flex flex-col gap-3 p-2 text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43]">
-                        <p >{userDetail?.name?.split(' ')[0]}</p>
-                       {userDetail?.isProfileComplete ? <Link className="text-[#1DBF73] italic" to="/profile">View Profile</Link> :<Link className="text-[#1DBF73] italic"  to="/profile">Complete Your Profile</Link>}
+                      <span className="tooltiptext h-[16vh]  flex flex-col gap-3 p-2 text-[14px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43]">
+                        <p className="pt-5">{userDetail?.name?.split(' ')[0]}</p>
+                       {userDetail?.isProfileComplete ? <Link className="text-[#1DBF73]  " to="/profile"> Profile</Link> :<Link className="text-[#1DBF73]"  to="/profile">Profile</Link>}
                         <button onClick={handleLogOut} className="text-[#FFFFFF]  text-[16px] font-nu bg-[#1DBF73] rounded-full px-3 py-1 xsm:text-[8px] xsm:px-2 md:text-[16px] md:px-2">Log Out</button>
                       </span>
                       {/* <div className="h-8 w-8 rounded-full border"><img src={profile} className="h-full w-full" /></div> */}

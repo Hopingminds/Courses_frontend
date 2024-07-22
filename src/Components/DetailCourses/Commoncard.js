@@ -177,7 +177,8 @@ export default function Commoncard(props) {
       <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1 md:gap-3 md:mt-4 xsm:px-[1rem]">
         <div className="flex flex-col justify-between items-center xsm:pb-1 ">
           <h2 className="font-nu text-[30px] font-bold xsm:text-[32px] md:text-[12px]">
-            ₹{Data?.base_price}
+            {/* ₹{Data?.base_price} */}
+            {Data?.base_price == 0 ? "Free" : "₹" + parseFloat(Data?.base_price-(Data?.base_price*(Data?.discount_percentage/100)))}
           </h2>
 
           <div className="gap-y-4 flex w-full px-5 flex-col items-center xsm:gap-x-2 md:gap-x-2">
