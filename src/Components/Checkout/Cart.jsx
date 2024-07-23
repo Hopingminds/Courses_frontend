@@ -43,6 +43,8 @@ const CartCheckout = () => {
   const [sgst, setSgst] = useState(0);
   const [finalPrice, setFinalPrice] = useState(0);
   const [city, setCity] = useState("");
+  const [coupon, setcoupon] = useState()
+  const [applied, setapplied] = useState(false)
   const [inputData, setinputData] = useState({
     name,
     address,
@@ -288,8 +290,8 @@ setinputData((prev) => ({
     let last10Digits = getLast10Digits(number);
 
 
-    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${last10Digits || "0000000000"}&name=${userDetail?.name?.replace(/\s/g,"%20")}&address=${inputData.address.replace(/\s/g,"%20")}&zip=${inputData.zip}&country=${country?.name?.replace(/\s/g,"%20")}&state=${state?.name.replace(/\s/g,"%20")}&gstNumber=${inputData?.gstnumber || "000"}`;
-    console.log(paymentUrl)
+    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${last10Digits || "0000000000"}&name=${userDetail?.name?.replace(/\s/g,"%20")}&address=${inputData.address.replace(/\s/g,"%20")}&zip=${inputData.zip}&country=${country?.name?.replace(/\s/g,"%20")}&state=${state?.name.replace(/\s/g,"%20")}&gstNumber=${inputData?.gstnumber || "000"}&promocode=${coupon}`;
+    // console.log(paymentUrl)
     async function handlePaymentUrl(){
       try {
         const res = await axios.get(paymentUrl);
@@ -350,7 +352,29 @@ setinputData((prev) => ({
   const closeConfirm = () => {
     setShowModal(false);
   }
-
+async function handlecoupon(){
+try {
+  const data=await fetch(BASE_URL+'/ispromocodevalid/'+coupon,{
+    method:'GET',
+    headers:{
+      'Content-type':'application/json',
+      'Authorization':`Bearer ${localStorage.getItem('COURSES_USER_TOKEN')}`
+    }
+  })
+  const response=await data.json()
+  if(response?.success){
+    toast.success("Coupon applied successfully")
+   setDiscountPrice(total*(response?.data?.discountPercentage/100))
+   setapplied(true)
+  }
+  else{
+    toast.error(response?.message)
+  }
+ 
+} catch (error) {
+  console.log(error);
+}
+}
   return (
     <>
       {show ? (
@@ -440,63 +464,95 @@ setinputData((prev) => ({
               temp.push(item?.course?._id);
               return (
                 <>
-                  <div className="bg-green-100 h-[200px] p-4 rounded-lg flex items-center card-shadow2 w-full xsm:p-2 xsm:justify-between xsm:h-[100px] md:p-2 md:h-[140px]">
-                    <div className="w-[40%] h-full ">
-                      <img
-                        src={item.course.featured_image}
-                        alt="course"
-                        className="w-full h-full  rounded-lg xsm:ml-0 xsm:w-full xsm:h-full xsm:object-fit md:ml-0"
-                      />
-                    </div>
-                    <div className="ml-[20px] h-full flex flex-col justify-between my-3 xsm:w-[55%] xsm:my-0 xsm:ml-0 md:ml-2">
-                      <div>
-                        <h2 className="text-[20px] font-semibold text-[#252641] text-custom-color xsm:text-[10px] md:text-[16px]">
-                          {item.course.title}
-                        </h2>
-                        <p
-                          className="mt-1 text-[16px] text-wrap xsm:hidden md:text-[10px]"
-                          style={{ color: "#696984" }}
-                        >
-                          {item.course.overview.slice(0, 63)}..
-                        </p>
-
-                        <div className="flex mt-4 gap-6 xsm:mt-2 md:mt-3">
-                          <div className="flex gap-1 xsm:justify-center xsm:items-center">
-                            <Design className="w-[15px] h-[15px] xsm:h-3 xsm:w-3 md:h-3 md:w-3" />
-                            <p
-                              className="mt-[-2px] text-[13px] xsm:text-[8px] md:text-[10px]"
-                              style={{ color: "#696984" }}
-                            >
-                              {item.course.category}
+                  <div className="w-full bg-white border p-3 shadow-xl rounded-xl xsm:p-2 md:p-2">
+                    <div className="flex  h-[15vw] rounded-[1.2vw] xsm:h-[80px] 2xl:w-[900px] 2xl:h-[240px]">
+                      <div className="w-[50%] 2xl:w-[600px]">
+                        <img
+                          className="w-[100%] h-[100%] rounded-xl"
+                          src={item?.course?.featured_image}
+                          alt="FSD-img"
+                        ></img>
+                      </div>
+                      <div className="flex flex-col justify-evenly mx-[1vw] w-[100%] 2xl:h-[100%] xsm:mx-[2vw]">
+                        {/* <div>
+                                <p className='font-mons text-[0.8vw] 2xl:text-[14px]'><span className='text-[#555555]'>by</span> Determined-instructure</p>
+                            </div> */}
+                        <div className="flex flex-nowrap justify-between items-center">
+                          <div className="space-y-2 md:space-y-1">
+                            <p className="font-mons text-[1.5vw] font-semibold  2xl:text-[18px] xsm:text-[10px]">
+                              {item?.course?.title?.slice(0,60)}..
                             </p>
-                          </div>
-
-                          <div className="flex gap-1 xsm:justify-center xsm:items-center">
-                            <Clock className="w-[15px] h-[15px] xsm:h-3 xsm:w-3 md:h-3 md:w-3" />
-                            <p
-                              className=" mb-2 mt-[-2px] text-[13px] xsm:text-[8px] xsm:mb-0 md:text-[10px]"
-                              style={{ color: "#696984" }}
-                            >
-                              {item.course.duration}
+                            <p className="text-[#696984] text-md w-[100%] xsm:hidden md:text-[10px]">
+                              {item?.course?.overview.slice(0, 60)}..{" "}
                             </p>
                           </div>
                         </div>
-                        <hr className="mt-3" />
-                      </div>
-                      {/* <img src="src/assets/Group.png" className="w-[590px] h-[1px]" /> */}
-                      <div className="flex justify-between items-center">
-                        <span className="flex mt-4 md:mt-0 xsm:mt-0">
-                          <Star className="xsm:w-3 md:w-4 w-5" />
-                          <Star className="xsm:w-3 md:w-4 w-5" />
-                          <Star className="xsm:w-3 md:w-4 w-5" />
-                          <Star className="xsm:w-3 md:w-4 w-5" />
-                          <Star className="xsm:w-3 md:w-4 w-5" />
-                        </span>
-                        <span className="mt-3 md:mt-0 xsm:mt-1">
-                          <p className="flex justify-end mr-4 text-[18px] mt-[-3px] font-semibold xsm:text-[10px] md:text-[14px]">
-                            ₹{item.course.base_price}
-                          </p>
-                        </span>
+                        <div className="flex flex-nowrap justify-between items-center">
+                          <div className="flex gap-6 my-[0.5vw] w-[80%] 2xl:w-full 2xl:text-[11px] xsm:gap-2">
+                            <div className="flex space-x-2 items-center xsm:space-x-1">
+                              <img
+                                className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
+                                src="../Icons/design.svg"
+                              />
+                              <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
+                                {item?.course?.category}
+                              </p>
+                            </div>
+                            <div className="flex space-x-2 items-center xsm:space-x-0">
+                              <img
+                                className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
+                                src="../Icons/clock2.svg"
+                              />
+                              <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
+                                45 Hours
+                              </p>
+                            </div>
+                          </div>
+                          
+                        </div>
+                        
+                        <div>
+                          <hr className="mt-[0.9vw] border-y-1 border-[#EAEAEA] " />
+                        </div>
+                        <div className="flex justify-between mt-[0.8vw] flex-wrap">
+                          <div>
+                            <div className="flex">
+                              <img
+                                className="w-[1.4vw] pr-[0.1vw] 2xl:w-[20px]"
+                                src="../Icons/Star.svg"
+                                alt="star"
+                              ></img>
+                              <img
+                                className="w-[1.4vw] pr-[0.1vw] 2xl:w-[20px]"
+                                src="../Icons/Star.svg"
+                                alt="star"
+                              ></img>
+                              <img
+                                className="w-[1.4vw] pr-[0.1vw] 2xl:w-[20px]"
+                                src="../Icons/Star.svg"
+                                alt="star"
+                              ></img>
+                              <img
+                                className="w-[1.4vw] pr-[0.1vw] 2xl:w-[20px]"
+                                src="../Icons/Star.svg"
+                                alt="star"
+                              ></img>
+                              <img
+                                className="w-[1.4vw] pr-[0.1vw] 2xl:w-[20px]"
+                                src="../Icons/Star.svg"
+                                alt="star"
+                              ></img>
+                            </div>
+                          </div>
+                          <div className="flex items-center">
+                          { item?.course?.discount_percentage ? <strike className="font-pop font-semibold text-gray-400 italic text-[14px] xsm:text-[11px] sm:text-[8px] md:text-[8px]">
+                {item?.course?.base_price == 0 ? "Free" : "₹" + item?.course?.base_price}
+              </strike>:""}
+                            <p className="font-Inter text-[1.2vw] font-semibold text-[black] 2xl:text-[20px] xsm:text-[8px]">
+                              ₹{parseFloat(item?.course?.base_price-(item?.course?.base_price*(item?.course?.discount_percentage/100)))}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -527,6 +583,12 @@ setinputData((prev) => ({
           <hr />
           <div className="mt-5 mb-4 xsm:my-0">
             <div className="flex justify-between">
+            <input value={coupon} onChange={(e)=>setcoupon(e.target.value)} placeholder="Coupon (optional)" className="px-2 focus:outline-none border-b"/>
+            {!applied ? <p onClick={handlecoupon} className="xsm:text-[12px] md:text-[14px] font-semibold green-color cursor-pointer">Apply</p>:<p  className="xsm:text-[12px] md:text-[14px] font-semibold opacity-50 cursor-not-allowed">Applied</p>}
+            </div>
+          </div>
+          <div className="mt-5 mb-4 xsm:my-0">
+            <div className="flex justify-between">
               <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
                 Discount Added 
               </p>
@@ -539,7 +601,7 @@ setinputData((prev) => ({
               <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
                 Including all the taxes
               </p>
-              <p className="xsm:text-[12px] md:text-[14px] font-semibold">₹{finalPrice}</p>
+              <p className="xsm:text-[12px] md:text-[14px] font-semibold">₹{total-discountPrice}</p>
             </div>
           </div>
           <span className="flex justify-center xsm:mt-4 md:mt-4">
