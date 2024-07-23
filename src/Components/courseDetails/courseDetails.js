@@ -32,6 +32,7 @@ export default function CDDetails() {
   const [showend, setshowend] = useState(false);
   const [meetinglink, setmeetinglink] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [activeindex, setactiveindex] = useState("")
   const params = useParams();
   let completed = [];
   let allchapters = [];
@@ -74,6 +75,20 @@ export default function CDDetails() {
                 lesson_name:it?.lesson_name
               });
             });
+            val?.project?.map((it)=>{
+              allchapters.push({
+                video:"",
+              _id:it?._id,
+              isLiveClass:true,
+              liveClass:{
+                startDate:it?.startDate,
+                endDate:it?.endDate,
+                meetingLink:it?.projectInfoPdf,
+              },
+              lesson_name:it?.title
+              })
+            })
+
           });
         }
         // console.log("all", allchapters[0]?.video);
@@ -83,6 +98,7 @@ export default function CDDetails() {
         setData(response?.data?.course);
         completed = [...new Set(completed)];
         let videoindex = completed.length;
+        
 
         // console.log(
         //   "length",
@@ -93,11 +109,13 @@ export default function CDDetails() {
         if (allchapters?.length === response?.data?.completed_lessons?.length) {
           // console.log("hello");
           seturl(allchapters[0]?.video);
+          setactiveindex(allchapters[0]?.lesson_name)
           setcount(0);
         } else {
           // console.log("hi");
           seturl(allchapters[videoindex - 1]?.video);
           setcount(videoindex - 1);
+          setactiveindex(allchapters[videoindex - 1]?.lesson_name)
         }
         setcompleted_lessons(completed);
         setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
@@ -121,6 +139,7 @@ export default function CDDetails() {
     let temp = 0;
     Data?.curriculum?.forEach((val) => {
       temp += val?.lessons?.length;
+      temp += val?.project?.length;
     });
     return temp;
   };
@@ -138,7 +157,8 @@ export default function CDDetails() {
     };
   }, []);
 
-  function handleActiveVideo(url) {
+  function handleActiveVideo(url,title) {
+    setactiveindex(title)
     setshowLive(false);
     // console.log(url);
     setshowSmallvideo(false);
@@ -149,6 +169,7 @@ export default function CDDetails() {
   const handleVideoEnded = async () => {
     // console.log(count + 1);
     // console.log(totalLessons,ALLCHAPTER.length);
+    setactiveindex(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.lesson_name)
     setshowSmallvideo(false);
     seturl(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.video);
     if (ALLCHAPTER?.length > completed_lessons.length) {
@@ -178,8 +199,9 @@ export default function CDDetails() {
       } catch (error) {
         console.log(error);
       }
+      setcount((prev) => prev + 1);
     }
-    setcount((prev) => prev + 1);
+    
   };
 
   function ClickSection(id) {
@@ -222,6 +244,7 @@ export default function CDDetails() {
   };
 
   function handleProject(project) {
+    setactiveindex(project?.title)
     let today = new Date();
     let startdate = new Date(project?.startDate);
     let enddate = new Date(project?.endDate);
@@ -240,7 +263,7 @@ export default function CDDetails() {
     } else {
       setshowLive(false);
       setshowend(false);
-      // setcount((prev)=>prev+1)
+      // setcount((prev) => prev + 1);
       handleVideoEnded();
     }
   }
@@ -310,7 +333,7 @@ export default function CDDetails() {
       } else {
         setshowLive(false);
         setshowend(false);
-        setcount((prev) => prev + 1);
+        // setcount((prev) => prev + 1);
         handleVideoEnded();
       }
       // if()
@@ -451,7 +474,7 @@ export default function CDDetails() {
                 )}
               </div>
             </div>
-            <div className="font-bold text-lg">{ALLCHAPTER[count]?.lesson_name}</div>
+            <div className="font-bold text-lg">{activeindex}</div>
           </div>
           <div
             id="ScrollToTop"
