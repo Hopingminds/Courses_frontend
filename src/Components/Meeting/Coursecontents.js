@@ -30,6 +30,7 @@ export default function Coursecontents({
   const [totallessons, setTotalLessons] = useState(0);
   const [openDropDown, setOpenDropdown] = useState("");
   let allchapters = [];
+  let active=0;
   // console.log(data);
 
   let completed = [];
@@ -205,7 +206,7 @@ export default function Coursecontents({
                                 </p>:
                                 <p onClick={ () =>
                                   completed_lessons.includes(chapter._id) &&
-                                  handleActiveVideo(chapter?.video,index)
+                                  handleActiveVideo(chapter?.video,chapter?.lesson_name)
                                 } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
                                   {index + 1}. {chapter?.lesson_name}
                                 </p>}
@@ -307,7 +308,6 @@ export default function Coursecontents({
                           <div className="font-semibold text-sm text-[#1DBF73] py-1">Projects</div>
                           {val?.project?.map((chapter, index) => {
                           // console.log(chapter);
-
                           return (
                             <div
 
