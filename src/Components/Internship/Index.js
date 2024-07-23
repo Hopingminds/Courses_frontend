@@ -350,6 +350,7 @@ const Internship = () => {
               display={val?.display}
               IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
               credits={val?.credits}
+              discount={val?.discount_percentage}
             // Pass category to CourseCard component
             />
           );
