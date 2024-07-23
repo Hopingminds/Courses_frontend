@@ -206,3 +206,18 @@
   opacity: 1;
   z-index: 9998;
 }
+.react-player video::-webkit-media-controls-play-button,
+.react-player video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+.react-player video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+/* Hide the play/pause button for YouTube players */
+.react-player .ytp-play-button {
+  display: none !important;
+}
