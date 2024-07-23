@@ -318,9 +318,9 @@ export default function Coursecontents({
                               key={index}
                             >
                               <span className="flex justify-between">
-                                <p onClick={() =>
-                                  handleProject(chapter)
-                                } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
+                                <p onClick={() => completed_lessons?.includes(chapter?._id) ?
+                                  handleProject(chapter) : ""
+                                } className={`font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]`}>
                                   {index + 1}. {chapter?.title}({chapter?.duration || '5 mins'})
                                 </p>
 

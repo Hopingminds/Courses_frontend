@@ -33,7 +33,11 @@ export default function CDDetails() {
   const [meetinglink, setmeetinglink] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeindex, setactiveindex] = useState("")
+  const [expired, setexpired] = useState()
+  const [dur, setdur] = useState()
   const params = useParams();
+  let totalduration=0;
+  let finaldur=0;
   let completed = [];
   let allchapters = [];
   let temp = true;
@@ -67,6 +71,8 @@ export default function CDDetails() {
           response?.data?.course?.curriculum?.forEach((val) => {
             val?.lessons?.map((it) => {
               // console.log("it",val);
+              totalduration=totalduration+parseInt(it?.duration)
+              console.log(totalduration);
               allchapters.push({
                 video: it?.video,
                 _id: it?._id,
@@ -76,6 +82,7 @@ export default function CDDetails() {
               });
             });
             val?.project?.map((it)=>{
+              totalduration=totalduration+ parseInt(it?.duration)
               allchapters.push({
                 video:"",
               _id:it?._id,
@@ -94,6 +101,8 @@ export default function CDDetails() {
         // console.log("all", allchapters[0]?.video);
         // allchapters=[...new Set(allchapters)]
         // console.log(allchapters);
+        // finaldur=Timeconverter(totalduration);
+        setdur(totalduration)
         setALLCHAPTER(allchapters);
         setData(response?.data?.course);
         completed = [...new Set(completed)];
@@ -160,6 +169,7 @@ export default function CDDetails() {
   function handleActiveVideo(url,title) {
     setactiveindex(title)
     setshowLive(false);
+    setexpired(false)
     // console.log(url);
     setshowSmallvideo(false);
     seturl(url);
@@ -262,10 +272,21 @@ export default function CDDetails() {
       setendtime(tmp);
     } else {
       setshowLive(false);
+      setexpired(true)
       setshowend(false);
       // setcount((prev) => prev + 1);
-      handleVideoEnded();
+      // handleVideoEnded();
     }
+  }
+  function Timeconverter(totalMinutes){
+    const minutes = parseInt(totalMinutes, 10);
+    if (isNaN(minutes)) {
+      return;
+    }
+  
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+  return `${hours}h ${remainingMinutes} mins`
   }
 
   function handleNext() {
@@ -411,7 +432,16 @@ export default function CDDetails() {
                           Meeting link: {meetinglink}
                         </p>
                       </div>
-                    ) : url?.toString().endsWith("mp3") ? (
+                    )
+                    : expired ? (
+                      <div className="text-center flex flex-col">
+                        <p>Live class is over and you will get recording as soon as possible.</p>
+                        {/* <p className="font-semibold">
+                          Meeting link: {meetinglink}
+                        </p> */}
+                      </div>
+                    )
+                    : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : (
                       <ReactPlayer
@@ -474,7 +504,7 @@ export default function CDDetails() {
                 )}
               </div>
             </div>
-            <div className="font-bold text-lg">{activeindex}</div>
+            <div className="font-bold text-lg text-wrap h-auto flex flex-wrap w-[70%]">{activeindex}</div>
           </div>
           <div
             id="ScrollToTop"
@@ -495,7 +525,7 @@ export default function CDDetails() {
                           {totalLessons} Lesson
                         </p>
                         <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
-                          6h 30min
+                          {Timeconverter(dur)}
                         </p>
                       </div>
                     </div>
