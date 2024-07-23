@@ -6,23 +6,24 @@ import Certification from "../../Assets/Icons/CDcertification.svg";
 import StatsIcon from "../../Assets/Icons/CDstats.svg";
 import JobsIcon from "../../Assets/Icons/CDjobs.svg";
 import { useNavigate } from "react-router-dom";
-import WishList from "../MyLearning/WishList";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import CourseDrawer from "./CourseDrawer";
-import Mycourse from "../MyLearning/Mycourse";
 import Assignment from "../MyLearning/Assignment";
 import MyStats from "../MyLearning/MyStats";
 import JobOffering from "./MyJobs";
 import Certificate from "./MyCertificate";
+import Mycourse from "../MyLearning/Mycourse";
+import WishList from "./WishList";
 
 const DrawerNavbar = () => {
   const [activeComponent, setActiveComponent] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [purchasedCourses, setPurchasedCourses] = useState();
-  const [selectedItem, setSelectedItem] = useState(""); // State to manage selected item
-  const drawerRef = useRef(null); // Ref for the drawer
+  const [purchasedCourses, setPurchasedCourses] = useState([]);
+  const [selectedItem, setSelectedItem] = useState("");
+  const drawerRef = useRef(null);
+  const navigate = useNavigate();
 
   const renderComponent = (componentName) => {
     if (componentName !== selectedItem) {
@@ -34,12 +35,10 @@ const DrawerNavbar = () => {
     }
   };
 
-  const navigate = useNavigate();
-
   const getComponent = () => {
     switch (activeComponent) {
       case "MyCourse":
-        return <Mycourse courses={purchasedCourses} />;
+        return <Mycourse courses={purchasedCourses} onCourseClick={handleCourseClick} />;
       case "Assignment":
         return <Assignment courses={purchasedCourses} />;
       case "Wishlist":
@@ -58,7 +57,7 @@ const DrawerNavbar = () => {
   const fetchUserData = async (email) => {
     try {
       const res = await axios.get(`${BASE_URL}/user/${email}`);
-      setPurchasedCourses(res?.data?.userDetails?.purchased_courses);
+      setPurchasedCourses(res?.data?.userDetails?.purchased_courses || []);
     } catch (error) {
       console.log(error);
     }
@@ -75,11 +74,11 @@ const DrawerNavbar = () => {
     }
   }, [navigate]);
 
-  // Handle clicks outside the drawer
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (drawerRef.current && !drawerRef.current.contains(event.target)) {
         setDrawerOpen(false);
+        setSelectedItem("");
       }
     };
 
@@ -87,11 +86,15 @@ const DrawerNavbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const handleCourseClick = () => {
+    setDrawerOpen(false);
+  };
+
   return (
-    <div className="bg-[#E2FFF1] mx-4 my-6 pl-6 py-8 h-[50vh] rounded-3xl font-int font-medium text-[#1DBF73] flex flex-col gap-2 xsm:hidden">
+    <div className="bg-[#E2FFF1] mx-4 my-6 pl-6 py-8 h-[80vh] rounded-3xl font-int font-medium text-[#1DBF73] flex flex-col gap-2 xsm:hidden">
       <div
         onClick={() => renderComponent("MyCourse")}
-        className={`relative flex gap-2 items-center px-4 py-2 hover:rounded-l-xl hover:bg-[#F0FFF8] hover:font-bold cursor-pointer ${
+        className={`relative flex gap-2 items-center z-100 px-4 py-2 hover:rounded-l-xl hover:bg-[#F0FFF8] hover:font-bold cursor-pointer ${
           selectedItem === "MyCourse" ? "bg-white font-bold rounded-l-xl" : ""
         }`}
       >
@@ -164,7 +167,7 @@ const DrawerNavbar = () => {
         )}
       </div>
       <CourseDrawer
-        ref={drawerRef} 
+        ref={drawerRef}
         isOpen={drawerOpen}
         setIsOpen={setDrawerOpen}
         component={getComponent()}
