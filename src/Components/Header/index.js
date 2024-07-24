@@ -59,6 +59,12 @@ export default function Navbar() {
       }
     }
     FetchData();
+
+
+
+
+
+    
   }, []);
   useEffect(() => {
     return setIsMenuOpen(false);
