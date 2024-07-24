@@ -23,6 +23,7 @@ import AvtarModal from "./AvtarModal";
 
 const ProfilEdit = () => {
   const [showTooltip, setShowTooltip] = useState(false);
+  const [showallcolleges, setshowallcolleges] = useState([])
 
   const handleMouseEnter = () => {
     setShowTooltip(true);
@@ -231,9 +232,30 @@ const ProfilEdit = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setUser({ ...user, [name]: value });
   };
+  const handleSelectedcollege=(college)=>{
+    setUser({ ...user, ['college']: college });
+    setshowallcolleges([])
+  }
+  const handleCollege=async(e)=>{
+    handleChange(e)
+    let query = e.target.value;
+    if (query == "") {
+        setshowallcolleges([]);
+    } else {
+        try {
+            let url1 = BASE_URL + '/getcolleges?search=' + query
+            const data = await fetch(url1)
+            const response = await data.json()
+            // console.log(response);
+            setshowallcolleges(response)
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+  }
 
   const handleEditProfileClick = () => {
     setCompleteProfile("completeprofile");
@@ -271,7 +293,7 @@ const ProfilEdit = () => {
               className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-10 py-1 xsm:text-[8px] xsm:px-4 md:text-[16px] md:px-6"
               onClick={handleLogOut}
             >
-              Log Out{" "}s
+              Log Out{" "}
             </button>
           </div>
 
@@ -373,15 +395,25 @@ const ProfilEdit = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
-                  <input
+                <div className=" relative flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
+                <input
                     type="text"
                     className="outline-none w-full bg-transparent placeholder:text-[#c6c3c3]"
                     placeholder="University/College Name"
                     value={user.college}
                     name="college"
-                    onChange={handleChange}
+                    onChange={handleCollege}
                   />
+                  <div className="absolute top-10 left-0 min-h-0 max-h-[200px] overflow-auto w-full bg-slate-100 px-2">
+                  {
+                                            showallcolleges.map((it) => {
+                                                return (<>
+                                                    <div onClick={(e) => handleSelectedcollege(it.college)} className='text-center text-[12px] border py-1 cursor-pointer'>{it.college}</div>
+                                                </>)
+                                            })
+                                        }
+
+                  </div>
                 </div>
                 <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
                   <input

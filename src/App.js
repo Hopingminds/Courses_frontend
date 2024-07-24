@@ -5,10 +5,12 @@ import { AUTH_BASE_URL, BASE_URL } from './Api/api';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import ChatBot from './Components/chatbot/chatbot';
+import { useLocation } from 'react-router-dom';
 
 export const Globalinfo = createContext()
 function App() {
-
+ 
+  
   const [cartData, setCartData] = useState([])
   const [wishListData, setWishListData] = useState([])
   const [userDetail, setUserDetail] = useState();
