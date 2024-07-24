@@ -234,6 +234,9 @@ const ProfilEdit = () => {
 
     setUser({ ...user, [name]: value });
   };
+  const handleCollege=()=>{
+
+  }
 
   const handleEditProfileClick = () => {
     setCompleteProfile("completeprofile");
@@ -271,7 +274,7 @@ const ProfilEdit = () => {
               className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-10 py-1 xsm:text-[8px] xsm:px-4 md:text-[16px] md:px-6"
               onClick={handleLogOut}
             >
-              Log Out{" "}s
+              Log Out{" "}
             </button>
           </div>
 
@@ -373,8 +376,8 @@ const ProfilEdit = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
-                  <input
+                <div className="  flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
+                <input
                     type="text"
                     className="outline-none w-full bg-transparent placeholder:text-[#c6c3c3]"
                     placeholder="University/College Name"
@@ -382,6 +385,10 @@ const ProfilEdit = () => {
                     name="college"
                     onChange={handleChange}
                   />
+                  {/* <div className="absolute top-10 left-0 min-h-0 max-h-[200px] w-full bg-slate-100 px-2">
+                    <p className="border-b">adfa</p>
+
+                  </div> */}
                 </div>
                 <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
                   <input

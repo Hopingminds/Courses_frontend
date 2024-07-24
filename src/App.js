@@ -8,7 +8,11 @@ import ChatBot from './Components/chatbot/chatbot';
 
 export const Globalinfo = createContext()
 function App() {
-
+  useEffect(() => {
+   localStorage.setItem("prev",localStorage.getItem("current"))
+   localStorage.setItem("current",window.location.pathname)
+  }, [window.location.pathname])
+  
   const [cartData, setCartData] = useState([])
   const [wishListData, setWishListData] = useState([])
   const [userDetail, setUserDetail] = useState();

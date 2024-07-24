@@ -31,7 +31,7 @@ const CourseNavigation = ({
   }, 0);
   };
   return (
-    <div className="w-full min-h-[540px] mt-[20px] xsm:w-full">
+    <div className="w-full min-h-[540px] mt-[20px] xsm:w-full z-50">
       <div className="grid grid-cols-5 border w-full overflow-hidden border-[#EAEAEA] font-nu font-semibold text-[16px] xsm:text-[10px] leading-[24px] rounded-t-[20px] xsm:w-full">
         <button
           className={`btn_corners_first py-[12px]  ${
