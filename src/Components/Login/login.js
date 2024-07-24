@@ -94,11 +94,22 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.open(`${AUTH_BASE_URL}/google/callback`, "_self");
+    if(localStorage.getItem('current')){
+      window.open(`${AUTH_BASE_URL}/google?redirect=${localStorage.getItem('current')}`, "_self");
+    }
+    else{
+      window.open(`${AUTH_BASE_URL}/google?redirect=/learning`, "_self");
+    }
+    // navigate(localStorage.getItem('current'))
   };
 
   const handleLinkedInLogin = () => {
-    window.open(`${AUTH_BASE_URL}/linkedin/callback`, "_self");
+    if(localStorage.getItem('current')){
+      window.open(`${AUTH_BASE_URL}/linkedin?redirect=${localStorage.getItem('current')}`, "_self");
+    }
+    else{
+      window.open(`${AUTH_BASE_URL}/linkedin?redirect=/learning`, "_self");
+    }  
   };
 
   return (

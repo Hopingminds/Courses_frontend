@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import Navbar from '../Components/Header'
 
 import DetailCourses from '../Components/DetailCourses'
@@ -77,8 +77,19 @@ import Loginpage from '../Components/TeacherPanel/LoginPage/LoginPage.jsx'
 import MyTimer from '../Components/mytimer.js'
 import PaymentFailed from '../Components/PaymentFailed/PayementFailed.jsx'
 
+function Locationpath(){
+    const location=useLocation()
+    useEffect(() => {
+      if(location.pathname!=='/login-2'){
+        localStorage.setItem("current",location.pathname)
+      }
+  
+    }, [location.pathname])
+}
+
 const Router = () => {
     let pathname = window.location.pathname;
+    
     useEffect(() => {
         // console.log('cytraewsdlfghl');
         ReturnNavbar()
@@ -104,6 +115,7 @@ const Router = () => {
     <AuthProvider>
         <BrowserRouter >
             <ScrollToTop />
+            <Locationpath/>
             {/* <Navbar /> */}
 
             {ReturnNavbar()}
