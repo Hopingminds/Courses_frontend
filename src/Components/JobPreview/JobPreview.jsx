@@ -59,7 +59,9 @@ const JobPreview = () => {
 
   return (
     <div className="bg-[#f7f7f7] px-[12%] py-[3%]">
-      <Toaster/>
+      <Toaster toastOptions={{
+         duration: 500,
+      }} />
       <div className="bg-white border font-pop rounded-2xl">
         {/* Heading */}
         <div className="px-8 py-4 border-b  flex flex-col gap-1">

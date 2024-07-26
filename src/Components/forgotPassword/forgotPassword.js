@@ -215,7 +215,9 @@ const Forgotpassword = () => {
                         </div> </>}
                 </div>
             </div>
-            <Toaster position="top-center" />
+            <Toaster toastOptions={{
+         duration: 500,
+      }}  position="top-center" />
         </>
     );
 };

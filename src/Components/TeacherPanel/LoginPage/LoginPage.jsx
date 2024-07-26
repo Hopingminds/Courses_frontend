@@ -49,7 +49,9 @@ export default function Loginpage() {
 
   return (
     <>
-      <Toaster />
+      <Toaster toastOptions={{
+         duration: 500,
+      }} />
       <div className="relative flex justify-center items-center px-6 lg:px-8 xl:w-[1200px] lg:w-[900px] md:w-[700px] py-5 my-[10rem] rounded-lg mx-auto">
         <img
           src={background}

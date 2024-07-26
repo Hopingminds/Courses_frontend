@@ -131,7 +131,9 @@ export default function Coursecontents({
 
   return (
     <div className="bg-[#E2FFF1] rounded-3xl xsm:absolute xsm:top-[3rem] xsm:right-0 xsm:w-[80vw] xsm:h-screen xsm:overflow-y-auto">
-      <Toaster />
+      <Toaster toastOptions={{
+         duration: 500,
+      }} />
       <div className="px-5 py-8 xsm:py-4 xsm:px-2 md:px-3 md:py-5">
         <div className="space-y-2 xsm:space-y-1">
           <div className="flex flex-row justify-between">

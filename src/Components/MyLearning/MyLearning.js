@@ -105,7 +105,9 @@ export default function MyLearning() {
 
     return (
         <div>
-            <Toaster />
+            <Toaster toastOptions={{
+         duration: 500,
+      }} />
 
             {showPopup && (
                 <div className="fixed inset-0 z-50 bg-opacity-50 backdrop-filter backdrop-blur-sm flex items-center justify-center">

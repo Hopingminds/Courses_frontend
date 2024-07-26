@@ -130,7 +130,9 @@ const DetailTableDashboard = ({ data,FetchData }) => {
 
   return (
     <>
-    <Toaster/>
+    <Toaster toastOptions={{
+         duration: 500,
+      }} />
     <MyModal duplicateEmails={duplicateEmails} duplicatePhones={duplicatePhones} emailerros={emailerros} phoneErrors={phoneErrors} isModalOpen={isModalOpen} closeModal={closeModal} />
       <div className='px-[4%] flex flex-col gap-4 w-full'>
         <div className='flex w-full justify-end'>

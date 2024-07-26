@@ -389,7 +389,9 @@ let tempstate=true;
   return (
     <>
     <div onContextMenu={(e)=>e.preventDefault()}>
-    <Toaster />
+    <Toaster toastOptions={{
+         duration: 500,
+      }} />
     {
       camerablocked ? <div className="flex justify-center w-full h-screen items-center font-semibold font-pop">If you want to continue the test then first turn on the camera. </div>
 : micblocked ? <div className="flex justify-center w-full h-screen items-center font-semibold font-pop">If you want to continue the test then first turn on the microphone. </div> :

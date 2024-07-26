@@ -99,7 +99,9 @@ const AllJobs = ({filteredJobs}) => {
 
   return (
     <>
-      <Toaster />
+      <Toaster toastOptions={{
+         duration: 500,
+      }} />
       <div>
         {/* Heading */}
         <div className="text-gray-500 flex justify-between items-center px-4 py-2 border bg-white mt-4 rounded-md">

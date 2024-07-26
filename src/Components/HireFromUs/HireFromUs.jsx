@@ -76,8 +76,19 @@ const HireFromUs = () => {
       [name]: false
     }));
   };
+  function validateUserName(username) {
+    // Regular expression to match only letters (both uppercase and lowercase)
+    const regex = /^[A-Za-z]+$/;
+
+    // Test the username against the regex
+    if (regex.test(username)) {
+        return true;
+    } else {
+        return false;
+    }
+}
   const handleLogin = async () => {
-    if (!hirelogindata.name) {
+    if ( !validateUserName(hirelogindata.name) || !hirelogindata.name) {
       // toast.error("Enter valid Email Address");
       setloginwarnings((prevWarnings) => ({
         ...prevWarnings,
@@ -115,13 +126,13 @@ const HireFromUs = () => {
     }
   };
   async function handleRegister() {
-   if(!hiredata.name){
+   if(!validateUserName(hiredata.name) || !hiredata.name){
     setwarnings((prevWarnings) => ({
       ...prevWarnings,
       ['name']: true
     }));
     } 
-  else if(!hiredata.company){
+  else if(!validateUserName(hiredata.company) || !hiredata.company){
     
     setwarnings((prevWarnings) => ({
       ...prevWarnings,
@@ -157,12 +168,12 @@ const HireFromUs = () => {
         if (response.success) {
           toast.success(response.message);
           handleHover()
-          // sethiredata({
-          //     "name": "",
-          //     "email": "",
-          //     "phone": "",
-          //     "degree": ""
-          // })
+          sethiredata({
+              "name": "",
+              "email": "",
+              "phone": "",
+              "degree": ""
+          })
         } else {
           toast.error(response.message);
         }
@@ -178,7 +189,9 @@ const HireFromUs = () => {
 
   return (
     <>
-      <Toaster position="top-center" />
+      <Toaster toastOptions={{
+         duration: 500,
+      }}  position="top-center" />
       {showpopup && count === 1 ? (
         <div
           onClick={handleClose}

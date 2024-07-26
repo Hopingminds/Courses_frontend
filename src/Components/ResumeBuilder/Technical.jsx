@@ -334,7 +334,9 @@ const Technical = ({changeComponent,setFinalData}) => {
           <img className='w-7 md:w-6 xsm:w-5' src="../Icons/resumerightarrow.svg" alt="" />
         </div>
       </div>
-      <Toaster position="top-center" />
+      <Toaster toastOptions={{
+         duration: 500,
+      }}  position="top-center" />
     </div>
   );
 };

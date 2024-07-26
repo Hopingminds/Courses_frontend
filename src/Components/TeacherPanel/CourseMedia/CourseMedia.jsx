@@ -378,7 +378,9 @@ const Media = ({ onImageSelect }) => {
         </div>
       )}
 
-      <Toaster />
+      <Toaster toastOptions={{
+         duration: 500,
+      }} />
     </div>
   );
 };

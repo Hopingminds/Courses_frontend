@@ -289,7 +289,9 @@ function ShopingCart() {
       ) : (
         ""
       )}
-      <Toaster position="top-right" />
+      <Toaster toastOptions={{
+         duration: 500,
+      }}  position="top-right" />
     </div>
   );
 }

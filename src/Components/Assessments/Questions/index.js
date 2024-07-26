@@ -127,7 +127,9 @@ export default function AssessmentQuestion() {
 
   return (
     <>
-      <Toaster />
+      <Toaster toastOptions={{
+         duration: 500,
+      }} />
       <div className="px-[6%] space-y-5 py-2 bg-white" >
         <div className="flex justify-between items-center border p-3 rounded-lg font-pop">
           {/* <div onClick={handlePrev} className="flex items-center space-x-3 cursor-pointer">

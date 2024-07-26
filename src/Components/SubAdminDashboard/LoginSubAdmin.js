@@ -101,7 +101,9 @@ const LoginSubAdmin = () => {
           </button>
         </div>
       </div>
-      <Toaster />
+     <Toaster    toastOptions={{
+         duration: 500,
+      }} position="top-center" />
     </div>
   );
 };
