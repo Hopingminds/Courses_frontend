@@ -370,7 +370,7 @@ export default function CDDetails() {
           <DrawerNavbar />
         </div>
 
-        <div className="w-[85%] xsm:w-full z-50">
+        <div className="w-[85%] xsm:w-full ">
           <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] md:pr-[5%] md:h-[50vh] xsm:px-4">
             {showSmallvideo && (
               <div className="fixed bottom-0 left-0 z-20 rounded-xl">
