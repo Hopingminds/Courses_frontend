@@ -3,17 +3,36 @@ import { ReactComponent as Cap } from '../../Assets/Icons/cap.svg';
 import { ReactComponent as Coin } from '../../Assets/Icons/coin.svg';
 import { ReactComponent as Upload } from '../../Assets/Icons/upload.svg';
 import { ReactComponent as Download } from '../../Assets/Icons/download.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver'
 import { BASE_URL } from '../../Api/api';
 import toast, { Toaster } from 'react-hot-toast';
 import { jwtDecode } from 'jwt-decode';
+import MyModal from './Modal';
+import Spinner from '../Spinner';
 
 const DetailTableDashboard = ({ data,FetchData }) => {
   // console.log(data);
   const [selectedFile, setSelectedFile] = useState(null);
   const [Coins, setCoins] = useState([])
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [emailerros, setemailerros] = useState([])
+  const [phoneErrors, setphoneErrors] = useState([])
+  const [duplicateEmails, setduplicateEmails] = useState([])
+  const [duplicatePhones, setduplicatePhones] = useState([])
+  const [showspinner, setshowspinner] = useState(false)
+  const navigate=useNavigate()
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    window.location.reload()
+    // navigate('/college-dashboard')
+  };
   // console.log(data);
   async function Fetchdata(){
     let token=localStorage.getItem('token')
@@ -31,6 +50,7 @@ const DetailTableDashboard = ({ data,FetchData }) => {
   
 
   const handleFileChange = async(event) => {
+    setshowspinner(true)
     const file = event.target.files[0];
     const formData=new FormData()
     // Validate file type
@@ -46,13 +66,23 @@ const DetailTableDashboard = ({ data,FetchData }) => {
           body:formData
         })
         const response=await fetchdata.json()
+        setshowspinner(false)
         if(response.success){
           toast.success(response.msg)
+         
           FetchData()
           Fetchdata()
         }
+        else if(!response?.success && response?.validationError){
+          openModal()
+          setduplicateEmails(response?.duplicateEmails)
+          setduplicatePhones(response?.duplicatePhones)
+          setemailerros(response?.emailErrors)
+          setphoneErrors(response?.phoneErrors)
+        }
         else{
-          toast.success(response.msg)
+          
+          toast.error(response.msg)
 
         }
       } catch (error) {
@@ -101,6 +131,7 @@ const DetailTableDashboard = ({ data,FetchData }) => {
   return (
     <>
     <Toaster/>
+    <MyModal duplicateEmails={duplicateEmails} duplicatePhones={duplicatePhones} emailerros={emailerros} phoneErrors={phoneErrors} isModalOpen={isModalOpen} closeModal={closeModal} />
       <div className='px-[4%] flex flex-col gap-4 w-full'>
         <div className='flex w-full justify-end'>
           <button className='py-2 bg-[#1DBF73] text-white rounded mt-3 px-3' onClick={handleDownload}>Download format</button>
@@ -179,6 +210,13 @@ const DetailTableDashboard = ({ data,FetchData }) => {
           </div>
         ))}
         </div>
+              {showspinner ? (
+        <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80 z-50">
+          <Spinner className="" />
+        </div>
+      ) : (
+        ""
+      )}
       </div>
     </>
   );
