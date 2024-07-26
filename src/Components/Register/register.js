@@ -356,17 +356,33 @@ const Register = () => {
 
 
     const handleGoogleRegister = () => {
-        if(localStorage.getItem('current')){
-            window.open(`${AUTH_BASE_URL}/google?redirect=${localStorage.getItem('current')}`, "_self");
+        let current=localStorage.getItem('current')
+        if(current){
+            if(current=='/college-login' || current=='/college-dashboard'){
+                window.open(`${AUTH_BASE_URL}/google?redirect=/}`, "_self");
+
+            }
+            else{
+                window.open(`${AUTH_BASE_URL}/google?redirect=${current}`, "_self");
+
+            }
           }
           else{
             window.open(`${AUTH_BASE_URL}/google?redirect=/courses`, "_self");
-          }
+          } 
     }
 
     const handleLinkedInRegister = () => {
-        if(localStorage.getItem('current')){
-            window.open(`${AUTH_BASE_URL}/linkedin?redirect=${localStorage.getItem('current')}`, "_self");
+        let current=localStorage.getItem('current')
+        if(current){
+            if(current=='/college-login' || current=='/college-dashboard'){
+                window.open(`${AUTH_BASE_URL}/linkedin?redirect=/}`, "_self");
+
+            }
+            else{
+                window.open(`${AUTH_BASE_URL}/linkedin?redirect=${current}`, "_self");
+
+            }
           }
           else{
             window.open(`${AUTH_BASE_URL}/linkedin?redirect=/courses`, "_self");

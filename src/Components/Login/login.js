@@ -94,22 +94,38 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    if(localStorage.getItem('current')){
-      window.open(`${AUTH_BASE_URL}/google?redirect=${localStorage.getItem('current')}`, "_self");
-    }
-    else{
-      window.open(`${AUTH_BASE_URL}/google?redirect=/learning`, "_self");
-    }
+    let current=localStorage.getItem('current')
+    if(current){
+        if(current=='/college-login' || current=='/college-dashboard'){
+            window.open(`${AUTH_BASE_URL}/google?redirect=/}`, "_self");
+
+        }
+        else{
+            window.open(`${AUTH_BASE_URL}/google?redirect=${current}`, "_self");
+
+        }
+      }
+      else{
+        window.open(`${AUTH_BASE_URL}/google?redirect=/courses`, "_self");
+      } 
     // navigate(localStorage.getItem('current'))
   };
 
   const handleLinkedInLogin = () => {
-    if(localStorage.getItem('current')){
-      window.open(`${AUTH_BASE_URL}/linkedin?redirect=${localStorage.getItem('current')}`, "_self");
-    }
-    else{
-      window.open(`${AUTH_BASE_URL}/linkedin?redirect=/learning`, "_self");
-    }  
+    let current=localStorage.getItem('current')
+    if(current){
+        if(current=='/college-login' || current=='/college-dashboard'){
+            window.open(`${AUTH_BASE_URL}/linkedin?redirect=/}`, "_self");
+
+        }
+        else{
+            window.open(`${AUTH_BASE_URL}/linkedin?redirect=${current}`, "_self");
+
+        }
+      }
+      else{
+        window.open(`${AUTH_BASE_URL}/linkedin?redirect=/courses`, "_self");
+      } 
   };
 
   return (
