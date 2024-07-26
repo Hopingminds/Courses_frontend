@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { ImCross } from "react-icons/im";
 
-export default function CourseDrawer({ isOpen, setIsOpen, component, onCardClick }) {
+export default function CourseDrawer({ isOpen, setIsOpen, component }) {
   const drawerRef = useRef(null); // Ref for the drawer
 
   useEffect(() => {
@@ -11,33 +10,19 @@ export default function CourseDrawer({ isOpen, setIsOpen, component, onCardClick
       }
     };
 
-    const handleClickOutside = (event) => {
-      if (drawerRef.current && !drawerRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    const toggleBodyScroll = () => {
-      document.body.style.overflow = isOpen ? "hidden" : "auto";
-    };
-
     window.addEventListener("keydown", handleEsc);
-    document.addEventListener("mousedown", handleClickOutside);
-    toggleBodyScroll();
 
     return () => {
       window.removeEventListener("keydown", handleEsc);
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "auto";
     };
-  }, [isOpen, setIsOpen]);
+  }, [setIsOpen]);
 
   return (
     <main
       className={`fixed overflow-hidden bg-black -z-10 bg-opacity-25 inset-0 transform ease-in-out ${
         isOpen
-          ? "transition-opacity opacity-100 duration-4000"
-          : "transition-all opacity-0 duration-1000"
+          ? "transition-opacity opacity-100 duration-5000 translate-x-0"
+          : "transition-all opacity-0 translate-x-full duration-2000 delay-1000"
       }`}
     >
       <section
@@ -46,29 +31,20 @@ export default function CourseDrawer({ isOpen, setIsOpen, component, onCardClick
           isOpen ? "scale-100" : "scale-50"
         }`}
         style={{
-          width: "60vw", // Default width for small screens
-          height: "80vh",
-          top: "10vh",
-          left: "20vw",
-          // Tailwind responsive widths and positions
-          "@media (min-width: 640px)": { width: "70vw", left: "15vw" }, // lg
-          "@media (min-width: 1024px)": { width: "60vw", left: "20vw" }, // xl
+          width: "70vw", // Adjust the width here
+          height: "80vh", // Ensure the drawer takes the desired height
+          top: "10vh", // Add margin on the top
+          left: "20vw", // Position it to the right
         }}
       >
         <article className="w-full py-10 flex flex-col overflow-y-auto scroll-smooth h-full">
           <header
-            className="absolute right-5 lg:right-10 text-red-400 text-xl lg:text-2xl top-5 lg:top-10 cursor-pointer"
+            className="absolute right-10 text-red-400 text-2xl top-10 cursor-pointer"
             onClick={() => setIsOpen(false)}
           >
-            <ImCross />
+            X
           </header>
-          <div className="mt-5 lg:mt-10">
-            {component && React.isValidElement(component) ? (
-              React.cloneElement(component, { onCardClick })
-            ) : (
-              <div>No component provided</div>
-            )}
-          </div>
+          <div className="mt-10">{component}</div>
         </article>
       </section>
     </main>
