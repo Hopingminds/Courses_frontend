@@ -29,7 +29,7 @@ const BannarSubAdmin = () => {
       style={{ backgroundImage: `url(${Img1})` }}
     >
       {localStorage?.getItem('token') ? <img className="h-[120px] w-[120px] rounded-full" src={Data?.profile}/> : ''}
-      <p className="text-white text-[60px]">College Dashboard</p>
+      <p className="text-white text-[60px]">{Data?.college}'s Dashboard</p>
     </div>
   );
 };
