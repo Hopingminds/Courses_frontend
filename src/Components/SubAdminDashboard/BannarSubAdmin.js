@@ -28,7 +28,7 @@ const BannarSubAdmin = () => {
       className="bg-cover bg-no-repeat w-full h-[30vh] px-[5%]  flex items-center gap-2"
       style={{ backgroundImage: `url(${Img1})` }}
     >
-      <img className="h-[120px] w-[120px] rounded-full" src={Data?.profile}/>
+      {localStorage?.getItem('token') ? <img className="h-[120px] w-[120px] rounded-full" src={Data?.profile}/> : ''}
       <p className="text-white text-[60px]">College Dashboard</p>
     </div>
   );
