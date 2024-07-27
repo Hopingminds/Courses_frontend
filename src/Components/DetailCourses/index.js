@@ -28,6 +28,7 @@ export default function DetailCourses() {
   const { setCartSize, cartSize, GetCart } = useContext(Globalinfo);
   const [faqs, setFaqs] = useState([]);
   const [alreadyInCart, setAlreadyInCart] = useState(false);
+  const [alreadyInWishlist, setalreadyInWishlist] = useState(false)
   useEffect(() => {
     async function Fetchdata() {
       try {
@@ -165,6 +166,33 @@ export default function DetailCourses() {
       console.log(error);
     }
   }
+  async function CheckCourseInWishlist(courseid){
+    try {
+      if (login) {
+        const token = localStorage.getItem("COURSES_USER_TOKEN");
+        const response = await axios.get(`${BASE_URL}/iscourseinwishlist/${courseid}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+        console.log(response.data); // Assuming response.data contains server's response
+        
+        if (response?.data?.success) {
+          setalreadyInWishlist(true);
+        } else {
+          setalreadyInWishlist(false);
+        }
+      } else {
+        // Handle case when user is not logged in
+        // console.log("User is not logged in.");
+        setalreadyInWishlist(false); // Assuming you want to reset state if not logged in
+      }
+    } catch (error) {
+      setalreadyInWishlist(false);
+      console.log(error);
+    }
+  }
 
   return (
     <div className="h-auto min-h-screen overflow-x-visible ">
@@ -202,6 +230,14 @@ export default function DetailCourses() {
               {purchasedCourses.includes(Data?._id) ? (
                 <></>
               ) : (
+                
+                  alreadyInWishlist ?   <Link
+                  to='/learning'
+                  className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
+                >
+                  Go to Wishlist
+                </Link>
+                :
                 <div
                   onClick={() => Addtowishlist(Data?._id)}
                   className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "

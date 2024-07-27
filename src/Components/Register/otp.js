@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root'); // Ensure to bind modal to your app element (for accessibility reasons)
 
-const OTPVerificationModal = ({ isOpen, onRequestClose, onVerify, onResend }) => {
+const OTPVerificationModal = ({ isOpen, onRequestClose, onVerify, onResend,openModal }) => {
   const [otp, setOtp] = useState(new Array(6).fill(''));
   const inputRefs = useRef([]);
   const [timer, setTimer] = useState(60);
@@ -55,9 +55,11 @@ const OTPVerificationModal = ({ isOpen, onRequestClose, onVerify, onResend }) =>
   const handleResend = () => {
     setTimer(60);
     setIsResendDisabled(true);
-    onVerify()
-    // onResend();
+    onResend();
   };
+async function Resend(){
+
+}
 
   return (
     <Modal
@@ -94,15 +96,14 @@ const OTPVerificationModal = ({ isOpen, onRequestClose, onVerify, onResend }) =>
             </button>
           </div>
           <div className="flex justify-between items-center mt-4">
-            {timer >0 ? <span className="text-gray-600">Resend OTP in {timer}s</span>:''}
-            <button
-              type="button"
-              onClick={onVerify}
+            {timer > 0 ? <span className="text-gray-600">Resend OTP in {timer}s</span> : ''}
+            <div
+              onClick={openModal}
               disabled={isResendDisabled}
-              className={`text-[#1DBF73] ${isResendDisabled ? 'cursor-not-allowed' : ''}`}
+              className={`text-[#1DBF73] z-50 ${isResendDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
             >
               Resend OTP
-            </button>
+            </div>
           </div>
         </form>
       </div>

@@ -209,7 +209,7 @@ export default function Herosection() {
             </Link>
           )}
         </div>
-        <Link to='https://meet.google.com/jdk-komt-jmy' target="_blank" className="flex flex-col text-white bg-[#081C23] w-fit p-4 font-pop">
+        <Link to='https://meet.google.com/jdk-komt-jmy' target="_blank" className="flex flex-col text-white bg-[#081C23] w-fit p-4 font-pop xsm:hidden">
             <p className="font-semibold text-lg">Need assistance?</p>
             <p>Join our live session daily from 5:30 PM to 6:00 PM.</p>
         </Link>

@@ -84,7 +84,8 @@ const WhatHM = () => {
               config={{
                 file: {
                   attributes: {
-                    controlsList: "nodownload" // Disable download option
+                    controlsList: "nodownload", // Disable download option
+                    playsInline: true // Play inline on iOS
                   }
                 }
               }}
@@ -127,7 +128,8 @@ const WhatHM = () => {
               config={{
                 file: {
                   attributes: {
-                    controlsList: "nodownload" // Disable download option
+                    controlsList: "nodownload", // Disable download option
+                    playsInline: true // Play inline on iOS
                   }
                 }
               }}

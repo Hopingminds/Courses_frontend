@@ -9,14 +9,11 @@ export const validateEmail = (email) => {
 };
 
 export const validateMobileNumber = (number) => {
-    return String(number)
-        .match(
-            /^\d{10}$/
-        );
+    const numStr = String(number);
+    return /^\d{10}$/.test(numStr) && numStr !== '0000000000';
 };
 
-
-const collegeRegex = /^[a-zA-Z0-9\s(),:-]+$/;
+const collegeRegex = /^[a-zA-Z0-9\s().,:-]+$/;
 
 export const validateCollege = (name) => {
     if (collegeRegex.test(name)) {

@@ -65,7 +65,7 @@ const Register = () => {
         const response=await data.json();
         // console.log(response);
         if(response?.success){
-            toast.success(response?.message);
+            toast.success("OTP sent successfully on your phone number");
             setIsModalOpen(true);
         }
         else{
@@ -203,7 +203,7 @@ const Register = () => {
     
     const handleNumChange = (number) => {
         setcountrycode(number);
-        if (number && number.length >= 9 && number.length <= 14) {
+        if (number && number.length >=9 && number.length <= 14) {
             setIsNumValid(false);
         } else {
             setIsNumValid(true);
@@ -326,7 +326,7 @@ const Register = () => {
             toast.error('Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
             return;
         }
-        if (!(countrycode.length > 8 && countrycode.length < 15)) {
+        if (!((countrycode.length > 8 && countrycode.length < 15) || countrycode === '0000000000')) {
             toast.error('Enter valid Phone Number');
             return;
         }
@@ -397,12 +397,18 @@ const Register = () => {
         })
         setSearchedData([])
     }
+    const handleBlur = (e) => {
+        if (e.target.name === "college") {
+            setSearchedData([]);
+        }
+    };
     return (
         <>
         <OTPVerificationModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         onVerify={handleVerify}
+        openModal={openModal}
       />
             <div className='flex overflow-hidden'>
                 <div className='xl:h-[75vh]  w-[40%] flex items-center justify-end relative xsm:hidden '>
@@ -496,6 +502,7 @@ const Register = () => {
                                         id={"college"}
                                         value={user.college}
                                         onChange={SearchData}
+                                        onBlur={handleBlur}
                                         onKeyDown={(e) => handleKeyDown(e, passwordRef)}
                                         autocomplete="off"
                                     />

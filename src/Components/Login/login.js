@@ -225,13 +225,13 @@ const Login = () => {
                   {btnLoader ? "Loading..." : "Login"}
                 </button>
               </div>
-              <div className="flex items-center ">
+              <div className="flex items-center gap-1">
                 <p className="font-pop text-[14px] md:text-[10px] xsm:text-[10px]">
-                  New Here ?
+                  New here ?
                 </p>
                 <Link to={"/register-user"}>
-                  <h5 className="text-[#1dbf73] md:text-[12px] xsm:text-[12px]">
-                    Sign Up
+                  <h5 className="text-[#1dbf73] md:text-[12px] xsm:text-[12px] ">
+                 Sign Up
                   </h5>
                 </Link>
               </div>

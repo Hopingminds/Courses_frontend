@@ -77,23 +77,31 @@ const HireFromUs = () => {
     }));
   };
   function validateUserName(username) {
-    // Regular expression to match only letters (both uppercase and lowercase)
-    const regex = /^[A-Za-z]+$/;
+    // Regular expression to match letters, periods, apostrophes, and spaces
+    const regex = /^[A-Za-z.'’\s]+$/;
 
-    // Test the username against the regex
-    if (regex.test(username)) {
-        return true;
-    } else {
-        return false;
-    }
+    // Return the result of the regex test
+    return regex.test(username);
 }
+
+
   const handleLogin = async () => {
-    if ( !validateUserName(hirelogindata.name) || !hirelogindata.name) {
+    if ( !hirelogindata.name) {
       // toast.error("Enter valid Email Address");
       setloginwarnings((prevWarnings) => ({
         ...prevWarnings,
         ['name']: true
       }));
+      toast.error("Name input is required!")
+      // return;
+    }
+   else if ( !validateUserName(hirelogindata.name)) {
+      // toast.error("Enter valid Email Address");
+      setloginwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ['name']: true
+      }));
+      toast.error("Invaild name.Name can contains Uppercase,Lowercase letters or some symbols(. and ')")
       // return;
     }
     else if (!validateEmail(hirelogindata.email)) {
@@ -102,13 +110,24 @@ const HireFromUs = () => {
         ...prevWarnings,
         ['email']: true
       }));
+      toast.error("Invaild email address.")
+
       // return;
     } else if (!hirelogindata.password) {
       setloginwarnings((prevWarnings) => ({
         ...prevWarnings,
         ['password']: true
       }));
-    } else {
+      toast.error("Password is required")
+    } 
+    // else if (!validatePassword(hirelogindata.password)) {
+    //   setloginwarnings((prevWarnings) => ({
+    //     ...prevWarnings,
+    //     ['password']: true
+    //   }));
+    //   toast.error("Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.")
+    // } 
+    else {
       try {
         const res = await axios.post(`${BASE_URL}/loginrecwithemail`, {
           email: hirelogindata.email,
@@ -125,34 +144,89 @@ const HireFromUs = () => {
       }
     }
   };
+  function validateCompanyName(companyName) {
+    // Regular expression to match letters, periods, apostrophes, hyphens, and spaces
+    const regex = /^[A-Za-z.'\-\s]+$/;
+
+    // Return the result of the regex test
+    return regex.test(companyName);
+}
+
+  const validatePassword = (password) => {
+    const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+    if (!regex.test(password)) {
+    //   return "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+    return false;
+}
+    return true;
+  };
   async function handleRegister() {
-   if(!validateUserName(hiredata.name) || !hiredata.name){
-    setwarnings((prevWarnings) => ({
-      ...prevWarnings,
-      ['name']: true
-    }));
-    } 
-  else if(!validateUserName(hiredata.company) || !hiredata.company){
+    if ( !hiredata.name) {
+      // toast.error("Enter valid Email Address");
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ['name']: true
+      }));
+      toast.error("Name input is required!")
+      // return;
+    }
+    else if ( !validateUserName(hiredata.name)) {
+      // toast.error("Enter valid Email Address");
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ['name']: true
+      }));
+      toast.error("Invaild name.Name can contains Uppercase,Lowercase letters or some symbols(. and ')")
+      // return;
+    }
+  else if(!hiredata.company){
     
     setwarnings((prevWarnings) => ({
       ...prevWarnings,
       ['company']: true
     }));
+  toast.error("Company name is required")
+    } 
+  else if(!validateCompanyName(hiredata.company) ){
+    
+    setwarnings((prevWarnings) => ({
+      ...prevWarnings,
+      ['company']: true
+    }));
+  toast.error("Company name can contain only alphabets and some symbols (.,-)")
     } 
    else if(!validateEmail(hiredata.email)){
-    console.log(warnings);
+    // console.log(warnings);
     setwarnings((prevWarnings) => ({
       ...prevWarnings,
       ['email']: true
     }));
+    toast.error("Invaild email address.")
+
+    } 
+   else if(!hiredata.email){
+    // console.log(warnings);
+    setwarnings((prevWarnings) => ({
+      ...prevWarnings,
+      ['email']: true
+    }));
+    toast.error("Email required")
+
     } 
    else if(!validateMobileNumber(hiredata.phone)){
     setwarnings((prevWarnings) => ({
       ...prevWarnings,
       ['phone']: true
     }));
+    toast.error("Invalid phone number")
     } 
- 
+   else if(!hiredata.phone){
+    setwarnings((prevWarnings) => ({
+      ...prevWarnings,
+      ['phone']: true
+    }));
+    toast.error("Phone number is required")
+    } 
     else {
       try {
         let url = BASE_URL + "/addhirefromusform";
@@ -172,7 +246,8 @@ const HireFromUs = () => {
               "name": "",
               "email": "",
               "phone": "",
-              "degree": ""
+              "degree": "",
+              "company":""
           })
         } else {
           toast.error(response.message);
@@ -231,7 +306,7 @@ const HireFromUs = () => {
             <div>
               <p className="font-pop font-semibold text-[50px] text-white md:text-[32px] xsm:text-[24px]">
                 Hire Tech Talent That Delivers{" "}
-                <span className="text-[#1DBF73]">Quick.simple.</span>
+                <span className="text-[#1DBF73]">Quick.Simple.</span>
               </p>
             </div>
 
@@ -415,7 +490,7 @@ const HireFromUs = () => {
                       onChange={handleChange}
                       value={hiredata.name}
                       type="text"
-                      placeholder="Enter your name"
+                      placeholder="Enter your Name"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -449,7 +524,7 @@ const HireFromUs = () => {
                       id="study"
                       className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${warnings.email ? 'border border-red-500' : ''}`}
                       type="email"
-                      placeholder="Enter Email"
+                      placeholder="Enter E-mail"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -466,7 +541,7 @@ const HireFromUs = () => {
                       name="phone"
                       className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${warnings.phone ? 'border border-red-500' : ''}`}
                       type="number"
-                      placeholder="Enter your Mobile number"
+                      placeholder="Enter your Phone number"
                       maxLength={10}
                     />  
                   </div>
@@ -495,7 +570,7 @@ const HireFromUs = () => {
                       onChange={handleloginChange}
                       value={hirelogindata.name}
                       type="text"
-                      placeholder="Enter your name"
+                      placeholder="Enter your Name"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -512,7 +587,7 @@ const HireFromUs = () => {
                       onChange={handleloginChange}
                       value={hirelogindata.email}
                       type="text"
-                      placeholder="Enter your email"
+                      placeholder="Enter your Email"
                     />
                   </div>
                   <div className="flex flex-col gap-1">

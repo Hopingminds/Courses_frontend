@@ -21,7 +21,7 @@ const AboutUs = () => {
             <p className="text-[#141414] text-[48px] font-pop font-semibold leading-[50px] xsm:text-[12px] xsm:leading-normal xsm:text-center">
               {" "}
               <span className="text-[#1DBF73] "> Hoping Minds </span> providing
-              the best opportunities to the students around the glob.
+              the best opportunities to the students around the globe.
             </p>
             <p className="text-[#1E1E1E] text-[20px]  leading-[24px] text-justify xsm:text-[11px] font-nu xsm:leading-4">
               HopingMinds is working to transform India’s educational system

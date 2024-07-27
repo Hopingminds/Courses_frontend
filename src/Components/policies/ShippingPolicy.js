@@ -14,7 +14,7 @@ const ShippingPolicy = () => {
         <p>
           {/* <strong>What are the delivery charges?</strong> */}
         </p>
-        <p>These Terms and Conditions govern your use of the Hoping Minds eLearning website. By accessing or using the Platform, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use the Platform.</p>
+        <p>These Terms and Conditions govern your use of the Hoping Minds e-Learning website. By accessing or using the Platform, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use the Platform.</p>
 
         <p className="py-4">
           <strong>
