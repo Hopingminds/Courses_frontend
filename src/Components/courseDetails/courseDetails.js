@@ -115,7 +115,7 @@ export default function CDDetails() {
         //   response?.data?.completed_lessons?.length
         // );
         // console.log("data",allchapters,completed);
-        if (allchapters?.length === response?.data?.completed_lessons?.length) {
+        if (allchapters?.length === response?.data?.completed_lessons?.length || response?.data?.completed_lessons?.length==0) {
           // console.log("hello");
           seturl(allchapters[0]?.video);
           setactiveindex(allchapters[0]?.lesson_name)
@@ -125,7 +125,9 @@ export default function CDDetails() {
           seturl(allchapters[videoindex]?.video);
           setcount(videoindex);
           setactiveindex(allchapters[videoindex]?.lesson_name)
+          completed.push(allchapters[videoindex]?._id)
         }
+        console.log(completed);
         setcompleted_lessons(completed);
         setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
