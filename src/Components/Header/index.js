@@ -12,6 +12,7 @@ import Cookies from "js-cookie";
 export default function Navbar() {
   const [profile, setProfile] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage menu open/close
+  let token=localStorage.getItem('COURSES_USER_TOKEN')
   const {
     cartData,
     cartSize,
@@ -205,17 +206,17 @@ export default function Navbar() {
                   >
                     Internship
                   </Link> */}
-                  <Link
-                    to="/hire-from-us"
-                    onClick={Top}
-                    className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop ${
-                      location.pathname === "/hire-from-us"
-                        ? " font-bold text-[#1DBF73]"
-                        : ""
-                    }`}
-                  >
-                    Hire From Us
-                  </Link>
+        {   !token ?     <Link
+                  to="/hire-from-us"
+                  onClick={Top}
+                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop ${
+                    location.pathname === "/hire-from-us"
+                      ? " font-bold text-[#1DBF73]"
+                      : ""
+                  }`}
+                >
+                  Hire From Us
+                </Link> : ''}
                   <a
                     href={location.pathname === "/" ? "#" : "/pap"}
                     onClick={ScrollToPap}
@@ -360,7 +361,7 @@ export default function Navbar() {
                 >
                   Internship
                 </Link> */}
-                <Link
+           {  !token ?   <Link
                   to={"/hire-from-us"}
                   onClick={Top}
                   className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] sm:text-[10px] md:text-[14px] font-pop ${
@@ -370,7 +371,7 @@ export default function Navbar() {
                   }`}
                 >
                   Hire From Us
-                </Link>
+                </Link> : ''}
                 {/* <Link to={'/ai'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Ai Minds</Link> */}
                 {/* <Link to={'/hire-from-us'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Hire From Us</Link> */}
                 <a

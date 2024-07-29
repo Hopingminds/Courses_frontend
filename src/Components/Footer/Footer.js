@@ -46,36 +46,36 @@ const Footer = () => {
                 GET HELP
               </p>
               <div className="flex flex-col gap-3 xsm:gap-1 md:gap-2">
-                {/* <Link className='text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px]'>Contact Us</p> */}
+                {/* <Link className='text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px]'>Contact Us</p> */}
                 <Link
                   to="/privacy"
-                  className={` text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px] ${pathname=='/privacy' ? 'text-[#1dbf73]' : 'text-white'}`}
+                  className={` text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px] ${pathname=='/privacy' ? 'text-[#1dbf73]' : 'text-white'}`}
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   to="/terms"
-                  className={`${pathname=='/terms' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px] `}
+                  className={`${pathname=='/terms' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px] `}
                 >
                   Terms and Conditions
                 </Link>
                 <Link
                   to="/pap"
-                  className={`${pathname=='/pap' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${pathname=='/pap' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Pay After Placement
                 </Link>
-                {/* <Link to='/career' className='text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]'>Career</Link> */}
+                {/* <Link to='/career' className='text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]'>Career</Link> */}
                 <Link
                   to="/about"
-                  className={`${pathname=='/about' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${pathname=='/about' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   About
                 </Link>
-                {/* <Link to='/hire-from-us' className='text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]'>Hire From Us</Link> */}
+                {/* <Link to='/hire-from-us' className='text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]'>Hire From Us</Link> */}
                 <Link
                   to="/cv-builder"
-                  className={`${pathname=='/cv-builder' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${pathname=='/cv-builder' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   CV Builder
                 </Link>
@@ -91,37 +91,37 @@ const Footer = () => {
               >
                 <Link
                   to="/courses?category=Management"
-                  className={`${window.location.href=='/courses?category=Management' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${window.location.href=='/courses?category=Management' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Management
                 </Link>
                 <Link
                   to="/courses?category=Finance"
-                  className={`${window.location.href=='/courses?category=Finance' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${window.location.href=='/courses?category=Finance' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Finance
                 </Link>
                 <Link
                   to="/courses?category=Full Stack Development"
-                  className={`${window.location.href=='/courses?category=Full Stack Development' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${window.location.href=='/courses?category=Full Stack Development' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Full Stack Development
                 </Link>
                 <Link
                   to="/courses?category=AI/ML"
-                  className={`${window.location.href=='/courses?category=AI/ML' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${window.location.href=='/courses?category=AI/ML' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   AI/ML
                 </Link>
                 <Link
                   to="/courses?category=Networking"
-                  className={`${window.location.href=='/courses?category=Networking' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${window.location.href=='/courses?category=Networking' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Networking
                 </Link>
                 <Link
                   to="/courses?category=Data Science"
-                  className={`${window.location.href=='/courses?category=Data Science' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${window.location.href=='/courses?category=Data Science' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Data Science
                 </Link>
@@ -132,13 +132,13 @@ const Footer = () => {
                 CONTACT US
               </p>
               <div className="flex flex-col gap-3 xsm:gap-1 md:gap-2">
-                <div className="text-white text-[16px] font-pop flex flex-row xsm:flex-col  xsm:text-[11px] sm:text-[9px] md:text-[10px]">
+                <div className="text-white text-[16px] hover:text-[#1dbf73] font-pop flex flex-row xsm:flex-col  xsm:text-[11px] sm:text-[9px] md:text-[10px]">
                   <p>Tel: +91 91931 00050 ,<p></p> +91 76579 22600</p>
                 </div>
                 <Link
                   to="mailto:support@hopingminds.com"
                   target="_blank"
-                  className={`${pathname=='/privacy' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${pathname=='/privacy' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Mail: support@hopingminds.com
                 </Link>
@@ -192,7 +192,7 @@ const Footer = () => {
             src={Img1}
             className=" xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[16px] md:h-[16px]"
           />
-          <p className="text-white text-[16px] font-pop font-semibold xsm:text-[12px] sm:text-[11px] md:text-[12px]">
+          <p className="text-white text-[16px] hover:text-[#1dbf73] font-pop font-semibold xsm:text-[12px] sm:text-[11px] md:text-[12px]">
             KATINA SKILLS PRIVATE LIMITED 2024
           </p>
         </div>
