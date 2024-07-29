@@ -123,7 +123,7 @@ export default function CDDetails() {
         } else {
           // console.log("hi");
           seturl(allchapters[videoindex]?.video);
-          setcount(videoindex - 1);
+          setcount(videoindex);
           setactiveindex(allchapters[videoindex]?.lesson_name)
         }
         setcompleted_lessons(completed);
