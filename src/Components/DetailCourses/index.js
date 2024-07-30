@@ -12,7 +12,7 @@ import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Included from "./included";
 import { Globalinfo } from "../../App";
 import { jwtDecode } from "jwt-decode";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import PackageCarousel from "./packageCarousel";
 import DetailCompany from "../Companies/Detailcompanies";
@@ -38,7 +38,8 @@ export default function DetailCourses() {
         const response = await data.json();
         // console.log(response);
         setData(response?.course);
-        CheckCourseInCart(response?.course._id)
+        CheckCourseInCart(response?.course?._id)
+        CheckCourseInWishlist(response?.course?._id)
         setFaqs(
           response?.course?.faqs?.map((val) => {
             return {
@@ -58,7 +59,7 @@ export default function DetailCourses() {
   }, []);
 
   function ClickSection(id) {
-    const updatedFaqs = faqs.map((faq, index) => {
+    const updatedFaqs = faqs?.map((faq, index) => {
       if (index === id) {
         return { ...faq, isOpen: !faq.isOpen };
       } else {
@@ -82,6 +83,7 @@ export default function DetailCourses() {
         let token = jwtDecode(login);
         let email = token.email;
         let quantity = 1;
+        setshow(true)
         let url = BASE_URL + "/addtocart";
         let data = await fetch(url, {
           method: "POST",
@@ -96,6 +98,7 @@ export default function DetailCourses() {
         if (response.success) {
           toast.success(response.msg);
           // setCartSize(cartSize + 1);
+          setshow(false)
           GetCart();
           CheckCourseInCart(courseid)
         } else {
@@ -116,6 +119,7 @@ export default function DetailCourses() {
         let token = jwtDecode(login);
         let email = token.email;
         let url = BASE_URL + "/addtowishlist";
+        setshow(true)
         let data = await fetch(url, {
           method: "POST",
           headers: {
@@ -128,6 +132,8 @@ export default function DetailCourses() {
         // console.log(response);
         if (response.success) {
           toast.success(response.msg);
+          CheckCourseInWishlist(courseid)
+          setshow(false)
         } else {
           toast.error(response.msg);
         }
@@ -148,10 +154,8 @@ export default function DetailCourses() {
             Authorization: `Bearer ${token}`,
           },
         });
-        
-        console.log(response.data); // Assuming response.data contains server's response
-        
-        if (response.data.success) {
+                
+        if (response?.data?.success) {
           setAlreadyInCart(true);
         } else {
           setAlreadyInCart(false);
@@ -176,7 +180,6 @@ export default function DetailCourses() {
           },
         });
         
-        console.log(response.data); // Assuming response.data contains server's response
         
         if (response?.data?.success) {
           setalreadyInWishlist(true);
@@ -196,6 +199,10 @@ export default function DetailCourses() {
 
   return (
     <div className="h-auto min-h-screen overflow-x-visible ">
+      <Toaster toastOptions={{
+         duration: 500,
+      }} 
+       position="top-center" />
       <div className="mb-5 xsm:mx-0 xsm:mb-2">
         <div
           className="CCDetails-Header-main flex flex-col pl-[10vw]  w-full xsm:pt-1 xsm:h-[60vh] object-right"
@@ -209,8 +216,8 @@ export default function DetailCourses() {
           <div className="CCDetails-Header-content-leftqw  xsm:text-[10px] pb-2">
             <div className="CCDetails-Header-content-row1qw xsm:text-[10px] xsm:w-[80%]">
               <h2 className="font-pop text-[36px] text-white xsm:text-[20px] capitalize xsm:line-clamp-2">
-                {Data?.title?.length > 80
-                  ? Data?.title?.slice(0, 80)?.join("...")
+                {Data?.title?.length > 60
+                  ? Data?.title?.slice(0, 60)
                   : Data?.title}
               </h2>
               <p className="line-clamp-2 font-normal	text-white xsm:line-clamp-3">{Data?.overview}</p>
@@ -227,12 +234,12 @@ export default function DetailCourses() {
               {/* <p>(260+)</p> */}
             </div>
             <div className="flex gap-5 mt-5 xsm:mt-1 xsm:gap-3 xsm:hidden">
-              {purchasedCourses.includes(Data?._id) ? (
+              {purchasedCourses?.includes(Data?._id) ? (
                 <></>
               ) : (
                 
                   alreadyInWishlist ?   <Link
-                  to='/learning'
+                  to='/learning?tab=wishlist'
                   className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
                 >
                   Go to Wishlist
@@ -245,7 +252,7 @@ export default function DetailCourses() {
                   Add to Wishlist
                 </div>
               )}
-              {!purchasedCourses.includes(Data?._id) ? (
+              {!purchasedCourses?.includes(Data?._id) ? (
                 <div className="space-x-4 w-fit flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
                   {alreadyInCart ?
                     (<div onClick={() => navigate("/cart")} className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 ">
@@ -333,7 +340,7 @@ export default function DetailCourses() {
                 FAQs
               </h1>
               <div className=" w-[95%]  rounded-md px-0  flex flex-col gap-6 font-nu xsm:w-[100%] xsm:p-2 xsm:gap-3">
-                {faqs.map((item, index) => (
+                {faqs?.map((item, index) => (
                   <div key={index} className="faq1 w-full  bg-white rounded-md">
                     <div className=" w-full ">
                       <div
@@ -343,10 +350,10 @@ export default function DetailCourses() {
                         <div className="flex items-center gap-2 relative pl-5 before:content-['\2022'] before:absolute before:left-0 before:text-black">
                           <p
                             className={`xsm:text-[13px] font-semibold md:text-[14px] ${
-                              item.isOpen && "text-[#1DBF73]"
+                              item?.isOpen && "text-[#1DBF73]"
                             }`}
                           >
-                            {item.question}
+                            {item?.question}
                           </p>
                         </div>
                         <div>

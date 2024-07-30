@@ -187,14 +187,14 @@ export default function Coursecontents({
                         </div>
                       </div>
                     </div>
-                    <div id={ind + 1} className="pt-2 py-2 px-4">
+                    <div id={ind + 1} className="pt-2 py-2 px-4 flex flex-col">
                       <div className="w-full">
                         {val?.lessons?.map((chapter, index) => {
                           // console.log("index"+index,completed_lessons?.includes(chapter?._id))
                           return (
                             <div
 
-                              className={courseCategory === "liveCourse" ? "" : `flex flex-col justify-between border-t py-2 w-full ${!completed_lessons?.includes(chapter?._id)
+                              className={courseCategory === "liveCourse" ? "" : `flex-col justify-between border-t py-2 w-full ${!completed_lessons?.includes(chapter?._id)
                                 ? "cursor-not-allowed text-gray-300"
                                 : ""
                                 }`}

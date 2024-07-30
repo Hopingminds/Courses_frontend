@@ -62,7 +62,7 @@ export default function MyLearning() {
         setshow(true)
         try {
             const res = await axios.get(`${BASE_URL}/user/${email}`)
-            console.log("All Courses purchased",res?.data?.userDetails?.purchased_courses)
+            // console.log("All Courses purchased",res?.data?.userDetails?.purchased_courses)
             setPurchasedCourses(res?.data?.userDetails?.purchased_courses)
             setshow(false)
 

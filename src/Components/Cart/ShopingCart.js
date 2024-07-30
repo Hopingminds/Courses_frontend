@@ -36,7 +36,7 @@ function ShopingCart() {
     if (response.success) {
       setData(response.data);
       Total(response.data);
-      toast.success(response.message);
+      toast.success("Course removed successfuly");
       setCartSize(cartSize-1);
       setshow(false);
     } else {
@@ -62,6 +62,9 @@ function ShopingCart() {
 
   return (
     <div className="SC-container font-pop">
+      <Toaster toastOptions={{
+         duration: 500,
+      }}  position="top-center" />
       <div className=" w-[100%] h-[20vh] flex flex-row items-center  px-[4%] cartbg xsm:h-[12vh] md:h-[14vh]">
         <div className="">
           <h2 className="font-outfit font-semibold text-4xl text-white xsm:text-[14px]">
@@ -274,9 +277,7 @@ function ShopingCart() {
       ) : (
         ""
       )}
-      <Toaster toastOptions={{
-         duration: 500,
-      }}  position="top-right" />
+      
     </div>
   );
 }

@@ -398,9 +398,11 @@ const Register = () => {
         setSearchedData([])
     }
     const handleBlur = (e) => {
-        if (e.target.name === "college") {
-            setSearchedData([]);
-        }
+        setTimeout(() => {
+            if (e.target.name === "college") {
+                setSearchedData([]);
+            }
+        }, 200)
     };
     return (
         <>
@@ -493,19 +495,19 @@ const Register = () => {
                             <div>
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>College/University <span className='text-red-500'>*</span></p>
                                 <div className='relative'>
-                                    <input
-                                        ref={collegeRef}
-                                        className={`mt-2 w-full  border border-[#1dbf73] rounded-[25px] py-[10px] px-[24px] text-[14px] font-pop font-light outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${SearchedData.length ? 'border-b-[0px] rounded-b-none' : 'border-b-[1px]'}  ${errors.college ? ' error_input' : ""}`}
-                                        type="text"
-                                        placeholder="Enter Your College/University"
-                                        name="college"
-                                        id={"college"}
-                                        value={user.college}
-                                        onChange={SearchData}
-                                        onBlur={handleBlur}
-                                        onKeyDown={(e) => handleKeyDown(e, passwordRef)}
-                                        autocomplete="off"
-                                    />
+                                <input
+    ref={collegeRef}
+    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none ${SearchedData.length ? 'border-b-[0px] rounded-b-none' : 'border-b-[1px]'} ${errors.college ? ' error_input' : ""}`}
+    type="text"
+    placeholder="Enter Your College/University"
+    name="college"
+    id={"college"}
+    value={user.college}
+    onChange={SearchData}
+    onBlur={handleBlur}
+    onKeyDown={(e) => handleKeyDown(e, passwordRef)}
+    autoComplete="off"
+/>
                                     <div className='w-full collegescroll min-h-[0px] max-h-[200px] overflow-y-auto absolute  z-20 bg-[#eafff5]  '>
                                         {
                                             SearchedData.map((it) => {

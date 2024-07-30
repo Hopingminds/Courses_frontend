@@ -20,7 +20,7 @@ export default function WishList() {
           const data = await fetch(url);
           const response = await data.json();
           setData(response?.wishlist);
-          console.log(response?.wishlist);
+          // console.log(response?.wishlist);
           setshow(false);
         }
       } catch (error) {
@@ -51,13 +51,13 @@ export default function WishList() {
         ""
       )}
 
-      <div className="my-[4%] mx-[5%] grid grid-cols-4 gap-10 xsm:mt-3 xsm:gap-3 xsm:grid-cols-3">
+      <div className="my-[4%] mx-[5%] grid grid-cols-3 gap-10 xsm:mt-3 xsm:gap-3 xsm:grid-cols-3">
         {Data?.map((item) => {
           return (
             <>
               <Link
                 to={`/detailcourse/${item?.course?.slug}`}
-                className=" px-4 py-4 mt-2 h-[350px] rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:rounded-md xsm:p-2 xsm:h-full md:p-3 md:h-full"
+                className=" px-4 py-4 mt-2 h-[380px] rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:rounded-md xsm:p-2 xsm:h-full md:p-3 md:h-full"
               >
                 <div className="h-[55%] xsm:h-[45%] md:h-[40%]">
                   <img alt=""
@@ -103,7 +103,7 @@ export default function WishList() {
                         src="../Icons/RCClock.svg"
                       />
                       <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[5px] md:text-[8px]">
-                        {item.course?.duration}
+                        {item.course?.duration} hours
                       </p>
                     </div>
                   </div>

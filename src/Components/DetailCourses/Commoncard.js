@@ -131,6 +131,7 @@ export default function Commoncard(props) {
 
     return `${day} ${month} ${year} ${time}`;
 }
+
   // console.log(Data);
   return (
     <div className="bg-[#E2FFF1] w-[full] h-max my-14 p-6 rounded-t-lg flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:mb-8">
@@ -277,7 +278,7 @@ export default function Commoncard(props) {
               <RWebShare
                 data={{
                   text: "Hoping Minds",
-                  url: "https://hopingminds.in" + pathname,
+                  url: "https://hopingminds.com" + pathname,
                   title: "Hoping Minds",
                 }}
                 onClick={() => console.log("shared successfully!")}
@@ -290,7 +291,7 @@ export default function Commoncard(props) {
               <RWebShare
                 data={{
                   text: "Hoping Minds",
-                  url: "https://hopingminds.in" + pathname,
+                  url: "https://hopingminds.com" + pathname,
                   title: "Hoping Minds",
                 }}
                 onClick={() => console.log("shared successfully!")}
@@ -303,7 +304,7 @@ export default function Commoncard(props) {
               <RWebShare
                 data={{
                   text: "Hoping Minds",
-                  url: "https://hopingminds.in" + pathname,
+                  url: "https://hopingminds.com" + pathname,
                   title: "Hoping Minds",
                 }}
                 onClick={() => console.log("shared successfully!")}
@@ -320,9 +321,7 @@ export default function Commoncard(props) {
           </div>
         </div>
       </div>
-      <Toaster toastOptions={{
-         duration: 500,
-      }}  position="top-center" />
+      
       </div>
     
   );

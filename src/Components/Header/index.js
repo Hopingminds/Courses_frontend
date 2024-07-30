@@ -462,7 +462,7 @@ export default function Navbar() {
                   to={"/login-2"}
                   className="bg-[#1DBF73] text-center w-24 rounded-full text-white py-1 sm:text-[10px] xsm:text-[8px] xsm:px-2 sm:px-3 font-pop md:text-[14px] md:px-4"
                 >
-                  Log in
+                  Log In
                 </Link>
                 <Link
                   to={"/register-user"}

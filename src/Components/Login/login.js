@@ -72,7 +72,7 @@ const Login = () => {
           }
         }
       } catch (error) {
-        toast.error(error.response.data.error);
+        toast.error(error?.response?.data?.error);
       } finally {
         setBtnLoader(false);
       }
@@ -227,7 +227,7 @@ const Login = () => {
               </div>
               <div className="flex items-center gap-1">
                 <p className="font-pop text-[14px] md:text-[10px] xsm:text-[10px]">
-                  New here ?
+                  New here?
                 </p>
                 <Link to={"/register-user"}>
                   <h5 className="text-[#1dbf73] md:text-[12px] xsm:text-[12px] ">
