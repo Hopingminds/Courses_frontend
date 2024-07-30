@@ -1,7 +1,7 @@
 import "./Pageheader.css";
 import Commoncard from "./Commoncard";
 import { Link, useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { BASE_URL } from "../../Api/api";
 import Spinner from "../Spinner";
 import Curriculum from "../Curriculum/Curriculum";
@@ -29,7 +29,7 @@ export default function DetailCourses() {
   const [faqs, setFaqs] = useState([]);
   const [alreadyInCart, setAlreadyInCart] = useState(false);
   const [alreadyInWishlist, setalreadyInWishlist] = useState(false)
-  useEffect(() => {
+  useLayoutEffect(() => {
     async function Fetchdata() {
       try {
         setshow(true);
