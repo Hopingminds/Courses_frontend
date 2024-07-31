@@ -290,7 +290,7 @@ const AllCourses = () => {
             <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Students Enrolled</div>
           </div>
           <div className="xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">
-            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={5000} />+</div>
+            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={8000} />+</div>
             <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Students Placed</div>
           </div>
           {/* <div className="xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">

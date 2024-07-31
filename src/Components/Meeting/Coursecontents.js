@@ -115,7 +115,12 @@ export default function Coursecontents({
         });
         const response1 = await data1.json();
         // console.log(response1);
-        toast.success(response.message);
+        if(response1.success){
+          toast.success(response1.message);
+        }
+        else{
+          toast.error(response1.message);
+        }
       } else {
         toast.error(response.message);
       }

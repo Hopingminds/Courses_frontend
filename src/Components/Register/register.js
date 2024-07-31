@@ -456,7 +456,7 @@ const Register = () => {
                             <div>
                                 <p className='text-[14px] font-pop'>Contact Number <span className='text-red-500'>*</span></p>
                                 <PhoneInput
-                                    className={`phonenumbercountrycode mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none ${errors.phone ? 'error_input' : ""} ${isNumValid && 'border-red-500'}`}
+                                    className={`phonenumbercountrycode phone-input-dropdown max-h-[100px]  overflow-y-auto mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none ${errors.phone ? 'error_input' : ""} ${isNumValid && 'border-red-500'}`}
                                     defaultCountry="IN"
                                     name="phone"
                                     id={"phone"}
@@ -524,7 +524,7 @@ const Register = () => {
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Password <span className='text-red-500'>*</span></p>
                                 <input
                                     ref={passwordRef}
-                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.password ? 'error_input' : ""}`}
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] pl-[24px] pr-[32px]  text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.password ? 'error_input' : ""}`}
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Enter Your Password"
                                     name="password"
@@ -533,7 +533,7 @@ const Register = () => {
                                     onChange={handleChange}
                                     onKeyDown={(e) => handleKeyDown(e, null)}
                                 />
-                                <span style={{ position: "absolute", bottom: "12px", right: "15px" }}> {
+                                <span style={{ position: "absolute", bottom: "12px",zIndex:'20', right: "15px" }}> {
                                     showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />
                                 }
                                 </span>
@@ -564,7 +564,7 @@ const Register = () => {
                 </div>
             </div>
             <Toaster    toastOptions={{
-        duration: 500,
+        duration: 800,
       }} position="top-center" />
         </>
     );

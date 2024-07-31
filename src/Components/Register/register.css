@@ -23,3 +23,7 @@
 .error_input {
   border: 1px solid red;
 }
+.phone-input-dropdown .PhoneInputCountrySelect {
+  max-height: 200px; /* Adjust the height as needed */
+  overflow-y: auto;
+}

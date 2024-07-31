@@ -2,6 +2,7 @@ import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../../Api/api";
 import Img from "../../Assets/Images/nocoursefound.png";
+import { Link } from "react-router-dom";
 
 const CNAssignment = ({ courseAssignment }) => {
   const [Data, setData] = useState([]);
@@ -48,18 +49,18 @@ const CNAssignment = ({ courseAssignment }) => {
       ) : (
         <>
           <div className="grid grid-cols-[1fr,1.8fr,3.3fr,2fr,1fr] w-full bg-[#E2FFF1] py-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
-            <p className="font-pop font-bold text-center grid">Section</p>
             <p className="font-pop font-bold text-center">Assignment No</p>
             <p className="font-pop font-bold text-center">Course</p>
             <p className="font-pop font-bold text-center">Lesson Name</p>
             <p className="font-pop font-bold text-center">Status</p>
+            <p className="font-pop font-bold text-center">Action</p>
           </div>
           {Data?.map((item, ind) => {
             return (
               <>
                 <div className="grid  grid-cols-[1fr,1.8fr,3.3fr,2fr,1fr] w-full bg-[#E2FFF1] py-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
                   <p className="font-nu font-semibold text-center">{ind + 1}</p>
-                  <p className="font-nu font-semibold text-center">{ind + 1}</p>
+                  {/* <p className="font-nu font-semibold text-center">{ind + 1}</p> */}
                   <p className="font-nu font-semibold text-center">
                     {item.chapter_name}
                   </p>
@@ -75,6 +76,7 @@ const CNAssignment = ({ courseAssignment }) => {
                       Pending
                     </p>
                   )}
+                  <Link className="font-nu font-semibold text-center" target="_blank" to={item?.assignmentUrl}>View</Link>
                 </div>
               </>
             );

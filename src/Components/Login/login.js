@@ -50,6 +50,7 @@ const Login = () => {
         localStorage.setItem("COURSES_USER_TOKEN", res.data.token);
         if (res.status) {
           const decoded = jwtDecode(res.data.token);
+
           try {
             const res = await axios.get(`${BASE_URL}/user/${decoded.email}`);
             if (localStorage.getItem("history")) {
@@ -61,7 +62,7 @@ const Login = () => {
               localStorage.removeItem("ADD_TO_CART_HISTORY");
               navigate(history);
             } else {
-              if (res.data.userDetails.purchased_courses.length > 0) {
+              if (res?.data?.userDetails?.purchased_courses.length > 0) {
                 navigate("/learning");
               } else {
                 navigate("/courses");
