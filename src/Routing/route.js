@@ -76,6 +76,7 @@ import {AuthProvider} from "../Components/contexts/AuthContext.js"
 import Loginpage from '../Components/TeacherPanel/LoginPage/LoginPage.jsx'
 import MyTimer from '../Components/mytimer.js'
 import PaymentFailed from '../Components/PaymentFailed/PayementFailed.jsx'
+import Hlstest from '../Components/Testing/HlsTest.jsx'
 
 function Locationpath(){
     const location=useLocation()
@@ -182,6 +183,7 @@ const Router = () => {
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
                 <Route path='/error' element={<PaymentFailed />} />
+                <Route path='/hls' element={<Hlstest />} />
 
                 <Route path="/teacherlogin" element={<Loginpage/>}/>
                 <Route path="/teacherpanel" element={<TPHome/>}>
