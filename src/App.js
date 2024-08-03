@@ -20,9 +20,6 @@ function App() {
   const [cartSize, setCartSize] = useState(0);
   const [user, setUser] = useState(null);
 
-  // const ENDPOINT = 'http://localhost:3009';  // Ensure this matches your server URL
-  const ENDPOINT = 'https://api.hopingminds.com';  // Ensure this matches your server URL
-
   const getUser = async () => {
     try {
       const url = `${AUTH_BASE_URL}/login/success`;
@@ -111,8 +108,9 @@ function App() {
 
   useEffect(() => {
     // Initialize Socket.io client with specified transport
-    const socket = io(ENDPOINT, {
-      transports: ['websocket'],
+    const socket = io('https://api.hopingminds.com', {
+      secure: true,
+      reconnectionAttempts: 5,
       withCredentials: true, // Include credentials if needed
     });
 
