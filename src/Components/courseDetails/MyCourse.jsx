@@ -2,7 +2,7 @@ import React from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom";
 
-export default function Mycourse({ courses, onCourseClick }) {
+export default function Mycourses({ courses }) {
     function formatDate(dateString) {
         const dateObj = new Date(dateString);
         const day = String(dateObj.getDate()).padStart(2, '0');
@@ -39,7 +39,6 @@ export default function Mycourse({ courses, onCourseClick }) {
                     return (
                         <div
                             key={course.id}
-                            onClick={() => onCourseClick(course.id)}
                             className={`relative w-full flex flex-col justify-between p-4 mt-2 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm ${
                                 isCourseAvailable ? "" : "cursor-not-allowed"
                             }`}
@@ -59,11 +58,11 @@ export default function Mycourse({ courses, onCourseClick }) {
                             <div className="h-[45%] flex flex-col justify-between mt-2 xsm:space-y-1 xsm:mt-1">
                                 <p className="font-pop font-semibold text-[18px] xsm:text-[6px] md:text-[16px]">{course?.title}</p>
                                 {isCourseAvailable ? (
-                                    <Link
-                                        to={course?.courseCategory === "liveCourse" ? `/liveclass/${course?.slug}` : `/course/${course?.slug}`}
+                                    <a
+                                        href={course?.courseCategory === "liveCourse" ? `/liveclass/${course?.slug}` : `/course/${course?.slug}`}
                                     >
                                         <p className="text-gray-400 font-semibold text-sm">Batch will start on {formatDate(course?.courseStartDate)}</p>
-                                    </Link>
+                                    </a>
                                 ) : (
                                     <p className="text-gray-400 font-semibold text-sm">Batch will start on {formatDate(course?.courseStartDate)}</p>
                                 )}

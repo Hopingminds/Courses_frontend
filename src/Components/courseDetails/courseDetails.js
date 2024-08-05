@@ -33,6 +33,7 @@ export default function CDDetails() {
   const [meetinglink, setmeetinglink] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeindex, setactiveindex] = useState("")
+  const [idwise, setidwise] = useState({})
   const [expired, setexpired] = useState()
   const [dur, setdur] = useState()
   const params = useParams();
@@ -71,6 +72,7 @@ export default function CDDetails() {
           response?.data?.course?.curriculum?.forEach((val) => {
             val?.lessons?.map((it) => {
               // console.log("it",val);
+
               totalduration=totalduration+parseInt(it?.duration)
               console.log(totalduration);
               allchapters.push({
@@ -288,7 +290,7 @@ export default function CDDetails() {
   
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
-  return `${hours}h ${remainingMinutes} mins`
+  return `${hours}h ${remainingMinutes}m`
   }
 
   function handleNext() {
@@ -375,7 +377,7 @@ export default function CDDetails() {
         <div className="w-[85%] xsm:w-full ">
           <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] md:pr-[5%] md:h-[50vh] xsm:px-4">
             {showSmallvideo && (
-              <div className="fixed bottom-0 left-0 z-20 rounded-xl">
+              <div className="fixed bottom-0 left-0 z-[9999] rounded-xl">
                 <ReactPlayer
                   onContextMenu={handleContextMenu}
                   height="200px"
@@ -524,7 +526,7 @@ export default function CDDetails() {
                       </p>
                       <div className="flex space-x-4">
                         <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
-                          {totalLessons} Lesson
+                          {totalLessons} Lessons
                         </p>
                         <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
                           {Timeconverter(dur)}

@@ -11,11 +11,12 @@ import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import CourseDrawer from "./CourseDrawer";
-import Mycourse from "../MyLearning/Mycourse";
 import Assignment from "../MyLearning/Assignment";
 import MyStats from "../MyLearning/MyStats";
 import JobOffering from "./MyJobs";
 import Certificate from "./MyCertificate";
+import Mycourses from "./MyCourse";
+import Assignments from "./Assignment";
 
 const DrawerNavbar = () => {
   const [activeComponent, setActiveComponent] = useState(null);
@@ -39,9 +40,9 @@ const DrawerNavbar = () => {
   const getComponent = () => {
     switch (activeComponent) {
       case "MyCourse":
-        return <Mycourse courses={purchasedCourses} />;
+        return <Mycourses courses={purchasedCourses} />;
       case "Assignment":
-        return <Assignment courses={purchasedCourses} />;
+        return <Assignments courses={purchasedCourses} />;
       case "Wishlist":
         return <WishList courses={purchasedCourses} />;
       case "Certificate":

@@ -654,7 +654,7 @@ const PostJobsForm = () => {
               >
                 <option value="Salary Range">Salary Range</option>
                 <option value="Fixed Package">Fixed Package</option>
-                <option value="Upto">Upto</option>
+                <option value="uptoPackage">Upto</option>
               </select>
               {/* <select
                 name="currency"
