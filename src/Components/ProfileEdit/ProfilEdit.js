@@ -26,6 +26,7 @@ const ProfilEdit = () => {
   const [showallcolleges, setshowallcolleges] = useState([])
   const [initialUserData, setinitialUserData] = useState(null)
 
+
   const handleMouseEnter = () => {
     setShowTooltip(true);
   };
@@ -39,7 +40,6 @@ const ProfilEdit = () => {
   const [data, setData] = useState([]);
   const [uploadLoader, setUploadLoader] = useState(false);
   const [completeProfile, setCompleteProfile] = useState("Profile");
-
   const checkUserValidation = async () => {
     const isValidUser = await authenticateUser();
     console.log(isValidUser);
@@ -182,13 +182,13 @@ const ProfilEdit = () => {
   };
 
   const handleFileChange = async (e) => {
-    setUploadLoader(true);
     // console.log(e.target.files[0])
     const file = e.target.files[0];
+    if (file && (file.type === 'image/png' || file.type === 'image/jpeg')) {
+      setUploadLoader(true);
     // console.log(file);
     setSelectedImage(file);
     // console.log(file)
-    if (file) {
       // console.log(file);
       try {
         const res = await axios.post(
@@ -208,13 +208,17 @@ const ProfilEdit = () => {
           setUploadLoader(false);
           toast.success("Profile Picture Updated");
           setUser({ ...user, profile: res.data.url });
+          getUserDetails()
         }
       } catch (error) {
         console.log(error);
         setUploadLoader(false);
       }
+      
     }
-
+else{
+  toast.error("Invaild format of profile picture (only jpeg,png format allowed)")
+}
     // setUser({ ...user, profile: URL.createObjectURL(file) })
   };
 
@@ -429,6 +433,7 @@ const ProfilEdit = () => {
                     name="phone"
                     value={user.phone}
                     onChange={handleChange}
+                    disabled
                   />
                 </div>
                 <div className=" relative -z-10 flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">

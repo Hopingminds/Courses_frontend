@@ -81,7 +81,7 @@ import LiveStream from '../Components/LiveStream/LiveStream.jsx'
 function Locationpath(){
     const location=useLocation()
     useEffect(() => {
-      if(location.pathname!=='/login-2'){
+      if(location.pathname!=='/login-2' && location.pathname!=='/forgot-password'){
         localStorage.setItem("current",location.pathname)
       }
   

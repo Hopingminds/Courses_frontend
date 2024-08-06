@@ -6,7 +6,7 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import ChatBot from './Components/chatbot/chatbot';
 import { useLocation } from 'react-router-dom';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
 export const Globalinfo = createContext()
 function App() {
@@ -106,30 +106,30 @@ function App() {
     setWishListData([]);
   }
 
-  useEffect(() => {
-    // Initialize Socket.io client with specified transport
-    const socket = io('https://api.hopingminds.com', {
-      secure: true,
-      reconnectionAttempts: 5,
-      withCredentials: true, // Include credentials if needed
-    });
+  // useEffect(() => {
+  //   // Initialize Socket.io client with specified transport
+  //   const socket = io('https://api.hopingminds.com', {
+  //     secure: true,
+  //     reconnectionAttempts: 5,
+  //     withCredentials: true, // Include credentials if needed
+  //   });
 
-    // Handle connection event
-    socket.on('connect', () => {
-      console.log('Connected to WebSocket server');
-    });
+  //   // Handle connection event
+  //   socket.on('connect', () => {
+  //     console.log('Connected to WebSocket server');
+  //   });
 
-    // Handle incoming notifications
-    socket.on('notification', (data) => {
-      console.log('Notification received:', data);
-      alert('Notification received Check Console');
-    });
+  //   // Handle incoming notifications
+  //   socket.on('notification', (data) => {
+  //     console.log('Notification received:', data);
+  //     alert('Notification received Check Console');
+  //   });
 
-    // Cleanup function to disconnect the socket when the component unmounts
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+  //   // Cleanup function to disconnect the socket when the component unmounts
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  // }, []);
 
 
 

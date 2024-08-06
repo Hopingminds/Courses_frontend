@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './forgotPassword.module.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -17,7 +17,21 @@ const Forgotpassword = () => {
     const [btnLoader, setBtnLoader] = useState(false);
     const [show, setShow] = useState(1);
     const [showPassword, setShowPassword] = useState(false);
-
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+          const message = 'Are you sure you want to leave? Changes you made may not be saved.';
+          e.preventDefault();
+          e.returnValue = message; // Standard for most browsers
+          return message; // For some older browsers
+        };
+    
+        window.addEventListener('beforeunload', handleBeforeUnload);
+    
+        // Cleanup the event listener on component unmount
+        return () => {
+          window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+      }, []);
     const [user, setUser] = useState({
 
         email: "",
@@ -28,13 +42,25 @@ const Forgotpassword = () => {
 
     });
     // console.log(userDetail)
-
+    const validatePassword = (password) => {
+        const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+        if (!regex.test(password)) {
+        //   return "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+        return false;
+    }
+        return true;
+      };
     const handleReset = async () => {
         // console.log(user)
         setBtnLoader(true);
 
         if (!validateEmail(user.email)) {
             toast.error('Enter valid Email  Address')
+            setBtnLoader(false)
+            return;
+        }
+        else if(!validatePassword(user.password)){
+            toast.error('Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.')
             setBtnLoader(false)
             return;
         }
@@ -52,9 +78,10 @@ const Forgotpassword = () => {
                 // console.log(res);
                 getUserDetails()
                 toast.success("Password reset Successfull")
-
+                console.log(localStorage.getItem("current"));
+                
                 setTimeout(() => {
-                    navigate('/login-2')
+                    navigate(localStorage.getItem("current"))
 
                 }, 1000);
 
@@ -155,7 +182,7 @@ const Forgotpassword = () => {
                             </div>
                         </div> </> : show === 2 ? <>
                             <h1>Verify OTP Here</h1>
-                            <h6>We have sent an OTP to *******{user.email.slice(user.email.length - 14, user.email.length)}</h6>
+                            <h6>We have sent an OTP to *******{user?.email?.slice(user.email.length - 14, user.email.length)}</h6>
                             <div className={styles.input_main}>
 
                                 <div className={styles.inputs}>
@@ -216,7 +243,7 @@ const Forgotpassword = () => {
                 </div>
             </div>
             <Toaster toastOptions={{
-         duration: 500,
+         duration: 1000,
       }}  position="top-center" />
         </>
     );
