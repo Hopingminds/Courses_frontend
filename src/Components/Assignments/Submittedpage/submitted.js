@@ -10,7 +10,7 @@ function SubmittedSuccess() {
                 <h1 className='text-[#1DBF73] font-semibold font-pop'>Assessment Completed Successfully</h1>
                 <div className='text-center px-20'>Thank you for participating in PAP enrollment test. You will be receiving your test results via email in 24 Hrs.</div>
                 <div className="button-container mt-5">
-                    <Link to={'/modules'}> <button className="view-order">Back to pap page</button></Link>
+                    <a href={'/modules'}> <button className="view-order">Back to pap page</button></a>
                 </div>
             </div>
         </div>

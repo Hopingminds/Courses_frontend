@@ -36,7 +36,7 @@ function ShopingCart() {
     if (response.success) {
       setData(response.data);
       Total(response.data);
-      toast.success("Course removed successfuly");
+      toast.success("Course removed successfully");
       setCartSize(cartSize-1);
       setshow(false);
     } else {

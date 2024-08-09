@@ -213,7 +213,7 @@ export default function Coursecontents({
                                 </p>:
                                 <p onClick={ () =>
                                   completed_lessons.includes(chapter._id) &&
-                                  handleActiveVideo(chapter?.video,chapter?.lesson_name)
+                                  handleActiveVideo(chapter?.video,chapter?.lesson_name,chapter?._id)
                                 } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
                                   {index + 1}. {chapter?.lesson_name}
                                 </p>}

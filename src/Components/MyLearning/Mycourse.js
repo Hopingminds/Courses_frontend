@@ -36,6 +36,7 @@ export default function Mycourse({ courses }) {
                     let totallessons = 0
                     val?.course?.curriculum?.map((it) => {
                         totallessons += it?.lessons?.length
+                        totallessons += it?.project?.length
                     })
                     return (
                         new Date(val?.course?.courseStartDate)<new Date() ?

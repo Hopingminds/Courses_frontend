@@ -69,12 +69,14 @@ export default function CDDetails() {
         }
         // console.log(completed);
         if (response?.data?.course) {
+          let tempids={}
+          let ind=0
           response?.data?.course?.curriculum?.forEach((val) => {
             val?.lessons?.map((it) => {
               // console.log("it",val);
 
               totalduration=totalduration+parseInt(it?.duration)
-              console.log(totalduration);
+              // console.log(totalduration);
               allchapters.push({
                 video: it?.video,
                 _id: it?._id,
@@ -82,6 +84,7 @@ export default function CDDetails() {
                 liveClass: it?.liveClass,
                 lesson_name:it?.lesson_name
               });
+              tempids[it?._id]=ind++;
             });
             val?.project?.map((it)=>{
               totalduration=totalduration+ parseInt(it?.duration)
@@ -96,9 +99,11 @@ export default function CDDetails() {
               },
               lesson_name:it?.title
               })
+              tempids[it?._id]=ind++;
             })
 
           });
+          setidwise(tempids)
         }
         // console.log("all", allchapters[0]?.video);
         // allchapters=[...new Set(allchapters)]
@@ -170,7 +175,9 @@ export default function CDDetails() {
     };
   }, []);
 
-  function handleActiveVideo(url,title) {
+  function handleActiveVideo(url,title,id) {
+    let getindex=idwise[id]
+    setcount(getindex)
     setactiveindex(title)
     setshowLive(false);
     setexpired(false)
@@ -186,7 +193,7 @@ export default function CDDetails() {
     setactiveindex(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.lesson_name)
     setshowSmallvideo(false);
     seturl(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.video);
-    if (ALLCHAPTER?.length > completed_lessons.length) {
+    if (count+1 >= completed_lessons.length && ALLCHAPTER?.length > completed_lessons.length) {
       let temp = completed_lessons;
       temp.push(ALLCHAPTER[count + 1]?._id);
       // console.log(count);v
@@ -447,7 +454,12 @@ export default function CDDetails() {
                     )
                     : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
-                    ) : (
+                    ) :
+                    url?.toString()=="" ? 
+                  (  <div className="text-center flex flex-col">
+                    <p className="font-semibold">Coming soon</p>
+                  </div>)
+                    : (
                       <ReactPlayer
                         onContextMenu={handleContextMenu}
                         height="auto"
