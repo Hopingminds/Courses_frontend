@@ -19,6 +19,7 @@ function App() {
   const [adminlogin, setadminlogin] = useState()
   const [cartSize, setCartSize] = useState(0);
   const [user, setUser] = useState(null);
+  const [liveClassKey, setLiveClassKey] = useState("test");
 
   const getUser = async () => {
     try {
@@ -170,7 +171,7 @@ function App() {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="theme-color" content="#fff" />
       </head>
-    <Globalinfo.Provider value={{ cartSize, setCartSize, cartData, Getadmindetails, adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
+    <Globalinfo.Provider value={{ cartSize, setCartSize, setLiveClassKey, liveClassKey, cartData, Getadmindetails, adminlogin, GetCart, wishListData, userDetail, getUserDetails, clearCart, clearWishList, checkoutData, setCheckoutData }}>
       <div className='2xl:px-[17%]'>
        
         <Router />

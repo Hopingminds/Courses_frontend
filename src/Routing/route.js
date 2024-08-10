@@ -185,7 +185,7 @@ const Router = () => {
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
                 <Route path='/error' element={<PaymentFailed />} />
-                <Route path='/stream' element={<LiveStream />} />
+                <Route path='/stream/:slug' element={<LiveStream />} />
 
                 <Route path="/teacherlogin" element={<Loginpage/>}/>
                 <Route path="/teacherpanel" element={<TPHome/>}>

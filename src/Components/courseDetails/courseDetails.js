@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./courseDetails.css";
 import ReactPlayer from "react-player";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
 import Coursecontents from "../Meeting/Coursecontents";
 import { jwtDecode } from "jwt-decode";
@@ -42,6 +42,8 @@ export default function CDDetails() {
   let completed = [];
   let allchapters = [];
   let temp = true;
+  const navigate = useNavigate();
+
   useEffect(() => {
     async function Fetchdata() {
       temp = false;
@@ -49,10 +51,10 @@ export default function CDDetails() {
       if (login) {
         let token = jwtDecode(login);
         let url1 = BASE_URL + "/user/" + token.email + "/" + params.slug;
-
+        
         const data = await fetch(url1);
         const response = await data.json();
-        // console.log("Course particular", response);
+                // console.log("Course particular", response);
         setCourseLessons(response?.data?.completed_lessons);
         setCourseAssignment(response?.data?.completed_assignments);
         if (response?.data?.course) {
@@ -432,8 +434,8 @@ export default function CDDetails() {
                     showLive ? (
                       <div className="text-center flex flex-col">
                         <p>Live Class Will Start On {starttime}.</p>
-                        <p className="font-semibold">
-                          Meeting link: {meetinglink}
+                        <p className="font-semibold cursor-pointer">
+                          <p onClick={() => navigate(`/stream/${params.slug}`)}>GO TO LIVE CLASS</p>
                         </p>
                       </div>
                     ) : showend ? (
