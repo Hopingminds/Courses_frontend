@@ -16,6 +16,13 @@ import { useSearchParams } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
+  let token=localStorage.getItem('COURSES_USER_TOKEN')
+  useEffect(() => {
+    if(token){
+      navigate('/')
+    }
+  }, [])
+  
 
   const { userDetail, getUserDetails, GetCart, GetWishList } =
     useContext(Globalinfo);
