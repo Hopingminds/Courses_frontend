@@ -70,6 +70,13 @@ export default function Navbar() {
     Object.keys(allCookies).forEach((cookieName) => {
       Cookies.remove(cookieName);
     });
+    if ('caches' in window) {
+      caches.keys().then((cacheNames) => {
+        cacheNames.forEach((cacheName) => {
+          caches.delete(cacheName);
+        });
+      });
+    }
     window.open(`${AUTH_BASE_URL}/logout`, "_self");
     // navigate('/login-2')
     // getUserDetails();
@@ -426,15 +433,15 @@ export default function Navbar() {
               >
                 <span>
                   <div className="custom-tooltip">
-                    <span className="tooltiptext flex flex-col gap-3 p-2 text-[18px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] h-[16vh]">
+                    <span className="tooltiptext flex flex-col gap-3 p-2 text-[18px] md:text-[12px] sm:text-[10px] xsm:text-[8px] bg-gradient-to-r from-[#0F2027] via-[#0B1418] to-[#203A43] ">
                       <p className="pt-5">{userDetail?.name?.split(" ")[0]}</p>
                       {userDetail?.isProfileComplete ? (
                         <Link className="text-[#1DBF73]" to="/profile">
                           Profile
                         </Link>
                       ) : (
-                        <Link className="text-[#1DBF73]" to="/profile">
-                          Profile
+                        <Link to="/profile" className="text-[#1DBF73] text-sm">
+                         Complete Your Profile
                         </Link>
                       )}
                       <button

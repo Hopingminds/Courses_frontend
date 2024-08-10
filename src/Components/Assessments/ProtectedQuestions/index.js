@@ -117,7 +117,7 @@ export default function ProtectedAssessmentQuestion() {
       if (response.success) {
         localStorage.removeItem('lastminute')
         toast.success("Submitted Successfully");
-        window.location.replace('/submitted');
+        window.location.replace('/submittedassessment');
       } else {
         toast.error(response.message);
       }

@@ -13,7 +13,7 @@ const JobPreview = () => {
   const [loader, setLoader] = useState(true);
   const [jobDetails, setJobdetails] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const [check, setcheck] = useState()
   const getJobDetails = async () => {
     // console.log(searchParams.get("jobid"));
     setLoader(false);
@@ -28,6 +28,9 @@ const JobPreview = () => {
       );
       // console.log(res.data);
       setJobdetails(res?.data?.jobOpenings);
+      let expiry=new Date(res?.data?.jobOpenings?.lastDate);
+      let today=new Date()
+   setcheck(expiry<today)
     } catch (error) {
       console.log(error);
     } finally {
@@ -43,6 +46,7 @@ const JobPreview = () => {
         if (res) {
 
             toast.success('You have Successfully Applied')
+            getJobDetails()
         }
         else {
             toast.error("Error while applying")
@@ -82,8 +86,8 @@ const JobPreview = () => {
               </div>
               <div className="flex items-center gap-3">
                 <GiWallet fontSize={"1.3rem"} className="text-gray-500" />
-                {jobDetails.salaryType=="Salary Range" ?<p className="font-nu text-[12px]">₹{jobDetails?.annual_salary_range.from}-{jobDetails?.annual_salary_range.from} LPA</p>:
-                        jobDetails.salaryType=="Upto" ?<p className="font-nu text-[12px]" >Upto ₹{jobDetails?.uptoPackage} LPA</p>:
+                {jobDetails.salaryType=="Salary Range" ?<p className="font-nu text-[12px]">₹{jobDetails?.annual_salary_range.from}-{jobDetails?.annual_salary_range.to} LPA</p>:
+                        jobDetails.salaryType=="uptoPackage" ?<p className="font-nu text-[12px]" >Upto ₹{jobDetails?.uptoPackage} LPA</p>:
                         <p className="font-nu text-[12px]">₹{jobDetails?.annualSalary} LPA</p>}
 
               </div>
@@ -96,7 +100,7 @@ const JobPreview = () => {
               </div>
             </div>
             <div className="flex items-end">
-              <button onClick={(e)=>handleApply(e,searchParams.get("jobid"))} className="font-medium text-[20px] bg-green-400 text-white px-6 py-1 rounded-full">
+              <button onClick={(e)=>handleApply(e,searchParams.get("jobid"))} className={`font-medium text-[20px] bg-green-400 text-white px-6 py-1 rounded-full ${check? 'cursor-not-allowed pointer-events-none opacity-50':''}`}>
                 Apply Now
               </button>
             </div>

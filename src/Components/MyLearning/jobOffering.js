@@ -60,6 +60,7 @@ const JobOffering = ({ courses }) => {
       // console.log(res);
       if (res) {
         toast.success("You have Successfully Applied");
+        fetchUserData()
       } else {
         toast.error("Error while applying");
       }
@@ -120,11 +121,11 @@ const JobOffering = ({ courses }) => {
                             src="../Icons/RCDesign.svg"
                           />
                           <p className="font-pop text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
-                            {item?.interview_mode}
+                            {item?.work_mode}
                           </p>
                         </div>
-                        {item.salaryType=="Salary Range" ?<p className=" text-sm">₹{item?.annual_salary_range.from}-{item?.annual_salary_range.from} LPA</p>:
-                        item.salaryType=="Upto" ?<p className=" text-sm">Upto ₹{item?.uptoPackage} LPA</p>:
+                        {item.salaryType=="Salary Range" ?<p className=" text-sm">₹{item?.annual_salary_range.from}-{item?.annual_salary_range.to} LPA</p>:
+                        item.salaryType=="uptoPackage" ?<p className=" text-sm">Upto ₹{item?.uptoPackage} LPA</p>:
                         <p className="text-sm">₹{item?.annualSalary} LPA</p>
 }
                       </div>
@@ -157,14 +158,22 @@ const JobOffering = ({ courses }) => {
                     </div> */}
                   </div>
                   <div className="flex flex-col w-[25%] justify-start gap-3 justify-self-start items-start md:mt-2">
-                    {!isApplied && (
+                    {!item?.isApplied ? (
                       <button
                         onClick={(e) => handleApply(e, item?._id)}
                         className={`bg-[#1DBF73] py-1 px-6 mr-12 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 ${check ? 'cursor-not-allowed opacity-50 pointer-events-none':''}`}
                       >
                         Apply
                       </button>
-                    )}
+                    ):
+                    <button
+                    onClick={(e) => handleApply(e, item?._id)}
+                    className={`bg-[#1DBF73] py-1 px-6 mr-12 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 cursor-not-allowed opacity-50 pointer-events-none`}
+                  >
+                    Applied
+                  </button>
+                  
+                  }
 
                     <button
                       onClick={() => navigate("/jobpreview?jobid=" + item?._id)}

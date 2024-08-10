@@ -60,13 +60,13 @@ export default function Assignment({ courses }) {
                 <p className="font-nu font-semibold text-center">{ind + 1}</p>
                 <p className="font-nu font-semibold text-center">{ind + 1}</p>
                 <p className="font-nu font-semibold text-center">
-                  {item.chapter_name}
+                  {item?.chapter_name}
                 </p>
                 <p className="font-nu font-semibold text-center">
-                  {item.lesson_name}
+                  {item?.lesson_name}
                 </p>
-                {/* <p className="font-nu font-semibold text-center">{item.deadline.split('T')[0]}</p> */}
-                {item.iscompleted ? (
+                {/* <p className="font-nu font-semibold text-center">{item?.deadline.split('T')[0]}</p> */}
+                {item?.iscompleted ? (
                   <p className="font-nu font-semibold text-center text-[#1DBF73]">
                     Success
                   </p>

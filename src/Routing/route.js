@@ -77,11 +77,12 @@ import Loginpage from '../Components/TeacherPanel/LoginPage/LoginPage.jsx'
 import MyTimer from '../Components/mytimer.js'
 import PaymentFailed from '../Components/PaymentFailed/PayementFailed.jsx'
 import LiveStream from '../Components/LiveStream/LiveStream.jsx'
+import Submittedassessment from '../Components/Assignments/Submittedpage/submitassessment.js'
 
 function Locationpath(){
     const location=useLocation()
     useEffect(() => {
-      if(location.pathname!=='/login-2'){
+      if(location.pathname!=='/login-2' && location.pathname!=='/forgot-password'){
         localStorage.setItem("current",location.pathname)
       }
   
@@ -167,6 +168,7 @@ const Router = () => {
                 <Route path='/modules' element={<Modules />} />
                 <Route path='/questions' element={<Question ReturnNavbar={ReturnNavbar} />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
+                <Route path='/submittedassessment' element={<Submittedassessment />} />
                 <Route path='/m' element={<MinorDegree />} />
                 <Route path='/code' element={<CodeEditor />} />
                 <Route path='/modules' element={<Modules />} />

@@ -168,7 +168,7 @@ let tempstate=true;
    if(timer<=0){
     alert("Time's up")
     localStorage.removeItem('lastminute')
-    handleClick(true,"Time's up");
+    // handleClick(true,"Time's up");
    }
   }, [timer])
   
@@ -299,12 +299,12 @@ let tempstate=true;
     // enterFullScreen();
   }, [personCount]);
 
-  useEffect(() => {
-      if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked) {
-        handleClick(true,'Cheating attempt detected during the online test. Disciplinary action will follow.');
-      }
+  // useEffect(() => {
+  //     if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked) {
+  //       handleClick(true,'Cheating attempt detected during the online test. Disciplinary action will follow.');
+  //     }
    
-  }, [peoplewarning]);
+  // }, [peoplewarning]);
 
   const handleAudioMonitoring = async () => {
     let temp=true;

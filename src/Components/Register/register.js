@@ -456,7 +456,7 @@ const Register = () => {
                             <div>
                                 <p className='text-[14px] font-pop'>Contact Number <span className='text-red-500'>*</span></p>
                                 <PhoneInput
-                                    className={`phonenumbercountrycode phone-input-dropdown max-h-[100px]  overflow-y-auto mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none ${errors.phone ? 'error_input' : ""} ${isNumValid && 'border-red-500'}`}
+                                    className={`phonenumbercountrycode phone-input-dropdown max-h-[100px]  overflow-y-auto mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full xsm:px-[18px] outline-none ${errors.phone ? 'error_input' : ""} ${isNumValid && 'border-red-500'}`}
                                     defaultCountry="IN"
                                     name="phone"
                                     id={"phone"}
@@ -496,18 +496,18 @@ const Register = () => {
                                 <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>College/University <span className='text-red-500'>*</span></p>
                                 <div className='relative'>
                                 <input
-    ref={collegeRef}
-    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none ${SearchedData.length ? 'border-b-[0px] rounded-b-none' : 'border-b-[1px]'} ${errors.college ? ' error_input' : ""}`}
-    type="text"
-    placeholder="Enter Your College/University"
-    name="college"
-    id={"college"}
-    value={user.college}
-    onChange={SearchData}
-    onBlur={handleBlur}
-    onKeyDown={(e) => handleKeyDown(e, passwordRef)}
-    autoComplete="off"
-/>
+                                    ref={collegeRef}
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none ${SearchedData.length ? 'border-b-[0px] rounded-b-none' : 'border-b-[1px]'} ${errors.college ? ' error_input' : ""}`}
+                                    type="text"
+                                    placeholder="Enter Your College/University"
+                                    name="college"
+                                    id={"college"}
+                                    value={user.college}
+                                    onChange={SearchData}
+                                    onBlur={handleBlur}
+                                    onKeyDown={(e) => handleKeyDown(e, passwordRef)}
+                                    autoComplete="off"
+                                />
                                     <div className='w-full collegescroll min-h-[0px] max-h-[200px] overflow-y-auto absolute  z-20 bg-[#eafff5]  '>
                                         {
                                             SearchedData.map((it) => {
@@ -533,7 +533,7 @@ const Register = () => {
                                     onChange={handleChange}
                                     onKeyDown={(e) => handleKeyDown(e, null)}
                                 />
-                                <span style={{ position: "absolute", bottom: "12px",zIndex:'20', right: "15px" }}> {
+                                <span className='absolute bottom-[12px] z-20 right-[15px] xsm:right-[10px] xsm:bottom-[14px]'> {
                                     showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />
                                 }
                                 </span>

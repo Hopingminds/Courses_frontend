@@ -24,6 +24,8 @@ import AvtarModal from "./AvtarModal";
 const ProfilEdit = () => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [showallcolleges, setshowallcolleges] = useState([])
+  const [initialUserData, setinitialUserData] = useState(null)
+
 
   const handleMouseEnter = () => {
     setShowTooltip(true);
@@ -38,7 +40,6 @@ const ProfilEdit = () => {
   const [data, setData] = useState([]);
   const [uploadLoader, setUploadLoader] = useState(false);
   const [completeProfile, setCompleteProfile] = useState("Profile");
-
   const checkUserValidation = async () => {
     const isValidUser = await authenticateUser();
     console.log(isValidUser);
@@ -118,6 +119,21 @@ const ProfilEdit = () => {
   const fileInputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      const message = 'Are you sure you want to leave? Changes you made may not be saved.';
+      e.preventDefault();
+      e.returnValue = message; // Standard for most browsers
+      return message; // For some older browsers
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   let token = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
 
@@ -133,7 +149,17 @@ const ProfilEdit = () => {
         setUser({
           email: response?.userDetails.email,
           name: response?.userDetails.name,
-
+          profile: response?.userDetails?.profile,
+          college: response?.userDetails?.college,
+          degree: response?.userDetails?.degree,
+          stream: response?.userDetails?.stream,
+          yearofpass: response?.userDetails?.yearofpass,
+          bio: response?.userDetails?.bio,
+          phone: response?.userDetails?.phone,
+        });
+        setinitialUserData({
+          email: response?.userDetails?.email,
+          name: response?.userDetails?.name,
           profile: response?.userDetails?.profile,
           college: response?.userDetails?.college,
           degree: response?.userDetails?.degree,
@@ -156,13 +182,13 @@ const ProfilEdit = () => {
   };
 
   const handleFileChange = async (e) => {
-    setUploadLoader(true);
     // console.log(e.target.files[0])
     const file = e.target.files[0];
+    if (file && (file.type === 'image/png' || file.type === 'image/jpeg')) {
+      setUploadLoader(true);
     // console.log(file);
     setSelectedImage(file);
     // console.log(file)
-    if (file) {
       // console.log(file);
       try {
         const res = await axios.post(
@@ -182,21 +208,34 @@ const ProfilEdit = () => {
           setUploadLoader(false);
           toast.success("Profile Picture Updated");
           setUser({ ...user, profile: res.data.url });
+          getUserDetails()
         }
       } catch (error) {
         console.log(error);
         setUploadLoader(false);
       }
+      
     }
-
+else{
+  toast.error("Invaild format of profile picture (only jpeg,png format allowed)")
+}
     // setUser({ ...user, profile: URL.createObjectURL(file) })
   };
 
   const handleSaveClick = async () => {
     setbtnLoader(true);
+    // console.log("intial",JSON.stringify(initialUserData));
+    // console.log("after",JSON.stringify(user));
+    
     if (!user.email) {
       toast.error("Enter valid Credentials");
-    } else {
+    }
+    if (JSON.stringify(initialUserData) ==JSON.stringify(user)) {
+      toast.error("No changes detected");
+      setbtnLoader(false);
+      return;
+    }
+    else {
       try {
         const res = await axios.put(`${BASE_URL}/updateuser`, user, {
           headers: {
@@ -206,6 +245,7 @@ const ProfilEdit = () => {
           },
         });
         toast.success("Saved Successfully");
+        setinitialUserData(user)
         setbtnLoader(false);
       } catch (error) {
         // console.log(error);
@@ -393,6 +433,7 @@ const ProfilEdit = () => {
                     name="phone"
                     value={user.phone}
                     onChange={handleChange}
+                    disabled
                   />
                 </div>
                 <div className=" relative -z-10 flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">

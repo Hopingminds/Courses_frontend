@@ -36,6 +36,7 @@ export default function MyStats({ courses }) {
     let temp = 0;
     selectedCourse?.course?.curriculum?.forEach((val) => {
         temp += val?.lessons?.length;
+        temp += val?.project?.length;
     })
     return temp;
   }
@@ -80,7 +81,8 @@ export default function MyStats({ courses }) {
             {courses?.map((val, ind) => {
               let total=0;
               val?.course?.curriculum?.map((it)=>{
-                total+=it.lessons.length;
+                total+=it?.lessons?.length;
+                total+=it?.project?.length;
               })
               let totalpercent  = ((val?.completed_lessons.length / total) * 100).toFixed(2);
               return (

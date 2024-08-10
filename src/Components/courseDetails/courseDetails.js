@@ -33,6 +33,7 @@ export default function CDDetails() {
   const [meetinglink, setmeetinglink] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeindex, setactiveindex] = useState("")
+  const [idwise, setidwise] = useState({})
   const [expired, setexpired] = useState()
   const [dur, setdur] = useState()
   const params = useParams();
@@ -70,11 +71,14 @@ export default function CDDetails() {
         }
         // console.log(completed);
         if (response?.data?.course) {
+          let tempids={}
+          let ind=0
           response?.data?.course?.curriculum?.forEach((val) => {
             val?.lessons?.map((it) => {
               // console.log("it",val);
+
               totalduration=totalduration+parseInt(it?.duration)
-              console.log(totalduration);
+              // console.log(totalduration);
               allchapters.push({
                 video: it?.video,
                 _id: it?._id,
@@ -82,6 +86,7 @@ export default function CDDetails() {
                 liveClass: it?.liveClass,
                 lesson_name:it?.lesson_name
               });
+              tempids[it?._id]=ind++;
             });
             val?.project?.map((it)=>{
               totalduration=totalduration+ parseInt(it?.duration)
@@ -96,9 +101,11 @@ export default function CDDetails() {
               },
               lesson_name:it?.title
               })
+              tempids[it?._id]=ind++;
             })
 
           });
+          setidwise(tempids)
         }
         // console.log("all", allchapters[0]?.video);
         // allchapters=[...new Set(allchapters)]
@@ -170,7 +177,9 @@ export default function CDDetails() {
     };
   }, []);
 
-  function handleActiveVideo(url,title) {
+  function handleActiveVideo(url,title,id) {
+    let getindex=idwise[id]
+    setcount(getindex)
     setactiveindex(title)
     setshowLive(false);
     setexpired(false)
@@ -186,7 +195,7 @@ export default function CDDetails() {
     setactiveindex(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.lesson_name)
     setshowSmallvideo(false);
     seturl(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.video);
-    if (ALLCHAPTER?.length > completed_lessons.length) {
+    if (count+1 >= completed_lessons.length && ALLCHAPTER?.length > completed_lessons.length) {
       let temp = completed_lessons;
       temp.push(ALLCHAPTER[count + 1]?._id);
       // console.log(count);v
@@ -290,7 +299,7 @@ export default function CDDetails() {
   
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
-  return `${hours}h ${remainingMinutes} mins`
+  return `${hours}h ${remainingMinutes}m`
   }
 
   function handleNext() {
@@ -377,7 +386,7 @@ export default function CDDetails() {
         <div className="w-[85%] xsm:w-full ">
           <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] md:pr-[5%] md:h-[50vh] xsm:px-4">
             {showSmallvideo && (
-              <div className="fixed bottom-0 left-0 z-20 rounded-xl">
+              <div className="fixed bottom-0 left-0 z-[9999] rounded-xl">
                 <ReactPlayer
                   onContextMenu={handleContextMenu}
                   height="200px"
@@ -447,7 +456,12 @@ export default function CDDetails() {
                     )
                     : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
-                    ) : (
+                    ) :
+                    url?.toString()=="" ? 
+                  (  <div className="text-center flex flex-col">
+                    <p className="font-semibold">Coming soon</p>
+                  </div>)
+                    : (
                       <ReactPlayer
                         onContextMenu={handleContextMenu}
                         height="auto"
@@ -526,7 +540,7 @@ export default function CDDetails() {
                       </p>
                       <div className="flex space-x-4">
                         <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
-                          {totalLessons} Lesson
+                          {totalLessons} Lessons
                         </p>
                         <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
                           {Timeconverter(dur)}
