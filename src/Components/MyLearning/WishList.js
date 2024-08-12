@@ -3,6 +3,7 @@ import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import { Link } from "react-router-dom";
 import Spinner from "../Spinner";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 export default function WishList() {
   const [Data, setData] = useState([]);
@@ -106,6 +107,11 @@ export default function WishList() {
                         {item.course?.duration} hours
                       </p>
                     </div>
+                    {/* <div className="flex space-x-2 items-center xsm:space-x-0 md:space-x-1">
+                      <p className="font-pop text-[16px] font-medium text-[#555555] xsm:text-[8px] md:text-[12px]">
+                        <RiDeleteBin6Line/>
+                      </p>
+                    </div> */}
                   </div>
                 </div>
               </Link>

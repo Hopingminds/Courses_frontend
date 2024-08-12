@@ -196,7 +196,7 @@ const CourseCard = ({
                 alt=""
               />
               <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[8px] sm:text-[8px] sm:leading-none md:text-[6px]">
-                {price == 0 ? "5 Hours" : "45 Hours"}
+               {duration} Hours
               </p>
             </div>
           </span>

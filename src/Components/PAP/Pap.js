@@ -317,7 +317,7 @@ export default function Pap() {
                 Start Test
               </button>
               <a
-                href={"/papagreement.pdf"}
+                href={"/PAP Candidate MOU.pdf"}
                 target="_blank"
                 rel="noreferrer"
                 className="bg-white text-black hover:bg-[#1DBF73] hover:text-white hover:scale-125 font-pop font-medium text-[18px] px-8 py-2 rounded-full xsm:text-[12px] xsm:py-1 xl:py-3 xsm:px-4 md:text-[14px]"
