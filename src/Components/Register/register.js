@@ -84,30 +84,30 @@ const Register = () => {
   const handleVerify = async(otp) => {
     // console.log('OTP:', otp);
     let response={}
-    // try {
-    //     const data=await fetch(BASE_URL+'/verfiynumberotp',{
-    //         method:'POST',
-    //         headers:{
-    //             'Content-type':"application/json"
-    //         },
-    //         body:JSON.stringify({mobileNo:countrycode,otp:otp})
-    //     })
-    //    response=await data.json()
-    //     console.log(response);
-    //     if(response.success){
-    //         toast.success(response.message)
-    //         closeModal()
-    //     }
-    //     else if(response.success === false && response.validotp === false ){
-    //         toast.error(response.message)
-    //     }
-    //     else if(response.success === false && response.expiredotp === true ){
-    //         toast.error(response.message)
-    //     }
-    // } catch (error) {
-    //     console.log(error);
-    // }
-    // if(response.success){
+    try {
+        const data=await fetch(BASE_URL+'/verfiynumberotp',{
+            method:'POST',
+            headers:{
+                'Content-type':"application/json"
+            },
+            body:JSON.stringify({mobileNo:countrycode,otp:otp})
+        })
+       response=await data.json()
+        console.log(response);
+        if(response.success){
+            toast.success(response.message)
+            closeModal()
+        }
+        else if(response.success === false && response.validotp === false ){
+            toast.error(response.message)
+        }
+        else if(response.success === false && response.expiredotp === true ){
+            toast.error(response.message)
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    if(response.success){
         try {
             const res = await axios.post(`${BASE_URL}/register`, {
                 name: user.name,
@@ -142,7 +142,7 @@ const Register = () => {
         catch{
 
         }
-    // }
+    }
 
 
     //     } catch (error) {
@@ -541,7 +541,7 @@ const Register = () => {
                         </div>
                         <div className='flex flex-col items-center gap-4 md:gap-3 xsm:gap-3'>
                             <div className=''>
-                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold md:text-[14px] md:py-1 xsm:text-[12px] xsm:py-1" onClick={handleVerify}>{btnLoader ? "Loading..." : "Sign Up"}</button>
+                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold md:text-[14px] md:py-1 xsm:text-[12px] xsm:py-1" onClick={handleRegister}>{btnLoader ? "Loading..." : "Sign Up"}</button>
                             </div>
                             <div className='flex items-center gap-1'>
                                 <p className='font-pop text-[14px] md:text-[10px] xsm:text-[10px]'>Already registered ? </p>
