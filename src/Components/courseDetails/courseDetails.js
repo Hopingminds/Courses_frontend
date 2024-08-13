@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./courseDetails.css";
 import ReactPlayer from "react-player";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
 import Coursecontents from "../Meeting/Coursecontents";
 import { jwtDecode } from "jwt-decode";
@@ -125,7 +125,27 @@ export default function CDDetails() {
         // );
         // console.log("data",allchapters,completed);
         if (allchapters?.length === response?.data?.completed_lessons?.length || response?.data?.completed_lessons?.length==0) {
-          // console.log("hello");
+          if (allchapters[0]?.isLiveClass) {
+            let today = new Date();
+            let startdate = new Date(allchapters[0]?.liveClass.startDate);
+            let enddate = new Date(allchapters[0]?.liveClass.endDate);
+            
+            // console.log(startdate);
+            if (startdate > today) {
+              setshowLive(true);
+              // console.log("yess");
+              let tmp = formatDate(startdate);
+              setstarttime(tmp);
+            } else if (enddate > today) {
+              // console.log("i m inside");
+              
+              setshowLive(false);
+              setshowend(true);
+              let tmp = formatDate(enddate);
+              setendtime(tmp);
+            } 
+            // if()
+          }
           seturl(allchapters[0]?.video);
           setactiveindex(allchapters[0]?.lesson_name)
           setcount(0);
@@ -347,13 +367,16 @@ export default function CDDetails() {
   // Example usage
 
   // console.log(formattedDate); // Output: "08 July 2024 2.30pm"
-
+function Checklive(){
+  
+}
   useEffect(() => {
+    console.log("adfdasf");
+
     if (ALLCHAPTER[count]?.isLiveClass) {
       let today = new Date();
       let startdate = new Date(ALLCHAPTER[count]?.liveClass.startDate);
       let enddate = new Date(ALLCHAPTER[count]?.liveClass.endDate);
-      console.log("adfdasf");
       
       // console.log(startdate);
       if (startdate > today) {
@@ -362,7 +385,7 @@ export default function CDDetails() {
         let tmp = formatDate(startdate);
         setstarttime(tmp);
       } else if (enddate > today) {
-        console.log("i m inside");
+        // console.log("i m inside");
         
         setshowLive(false);
         setshowend(true);
@@ -439,18 +462,18 @@ export default function CDDetails() {
                       <div className="text-center flex flex-col">
                         <p>Live Class Will Start On {starttime}.</p>
                         <p className="font-semibold cursor-pointer">
-                          <p onClick={() => navigate(`/stream/${params.slug}`)}>GO TO LIVE CLASS</p>
+                          <Link to={`/stream/${params.slug}`} target="_blank">GO TO LIVE CLASS</Link>
                         </p>
                       </div>
                     ) : showend ? (
                       <div className="text-center flex flex-col">
-                        <p>Live Class Will End On {endtime}.</p>
+                        <p>Live Class is going on and it will end on {endtime}.</p>
                         <p className="font-semibold cursor-pointer">
-                          <p onClick={() => navigate(`/stream/${params.slug}`,{target:"_blank"})}>GO TO LIVE CLASS</p>
+                          <Link to={`/stream/${params.slug}`} target="_blank">GO TO LIVE CLASS</Link>
                         </p>
-                        <p className="font-semibold">
+                        {/* <p className="font-semibold">
                           Meeting link: {meetinglink}
-                        </p>
+                        </p> */}
                       </div>
                     )
                     : expired ? (
@@ -464,7 +487,7 @@ export default function CDDetails() {
                     : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) :
-                     url?.toString()=="" ? 
+                    !showLive && !showend && url?.toString()=="" ? 
                   (  <div className="text-center flex flex-col">
                     <p className="font-semibold">Coming soon</p>
                   </div>)
