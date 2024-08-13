@@ -26,7 +26,7 @@ export const authenticateUser = async () => {
 export const applyJob = async (id) => {
 
     try {
-        console.log(id);
+        // console.log(id);
         const token = localStorage.getItem('COURSES_USER_TOKEN')
         const res = await axios.post(`${BASE_URL}/apply-job`, {
             "jobID": id
@@ -36,7 +36,7 @@ export const applyJob = async (id) => {
                 Authorization: "Bearer " + token,
             },
         })
-        return res.status;
+        return res;
 
     }
     catch (error) {
