@@ -41,18 +41,26 @@ const JobPreview = () => {
     // e.stopPropagation();
     // e.preventDefault();
     try {
-        const res = await applyJob(id)
-        // console.log(res)
-        if (res) {
+        const token = localStorage.getItem('COURSES_USER_TOKEN')
+        const res = await axios.post(`http://localhost:3009/api/apply-job`, {
+            "jobID": id
+        }, {
+            headers: {
+
+                Authorization: "Bearer " + token,
+            },
+        })
+        console.log(res.response)
+        if (res.success) {
 
             toast.success('You have Successfully Applied')
             getJobDetails()
         }
         else {
-            toast.error("Error while applying")
+            toast.error(res?.data?.msg)
         }
     } catch (error) {
-        toast.error("Error while applying")
+        toast.error(error?.response?.data?.msg)
     }
 
 
