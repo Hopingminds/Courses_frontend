@@ -76,7 +76,7 @@ const AboutUs = () => {
                 Community and are an active participant in Kaushal Melas across
                 India.
               </p>
-              <p>
+              <p className="m-0 p-0 leading-tight">
                 We have the capability to run specialised programs based on
                 opportunities such as our recent program for Oil & Gas field
                 engineers in Jorhat, Assam; Electrical vehicles Design & Repair

@@ -123,30 +123,62 @@ const Forgotpassword = () => {
         }
     };
 
+    // const handleVerifyOTP = async () => {
+    //     setBtnLoader(true);
+
+    //     if (!validateEmail(user.email)) {
+    //         toast.error('Enter valid Email  Address');
+    //         setBtnLoader(false);
+    //     } else {
+    //         try {
+    //             const res = await axios.get(`${BASE_URL}/verifyOTP?code=${user.otp}`);
+
+    //             if (res?.status === 201) {
+    //                 setShow(3);
+    //                 toast.success("OTP is valid");
+    //             }
+
+    //         } catch (error) {
+    //             console.log(error);
+    //             toast.error(error?.response?.data?.error);
+    //             setBtnLoader(false);
+    //         } finally {
+    //             setBtnLoader(false);
+    //         }
+    //     }
+    // };
     const handleVerifyOTP = async () => {
         setBtnLoader(true);
-
-        if (!validateEmail(user.email)) {
-            toast.error('Enter valid Email  Address');
+    
+        if (!user.otp) {
+            toast.error('Please Enter OTP');
             setBtnLoader(false);
-        } else {
-            try {
-                const res = await axios.get(`${BASE_URL}/verifyOTP?code=${user.otp}`);
-
-                if (res?.status === 201) {
-                    setShow(3);
-                    toast.success("OTP is valid");
-                }
-
-            } catch (error) {
-                console.log(error);
-                toast.error(error?.response?.data?.error);
-                setBtnLoader(false);
-            } finally {
-                setBtnLoader(false);
+            return;
+        }
+    
+        if (!validateEmail(user.email)) {
+            toast.error('Enter valid Email Address');
+            setBtnLoader(false);
+            return;
+        }
+    
+        try {
+            const res = await axios.get(`${BASE_URL}/verifyOTP?code=${user.otp}`);
+    
+            if (res?.status === 201) {
+                setShow(3);
+                toast.success("OTP is valid");
             }
+    
+        } catch (error) {
+            console.log(error);
+            toast.error(error?.response?.data?.error);
+            setBtnLoader(false);
+        } finally {
+            setBtnLoader(false);
         }
     };
+    
 
     const handleResendOTP = async () => {
         if (isResendEnabled) {
