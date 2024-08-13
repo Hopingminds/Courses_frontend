@@ -202,6 +202,7 @@ export default function CDDetails() {
     setcount(getindex)
     setactiveindex(title)
     setshowLive(false);
+    setshowend(false)
     setexpired(false)
     // console.log(url);
     setshowSmallvideo(false);
