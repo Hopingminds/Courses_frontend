@@ -76,7 +76,7 @@ const Instruction = () => {
           checked={isChecked} 
           onChange={handleCheckboxChange} 
         />
-        <label htmlFor='declaration'>
+        <label >
           I declare that I have read and understood the instructions, and I agree to abide by the rules.
         </label>
       </div>

@@ -171,7 +171,7 @@ export default function Pap() {
                     Enforcement
                   </p>
                   <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] xsm:text-[11px] md:text-[12px] md:leading-tight">
-                  In the event you are not working or if your income drops below the CTC mentioned in the Pay After Placement Agreement in inicial 6 months from your joining, we make sure to provide the another opportunity with same or above package within 3 months.
+                  In the event you are not working or if your income drops below the CTC mentioned in the Pay After Placement Agreement in initial 6 months from your joining, we make sure to provide the another opportunity with same or above package within 3 months.
                   </p>
                 </div>
               </div>
