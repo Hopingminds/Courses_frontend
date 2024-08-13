@@ -258,32 +258,63 @@ setinputData((prev) => ({
     const userData = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
   
     // Validate inputs
-    // if (!inputData.name) {
-    //   setwarnings(prevWarnings => ({ ...prevWarnings, name: true }));
-    //   return; // Early return on missing name
-    // }
+    let hasErrors = false;
+    let updatedWarnings = {};
+
+    // Check for missing address
     if (!inputData.address) {
-      setwarnings(prevWarnings => ({ ...prevWarnings, address: true }));
-      return; // Early return on missing address
+      updatedWarnings.address = true;
+      hasErrors = true;
     }
+
+    // Check for missing zip
     if (!inputData.zip) {
-      setwarnings(prevWarnings => ({ ...prevWarnings, zip: true }));
-      return; // Early return on missing zip
+      updatedWarnings.zip = true;
+      hasErrors = true;
     }
-    if (!country) {
-      setwarnings(prevWarnings => ({ ...prevWarnings, country: true }));
-      toast.error("Select country");
-      return; // Early return on missing country
+
+    // Check for missing state
+    if (!city) {
+      updatedWarnings.city = true;
+      toast.error("Select City");
+      hasErrors = true;
     }
+
+    // Check for missing state
     if (!state) {
-      setwarnings(prevWarnings => ({ ...prevWarnings, state: true }));
+      updatedWarnings.state = true;
       toast.error("Select State");
-      return; // Early return on missing state
+      hasErrors = true;
     }
+
+    // Check for missing country
+    if (!country) {
+      updatedWarnings.country = true;
+      toast.error("Select country");
+      hasErrors = true;
+    }
+
+    // If there are any errors, update warnings and return early
+    if (hasErrors) {
+      setwarnings(prevWarnings => ({ ...prevWarnings, ...updatedWarnings }));
+      return;
+    }
+
     
     function getLast10Digits(number) {
         // Using modulus to get the last 10 digits
         return number % 10000000000;
+    }
+
+    if (inputData?.gstnumber && inputData?.gstnumber.length !== 15) {
+      toast.error("GST number should be 15 digits long and alphanumeric");
+      return; // Early return on incorrect length
+    }
+    
+    // Check alphanumeric with regex
+    if (inputData?.gstnumber && !/^[A-Z0-9]+$/.test(inputData.gstnumber)) {
+      toast.error("GST number should be alphanumeric");
+      return; // Early return on non-alphanumeric characters
     }
   
     let number = userDetail?.phone;
@@ -414,15 +445,14 @@ try {
             />
           </div>
           <div className=" space-x-10 grid grid-cols-2 xsm:justify-between xsm:gap-0 xsm:space-x-2">
-            {state?
-          <CitySelector
-          country={country}
-          state={state}
-          value={city}
-          onChange={setCity}
-          placeholder="Select a city"
-          styleContainer={{ padding: "0px !important" }}
-        />:''}
+            <CitySelector
+              country={country}
+              state={state}
+              value={city}
+              onChange={setCity}
+              statePlaceholder='Select city'
+              styleContainer={{ padding: "0px !important" }}
+            />
             <input
               value={inputData.gstnumber}
               name="gstnumber"
@@ -479,7 +509,7 @@ try {
                             </div> */}
                         <div className="flex flex-nowrap justify-between items-center">
                           <div className="space-y-2 md:space-y-1">
-                            <p className="font-mons text-[1.5vw] font-semibold  2xl:text-[18px] xsm:text-[10px]">
+                            <p className="font-mons text-[1.5vw] font-semibold  2xl:text-[18px] xsm:text-[10px]" title={typeof item?.course?.title === 'string' ? item.course.title : 'Title'}>
                               {item?.course?.title?.slice(0,60)}..
                             </p>
                             <p className="text-[#696984] text-md w-[100%] xsm:hidden md:text-[10px]">

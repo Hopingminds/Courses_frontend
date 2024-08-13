@@ -40,7 +40,7 @@ export default function WishList() {
       ) : (
         ""
       )}
-      {!Data?.length ? (
+      {!Data?.length ? ( 
         <div className="flex justify-center  w-full mt-10">
           <div className="text-center font-semibold text-2xl w-full ">
             {" "}

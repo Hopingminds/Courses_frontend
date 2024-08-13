@@ -353,6 +353,8 @@ export default function CDDetails() {
       let today = new Date();
       let startdate = new Date(ALLCHAPTER[count]?.liveClass.startDate);
       let enddate = new Date(ALLCHAPTER[count]?.liveClass.endDate);
+      console.log("adfdasf");
+      
       // console.log(startdate);
       if (startdate > today) {
         setshowLive(true);
@@ -360,6 +362,8 @@ export default function CDDetails() {
         let tmp = formatDate(startdate);
         setstarttime(tmp);
       } else if (enddate > today) {
+        console.log("i m inside");
+        
         setshowLive(false);
         setshowend(true);
         let tmp = formatDate(enddate);
@@ -441,6 +445,9 @@ export default function CDDetails() {
                     ) : showend ? (
                       <div className="text-center flex flex-col">
                         <p>Live Class Will End On {endtime}.</p>
+                        <p className="font-semibold cursor-pointer">
+                          <p onClick={() => navigate(`/stream/${params.slug}`,{target:"_blank"})}>GO TO LIVE CLASS</p>
+                        </p>
                         <p className="font-semibold">
                           Meeting link: {meetinglink}
                         </p>
@@ -457,7 +464,7 @@ export default function CDDetails() {
                     : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) :
-                    url?.toString()=="" ? 
+                     url?.toString()=="" ? 
                   (  <div className="text-center flex flex-col">
                     <p className="font-semibold">Coming soon</p>
                   </div>)
