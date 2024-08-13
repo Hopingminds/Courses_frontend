@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ReactComponent as Down } from "../../Assets/Icons/Down.svg";
 import { IoBookOutline } from "react-icons/io5";
 import { BASE_URL } from "../../Api/api";
@@ -9,6 +9,7 @@ import { useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { ReactComponent as Notes } from '../../Assets/Icons/notes.svg'
 import { ReactComponent as Assignment } from '../../Assets/Icons/assignment.svg'
+import { Globalinfo } from "../../App";
 
 export default function Coursecontents({
   data,
@@ -32,6 +33,7 @@ export default function Coursecontents({
   let allchapters = [];
   let active=0;
   // console.log(data);
+  const { setLiveClassKey, liveClassKey } = useContext(Globalinfo);
 
   let completed = [];
   // console.log("completed_lesson",completed_lessons);
@@ -208,7 +210,9 @@ export default function Coursecontents({
                               <span className="flex justify-between">
                                 {
                                   chapter?.isLiveClass ?
-                                <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px] text-red-500 ">
+                                <p 
+                                  onClick={() => setLiveClassKey(chapter?.liveClass?.streamKey)}
+                                  className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px] text-red-500 ">
                                   {index + 1}. {chapter?.lesson_name} (Live)
                                 </p>:
                                 <p onClick={ () =>

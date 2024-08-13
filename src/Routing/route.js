@@ -82,7 +82,7 @@ import Submittedassessment from '../Components/Assignments/Submittedpage/submita
 function Locationpath(){
     const location=useLocation()
     useEffect(() => {
-      if(location.pathname!=='/login-2' && location.pathname!=='/forgot-password'){
+      if(location.pathname!=='/login-2' && location.pathname!=='/register' && location.pathname!=='/forgot-password'){
         localStorage.setItem("current",location.pathname)
       }
   
@@ -185,7 +185,7 @@ const Router = () => {
                 <Route path='/internship' element={<Internship />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
                 <Route path='/error' element={<PaymentFailed />} />
-                <Route path='/stream' element={<LiveStream />} />
+                <Route path='/stream/:slug' element={<LiveStream />} />
 
                 <Route path="/teacherlogin" element={<Loginpage/>}/>
                 <Route path="/teacherpanel" element={<TPHome/>}>
