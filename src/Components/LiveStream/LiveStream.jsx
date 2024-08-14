@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef, useContext, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactHlsPlayer from 'react-hls-player';
-import { Globalinfo } from '../../App';
 import io from 'socket.io-client';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
@@ -23,23 +22,13 @@ const LiveStream = () => {
     const [chatMode, setChatMode] = useState('live'); // 'live' or 'teacher'
     const [course, setCourse] = useState();
     const [instructorId, setInstructorId] = useState("");
-    const navigate = useNavigate();
     const [studentId, setStudentId] = useState();
     const [students, setStudents] = useState([]); // State for students list
-const [searchparams,setsearchparams]=useSearchParams()
-// let liveClassKey=''
-let liveClassKey=localStorage.getItem('sk')
-// useLayoutEffect(() => {
-//     if(streamkey){
-//     liveClassKey=streamkey;
-//     }
-//     else{
-// navigate('/')
-//     }
-// }, [])
+    
+    const liveClassKey=localStorage.getItem('sk')
     const chatboxRef = useRef(null);
+    const navigate = useNavigate();
     const params = useParams();
-    // const { liveClassKey } = useContext(Globalinfo);
 
     const addMessage = (messageData, mode) => {
         const { msg, user, timestamp } = messageData;
@@ -131,7 +120,7 @@ let liveClassKey=localStorage.getItem('sk')
     }
 
     const handleLeaveGroup = () => {
-        if (groupId) {
+        if (groupId && studentId) {
             socket.emit('leave group', { groupId, studentId });
         }
     }
@@ -182,7 +171,7 @@ let liveClassKey=localStorage.getItem('sk')
         if (instructorId) {
             socket.emit('join teacher chat', instructorId);
         }
-    }, []);
+    }, [liveClassKey, instructorId, studentId, groupId]);
 
     useEffect(() => {
         const token = localStorage.getItem('COURSES_USER_TOKEN');
@@ -244,7 +233,7 @@ let liveClassKey=localStorage.getItem('sk')
                                 type="text"
                                 value={userInput}
                                 onChange={(e) => setUserInput(e.target.value)}
-                                // onKeyUp={handleKeyUp}
+                                onKeyUp={handleKeyUp}
                                 placeholder="Type a message"
                                 className="w-full px-3 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-[#1DBF73]"
                             />
