@@ -8,7 +8,7 @@ import { BASE_URL } from '../../Api/api';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 
-const socket = io('https://api.hopingminds.com', {
+const socket = io('http://localhost:3009', {
     secure: true,
     reconnectionAttempts: 5,
     withCredentials: true,
@@ -24,6 +24,7 @@ const LiveStream = () => {
     const [course, setCourse] = useState();
     const [instructorId, setInstructorId] = useState("");
     const [studentId, setStudentId] = useState();
+    const [students, setStudents] = useState([]); // State for students list
 
     const chatboxRef = useRef(null);
     const params = useParams();
@@ -119,10 +120,19 @@ const LiveStream = () => {
         }
     }
 
+    const handleLeaveGroup = () => {
+        if (groupId) {
+            socket.emit('leave group', { groupId, studentId });
+        }
+    }
+
     useEffect(() => {
         if (liveClassKey) {
             setGroupId(liveClassKey);
-            socket.emit('join group', liveClassKey);
+            // Join group with studentId
+            if (studentId) {
+                socket.emit('join group', { groupId, studentId });
+            }
 
             socket.on('chat message', (messageData) => {
                 addMessage(messageData, 'live');
@@ -132,9 +142,27 @@ const LiveStream = () => {
                 addMessage(messageData, 'teacher');
             });          
 
+            socket.on('group users', (users) => {
+                // Set students with the list of users in the group
+                setStudents(users);
+            });
+
+            socket.on('student joined', (student) => {
+                setStudents(prevStudents => [...prevStudents, student]);
+            });
+
+            socket.on('student left', ({ studentId, name }) => {
+                setStudents(prevStudents => prevStudents.filter(student => student.studentId !== studentId));
+                // Optionally, you can also handle the student's name here if needed
+                toast.success(`${name} has left the group`); // For example, logging the name
+            });
+
             return () => {
+                handleLeaveGroup(); // Leave the group when component unmounts
                 socket.off('chat message');
                 socket.off('private message');
+                socket.off('student joined');
+                socket.off('student left');
             };
         }
         else{
@@ -155,6 +183,11 @@ const LiveStream = () => {
         if (studentId) {
             socket.emit('join student room', studentId);
         }
+
+        return () => {
+            handleLeaveGroup(); // Ensure the user leaves the group on token change
+        }
+
     }, [studentId]);
 
 
@@ -172,12 +205,12 @@ const LiveStream = () => {
             <div className='w-[25%] h-max'>
                 <div id="chat-container" className="w-full h-full">
                     <div className="bg-white shadow-md rounded-lg max-w-lg w-full h-[506px] flex flex-col justify-between">
-                        <div>
+                        <div className='h-[350px]'>
                             <div className="p-4 border-b bg-[#1DBF73] text-white flex justify-between items-center">
-                                <p className={`text-lg font-semibold cursor-pointer ${chatMode === 'live' ? 'border-b-2 text-red-500' : ''}`} onClick={() => setChatMode('live')}>Live Chat</p>
+                                <p className={`text-lg font-semibold cursor-pointer ${chatMode === 'live' ? 'border-b-2 text-red-500' : ''}`} onClick={() => setChatMode('live')}>Live Chat <span className='text-[10px]'>({students.length} Students)</span></p>
                                 <p className={`text-lg font-semibold cursor-pointer ${chatMode === 'teacher' ? 'border-b-2 text-red-500' : ''}`} onClick={handleTeacherChatClick}>Teacher Chat</p>
                             </div>
-                            <div className='h-full'>
+                            <div className='h-[290px]'>
                                 <div
                                     id="chatbox"
                                     ref={chatboxRef}
@@ -211,6 +244,16 @@ const LiveStream = () => {
                             >
                                 Send
                             </button>
+                        </div>
+                        <div className="p-4 border-t bg-gray-100">
+                            <label htmlFor="students-dropdown" className="block text-sm font-semibold text-gray-700 mb-2">Students:</label>
+                            <select id="students-dropdown" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#1DBF73]">
+                                {students.map(student => (
+                                    <option key={student._id} value={student._id}>
+                                        {student.name}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                     </div>
                 </div>
