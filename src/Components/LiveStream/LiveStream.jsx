@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext, useLayoutEffect } from 'react';
 import ReactHlsPlayer from 'react-hls-player';
 import { Globalinfo } from '../../App';
 import io from 'socket.io-client';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import { BASE_URL } from '../../Api/api';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 
-const socket = io('http://localhost:3009', {
+const socket = io('https://api.hopingminds.com', {
     secure: true,
     reconnectionAttempts: 5,
     withCredentials: true,
@@ -23,13 +23,23 @@ const LiveStream = () => {
     const [chatMode, setChatMode] = useState('live'); // 'live' or 'teacher'
     const [course, setCourse] = useState();
     const [instructorId, setInstructorId] = useState("");
+    const navigate = useNavigate();
     const [studentId, setStudentId] = useState();
     const [students, setStudents] = useState([]); // State for students list
-
+const [searchparams,setsearchparams]=useSearchParams()
+// let liveClassKey=''
+let liveClassKey=localStorage.getItem('sk')
+// useLayoutEffect(() => {
+//     if(streamkey){
+//     liveClassKey=streamkey;
+//     }
+//     else{
+// navigate('/')
+//     }
+// }, [])
     const chatboxRef = useRef(null);
     const params = useParams();
-    const navigate = useNavigate();
-    const { liveClassKey } = useContext(Globalinfo);
+    // const { liveClassKey } = useContext(Globalinfo);
 
     const addMessage = (messageData, mode) => {
         const { msg, user, timestamp } = messageData;
@@ -172,7 +182,7 @@ const LiveStream = () => {
         if (instructorId) {
             socket.emit('join teacher chat', instructorId);
         }
-    }, [liveClassKey, instructorId, studentId]);
+    }, []);
 
     useEffect(() => {
         const token = localStorage.getItem('COURSES_USER_TOKEN');
@@ -234,7 +244,7 @@ const LiveStream = () => {
                                 type="text"
                                 value={userInput}
                                 onChange={(e) => setUserInput(e.target.value)}
-                                onKeyUp={handleKeyUp}
+                                // onKeyUp={handleKeyUp}
                                 placeholder="Type a message"
                                 className="w-full px-3 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-[#1DBF73]"
                             />
