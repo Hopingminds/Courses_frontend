@@ -5,6 +5,7 @@ import { ReactComponent as FPlanning } from "../../Assets/Icons/financialPlannin
 import { ReactComponent as Guide } from "../../Assets/Icons/guide.svg";
 import { ReactComponent as FRisk } from "../../Assets/Icons/financialRisk.svg";
 import { ReactComponent as QualityEdu } from "../../Assets/Icons/qualityEducation.svg";
+import { ReactComponent as FLearning } from "../../Assets/Icons/learning.svg";
 
 const PAPBenefit = () => {
   const [activeSection, setActiveSection] = useState("100% Placement Guarantee");
@@ -88,7 +89,7 @@ const PAPBenefit = () => {
           >
             <span className="bg-[#D9D9D9] p-[10px] rounded-full grid place-items-center h-fit w-fit">
               {" "}
-              <FPlanning className="h-[40px] w-[40px] xsm:h-[13px] xsm:w-[13px] md:h-[26px] md:w-[26px]" />
+              <FLearning className="h-[40px] w-[40px] xsm:h-[13px] xsm:w-[13px] md:h-[26px] md:w-[26px]" />
             </span>
             <p className="text-white text-[14px] xsm:text-[8px] md:text-[10px]">
               Encourages life long learning

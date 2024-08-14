@@ -60,7 +60,7 @@ function Instructor() {
       <ul className="text-[14px] space-y-1 list-disc list-disc-custom font-mons mt-1">
        
         {Data?.instructor?.experience ? <li><strong>Experience </strong>{Data?.instructor?.experience} </li>:''}
-        <li><strong>Extensive Experties </strong>{Data?.instructor?.experties}</li>
+        <li><strong>Extensive Expertise </strong>{Data?.instructor?.experties}</li>
         <li><strong>Prior Working Experience </strong>{Data?.instructor?.workExperience}</li>
         
       </ul>

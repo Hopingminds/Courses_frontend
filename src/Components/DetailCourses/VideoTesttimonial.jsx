@@ -32,13 +32,14 @@ const VideoTestimonial = ({ data }) => {
           What They Say?
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-10 xsm:grid-cols-2 xsm:gap-2">
-        {newData.map((val, ind) => (
+      <div className="grid grid-cols-3 gap-10 xsm:grid-cols-2 xsm:gap-2 ">
+        {newData?.map((val, ind) => (
           <div key={ind} onContextMenu={handleContextMenu}>
             <TestimonialInner
               val={val}
               isPlaying={val.isPlaying}
               onPlayPause={() => handlePlayPause(ind)}
+              
             />
           </div>
         ))}
