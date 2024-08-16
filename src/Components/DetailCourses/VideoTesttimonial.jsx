@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import TestimonialInner from './testimonialInner';
 import './Pageheader.css';
-
+import TestimonialInner from './testimonialInner.js'
 const VideoTestimonial = ({ data }) => {
   const initialData = data?.map((val) => ({ ...val, isPlaying: false })) || [];
   const [newData, setNewData] = useState(initialData);
@@ -15,6 +14,24 @@ const VideoTestimonial = ({ data }) => {
       prevData.map((val, i) => ({
         ...val,
         isPlaying: i === index ? !val.isPlaying : false,
+      }))
+    );
+  };
+
+  const handleVideoPlay = (index) => {
+    setNewData((prevData) =>
+      prevData.map((val, i) => ({
+        ...val,
+        isPlaying: i === index ? true : false,
+      }))
+    );
+  };
+
+  const handleVideoPause = (index) => {
+    setNewData((prevData) =>
+      prevData.map((val, i) => ({
+        ...val,
+        isPlaying: i === index ? false : val.isPlaying,
       }))
     );
   };
@@ -39,7 +56,8 @@ const VideoTestimonial = ({ data }) => {
               val={val}
               isPlaying={val.isPlaying}
               onPlayPause={() => handlePlayPause(ind)}
-              
+              onVideoPlay={() => handleVideoPlay(ind)}
+              onVideoPause={() => handleVideoPause(ind)}
             />
           </div>
         ))}

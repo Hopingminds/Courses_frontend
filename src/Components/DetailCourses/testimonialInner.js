@@ -1,14 +1,41 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { CiPause1 } from 'react-icons/ci';
 import ReactPlayer from 'react-player';
 import './Pageheader.css';
 
 const TestimonialInner = ({ val, isPlaying, onPlayPause }) => {
-  return (
+  const playerRef = useRef(null);
 
+  // Sync the isPlaying state with the ReactPlayer
+  useEffect(() => {
+    const player = playerRef.current?.getInternalPlayer();
+    if (player) {
+      if (isPlaying) {
+        player.play();
+      } else {
+        player.pause();
+      }
+    }
+  }, [isPlaying]);
+
+  // Handle native play and pause events from ReactPlayer
+  const handlePlay = () => {
+    if (!isPlaying) {
+      onPlayPause(); // Update parent state to reflect that the video is playing
+    }
+  };
+
+  const handlePause = () => {
+    if (isPlaying) {
+      onPlayPause(); // Update parent state to reflect that the video is paused
+    }
+  };
+
+  return (
     <div className="w-full object-cover xl:h-[450px] md:h-[260px] md:w-[150px] lg:h-[310px] border rounded-xl overflow-hidden flex flex-col justify-end xsm:h-[180px]">
       <div className="vt-card relative">
         <ReactPlayer
+          ref={playerRef}
           height="100%"
           width="100%"
           className="react-player"
@@ -16,20 +43,10 @@ const TestimonialInner = ({ val, isPlaying, onPlayPause }) => {
           playing={isPlaying}
           loop={true}
           controls={true}
+          onPlay={handlePlay} // Sync play event with the state
+          onPause={handlePause} // Sync pause event with the state
           onError={(e) => console.error('ReactPlayer Error:', e)}
         />
-        {/* <div className="vt-onhover-overlay absolute top-[100%] bg-[#00000066] backdrop-blur-sm h-full flex flex-col justify-center gap-2 pt-8 px-2 xsm:pt-2 xsm:gap-1">
-            <div>
-                <img
-                    src="../Icons/VTcomma.svg"
-                    alt=""
-                    className="w-[30px] xsm:w-[6px]"
-                />
-            </div>
-            <p className="text-[#F5F5F5] text-[15px] xsm:text-[8px] xsm:leading-3">
-                {val?.review}
-            </p>
-            </div> */}
       </div>
       <div className="flex justify-between items-center bg-[#000000BF] backdrop-blur-sm font-nu px-4 py-2 xsm:px-2">
         <div className="flex flex-col">
@@ -45,7 +62,7 @@ const TestimonialInner = ({ val, isPlaying, onPlayPause }) => {
           <img
             className="w-[40px] h-[40px] xsm:w-[20px] xsm:h-[20px]"
             src="../Icons/playicon.svg"
-            alt=""
+            alt="Play Icon"
             onClick={onPlayPause}
           />
         )}

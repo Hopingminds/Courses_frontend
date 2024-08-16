@@ -73,20 +73,20 @@ function ShopingCart() {
         </div>
       </div>
       <div className="flex justify-between  items-start gap-4 my-10 min-h-[70vh] h-auto  px-[3%] xsm:flex-col xsm:justify-start xsm:h-auto xsm:gap-8 xsm:my-6 md:h-auto md:my-10">
-        <div className="w-[75%] space-y-10  xsm:w-[100%] xsm:space-y-4 md:space-y-8">
+        <div className="w-[75%] flex flex-col gap-5  xsm:w-[100%] xsm:space-y-4 md:space-y-8">
           {Data?.length > 0 ? (
             Data?.map((item) => {
               return (
                 <>
                   <div className="w-full bg-white border p-3 shadow-xl rounded-xl xsm:p-2 md:p-2">
                     <div className="flex  h-[15vw] rounded-[1.2vw] xsm:h-[80px] 2xl:w-[900px] 2xl:h-[240px]">
-                      <div className="w-[50%] 2xl:w-[600px]">
+                      <Link to={`/detailcourse/${item?.course?.slug}`} className="w-[50%] 2xl:w-[600px]">
                         <img
                           className="w-[100%] h-[100%] rounded-xl"
                           src={item?.course?.featured_image}
                           alt="FSD-img"
                         ></img>
-                      </div>
+                      </Link>
                       <div className="flex flex-col justify-evenly mx-[1vw] w-[100%] 2xl:h-[100%] xsm:mx-[2vw]">
                         {/* <div>
                                 <p className='font-mons text-[0.8vw] 2xl:text-[14px]'><span className='text-[#555555]'>by</span> Determined-instructure</p>
@@ -97,7 +97,7 @@ function ShopingCart() {
                               {item?.course?.title?.slice(0,60)}..
                             </p>
                             <p className="text-[#696984] text-md w-[100%] xsm:hidden md:text-[10px]">
-                              {item?.course?.overview.slice(0, 60)}..{" "}
+                              {item?.course?.overview?.slice(0, 60)}..{" "}
                             </p>
                           </div>
                           <div>
