@@ -7,7 +7,7 @@ const VideoTestimonial = ({ data }) => {
   const [newData, setNewData] = useState(initialData);
 
   const handleContextMenu = (e) => {
-    e.preventDefault(); // Prevent default context menu behavior
+    e.preventDefault(); 
   };
 
   const handlePlayPause = (index) => {
@@ -34,7 +34,7 @@ const VideoTestimonial = ({ data }) => {
       </div>
       <div className="grid grid-cols-3 gap-10 xsm:grid-cols-2 xsm:gap-2 ">
         {newData?.map((val, ind) => (
-          <div key={ind} onContextMenu={handleContextMenu}>
+          <div key={ind} onContextMenu={handleContextMenu}> 
             <TestimonialInner
               val={val}
               isPlaying={val.isPlaying}
