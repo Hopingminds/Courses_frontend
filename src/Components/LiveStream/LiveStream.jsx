@@ -4,8 +4,9 @@ import io from 'socket.io-client';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import { BASE_URL } from '../../Api/api';
-import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import LiveVideoPlayer from './LiveVideoPlayer';
 
 const socket = io('https://api.hopingminds.com', {
     secure: true,
@@ -193,13 +194,7 @@ const LiveStream = () => {
     return (
         <div className='flex w-full h-max'>
             <div className='w-[75%]'>
-                <ReactHlsPlayer
-                    src={`https://stream.hopingminds.com/hls/${liveClassKey}.m3u8`} // Assuming this URL is correct
-                    autoPlay={true}
-                    controls={true}
-                    width="100%"
-                    height="100%"
-                />
+                <LiveVideoPlayer liveClassKey={liveClassKey} />
             </div>
             <div className='w-[25%] h-max'>
                 <div id="chat-container" className="w-full h-full">

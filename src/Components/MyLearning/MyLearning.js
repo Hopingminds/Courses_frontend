@@ -134,7 +134,7 @@ export default function MyLearning() {
 
             <head>
                 <title>
-                    MyLearing | HopingMinds
+                    MyLearning | HopingMinds
                 </title>
             </head>
             <div className='MLheader px-[5%] pt-14 flex flex-col space-y-8 xsm:pt-0 xsm:space-y-3 xsm:justify-end xsm:py-1 md:space-y-6 md:pt-12'>

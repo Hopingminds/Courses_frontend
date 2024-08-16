@@ -80,7 +80,7 @@ const Forgotpassword = () => {
                 });
 
                 getUserDetails();
-                toast.success("Password reset Successful");
+                toast.success("Password Update Successful");
 
                 setTimeout(() => {
                     navigate(localStorage.getItem("current"));
