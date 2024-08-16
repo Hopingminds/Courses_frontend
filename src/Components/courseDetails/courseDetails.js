@@ -35,6 +35,7 @@ export default function CDDetails() {
   const [activeindex, setactiveindex] = useState("")
   const [idwise, setidwise] = useState({})
   const [expired, setexpired] = useState()
+  const [sk, setsk] = useState('')
   const [dur, setdur] = useState()
   const params = useParams();
   let totalduration=0;
@@ -98,6 +99,7 @@ export default function CDDetails() {
                 startDate:it?.startDate,
                 endDate:it?.endDate,
                 meetingLink:it?.projectInfoPdf,
+                streamKey:it?.streamKey || ""
               },
               lesson_name:it?.title
               })
@@ -126,6 +128,8 @@ export default function CDDetails() {
         // console.log("data",allchapters,completed);
         if (allchapters?.length === response?.data?.completed_lessons?.length || response?.data?.completed_lessons?.length==0) {
           if (allchapters[0]?.isLiveClass) {
+            // setsk()
+            localStorage.setItem('sk',allchapters[0]?.liveClass?.streamKey)
             let today = new Date();
             let startdate = new Date(allchapters[0]?.liveClass.startDate);
             let enddate = new Date(allchapters[0]?.liveClass.endDate);
@@ -375,6 +379,8 @@ function Checklive(){
     console.log("adfdasf");
 
     if (ALLCHAPTER[count]?.isLiveClass) {
+      localStorage.setItem('sk',ALLCHAPTER[count]?.liveClass?.streamKey)
+
       let today = new Date();
       let startdate = new Date(ALLCHAPTER[count]?.liveClass.startDate);
       let enddate = new Date(ALLCHAPTER[count]?.liveClass.endDate);
