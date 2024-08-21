@@ -380,7 +380,7 @@ function Checklive(){
   
 }
   useEffect(() => {
-    console.log("adfdasf");
+    // console.log("adfdasf");
 
     if (ALLCHAPTER[count]?.isLiveClass) {
       localStorage.setItem('sk',ALLCHAPTER[count]?.liveClass?.streamKey)
@@ -442,6 +442,7 @@ function Checklive(){
                     file: {
                       attributes: {
                         controlsList: "nodownload",
+                        playsInline: true,
                       },
                     },
                   }}

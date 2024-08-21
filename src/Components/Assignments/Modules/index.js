@@ -252,12 +252,12 @@ export default function Modules() {
             {modulesdata?.map((item, ind) => {
               return (
                 <>
-                  {item?.isModuleCompleted ? (
+                  {item?.isModuleCompleted || item?.progress >0 ? (
                     <div className="w-full p-5 border  flex justify-between items-center rounded-xl">
                       <div className="space-y-1 w-full">
                         <div className="flex justify-between w-full">
                           <div className="font-[500]">PAP Assessment</div>
-                          {item?.isModuleCompleted && !item?.isSuspended ? (
+                          {(item?.isModuleCompleted && !item?.isSuspended)||item?.progress >0 ? (
                             <div className="flex items-center space-x-2">
                               <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
                               <p>Completed</p>
@@ -270,7 +270,9 @@ export default function Modules() {
                               <p>Suspended</p>
                             </div>
                           )                        
-                        :''}
+                        :
+                       
+                        ''}
                         </div>
                         <div className="font-semibold text-xl">
                           {item.module_name}
@@ -302,7 +304,7 @@ export default function Modules() {
                         <div className="space-y-1 w-full">
                           <div className="flex justify-between w-full ">
                             <div className="font-[500]">PAP Assessment</div>
-                            {item?.isModuleCompleted ? (
+                            {item?.isModuleCompleted || item?.progress >0 ? (
                               <div className="flex items-center gap-2">
                                 <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
                                 <p>Completed</p>
