@@ -217,7 +217,7 @@ export default function DetailCourses() {
             <div className="CCDetails-Header-content-row1qw xsm:text-[10px] xsm:w-[80%]">
               <h2 className="font-pop text-[36px] text-white xsm:text-[20px] capitalize xsm:line-clamp-2">
                 {Data?.title?.length > 60
-                  ? Data?.title?.slice(0, 60)
+                  ? Data?.title?.slice(0, 90)
                   : Data?.title}
               </h2>
               <p className="line-clamp-2 font-normal	text-white xsm:line-clamp-3">{Data?.overview}</p>
