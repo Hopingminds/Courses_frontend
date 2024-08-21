@@ -2,13 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { ReactComponent as Down } from "../../Assets/Icons/Down.svg";
 import { IoBookOutline } from "react-icons/io5";
 import { BASE_URL } from "../../Api/api";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { MdClose } from "react-icons/md";
 import { useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { ReactComponent as Notes } from '../../Assets/Icons/notes.svg'
-import { ReactComponent as Assignment } from '../../Assets/Icons/assignment.svg'
+import { ReactComponent as Notes } from "../../Assets/Icons/notes.svg";
+import { ReactComponent as Assignment } from "../../Assets/Icons/assignment.svg";
 import { Globalinfo } from "../../App";
 
 export default function Coursecontents({
@@ -21,7 +21,7 @@ export default function Coursecontents({
   ALLCHAPTER,
   count,
   courseCategory,
-  handleProject
+  handleProject,
 }) {
   const navigate = useNavigate();
   // console.log(completed_lessons)
@@ -31,7 +31,7 @@ export default function Coursecontents({
   const [totallessons, setTotalLessons] = useState(0);
   const [openDropDown, setOpenDropdown] = useState("");
   let allchapters = [];
-  let active=0;
+  let active = 0;
   // console.log(data);
   const { setLiveClassKey, liveClassKey } = useContext(Globalinfo);
 
@@ -117,10 +117,9 @@ export default function Coursecontents({
         });
         const response1 = await data1.json();
         // console.log(response1);
-        if(response1.success){
+        if (response1.success) {
           toast.success(response1.message);
-        }
-        else{
+        } else {
           toast.error(response1.message);
         }
       } else {
@@ -133,14 +132,14 @@ export default function Coursecontents({
     // Programmatically trigger click event of file input element
     fileInputRef.current.click();
   };
- 
-  
 
   return (
     <div className="bg-[#E2FFF1] rounded-3xl xsm:absolute xsm:top-[3rem] xsm:right-0 xsm:w-[80vw] xsm:h-screen xsm:overflow-y-auto">
-      <Toaster toastOptions={{
-         duration: 500,
-      }} />
+      <Toaster
+        toastOptions={{
+          duration: 500,
+        }}
+      />
       <div className="px-5 py-8 xsm:py-4 xsm:px-2 md:px-3 md:py-5">
         <div className="space-y-2 xsm:space-y-1">
           <div className="flex flex-row justify-between">
@@ -186,10 +185,17 @@ export default function Coursecontents({
                           {/* <img className='text-[#252641CC]' src="../Icons/Clock.svg" /> */}
                           <p className="text-[#252641CC] text-[11px] font-pop font-medium"></p>
                         </div>
-                        <div className="flex items-center space-x-1">
+                        {/* <div className="flex items-center space-x-1">
                           <IoBookOutline className="text-[#252641CC] w-4 h-4 xsm:h-3 xsm:w-3 md:h-3 md:w-3" />
                           <p className="text-[#252641CC] text-[11px] font-pop font-medium xsm:text-[8px] md:text-[10px]">
                             {val?.lessons?.length} Lessons
+                          </p>
+                        </div> */}
+                        <div className="flex items-center space-x-1">
+                          <IoBookOutline className="text-[#252641CC] w-4 h-4 xsm:h-3 xsm:w-3 md:h-3 md:w-3" />
+                          <p className="text-[#252641CC] text-[11px] font-pop font-medium xsm:text-[8px] md:text-[10px]">
+                            {val?.lessons?.length}{" "}
+                            {val?.lessons?.length === 1 ? "Lesson" : "Lessons"}
                           </p>
                         </div>
                       </div>
@@ -200,27 +206,44 @@ export default function Coursecontents({
                           // console.log("index"+index,completed_lessons?.includes(chapter?._id))
                           return (
                             <div
-
-                              className={courseCategory === "liveCourse" ? "" : `flex-col justify-between border-t py-2 w-full ${!completed_lessons?.includes(chapter?._id)
-                                ? "cursor-not-allowed text-gray-300"
-                                : ""
-                                }`}
+                              className={
+                                courseCategory === "liveCourse"
+                                  ? ""
+                                  : `flex-col justify-between border-t py-2 w-full ${
+                                      !completed_lessons?.includes(chapter?._id)
+                                        ? "cursor-not-allowed text-gray-300"
+                                        : ""
+                                    }`
+                              }
                               key={index}
                             >
                               <span className="flex justify-between">
-                                {
-                                  chapter?.isLiveClass ?
-                                <p 
-                                  onClick={() => setLiveClassKey(chapter?.liveClass?.streamKey)}
-                                  className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px] text-red-500 ">
-                                  {index + 1}. {chapter?.lesson_name} (Live)
-                                </p>:
-                                <p onClick={ () =>
-                                  completed_lessons.includes(chapter._id) &&
-                                  handleActiveVideo(chapter?.video,chapter?.lesson_name,chapter?._id)
-                                } className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
-                                  {index + 1}. {chapter?.lesson_name}
-                                </p>}
+                                {chapter?.isLiveClass ? (
+                                  <p
+                                    onClick={() =>
+                                      setLiveClassKey(
+                                        chapter?.liveClass?.streamKey
+                                      )
+                                    }
+                                    className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px] text-red-500 "
+                                  >
+                                    {index + 1}. {chapter?.lesson_name} (Live)
+                                  </p>
+                                ) : (
+                                  <p
+                                    onClick={() =>
+                                      completed_lessons.includes(chapter._id) &&
+                                      handleActiveVideo(
+                                        chapter?.video,
+                                        chapter?.lesson_name,
+                                        chapter?._id
+                                      )
+                                    }
+                                    className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]"
+                                  >
+                                    {index + 1}. {chapter?.lesson_name}
+                                  </p>
+                                )}
                                 {/* <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
                                   {chapter?.duration}Mins
                                 </p> */}
@@ -228,14 +251,9 @@ export default function Coursecontents({
 
                               {(chapter?.notes || chapter?.assignment) && (
                                 <div className="relative">
-                                  <button
-                                    className="flex gap-2 align-middle justify-self-end w-fit items-center px-2 mt-3 realtive xsm:mt-2"
-
-                                  >
-
+                                  <button className="flex gap-2 align-middle justify-self-end w-fit items-center px-2 mt-3 realtive xsm:mt-2">
                                     {/* <TiFolderOpen className="xsm:w-3 xsm:h-3 md:w-4 md:h-4" /> */}
                                     <p className="text-[12px] xsm:text-[6px] md:text-[10px]">
-
                                       Resources
                                     </p>
                                   </button>
@@ -243,23 +261,46 @@ export default function Coursecontents({
                                   <ul className="list-none flex items-center bg-[#F1FFF8] text-sm  py-1 z-40 gap-1 text-[12px]">
                                     {chapter?.notes && (
                                       <span className=" flex justify-between items-center px-2 border rounded-md h-max">
-
-                                        <div onClick={() => completed_lessons.includes(chapter._id)? handleToggleNotes(chapter?.notes, ALLCHAPTER[count]?.video): ""} className="flex items-center gap-1">
+                                        <div
+                                          onClick={() =>
+                                            completed_lessons.includes(
+                                              chapter._id
+                                            )
+                                              ? handleToggleNotes(
+                                                  chapter?.notes,
+                                                  ALLCHAPTER[count]?.video
+                                                )
+                                              : ""
+                                          }
+                                          className="flex items-center gap-1"
+                                        >
                                           <Notes className="w-3 h-3" />
                                           <li className="text-[12px] md:text-[10px]">
                                             Notes
                                           </li>
                                         </div>
-
                                       </span>
                                     )}
 
                                     {chapter?.assignment && (
                                       <span className=" flex gap-1 items-center h-max">
-                                        <div onClick={() => completed_lessons.includes(chapter._id)? handleToggleNotes(chapter?.assignment, ALLCHAPTER[count]?.video): ""} href={chapter?.assignment} target="_blank" className="flex items-center border rounded-md gap-1 px-2">
+                                        <div
+                                          onClick={() =>
+                                            completed_lessons.includes(
+                                              chapter._id
+                                            )
+                                              ? handleToggleNotes(
+                                                  chapter?.assignment,
+                                                  ALLCHAPTER[count]?.video
+                                                )
+                                              : ""
+                                          }
+                                          href={chapter?.assignment}
+                                          target="_blank"
+                                          className="flex items-center border rounded-md gap-1 px-2"
+                                        >
                                           <Assignment className="w-3 h-3" />
                                           <li className="text-[12px] md:text-[10px]">
-
                                             Assignment
                                           </li>
                                         </div>
@@ -277,7 +318,9 @@ export default function Coursecontents({
                                               handleUpload(e, chapter?._id)
                                             }
                                           />
-                                          <p className="absolute top-8 right-[0px] bg-black text-[0.7rem] text-white w-[8rem] px-2 py-1 opacity-0 peer-hover:opacity-100 rounded-lg text-center">Upload Your assignment</p>
+                                          <p className="absolute top-8 right-[0px] bg-black text-[0.7rem] text-white w-[8rem] px-2 py-1 opacity-0 peer-hover:opacity-100 rounded-lg text-center">
+                                            Upload Your assignment
+                                          </p>
                                         </span>
                                       </span>
                                     )}
@@ -315,34 +358,49 @@ export default function Coursecontents({
                         })}
                       </div> */}
 
-                    { val?.project?.length>0 && <div className="w-full border-t">
-                          <div className="font-semibold text-sm text-[#1DBF73] py-1">Projects</div>
+                      {val?.project?.length > 0 && (
+                        <div className="w-full border-t">
+                          <div className="font-semibold text-sm text-[#1DBF73] py-1">
+                            Projects
+                          </div>
                           {val?.project?.map((chapter, index) => {
-                          // console.log(chapter);
-                          return (
-                            <div
-
-                            className={courseCategory === "liveCourse" ? "" : `flex flex-col justify-between border-t py-2 w-full ${!completed_lessons?.includes(chapter?._id)
-                              ? "cursor-not-allowed text-gray-300"
-                              : ""
-                              }`}
-                              key={index}
-                            >
-                              <span className="flex justify-between">
-                                <p onClick={() => completed_lessons?.includes(chapter?._id) ?
-                                  handleProject(chapter) : ""
-                                } className={`font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]`}>
-                                  {index + 1}. {chapter?.title}({chapter?.duration || '5 mins'})
-                                </p>
-
-                              </span>
-                              {/* <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
+                            // console.log(chapter);
+                            return (
+                              <div
+                                className={
+                                  courseCategory === "liveCourse"
+                                    ? ""
+                                    : `flex flex-col justify-between border-t py-2 w-full ${
+                                        !completed_lessons?.includes(
+                                          chapter?._id
+                                        )
+                                          ? "cursor-not-allowed text-gray-300"
+                                          : ""
+                                      }`
+                                }
+                                key={index}
+                              >
+                                <span className="flex justify-between">
+                                  <p
+                                    onClick={() =>
+                                      completed_lessons?.includes(chapter?._id)
+                                        ? handleProject(chapter)
+                                        : ""
+                                    }
+                                    className={`font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]`}
+                                  >
+                                    {index + 1}. {chapter?.title}(
+                                    {chapter?.duration || "5 mins"})
+                                  </p>
+                                </span>
+                                {/* <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
                                   Duration-{chapter?.duration || '5 mins'}
                                 </p> */}
-                            </div>
-                          );
-                        })}
-                      </div>}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

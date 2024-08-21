@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import Banner from "../../Assests/Images/profileedit-banner.png";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import ProfileIcon from "../../Assets/Images/ProfileIcon.png";
 import Avtar from "../../Assests/Icons/Avtar.jpg";
 import Edit from "../../Assests/Icons/edit.svg";
@@ -23,9 +23,8 @@ import AvtarModal from "./AvtarModal";
 
 const ProfilEdit = () => {
   const [showTooltip, setShowTooltip] = useState(false);
-  const [showallcolleges, setshowallcolleges] = useState([])
-  const [initialUserData, setinitialUserData] = useState(null)
-
+  const [showallcolleges, setshowallcolleges] = useState([]);
+  const [initialUserData, setinitialUserData] = useState(null);
 
   const handleMouseEnter = () => {
     setShowTooltip(true);
@@ -121,17 +120,18 @@ const ProfilEdit = () => {
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     const handleBeforeUnload = (e) => {
-      const message = 'Are you sure you want to leave? Changes you made may not be saved.';
+      const message =
+        "Are you sure you want to leave? Changes you made may not be saved.";
       e.preventDefault();
       e.returnValue = message; // Standard for most browsers
       return message; // For some older browsers
     };
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener("beforeunload", handleBeforeUnload);
 
     // Cleanup the event listener on component unmount
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
 
@@ -184,11 +184,11 @@ const ProfilEdit = () => {
   const handleFileChange = async (e) => {
     // console.log(e.target.files[0])
     const file = e.target.files[0];
-    if (file && (file.type === 'image/png' || file.type === 'image/jpeg')) {
+    if (file && (file.type === "image/png" || file.type === "image/jpeg")) {
       setUploadLoader(true);
-    // console.log(file);
-    setSelectedImage(file);
-    // console.log(file)
+      // console.log(file);
+      setSelectedImage(file);
+      // console.log(file)
       // console.log(file);
       try {
         const res = await axios.post(
@@ -208,17 +208,17 @@ const ProfilEdit = () => {
           setUploadLoader(false);
           toast.success("Profile Picture Updated");
           setUser({ ...user, profile: res.data.url });
-          getUserDetails()
+          getUserDetails();
         }
       } catch (error) {
         console.log(error);
         setUploadLoader(false);
       }
-      
+    } else {
+      toast.error(
+        "Invaild format of profile picture (only jpeg,png format allowed)"
+      );
     }
-else{
-  toast.error("Invaild format of profile picture (only jpeg,png format allowed)")
-}
     // setUser({ ...user, profile: URL.createObjectURL(file) })
   };
 
@@ -226,16 +226,15 @@ else{
     setbtnLoader(true);
     // console.log("intial",JSON.stringify(initialUserData));
     // console.log("after",JSON.stringify(user));
-    
+
     if (!user.email) {
       toast.error("Enter valid Credentials");
     }
-    if (JSON.stringify(initialUserData) ==JSON.stringify(user)) {
+    if (JSON.stringify(initialUserData) == JSON.stringify(user)) {
       toast.error("No changes detected");
       setbtnLoader(false);
       return;
-    }
-    else {
+    } else {
       try {
         const res = await axios.put(`${BASE_URL}/updateuser`, user, {
           headers: {
@@ -245,7 +244,7 @@ else{
           },
         });
         toast.success("Saved Successfully");
-        setinitialUserData(user)
+        setinitialUserData(user);
         setbtnLoader(false);
       } catch (error) {
         // console.log(error);
@@ -256,10 +255,10 @@ else{
   const handleLogOut = async () => {
     localStorage.removeItem("COURSES_USER_TOKEN");
     const allCookies = Cookies.get();
-  Object.keys(allCookies).forEach(cookieName => {
-    Cookies.remove(cookieName);
-  });
-  window.open(`${AUTH_BASE_URL}/logout`, "_self");
+    Object.keys(allCookies).forEach((cookieName) => {
+      Cookies.remove(cookieName);
+    });
+    window.open(`${AUTH_BASE_URL}/logout`, "_self");
     // navigate('/login-2')
     // getUserDetails();
     // clearCart();
@@ -274,28 +273,27 @@ else{
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
-  const handleSelectedcollege=(college)=>{
-    setUser({ ...user, ['college']: college });
-    setshowallcolleges([])
-  }
-  const handleCollege=async(e)=>{
-    handleChange(e)
+  const handleSelectedcollege = (college) => {
+    setUser({ ...user, ["college"]: college });
+    setshowallcolleges([]);
+  };
+  const handleCollege = async (e) => {
+    handleChange(e);
     let query = e.target.value;
     if (query == "") {
-        setshowallcolleges([]);
+      setshowallcolleges([]);
     } else {
-        try {
-            let url1 = BASE_URL + '/getcolleges?search=' + query
-            const data = await fetch(url1)
-            const response = await data.json()
-            // console.log(response);
-            setshowallcolleges(response)
-        } catch (error) {
-            console.log(error);
-        }
-
+      try {
+        let url1 = BASE_URL + "/getcolleges?search=" + query;
+        const data = await fetch(url1);
+        const response = await data.json();
+        // console.log(response);
+        setshowallcolleges(response);
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }
+  };
 
   const handleEditProfileClick = () => {
     setCompleteProfile("completeprofile");
@@ -437,7 +435,7 @@ else{
                   />
                 </div>
                 <div className=" relative -z-10 flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
-                <input
+                  <input
                     type="text"
                     className="outline-none w-full bg-transparent placeholder:text-[#c6c3c3]"
                     placeholder="University/College Name"
@@ -446,14 +444,18 @@ else{
                     onChange={handleCollege}
                   />
                   <div className="absolute top-10 left-0 min-h-0 max-h-[200px] overflow-auto w-full bg-slate-100 px-2">
-                  {
-                                            showallcolleges.map((it) => {
-                                                return (<>
-                                                    <div onClick={(e) => handleSelectedcollege(it.college)} className='text-center text-[12px] border py-1 cursor-pointer'>{it.college}</div>
-                                                </>)
-                                            })
-                                        }
-
+                    {showallcolleges.map((it) => {
+                      return (
+                        <>
+                          <div
+                            onClick={(e) => handleSelectedcollege(it.college)}
+                            className="text-center text-[12px] border py-1 cursor-pointer"
+                          >
+                            {it.college}
+                          </div>
+                        </>
+                      );
+                    })}
                   </div>
                 </div>
                 <div className="flex flex-row justify-between bg-[#E2FFF1] shadow-lg  text-[#000000] text-[20px] font-nu px-6 h-[50px] xsm:text-[10px] xsm:h-[25px] xsm:px-2 md:text-[14px] md:h-[40px]">
@@ -531,9 +533,12 @@ else{
           ""
         )}
       </div>
-      <Toaster toastOptions={{
-         duration: 500,
-      }}  position="top-center" />
+      <Toaster
+        toastOptions={{
+          duration: 500,
+        }}
+        position="top-center"
+      />
     </>
   );
 };
