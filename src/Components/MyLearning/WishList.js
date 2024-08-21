@@ -3,7 +3,7 @@ import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import { Link } from "react-router-dom";
 import Spinner from "../Spinner";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { AiTwotoneDelete } from "react-icons/ai";
 
 export default function WishList() {
   const [Data, setData] = useState([]);
@@ -60,11 +60,12 @@ export default function WishList() {
                 to={`/detailcourse/${item?.course?.slug}`}
                 className=" px-4 py-4 mt-2 h-[380px] rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:rounded-md xsm:p-2 xsm:h-full md:p-3 md:h-full"
               >
-                <div className="h-[55%] xsm:h-[45%] md:h-[40%]">
+                <div className="h-[55%] xsm:h-[45%] md:h-[40%] relative ">
                   <img alt=""
-                    className="w-full h-full rounded-lg"
-                    src={item.course?.featured_image}
+                    className="w-full h-full rounded-lg z-0"
+                    src={item?.course?.featured_image}
                   />
+                  <AiTwotoneDelete className="absolute top-0 right-0 text-4xl bg-white rounded-full p-2 z-50"/>
                 </div>
                 <div className="flex flex-col gap-3 justify-between h-[45%]">
                 <div className="space-y-2 mt-2 xsm:mt-0 xsm:space-y-1">
