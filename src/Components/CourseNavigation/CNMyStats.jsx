@@ -33,7 +33,7 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
   // console.log(completedAssignments);
 
   return (
-    <div className="bg-[#FFFFFF] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col items-center gap-2 ">
+    <div className="relative bg-[#FFFFFF] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col items-center gap-2 ">
       <p className="font-nu font-semibold text-[20px] text-black xsm:text-[10px] md:text-[16px]">
         Your Progress
       </p>
