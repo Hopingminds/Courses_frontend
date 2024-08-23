@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import { toast } from "react-toastify";
+import { useAuth } from "../contexts/AuthContext";
+import { Globalinfo } from "../../App";
 
 const AvatarModal = ({ onClose, updateProfilePicture }) => {
   const avatars = [
@@ -27,6 +29,7 @@ const AvatarModal = ({ onClose, updateProfilePicture }) => {
   const [btnLoader, setBtnLoader] = useState(false);
   const modalRef = useRef(null);
   const fileInputRef = useRef(null);
+  const {getUserDetails}=useContext(Globalinfo)
 
   useEffect(() => {
     // Prevent background scrolling when the modal is open
@@ -66,6 +69,7 @@ const AvatarModal = ({ onClose, updateProfilePicture }) => {
 
       toast.success("Profile picture updated successfully");
       updateProfilePicture(avatar.image);
+      getUserDetails()
       setBtnLoader(false);
       onClose();
     } catch (error) {

@@ -115,8 +115,15 @@ export default function Question() {
       const response = await data.json();
       if (response.success) {
         localStorage.removeItem('lastminute')
-        toast.success("Submitted Successfully");
-        window.location.replace('/submitted');
+        if(status){
+          toast.error("Suspended!");
+          window.location.replace('/suspended');
+        }
+        else{
+          toast.success("Submitted Successfully");
+          window.location.replace('/submitted');
+        }
+     
       } else {
         toast.error(response.message);
       }
@@ -129,9 +136,9 @@ export default function Question() {
     if (localStorage.getItem('history')) {
       let history = localStorage.getItem('history');
       localStorage.removeItem('history');
-      navigate(history);
+      window.location.replace(history)
     } else {
-      navigate('/modules');
+      window.location.replace('/modules')
     }
   }
 
@@ -168,7 +175,7 @@ let tempstate=true;
    if(timer<=0){
     alert("Time's up")
     localStorage.removeItem('lastminute')
-    // handleClick(true,"Time's up");
+    handleClick(true,"Time's up");
    }
   }, [timer])
   
@@ -299,12 +306,12 @@ let tempstate=true;
     // enterFullScreen();
   }, [personCount]);
 
-  // useEffect(() => {
-  //     if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked) {
-  //       handleClick(true,'Cheating attempt detected during the online test. Disciplinary action will follow.');
-  //     }
+  useEffect(() => {
+      if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked) {
+        handleClick(true,'Cheating attempt detected during the online test. Disciplinary action will follow.');
+      }
    
-  // }, [peoplewarning]);
+  }, [peoplewarning]);
 
   const handleAudioMonitoring = async () => {
     let temp=true;
@@ -431,7 +438,7 @@ let tempstate=true;
         <div className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5 font-pop">
           <div className="w-[60%] rounded-xl border h-full shadow-xl xsm:w-full">
             <div className="border-b-[2px] p-3 font-semibold">{data?.module}</div>
-            <div className="p-3 text-lg text-gray-700">{data?.question?.question}</div>
+            <div className="p-3 text-lg text-gray-700">Q:{params.get("index")}{data?.question?.question}</div>
           </div>
           <div className="w-[35%] rounded-xl border min-h-full shadow-xl overflow-y-auto xsm:w-full xsm:min-h-[50vh] xsm:h-fit">
             <div className="border-b-[2px] p-3 font-semibold">Options</div>

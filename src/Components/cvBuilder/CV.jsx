@@ -84,6 +84,7 @@ const CV = () => {
                       href={`https://github.com/${item.github}`}
                       target="_blank"
                       rel="noreferrer"
+                      className=""
                     >
                       {item.github}
                     </a>

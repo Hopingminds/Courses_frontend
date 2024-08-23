@@ -310,12 +310,12 @@ export default function Pap() {
               </p>
             </div>
             <div className="flex gap-4 hover:gap-8">
-              <button
+             {window.innerWidth > 500 ? <button
                 onClick={checkUserAuth}
                 className="bg-white text-black hover:bg-[#1DBF73] hover:text-white hover:scale-125 font-pop font-medium text-[18px] px-8 py-2 rounded-full xsm:text-[12px] xsm:py-1 xl:py-3 xsm:px-4 md:text-[14px]"
               >
                 Start Test
-              </button>
+              </button> : ''}
               <a
                 href={"/PAP Candidate MOU.pdf"}
                 target="_blank"

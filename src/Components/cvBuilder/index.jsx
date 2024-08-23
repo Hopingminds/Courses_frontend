@@ -15,6 +15,7 @@ import {
 import LS from "./utils/browser.utils";
 import CV4 from "./CV4";
 import CV5 from "./CV5";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function CVBuilder() {
   const [cv, setCv] = useState(cvData);
@@ -84,6 +85,16 @@ export default function CVBuilder() {
   };
 
   const updateCv = (key, value) => {
+    if (key === "name" && value.length > 30) {
+      return; 
+    }
+    if (key === "startDate" && value.toString().length > 4) {
+      return; 
+    }
+    if (key === "endDate" && value.toString().length > 4) {
+      return; 
+    }
+
     const newCv = { ...cv, [key]: value };
     setCv(newCv);
     LS.set({ key: "cv", payload: newCv });
@@ -140,15 +151,19 @@ export default function CVBuilder() {
     const allowedFiles = ["image/png", "image/jpg", "image/jpeg"];
     const file = e.target.files[0];
     if (!file) {
+      toast.error(FILE_NOT_SELECTED)
+
       throw new Error(FILE_NOT_SELECTED);
     }
     const reader = new FileReader();
     const isAllowed = allowedFiles.some((type) => file.type === type);
     if (!isAllowed) {
+      toast.error(UNSUPPORTED_FILE_TYPE)
       throw new Error(UNSUPPORTED_FILE_TYPE);
     }
     reader.readAsDataURL(file);
     reader.onerror = (e) => {
+      toast.error(FILE_READ_ERROR)
       throw new Error(FILE_READ_ERROR, e);
     };
     reader.onload = (e) => {
@@ -215,6 +230,7 @@ export default function CVBuilder() {
 
   return (
     <>
+    <Toaster/>
       <head>
         <title>CV Builder</title>
         <meta
@@ -252,7 +268,7 @@ export default function CVBuilder() {
             <div>
               <section
                 ref={componentRef}
-                className="bg-white md:rounded-md transition-all  p-8 h-[90vh] aspect-[3.9/5]  md:aspect-[3.9/5] md:h-[90vh] xsm:pr-5 xsm:border lg:h-[100vh]"
+                className="bg-white overflow-y-auto md:rounded-md transition-all  p-8 h-[90vh] aspect-[3.9/5]  md:aspect-[3.9/5] md:h-[90vh] xsm:pr-5 xsm:border lg:h-[100vh]"
                 style={{
                   transform: `scale(${scale})`,
                 }}
