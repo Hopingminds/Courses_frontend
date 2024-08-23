@@ -37,10 +37,11 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
       <p className="font-nu font-semibold text-[20px] text-black xsm:text-[10px] md:text-[16px]">
         Your Progress
       </p>
-      <div className="flex justify-around items-center w-full">
+      <div className="flex justify-around items-center">
         <div className=" flex items-center justify-center h-[350px] xsm:w-[50%] xsm:h-[60%] xsm:mt-0 md:mt-8 md:w-[70%] md:h-[70%] md:items-center">
           {/* progressbar of each Course */}
           <AnimatedProgressProvider
+            // className="-z-50"
             valueStart={0}
             valueEnd={calculateAverageProgress(
               completedLessons || 0,

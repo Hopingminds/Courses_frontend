@@ -135,7 +135,7 @@ export default function Coursecontents({
 
   return (
     <div className="bg-[#E2FFF1] rounded-3xl xsm:absolute xsm:top-[3rem] xsm:right-0 xsm:w-[80vw] xsm:h-screen xsm:overflow-y-auto">
-      <Toaster
+      <Toaster 
         toastOptions={{
           duration: 500,
         }}
