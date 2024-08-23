@@ -163,6 +163,7 @@ const LiveStream = () => {
                 socket.off('private message');
                 socket.off('student joined');
                 socket.off('student left');
+                socket.emit('leave group',{ groupId, studentId })
             };
         }
         else{
