@@ -21,7 +21,7 @@ const CV2 = () => {
 
   return (
     <div className="w-full h-full flex" id="cv">
-      <div className="relative  pr-3 flex flex-col mr-2 h-full w-[32%]">
+      <div className="relative  pr-3 flex flex-col mr-2 h-full w-[32%] ">
         <div className=" " />
         {[cv.cv].map((item, index) => {
           return (
@@ -56,7 +56,7 @@ const CV2 = () => {
                         href={websiteLinkCreator(item.website)}
                         target="_blank"
                         rel="noreferrer"
-                        className="z-10 bg-white"
+                        className="z-10 bg-white "
                       >
                         {resolvedWebsiteLink(websiteLinkCreator(item.website))}
                       </a>

@@ -209,10 +209,10 @@ export default function Herosection() {
             </Link>
           )}
         </div>
-        <Link to='https://meet.google.com/njz-insd-efs' target="_blank" className="flex flex-col text-white bg-[#081C23] w-fit p-4 font-pop xsm:hidden">
+        {/* <Link to='https://meet.google.com/njz-insd-efs' target="_blank" className="flex flex-col text-white bg-[#081C23] w-fit p-4 font-pop xsm:hidden">
             <p className="font-semibold text-lg">Need assistance?</p>
             <p>Join our live session daily from 5:30 PM to 6:00 PM.</p>
-        </Link>
+        </Link> */}
       </div>
       
       <div className="flex flex-col gap-6 h-max w-[40%] md:gap-2 xsm:gap-1">

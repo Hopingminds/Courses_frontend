@@ -159,6 +159,7 @@ const About = () => {
               {cv.displayMail ? (
                 <Inputs
                   title="Mail"
+                  type="email"
                   value={cv.email}
                   placeholder="example@mail.com"
                   keyChange="email"

@@ -68,7 +68,7 @@ const WhyHM = () => {
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
-              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Felxibility in Learning.</div>
+              <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Flexibility in Learning.</div>
             </div>
             <div className="flex gap-x-2">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>

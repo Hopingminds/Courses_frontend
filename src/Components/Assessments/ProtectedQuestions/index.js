@@ -116,8 +116,14 @@ export default function ProtectedAssessmentQuestion() {
       const response = await data.json();
       if (response.success) {
         localStorage.removeItem('lastminute')
-        toast.success("Submitted Successfully");
-        window.location.replace('/submittedassessment');
+        if(status){
+          toast.error("Suspended!");
+          window.location.replace('/suspendedassessment');
+        }
+        else{
+          toast.success("Submitted Successfully");
+          window.location.replace('/submitted');
+        }
       } else {
         toast.error(response.message);
       }
@@ -432,7 +438,7 @@ let tempstate=true;
         <div className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5 font-pop">
           <div className="w-[60%] rounded-xl border h-full shadow-xl xsm:w-full">
             <div className="border-b-[2px] p-3 font-semibold">{data?.module}</div>
-            <div className="p-3 text-lg text-gray-700">{data?.question}</div>
+            <div className="p-3 text-lg text-gray-700">Q:{params.get("index")}{data?.question}</div>
           </div>
           <div className="w-[35%] rounded-xl border min-h-full shadow-xl overflow-y-auto xsm:w-full xsm:min-h-[50vh] xsm:h-fit">
             <div className="border-b-[2px] p-3 font-semibold">Options</div>

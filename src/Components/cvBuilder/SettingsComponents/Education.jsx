@@ -110,9 +110,9 @@ const Education = () => {
                       />
                     </div>
                     <div className=" items-center mt-4">
-                      <label className="text-gray-500">Start date</label>
+                      <label className="text-gray-500">Start date(year)</label>
                       <input
-                        type="text"
+                        type="number"
                         className="inputStyle"
                         placeholder="When did you start school?"
                         value={education.startDate}
@@ -130,9 +130,9 @@ const Education = () => {
                       />
                     </div>
                     <div className="items-center mt-4 mb-6">
-                      <label className="text-gray-500">End date</label>
+                      <label className="text-gray-500">End date(year)</label>
                       <input
-                        type="text"
+                        type="number"
                         placeholder="When did you graduate from school?"
                         className="inputStyle"
                         value={education.endDate}

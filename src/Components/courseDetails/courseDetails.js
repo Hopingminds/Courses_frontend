@@ -220,11 +220,14 @@ export default function CDDetails() {
     setactiveindex(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.lesson_name)
     setshowSmallvideo(false);
     seturl(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.video);
-    if (count+1 >= completed_lessons.length && ALLCHAPTER?.length > completed_lessons.length) {
-      let temp = completed_lessons;
-      temp.push(ALLCHAPTER[count + 1]?._id);
-      // console.log(count);v
-      setcompleted_lessons(temp);
+    if ((count+1 >= completed_lessons.length && ALLCHAPTER?.length >= completed_lessons.length)) {
+      if(ALLCHAPTER?.length == completed_lessons.length){
+        let temp = completed_lessons;
+        temp.push(ALLCHAPTER[count + 1]?._id);
+        // console.log(count);v
+        setcompleted_lessons(temp);
+      }
+      
 
       try {
         let login = localStorage.getItem("COURSES_USER_TOKEN");
@@ -249,6 +252,7 @@ export default function CDDetails() {
       }
       setcount((prev) => prev + 1);
     }
+    
     
   };
 
@@ -376,7 +380,7 @@ function Checklive(){
   
 }
   useEffect(() => {
-    console.log("adfdasf");
+    // console.log("adfdasf");
 
     if (ALLCHAPTER[count]?.isLiveClass) {
       localStorage.setItem('sk',ALLCHAPTER[count]?.liveClass?.streamKey)
@@ -438,6 +442,7 @@ function Checklive(){
                     file: {
                       attributes: {
                         controlsList: "nodownload",
+                        playsInline: true,
                       },
                     },
                   }}

@@ -198,7 +198,7 @@ const Resume2 = () => {
                 <div>Setting up Express JS set up</div>
                 <div>2-3 mini projects in NodeJS</div>
                 <div>Using MongoDB database</div>
-                <div>WebAPIs and basics of AWS server</div>
+                <div>Web APIs and basics of AWS server</div>
               </div>
             </div>
           </div>

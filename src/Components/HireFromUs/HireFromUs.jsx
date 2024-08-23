@@ -13,7 +13,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { BASE_URL } from "../../Api/api";
 import HireTable from "./HireTable";
 import Close from "../../Assests/Images/close.png";
-import { validateEmail ,validateMobileNumber} from "../../helpers";
+import { validateEmail, validateMobileNumber } from "../../helpers";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Companies from "../Companies";
@@ -27,16 +27,16 @@ const HireFromUs = () => {
     company: "",
   });
   const [warnings, setwarnings] = useState({
-    name:false,
-    company:false,
-    phone:false,
-    email:false
-  })
+    name: false,
+    company: false,
+    phone: false,
+    email: false,
+  });
   const [loginwarnings, setloginwarnings] = useState({
-    name:false,
-    password:false,
-    email:false
-  })
+    name: false,
+    password: false,
+    email: false,
+  });
   const [showpopup, setshowpopup] = useState(false);
   const [hirelogindata, sethirelogindata] = useState({
     name: "",
@@ -48,10 +48,9 @@ const HireFromUs = () => {
 
   function handleHover() {
     // console.log("log");
-    
-      setshowpopup(true);
-      // setcount(2)
-  
+
+    setshowpopup(true);
+    // setcount(2)
   }
 
   const handleChange = (e) => {
@@ -62,7 +61,7 @@ const HireFromUs = () => {
     });
     setwarnings((prevWarnings) => ({
       ...prevWarnings,
-      [name]: false
+      [name]: false,
     }));
   };
   const handleloginChange = (e) => {
@@ -71,9 +70,9 @@ const HireFromUs = () => {
       ...hirelogindata,
       [name]: value,
     });
-    setloginwarnings((prevWarnings) => ({ 
+    setloginwarnings((prevWarnings) => ({
       ...prevWarnings,
-      [name]: false
+      [name]: false,
     }));
   };
   function validateUserName(username) {
@@ -82,51 +81,64 @@ const HireFromUs = () => {
 
     // Return the result of the regex test
     return regex.test(username);
-}
-
+  }
 
   const handleLogin = async () => {
-    if ( !hirelogindata.name) {
+    if (!hirelogindata.name) {
       // toast.error("Enter valid Email Address");
       setloginwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ['name']: true
+        ["name"]: true,
       }));
-      toast.error("Name input is required!")
+      toast.error("Name input is required!");
+      // return;
+    } else if (!validateUserName(hirelogindata.name)) {
+      // toast.error("Enter valid Email Address");
+      setloginwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ["name"]: true,
+      }));
+      toast.error(
+        "Invaild name.Name can contains Uppercase,Lowercase letters or some symbols(. and ')"
+      );
       // return;
     }
-   else if ( !validateUserName(hirelogindata.name)) {
-      // toast.error("Enter valid Email Address");
-      setloginwarnings((prevWarnings) => ({
-        ...prevWarnings,
-        ['name']: true
-      }));
-      toast.error("Invaild name.Name can contains Uppercase,Lowercase letters or some symbols(. and ')")
-      // return;
-    }
-    else if (!validateEmail(hirelogindata.email)) {
-      // toast.error("Enter valid Email Address");
-      setloginwarnings((prevWarnings) => ({
-        ...prevWarnings,
-        ['email']: true
-      }));
-      toast.error("Invaild email address.")
+    // else if (!validateEmail(hirelogindata.email)) {
+    //   // toast.error("Enter valid Email Address");
+    //   setloginwarnings((prevWarnings) => ({
+    //     ...prevWarnings,
+    //     ['email']: true
+    //   }));
+    //   toast.error("Invaild email address.")
 
-      // return;
+    //   // return;
+    // }
+    if (!hirelogindata.email) {
+      setloginwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ["email"]: true,
+      }));
+      toast.error("Please fill in your email address first.");
+    } else if (!validateEmail(hirelogindata.email)) {
+      setloginwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ["email"]: true,
+      }));
+      toast.error("Invalid email address.");
     } else if (!hirelogindata.password) {
       setloginwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ['password']: true
+        ["password"]: true,
       }));
-      toast.error("Password is required")
-    } 
+      toast.error("Password is required");
+    }
     // else if (!validatePassword(hirelogindata.password)) {
     //   setloginwarnings((prevWarnings) => ({
     //     ...prevWarnings,
     //     ['password']: true
     //   }));
     //   toast.error("Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.")
-    // } 
+    // }
     else {
       try {
         const res = await axios.post(`${BASE_URL}/loginrecwithemail`, {
@@ -150,84 +162,110 @@ const HireFromUs = () => {
 
     // Return the result of the regex test
     return regex.test(companyName);
-}
+  }
 
   const validatePassword = (password) => {
     const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
     if (!regex.test(password)) {
-    //   return "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
-    return false;
-}
+      //   return "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+      return false;
+    }
     return true;
   };
   async function handleRegister() {
-    if ( !hiredata.name) {
+    if (!hiredata.name) {
       // toast.error("Enter valid Email Address");
       setwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ['name']: true
+        ["name"]: true,
       }));
-      toast.error("Name input is required!")
+      toast.error("Name input is required!");
       // return;
-    }
-    else if ( !validateUserName(hiredata.name)) {
+    } else if (!validateUserName(hiredata.name)) {
       // toast.error("Enter valid Email Address");
       setwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ['name']: true
+        ["name"]: true,
       }));
-      toast.error("Invaild name.Name can contains Uppercase,Lowercase letters or some symbols(. and ')")
+      toast.error(
+        "Invaild name.Name can contains Uppercase,Lowercase letters or some symbols(. and ')"
+      );
       // return;
+    } else if (!hiredata.company) {
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ["company"]: true,
+      }));
+      toast.error("Company name is required");
+    } else if (!validateCompanyName(hiredata.company)) {
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ["company"]: true,
+      }));
+      toast.error(
+        "Company name can contain only alphabets and some symbols (.,-)"
+      );
     }
-  else if(!hiredata.company){
-    
-    setwarnings((prevWarnings) => ({
-      ...prevWarnings,
-      ['company']: true
-    }));
-  toast.error("Company name is required")
-    } 
-  else if(!validateCompanyName(hiredata.company) ){
-    
-    setwarnings((prevWarnings) => ({
-      ...prevWarnings,
-      ['company']: true
-    }));
-  toast.error("Company name can contain only alphabets and some symbols (.,-)")
-    } 
-   else if(!validateEmail(hiredata.email)){
-    // console.log(warnings);
-    setwarnings((prevWarnings) => ({
-      ...prevWarnings,
-      ['email']: true
-    }));
-    toast.error("Invaild email address.")
+    //  else if (!validateEmail(hiredata.email)) {
+    //   // console.log(warnings);
+    //   setwarnings((prevWarnings) => ({
+    //     ...prevWarnings,
+    //     ["email"]: true,
+    //   }));
 
-    } 
-   else if(!hiredata.email){
-    // console.log(warnings);
-    setwarnings((prevWarnings) => ({
-      ...prevWarnings,
-      ['email']: true
-    }));
-    toast.error("Email required")
+    //   toast.error("Invaild email address.");
+    // }
 
-    } 
-   else if(!validateMobileNumber(hiredata.phone)){
-    setwarnings((prevWarnings) => ({
-      ...prevWarnings,
-      ['phone']: true
-    }));
-    toast.error("Invalid phone number")
-    } 
-   else if(!hiredata.phone){
-    setwarnings((prevWarnings) => ({
-      ...prevWarnings,
-      ['phone']: true
-    }));
-    toast.error("Phone number is required")
-    } 
-    else {
+    if (!hiredata.email) {
+      // Show warning if email is empty
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        email: true,
+      }));
+      toast.error("Please fill in the email ID.");
+    } else if (!validateEmail(hiredata.email)) {
+      // Show warning if email format is invalid
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        email: true,
+      }));
+      toast.error("Invalid email address.");
+    } else if (!hiredata.email) {
+      // console.log(warnings);
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        ["email"]: true,
+      }));
+      toast.error("Email required");
+    }
+    // else if (!validateMobileNumber(hiredata.phone)) {
+    //   setwarnings((prevWarnings) => ({
+    //     ...prevWarnings,
+    //     ["phone"]: true,
+    //   }));
+    //   toast.error("Invalid phone number");
+    // } else if (!hiredata.phone) {
+    //   setwarnings((prevWarnings) => ({
+    //     ...prevWarnings,
+    //     ["phone"]: true,
+    //   }));
+    //   toast.error("Phone number is required");
+    // }
+    if (!hiredata.phone) {
+      // Show warning if phone number is empty
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        phone: true,
+      }));
+      toast.error("Please fill in the phone number.");
+    } else if (!validateMobileNumber(hiredata.phone)) {
+      // Show warning if phone number format is invalid
+      setwarnings((prevWarnings) => ({
+        ...prevWarnings,
+        phone: true,
+      }));
+      toast.error("Invalid phone number.");
+    } else {
       try {
         let url = BASE_URL + "/addhirefromusform";
         const data = await fetch(url, {
@@ -241,14 +279,14 @@ const HireFromUs = () => {
         const response = await data.json();
         if (response.success) {
           toast.success(response.message);
-          handleHover()
+          handleHover();
           sethiredata({
-              "name": "",
-              "email": "",
-              "phone": "",
-              "degree": "",
-              "company":""
-          })
+            name: "",
+            email: "",
+            phone: "",
+            degree: "",
+            company: "",
+          });
         } else {
           toast.error(response.message);
         }
@@ -264,9 +302,12 @@ const HireFromUs = () => {
 
   return (
     <>
-      <Toaster toastOptions={{
-         duration: 500,
-      }}  position="top-center" />
+      <Toaster
+        toastOptions={{
+          duration: 500,
+        }}
+        position="top-center"
+      />
       {showpopup && count === 1 ? (
         <div
           onClick={handleClose}
@@ -486,7 +527,9 @@ const HireFromUs = () => {
                     <input
                       id="name"
                       name="name"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${warnings.name ? 'border border-red-500' : ''}`}
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                        warnings.name ? "border border-red-500" : ""
+                      }`}
                       onChange={handleChange}
                       value={hiredata.name}
                       type="text"
@@ -505,7 +548,9 @@ const HireFromUs = () => {
                       name="company"
                       onChange={handleChange}
                       value={hiredata.company}
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${warnings.company ? 'border border-red-500' : ''}`}
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                        warnings.company ? "border border-red-500" : ""
+                      }`}
                       type="text"
                       placeholder="Enter your Company"
                     />
@@ -522,7 +567,9 @@ const HireFromUs = () => {
                       value={hiredata.email}
                       name="email"
                       id="study"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${warnings.email ? 'border border-red-500' : ''}`}
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                        warnings.email ? "border border-red-500" : ""
+                      }`}
                       type="email"
                       placeholder="Enter E-mail"
                     />
@@ -539,11 +586,13 @@ const HireFromUs = () => {
                       value={hiredata.phone}
                       id="time"
                       name="phone"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${warnings.phone ? 'border border-red-500' : ''}`}
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                        warnings.phone ? "border border-red-500" : ""
+                      }`}
                       type="number"
                       placeholder="Enter your Phone number"
                       maxLength={10}
-                    />  
+                    />
                   </div>
                   <div className="px-6 mt-2">
                     <button
@@ -566,7 +615,9 @@ const HireFromUs = () => {
                     <input
                       id="name"
                       name="name"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${loginwarnings.name ? 'border border-red-500' : ''}`}
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                        loginwarnings.name ? "border border-red-500" : ""
+                      }`}
                       onChange={handleloginChange}
                       value={hirelogindata.name}
                       type="text"
@@ -583,7 +634,9 @@ const HireFromUs = () => {
                     <input
                       id="email"
                       name="email"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${loginwarnings.email ? 'border border-red-500' : ''}`}
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                        loginwarnings.email ? "border border-red-500" : ""
+                      }`}
                       onChange={handleloginChange}
                       value={hirelogindata.email}
                       type="text"
@@ -600,7 +653,9 @@ const HireFromUs = () => {
                     <input
                       id="password"
                       name="password"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${loginwarnings.password ? 'border border-red-500' : ''}`}
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                        loginwarnings.password ? "border border-red-500" : ""
+                      }`}
                       onChange={handleloginChange}
                       value={hirelogindata.password}
                       type="password"

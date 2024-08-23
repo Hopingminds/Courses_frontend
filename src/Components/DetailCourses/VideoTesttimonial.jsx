@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import TestimonialInner from './testimonialInner';
-import './Pageheader.css';
-
+import React, { useState } from "react";
+import "./Pageheader.css";
+import TestimonialInner from "./testimonialInner.js";
 const VideoTestimonial = ({ data }) => {
   const initialData = data?.map((val) => ({ ...val, isPlaying: false })) || [];
   const [newData, setNewData] = useState(initialData);
 
   const handleContextMenu = (e) => {
-    e.preventDefault(); // Prevent default context menu behavior
+    e.preventDefault();
   };
 
   const handlePlayPause = (index) => {
@@ -15,6 +14,24 @@ const VideoTestimonial = ({ data }) => {
       prevData.map((val, i) => ({
         ...val,
         isPlaying: i === index ? !val.isPlaying : false,
+      }))
+    );
+  };
+
+  const handleVideoPlay = (index) => {
+    setNewData((prevData) =>
+      prevData.map((val, i) => ({
+        ...val,
+        isPlaying: i === index ? true : false,
+      }))
+    );
+  };
+
+  const handleVideoPause = (index) => {
+    setNewData((prevData) =>
+      prevData.map((val, i) => ({
+        ...val,
+        isPlaying: i === index ? false : val.isPlaying,
       }))
     );
   };
@@ -32,14 +49,16 @@ const VideoTestimonial = ({ data }) => {
           What They Say?
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-10 xsm:grid-cols-2 xsm:gap-2 ">
+      <div className="grid grid-cols-3 gap-10 xsm:grid-cols-2 xsm:gap-5 w-full h-full">
         {newData?.map((val, ind) => (
-          <div key={ind} onContextMenu={handleContextMenu}>
+          <div key={ind} onContextMenu={handleContextMenu} className="relative">
             <TestimonialInner
               val={val}
               isPlaying={val.isPlaying}
               onPlayPause={() => handlePlayPause(ind)}
-              
+              onVideoPlay={() => handleVideoPlay(ind)}
+              onVideoPause={() => handleVideoPause(ind)}
+              // className="h-[400px] lg:h-[400px] xl:h-[400px] xsm:h-[300px] w-full"
             />
           </div>
         ))}

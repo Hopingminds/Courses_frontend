@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useContext } from "react";
 import { CvContext } from "../hooks/CvContext";
 
-const Inputs = ({ title, value, keyChange, placeholder }) => {
+const Inputs = ({ title, value, keyChange, placeholder,type }) => {
   const { updateCv } = useContext(CvContext);
   return (
     <motion.div
@@ -15,7 +15,7 @@ const Inputs = ({ title, value, keyChange, placeholder }) => {
       <motion.label className="text-gray-500">{title}</motion.label>
       <motion.input
         layout
-        type="text"
+        type={ type || "text"}
         className="inputStyle relative z-50"
         placeholder={placeholder}
         value={value}
