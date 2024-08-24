@@ -526,6 +526,7 @@ function Checklive(){
                         }}
                       />
                     )}
+                  <div className="font-bold xsm:h-auto lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] flex justify-center xsm:py-5 xsm:mb-5 xsm:w-full uppercase text-green-500">{activeindex}</div>
                   </div>
                 </div>
 
@@ -564,7 +565,7 @@ function Checklive(){
                 )}
               </div>
             </div>
-            <div className="font-bold text-lg text-wrap h-auto flex flex-wrap w-[70%]">{activeindex}</div>
+            {/* <div className="font-bold text-lg text-wrap h-auto flex flex-wrap w-[70%]">{activeindex}</div> */}
           </div>
           <div
             id="ScrollToTop"
