@@ -8,7 +8,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import LiveVideoPlayer from './LiveVideoPlayer';
 
-const socket = io('https://api.hopingminds.com', {
+const socket = io('http://localhost:3009', {
     secure: true,
     reconnectionAttempts: 5,
     withCredentials: true,
@@ -127,6 +127,15 @@ const LiveStream = () => {
     }
 
     useEffect(() => {
+        const handleBeforeUnload = (event) => {
+            // Perform your cleanup here
+            socket.emit('leave group', { groupId, studentId });
+            
+            // Optionally, you can show a confirmation dialog to the user
+            event.preventDefault();
+            event.returnValue = ''; // This line is necessary for the dialog to appear
+        };
+    
         if (liveClassKey) {
             setGroupId(liveClassKey);
             // Join group with studentId
@@ -153,16 +162,21 @@ const LiveStream = () => {
 
             socket.on('student left', ({ studentId, name }) => {
                 setStudents(prevStudents => prevStudents.filter(student => student.studentId !== studentId));
-                // Optionally, you can also handle the student's name here if needed
-                toast.success(`${name} has left the group`); // For example, logging the name
+                if (name !== 'Unknown') {
+                    toast.success(`${name} has left the group`);
+                }
             });
-
+    
+            // Add event listener for beforeunload
+            window.addEventListener('beforeunload', handleBeforeUnload);
+    
             return () => {
-                handleLeaveGroup(); // Leave the group when component unmounts
                 socket.off('chat message');
                 socket.off('private message');
                 socket.off('student joined');
                 socket.off('student left');
+                // Clean up the beforeunload event listener
+                window.removeEventListener('beforeunload', handleBeforeUnload);
             };
         }
         else{

@@ -95,6 +95,7 @@ export default function MyStats({ courses }) {
                         valueEnd={totalpercent}
                         duration={1.4}
                         easingFunction={easeQuadInOut}
+                        
                       >
                         {(value) => {
                           // const roundedValue = Math.round(value);

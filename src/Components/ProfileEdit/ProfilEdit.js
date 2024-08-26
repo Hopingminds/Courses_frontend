@@ -20,11 +20,14 @@ import Spinner from "../Spinner";
 import { authenticateUser } from "../../helpers/helperapi";
 import CYPMain from "../completeyourprofile/CYPMain";
 import AvtarModal from "./AvtarModal";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const ProfilEdit = () => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [showallcolleges, setshowallcolleges] = useState([]);
   const [initialUserData, setinitialUserData] = useState(null);
+  const [isProfilePage, setIsProfilePage] = useState(true);
+  
 
   const handleMouseEnter = () => {
     setShowTooltip(true);
@@ -296,11 +299,18 @@ const ProfilEdit = () => {
   };
 
   const handleEditProfileClick = () => {
+    setIsProfilePage(false);
     setCompleteProfile("completeprofile");
   };
   // const handleShowModal = () => {
   //   setShowModal(true);
   // };
+  const goBack = () => {
+    setCompleteProfile("Profile");
+    setIsProfilePage(true);
+  };
+  
+  
 
   const handleShowModal = (e) => {
     const targetTagName = e.target.tagName.toLowerCase();
@@ -325,7 +335,14 @@ const ProfilEdit = () => {
             src={Banner}
             className="w-full h-[200px] object-fit xsm:h-[80px] md:h-[150px]"
           />
-
+          { completeProfile === "completeprofile" && (
+            <div className="absolute top-4 left-4 flex items-center">
+              <IoMdArrowRoundBack
+                className="text-white text-lg xsm:text-sm md:text-base cursor-pointer z-10"
+                onClick={goBack}
+              />
+            </div>
+          )}
           <div className="absolute top-4 right-16 flex justify-center pt-6 xsm:pt-0 xsm:right-4 md:right-8 md:top-2">
             <button
               className="text-[#FFFFFF] text-[18px] font-nu bg-[#1DBF73] rounded-full px-10 py-1 xsm:text-[8px] xsm:px-4 md:text-[16px] md:px-6"
@@ -520,7 +537,7 @@ const ProfilEdit = () => {
         )}
         {completeProfile === "completeprofile" && (
           <CYPMain
-            setCompleteProfile={setCompleteProfile}
+            setCompleteProfile={!setCompleteProfile}
             setUser={setUser}
             user={user}
           />
