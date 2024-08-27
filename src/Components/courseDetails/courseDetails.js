@@ -9,11 +9,10 @@ import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
 import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import NewSideBar from "./NewSideBar.jsx";
 import { FiMenu } from "react-icons/fi";
+import DrawerNavbar from "./DrawerNavbar.jsx";
 import { FaPlay } from "react-icons/fa";
 
-import DrawerNavbar from "./DrawerNavbar.jsx";
-
-export default function CDDetails({profile,image}) {
+export default function CDDetails() {
   const [clicked, setclicked] = useState(false);
   const [menu, setMenu] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
@@ -47,6 +46,7 @@ export default function CDDetails({profile,image}) {
   let temp = true;
   const navigate = useNavigate();
   const [showBanner, setShowBanner] = useState(true);
+  const [imageBanner, setImageBanner] = useState();
 
   useEffect(() => {
     async function Fetchdata() {
@@ -59,6 +59,7 @@ export default function CDDetails({profile,image}) {
         const data = await fetch(url1);
         const response = await data.json();
         // console.log("Course particular", response);
+        setImageBanner(response?.data?.course?.featured_image);
         setCourseLessons(response?.data?.completed_lessons);
         setCourseAssignment(response?.data?.completed_assignments);
         if (response?.data?.course) {
@@ -457,10 +458,105 @@ export default function CDDetails({profile,image}) {
                 onClick={() => setMenu(true)}
                 size={24}
               />
-            ) : null}
+            ) : (
+              <></>
+            )}
             <div className="flex gap-20 xsm:gap-0">
               <div className="CCD-content flex gap-5 pt-10">
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
+                  
+                  {/* old code without Banner  */}
+                  {/* <div
+                    className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
+                    style={{ borderRadius: "14px !important" }}
+                  >
+                    {showSmallvideo || url?.toString().endsWith("pdf") ? (
+                      //  <div className="relative">
+                      <iframe src={pdfurl} width="100%" height="100%" />
+                    ) : //  <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
+                    //  </div>
+                    {showBanner &&
+                      !showLive &&
+                      !showend &&
+                      !expired &&
+                      url &&
+                      url.toString().endsWith("mp4") ? (
+                        <div
+                          className="flex flex-col justify-center items-center w-full 2xl:h-[60vh] xl:h-[60vh] lg:h-[60vh] xsm:h-[30vh] sm:h-[30vh] rounded-xl"
+                          style={{
+                            backgroundImage: `url(${imageBanner})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                          }}
+                        >
+                          <FaPlay
+                            className="absolute text-green-400 p-4 sm:p-3 lg:p-4 xl:p-5 2xl:p-6 rounded-2xl shadow-xl cursor-pointer animate-customPulse"
+                            style={{
+                              backgroundColor: "rgba(255, 255, 255, 0.7)",
+                            }}
+                            onClick={() => setShowBanner(false)}
+                            size={90}
+                          />
+                        </div>
+                      ) : showLive ? (
+                        <div className="text-center flex flex-col">
+                          <p>Live Class Will Start On {starttime}.</p>
+                          <p className="font-semibold cursor-pointer">
+                            <Link to={`/stream/${params.slug}`} target="_blank">
+                              GO TO LIVE CLASS
+                            </Link>
+                          </p>
+                        </div>
+                      ) : showend ? (
+                        <div className="text-center flex flex-col">
+                          <p>
+                            Live Class is going on and it will end on {endtime}.
+                          </p>
+                          <p className="font-semibold cursor-pointer">
+                            <Link to={`/stream/${params.slug}`} target="_blank">
+                              GO TO LIVE CLASS
+                            </Link>
+                          </p>
+                        </div>
+                      ) : expired ? (
+                        <div className="text-center flex flex-col">
+                          <p>
+                            Live class is over and you will get recording as soon
+                            as possible.
+                          </p>
+                        </div>
+                      ) : url?.toString().endsWith("mp3") ? (
+                        <iframe src={url} width="100%" height="100%" />
+                      ) : !showLive && !showend && url?.toString() === "" ? (
+                        <div className="text-center flex flex-col">
+                          <p className="font-semibold">Coming soon</p>
+                        </div>
+                      ) : (
+                        <ReactPlayer
+                          onContextMenu={handleContextMenu}
+                          height="auto"
+                          width="100%"
+                          borderRadius="14px"
+                          className="shadow-2xl rounded-[18px]"
+                          style={{ borderRadius: "14px !important" }}
+                          playing={!showBanner}
+                          controls={true}
+                          autoPlay={!showBanner}
+                          url={url}
+                          onDuration={handleDuration}
+                          onEnded={handleVideoEnded}
+                          config={{
+                            file: {
+                              attributes: {
+                                controlsList: "nodownload",
+                              },
+                            },
+                          }}
+                        />
+                      )}
+                  <div className="font-bold xsm:h-auto lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] flex justify-center xsm:py-5 xsm:mb-5 xsm:w-full uppercase text-green-500">{activeindex}</div>
+                  </div> */}
+
                   <div
                     className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
                     style={{ borderRadius: "14px !important" }}
@@ -472,16 +568,22 @@ export default function CDDetails({profile,image}) {
                     url &&
                     url.toString().endsWith("mp4") ? (
                       <div
-                      className="flex-col banner-container absolute inset-0 flex items-center justify-center h-[60vh] w-[50vw] shadow-2xl rounded-[18px] bg-[#4E2E9B]"
-                      style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-                    >
-                      <FaPlay
-                        className="absolute text-green-500 px-4 py-2 rounded cursor-pointer mt-4 transition-transform transform hover:scale-110 hover:shadow-xl"
-                        onClick={() => setShowBanner(false)}
-                        size={74}
-                      />
-                    </div>
-                    
+                        className="flex flex-col justify-center items-center w-full 2xl:h-[60vh] xl:h-[60vh] lg:h-[60vh] xsm:h-[30vh] sm:h-[30vh] rounded-xl"
+                        style={{
+                          backgroundImage: `url(${imageBanner})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      >
+                        <FaPlay
+                          className="absolute text-green-400 p-4 sm:p-3 lg:p-4 xl:p-5 2xl:p-6 rounded-2xl shadow-xl cursor-pointer animate-customPulse"
+                          style={{
+                            backgroundColor: "rgba(255, 255, 255, 0.7)",
+                          }}
+                          onClick={() => setShowBanner(false)}
+                          size={90}
+                        />
+                      </div>
                     ) : showLive ? (
                       <div className="text-center flex flex-col">
                         <p>Live Class Will Start On {starttime}.</p>
@@ -509,6 +611,8 @@ export default function CDDetails({profile,image}) {
                           as possible.
                         </p>
                       </div>
+                    ) : showSmallvideo || url?.toString().endsWith("pdf") ? (
+                      <iframe src={pdfurl} width="100%" height="100%" />
                     ) : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : !showLive && !showend && url?.toString() === "" ? (
@@ -538,7 +642,7 @@ export default function CDDetails({profile,image}) {
                         }}
                       />
                     )}
-                    <div className="font-bold xsm:h-auto lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] flex justify-center xsm:py-5 xsm:mb-5 xsm:w-full uppercase text-green-500">
+                    <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] flex justify-center xsm:py-5 xsm:mb-5 xsm:w-full uppercase text-green-500">
                       {activeindex}
                     </div>
                   </div>
@@ -559,9 +663,11 @@ export default function CDDetails({profile,image}) {
                         handleProject={handleProject}
                       />
                     </div>
-                  ) : null
+                  ) : (
+                    <></>
+                  )
                 ) : (
-                  <div className="w-[45%] h-[80vh] overflow-y-auto customScroll md:h-[40vh]">
+                  <div className="w-[45%]  h-[80vh] overflow-y-auto customScroll md:h-[40vh]">
                     <Coursecontents
                       handleActiveVideo={handleActiveVideo}
                       data={Data?.curriculum}
@@ -577,42 +683,53 @@ export default function CDDetails({profile,image}) {
                 )}
               </div>
             </div>
-            <div
-              id="ScrollToTop"
-              className="w-[65%] pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]"
-            >
-              <div className="CCD-Header-container flex justify-evenly">
-                <div className="w-[100%] xsm:mb-10">
-                  <div className="mt-8 xsm:mt-0 md:mt-0">
-                    <div className="bg-[#1DBF73] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 xsm:px-5 xsm:rounded-md md:px-8 md:py-4">
-                      <div className="space-y-2 xsm:space-y-0 md:space-y-1">
-                        <p className="font-pop font-semibold text-[22px] text-[#FFFFFF] xsm:text-[10px] md:text-[18px]">
-                          {Data?.title}
+            {/* <div className="font-bold text-lg text-wrap h-auto flex flex-wrap w-[70%]">{activeindex}</div> */}
+          </div>
+          <div
+            id="ScrollToTop"
+            className=" w-[65%] pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]"
+          >
+            <div className="CCD-Header-container flex justify-evenly">
+              <div className="w-[100%] xsm:mb-10">
+                <div className=" mt-8 xsm:mt-0 md:mt-0">
+                  <div className="bg-[#1DBF73] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 xsm:px-5 xsm:rounded-md md:px-8 md:py-4">
+                    <div className="space-y-2 xsm:space-y-0 md:space-y-1">
+                      <p
+                        className={`font-pop font-semibold text-[22px] text-[#FFFFFF] xsm:text-[10px] md:text-[18px]`}
+                      >
+                        {Data?.title}{" "}
+                      </p>
+                      <div className="flex space-x-4">
+                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
+                          {totalLessons} Lessons
                         </p>
-                        <div className="flex space-x-4">
-                          <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
-                            {totalLessons} Lessons
-                          </p>
-                          <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
-                            {Timeconverter(dur)}
-                          </p>
-                        </div>
+                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
+                          {Timeconverter(dur)}
+                        </p>
                       </div>
-                      {window.innerWidth <= 480 && (
-                        <div className="menu-icon" onClick={toggleMenu}>
-                          <Menu />
-                        </div>
-                      )}
                     </div>
+                    {window.innerWidth <= 480 && (
+                      <div className="menu-icon" onClick={toggleMenu}>
+                        <Menu />
+                      </div>
+                    )}
                   </div>
-                  <CourseNavigation
-                    courseLessons={courseLessons}
-                    courseAssignment={courseAssignment}
-                    totalLessons={totalLessons}
-                    liveclass={Data?.liveClasses}
-                    slug={params?.slug}
-                  />
                 </div>
+
+                {/* <div className="CCD-Main-container mt-10 px-2 text-justify xsm:mt-0 xsm:py-3 xsm:px-1 md:mt-4">
+                  <div className="CCD-Main-container-content">
+                    <p className="xsm:text-[8px] md:text-[14px]">
+                      {Data?.overview}
+                    </p>
+                  </div>
+                </div> */}
+                <CourseNavigation
+                  courseLessons={courseLessons}
+                  courseAssignment={courseAssignment}
+                  totalLessons={totalLessons}
+                  liveclass={Data?.liveClasses}
+                  slug={params?.slug}
+                />
               </div>
             </div>
           </div>
