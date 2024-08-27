@@ -393,7 +393,7 @@ export default function DetailCourses() {
           <div className=" flex flex-col gap-[2rem]">
          
           <div className="xsm:hidden">
-            <img src="/Icons/certificate_Course.svg" alt="" />
+            <img src="/Icons/certificate-Design.svg" alt="" />
             </div>
             <div className="p-[15px] border border-black rounded-[16px] flex flex-col gap-4 items-center xsm:hidden">
               <h3 className="text-black text-[1.3rem] text-center font-semibold">
