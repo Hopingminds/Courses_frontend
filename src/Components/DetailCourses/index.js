@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import PackageCarousel from "./packageCarousel";
 import DetailCompany from "../Companies/Detailcompanies";
 import axios from "axios";
+import HireTestimonial from "./HireTestimonial";
 
 export default function DetailCourses() {
   const param = useParams();
@@ -379,11 +380,13 @@ export default function DetailCourses() {
               </div>
             </div>
           )}
-          {Data?.testimonials?.length > 0 && (
+          {/* {Data?.testimonials?.length > 0 && (
             <div className="flex flex-col gap-8">
               <VideoTesttimonial data={Data?.testimonials} />
             </div>
-          )}
+          )} */}
+         
+
         </div>
         <span className="w-[33%] h-[1000px] -translate-y-[20rem] xsm:-translate-y-[13rem] xsm:w-[100%] xsm:h-fit xsm:mb-[-10rem] ">
           <Commoncard Data={Data} alreadyInCart={alreadyInCart} CheckCourseInCart={CheckCourseInCart} />
@@ -402,7 +405,11 @@ export default function DetailCourses() {
           </div>
 
         </span>
+       
       </div>
+      <div className="bg-[#1D343D] w-full h-full">
+          <HireTestimonial/>
+          </div>
     </div>
   );
 }

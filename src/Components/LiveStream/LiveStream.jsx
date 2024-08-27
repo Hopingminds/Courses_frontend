@@ -8,7 +8,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import LiveVideoPlayer from './LiveVideoPlayer';
 
-const socket = io('http://localhost:3009', {
+const socket = io('https://api.hopingminds.com', {
     secure: true,
     reconnectionAttempts: 5,
     withCredentials: true,
