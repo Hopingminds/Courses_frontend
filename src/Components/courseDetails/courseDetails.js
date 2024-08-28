@@ -10,6 +10,7 @@ import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import NewSideBar from "./NewSideBar.jsx";
 import { FiMenu } from "react-icons/fi";
 import DrawerNavbar from "./DrawerNavbar.jsx";
+import { FaPlay } from "react-icons/fa";
 
 export default function CDDetails() {
   const [clicked, setclicked] = useState(false);
@@ -32,18 +33,20 @@ export default function CDDetails() {
   const [showend, setshowend] = useState(false);
   const [meetinglink, setmeetinglink] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [activeindex, setactiveindex] = useState("")
-  const [idwise, setidwise] = useState({})
-  const [expired, setexpired] = useState()
-  const [sk, setsk] = useState('')
-  const [dur, setdur] = useState()
+  const [activeindex, setactiveindex] = useState("");
+  const [idwise, setidwise] = useState({});
+  const [expired, setexpired] = useState();
+  const [sk, setsk] = useState("");
+  const [dur, setdur] = useState();
   const params = useParams();
-  let totalduration=0;
-  let finaldur=0;
+  let totalduration = 0;
+  let finaldur = 0;
   let completed = [];
   let allchapters = [];
   let temp = true;
   const navigate = useNavigate();
+  const [showBanner, setShowBanner] = useState(true);
+  const [imageBanner, setImageBanner] = useState();
 
   useEffect(() => {
     async function Fetchdata() {
@@ -52,10 +55,11 @@ export default function CDDetails() {
       if (login) {
         let token = jwtDecode(login);
         let url1 = BASE_URL + "/user/" + token.email + "/" + params.slug;
-        
+
         const data = await fetch(url1);
         const response = await data.json();
-                // console.log("Course particular", response);
+        // console.log("Course particular", response);
+        setImageBanner(response?.data?.course?.featured_image);
         setCourseLessons(response?.data?.completed_lessons);
         setCourseAssignment(response?.data?.completed_assignments);
         if (response?.data?.course) {
@@ -72,53 +76,51 @@ export default function CDDetails() {
         }
         // console.log(completed);
         if (response?.data?.course) {
-          let tempids={}
-          let ind=0
+          let tempids = {};
+          let ind = 0;
           response?.data?.course?.curriculum?.forEach((val) => {
             val?.lessons?.map((it) => {
               // console.log("it",val);
 
-              totalduration=totalduration+parseInt(it?.duration)
+              totalduration = totalduration + parseInt(it?.duration);
               // console.log(totalduration);
               allchapters.push({
                 video: it?.video,
                 _id: it?._id,
                 isLiveClass: it?.isLiveClass,
                 liveClass: it?.liveClass,
-                lesson_name:it?.lesson_name
+                lesson_name: it?.lesson_name,
               });
-              tempids[it?._id]=ind++;
+              tempids[it?._id] = ind++;
             });
-            val?.project?.map((it)=>{
-              totalduration=totalduration+ parseInt(it?.duration)
+            val?.project?.map((it) => {
+              totalduration = totalduration + parseInt(it?.duration);
               allchapters.push({
-                video:"",
-              _id:it?._id,
-              isLiveClass:true,
-              liveClass:{
-                startDate:it?.startDate,
-                endDate:it?.endDate,
-                meetingLink:it?.projectInfoPdf,
-                streamKey:it?.streamKey || ""
-              },
-              lesson_name:it?.title
-              })
-              tempids[it?._id]=ind++;
-            })
-
+                video: "",
+                _id: it?._id,
+                isLiveClass: true,
+                liveClass: {
+                  startDate: it?.startDate,
+                  endDate: it?.endDate,
+                  meetingLink: it?.projectInfoPdf,
+                  streamKey: it?.streamKey || "",
+                },
+                lesson_name: it?.title,
+              });
+              tempids[it?._id] = ind++;
+            });
           });
-          setidwise(tempids)
+          setidwise(tempids);
         }
         // console.log("all", allchapters[0]?.video);
         // allchapters=[...new Set(allchapters)]
         // console.log(allchapters);
         // finaldur=Timeconverter(totalduration);
-        setdur(totalduration)
+        setdur(totalduration);
         setALLCHAPTER(allchapters);
         setData(response?.data?.course);
         completed = [...new Set(completed)];
         let videoindex = completed.length;
-        
 
         // console.log(
         //   "length",
@@ -126,14 +128,17 @@ export default function CDDetails() {
         //   response?.data?.completed_lessons?.length
         // );
         // console.log("data",allchapters,completed);
-        if (allchapters?.length === response?.data?.completed_lessons?.length || response?.data?.completed_lessons?.length==0) {
+        if (
+          allchapters?.length === response?.data?.completed_lessons?.length ||
+          response?.data?.completed_lessons?.length == 0
+        ) {
           if (allchapters[0]?.isLiveClass) {
             // setsk()
-            localStorage.setItem('sk',allchapters[0]?.liveClass?.streamKey)
+            localStorage.setItem("sk", allchapters[0]?.liveClass?.streamKey);
             let today = new Date();
             let startdate = new Date(allchapters[0]?.liveClass.startDate);
             let enddate = new Date(allchapters[0]?.liveClass.endDate);
-            
+
             // console.log(startdate);
             if (startdate > today) {
               setshowLive(true);
@@ -142,25 +147,25 @@ export default function CDDetails() {
               setstarttime(tmp);
             } else if (enddate > today) {
               // console.log("i m inside");
-              
+
               setshowLive(false);
               setshowend(true);
               let tmp = formatDate(enddate);
               setendtime(tmp);
-            } 
+            }
             // if()
           }
           seturl(allchapters[0]?.video);
-          setactiveindex(allchapters[0]?.lesson_name)
+          setactiveindex(allchapters[0]?.lesson_name);
           setcount(0);
         } else {
           // console.log("hi");
           seturl(allchapters[videoindex]?.video);
           setcount(videoindex);
-          setactiveindex(allchapters[videoindex]?.lesson_name)
-          completed.push(allchapters[videoindex]?._id)
+          setactiveindex(allchapters[videoindex]?.lesson_name);
+          completed.push(allchapters[videoindex]?._id);
         }
-        console.log(completed);
+        // console.log(completed);
         setcompleted_lessons(completed);
         setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
@@ -201,13 +206,13 @@ export default function CDDetails() {
     };
   }, []);
 
-  function handleActiveVideo(url,title,id) {
-    let getindex=idwise[id]
-    setcount(getindex)
-    setactiveindex(title)
+  function handleActiveVideo(url, title, id) {
+    let getindex = idwise[id];
+    setcount(getindex);
+    setactiveindex(title);
     setshowLive(false);
-    setshowend(false)
-    setexpired(false)
+    setshowend(false);
+    setexpired(false);
     // console.log(url);
     setshowSmallvideo(false);
     seturl(url);
@@ -217,17 +222,19 @@ export default function CDDetails() {
   const handleVideoEnded = async () => {
     // console.log(count + 1);
     // console.log(totalLessons,ALLCHAPTER.length);
-    setactiveindex(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.lesson_name)
+    setactiveindex(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.lesson_name);
     setshowSmallvideo(false);
     seturl(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.video);
-    if ((count+1 >= completed_lessons.length && ALLCHAPTER?.length >= completed_lessons.length)) {
-      if(ALLCHAPTER?.length == completed_lessons.length){
+    if (
+      count + 1 >= completed_lessons.length &&
+      ALLCHAPTER?.length >= completed_lessons.length
+    ) {
+      if (ALLCHAPTER?.length == completed_lessons.length) {
         let temp = completed_lessons;
         temp.push(ALLCHAPTER[count + 1]?._id);
         // console.log(count);v
         setcompleted_lessons(temp);
       }
-      
 
       try {
         let login = localStorage.getItem("COURSES_USER_TOKEN");
@@ -252,8 +259,6 @@ export default function CDDetails() {
       }
       setcount((prev) => prev + 1);
     }
-    
-    
   };
 
   function ClickSection(id) {
@@ -296,7 +301,7 @@ export default function CDDetails() {
   };
 
   function handleProject(project) {
-    setactiveindex(project?.title)
+    setactiveindex(project?.title);
     let today = new Date();
     let startdate = new Date(project?.startDate);
     let enddate = new Date(project?.endDate);
@@ -314,21 +319,21 @@ export default function CDDetails() {
       setendtime(tmp);
     } else {
       setshowLive(false);
-      setexpired(true)
+      setexpired(true);
       setshowend(false);
       // setcount((prev) => prev + 1);
       // handleVideoEnded();
     }
   }
-  function Timeconverter(totalMinutes){
+  function Timeconverter(totalMinutes) {
     const minutes = parseInt(totalMinutes, 10);
     if (isNaN(minutes)) {
       return;
     }
-  
+
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
-  return `${hours}h ${remainingMinutes}m`
+    return `${hours}h ${remainingMinutes}m`;
   }
 
   function handleNext() {
@@ -376,19 +381,17 @@ export default function CDDetails() {
   // Example usage
 
   // console.log(formattedDate); // Output: "08 July 2024 2.30pm"
-function Checklive(){
-  
-}
+  function Checklive() {}
   useEffect(() => {
     // console.log("adfdasf");
 
     if (ALLCHAPTER[count]?.isLiveClass) {
-      localStorage.setItem('sk',ALLCHAPTER[count]?.liveClass?.streamKey)
+      localStorage.setItem("sk", ALLCHAPTER[count]?.liveClass?.streamKey);
 
       let today = new Date();
       let startdate = new Date(ALLCHAPTER[count]?.liveClass.startDate);
       let enddate = new Date(ALLCHAPTER[count]?.liveClass.endDate);
-      
+
       // console.log(startdate);
       if (startdate > today) {
         setshowLive(true);
@@ -397,7 +400,7 @@ function Checklive(){
         setstarttime(tmp);
       } else if (enddate > today) {
         // console.log("i m inside");
-        
+
         setshowLive(false);
         setshowend(true);
         let tmp = formatDate(enddate);
@@ -461,7 +464,9 @@ function Checklive(){
             <div className="flex gap-20 xsm:gap-0">
               <div className="CCD-content flex gap-5 pt-10">
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
-                  <div
+                  
+                  {/* old code without Banner  */}
+                  {/* <div
                     className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
                     style={{ borderRadius: "14px !important" }}
                   >
@@ -470,40 +475,151 @@ function Checklive(){
                       <iframe src={pdfurl} width="100%" height="100%" />
                     ) : //  <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
                     //  </div>
-                    showLive ? (
+                    {showBanner &&
+                      !showLive &&
+                      !showend &&
+                      !expired &&
+                      url &&
+                      url.toString().endsWith("mp4") ? (
+                        <div
+                          className="flex flex-col justify-center items-center w-full 2xl:h-[60vh] xl:h-[60vh] lg:h-[60vh] xsm:h-[30vh] sm:h-[30vh] rounded-xl"
+                          style={{
+                            backgroundImage: `url(${imageBanner})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                          }}
+                        >
+                          <FaPlay
+                            className="absolute text-green-400 p-4 sm:p-3 lg:p-4 xl:p-5 2xl:p-6 rounded-2xl shadow-xl cursor-pointer animate-customPulse"
+                            style={{
+                              backgroundColor: "rgba(255, 255, 255, 0.7)",
+                            }}
+                            onClick={() => setShowBanner(false)}
+                            size={90}
+                          />
+                        </div>
+                      ) : showLive ? (
+                        <div className="text-center flex flex-col">
+                          <p>Live Class Will Start On {starttime}.</p>
+                          <p className="font-semibold cursor-pointer">
+                            <Link to={`/stream/${params.slug}`} target="_blank">
+                              GO TO LIVE CLASS
+                            </Link>
+                          </p>
+                        </div>
+                      ) : showend ? (
+                        <div className="text-center flex flex-col">
+                          <p>
+                            Live Class is going on and it will end on {endtime}.
+                          </p>
+                          <p className="font-semibold cursor-pointer">
+                            <Link to={`/stream/${params.slug}`} target="_blank">
+                              GO TO LIVE CLASS
+                            </Link>
+                          </p>
+                        </div>
+                      ) : expired ? (
+                        <div className="text-center flex flex-col">
+                          <p>
+                            Live class is over and you will get recording as soon
+                            as possible.
+                          </p>
+                        </div>
+                      ) : url?.toString().endsWith("mp3") ? (
+                        <iframe src={url} width="100%" height="100%" />
+                      ) : !showLive && !showend && url?.toString() === "" ? (
+                        <div className="text-center flex flex-col">
+                          <p className="font-semibold">Coming soon</p>
+                        </div>
+                      ) : (
+                        <ReactPlayer
+                          onContextMenu={handleContextMenu}
+                          height="auto"
+                          width="100%"
+                          borderRadius="14px"
+                          className="shadow-2xl rounded-[18px]"
+                          style={{ borderRadius: "14px !important" }}
+                          playing={!showBanner}
+                          controls={true}
+                          autoPlay={!showBanner}
+                          url={url}
+                          onDuration={handleDuration}
+                          onEnded={handleVideoEnded}
+                          config={{
+                            file: {
+                              attributes: {
+                                controlsList: "nodownload",
+                              },
+                            },
+                          }}
+                        />
+                      )}
+                  <div className="font-bold xsm:h-auto lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] flex justify-center xsm:py-5 xsm:mb-5 xsm:w-full uppercase text-green-500">{activeindex}</div>
+                  </div> */}
+
+                  <div
+                    className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
+                    style={{ borderRadius: "14px !important" }}
+                  >
+                    {showBanner &&
+                    !showLive &&
+                    !showend &&
+                    !expired &&
+                    url &&
+                    url.toString().endsWith("mp4") ? (
+                      <div
+                        className="flex flex-col justify-center items-center w-full 2xl:h-[60vh] xl:h-[60vh] lg:h-[60vh] xsm:h-[30vh] sm:h-[30vh] rounded-xl"
+                        style={{
+                          backgroundImage: `url(${imageBanner})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      >
+                        <FaPlay
+                          className="absolute text-green-400 p-4 sm:p-3 lg:p-4 xl:p-5 2xl:p-6 rounded-2xl shadow-xl cursor-pointer animate-customPulse"
+                          style={{
+                            backgroundColor: "rgba(255, 255, 255, 0.7)",
+                          }}
+                          onClick={() => setShowBanner(false)}
+                          size={90}
+                        />
+                      </div>
+                    ) : showLive ? (
                       <div className="text-center flex flex-col">
                         <p>Live Class Will Start On {starttime}.</p>
                         <p className="font-semibold cursor-pointer">
-                          <Link to={`/stream/${params.slug}`} target="_blank">GO TO LIVE CLASS</Link>
+                          <Link to={`/stream/${params.slug}`} target="_blank">
+                            GO TO LIVE CLASS
+                          </Link>
                         </p>
                       </div>
                     ) : showend ? (
                       <div className="text-center flex flex-col">
-                        <p>Live Class is going on and it will end on {endtime}.</p>
-                        <p className="font-semibold cursor-pointer">
-                          <Link to={`/stream/${params.slug}`} target="_blank">GO TO LIVE CLASS</Link>
+                        <p>
+                          Live Class is going on and it will end on {endtime}.
                         </p>
-                        {/* <p className="font-semibold">
-                          Meeting link: {meetinglink}
-                        </p> */}
+                        <p className="font-semibold cursor-pointer">
+                          <Link to={`/stream/${params.slug}`} target="_blank">
+                            GO TO LIVE CLASS
+                          </Link>
+                        </p>
                       </div>
-                    )
-                    : expired ? (
+                    ) : expired ? (
                       <div className="text-center flex flex-col">
-                        <p>Live class is over and you will get recording as soon as possible.</p>
-                        {/* <p className="font-semibold">
-                          Meeting link: {meetinglink}
-                        </p> */}
+                        <p>
+                          Live class is over and you will get recording as soon
+                          as possible.
+                        </p>
                       </div>
-                    )
-                    : url?.toString().endsWith("mp3") ? (
+                    ) : showSmallvideo || url?.toString().endsWith("pdf") ? (
+                      <iframe src={pdfurl} width="100%" height="100%" />
+                    ) : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
-                    ) :
-                    !showLive && !showend && url?.toString()=="" ? 
-                  (  <div className="text-center flex flex-col">
-                    <p className="font-semibold">Coming soon</p>
-                  </div>)
-                    : (
+                    ) : !showLive && !showend && url?.toString() === "" ? (
+                      <div className="text-center flex flex-col">
+                        <p className="font-semibold">Coming soon</p>
+                      </div>
+                    ) : (
                       <ReactPlayer
                         onContextMenu={handleContextMenu}
                         height="auto"
@@ -511,9 +627,9 @@ function Checklive(){
                         borderRadius="14px"
                         className="shadow-2xl rounded-[18px]"
                         style={{ borderRadius: "14px !important" }}
-                        playing={true}
+                        playing={!showBanner}
                         controls={true}
-                        autoPlay={true}
+                        autoPlay={!showBanner}
                         url={url}
                         onDuration={handleDuration}
                         onEnded={handleVideoEnded}
@@ -526,7 +642,9 @@ function Checklive(){
                         }}
                       />
                     )}
-                  <div className="font-bold xsm:h-auto lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] flex justify-center xsm:py-5 xsm:mb-5 xsm:w-full uppercase text-green-500">{activeindex}</div>
+                    <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] flex justify-center xsm:py-5 xsm:mb-5 xsm:w-full uppercase text-green-500">
+                      {activeindex}
+                    </div>
                   </div>
                 </div>
 
@@ -597,8 +715,6 @@ function Checklive(){
                     )}
                   </div>
                 </div>
-
-               
 
                 {/* <div className="CCD-Main-container mt-10 px-2 text-justify xsm:mt-0 xsm:py-3 xsm:px-1 md:mt-4">
                   <div className="CCD-Main-container-content">

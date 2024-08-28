@@ -638,7 +638,7 @@ try {
             <button
               className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px] md:text-[16px] md:px-8"
               onClick={handlePayment}
-              // onClick={handleContinueCheckout}
+            
             >
               Continue Checkout
             </button>

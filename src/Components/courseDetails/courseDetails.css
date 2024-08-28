@@ -180,3 +180,19 @@
   width: 20px;
   margin-left: 10px;
 }
+
+
+/* Play Button Animation Here  */
+@keyframes customPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-customPulse {
+  animation: customPulse 1.5s infinite ease-in-out;
+}
+

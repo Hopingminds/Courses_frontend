@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import PackageCarousel from "./packageCarousel";
 import DetailCompany from "../Companies/Detailcompanies";
 import axios from "axios";
+import HireTestimonial from "./HireTestimonial";
 
 export default function DetailCourses() {
   const param = useParams();
@@ -379,18 +380,20 @@ export default function DetailCourses() {
               </div>
             </div>
           )}
-          {Data?.testimonials?.length > 0 && (
+          {/* {Data?.testimonials?.length > 0 && (
             <div className="flex flex-col gap-8">
               <VideoTesttimonial data={Data?.testimonials} />
             </div>
-          )}
+          )} */}
+         
+
         </div>
         <span className="w-[33%] h-[1000px] -translate-y-[20rem] xsm:-translate-y-[13rem] xsm:w-[100%] xsm:h-fit xsm:mb-[-10rem] ">
           <Commoncard Data={Data} alreadyInCart={alreadyInCart} CheckCourseInCart={CheckCourseInCart} />
           <div className=" flex flex-col gap-[2rem]">
          
           <div className="xsm:hidden">
-            <img src="/Icons/certificate_Course.svg" alt="" />
+            <img src="/Icons/certificate-Design.svg" alt="" />
             </div>
             <div className="p-[15px] border border-black rounded-[16px] flex flex-col gap-4 items-center xsm:hidden">
               <h3 className="text-black text-[1.3rem] text-center font-semibold">
@@ -402,7 +405,11 @@ export default function DetailCourses() {
           </div>
 
         </span>
+       
       </div>
+      <div className="bg-[#1D343D] w-full h-full">
+          <HireTestimonial/>
+          </div>
     </div>
   );
 }

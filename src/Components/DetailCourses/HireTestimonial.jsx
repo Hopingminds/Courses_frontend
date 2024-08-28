@@ -1,6 +1,6 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import React from 'react'
-import './hirefromus.css'
+import '../../Components/HireFromUs/hirefromus.css'
 import User11 from "../../Assests/Images/Aditya Sharma.jpg";
 import User7 from "../../Assests/Images/Tanisha Sharma.jpg";
 import User8 from "../../Assests/Images/Simran Singh.jpeg";
@@ -100,7 +100,7 @@ const HireTestimonial = () => {
             star:4,
             emptystar:0,
             image: User2,
-        },
+        }, 
         // {
         //     text:'Being a recent Computer Science graduate from Jaypee University, MP,I faced job challenges post-college. Enrolling in Hoping Minds for personal development and placement training, I swiftly secured a System Developer role at Data Resolve, grateful for their transformative assistance in my professional journey.',
         //     name:'SAURABH PAL',
