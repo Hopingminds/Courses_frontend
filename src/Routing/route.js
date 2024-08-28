@@ -81,6 +81,7 @@ import Submittedassessment from '../Components/Assignments/Submittedpage/submita
 import Suspended from '../Components/Assignments/Submittedpage/suspended.js'
 import Suspendedassessment from '../Components/Assessments/Submitted/suspended.js'
 import MediaCheck from '../Components/Assignments/Hardwarecheck/index.js'
+import DeviceCheckPage from '../Components/Assignments/Modules/DeviceCheckModal/DeviceCheckModal.jsx'
 
 function Locationpath(){
     const location=useLocation()
@@ -169,6 +170,7 @@ const Router = () => {
                 <Route path='/m' element={<MinorDegree />} />
                 <Route path='/code' element={<CodeEditor />} />
                 <Route path='/modules' element={<Modules />} />
+                <Route path='devicecheckpage' element={<DeviceCheckPage/>} />
                 <Route path='/questions' element={<Question ReturnNavbar={ReturnNavbar} />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/suspended' element={<Suspended />} />
@@ -210,7 +212,9 @@ const Router = () => {
                     </Route>
                     <Route path="userprofile" element={<UserProfile />} />
                     <Route path="media" element={<CourseMedia />} />
+                   
                 </Route>
+                {/* <Route path='devicecheckpage' element={<DeviceCheckPage/>} /> */}
             </Routes>
             {pathname.includes('college') || pathname.includes('teacherpanel') || pathname.includes('questions') || pathname.includes('assessmentquestions') || pathname.includes('prassessmentquestions')? <></> : <Footer />}
 

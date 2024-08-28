@@ -25,14 +25,8 @@ export default function Modules() {
   // const [recording, setRecording] = useState(false);
   // const mediaRecorderRef = useRef(null);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleStartClick = () => {
+    navigate("/devicecheckpage");
   };
 
   useEffect(() => {
@@ -345,7 +339,13 @@ export default function Modules() {
                       {/* <FaGreaterThan className="text-3xl text-gray-500 font-extralight" /> */}
                       {/* <Link  to={`/hardwarecheck?module_id=${item._id}&index=1&t=${item?.timelimit}`} className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5">Start</Link> */}
 
-                      <div>
+                      <button
+                        onClick={handleStartClick}
+                        className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5"
+                      >
+                        Start
+                      </button>
+                      {/* <div>
                         <div
                           onClick={handleOpenModal}
                           className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5 cursor-pointer"
@@ -356,7 +356,7 @@ export default function Modules() {
                         {isModalOpen && (
                           <DeviceCheckModal onClose={handleCloseModal} />
                         )}
-                      </div>
+                      </div> */}
                     </div>
                     // </div>
                   )}
