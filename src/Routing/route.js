@@ -81,6 +81,7 @@ import Submittedassessment from '../Components/Assignments/Submittedpage/submita
 import Suspended from '../Components/Assignments/Submittedpage/suspended.js'
 import Suspendedassessment from '../Components/Assessments/Submitted/suspended.js'
 import MediaCheck from '../Components/Assignments/Hardwarecheck/index.js'
+import SensitiveContent from '../Components/Assignments/Hardwarecheck/tempfile.js'
 
 function Locationpath(){
     const location=useLocation()
@@ -166,7 +167,6 @@ const Router = () => {
                 <Route path='/button' element={<Button />} />
                 <Route path='/resumebuilder' element={<ResumeBuilder />} />
                 <Route path='/minorCourse' element={<MinorCourse />} />
-                <Route path='/m' element={<MinorDegree />} />
                 <Route path='/code' element={<CodeEditor />} />
                 <Route path='/modules' element={<Modules />} />
                 <Route path='/questions' element={<Question ReturnNavbar={ReturnNavbar} />} />
@@ -174,7 +174,7 @@ const Router = () => {
                 <Route path='/suspended' element={<Suspended />} />
                 <Route path='/suspendedassessment' element={<Suspendedassessment />} />
                 <Route path='/submittedassessment' element={<Submittedassessment />} />
-                <Route path='/m' element={<MinorDegree />} />
+                <Route path='/m' element={<SensitiveContent />} />
                 <Route path='/code' element={<CodeEditor />} />
                 <Route path='/modules' element={<Modules />} />
                 <Route path='/questions' element={<Question />} />
