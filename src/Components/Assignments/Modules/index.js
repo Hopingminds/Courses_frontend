@@ -6,7 +6,7 @@ import "./modules.css";
 import { useEffect, useRef, useState } from "react";
 import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Modules() {
   const modulesContainerRef = useRef(null);
@@ -339,7 +339,7 @@ export default function Modules() {
                         </div>
 
                         {/* <FaGreaterThan className="text-3xl text-gray-500 font-extralight" /> */}
-                        <a  href={`/questions?module_id=${item._id}&index=1&t=${item?.timelimit}`} className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5">Start</a>
+                        <Link  to={`/hardwarecheck?module_id=${item._id}&index=1&t=${item?.timelimit}`} className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5">Start</Link>
 
                       </div>
                     // </div>

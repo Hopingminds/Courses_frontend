@@ -80,6 +80,7 @@ import LiveStream from '../Components/LiveStream/LiveStream.jsx'
 import Submittedassessment from '../Components/Assignments/Submittedpage/submitassessment.js'
 import Suspended from '../Components/Assignments/Submittedpage/suspended.js'
 import Suspendedassessment from '../Components/Assessments/Submitted/suspended.js'
+import MediaCheck from '../Components/Assignments/Hardwarecheck/index.js'
 
 function Locationpath(){
     const location=useLocation()
@@ -187,6 +188,7 @@ const Router = () => {
                 <Route path='/pdftext' element={<PDFViewer />} />
                 <Route path='/hrdashboard' element={<HRDashboard />} />
                 <Route path='/internship' element={<Internship />} />
+                <Route path='/hardwarecheck' element={<MediaCheck />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
                 <Route path='/error' element={<PaymentFailed />} />
                 <Route path='/stream/:slug' element={<LiveStream />} />

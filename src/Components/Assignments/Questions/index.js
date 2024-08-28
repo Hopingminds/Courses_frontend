@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { FaArrowLeft, FaGreaterThan, FaLessThan } from "react-icons/fa";
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
@@ -6,8 +6,10 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
 import toast, { Toaster } from "react-hot-toast";
-
+import Modal from 'react-modal';
+import { ImCross } from "react-icons/im";
 export default function Question() {
+  const [enablefullscreen, setenablefullscreen] = useState(false)
   const [Selected, setSelected] = useState();
   const [data, setdata] = useState([]);
   const [show, setshow] = useState(false);
@@ -27,6 +29,49 @@ export default function Question() {
   const audioIntervalRef = useRef(null);
   const [micblocked, setmicblocked] = useState()
 
+  function enterFullScreen() {
+    if (document.fullscreenEnabled) {
+      const element = document.documentElement; // or any specific element
+      if (element.requestFullscreen) {
+        element.requestFullscreen()
+          .then(() => {
+            console.log("Entered full-screen mode successfully.");
+            setenablefullscreen(true)
+          })
+          .catch((err) => {
+            console.error("Error attempting to enable full-screen mode:", err.message);
+          });
+      } else {
+        console.warn("Fullscreen API is not supported on this browser.");
+      }
+    } else {
+      console.warn("Fullscreen mode is not allowed.");
+    }
+  }
+  
+
+  useLayoutEffect(() => {
+    enterFullScreen();
+
+    // const handleFullScreenChange = () => {
+    //   if (!document.fullscreenElement) {
+    //     // If the user exits full-screen mode, re-enter it
+    //     enterFullScreen();
+    //   }
+    // };
+
+    // document.addEventListener('fullscreenchange', handleFullScreenChange);
+    // document.addEventListener('webkitfullscreenchange', handleFullScreenChange); // Chrome, Safari, and Opera
+    // document.addEventListener('mozfullscreenchange', handleFullScreenChange); // Firefox
+    // document.addEventListener('MSFullscreenChange', handleFullScreenChange); // IE/Edge
+
+    // return () => {
+    //   document.removeEventListener('fullscreenchange', handleFullScreenChange);
+    //   document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
+    //   document.removeEventListener('mozfullscreenchange', handleFullScreenChange);
+    //   document.removeEventListener('MSFullscreenChange', handleFullScreenChange);
+    // };
+  }, []);
   async function Fetchdata() {
     try {
       let url = `${BASE_URL}/getmodulequestions?module_id=${params.get("module_id")}&index=${params.get("index")}`;
@@ -150,6 +195,7 @@ export default function Question() {
   const contentRef = useRef(null);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+  const [warning, setwarning] = useState('')
   const [phoneDetected, setPhoneDetected] = useState(false);
   const [timer, setTimer] = useState(() => {
     const storedTimer = localStorage.getItem('lastminute');
@@ -173,7 +219,7 @@ let tempstate=true;
   useEffect(() => {
     // console.log("hello"+timer);
    if(timer<=0){
-    alert("Time's up")
+    openModal("Time's up")
     localStorage.removeItem('lastminute')
     handleClick(true,"Time's up");
    }
@@ -194,8 +240,7 @@ let tempstate=true;
       if (document.hidden) {
         document.title = "Don't change the tab";
         if (peoplewarning > 0) {
-          
-          alert(`You are not allowed to change the tab.`);
+          openModal('You are not allowed to change the tab.')
           // enterFullScreen();
         }
         setpeoplewarning(peoplewarning - 1);
@@ -234,7 +279,7 @@ let tempstate=true;
         // console.error('Error accessing camera:', err);
         if (err.name === 'NotAllowedError' || err.name === 'NotFoundError') {
           setcamerablocked(true)
-         alert("You can't block the camera.Give access to camera manually")
+          openModal("You can't block the camera.Give access to camera manually")
           
         }
       }
@@ -289,13 +334,13 @@ let tempstate=true;
   useEffect(() => {
     if (personCount > 1) {
       if(peoplewarning>=0 && cameraActive){
-        alert(`Warning!! ${personCount} Person Detected in your camera frame.`);
+        openModal(`Warning!! ${personCount} Person Detected in your camera frame.`)
         setpeoplewarning((prev)=>prev-1);
       }  
      
     } else if (personCount === 0) {
       if(peoplewarning>=0 && cameraActive){
-        alert(`Warning!! Your face should be clearly visible infront of camera.`);
+        openModal(`Warning!! Your face should be clearly visible infront of camera.`)
         setpeoplewarning((prev)=>prev-1);
         
       }      
@@ -332,7 +377,7 @@ let tempstate=true;
           // console.log("Current volume:", volume);
   
           if (volume > 100 && temp) {
-            alert('You are not allowed to speak during the test.');
+            openModal('You are not allowed to speak during the test.')
             temp=false;
             // console.log(peoplewarning-1);
             
@@ -358,7 +403,7 @@ let tempstate=true;
         if (err.name === 'NotAllowedError' || err.name === 'NotFoundError') {
           // setcamerablocked(true)
           setmicblocked(true)
-         alert("You can't block the microphone.Give access to microphone manually")
+          openModal("You can't block the microphone.Give access to microphone manually")
           
         }
       }
@@ -372,30 +417,69 @@ let tempstate=true;
 
   useEffect(() => {
     if (phoneDetected) {
-      alert("Phones are not allowed during test");
+      openModal("Phones are not allowed during test")
       setpeoplewarning((prev)=>prev-1);
     }
   }, [phoneDetected]);
-  // useEffect(() => {
-  //   const handleKeyPress = (event) => {
-  //     alert("You are not allowed to use keyboard keys.");
-  //     event.preventDefault(); // Prevent the default action
-  //   };
+  const [modalIsOpen, setIsOpen] = useState(false);
 
-  //   document.addEventListener('keydown', handleKeyPress);
+  function openModal(data) {
+    setIsOpen(true);
+    setwarning(data)
+  }
 
-  //   return () => {
-  //     document.removeEventListener('keydown', handleKeyPress);
-  //   };
-  // }, []);
-  // useEffect(() => {
-  //   enterFullScreen();
-  // }, [window.location.pathname]);
+  function afterOpenModal() {
+   
+  }
 
-  // const array = Array.from({ length: Length }, (_, index) => index);
+  function closeModal() {
+    setIsOpen(false);
+    enterFullScreen()
+  }
+  useEffect(() => {
+    const handleFullScreenChange = (e) => {
+      if (!document.fullscreenElement) {
+        enterFullScreen()
+        setpeoplewarning((prev)=>prev-1);
+        openModal("You cant't exist full screen")
+      }
+    };
+
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullScreenChange);
+    };
+  }, []);
   return (
     <>
-    <div onContextMenu={(e)=>e.preventDefault()}>
+    <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        contentLabel="Warning"
+        style={{
+          content: {
+            width: '500px',
+            margin: 'auto',
+            padding: '20px',
+            height:'100px',
+            borderRadius: '10px',
+            backgroundColor: '#fff',
+            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.3)',
+          },
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          },
+        }}
+      >
+    <div className="flex justify-between">
+     <div>{warning}</div>
+        <button onClick={closeModal}><ImCross /></button>
+    </div>
+      </Modal>
+    <div>
     <Toaster toastOptions={{
          duration: 500,
       }} />
@@ -403,19 +487,15 @@ let tempstate=true;
       camerablocked ? <div className="flex justify-center w-full h-screen items-center font-semibold font-pop">If you want to continue the test then first turn on the camera. </div>
 : micblocked ? <div className="flex justify-center w-full h-screen items-center font-semibold font-pop">If you want to continue the test then first turn on the microphone. </div> :
       <div className="px-[6%] space-y-5 py-2 bg-white" ref={contentRef}>
-        {/* <div className="h-[600px] w-16 border fixed right-1 overflow-auto">
-        
-      {  array.map((num) => {
-          return(<div className="h-5 w-5 shadow-lg border">{num}</div>)
-        })}
-      
-        </div> */}
         <div className='fixed bottom-0 left-0 font-pop'>
           <div className='relative'>
             <video ref={videoRef} width="200" height="180" className='rounded-xl' style={{ display: 'block' }} />
             <canvas ref={canvasRef} width="200" height="180" className='absolute top-0' />
           </div>
         </div>
+        {
+          !enablefullscreen ? <div className="h-screen w-full flex justify-center items-center"><button className="bg-[#1DBF73] text-white rounded p-2" onClick={enterFullScreen}>Enable full screeen to continue test</button></div>:
+        <>
         <div className="flex justify-between items-center border p-3 rounded-lg font-pop">
           <div onClick={handlePrev} className="flex items-center space-x-3 cursor-pointer">
             <FaArrowLeft />
@@ -435,7 +515,7 @@ let tempstate=true;
             />
           </div>
         </div>
-        <div className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5 font-pop">
+        <div  className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5 font-pop">
           <div className="w-[60%] rounded-xl border h-full shadow-xl xsm:w-full">
             <div className="border-b-[2px] p-3 font-semibold">{data?.module}</div>
             <div className="p-3 text-lg text-gray-700">Q:{params.get("index")}{data?.question?.question}</div>
@@ -477,6 +557,8 @@ let tempstate=true;
             </div>
           </div>
         </div>
+        </>
+}
         {show && (
           <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
             <Spinner />
