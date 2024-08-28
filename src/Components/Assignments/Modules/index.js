@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
 import { Link, useNavigate } from "react-router-dom";
+import DeviceCheckModal from "./DeviceCheckModal/DeviceCheckModal";
 
 export default function Modules() {
   const modulesContainerRef = useRef(null);
@@ -23,6 +24,16 @@ export default function Modules() {
   const [showMessage, setShowMessage] = useState(false);
   // const [recording, setRecording] = useState(false);
   // const mediaRecorderRef = useRef(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     async function Fetchdata() {
@@ -129,13 +140,13 @@ export default function Modules() {
   //   // Example: You can use MediaRecorder to record audio and video streams
   //   // Initialize MediaRecorder for audio and video streams
   //   mediaRecorderRef.current = new MediaRecorder(stream);
-  
+
   //   // Add event listeners to handle data availability
   //   mediaRecorderRef.current.ondataavailable = handleDataAvailable;
-  
+
   //   // Start recording audio and video
   //   mediaRecorderRef.current.start();
-  
+
   //   // Set recording state to true
   //   setRecording(true);
 
@@ -148,7 +159,7 @@ export default function Modules() {
   //   if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
   //     mediaRecorderRef.current.stop();
   //   }
-  
+
   //   // Set recording state to false
   //   setRecording(false);
   // };
@@ -226,12 +237,11 @@ export default function Modules() {
           </div>
         </div> */}
 
-        <div
-          className="w-full h-[85vh]  p-2 space-y-5 overflow-y-auto modules xsm:w-full xsm:h-fit"
-         
-        >
+        <div className="w-full h-[85vh]  p-2 space-y-5 overflow-y-auto modules xsm:w-full xsm:h-fit">
           <div className="flex justify-between items-center">
-            <div className="text-xl font-semibold text-gray-700">PAY AFTER PLACEMENT</div>
+            <div className="text-xl font-semibold text-gray-700">
+              PAY AFTER PLACEMENT
+            </div>
           </div>
           <div className="flex flex-col space-y-5">
             {/* <div className="w-full border bg-gray-200 p-5  rounded-xl space-y-3">
@@ -252,27 +262,25 @@ export default function Modules() {
             {modulesdata?.map((item, ind) => {
               return (
                 <>
-                  {item?.isModuleCompleted || item?.progress >0 ? (
+                  {item?.isModuleCompleted || item?.progress > 0 ? (
                     <div className="w-full p-5 border  flex justify-between items-center rounded-xl">
                       <div className="space-y-1 w-full">
                         <div className="flex justify-between w-full">
                           <div className="font-[500]">PAP Assessment</div>
-                          {(item?.isModuleCompleted && !item?.isSuspended)||item?.progress >0 ? (
+                          {(item?.isModuleCompleted && !item?.isSuspended) ||
+                          item?.progress > 0 ? (
                             <div className="flex items-center space-x-2">
                               <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
                               <p>Completed</p>
                             </div>
-                          ) :
-                          item?.isSuspended ?
-                          (
+                          ) : item?.isSuspended ? (
                             <div className="flex items-center space-x-2">
                               <PiWarningOctagonBold className="bg-red-500 rounded-full text-2xl text-white" />
                               <p>Suspended</p>
                             </div>
-                          )                        
-                        :
-                       
-                        ''}
+                          ) : (
+                            ""
+                          )}
                         </div>
                         <div className="font-semibold text-xl">
                           {item.module_name}
@@ -297,51 +305,59 @@ export default function Modules() {
                     </div>
                   ) : (
                     // <div onClick={handleCamera}>
-                      <div
-                       
-                        className="w-full p-5 border  flex justify-between items-center rounded-xl relative "
-                      >
-                        <div className="space-y-1 w-full">
-                          <div className="flex justify-between w-full ">
-                            <div className="font-[500]">PAP Assessment</div>
-                            {item?.isModuleCompleted || item?.progress >0 ? (
-                              <div className="flex items-center gap-2">
-                                <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
-                                <p>Completed</p>
-                              </div>
-                            ) :
-                            item?.isSuspended ?
-                            (
-                              <div className="flex items-center space-x-2">
-                                <PiWarningOctagonBold className="bg-red-500 rounded-full text-2xl text-white" />
-                                <p>Suspended</p>
-                              </div>
-                            )                        
-                          :''}
-                          </div>
-                          <div className="font-semibold text-xl">
-                            {item.module_name}
-                          </div>
-                          <div className="flex  items-center  gap-1">
-                            <div style={{ width: "25px" }}>
-                              <CircularProgressbar
-                                value={item?.progress}
-                                maxValue={100}
-                              />
+                    <div className="w-full p-5 border  flex justify-between items-center rounded-xl relative ">
+                      <div className="space-y-1 w-full">
+                        <div className="flex justify-between w-full ">
+                          <div className="font-[500]">PAP Assessment</div>
+                          {item?.isModuleCompleted || item?.progress > 0 ? (
+                            <div className="flex items-center gap-2">
+                              <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
+                              <p>Completed</p>
                             </div>
-                            <div className="text-sm text-gray-500">
+                          ) : item?.isSuspended ? (
+                            <div className="flex items-center space-x-2">
+                              <PiWarningOctagonBold className="bg-red-500 rounded-full text-2xl text-white" />
+                              <p>Suspended</p>
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                        <div className="font-semibold text-xl">
+                          {item.module_name}
+                        </div>
+                        <div className="flex  items-center  gap-1">
+                          <div style={{ width: "25px" }}>
+                            <CircularProgressbar
+                              value={item?.progress}
+                              maxValue={100}
+                            />
+                          </div>
+                          <div className="text-sm text-gray-500">
                             Progress : {item?.progress?.toFixed(2)}%
-                            </div>
-                          </div>
-                          <div className="text-gray-400">
-                            {item.module_description}
                           </div>
                         </div>
-
-                        {/* <FaGreaterThan className="text-3xl text-gray-500 font-extralight" /> */}
-                        <Link  to={`/hardwarecheck?module_id=${item._id}&index=1&t=${item?.timelimit}`} className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5">Start</Link>
-
+                        <div className="text-gray-400">
+                          {item.module_description}
+                        </div>
                       </div>
+
+                      {/* <FaGreaterThan className="text-3xl text-gray-500 font-extralight" /> */}
+                      {/* <Link  to={`/hardwarecheck?module_id=${item._id}&index=1&t=${item?.timelimit}`} className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5">Start</Link> */}
+
+                      <div>
+                        <div
+                          onClick={handleOpenModal}
+                          className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5 cursor-pointer"
+                        >
+                          Start
+                        </div>
+
+                        {isModalOpen && (
+                          <DeviceCheckModal onClose={handleCloseModal} />
+                        )}
+                      </div>
+                    </div>
                     // </div>
                   )}
                 </>
