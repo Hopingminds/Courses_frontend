@@ -2,14 +2,13 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { PiWarningOctagonBold } from "react-icons/pi";
 import { FaCheckCircle } from "react-icons/fa";
-import "./modules.css";
+import "../Modules/modules.css";
 import { useEffect, useRef, useState } from "react";
 import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
-import { Link, useNavigate } from "react-router-dom";
-import DeviceCheckModal from "./DeviceCheckModal/DeviceCheckModal";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
-export default function Modules() {
+export default function AllModules() {
   const modulesContainerRef = useRef(null);
   const [modulesdata, setmodulesdata] = useState([]);
   const [show, setshow] = useState(false);
@@ -22,11 +21,13 @@ export default function Modules() {
   const webcamRef = useRef(null);
   const [showWebcam, setShowWebcam] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const [search,setsearch]=useSearchParams()
+  const [title, settitle] = useState('')
   // const [recording, setRecording] = useState(false);
   // const mediaRecorderRef = useRef(null);
 
-  const handleStartClick = (id) => {
-    navigate("/allsubmodules?module_id="+id);
+  const handleStartClick = (submodule_id) => {
+    navigate("/questions?module_id="+search.get('module_id')+"&submodule_id="+submodule_id+"&index=1");
   };
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function Modules() {
       try {
         let token = localStorage.getItem("COURSES_USER_TOKEN");
         setshow(true);
-        let url = BASE_URL + "/getallusermoduleassessment";
+        let url = BASE_URL + "/getusermoduleassessment/"+search.get('module_id');
         const data = await fetch(url, {
           method: "GET",
           headers: {
@@ -48,7 +49,8 @@ export default function Modules() {
         //   setshow(false);
         // }
         // console.log(response);
-        setmodulesdata(response?.data);
+        setmodulesdata(response?.data?.Assessmentmodules);
+        settitle(response?.data?.assessmentName)
         setshow(false)
         // setshow(false)
       } catch (error) {
@@ -62,77 +64,23 @@ export default function Modules() {
   return (
     <>
       <div className="w-full flex justify-between px-[5%] py-5 xsm:flex-col font-pop">
-        {/* <div className="w-[35%] h-[85vh] bg-[#d8f7e8] p-[2%] space-y-2 rounded-xl xsm:w-full xsm:h-fit xsm:px-[3%] xsm:py-[5%]">
-          <div className="text-3xl font-bold text-center">
-            Pay After Placement
-          </div>
-          <div className="mt-2">
-            Enroll in our courses without paying any upfront fees
-          </div>
-
-          <div className="flex flex-col gap-y-10 py-2">
-            <div className="flex justify-between py-5">
-              <div className="h-9 w-9 bg-black text-white flex justify-center items-center rounded-full">
-                1
-              </div>
-              <div className="w-[85%] space-y-1 ">
-                <div className="font-semibold text-lg">Solve Assessments</div>
-                <div className="text-sm">
-                  You should complete assignments & score 550 to be eligible for
-                  the Coding Test
-                </div>
-                <button
-                  className="w-[50%] p-2 bg-[#1DBF73] text-white rounded-lg"
-                  onClick={handleStartButtonClick}
-                >
-                  Start
-                </button>
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <div className="h-9 w-9 bg-black text-white flex justify-center items-center rounded-full">
-                2
-              </div>
-              <div className="w-[85%]">
-                <div className="font-semibold text-lg">Coding Test</div>
-                <div className="text-sm">DEADLINE: 16TH APR, 11:59 PM</div>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
         <div className="w-full h-[85vh]  p-2 space-y-5 overflow-y-auto modules xsm:w-full xsm:h-fit">
           <div className="flex justify-between items-center">
             <div className="text-xl font-semibold text-gray-700">
-              PAY AFTER PLACEMENT
+              {title}
             </div>
           </div>
           <div className="flex flex-col space-y-5">
-            {/* <div className="w-full border bg-gray-200 p-5  rounded-xl space-y-3">
-              <div className="font-semibold">
-                Tracker Your Assignments Score
-              </div>
-              <div className="h-8 bg-white text-[#1DBF73] flex pl-5 items-center rounded-lg">
-                Your current score is {testreport?.obtainedMarks}
-              </div>
-              <div className="flex justify-between text-sm xsm:flex-col xsm:gap-2">
-                <div>
-                  You need to solve all assignments to be eligible for the
-                  coding test.
-                </div>
-                <div className="font-semibold">Max Score : {testreport?.totalMarks}</div>
-              </div>
-            </div> */}
             {modulesdata?.map((item, ind) => {
               return (
                 <>
-                  {item?.isModuleCompleted || item?.totalProgress > 0 ? (
+                  {item?.isModuleCompleted || item?.Assessmentmodules?.progress > 0 ? (
                     <div className="w-full p-5 border  flex justify-between items-center rounded-xl">
                       <div className="space-y-1 w-full">
                         <div className="flex justify-between w-full">
-                          <div className="font-[500]">PAP Assessment</div>
+                          {/* <div className="font-[500]">PAP Assessment</div> */}
                           {(item?.isModuleCompleted && !item?.isSuspended) ||
-                          item?.totalProgress > 0 ? (
+                          item?.Assessmentmodules?.progress > 0 ? (
                             <div className="flex items-center space-x-2">
                               <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
                               <p>Completed</p>
@@ -147,17 +95,17 @@ export default function Modules() {
                           )}
                         </div>
                         <div className="font-semibold text-xl">
-                          {item?.assessmentName}
+                          {item?.module?.moduleName}
                         </div>
                         <div className="flex  items-center  space-x-2">
                           <div style={{ width: "25px" }}>
                             <CircularProgressbar
-                              value={item?.totalProgress}
+                              value={item?.Assessmentmodules?.progress}
                               maxValue={100}
                             />
                           </div>
                           <div className="text-sm text-gray-500">
-                            Progress : {item?.totalProgress?.toFixed(2)}%
+                            Progress : {item?.Assessmentmodules?.progress?.toFixed(2)}%
                           </div>
                         </div>
                         <div className="text-gray-400">
@@ -172,8 +120,8 @@ export default function Modules() {
                     <div className="w-full p-5 border  flex justify-between items-center rounded-xl relative ">
                       <div className="space-y-1 w-full">
                         <div className="flex justify-between w-full ">
-                          <div className="font-[500]">PAP Assessment</div>
-                          {item?.isModuleCompleted || item?.totalProgress > 0 ? (
+                          {/* <div className="font-[500]">PAP Assessment</div> */}
+                          {item?.isModuleCompleted || item?.Assessmentmodules?.progress > 0 ? (
                             <div className="flex items-center gap-2">
                               <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
                               <p>Completed</p>
@@ -188,21 +136,21 @@ export default function Modules() {
                           )}
                         </div>
                         <div className="font-semibold text-xl">
-                        {item?.assessmentName}
+                          {item?.module?.moduleName}
                         </div>
                         <div className="flex  items-center  gap-1">
                           <div style={{ width: "25px" }}>
                             <CircularProgressbar
-                              value={item?.totalProgress}
+                              value={item?.Assessmentmodules?.progress}
                               maxValue={100}
                             />
                           </div>
                           <div className="text-sm text-gray-500">
-                            Progress : {item?.totalProgress?.toFixed(2)}%
+                            Progress : {item?.Assessmentmodules?.progress?.toFixed(2)}%
                           </div>
                         </div>
                         <div className="text-gray-400">
-                          {item?.module_description}
+                          {item.module_description}
                         </div>
                       </div>
 

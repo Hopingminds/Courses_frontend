@@ -81,7 +81,8 @@ import Submittedassessment from '../Components/Assignments/Submittedpage/submita
 import Suspended from '../Components/Assignments/Submittedpage/suspended.js'
 import Suspendedassessment from '../Components/Assessments/Submitted/suspended.js'
 import MediaCheck from '../Components/Assignments/Hardwarecheck/index.js'
-import SensitiveContent from '../Components/Assignments/Hardwarecheck/tempfile.js'
+import DeviceCheckPage from '../Components/Assignments/Modules/DeviceCheckModal/DeviceCheckModal.jsx'
+import AllModules from '../Components/Assignments/Submodules/index.js'
 
 function Locationpath(){
     const location=useLocation()
@@ -169,12 +170,12 @@ const Router = () => {
                 <Route path='/minorCourse' element={<MinorCourse />} />
                 <Route path='/code' element={<CodeEditor />} />
                 <Route path='/modules' element={<Modules />} />
+                <Route path='devicecheckpage' element={<DeviceCheckPage/>} />
                 <Route path='/questions' element={<Question ReturnNavbar={ReturnNavbar} />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/suspended' element={<Suspended />} />
                 <Route path='/suspendedassessment' element={<Suspendedassessment />} />
                 <Route path='/submittedassessment' element={<Submittedassessment />} />
-                <Route path='/m' element={<SensitiveContent />} />
                 <Route path='/code' element={<CodeEditor />} />
                 <Route path='/modules' element={<Modules />} />
                 <Route path='/questions' element={<Question />} />
@@ -192,6 +193,8 @@ const Router = () => {
                 <Route path='/college-studentdata' element={<StudentSection />} />
                 <Route path='/error' element={<PaymentFailed />} />
                 <Route path='/stream/:slug' element={<LiveStream />} />
+                <Route path='/allsubmodules' element={<AllModules />} />
+
 
                 <Route path="/teacherlogin" element={<Loginpage/>}/>
                 <Route path="/teacherpanel" element={<TPHome/>}>
@@ -210,7 +213,9 @@ const Router = () => {
                     </Route>
                     <Route path="userprofile" element={<UserProfile />} />
                     <Route path="media" element={<CourseMedia />} />
+                   
                 </Route>
+                {/* <Route path='devicecheckpage' element={<DeviceCheckPage/>} /> */}
             </Routes>
             {pathname.includes('college') || pathname.includes('teacherpanel') || pathname.includes('questions') || pathname.includes('assessmentquestions') || pathname.includes('prassessmentquestions')? <></> : <Footer />}
 
