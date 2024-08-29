@@ -16,6 +16,7 @@ export default function AllModules() {
   const [studentslist, setstudentslist] = useState([]);
   const [index, setindex] = useState(1);
   const [testreport, settestreport] = useState();
+  const [time, settime] = useState()
 
   const navigate = useNavigate();
   const webcamRef = useRef(null);
@@ -27,7 +28,7 @@ export default function AllModules() {
   // const mediaRecorderRef = useRef(null);
 
   const handleStartClick = (submodule_id) => {
-    navigate("/questions?module_id="+search.get('module_id')+"&submodule_id="+submodule_id+"&index=1");
+    navigate("/devicecheckpage?moduleAssessmentid="+search.get('moduleAssessmentid')+"&module_id="+submodule_id+"&index=1&t="+time);
   };
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function AllModules() {
       try {
         let token = localStorage.getItem("COURSES_USER_TOKEN");
         setshow(true);
-        let url = BASE_URL + "/getusermoduleassessment/"+search.get('module_id');
+        let url = BASE_URL + "/getusermoduleassessment/"+search.get('moduleAssessmentid');
         const data = await fetch(url, {
           method: "GET",
           headers: {
@@ -45,6 +46,7 @@ export default function AllModules() {
         const response = await data.json();
         // console.log(response);
         setCompleted(response?.isTestCompleted);
+        settime(response?.data?.timelimit)
         // if (response.success) {
         //   setshow(false);
         // }
@@ -158,7 +160,7 @@ export default function AllModules() {
                       {/* <Link  to={`/hardwarecheck?module_id=${item._id}&index=1&t=${item?.timelimit}`} className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5">Start</Link> */}
 
                       <button
-                        onClick={()=>handleStartClick(item._id)}
+                        onClick={()=>handleStartClick(item?.module?._id)}
                         className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5"
                       >
                         Start

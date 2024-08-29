@@ -26,7 +26,7 @@ export default function Modules() {
   // const mediaRecorderRef = useRef(null);
 
   const handleStartClick = (id) => {
-    navigate("/allsubmodules?module_id="+id);
+    navigate("/allsubmodules?moduleAssessmentid="+id);
   };
 
   useEffect(() => {
