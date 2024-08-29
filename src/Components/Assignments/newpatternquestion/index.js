@@ -28,7 +28,14 @@ export default function NewQuestion() {
   const sourceRef = useRef(null);
   const audioIntervalRef = useRef(null);
   const [micblocked, setmicblocked] = useState()
-
+const [ProctoringScore,setProctoringScore]=useState({
+  "mic":0,
+  "webcam":0,
+  "TabSwitch":0,
+  "multiplePersonInFrame":0,
+  "PhoneinFrame":0,
+  "SoundCaptured":0
+})
   function enterFullScreen() {
     if (document.fullscreenEnabled) {
       const element = document.documentElement; // or any specific element
@@ -74,7 +81,7 @@ export default function NewQuestion() {
   // }, []);
   async function Fetchdata() {
     try {
-      let url = `${BASE_URL}/getassesmentquestion?moduleid=${params.get("module_id")}&moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${params.get("index")}`;
+      let url = `${BASE_URL}/getassesmentquestion?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${params.get("index")}`;
       setshow(true);
       const data = await fetch(url, {
         method: "GET",
@@ -87,7 +94,7 @@ export default function NewQuestion() {
         setdata(response);
         setLength(response?.totalQuestions);
       } else {
-        localStorage.removeItem('lastminute')
+        localStorage.removeItem(params.get('moduleAssessmentid'))
         // navigate("/submitted");
       }
     } catch (error) {
@@ -111,9 +118,10 @@ export default function NewQuestion() {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          questionID: data.question._id,
+          // questionId: data.question._id,
+          index:params.get('index'),
           moduleAssessmentid: params.get("moduleAssessmentid"),
-          moduleid: params.get("module_id"),
+          // moduleid: params.get("module_id"),
           answer: Selected
           
         }),
@@ -123,7 +131,7 @@ export default function NewQuestion() {
         setindex(index + 1);
         setshow(false);
         setSelected("");
-        navigate(`/question?module_id=${params.get("module_id")}&index=${index + 1}`);
+        navigate(`/question?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${index + 1}&t=${params.get('t')}`);
       }
     } catch (error) {
       console.log(error);
@@ -135,7 +143,7 @@ export default function NewQuestion() {
       Fetchdata();
       setSelected("");
       setindex(index + 1);
-      navigate(`/question?moduleid=${params.get("module_id")}&moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${index + 1}&t=${params.get('t')}`);
+      navigate(`/question?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${index + 1}&t=${params.get('t')}`);
     }
   }
 
@@ -143,13 +151,13 @@ export default function NewQuestion() {
     if (index >= 1) {
       Fetchdata();
       setindex(index - 1);
-      navigate(`/question?moduleid=${params.get("module_id")}&moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${index - 1}&t=${params.get('t')}`);
+      navigate(`/question?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${index - 1}&t=${params.get('t')}`);
     }
   }
 
   async function handleClick(status,remarks) {
     try {
-      let url = `${BASE_URL}/submitmodule`;
+      let url = `${BASE_URL}/submitmoduleassessment`;
       const data = await fetch(url, {
         method: "PUT",
         headers: {
@@ -157,11 +165,16 @@ export default function NewQuestion() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ moduleID: params.get("module_id"),status:status }),
+        body: JSON.stringify({ 
+          moduleAssessmentid: params.get("moduleAssessmentid"),
+          isSuspended:status,
+          ProctoringScore:ProctoringScore,
+          remarks:remarks
+        }),
       });
       const response = await data.json();
       if (response.success) {
-        localStorage.removeItem('lastminute')
+        localStorage.removeItem(params.get('moduleAssessmentid'))
         if(status){
           toast.error("Suspended!");
           window.location.replace('/suspended');
@@ -200,7 +213,7 @@ export default function NewQuestion() {
   const [warning, setwarning] = useState('')
   const [phoneDetected, setPhoneDetected] = useState(false);
   const [timer, setTimer] = useState(() => {
-    const storedTimer = localStorage.getItem('lastminute');
+    const storedTimer = localStorage.getItem(params.get('moduleAssessmentid'));
     return storedTimer ? parseInt(storedTimer) : parseInt(params.get('t'));
   });
   const maxVolumeRef = useRef(0);
@@ -209,7 +222,7 @@ let tempstate=true;
   const startTimer = () => {
   
     const timerInterval = setInterval(() => {
-      localStorage.setItem('lastminute',timer-1)
+      localStorage.setItem(params.get('moduleAssessmentid'),timer-1)
       setTimer(prevTimer => prevTimer - 1); // Decrease timer by 1 second
     }, 60000); // Update timer every second
 
@@ -218,147 +231,147 @@ let tempstate=true;
   };
 
   
-  // useEffect(() => {
-  //   // console.log("hello"+timer);
-  //  if(timer<=0){
-  //   openModal("Time's up")
-  //   localStorage.removeItem('lastminute')
-  //   handleClick(true,"Time's up");
-  //  }
-  // }, [timer])
+  useEffect(() => {
+    // console.log("hello"+timer);
+   if(timer<=0){
+    openModal("Time's up")
+    localStorage.removeItem(params.get('moduleAssessmentid'))
+    handleClick(true,"Time's up"); 
+   }
+  }, [timer])
   
 
-        // useEffect(() => {
-        //   if(tempstate){
-        //    tempstate=false;
-        //   //  console.log("hello");
-        //    startTimer()
+        useEffect(() => {
+          if(tempstate){
+           tempstate=false;
+          //  console.log("hello");
+           startTimer()
          
-        //   }
-        //    }, [])
+          }
+           }, [])
   
-  // useEffect(() => {
-  //   const handleVisibilityChange = () => {
-  //     if (document.hidden) {
-  //       document.title = "Don't change the tab";
-  //       if (peoplewarning > 0) {
-  //         openModal('You are not allowed to change the tab.')
-  //         // enterFullScreen();
-  //       }
-  //       setpeoplewarning(peoplewarning - 1);
-  //       audio.play().catch(error => console.error('Error playing audio:', error));
-  //     } else {
-  //       document.title = 'Online Test';
-  //       audio.pause();
-  //     }
-  //   };
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.title = "Don't change the tab";
+        if (peoplewarning > 0) {
+          openModal('You are not allowed to change the tab.')
+          // enterFullScreen();
+        }
+        setpeoplewarning(peoplewarning - 1);
+        audio.play().catch(error => console.error('Error playing audio:', error));
+      } else {
+        document.title = 'Online Test';
+        audio.pause();
+      }
+    };
 
-  //   document.addEventListener('visibilitychange', handleVisibilityChange);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
-  //   return () => {
-  //     document.removeEventListener('visibilitychange', handleVisibilityChange);
-  //   };
-  // }, [audio,peoplewarning]);
-
-
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [audio,peoplewarning]);
 
 
-  // useEffect(() => {
-  //   const loadModelAndDetect = async () => {
-  //     const model = await cocoSsd.load();
-  //     setInterval(() => detectFrame(videoRef.current, model), 100);
-  //   };
 
-  //   const startCamera = async () => {
-  //     try {
-  //       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-  //       videoRef.current.srcObject = stream;
-  //       videoRef.current.play().catch(err => console.error('Error playing video:', err));
-  //       setcameraActive(true)
-  //       loadModelAndDetect();
-  //       setcamerablocked(false)
-  //     } catch (err) {
-  //       // console.error('Error accessing camera:', err);
-  //       if (err.name === 'NotAllowedError' || err.name === 'NotFoundError') {
-  //         setcamerablocked(true)
-  //         openModal("You can't block the camera.Give access to camera manually")
+
+  useEffect(() => {
+    const loadModelAndDetect = async () => {
+      const model = await cocoSsd.load();
+      setInterval(() => detectFrame(videoRef.current, model), 100);
+    };
+
+    const startCamera = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        videoRef.current.srcObject = stream;
+        videoRef.current.play().catch(err => console.error('Error playing video:', err));
+        setcameraActive(true)
+        loadModelAndDetect();
+        setcamerablocked(false)
+      } catch (err) {
+        // console.error('Error accessing camera:', err);
+        if (err.name === 'NotAllowedError' || err.name === 'NotFoundError') {
+          setcamerablocked(true)
+          openModal("You can't block the camera.Give access to camera manually")
           
-  //       }
-  //     }
-  //   };
+        }
+      }
+    };
 
-  //   const detectFrame = async (video, model) => {
-  //     if (video && video.readyState === 4) {
-  //       const predictions = await model.detect(video);
-  //       drawBoundingBoxes(predictions);
-  //       checkForPhone(predictions);
-  //       countPersons(predictions);
-  //     }
-  //   };
+    const detectFrame = async (video, model) => {
+      if (video && video.readyState === 4) {
+        const predictions = await model.detect(video);
+        drawBoundingBoxes(predictions);
+        checkForPhone(predictions);
+        countPersons(predictions);
+      }
+    };
 
-  //   const drawBoundingBoxes = (predictions) => {
-  //     const ctx = canvasRef.current.getContext('2d');
-  //     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  //     predictions.forEach(prediction => {
-  //       if (prediction.class === 'person') {
-  //         const [x, y, width, height] = prediction.bbox;
-  //         ctx.strokeStyle = 'red';
-  //         ctx.lineWidth = 2;
-  //         ctx.strokeRect(x, y, width, height);
-  //         ctx.fillStyle = 'red';
-  //         ctx.fillText(
-  //           `${prediction.class} (${Math.round(prediction.score * 100)}%)`,
-  //           x,
-  //           y > 10 ? y - 5 : y + 10
-  //         );
-  //       }
-  //     });
-  //   };
+    const drawBoundingBoxes = (predictions) => {
+      const ctx = canvasRef.current.getContext('2d');
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      predictions.forEach(prediction => {
+        if (prediction.class === 'person') {
+          const [x, y, width, height] = prediction.bbox;
+          ctx.strokeStyle = 'red';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(x, y, width, height);
+          ctx.fillStyle = 'red';
+          ctx.fillText(
+            `${prediction.class} (${Math.round(prediction.score * 100)}%)`,
+            x,
+            y > 10 ? y - 5 : y + 10
+          );
+        }
+      });
+    };
 
-  //   const countPersons = (predictions) => {
-  //     const count = predictions.filter(prediction => prediction.class === 'person').length;
-  //     setPersonCount(count);
-  //   };
-  //   const checkForPhone = (predictions) => {
-  //     const phoneDetected = predictions.some(prediction => prediction.class === 'cell phone');
-  //     setPhoneDetected(phoneDetected);
-  //   };
+    const countPersons = (predictions) => {
+      const count = predictions.filter(prediction => prediction.class === 'person').length;
+      setPersonCount(count);
+    };
+    const checkForPhone = (predictions) => {
+      const phoneDetected = predictions.some(prediction => prediction.class === 'cell phone');
+      setPhoneDetected(phoneDetected);
+    };
 
-  //   startCamera();
+    startCamera();
 
-  //   return () => {
-  //     if (videoRef.current && videoRef.current.srcObject) {
-  //       videoRef.current.srcObject.getTracks().forEach(track => track.stop());
-  //     }
-  //   };
-  // }, []);
+    return () => {
+      if (videoRef.current && videoRef.current.srcObject) {
+        videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+      }
+    };
+  }, []);
 
-  // useEffect(() => {
-  //   if (personCount > 1) {
-  //     if(peoplewarning>=0 && cameraActive){
-  //       openModal(`Warning!! ${personCount} Person Detected in your camera frame.`)
-  //       setpeoplewarning((prev)=>prev-1);
-  //     }  
+  useEffect(() => {
+    if (personCount > 1) {
+      if(peoplewarning>=0 && cameraActive){
+        openModal(`Warning!! ${personCount} Person Detected in your camera frame.`)
+        setpeoplewarning((prev)=>prev-1);
+      }  
      
-  //   } else if (personCount === 0) {
-  //     if(peoplewarning>=0 && cameraActive){
-  //       openModal(`Warning!! Your face should be clearly visible infront of camera.`)
-  //       setpeoplewarning((prev)=>prev-1);
+    } else if (personCount === 0) {
+      if(peoplewarning>=0 && cameraActive){
+        openModal(`Warning!! Your face should be clearly visible infront of camera.`)
+        setpeoplewarning((prev)=>prev-1);
         
-  //     }      
-  //   }
+      }      
+    }
 
     
 
-  //   // enterFullScreen();
-  // }, [personCount]);
+    // enterFullScreen();
+  }, [personCount]);
 
-  // useEffect(() => {
-  //     if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked) {
-  //       handleClick(true,'Cheating attempt detected during the online test. Disciplinary action will follow.');
-  //     }
+  useEffect(() => {
+      if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked) {
+        handleClick(true,'Cheating attempt detected during the online test. Disciplinary action will follow.');
+      }
    
-  // }, [peoplewarning]);
+  }, [peoplewarning]);
 
   const handleAudioMonitoring = async () => {
     let temp=true;
@@ -378,7 +391,7 @@ let tempstate=true;
   
           // console.log("Current volume:", volume);
   
-          if (volume > 100 && temp) {
+          if (volume > 200 && temp) {
             openModal('You are not allowed to speak during the test.')
             temp=false;
             // console.log(peoplewarning-1);
@@ -412,17 +425,17 @@ let tempstate=true;
     }
   };
   
-  // useEffect(() => {
-  //   handleAudioMonitoring();
-  //   return () => clearInterval(audioIntervalRef.current);
-  // }, []);
+  useEffect(() => {
+    handleAudioMonitoring();
+    return () => clearInterval(audioIntervalRef.current);
+  }, []);
 
-  // useEffect(() => {
-  //   if (phoneDetected) {
-  //     openModal("Phones are not allowed during test")
-  //     setpeoplewarning((prev)=>prev-1);
-  //   }
-  // }, [phoneDetected]);
+  useEffect(() => {
+    if (phoneDetected) {
+      openModal("Phones are not allowed during test")
+      setpeoplewarning((prev)=>prev-1);
+    }
+  }, [phoneDetected]);
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal(data) {
@@ -438,22 +451,22 @@ let tempstate=true;
     setIsOpen(false);
     enterFullScreen()
   }
-  // useEffect(() => {
-  //   const handleFullScreenChange = (e) => {
-  //     if (!document.fullscreenElement) {
-  //       enterFullScreen()
-  //       setpeoplewarning((prev)=>prev-1);
-  //       openModal("You cant't exist full screen")
-  //     }
-  //   };
+  useEffect(() => {
+    const handleFullScreenChange = (e) => {
+      if (!document.fullscreenElement) {
+        enterFullScreen()
+        setpeoplewarning((prev)=>prev-1);
+        openModal("You cant't exist full screen")
+      }
+    };
 
-  //   document.addEventListener('fullscreenchange', handleFullScreenChange);
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
 
-  //   // Clean up the event listener on component unmount
-  //   return () => {
-  //     document.removeEventListener('fullscreenchange', handleFullScreenChange);
-  //   };
-  // }, []);
+    // Clean up the event listener on component unmount
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullScreenChange);
+    };
+  }, []);
   return (
     <>
     <Modal
@@ -517,10 +530,20 @@ let tempstate=true;
             />
           </div>
         </div>
+        
+        
         <div  className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5 font-pop">
+          <div className="flex flex-col max-h-full overflow-y-auto gap-2 question">
+          {Array.from({ length: Length }).map((_, ind) => (
+        <button onClick={()=>navigate(`/question?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${ind + 1}&t=${params.get('t')}`)} key={index} className="border shadow-sm p-1">
+          {ind+1}
+        </button>
+      ))}
+          </div>
+
           <div className="w-[60%] rounded-xl border h-full shadow-xl xsm:w-full">
             <div className="border-b-[2px] p-3 font-semibold">{data?.module}</div>
-            <div className="p-3 text-lg text-gray-700">Q:{params.get("index")}{data?.question?.question}</div>
+            <div className="p-3 text-lg text-gray-700">Q:{params.get("index")}{") "} {data?.question?.question}</div>
           </div>
           <div className="w-[35%] rounded-xl border min-h-full shadow-xl overflow-y-auto xsm:w-full xsm:min-h-[50vh] xsm:h-fit">
             <div className="border-b-[2px] p-3 font-semibold">Options</div>

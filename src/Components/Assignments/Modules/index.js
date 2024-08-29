@@ -22,11 +22,12 @@ export default function Modules() {
   const webcamRef = useRef(null);
   const [showWebcam, setShowWebcam] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const [time,settime]=useState()
   // const [recording, setRecording] = useState(false);
   // const mediaRecorderRef = useRef(null);
 
-  const handleStartClick = (id) => {
-    navigate("/allsubmodules?moduleAssessmentid="+id);
+  const handleStartClick = (id,time) => {
+    navigate("/devicecheckpage?moduleAssessmentid="+id+"&t="+time);
   };
 
   useEffect(() => {
@@ -42,6 +43,7 @@ export default function Modules() {
           },
         });
         const response = await data.json();
+        settime(response?.timelimit)
         // console.log(response);
         setCompleted(response?.isTestCompleted);
         // if (response.success) {
@@ -126,18 +128,17 @@ export default function Modules() {
             {modulesdata?.map((item, ind) => {
               return (
                 <>
-                  {item?.isModuleCompleted || item?.totalProgress > 0 ? (
+                  {item?.isAssessmentCompleted || item?.totalProgress>0 ? (
                     <div className="w-full p-5 border  flex justify-between items-center rounded-xl">
                       <div className="space-y-1 w-full">
                         <div className="flex justify-between w-full">
                           <div className="font-[500]">PAP Assessment</div>
-                          {(item?.isModuleCompleted && !item?.isSuspended) ||
-                          item?.totalProgress > 0 ? (
+                          {(item?.isAssessmentCompleted && !item?.isSuspended)  ? (
                             <div className="flex items-center space-x-2">
                               <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
                               <p>Completed</p>
                             </div>
-                          ) : item?.isSuspended ? (
+                          ) : item?.isSuspended || item?.totalProgress>0 ? (
                             <div className="flex items-center space-x-2">
                               <PiWarningOctagonBold className="bg-red-500 rounded-full text-2xl text-white" />
                               <p>Suspended</p>
@@ -173,12 +174,12 @@ export default function Modules() {
                       <div className="space-y-1 w-full">
                         <div className="flex justify-between w-full ">
                           <div className="font-[500]">PAP Assessment</div>
-                          {item?.isModuleCompleted || item?.totalProgress > 0 ? (
+                          {item?.isAssessmentCompleted  ? (
                             <div className="flex items-center gap-2">
                               <FaCheckCircle className="bg-[#1DBF73] rounded-full text-2xl text-white" />
                               <p>Completed</p>
                             </div>
-                          ) : item?.isSuspended ? (
+                          ) : item?.isSuspended || item?.totalProgress>0 ? (
                             <div className="flex items-center space-x-2">
                               <PiWarningOctagonBold className="bg-red-500 rounded-full text-2xl text-white" />
                               <p>Suspended</p>
@@ -210,7 +211,7 @@ export default function Modules() {
                       {/* <Link  to={`/hardwarecheck?module_id=${item._id}&index=1&t=${item?.timelimit}`} className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5">Start</Link> */}
 
                       <button
-                        onClick={()=>handleStartClick(item._id)}
+                        onClick={()=>handleStartClick(item._id,item?.timelimit)}
                         className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5"
                       >
                         Start

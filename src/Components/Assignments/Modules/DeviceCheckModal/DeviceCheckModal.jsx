@@ -139,7 +139,10 @@ const navigate=useNavigate()
       })
       const response=await data.json()
       if(response.success){
-        window.location.replace(`/question?module_id=${search.get("module_id")}&moduleAssessmentid=${search.get('moduleAssessmentid')}&index=${search.get("index")}&t=${search.get("t")}`)
+        window.location.replace(`/question?moduleAssessmentid=${search.get('moduleAssessmentid')}&index=1&t=${search.get("t")}`)
+      }
+      else{
+        toast.error(response.message)
       }
     } catch (error) {
       

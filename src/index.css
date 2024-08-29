@@ -5,7 +5,9 @@
 .phonenumbercountrycode input {
   outline: none;
 }
-
+.question::-webkit-scrollbar{
+  width: 0px;
+}
 @layer base {
   * {
     box-sizing: border-box;
