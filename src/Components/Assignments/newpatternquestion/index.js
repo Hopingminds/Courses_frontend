@@ -273,7 +273,7 @@ let tempstate=true;
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [audio,peoplewarning]);
+  }, [audio,peoplewarning,enablefullscreen]);
 
 
 
@@ -370,14 +370,14 @@ let tempstate=true;
     
 
     // enterFullScreen();
-  }, [personCount]);
+  }, [personCount,enablefullscreen]);
 
   useEffect(() => {
       if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked && enablefullscreen) {
         handleClick(true,'Cheating attempt detected during the online test. Disciplinary action will follow.');
       }
    
-  }, [peoplewarning]);
+  }, [peoplewarning,enablefullscreen]);
 
   const handleAudioMonitoring = async () => {
     let temp=true;
@@ -443,7 +443,7 @@ let tempstate=true;
       openModal("Phones are not allowed during test")
       setpeoplewarning((prev)=>prev-1);
     }
-  }, [phoneDetected]);
+  }, [phoneDetected,enablefullscreen]);
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal(data) {
@@ -474,7 +474,7 @@ let tempstate=true;
     return () => {
       document.removeEventListener('fullscreenchange', handleFullScreenChange);
     };
-  }, []);
+  }, [enablefullscreen]);
   return (
     <>
     <Modal
