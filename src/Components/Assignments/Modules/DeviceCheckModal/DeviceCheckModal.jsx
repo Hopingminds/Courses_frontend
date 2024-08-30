@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { TfiControlForward, TfiControlBackward } from "react-icons/tfi";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../../../Api/api";
@@ -163,39 +163,21 @@ const navigate=useNavigate()
         const response = await data.json();
         setProctoringdata(response?.data?.ProctoringFor)
         setshow(false)
-        // setshow(false)
+await startCamera()
+await startMicrophone()
       } catch (error) {
         console.log(error);
       }
     }
     Fetchdata();
+    
+
   }, []);
-  const handleNext = () => {
-    if (currentStep < 3) {
-      setCurrentStep((prevStep) => prevStep + 1);
-    }
-  };
 
-  const handlePrevious = () => {
-    if (currentStep > 1) {
-      setCurrentStep((prevStep) => prevStep - 1);
-    }
-  };
 
-  const handleRadioChange = (step, value) => {
-    setSelectedOptions((prevOptions) => ({
-      ...prevOptions,
-      [step]: value,
-    }));
-  };
-function handleVerify(key){
-  if(key==='mic'){
-    startMicrophone()
-  }
-  else if(key=='webcam'){
-    startCamera()
-  }
-}
+
+
+
   const radius = 16;
   const circumference = 2 * Math.PI * radius;
   const totalOptions = 3;

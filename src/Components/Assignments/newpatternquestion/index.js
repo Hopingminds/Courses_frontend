@@ -175,40 +175,40 @@ const [proctoringActive, setProctoringActive] = useState({
   }
 
   async function handleClick(status,remarks) {
-    try {
-      let url = `${BASE_URL}/submitmoduleassessment`;
-      const data = await fetch(url, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ 
-          moduleAssessmentid: params.get("moduleAssessmentid"),
-          isSuspended:status,
-          ProctoringScore:ProctoringScore,
-          remarks:remarks
-        }),
-      });
-      const response = await data.json();
-      if (response.success) {
-        localStorage.removeItem(params.get('moduleAssessmentid'))
-        if(status){
-          toast.error("Suspended!");
-          window.location.replace('/suspended');
-        }
-        else{
-          toast.success("Submitted Successfully");
-          window.location.replace('/submitted');
-        }
+    // try {
+    //   let url = `${BASE_URL}/submitmoduleassessment`;
+    //   const data = await fetch(url, {
+    //     method: "PUT",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //     body: JSON.stringify({ 
+    //       moduleAssessmentid: params.get("moduleAssessmentid"),
+    //       isSuspended:status,
+    //       ProctoringScore:ProctoringScore,
+    //       remarks:remarks
+    //     }),
+    //   });
+    //   const response = await data.json();
+    //   if (response.success) {
+    //     localStorage.removeItem(params.get('moduleAssessmentid'))
+    //     if(status){
+    //       toast.error("Suspended!");
+    //       window.location.replace('/suspended');
+    //     }
+    //     else{
+    //       toast.success("Submitted Successfully");
+    //       window.location.replace('/submitted');
+    //     }
      
-      } else {
-        toast.error(response.message);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    //   } else {
+    //     toast.error(response.message);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   function handlePrev() {
@@ -295,7 +295,7 @@ let tempstate=true;
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [audio,peoplewarning,enablefullscreen,proctoringActive]);
+  }, [audio,peoplewarning,enablefullscreen]);
 
 
 
@@ -375,7 +375,7 @@ let tempstate=true;
         videoRef.current.srcObject.getTracks().forEach(track => track.stop());
       }
     };
-  }, [enablefullscreen,proctoringActive]);
+  }, [enablefullscreen]);
 
   useEffect(() => {
    if(proctoringActive.multiplePersonInFrame){
@@ -389,22 +389,22 @@ let tempstate=true;
         setpeoplewarning((prev)=>prev-1);
       }  
      
-    } else if (personCount === 0) {
-      if(peoplewarning>=0 && cameraActive){
-        openModal(`Warning!! Your face should be clearly visible infront of camera.`)
-        setpeoplewarning((prev)=>prev-1);
-        setProctoringScore(prevState => ({
-          ...prevState,
-          multiplePersonInFrame: prevState.multiplePersonInFrame + 1, 
-        }));
-      }      
-    }
+    } 
    }
-
+   if (personCount === 0) {
+    if(peoplewarning>=0 && cameraActive){
+      openModal(`Warning!! Your face should be clearly visible infront of camera.`)
+      setpeoplewarning((prev)=>prev-1);
+      setProctoringScore(prevState => ({
+        ...prevState,
+        webcam: prevState.webcam + 1, 
+      }));
+    }      
+  }
     
 
     // enterFullScreen();
-  }, [personCount,enablefullscreen,proctoringActive]);
+  }, [personCount,enablefullscreen]);
 
   useEffect(() => {
       if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked && enablefullscreen) {
@@ -481,7 +481,7 @@ let tempstate=true;
       }));
       setpeoplewarning((prev)=>prev-1);
     }
-  }, [phoneDetected,enablefullscreen,proctoringActive]);
+  }, [phoneDetected,enablefullscreen]);
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
