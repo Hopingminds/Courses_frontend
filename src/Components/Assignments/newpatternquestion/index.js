@@ -156,40 +156,40 @@ const [ProctoringScore,setProctoringScore]=useState({
   }
 
   async function handleClick(status,remarks) {
-    // try {
-    //   let url = `${BASE_URL}/submitmoduleassessment`;
-    //   const data = await fetch(url, {
-    //     method: "PUT",
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${token}`,
-    //     },
-    //     body: JSON.stringify({ 
-    //       moduleAssessmentid: params.get("moduleAssessmentid"),
-    //       isSuspended:status,
-    //       ProctoringScore:ProctoringScore,
-    //       remarks:remarks
-    //     }),
-    //   });
-    //   const response = await data.json();
-    //   if (response.success) {
-    //     localStorage.removeItem(params.get('moduleAssessmentid'))
-    //     if(status){
-    //       toast.error("Suspended!");
-    //       // window.location.replace('/suspended');
-    //     }
-    //     else{
-    //       toast.success("Submitted Successfully");
-    //       window.location.replace('/submitted');
-    //     }
+    try {
+      let url = `${BASE_URL}/submitmoduleassessment`;
+      const data = await fetch(url, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ 
+          moduleAssessmentid: params.get("moduleAssessmentid"),
+          isSuspended:status,
+          ProctoringScore:ProctoringScore,
+          remarks:remarks
+        }),
+      });
+      const response = await data.json();
+      if (response.success) {
+        localStorage.removeItem(params.get('moduleAssessmentid'))
+        if(status){
+          toast.error("Suspended!");
+          window.location.replace('/suspended');
+        }
+        else{
+          toast.success("Submitted Successfully");
+          window.location.replace('/submitted');
+        }
      
-    //   } else {
-    //     toast.error(response.message);
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
+      } else {
+        toast.error(response.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function handlePrev() {
@@ -254,11 +254,12 @@ let tempstate=true;
     const handleVisibilityChange = () => {
       if (document.hidden) {
         document.title = "Don't change the tab";
-        if (peoplewarning > 0) {
+        if (peoplewarning > 0 && enablefullscreen) {
           openModal('You are not allowed to change the tab.')
+          setpeoplewarning((prev)=>prev-1);
+
           // enterFullScreen();
         }
-        setpeoplewarning((prev)=>prev+1);
         audio.play().catch(error => console.error('Error playing audio:', error));
       } else {
         document.title = 'Online Test';
@@ -288,7 +289,9 @@ let tempstate=true;
         videoRef.current.srcObject = stream;
         videoRef.current.play().catch(err => console.error('Error playing video:', err));
         setcameraActive(true)
+       if(enablefullscreen){
         loadModelAndDetect();
+       }
         setcamerablocked(false)
       } catch (err) {
         // console.error('Error accessing camera:', err);
@@ -347,6 +350,7 @@ let tempstate=true;
   }, []);
 
   useEffect(() => {
+   if(enablefullscreen){
     if (personCount > 1) {
       if(peoplewarning>=0 && cameraActive){
         openModal(`Warning!! ${personCount} Person Detected in your camera frame.`)
@@ -360,6 +364,7 @@ let tempstate=true;
         
       }      
     }
+   }
 
     
 
@@ -367,7 +372,7 @@ let tempstate=true;
   }, [personCount]);
 
   useEffect(() => {
-      if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked) {
+      if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked && enablefullscreen) {
         handleClick(true,'Cheating attempt detected during the online test. Disciplinary action will follow.');
       }
    
@@ -375,7 +380,7 @@ let tempstate=true;
 
   const handleAudioMonitoring = async () => {
     let temp=true;
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && enablefullscreen) {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
@@ -431,7 +436,7 @@ let tempstate=true;
   }, []);
 
   useEffect(() => {
-    if (phoneDetected) {
+    if (phoneDetected && enablefullscreen) {
       openModal("Phones are not allowed during test")
       setpeoplewarning((prev)=>prev-1);
     }
