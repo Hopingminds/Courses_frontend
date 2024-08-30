@@ -431,7 +431,7 @@ let tempstate=true;
   
           // console.log("Current volume:", volume);
   
-          if (volume > 100 && temp) {
+          if (volume > 200 && temp) {
             openModal('You are not allowed to speak during the test.')
             temp=false;
             // console.log(peoplewarning-1);
