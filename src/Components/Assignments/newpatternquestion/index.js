@@ -156,40 +156,40 @@ const [ProctoringScore,setProctoringScore]=useState({
   }
 
   async function handleClick(status,remarks) {
-    try {
-      let url = `${BASE_URL}/submitmoduleassessment`;
-      const data = await fetch(url, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ 
-          moduleAssessmentid: params.get("moduleAssessmentid"),
-          isSuspended:status,
-          ProctoringScore:ProctoringScore,
-          remarks:remarks
-        }),
-      });
-      const response = await data.json();
-      if (response.success) {
-        localStorage.removeItem(params.get('moduleAssessmentid'))
-        if(status){
-          toast.error("Suspended!");
-          window.location.replace('/suspended');
-        }
-        else{
-          toast.success("Submitted Successfully");
-          window.location.replace('/submitted');
-        }
+    // try {
+    //   let url = `${BASE_URL}/submitmoduleassessment`;
+    //   const data = await fetch(url, {
+    //     method: "PUT",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //     body: JSON.stringify({ 
+    //       moduleAssessmentid: params.get("moduleAssessmentid"),
+    //       isSuspended:status,
+    //       ProctoringScore:ProctoringScore,
+    //       remarks:remarks
+    //     }),
+    //   });
+    //   const response = await data.json();
+    //   if (response.success) {
+    //     localStorage.removeItem(params.get('moduleAssessmentid'))
+    //     if(status){
+    //       toast.error("Suspended!");
+    //       // window.location.replace('/suspended');
+    //     }
+    //     else{
+    //       toast.success("Submitted Successfully");
+    //       window.location.replace('/submitted');
+    //     }
      
-      } else {
-        toast.error(response.message);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    //   } else {
+    //     toast.error(response.message);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   function handlePrev() {
@@ -258,7 +258,7 @@ let tempstate=true;
           openModal('You are not allowed to change the tab.')
           // enterFullScreen();
         }
-        setpeoplewarning(peoplewarning - 1);
+        setpeoplewarning((prev)=>prev+1);
         audio.play().catch(error => console.error('Error playing audio:', error));
       } else {
         document.title = 'Online Test';
@@ -455,7 +455,7 @@ let tempstate=true;
     const handleFullScreenChange = (e) => {
       if (!document.fullscreenElement) {
         enterFullScreen()
-        setpeoplewarning((prev)=>prev-1);
+        // setpeoplewarning((prev)=>prev-1);
         openModal("You cant't exist full screen")
       }
     };
