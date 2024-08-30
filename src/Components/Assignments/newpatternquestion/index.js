@@ -57,6 +57,7 @@ const [ProctoringScore,setProctoringScore]=useState({
   }
   
 
+
   // useLayoutEffect(() => {
   //   enterFullScreen();
 
@@ -289,9 +290,9 @@ let tempstate=true;
         videoRef.current.srcObject = stream;
         videoRef.current.play().catch(err => console.error('Error playing video:', err));
         setcameraActive(true)
-       if(enablefullscreen){
+     
         loadModelAndDetect();
-       }
+      
         setcamerablocked(false)
       } catch (err) {
         // console.error('Error accessing camera:', err);
@@ -340,17 +341,18 @@ let tempstate=true;
       setPhoneDetected(phoneDetected);
     };
 
+   if(enablefullscreen){
     startCamera();
+   }
 
     return () => {
       if (videoRef.current && videoRef.current.srcObject) {
         videoRef.current.srcObject.getTracks().forEach(track => track.stop());
       }
     };
-  }, []);
+  }, [enablefullscreen]);
 
   useEffect(() => {
-   if(enablefullscreen){
     if (personCount > 1) {
       if(peoplewarning>=0 && cameraActive){
         openModal(`Warning!! ${personCount} Person Detected in your camera frame.`)
@@ -364,7 +366,6 @@ let tempstate=true;
         
       }      
     }
-   }
 
     
 
@@ -380,7 +381,7 @@ let tempstate=true;
 
   const handleAudioMonitoring = async () => {
     let temp=true;
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && enablefullscreen) {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia ) {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
@@ -431,12 +432,14 @@ let tempstate=true;
   };
   
   useEffect(() => {
+   if(enablefullscreen){
     handleAudioMonitoring();
+   }
     return () => clearInterval(audioIntervalRef.current);
-  }, []);
+  }, [enablefullscreen]);
 
   useEffect(() => {
-    if (phoneDetected && enablefullscreen) {
+    if (phoneDetected ) {
       openModal("Phones are not allowed during test")
       setpeoplewarning((prev)=>prev-1);
     }
