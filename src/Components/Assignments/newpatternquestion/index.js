@@ -36,6 +36,16 @@ const [ProctoringScore,setProctoringScore]=useState({
   "PhoneinFrame":0,
   "SoundCaptured":0
 })
+const [proctoringActive, setProctoringActive] = useState({
+  mic: false,
+  webcam: false,
+  TabSwitch: false,
+  multiplePersonInFrame: false,
+  PhoneinFrame: false,
+  SoundCaptured: false
+});
+
+
   function enterFullScreen() {
     if (document.fullscreenEnabled) {
       const element = document.documentElement; // or any specific element
@@ -92,6 +102,14 @@ const [ProctoringScore,setProctoringScore]=useState({
       const response = await data.json();
       if (response.success) {
         setshow(false);
+        const newProctoringActive = {};
+
+    Object.keys(response?.ModuleAssessment?.ProctoringFor).forEach(key => {
+      newProctoringActive[key] = response?.ModuleAssessment?.ProctoringFor[key].inUse;
+    });
+// console.log(newProctoringActive);
+
+    setProctoringActive(newProctoringActive);
         setdata(response);
         setLength(response?.totalQuestions);
       } else {
@@ -253,11 +271,15 @@ let tempstate=true;
   
   useEffect(() => {
     const handleVisibilityChange = () => {
-      if (document.hidden) {
+      if (document.hidden && proctoringActive.TabSwitch) {
         document.title = "Don't change the tab";
         if (peoplewarning > 0 && enablefullscreen) {
           openModal('You are not allowed to change the tab.')
           setpeoplewarning((prev)=>prev-1);
+          setProctoringScore(prevState => ({
+            ...prevState,
+            TabSwitch: prevState.TabSwitch + 1, 
+          }));
 
           // enterFullScreen();
         }
@@ -273,7 +295,7 @@ let tempstate=true;
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [audio,peoplewarning,enablefullscreen]);
+  }, [audio,peoplewarning,enablefullscreen,proctoringActive]);
 
 
 
@@ -299,7 +321,10 @@ let tempstate=true;
         if (err.name === 'NotAllowedError' || err.name === 'NotFoundError') {
           setcamerablocked(true)
           openModal("You can't block the camera.Give access to camera manually")
-          
+          setProctoringScore(prevState => ({
+            ...prevState,
+            webcam: prevState.webcam + 1, 
+          }));
         }
       }
     };
@@ -341,7 +366,7 @@ let tempstate=true;
       setPhoneDetected(phoneDetected);
     };
 
-   if(enablefullscreen){
+   if(enablefullscreen && proctoringActive.webcam){
     startCamera();
    }
 
@@ -350,12 +375,17 @@ let tempstate=true;
         videoRef.current.srcObject.getTracks().forEach(track => track.stop());
       }
     };
-  }, [enablefullscreen]);
+  }, [enablefullscreen,proctoringActive]);
 
   useEffect(() => {
+   if(proctoringActive.multiplePersonInFrame){
     if (personCount > 1) {
       if(peoplewarning>=0 && cameraActive){
         openModal(`Warning!! ${personCount} Person Detected in your camera frame.`)
+        setProctoringScore(prevState => ({
+          ...prevState,
+          multiplePersonInFrame: prevState.multiplePersonInFrame + 1, 
+        }));
         setpeoplewarning((prev)=>prev-1);
       }  
      
@@ -363,14 +393,18 @@ let tempstate=true;
       if(peoplewarning>=0 && cameraActive){
         openModal(`Warning!! Your face should be clearly visible infront of camera.`)
         setpeoplewarning((prev)=>prev-1);
-        
+        setProctoringScore(prevState => ({
+          ...prevState,
+          multiplePersonInFrame: prevState.multiplePersonInFrame + 1, 
+        }));
       }      
     }
+   }
 
     
 
     // enterFullScreen();
-  }, [personCount,enablefullscreen]);
+  }, [personCount,enablefullscreen,proctoringActive]);
 
   useEffect(() => {
       if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked && enablefullscreen) {
@@ -397,7 +431,7 @@ let tempstate=true;
   
           // console.log("Current volume:", volume);
   
-          if (volume > 200 && temp) {
+          if (volume > 100 && temp) {
             openModal('You are not allowed to speak during the test.')
             temp=false;
             // console.log(peoplewarning-1);
@@ -432,18 +466,23 @@ let tempstate=true;
   };
   
   useEffect(() => {
-   if(enablefullscreen){
+   if(enablefullscreen && proctoringActive.mic){
     handleAudioMonitoring();
    }
     return () => clearInterval(audioIntervalRef.current);
-  }, [enablefullscreen]);
+  }, [enablefullscreen,proctoringActive]);
 
   useEffect(() => {
-    if (phoneDetected ) {
+    if (phoneDetected && proctoringActive.PhoneinFrame) {
       openModal("Phones are not allowed during test")
+      setProctoringScore(prevState => ({
+        ...prevState,
+        PhoneinFrame: prevState.PhoneinFrame + 1, 
+      }));
       setpeoplewarning((prev)=>prev-1);
     }
-  }, [phoneDetected,enablefullscreen]);
+  }, [phoneDetected,enablefullscreen,proctoringActive]);
+
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal(data) {
