@@ -84,6 +84,7 @@ import MediaCheck from '../Components/Assignments/Hardwarecheck/index.js'
 import DeviceCheckPage from '../Components/Assignments/Modules/DeviceCheckModal/DeviceCheckModal.jsx'
 import AllModules from '../Components/Assignments/Submodules/index.js'
 import NewQuestion from '../Components/Assignments/newpatternquestion/index.js'
+import Normalassessment from '../Components/Assignments/normalassessment/index.js'
 
 function Locationpath(){
     const location=useLocation()
@@ -109,7 +110,7 @@ const Router = () => {
         else if ((pathname.includes('hrdashboard') || pathname.includes('managejobs') || pathname.includes('jobpreview') || pathname.includes('postjob'))) {
             return <HRNavbar />
         }
-        else if ((pathname.includes('teacherpanel')) || pathname.includes('questions') || pathname.includes('question')  || pathname.includes('assessmentquestions') || pathname.includes('prassessmentquestions')) {
+        else if ((pathname.includes('teacherpanel')) || pathname.includes('questions') || pathname.includes('nmquestion') || pathname.includes('question')  || pathname.includes('assessmentquestions') || pathname.includes('prassessmentquestions')) {
             return <></>
         }
         else {
@@ -181,6 +182,7 @@ const Router = () => {
                 <Route path='/modules' element={<Modules />} />
                 <Route path='/questions' element={<Question />} />
                 <Route path='/question' element={<NewQuestion />} />
+                <Route path='/nmquestion' element={<Normalassessment />} />
                 <Route path='/assessmentquestions' element={<AssessmentQuestion />} />
                 <Route path='/prassessmentquestions' element={<ProtectedAssessmentQuestion />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
@@ -219,7 +221,7 @@ const Router = () => {
                 </Route>
                 {/* <Route path='devicecheckpage' element={<DeviceCheckPage/>} /> */}
             </Routes>
-            {pathname.includes('college') || pathname.includes('teacherpanel') || pathname.includes('questions') || pathname.includes('question')  || pathname.includes('assessmentquestions') || pathname.includes('prassessmentquestions')? <></> : <Footer />}
+            {pathname.includes('college') ||  pathname.includes('nmquestion') || pathname.includes('teacherpanel') || pathname.includes('questions') || pathname.includes('question')  || pathname.includes('assessmentquestions') || pathname.includes('prassessmentquestions')? <></> : <Footer />}
 
         </BrowserRouter >
     </AuthProvider>

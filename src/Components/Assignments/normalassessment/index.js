@@ -8,7 +8,7 @@ import Spinner from "../../Spinner";
 import toast, { Toaster } from "react-hot-toast";
 import Modal from 'react-modal';
 import { ImCross } from "react-icons/im";
-export default function NewQuestion() {
+export default function Normalassessment() {
   const [enablefullscreen, setenablefullscreen] = useState(false)
   const [Selected, setSelected] = useState();
   const [data, setdata] = useState([]);
@@ -103,14 +103,7 @@ const [proctoringActive, setProctoringActive] = useState({
       const response = await data.json();
       if (response.success) {
         setshow(false);
-        const newProctoringActive = {};
-
-    Object.keys(response?.ModuleAssessment?.ProctoringFor).forEach(key => {
-      newProctoringActive[key] = response?.ModuleAssessment?.ProctoringFor[key].inUse;
-    });
-// console.log(newProctoringActive);
-
-    setProctoringActive(newProctoringActive);
+        
         setdata(response);
         setLength(response?.totalQuestions);
       } else {
@@ -125,70 +118,7 @@ const [proctoringActive, setProctoringActive] = useState({
   useEffect(() => {
     Fetchdata();
   }, [params.get("index")]);
-  const loadModelAndDetect = async () => {
-    const model = await cocoSsd.load();
-    setInterval(() => detectFrame(videoRef.current, model), 100);
-  };
-
-  const startCamera = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      videoRef.current.srcObject = stream;
-      
-      videoRef.current.play().catch(err => console.error('Error playing video:', err));
-      setcameraActive(true)
-      loadModelAndDetect();
-    
-      setcamerablocked(false)
-    } catch (err) {
-      // console.error('Error accessing camera:', err);
-      if (err.name === 'NotAllowedError' || err.name === 'NotFoundError') {
-        setcamerablocked(true)
-        openModal("You can't block the camera.Give access to camera manually")
-        setProctoringScore(prevState => ({
-          ...prevState,
-          webcam: prevState.webcam + 1, 
-        }));
-      }
-    }
-  };
-
-  const detectFrame = async (video, model) => {
-    if (video && video.readyState === 4) {
-      const predictions = await model.detect(video);
-      drawBoundingBoxes(predictions);
-      checkForPhone(predictions);
-      countPersons(predictions);
-    }
-  };
-
-  const drawBoundingBoxes = (predictions) => {
-    const ctx = canvasRef.current.getContext('2d');
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    predictions.forEach(prediction => {
-      if (prediction.class === 'person') {
-        const [x, y, width, height] = prediction.bbox;
-        // ctx.strokeStyle = 'red';
-        ctx.lineWidth = 0;
-        ctx.strokeRect(x, y, width, height);
-        // ctx.fillStyle = 'red';
-        ctx.fillText(
-          `${prediction.class} (${Math.round(prediction.score * 100)}%)`,
-          x,
-          y > 10 ? y - 5 : y + 10
-        );
-      }
-    });
-  };
-
-  const countPersons = (predictions) => {
-    const count = predictions.filter(prediction => prediction.class === 'person').length;
-    setPersonCount(count);
-  };
-  const checkForPhone = (predictions) => {
-    const phoneDetected = predictions.some(prediction => prediction.class === 'cell phone');
-    setPhoneDetected(phoneDetected);
-  };
+ 
 
 
   const handleSubmit = async () => {
@@ -216,7 +146,7 @@ const [proctoringActive, setProctoringActive] = useState({
         setindex(index + 1);
         setshow(false);
         setSelected("");
-        navigate(`/question?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${index + 1}&t=${params.get('t')}`);
+        navigate(`/nmquestion?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${index + 1}&t=${params.get('t')}`);
       }
     } catch (error) {
       console.log(error);
@@ -229,7 +159,7 @@ const [proctoringActive, setProctoringActive] = useState({
       
       setSelected("");
       setindex(index + 1);
-      navigate(`/question?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${index + 1}&t=${params.get('t')}`);
+      navigate(`/nmquestion?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${index + 1}&t=${params.get('t')}`);
     }
   }
 
@@ -237,7 +167,7 @@ const [proctoringActive, setProctoringActive] = useState({
     if (index >= 1) {
       Fetchdata();
       setindex(index - 1);
-      navigate(`/question?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${index - 1}&t=${params.get('t')}`);
+      navigate(`/nmquestion?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${index - 1}&t=${params.get('t')}`);
     }
   }
 
@@ -361,131 +291,14 @@ let tempstate=true;
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [audio,peoplewarning,enablefullscreen]);
+  }, [enablefullscreen]);
 
 
 
 
-  useEffect(() => {
-   
 
-   if(enablefullscreen && proctoringActive.webcam){
-    startCamera();
-   }
 
-    return () => {
-      if (videoRef.current && videoRef.current.srcObject) {
-        videoRef.current.srcObject.getTracks().forEach(track => track.stop());
-      }
-    };
-  }, [enablefullscreen,proctoringActive.webcam]);
 
-  useEffect(() => {
-   if(proctoringActive.multiplePersonInFrame){
-    if (personCount > 1) {
-      if(peoplewarning>=0 && cameraActive && showalert){
-        openModal(`Warning!! ${personCount} Person Detected in your camera frame.`)
-        setProctoringScore(prevState => ({
-          ...prevState,
-          multiplePersonInFrame: prevState.multiplePersonInFrame + 1, 
-        }));
-        setpeoplewarning((prev)=>prev-1);
-      }  
-     
-    } 
-   }
-   if (personCount === 0 && cameraActive && proctoringActive.webcam ) {
-    // openModal("i m in")
-    if(peoplewarning>=0  && showalert){
-      openModal(`Warning!! Your face should be clearly visible infront of camera.`)
-      setpeoplewarning((prev)=>prev-1);
-      setProctoringScore(prevState => ({
-        ...prevState,
-        webcam: prevState.webcam + 1, 
-      }));
-    }      
-  }
-    
-
-    // enterFullScreen();
-  }, [personCount,enablefullscreen,showalert]);
-
-  useEffect(() => {
-      if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked && enablefullscreen) {
-        handleClick(true,'Cheating attempt detected during the online test. Disciplinary action will follow.');
-      }
-   
-  }, [peoplewarning,enablefullscreen]);
-
-  const handleAudioMonitoring = async () => {
-    let temp=true;
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia ) {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
-        analyserRef.current = audioContextRef.current.createAnalyser();
-        analyserRef.current.fftSize = 256;
-        sourceRef.current = audioContextRef.current.createMediaStreamSource(stream);
-        sourceRef.current.connect(analyserRef.current);
-        dataArrayRef.current = new Uint8Array(analyserRef.current.frequencyBinCount);
-        
-        const detectVolume = () => {
-          analyserRef.current.getByteFrequencyData(dataArrayRef.current);
-          const volume = dataArrayRef.current[0];
-  
-          // console.log("Current volume:", volume);
-  
-          if (volume > 150 && temp && showalert) {
-            openModal('You are not allowed to speak during the test.')
-            temp=false;
-            // console.log(peoplewarning-1);
-            
-            setpeoplewarning((prev)=>prev-1);
-  
-            // Stop the audio stream immediately
-            stream.getTracks().forEach(track => track.stop());
-            clearInterval(audioIntervalRef.current);
-  
-            // Reset the volume to 0 instantly
-            dataArrayRef.current[0] = 0;
-  
-            // Restart audio monitoring after 2 seconds
-            setTimeout(() => {
-              handleAudioMonitoring();
-            }, 2000);
-          }
-        };
-  
-        audioIntervalRef.current = setInterval(detectVolume, 1000);
-        setmicblocked(false)
-      } catch (err) {
-        if (err.name === 'NotAllowedError' || err.name === 'NotFoundError') {
-          // setcamerablocked(true)
-          setmicblocked(true)
-          openModal("You can't block the microphone.Give access to microphone manually")
-          
-        }
-      }
-    }
-  };
-  
-  useEffect(() => {
-   if(enablefullscreen && proctoringActive.mic && showalert){
-    handleAudioMonitoring();
-   }
-    return () => clearInterval(audioIntervalRef.current);
-  }, [enablefullscreen,proctoringActive]);
-
-  useEffect(() => {
-    if (phoneDetected && proctoringActive.PhoneinFrame && showalert) {
-      openModal("Phones are not allowed during test")
-      setProctoringScore(prevState => ({
-        ...prevState,
-        PhoneinFrame: prevState.PhoneinFrame + 1, 
-      }));
-      setpeoplewarning((prev)=>prev-1);
-    }
-  }, [phoneDetected,enablefullscreen]);
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -588,7 +401,7 @@ let tempstate=true;
         <div  className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5 font-pop">
           <div className="flex flex-col max-h-full overflow-y-auto gap-2 question">
           {Array.from({ length: Length }).map((_, ind) => (
-        <button onClick={()=>navigate(`/question?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${ind + 1}&t=${params.get('t')}`)} key={index} className="border shadow-sm p-1">
+        <button onClick={()=>navigate(`/nmquestion?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${ind + 1}&t=${params.get('t')}`)} key={index} className="border shadow-sm p-1">
           {ind+1}
         </button>
       ))}

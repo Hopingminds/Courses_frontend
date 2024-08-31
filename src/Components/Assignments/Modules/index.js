@@ -8,6 +8,7 @@ import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
 import { Link, useNavigate } from "react-router-dom";
 import DeviceCheckModal from "./DeviceCheckModal/DeviceCheckModal";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Modules() {
   const modulesContainerRef = useRef(null);
@@ -25,9 +26,39 @@ export default function Modules() {
   const [time,settime]=useState()
   // const [recording, setRecording] = useState(false);
   // const mediaRecorderRef = useRef(null);
+  async function handleContinue(moduleAssessmentid,time){
+    let token=localStorage.getItem('COURSES_USER_TOKEN')
+    try {
+      const data=await fetch(BASE_URL+'/startmoduleassessment',{
+        method:'POST',
+        headers:{
+          'Authorization':`Bearer ${token}`,
+          'Content-type':'application/json',
 
-  const handleStartClick = (id,time) => {
-    navigate("/devicecheckpage?moduleAssessmentid="+id+"&t="+time);
+        },
+        body:JSON.stringify({
+          moduleAssessmentid:moduleAssessmentid
+        })
+      })
+      const response=await data.json()
+      if(response.success){
+        window.location.replace("/nmquestion?moduleAssessmentid="+moduleAssessmentid+"&t="+time+"&index=1");
+      }
+      else{
+        toast.error(response.message)
+      }
+    } catch (error) {
+      
+    }
+  }
+  const handleStartClick = (id,time,type) => {
+    if(type){
+      navigate("/devicecheckpage?moduleAssessmentid="+id+"&t="+time);
+    }
+    else{
+      handleContinue(id,time)
+    }
+
   };
 
   useEffect(() => {
@@ -63,6 +94,7 @@ export default function Modules() {
 
   return (
     <>
+    <Toaster/>
       <div className="w-full flex justify-between px-[5%] py-5 xsm:flex-col font-pop">
         {/* <div className="w-[35%] h-[85vh] bg-[#d8f7e8] p-[2%] space-y-2 rounded-xl xsm:w-full xsm:h-fit xsm:px-[3%] xsm:py-[5%]">
           <div className="text-3xl font-bold text-center">
@@ -211,7 +243,7 @@ export default function Modules() {
                       {/* <Link  to={`/hardwarecheck?module_id=${item._id}&index=1&t=${item?.timelimit}`} className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5">Start</Link> */}
 
                       <button
-                        onClick={()=>handleStartClick(item._id,item?.timelimit)}
+                        onClick={()=>handleStartClick(item._id,item?.timelimit,item?.isProtected)}
                         className="bg-[#1DBF73] h-fit text-white px-4 py-1 rounded absolute bottom-5 right-5"
                       >
                         Start
