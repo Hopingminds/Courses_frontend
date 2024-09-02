@@ -127,6 +127,7 @@ const [proctoringActive, setProctoringActive] = useState({
   }, [params.get("index")]);
   const loadModelAndDetect = async () => {
     const model = await cocoSsd.load();
+    setcameraActive(true)
     setInterval(() => detectFrame(videoRef.current, model), 100);
   };
 
@@ -136,7 +137,7 @@ const [proctoringActive, setProctoringActive] = useState({
       videoRef.current.srcObject = stream;
       
       videoRef.current.play().catch(err => console.error('Error playing video:', err));
-      setcameraActive(true)
+      
       loadModelAndDetect();
     
       setcamerablocked(false)
@@ -242,40 +243,40 @@ const [proctoringActive, setProctoringActive] = useState({
   }
 
   async function handleClick(status,remarks) {
-    try {
-      let url = `${BASE_URL}/submitmoduleassessment`;
-      const data = await fetch(url, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ 
-          moduleAssessmentid: params.get("moduleAssessmentid"),
-          isSuspended:status,
-          ProctoringScore:ProctoringScore,
-          remarks:remarks
-        }),
-      });
-      const response = await data.json();
-      if (response.success) {
-        localStorage.removeItem(params.get('moduleAssessmentid'))
-        if(status){
-          toast.error("Suspended!");
-          window.location.replace('/suspended');
-        }
-        else{
-          toast.success("Submitted Successfully");
-          window.location.replace('/submitted');
-        }
+    // try {
+    //   let url = `${BASE_URL}/submitmoduleassessment`;
+    //   const data = await fetch(url, {
+    //     method: "PUT",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //     body: JSON.stringify({ 
+    //       moduleAssessmentid: params.get("moduleAssessmentid"),
+    //       isSuspended:status,
+    //       ProctoringScore:ProctoringScore,
+    //       remarks:remarks
+    //     }),
+    //   });
+    //   const response = await data.json();
+    //   if (response.success) {
+    //     localStorage.removeItem(params.get('moduleAssessmentid'))
+    //     if(status){
+    //       toast.error("Suspended!");
+    //       window.location.replace('/suspended');
+    //     }
+    //     else{
+    //       toast.success("Submitted Successfully");
+    //       window.location.replace('/submitted');
+    //     }
      
-      } else {
-        toast.error(response.message);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    //   } else {
+    //     toast.error(response.message);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   function handlePrev() {
@@ -291,7 +292,7 @@ const [proctoringActive, setProctoringActive] = useState({
   const [audio] = useState(new Audio('/danger.mp3'));
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [escapePressed, setEscapePressed] = useState(false);
-  const [personCount, setPersonCount] = useState(0);
+  const [personCount, setPersonCount] = useState(-1);
   const [cameraActive, setcameraActive] = useState(false)
   const contentRef = useRef(null);
   const videoRef = useRef(null);
@@ -399,6 +400,7 @@ let tempstate=true;
     if(peoplewarning>=0  && showalert){
       openModal(`Warning!! Your face should be clearly visible infront of camera.`)
       setpeoplewarning((prev)=>prev-1);
+      setPersonCount(-1)
       setProctoringScore(prevState => ({
         ...prevState,
         webcam: prevState.webcam + 1, 
@@ -408,7 +410,7 @@ let tempstate=true;
     
 
     // enterFullScreen();
-  }, [personCount,enablefullscreen,showalert]);
+  }, [personCount,enablefullscreen,showalert,cameraActive]);
 
   useEffect(() => {
       if (peoplewarning <0 && cameraActive && !camerablocked && !micblocked && enablefullscreen) {
