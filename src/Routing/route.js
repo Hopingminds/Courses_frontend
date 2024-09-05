@@ -85,6 +85,7 @@ import DeviceCheckPage from '../Components/Assignments/Modules/DeviceCheckModal/
 import AllModules from '../Components/Assignments/Submodules/index.js'
 import NewQuestion from '../Components/Assignments/newpatternquestion/index.js'
 import Normalassessment from '../Components/Assignments/normalassessment/index.js'
+import LoginNSDC from '../Components/NSDCTesting/LoginNSDC.jsx'
 
 function Locationpath(){
     const location=useLocation()
@@ -198,6 +199,7 @@ const Router = () => {
                 <Route path='/error' element={<PaymentFailed />} />
                 <Route path='/stream/:slug' element={<LiveStream />} />
                 <Route path='/allsubmodules' element={<AllModules />} />
+                <Route path="/nsdctest" element={<LoginNSDC />} />
 
 
                 <Route path="/teacherlogin" element={<Loginpage/>}/>
