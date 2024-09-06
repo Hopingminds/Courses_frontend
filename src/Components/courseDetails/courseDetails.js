@@ -38,6 +38,10 @@ export default function CDDetails() {
   const [expired, setexpired] = useState();
   const [sk, setsk] = useState("");
   const [dur, setdur] = useState();
+  const playerRef = useRef(null);
+  const playerRef2 = useRef(null);
+  const [currentDuration, setCurrentDuration] = useState(0);
+  const [playing, setPlaying] = useState(false);
   const params = useParams();
   let totalduration = 0;
   let finaldur = 0;
@@ -293,12 +297,24 @@ export default function CDDetails() {
   };
 
   const handleToggleNotes = async (pdf, videourl) => {
-    // console.log(pdfurl);
-    setshowSmallvideo(true);
-    // seturl(pdfurl)
-    setpdfurl(pdf);
-    setsmallVideourl(videourl);
-  };
+    try {
+      if(playerRef.current){
+        console.log(playerRef.current);
+        
+      }
+      // Show the small video player
+      setshowSmallvideo(true);
+  
+      // Set the URLs for PDF and video
+      setpdfurl(pdf);
+      setsmallVideourl(videourl);
+  
+  // console.log(playerRef.current);
+  
+    } catch (error) {
+      console.error("An error occurred while toggling notes:", error);
+    }
+   };
 
   function handleProject(project) {
     setactiveindex(project?.title);
@@ -325,6 +341,15 @@ export default function CDDetails() {
       // handleVideoEnded();
     }
   }
+  const handleSmallVideoReady = () => {
+    if (playerRef2.current) {
+      // const currentTime = playerRef.current.getCurrentTime();
+      playerRef2.current.seekTo(50, 'seconds');
+      // playerRef2.current.play();
+    } else {
+      console.error("Player references are not available.");
+    }
+  };
   function Timeconverter(totalMinutes) {
     const minutes = parseInt(totalMinutes, 10);
     if (isNaN(minutes)) {
@@ -432,6 +457,7 @@ export default function CDDetails() {
                   onContextMenu={handleContextMenu}
                   height="200px"
                   width="250px"
+                  ref={playerRef2}
                   borderRadius="14px"
                   className="shadow-2xl rounded-xl"
                   style={{ borderRadius: "14px !important" }}
@@ -439,6 +465,7 @@ export default function CDDetails() {
                   controls={true}
                   autoPlay={true}
                   url={smallVideourl}
+                  onReady={handleSmallVideoReady}
                   onDuration={handleDuration}
                   onEnded={handleVideoEnded}
                   config={{
@@ -464,98 +491,6 @@ export default function CDDetails() {
             <div className="flex gap-20 xsm:gap-0">
               <div className="CCD-content flex gap-5 pt-10">
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
-                  
-                  {/* old code without Banner  */}
-                  {/* <div
-                    className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
-                    style={{ borderRadius: "14px !important" }}
-                  >
-                    {showSmallvideo || url?.toString().endsWith("pdf") ? (
-                      //  <div className="relative">
-                      <iframe src={pdfurl} width="100%" height="100%" />
-                    ) : //  <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
-                    //  </div>
-                    {showBanner &&
-                      !showLive &&
-                      !showend &&
-                      !expired &&
-                      url &&
-                      url.toString().endsWith("mp4") ? (
-                        <div
-                          className="flex flex-col justify-center items-center w-full 2xl:h-[60vh] xl:h-[60vh] lg:h-[60vh] xsm:h-[30vh] sm:h-[30vh] rounded-xl"
-                          style={{
-                            backgroundImage: `url(${imageBanner})`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                          }}
-                        >
-                          <FaPlay
-                            className="absolute text-green-400 p-4 sm:p-3 lg:p-4 xl:p-5 2xl:p-6 rounded-2xl shadow-xl cursor-pointer animate-customPulse"
-                            style={{
-                              backgroundColor: "rgba(255, 255, 255, 0.7)",
-                            }}
-                            onClick={() => setShowBanner(false)}
-                            size={90}
-                          />
-                        </div>
-                      ) : showLive ? (
-                        <div className="text-center flex flex-col">
-                          <p>Live Class Will Start On {starttime}.</p>
-                          <p className="font-semibold cursor-pointer">
-                            <Link to={`/stream/${params.slug}`} target="_blank">
-                              GO TO LIVE CLASS
-                            </Link>
-                          </p>
-                        </div>
-                      ) : showend ? (
-                        <div className="text-center flex flex-col">
-                          <p>
-                            Live Class is going on and it will end on {endtime}.
-                          </p>
-                          <p className="font-semibold cursor-pointer">
-                            <Link to={`/stream/${params.slug}`} target="_blank">
-                              GO TO LIVE CLASS
-                            </Link>
-                          </p>
-                        </div>
-                      ) : expired ? (
-                        <div className="text-center flex flex-col">
-                          <p>
-                            Live class is over and you will get recording as soon
-                            as possible.
-                          </p>
-                        </div>
-                      ) : url?.toString().endsWith("mp3") ? (
-                        <iframe src={url} width="100%" height="100%" />
-                      ) : !showLive && !showend && url?.toString() === "" ? (
-                        <div className="text-center flex flex-col">
-                          <p className="font-semibold">Coming soon</p>
-                        </div>
-                      ) : (
-                        <ReactPlayer
-                          onContextMenu={handleContextMenu}
-                          height="auto"
-                          width="100%"
-                          borderRadius="14px"
-                          className="shadow-2xl rounded-[18px]"
-                          style={{ borderRadius: "14px !important" }}
-                          playing={!showBanner}
-                          controls={true}
-                          autoPlay={!showBanner}
-                          url={url}
-                          onDuration={handleDuration}
-                          onEnded={handleVideoEnded}
-                          config={{
-                            file: {
-                              attributes: {
-                                controlsList: "nodownload",
-                              },
-                            },
-                          }}
-                        />
-                      )}
-                  <div className="font-bold xsm:h-auto lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] flex justify-center xsm:py-5 xsm:mb-5 xsm:w-full uppercase text-green-500">{activeindex}</div>
-                  </div> */}
 
                   <div
                     className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
@@ -624,6 +559,7 @@ export default function CDDetails() {
                         onContextMenu={handleContextMenu}
                         height="auto"
                         width="100%"
+                        ref={playerRef}
                         borderRadius="14px"
                         className="shadow-2xl rounded-[18px]"
                         style={{ borderRadius: "14px !important" }}
