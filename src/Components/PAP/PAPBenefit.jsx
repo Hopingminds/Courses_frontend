@@ -15,7 +15,7 @@ const PAPBenefit = () => {
   };
 
   return (
-    <div className="pap_curve_bg  h-[110vh]  w-full grid xsm:h-[15%] md:h-[60%] xsm:hidden">
+    <div className="pap_curve_bg  h-[110vh]  w-full grid xsm:h-[15%] md:h-[60%] xsm:hidden sm:hidden">
       <div className="flex h-[90vh] justify-around mt-[15vh] place-items-center   xsm:h-[60%] xsm:justify-center xsm:gap-1 xsm:pr-4 md:h-[70%] md:justify-between md:pr-20 md:pl-4">
         <div className=" h-[80vh] py-[10vh] relative xsm:h-[45vh] md:h-[60vh]">
           <img

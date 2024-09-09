@@ -218,8 +218,8 @@ const LiveStream = () => {
         <LiveVideoPlayer liveClassKey={liveClassKey} />
       </div>
       <div className="w-[25%] h-max ">
-        <div id="chat-container" className="w-full h-full border border-gray-100">
-          <div className="bg-white  rounded-lg max-w-lg w-full flex flex-col justify-between">
+        <div id="chat-container" className="w-full h-full">
+          <div className="bg-[#F9F9F9]  rounded-lg max-w-lg w-full flex flex-col justify-between">
             <div className="border-t bg-white">
               <div
                 className="bg-[#E2FFF1] py-3 md:py-2 px-5 flex justify-between items-center cursor-pointer"

@@ -1,9 +1,15 @@
 import ProgressBar from "@ramonak/react-progress-bar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import BatchModal from "./Batchmodal";
+import { useState } from "react";
+import { BASE_URL } from "../../Api/api";
 // import { useMediaQuery } from 'react-responsive';
 
-export default function Mycourse({ courses }) {
+export default function Mycourse({ courses,fetchUserData }) {
+    const [Data, setData] = useState([])
+
     // console.log(courses && courses[5]?.course?.courseCategory);
+    const navigate=useNavigate()
     function formatDate(dateString) {
         const dateObj = new Date(dateString);
         
@@ -27,7 +33,40 @@ export default function Mycourse({ courses }) {
     
         return `${day} ${month} ${year} ${time}`;
     }
+    const [isModalOpen, setIsModalOpen] = useState(false);
+function closeModal(){
+setIsModalOpen(false)
+}
+async function openModal(val){
+setIsModalOpen(true)
+try {
+    const data=await fetch(BASE_URL+'/getUpcomingBatchesForCourse/'+val?.course?._id)
+    const response=await data.json()
+if(response.success){
+setData(response?.batches)
+}
+} catch (error) {
+    
+}
+}
+
+    function handleNavigation(val){
+if(!val?.BatchId){
+openModal(val)
+}
+else{
+navigate(`/course/${val?.course?.slug}`)
+}
+    }
     return (<>
+    <BatchModal
+    isOpen={isModalOpen}
+    onRequestClose={closeModal}
+    openModal={openModal}
+    Data={Data}
+    fetchUserData={fetchUserData}
+    />
+    
         {!courses?.length ? <div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Purchased</div></div> : ''}
 
         <div className="my-[5%] mx-[5%] grid grid-cols-3 gap-16 xsm:my-3 xsm:gap-4 md:gap-10">
@@ -40,7 +79,7 @@ export default function Mycourse({ courses }) {
                     })
                     return (
                         new Date(val?.course?.courseStartDate)<new Date() ?
-                        <Link to={val?.course?.courseCategory === "liveCourse" ? `/liveclass/${val?.course?.slug}` : `/course/${val?.course?.slug}`} className=" relative w-full flex flex-col justify-between p-4  mt-2 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm">
+                        <div onClick={()=>handleNavigation(val)} className=" relative w-full flex flex-col justify-between p-4  mt-2 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm">
                             {val?.course?.courseCategory === "liveCourse" && (
                                 <div className="bg-transparent p-4 absolute top-2 right-2 z-[99]">
                                     <img
@@ -63,7 +102,7 @@ export default function Mycourse({ courses }) {
 
                                 <p className="font-pop text-end text-[12px] xsm:text-[6px] md:text-[10px]">Lesson {val?.completed_lessons.length} of {totallessons}</p>
                             </div>
-                        </Link>:
+                        </div>:
                         <div  className=" relative w-full flex flex-col justify-between p-4  mt-2 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm">
                         {val?.course?.courseCategory === "liveCourse" && (
                             <div className="bg-transparent p-4 absolute top-2 right-2 z-[99]">

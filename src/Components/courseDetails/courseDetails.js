@@ -10,7 +10,7 @@ import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import NewSideBar from "./NewSideBar.jsx";
 import { FiMenu } from "react-icons/fi";
 import DrawerNavbar from "./DrawerNavbar.jsx";
-import { FaPlay } from "react-icons/fa";
+import { FaLastfmSquare, FaPlay } from "react-icons/fa";
 
 export default function CDDetails() {
   const [clicked, setclicked] = useState(false);
@@ -41,7 +41,7 @@ export default function CDDetails() {
   const playerRef = useRef(null);
   const playerRef2 = useRef(null);
   const [currentDuration, setCurrentDuration] = useState(0);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const params = useParams();
   let totalduration = 0;
   let finaldur = 0;
@@ -51,7 +51,9 @@ export default function CDDetails() {
   const navigate = useNavigate();
   const [showBanner, setShowBanner] = useState(true);
   const [imageBanner, setImageBanner] = useState();
-
+  const [currentid, setcurrentid] = useState()
+ const [activesmallvideo, setactivesmallvideo] = useState(true)
+ const [activelargevideo, setactivelargevideo] = useState(true)
   useEffect(() => {
     async function Fetchdata() {
       temp = false;
@@ -211,6 +213,17 @@ export default function CDDetails() {
   }, []);
 
   function handleActiveVideo(url, title, id) {
+    setactivesmallvideo(true)
+    
+      if(playerRef2.current){
+        const currenttime=playerRef2.current.getCurrentTime();
+        // console.log("currenttime");
+        
+        // playerRef.current.seekTo(currenttime, 'seconds');
+
+       localStorage.setItem(id,currenttime)
+
+      }
     let getindex = idwise[id];
     setcount(getindex);
     setactiveindex(title);
@@ -226,6 +239,7 @@ export default function CDDetails() {
   const handleVideoEnded = async () => {
     // console.log(count + 1);
     // console.log(totalLessons,ALLCHAPTER.length);
+
     setactiveindex(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.lesson_name);
     setshowSmallvideo(false);
     seturl(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.video);
@@ -296,12 +310,19 @@ export default function CDDetails() {
     e.preventDefault(); // Prevent default context menu behavior
   };
 
-  const handleToggleNotes = async (pdf, videourl) => {
+  const handleToggleNotes = async (pdf, videourl,id) => {
+    setactivelargevideo(true)
+    // console.log(id);
+    
+    setcurrentid(id)
+
     try {
       if(playerRef.current){
-        console.log(playerRef.current);
-        
-      }
+       const currenttime=playerRef.current.getCurrentTime();
+      //  setCurrentDuration(currenttime)
+       localStorage.setItem(id,currenttime)
+        setPlaying(true)
+      } 
       // Show the small video player
       setshowSmallvideo(true);
   
@@ -341,14 +362,25 @@ export default function CDDetails() {
       // handleVideoEnded();
     }
   }
+  
   const handleSmallVideoReady = () => {
-    if (playerRef2.current) {
-      // const currentTime = playerRef.current.getCurrentTime();
-      playerRef2.current.seekTo(50, 'seconds');
+    if (playerRef2.current && activesmallvideo && localStorage.getItem(currentid)) {
+      setactivesmallvideo(false)
+      playerRef2.current.seekTo(localStorage.getItem(currentid), 'seconds');
       // playerRef2.current.play();
     } else {
       console.error("Player references are not available.");
     }
+  };
+  const handlelargeVideoReady = () => {
+if (activelargevideo && localStorage.getItem(currentid)) {
+    //  setactivelargevideo(false)
+      playerRef.current.seekTo(localStorage.getItem(currentid), 'seconds');
+      // playerRef2.current.play();
+    } else {
+      console.error("Player references are not available.");
+    }
+    setactivelargevideo(false)
   };
   function Timeconverter(totalMinutes) {
     const minutes = parseInt(totalMinutes, 10);
@@ -406,7 +438,6 @@ export default function CDDetails() {
   // Example usage
 
   // console.log(formattedDate); // Output: "08 July 2024 2.30pm"
-  function Checklive() {}
   useEffect(() => {
     // console.log("adfdasf");
 
@@ -439,6 +470,12 @@ export default function CDDetails() {
       // if()
     }
   }, [count]);
+  function handleProgress(state){
+    const { playedSeconds } = state;
+    // console.log(playedSeconds);
+    localStorage.setItem(currentid,playedSeconds)
+    
+  }
   return (
     <>
       <div className="flex justify-between gap-5">
@@ -461,9 +498,9 @@ export default function CDDetails() {
                   borderRadius="14px"
                   className="shadow-2xl rounded-xl"
                   style={{ borderRadius: "14px !important" }}
-                  playing={true}
+                  playing={playing}
                   controls={true}
-                  autoPlay={true}
+                  autoPlay={playing}
                   url={smallVideourl}
                   onReady={handleSmallVideoReady}
                   onDuration={handleDuration}
@@ -569,6 +606,8 @@ export default function CDDetails() {
                         url={url}
                         onDuration={handleDuration}
                         onEnded={handleVideoEnded}
+                        onReady={handlelargeVideoReady}
+                        onProgress={handleProgress}
                         config={{
                           file: {
                             attributes: {

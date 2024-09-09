@@ -229,14 +229,14 @@ const AllCourses = () => {
       {/* </div> */}
 
       <div className="relative h-auto w-full mb-14 xsm:mb-8">
-        <div className="flex flex-row rounded-md w-[50%] p-1 bg-[#f3fffa] xsm:p-0 xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] xsm:top-[25%] left-[50%] translate-x-[-50%] md:w-[70%]">
+        <div className="flex flex-row rounded-md w-[50%] p-1 bg-[#f3fffa] xsm:p-0 xsm:w-[90%] xsm:rounded-md md:rounded-lg absolute z-20 top-[30%] xsm:top-[25%] left-[50%] translate-x-[-50%] md:w-[70%] sm:w-[70%]">
           <div className="relative w-full rounded-md">
             <input
               type="text"
               placeholder="Search for course"
               ref={searchBarRef}
               onChange={debouncedSearchData}
-              className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
+              className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg md:text-[14px] sm:text-[12px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
                 }`}
             />
            {SearchedData?.length ? <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center  pt-2" ref={searchResultsRef}>
@@ -256,8 +256,8 @@ const AllCourses = () => {
               })}
             </div> : ''}
           </div>
-          <button className="text-[#ffffff] text-[22px] flex flex-row gap-2 justify-center items-center font-pop bg-[#1DBF73] rounded-md py-1 px-4 xsm:rounded-r-md xsm:text-[10px] xsm:py-0 xsm:px-2 md:text-[14px] md:rounded-r-lg">
-            <span> <img src={Search} className="w-12 h-8 md:w-10 md:h-6 xsm:w-6 xsm:h-2" /> </span>Search
+          <button className="text-[#ffffff] text-[22px]  flex flex-row gap-2 justify-center items-center font-pop bg-[#1DBF73] rounded-md py-1 px-4 xsm:rounded-r-md xsm:text-[10px] xsm:py-0 xsm:px-2 md:text-[14px] md:rounded-r-lg sm:text-[14px] ">
+            <span> <img src={Search} className="w-12 h-8 md:w-10 md:h-6 xsm:w-6 xsm:h-2 sm:w-10 sm:h-6 " /> </span>Search
           </button>
         </div>
 
@@ -283,27 +283,27 @@ const AllCourses = () => {
 
         </div>
 
-        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-28 text-white font-pop  absolute bottom-0 items-center xsm:h-10 xsm:space-x-3 md:h-16 md:space-x-12">
+        <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 sm:h-16 flex justify-center space-x-28 text-white font-pop  absolute bottom-0 items-center xsm:h-10 xsm:space-x-3 md:h-16 md:space-x-12 sm:space-x-4">
           <div className="text-white xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">
 
-            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={28725} />+</div>
-            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Students Enrolled</div>
+            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px] sm:text-[14px]"><CountUp start={0} delay={2} duration={5} end={28725} />+</div>
+            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px] sm:text-[14px]">Students Enrolled</div>
           </div>
           <div className="xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">
-            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={8000} />+</div>
-            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Students Placed</div>
+            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px] sm:text-[14px]"><CountUp start={0} delay={2} duration={5} end={8000} />+</div>
+            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px] sm:text-[14px]">Students Placed</div>
           </div>
           {/* <div className="xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">
-            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={175} />+</div>
-            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Courses Enrolled</div>
+            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px] sm:text-[14px]"><CountUp start={0} delay={2} duration={5} end={175} />+</div>
+            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px] sm:text-[14px]">Courses Enrolled</div>
           </div> */}
           <div className="xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">
-            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={626} />+</div>
-            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Industry Experts</div>
+            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px] sm:text-[14px]"><CountUp start={0} delay={2} duration={5} end={626} />+</div>
+            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px] sm:text-[14px]">Industry Experts</div>
           </div>
           <div className="xsm:flex xsm:flex-col xsm:text-center xsm:gap-1">
-            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={256} />+</div>
-            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px]">Corporate Partners</div>
+            <div className="text-center text-xl font-semibold xsm:leading-none xsm:text-[10px] md:text-[14px] sm:text-[14px]"><CountUp start={0} delay={2} duration={5} end={256} />+</div>
+            <div className="xsm:text-[9px] xsm:leading-none md:text-[14px] sm:text-[14px]">Corporate Partners</div>
           </div>
         </div>
       </div>
@@ -381,7 +381,7 @@ const AllCourses = () => {
               className="flex flex-col gap-2 h-[70%] justify-end items-center text-center py-6 md:py-2 md:gap-1 md:h-[60%]"
               style={{ boxShadow: "2px 2px 10px 2px rgba(0, 0, 0, 0.25)" }}
             >
-              <p className="text-[#252641] text-[20px] font-poppins font-semibold md:text-[14px]">
+              <p className="text-[#252641] text-[20px] font-poppins font-semibold md:text-[14px] sm:text-[14px]">
                 Adam
               </p>
               <p className="text-[#696984] text-[16px] font-poppins w-[70%] md:text-[8px]">

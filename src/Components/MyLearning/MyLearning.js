@@ -154,7 +154,7 @@ export default function MyLearning() {
                 <Spinner className='' />
 
             </div> : ''}
-            {showpage === 'courses' ? <Mycourse courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses} /> : showpage === 'stats' ? <MyStats courses={purchasedCourses} /> : showpage === 'assignments' ? <Assignment courses={purchasedCourses} /> : <JobOffering courses={purchasedCourses} />}
+            {showpage === 'courses' ? <Mycourse fetchUserData={fetchUserData} courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses} /> : showpage === 'stats' ? <MyStats courses={purchasedCourses} /> : showpage === 'assignments' ? <Assignment courses={purchasedCourses} /> : <JobOffering courses={purchasedCourses} />}
             <RecommendedCourses className={'bg-[#E2FFF1]'} />
         </div>
     );
