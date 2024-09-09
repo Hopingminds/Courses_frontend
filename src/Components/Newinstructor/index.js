@@ -59,7 +59,7 @@ export default function Newinstructor() {
           >
             <SplideSlide>
               <div className=" space-y-2 flex flex-col justify-center text-center xsm:w-full xsm:space-y-0">
-                <div className="h-[200px] w-[200px]  mx-auto xsm:w-16 xsm:h-16 md:w-28 md:h-28">
+                <div className="h-[200px] w-[200px] sm:w-28 sm:h-28  mx-auto xsm:w-16 xsm:h-16 md:w-28 md:h-28">
                   <img src="/ins1.png" className="rounded-full" alt="profile"/>
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
