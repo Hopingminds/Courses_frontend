@@ -17,17 +17,17 @@ import Img16 from "../../Assests/Images/TajwarKhan.jpg";
 import Img17 from "../../Assests/Images/Manikant Kandukuri.jpg";
 import Img18 from "../../Assests/Images/Nikita S Kotme.jpg";
 import Img19 from "../../Assests/Images/KajalSingh.jpg";
-import Img20 from '../../Assests/Images/anita sharma.jpg'
-import Img21 from '../../Assests/Images/anuj sharma.jpeg'
-import Img22 from '../../Assests/Images/karthik.jpg'
-import Img23 from '../../Assests/Images/gurleen kaur.png'
-import Img24 from '../../Assests/Images/pahul.png'
-import Img25 from '../../Assests/Images/sabrina kaur.jpg'
-import Img26 from '../../Assests/Images/shifali.jpg'
-import Img27 from '../../Assests/Images/surjit singh.jpg'
+import Img20 from "../../Assests/Images/anita sharma.jpg";
+import Img21 from "../../Assests/Images/anuj sharma.jpeg";
+import Img22 from "../../Assests/Images/karthik.jpg";
+import Img23 from "../../Assests/Images/gurleen kaur.png";
+import Img24 from "../../Assests/Images/pahul.png";
+import Img25 from "../../Assests/Images/sabrina kaur.jpg";
+import Img26 from "../../Assests/Images/shifali.jpg";
+import Img27 from "../../Assests/Images/surjit singh.jpg";
 import React from "react";
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/splide/dist/css/splide.min.css';
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/dist/css/splide.min.css";
 
 export default function Newinstructor() {
   return (
@@ -42,6 +42,8 @@ export default function Newinstructor() {
               type: "loop",
               perPage:
                 window.innerWidth <= 480
+                  ? 2
+                  : window.innerWidth > 480 && window.innerWidth < 721
                   ? 2
                   : window.innerWidth >= 721 && window.innerWidth <= 1024
                   ? 3
@@ -60,21 +62,23 @@ export default function Newinstructor() {
             <SplideSlide>
               <div className=" space-y-2 flex flex-col justify-center text-center xsm:w-full xsm:space-y-0">
                 <div className="h-[200px] w-[200px]  mx-auto xsm:w-16 xsm:h-16 md:w-28 md:h-28">
-                  <img src="/ins1.png" className="rounded-full" alt="profile"/>
+                  <img src="/ins1.png" className="rounded-full" alt="profile" />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
                   Akarshan Puri
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Data Scientist</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Senior Manager@ Data Innovation ,Bill INC.,USA, Gold Medalist at BITS Pilani, Dubai, with 9+ years of experience in data science. 
+                  Senior Manager@ Data Innovation ,Bill INC.,USA, Gold Medalist
+                  at BITS Pilani, Dubai, with 9+ years of experience in data
+                  science.
                 </div>
               </div>
             </SplideSlide>
             <SplideSlide>
               <div className=" space-y-2 flex flex-col justify-center text-center xsm:w-full xsm:space-y-0">
                 <div className="h-[200px] w-[200px]  mx-auto xsm:w-16 xsm:h-16 md:w-28 md:h-28">
-                  <img src="/ins2.jpg" className="rounded-full" alt="profile"/>
+                  <img src="/ins2.jpg" className="rounded-full" alt="profile" />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
                   Aditya Sen
@@ -89,14 +93,16 @@ export default function Newinstructor() {
             <SplideSlide>
               <div className="  space-y-2 flex flex-col justify-center text-center xsm:w-full xsm:space-y-0">
                 <div className="h-[200px] w-[200px]  mx-auto xsm:w-16 xsm:h-16 md:w-28 md:h-28">
-                  <img src="/ins3.png" className="rounded-full"alt="profile" />
+                  <img src="/ins3.png" className="rounded-full" alt="profile" />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
                   Mohit Banka
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Worked with industry giants like Amazon and Microsoft. His experience includes Data visualization , with a focus on creating scalable solutions for tech giants.
+                  Worked with industry giants like Amazon and Microsoft. His
+                  experience includes Data visualization , with a focus on
+                  creating scalable solutions for tech giants.
                 </div>
               </div>
             </SplideSlide>
@@ -109,7 +115,7 @@ export default function Newinstructor() {
                   Hardik Mehta
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
-                <div className= "text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
+                <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
                   Senior Manager Wipro Product Management
                 </div>
               </div>
@@ -117,21 +123,26 @@ export default function Newinstructor() {
             <SplideSlide>
               <div className=" space-y-2 flex flex-col justify-center text-center xsm:w-full xsm:space-y-0">
                 <div className="h-[200px] w-[200px]  mx-auto xsm:w-16 xsm:h-16 md:w-28 md:h-28">
-                  <img src={Img2} className="rounded-full h-full w-full " alt="profile"/>
+                  <img
+                    src={Img2}
+                    className="rounded-full h-full w-full "
+                    alt="profile"
+                  />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
                   Praachee Bhargava
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                A UGC-Net qualified academic with 15 years of teaching and 18 years in retail communications. 
+                  A UGC-Net qualified academic with 15 years of teaching and 18
+                  years in retail communications.
                 </div>
               </div>
             </SplideSlide>
             <SplideSlide>
               <div className="space-y-2 flex flex-col justify-center text-center xsm:w-full xsm:space-y-0">
                 <div className="h-[200px] w-[200px]  mx-auto xsm:w-16 xsm:h-16 md:w-28 md:h-28">
-                  <img 
+                  <img
                     src={Img3}
                     className="rounded-full w-full h-full object-cover"
                     alt="profile"
@@ -142,7 +153,9 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                SEO Manager at Sogolytics with over 14 years of experience, increasing organic traffic by 30%. He specializes in keyword research.
+                  SEO Manager at Sogolytics with over 14 years of experience,
+                  increasing organic traffic by 30%. He specializes in keyword
+                  research.
                 </div>
               </div>
             </SplideSlide>
@@ -160,7 +173,8 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Data scientist at PayPal and an alumnus of IIT (BHU), Varanasi. His expertise includes data analysis
+                  Data scientist at PayPal and an alumnus of IIT (BHU),
+                  Varanasi. His expertise includes data analysis
                 </div>
               </div>
             </SplideSlide>
@@ -271,7 +285,9 @@ export default function Newinstructor() {
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Senior Manager@ Data Innovation ,Bill INC.,USA, Gold Medalist at BITS Pilani, Dubai, with 9+ years of experience in data science. 
+                  Senior Manager@ Data Innovation ,Bill INC.,USA, Gold Medalist
+                  at BITS Pilani, Dubai, with 9+ years of experience in data
+                  science.
                 </div>
               </div>
             </SplideSlide>
@@ -285,11 +301,13 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Soumen Das
+                  Soumen Das
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Currently holding the position of Senior Mobile App Developer at Roadzen, Mobile App Developer with more than a decade of experience in the field of mobile technology 
+                  Currently holding the position of Senior Mobile App Developer
+                  at Roadzen, Mobile App Developer with more than a decade of
+                  experience in the field of mobile technology
                 </div>
               </div>
             </SplideSlide>
@@ -303,11 +321,12 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Tuhina Jain
+                  Tuhina Jain
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Worked with leading technology firms such as Google and Blinkit. Her expertise lies in building AI solutions 
+                  Worked with leading technology firms such as Google and
+                  Blinkit. Her expertise lies in building AI solutions
                 </div>
               </div>
             </SplideSlide>
@@ -321,11 +340,14 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Somiron Mitra 
+                  Somiron Mitra
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Over 17 years of experience in the fashion and e-commerce industry, currently managing operations at Myntra. His expertise includes strategic planning and operational efficiency.
+                  Over 17 years of experience in the fashion and e-commerce
+                  industry, currently managing operations at Myntra. His
+                  expertise includes strategic planning and operational
+                  efficiency.
                 </div>
               </div>
             </SplideSlide>
@@ -339,11 +361,13 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Atul Chhabra 
+                  Atul Chhabra
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Atul Chhabra brings over three decades of experience in the telecommunications and IT sectors. A former Director at Verizon 
+                  Atul Chhabra brings over three decades of experience in the
+                  telecommunications and IT sectors. A former Director at
+                  Verizon
                 </div>
               </div>
             </SplideSlide>
@@ -357,11 +381,13 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Prashant
+                  Prashant
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Google Certified Trainer with expertise in Analytics and Automation Trainings. Working as Data analyst in Infosys. Also holding a Microsoft Certified Educator designation.
+                  Google Certified Trainer with expertise in Analytics and
+                  Automation Trainings. Working as Data analyst in Infosys. Also
+                  holding a Microsoft Certified Educator designation.
                 </div>
               </div>
             </SplideSlide>
@@ -375,11 +401,13 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Sonia Garg
+                  Sonia Garg
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Accomplished Assistant Professor at Thapar University, with more than eleven years of experience in academia and industry-related research. As an IIM Lucknow alumni
+                  Accomplished Assistant Professor at Thapar University, with
+                  more than eleven years of experience in academia and
+                  industry-related research. As an IIM Lucknow alumni
                 </div>
               </div>
             </SplideSlide>
@@ -393,11 +421,13 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Tajwar Khan
+                  Tajwar Khan
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                An entrepreneur and Corporate Training Strategist, Security Researcher/Trainer, AWS/Azure Trainer, Certified Ethical Hacker (CEH)
+                  An entrepreneur and Corporate Training Strategist, Security
+                  Researcher/Trainer, AWS/Azure Trainer, Certified Ethical
+                  Hacker (CEH)
                 </div>
               </div>
             </SplideSlide>
@@ -411,11 +441,13 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Manikant Kandukuri
+                  Manikant Kandukuri
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                A Lead AI Engineer with a comprehensive background from BITS, this professional specializes in the forefront of Generative AI technologies.
+                  A Lead AI Engineer with a comprehensive background from BITS,
+                  this professional specializes in the forefront of Generative
+                  AI technologies.
                 </div>
               </div>
             </SplideSlide>
@@ -429,11 +461,13 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Nikita S Kotme 
+                  Nikita S Kotme
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                A Blockchain Consultant and Trainer with over six years of experience. She specializes in Blockchain Technology, Python programming, and Generative AI
+                  A Blockchain Consultant and Trainer with over six years of
+                  experience. She specializes in Blockchain Technology, Python
+                  programming, and Generative AI
                 </div>
               </div>
             </SplideSlide>
@@ -447,11 +481,13 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Kajal Singh
+                  Kajal Singh
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                The Vice President at BlockVerse Academy, specializing in Blockchain, Data Science, Machine Learning, Cloud Computing, and Cyber Security.
+                  The Vice President at BlockVerse Academy, specializing in
+                  Blockchain, Data Science, Machine Learning, Cloud Computing,
+                  and Cyber Security.
                 </div>
               </div>
             </SplideSlide>
@@ -465,11 +501,14 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Anita Sharma
+                  Anita Sharma
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Anita Sharma, AVP of Training with 10+ years of experience, will teach "Front-End Fundamentals: HTML, CSS & JavaScript in Action," ensuring a comprehensive web development learning experience.
+                  Anita Sharma, AVP of Training with 10+ years of experience,
+                  will teach "Front-End Fundamentals: HTML, CSS & JavaScript in
+                  Action," ensuring a comprehensive web development learning
+                  experience.
                 </div>
               </div>
             </SplideSlide>
@@ -483,11 +522,13 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Anuj Sharma
+                  Anuj Sharma
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Anuj Sharma, a DevOps Consultant and Trainer with seven years of experience, will lead "Introduction to Docker," offering practical insights and hands-on teaching for mastering Docker.
+                  Anuj Sharma, a DevOps Consultant and Trainer with seven years
+                  of experience, will lead "Introduction to Docker," offering
+                  practical insights and hands-on teaching for mastering Docker.
                 </div>
               </div>
             </SplideSlide>
@@ -501,11 +542,14 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Karthik
+                  Karthik
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Karthik, a Data Science instructor with over eight years of experience, excels in Python and R, simplifying complex concepts and focusing on practical data analysis and predictive modeling.
+                  Karthik, a Data Science instructor with over eight years of
+                  experience, excels in Python and R, simplifying complex
+                  concepts and focusing on practical data analysis and
+                  predictive modeling.
                 </div>
               </div>
             </SplideSlide>
@@ -519,11 +563,14 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Gurleen Kaur
+                  Gurleen Kaur
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Gurleen Kaur, a seasoned UI/UX professional and Technical Trainer at Chandigarh University, will teach "UI/UX Fundamentals," providing practical projects and real-world insights for a solid foundation in UI/UX design.
+                  Gurleen Kaur, a seasoned UI/UX professional and Technical
+                  Trainer at Chandigarh University, will teach "UI/UX
+                  Fundamentals," providing practical projects and real-world
+                  insights for a solid foundation in UI/UX design.
                 </div>
               </div>
             </SplideSlide>
@@ -537,11 +584,14 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Pahul
+                  Pahul
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Pahul, an expert in personality development and social media marketing, mentors aspiring creators in harnessing social media for professional success, driving significant brand growth.
+                  Pahul, an expert in personality development and social media
+                  marketing, mentors aspiring creators in harnessing social
+                  media for professional success, driving significant brand
+                  growth.
                 </div>
               </div>
             </SplideSlide>
@@ -555,11 +605,14 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Dr. Sabrina Kaur
+                  Dr. Sabrina Kaur
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Dr. Sabrina Kaur, with a Ph.D. in Computer Science and Engineering, will lead "Python Essentials: Unlocking the Power of Libraries," offering practical insights for mastering Python and its advanced libraries.
+                  Dr. Sabrina Kaur, with a Ph.D. in Computer Science and
+                  Engineering, will lead "Python Essentials: Unlocking the Power
+                  of Libraries," offering practical insights for mastering
+                  Python and its advanced libraries.
                 </div>
               </div>
             </SplideSlide>
@@ -573,11 +626,14 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Shifali
+                  Shifali
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Shifali, an expert in financial compliance and AML, will teach "Money Laundering Essentials," sharing her extensive experience and strategies for detecting and preventing illicit financial activities.
+                  Shifali, an expert in financial compliance and AML, will teach
+                  "Money Laundering Essentials," sharing her extensive
+                  experience and strategies for detecting and preventing illicit
+                  financial activities.
                 </div>
               </div>
             </SplideSlide>
@@ -591,11 +647,14 @@ export default function Newinstructor() {
                   />
                 </div>
                 <div className="font-semibold text-center text-lg font-pop xsm:text-[12px] md:text-[14px] text-[#fff]">
-                Surjit Singh
+                  Surjit Singh
                 </div>
                 {/* <div className="font-semibold text-center text-[#fff] text-xl font-pop xsm:text-[12px] md:text-[14px] md:leading-tight">Full Stack Development</div> */}
                 <div className="text-center font-nu text-[#fff] xsm:text-[11px] xsm:text-center xsm:w-[90%] md:text-[12px]">
-                Surjit Singh, with over 5 years of experience as a Quantitative Aptitude and Reasoning Trainer, empowers students with essential knowledge and techniques, having cracked over 22 government exams himself.
+                  Surjit Singh, with over 5 years of experience as a
+                  Quantitative Aptitude and Reasoning Trainer, empowers students
+                  with essential knowledge and techniques, having cracked over
+                  22 government exams himself.
                 </div>
               </div>
             </SplideSlide>

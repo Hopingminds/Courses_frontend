@@ -74,7 +74,7 @@ const Companies2 = () => {
     }, []);
 
     return (
-        <div className="text-[#696984] flex justify-center font-pop py-20 xsm:py-5 md:mt-0 xsm:mt-0">
+        <div className="text-[#696984] flex justify-center font-pop py-20 sm:py-10 xsm:py-5 md:mt-0 xsm:mt-0">
             <div className="w-[90%] space-y-8 xsm:space-y-4 md:space-y-6">
                 <div className="text-center text-[40px] font-semibold text-[#000] xsm:text-[12px] sm:text-[18px] md:text-[20px]">Trusted by <span className='text-[#1dbf73]'>200+</span> Companies Worldwide</div>
                 <div className="flex justify-center xsm:gap-3 xsm:justify-around ">
@@ -86,7 +86,7 @@ const Companies2 = () => {
                                     src={logo.src}
                                     alt={`Company Logo ${index}`}
                                     style={{
-                                        height: window.innerWidth<=480 ? '28px' : logo.height,
+                                        height: window.innerWidth<=480 ? '28px' : window.innerWidth>480 && window.innerWidth<720 ? '28px'  : logo.height,
                                         width: "auto"
                                     }}
                                     className={index === currentLogoIndexes[setIndex] ? 'logo active' : 'logo'}

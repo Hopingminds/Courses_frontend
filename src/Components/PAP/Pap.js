@@ -119,7 +119,7 @@ export default function Pap() {
       {/* Main */}
       <div className=" my-6">
         <div className="px-[5%]">
-          <p className="font-pop font-semibold text-[32px] xsm:text-[12px] md:text-[26px]">
+          <p className="font-pop font-semibold text-[32px] sm:text-[22px] xsm:text-[12px] md:text-[26px]">
             From Learning To Earning{" "}
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function Pap() {
         <div className="flex justify-between px-[5%] xsm:flex-col xsm:gap-4">
           <div className="w-[55%] mt-10 flex flex-col gap-4 xsm:mt-5 xsm:w-[90%] md:mt-8">
             <div>
-              <p className="font-pop font-semibold text-[26px] text-[#2D3436] xsm:text-[12px] md:text-[22px]">
+              <p className="font-pop font-semibold text-[26px] text-[#2D3436] sm:text-[18px] xsm:text-[12px] md:text-[22px]">
                 How This Works ?
               </p>
             </div>
@@ -137,10 +137,10 @@ export default function Pap() {
               </div>
               <div className="w-[90%]">
                 <div>
-                  <p className="font-nu font-semibold text-[22px] xsm:text-[12px] md:text-[18px]">
+                  <p className="font-nu font-semibold text-[22px] sm:text-[15px] xsm:text-[12px] md:text-[18px]">
                   Average CTC
                   </p>
-                  <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] xsm:text-[11px] md:text-[12px] md:leading-tight">
+                  <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] sm:text-[12px] xsm:text-[11px] md:text-[12px] md:leading-tight">
                     If your salary exceeds the CTC of ₹3,00,000/-, your monthly payments of PAP will start.
                   </p>
                 </div>
@@ -152,10 +152,10 @@ export default function Pap() {
               </div>
               <div className="w-[90%]">
                 <div>
-                  <p className="font-nu font-semibold text-[22px] xsm:text-[12px] md:text-[18px]">
+                  <p className="font-nu font-semibold  text-[22px] sm:text-[15px] xsm:text-[12px] md:text-[18px]">
                     1 Year Assurance
                   </p>
-                  <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] xsm:text-[11px] md:text-[12px] md:leading-tight">
+                  <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] sm:text-[12px] xsm:text-[11px] md:text-[12px] md:leading-tight">
                     If you don’t get a job offer within 1 year of the course, your security amount will be refunded and you pay nothing for your learning at Hoping Minds.
                   </p>
                 </div>
@@ -167,10 +167,10 @@ export default function Pap() {
               </div>
               <div className="w-[90%]">
                 <div>
-                  <p className="font-nu font-semibold text-[22px] xsm:text-[12px] md:text-[18px]">
+                  <p className="font-nu font-semibold text-[22px] sm:text-[15px] xsm:text-[12px] md:text-[18px]">
                     Enforcement
                   </p>
-                  <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] xsm:text-[11px] md:text-[12px] md:leading-tight">
+                  <p className="font-nu font-medium text-[#3C3C3CE5] text-[16px] sm:text-[12px] xsm:text-[11px] md:text-[12px] md:leading-tight">
                   In the event you are not working or if your income drops below the CTC mentioned in the Pay After Placement Agreement in initial 6 months from your joining, we make sure to provide the another opportunity with same or above package within 3 months.
                   </p>
                 </div>
@@ -178,75 +178,75 @@ export default function Pap() {
             </div>
           </div>
           <div className="w-[40%] relative xsm:h-60 xsm:w-[100%] xsm:flex xsm:justify-center">
-            <div className="absolute left-[37%] top-[5%] z-10 xsm:left-[45%] xsm:top-[0%] xl:left-[56%]">
+            <div className="absolute left-[37%] top-[5%] z-10 sm:right-[-10%] xsm:left-[45%] xsm:top-[0%] xl:left-[56%]">
               <img
-                className="w-[310px] h-[180px] xsm:w-[250px] xsm:h-[120px] md:w-[210px] md:h-[120px]"
+                className="w-[310px] h-[180px] xsm:w-[250px] xsm:h-[120px] md:w-[210px] md:h-[120px] sm:w-[250px] sm:h-[120px]"
                 src="../img/papagreeimg1.png" alt=""
               />
             </div>
-            <div className="absolute top-[60%] z-10 md:top-[52%] xsm:left-0 xsm:w-[55%] xsm:top-[55%]">
+            <div className="absolute top-[60%] z-10 md:top-[52%] sm:left-[-10%] sm:top-[52%] xsm:left-0 xsm:w-[55%] xsm:top-[55%]">
               <img
-                className="w-[310px] h-[180px] xsm:w-[250px] xsm:h-[120px] md:w-[210px] md:h-[120px]"
+                className="w-[310px] h-[180px] sm:w-[180px] sm:h-[120px] xsm:w-[250px] xsm:h-[120px] md:w-[210px] md:h-[120px] "
                 src={Img3} alt=""
               />
             </div>
-            <div className="bg-[#E2FFF1] rounded-xl w-[70%] h-[80%] absolute left-[25%] top-[20%] xsm:h-[70%] xsm:left-[15%] md:h-[60%] md:left-[20%]"></div>
+            <div className="bg-[#E2FFF1] rounded-xl w-[70%] h-[80%] absolute left-[25%] top-[20%] sm:h-[40%] sm:left-[0%] sm:w-[90%] xsm:h-[70%] xsm:left-[15%] md:h-[60%] md:left-[20%]"></div>
           </div>
         </div>
         {/* course fee */}
         <div className=" px-[5%] flex mt-24 justify-between xsm:flex-col-reverse md:my-18 xsm:my-16 xsm:mt-12">
           <div className="w-[40%] relative mt-12 xsm:w-[100%] xsm:flex xsm:pl-7 xsm:mt-6 md:mt-8">
-            <div className="bg-[#E2FFF1] rounded-xl w-[75%] h-full absolute top-[-12%] left-[10%] z-[-2] xsm:left-[16%] xsm:top-[-10%]"></div>
-            <div className="z-10 h-full">
-              <img className="w-[75%] h-full xsm:w-[260px] xsm:h-[180px]" alt="course fee" src={window.innerwidth > 480 ? Img2 : Img4} />
+            <div className="bg-[#E2FFF1] rounded-xl w-[75%] h-full absolute top-[-12%] left-[10%] z-[-2] sm:top-[20%] sm:left-[-10%] xsm:left-[16%] xsm:top-[-10%] sm:w-[220px] sm:h-[180px]"></div>
+            <div className="z-10 h-full sm:mt-10">
+              <img className="w-[75%] h-full xsm:w-[260px] xsm:h-[180px] sm:w-[260px] sm:h-[180px]" alt="course fee" src={window.innerwidth > 480 ? Img2 : Img4} />
             </div>
           </div>
           <div className="w-[55%] flex flex-col gap-3 mt-4 xsm:gap-2 xsm:w-[90%] md:gap-4">
             <div>
-              <p className="font-pop font-semibold text-[28px] text-[#2D3436] xsm:text-[12px] xsm:font-bold md:text-[24px]">
+              <p className="font-pop font-semibold text-[28px] text-[#2D3436] xsm:text-[12px] sm:text-[15px] xsm:font-bold md:text-[24px]">
                 Course Fee
               </p>
             </div>
             <div className=" flex flex-col gap-6 xsm:gap-3 md:gap-4">
-              <p className="font-nu text-[17px] xsm:text-[11px] md:text-[13px]">
+              <p className="font-nu text-[17px] xsm:text-[11px] md:text-[13px] sm:text-[12px]">
                 These only take effect once you start earning above the PAP threshold amount for your course.
               </p>
               <div className="flex flex-col gap-6 ml-6 xsm:gap-2 xsm:ml-4 md:gap-2 ">
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
-                  <p className="font-nu text-[17px] xsm:text-[11px] md:text-[13px]">
+                  <p className="font-nu text-[17px] xsm:text-[11px] md:text-[13px] sm:text-[12px]">
                     Average CTC : We offer an average CTC of ₹5,00,000/- LPA.
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
-                  <p className="font-nu text-[17px] xsm:text-[11px] md:text-[13px]">
+                  <p className="font-nu text-[17px] xsm:text-[11px] md:text-[13px] sm:text-[12px]">
                     One Time Payment
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
-                  <p className="font-nu text-[17px] xsm:text-[11px] md:text-[13px]">
+                  <p className="font-nu text-[17px] xsm:text-[11px] md:text-[13px] sm:text-[12px]">
                     Training Tenure : 3 Months
                   </p>
                 </div>
                 <div className="flex items-start gap-4">
                   {/* <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div> */}
-                  <div className="font-nu text-[17px] xsm:text-[11px] md:text-[13px] flex items-start">
+                  <div className="font-nu text-[17px] xsm:text-[11px] md:text-[13px] flex sm:flex-col items-start">
                     <div className="flex items-center gap-4">
                       <div className="w-4 h-4 rounded-full bg-[#1DBF73] xsm:h-2 xsm:w-2 md:w-3 md:h-3"></div>
-                      <p>PAP Payable Amount : &nbsp;</p>
+                      <p className="sm:text-[12px]">PAP Payable Amount : &nbsp;</p>
                     </div>
-                    <div>
-                      <p>Upto 6 LPA INR 60,000/-</p>
-                      <p>Above 6 LPA INR 75,000/-</p>
+                    <div className="ml-5">
+                      <p className="sm:text-[12px]">Upto 6 LPA INR 60,000/-</p>
+                      <p className="sm:text-[12px]">Above 6 LPA INR 75,000/-</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div>
-              <p className="font-nu text-[17px] xsm:text-[11px] md:text-[13px] ">
+              <p className="font-nu text-[17px] xsm:text-[11px] md:text-[13px] sm:text-[12px]">
               CTC (Cost to Company) is defined as the total gross income earned, including but not permitted, to variable pay, compensations and Employee Stock Ownership Plan (ESOP). Find out more in the FAQ section.
               </p>
             </div>
@@ -291,17 +291,17 @@ export default function Pap() {
           </div>
         </div> */}
 
-        <PAPBenefit />
+        <PAPBenefit/>
         {/* Agreement */}
         <div className="px-[5%] my-12 relative ">
-          <div className="bg-black rounded-xl px-24 py-14 text-white w-full flex flex-col items-center gap-6 xsm:gap-4 xsm:p-8 md:px-14 md:py-8 md:gap-4">
+          <div className="bg-black rounded-xl px-24 py-14 text-white w-full flex flex-col items-center gap-6 xsm:gap-4 xsm:p-8 md:px-14 sm:px-10 md:py-8 md:gap-4">
             <div>
-              <p className="font-pop font-semibold text-[34px] xsm:text-[12px] md:text-[26px]">
+              <p className="font-pop font-semibold text-[34px] xsm:text-[12px] md:text-[26px] sm:text-[22px]">
                 Pay After Placement(PAP) Agreement
               </p>
             </div>
             <div>
-              <p className="font-nu text-[16px] leading-8 xsm:text-[11px] xsm:leading-normal xsm:tracking-wider md:leading-6 md:text-[14px]">
+              <p className="font-nu text-[16px] leading-8 xsm:text-[11px] xsm:leading-normal xsm:tracking-wider md:leading-6 md:text-[14px] sm:text-justify ">
                 PAP Agreement is a legal contract that makes education at Hoping
                 Minds outcome-based. It is not an education loan, as you do not
                 have to pay any interest & you do not require any collaterals.
@@ -312,7 +312,7 @@ export default function Pap() {
             <div className="flex gap-4 hover:gap-8">
              {window.innerWidth > 500 ? <button
                 onClick={checkUserAuth}
-                className="bg-white text-black hover:bg-[#1DBF73] hover:text-white hover:scale-125 font-pop font-medium text-[18px] px-8 py-2 rounded-full xsm:text-[12px] xsm:py-1 xl:py-3 xsm:px-4 md:text-[14px]"
+                className="bg-white text-black hover:bg-[#1DBF73] hover:text-white hover:scale-125 font-pop font-medium text-[18px] px-8 py-2 rounded-full xsm:text-[12px] xsm:py-1 xl:py-3 xsm:px-4 md:text-[14px] sm:text-[14px]"
               >
                 Start Test
               </button> : ''}
@@ -320,7 +320,7 @@ export default function Pap() {
                 href={"/PAP Candidate MOU.pdf"}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-white text-black hover:bg-[#1DBF73] hover:text-white hover:scale-125 font-pop font-medium text-[18px] px-8 py-2 rounded-full xsm:text-[12px] xsm:py-1 xl:py-3 xsm:px-4 md:text-[14px]"
+                className="bg-white text-black hover:bg-[#1DBF73] hover:text-white hover:scale-125 font-pop font-medium text-[18px] px-8 py-2 rounded-full xsm:text-[12px] xsm:py-1 xl:py-3 xsm:px-4 md:text-[14px] sm:text-[14px]"
               >
                 View Agreement
               </a>

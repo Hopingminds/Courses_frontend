@@ -185,7 +185,7 @@ export default function Herosection() {
 
   return (
     <>
-    <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] xsm:pt-5 h-[37.2vw] xsm:h-[250px]">
+    <div className=" bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-row justify-between font-pop items-center px-[5%] pt-[1%] pb-[4%] mb-[4%] md:pr-[3%] md:pb-[3%] sm:pr-[3%] sm:pb-[3%] sm:pt-5 xsm:pt-5 h-[37.2vw] xsm:h-[250px]">
       <div className="w-[60%] flex flex-col gap-10 xl:gap-12 xsm:gap-2 sm:gap-4 md:gap-8 lg:gap-10">
         <div className="text-[20px] leading-10  text-white font-pop text-wrap w-[90%] sm:text-[10px] sm:leading-5 xl:text-[26px] lg:text-[16px] lg:leading-7 md:text-[14px] md:leading-6 xsm:text-[10px] xsm:leading-4 xsm:text-balance">
           Unlock Opportunities with 200+ Leading Corporates, Master Skills
@@ -244,7 +244,7 @@ export default function Herosection() {
             />
           </div>
 
-          <div className="flex flex-row gap-8 lg:gap-5 md:gap-3 xsm:gap-2 sm:gap-3  ">
+          <div className="flex flex-row gap-8 lg:gap-5 md:gap-3 xsm:gap-2 sm:gap-2  ">
               <div className=" flex flex-col gap-5 items-end justify-between lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:items-center">
               <div className="h-52 w-44 xsm:h-20 xsm:w-auto">
                   <img

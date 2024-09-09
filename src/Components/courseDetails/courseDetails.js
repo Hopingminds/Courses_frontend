@@ -41,7 +41,7 @@ export default function CDDetails() {
   const playerRef = useRef(null);
   const playerRef2 = useRef(null);
   const [currentDuration, setCurrentDuration] = useState(0);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const params = useParams();
   let totalduration = 0;
   let finaldur = 0;
@@ -51,7 +51,7 @@ export default function CDDetails() {
   const navigate = useNavigate();
   const [showBanner, setShowBanner] = useState(true);
   const [imageBanner, setImageBanner] = useState();
-
+  let oncetime=true;
   useEffect(() => {
     async function Fetchdata() {
       temp = false;
@@ -299,9 +299,10 @@ export default function CDDetails() {
   const handleToggleNotes = async (pdf, videourl) => {
     try {
       if(playerRef.current){
-        console.log(playerRef.current);
-        
-      }
+       const currenttime=playerRef.current.getCurrentTime();
+       setCurrentDuration(currenttime)
+        setPlaying(true)
+      } 
       // Show the small video player
       setshowSmallvideo(true);
   
@@ -341,10 +342,12 @@ export default function CDDetails() {
       // handleVideoEnded();
     }
   }
+  
   const handleSmallVideoReady = () => {
-    if (playerRef2.current) {
+    if (playerRef2.current && oncetime) {
+      oncetime=false;
       // const currentTime = playerRef.current.getCurrentTime();
-      playerRef2.current.seekTo(50, 'seconds');
+      playerRef2.current.seekTo(currentDuration, 'seconds');
       // playerRef2.current.play();
     } else {
       console.error("Player references are not available.");
@@ -461,9 +464,9 @@ export default function CDDetails() {
                   borderRadius="14px"
                   className="shadow-2xl rounded-xl"
                   style={{ borderRadius: "14px !important" }}
-                  playing={true}
+                  playing={playing}
                   controls={true}
-                  autoPlay={true}
+                  autoPlay={playing}
                   url={smallVideourl}
                   onReady={handleSmallVideoReady}
                   onDuration={handleDuration}
