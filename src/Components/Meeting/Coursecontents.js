@@ -268,7 +268,8 @@ export default function Coursecontents({
                                             )
                                               ? handleToggleNotes(
                                                   chapter?.notes,
-                                                  ALLCHAPTER[count]?.video
+                                                  ALLCHAPTER[count]?.video,
+                                                  chapter._id
                                                 )
                                               : ""
                                           }
@@ -291,7 +292,8 @@ export default function Coursecontents({
                                             )
                                               ? handleToggleNotes(
                                                   chapter?.assignment,
-                                                  ALLCHAPTER[count]?.video
+                                                  ALLCHAPTER[count]?.video,
+                                                  chapter._id
                                                 )
                                               : ""
                                           }
