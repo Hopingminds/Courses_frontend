@@ -530,7 +530,7 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
 
                   <div
-                    className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
+                    className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh] "
                     style={{ borderRadius: "14px !important" }}
                   >
                     {showBanner &&
@@ -588,7 +588,7 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                     ) : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : !showLive && !showend && url?.toString() === "" ? (
-                      <div className="text-center flex flex-col">
+                      <div className="text-center flex flex-col ">
                         <p className="font-semibold">Coming soon</p>
                       </div>
                     ) : (

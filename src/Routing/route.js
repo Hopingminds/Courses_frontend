@@ -86,6 +86,7 @@ import AllModules from '../Components/Assignments/Submodules/index.js'
 import NewQuestion from '../Components/Assignments/newpatternquestion/index.js'
 import Normalassessment from '../Components/Assignments/normalassessment/index.js'
 import LoginNSDC from '../Components/NSDCTesting/LoginNSDC.jsx'
+import AuthProtected  from './AuthProtected.js'
 
 function Locationpath(){
     const location=useLocation()
@@ -130,21 +131,19 @@ const Router = () => {
 
             {ReturnNavbar()}
             <Routes>
-                {/* <Route path='/test' element={<Test />} /> */}
-                {/* <Route path='/test2' element={<EncryptComponent />} /> */}
                 <Route path='/' element={<Home />} />
+                <Route path='/login-2' element={<Login />} />
                 <Route path='/detailcourse/:slug' element={<DetailCourses />} />
                 <Route path='/about' element={<AboutUs />} />
-                <Route path='/profile' element={<ProfilEdit />} />
-                <Route path='/learning' element={<MyLearning />} />
-                <Route path='/login-2' element={<Login />} />
+                <Route path='/profile' element={<AuthProtected  path={'/profile'} Component={ProfilEdit} />} />
+                <Route path='/learning' element={<AuthProtected   path={'/learning'} Component={MyLearning} />} />
                 <Route path='/register-user' element={<Register />} />
                 <Route path='/forgot-password' element={<Forgotpassword />} />
-                <Route path='/cart' element={< ShopingCart />} />
+                <Route path='/cart' element={<AuthProtected path={'/cart'}  Component={ShopingCart}   />} />
                 <Route path='/courses' element={<AllCourses />} />
-                <Route path='/course/:slug' element={<CDDetails />} />
-                <Route path='/liveclass/:slug' element={<LiveClassDetailPage />} />
-                <Route path='/checkout' element={<CartCheckout />} />
+                <Route path='/course/:slug' element={<AuthProtected path={'/learning'} Component={CDDetails} />} />
+                <Route path='/liveclass/:slug' element={<AuthProtected path={'/learning'} Component={LiveClassDetailPage}   />} />
+                <Route path='/checkout' element={<AuthProtected path={'/checkout'} Component={CartCheckout}  />} />
                 <Route path='/AssignmentMeet' element={<AssignmentMeet />} />
                 <Route path='/AssignmentStart' element={<AssignmentStart />} />
                 <Route path='/MyTimer' element={<MyTimer />} />
@@ -165,27 +164,20 @@ const Router = () => {
                 <Route path='/assessmentinstruction' element={<Assessmentinstruction />} />
                 <Route path='/hire-from-us' element={<HireFromUs />} />
                 <Route path='/career' element={<CareerServices />} />
-                <Route path='/modal' element={<Modal />} />
-                <Route path='/temp' element={<Temp />} />
-                <Route path='/new' element={<Newinstructor />} />
-                <Route path='/button' element={<Button />} />
                 <Route path='/resumebuilder' element={<ResumeBuilder />} />
                 <Route path='/minorCourse' element={<MinorCourse />} />
-                <Route path='/code' element={<CodeEditor />} />
-                <Route path='/modules' element={<Modules />} />
-                <Route path='devicecheckpage' element={<DeviceCheckPage/>} />
+                <Route path='devicecheckpage' element={<AuthProtected path={'/devicecheckpage'} Component={DeviceCheckPage}  />} />
                 <Route path='/questions' element={<Question ReturnNavbar={ReturnNavbar} />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/suspended' element={<Suspended />} />
                 <Route path='/suspendedassessment' element={<Suspendedassessment />} />
                 <Route path='/submittedassessment' element={<Submittedassessment />} />
-                <Route path='/code' element={<CodeEditor />} />
-                <Route path='/modules' element={<Modules />} />
-                <Route path='/questions' element={<Question />} />
-                <Route path='/question' element={<NewQuestion />} />
-                <Route path='/nmquestion' element={<Normalassessment />} />
-                <Route path='/assessmentquestions' element={<AssessmentQuestion />} />
-                <Route path='/prassessmentquestions' element={<ProtectedAssessmentQuestion />} />
+                <Route path='/modules' element={<AuthProtected path={'/modules'} Component={Modules}  />} />
+                <Route path='/questions' element={<AuthProtected path={'/questions'} Component={Question}  />} />
+                <Route path='/question' element={<AuthProtected path={'/question'} Component={NewQuestion}   />} />
+                <Route path='/nmquestion' element={<AuthProtected path={'/nmquestion'} Component={Normalassessment}    />} />
+                <Route path='/assessmentquestions' element={<AuthProtected path={'/assessmentquestions'} Component={AssessmentQuestion}   />} />
+                <Route path='/prassessmentquestions' element={<AuthProtected path={'/prassessmentquestions'} Component={ProtectedAssessmentQuestion}   />} />
                 <Route path='/submitted' element={<SubmittedSuccess />} />
                 <Route path='/managejobs' element={<ManageJobsmain />} />
                 <Route path='/postjob' element={<PostJobsForm />} />
@@ -197,8 +189,8 @@ const Router = () => {
                 <Route path='/hardwarecheck' element={<MediaCheck />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
                 <Route path='/error' element={<PaymentFailed />} />
-                <Route path='/stream/:slug' element={<LiveStream />} />
-                <Route path='/allsubmodules' element={<AllModules />} />
+                <Route path='/stream/:slug' element={<AuthProtected path={'/learning'} Component={LiveStream}   />} />
+                <Route path='/allsubmodules' element={< AuthProtected path={'/allsubmodules'} Component={AllModules}   />} />
                 <Route path="/nsdctest" element={<LoginNSDC />} />
 
 

@@ -58,7 +58,10 @@ export default function MyLearning() {
     }, [])
     
 
-    const fetchUserData = async (email) => {
+    const fetchUserData = async () => {
+        const token = localStorage.getItem('COURSES_USER_TOKEN');
+            const decoded = jwtDecode(token);
+            let email=decoded?.email;
         setshow(true)
         try {
             const res = await axios.get(`${BASE_URL}/user/${email}`)
@@ -78,10 +81,9 @@ export default function MyLearning() {
             navigate('/login-2')
         }
         else {
-            const token = localStorage.getItem('COURSES_USER_TOKEN');
-            const decoded = jwtDecode(token);
+            
             // console.log(decoded)
-            fetchUserData(decoded?.email)
+            fetchUserData()
         }
     }, [])
 

@@ -54,9 +54,9 @@ async function handleChoose(batchid,courseid){
         })
         const response=await data.json()
         if(response.success){
-            toast.success(response.message);
-            let {email}=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
-            fetchUserData(email)
+            // toast.success(response.message);
+            // let {email}=jwtDecode(localStorage.getItem('COURSES_USER_TOKEN'))
+            fetchUserData()
             onRequestClose()
         }
     } catch (error) {
@@ -79,12 +79,12 @@ async function handleChoose(batchid,courseid){
         {
             Data?.map((item)=>{
                 return(<>
-            <div className='h-[300px] w-[500px] border flex flex-col gap-5'>
+            <div className='h-[300px] w-[500px] border flex flex-col gap-5 p-3 rounded shadow-lg'>
             <div className='font-semibold'>{item?.batchName}</div>
             <div>Start date : {formatDate(item?.startDate)}</div>
             <div>End date : {formatDate(item?.endDate)}</div>
             <div>Batch limit : {item?.batchlimit}</div>
-            <button className='bg-black text-white p-2 mx-auto' onClick={()=>handleChoose(item?._id,item?.course)}>Choose</button>
+            <button className='bg-black text-white p-2 mx-auto rounded' onClick={()=>handleChoose(item?._id,item?.course)}>Choose</button>
         </div>
                 </>)
             })

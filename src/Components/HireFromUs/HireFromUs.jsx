@@ -604,8 +604,8 @@ const HireFromUs = () => {
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col gap-y-5 px-6 h-[350px] xsm:h-[300px]">
-                  <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-y-8 px-6 h-[350px] xsm:h-[300px] pt-10">
+                  {/* <div className="flex flex-col gap-1">
                     <label
                       className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
                       htmlFor="name"
@@ -623,7 +623,7 @@ const HireFromUs = () => {
                       type="text"
                       placeholder="Enter your Name"
                     />
-                  </div>
+                  </div> */}
                   <div className="flex flex-col gap-1">
                     <label
                       className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
