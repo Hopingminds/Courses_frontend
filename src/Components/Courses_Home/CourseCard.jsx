@@ -162,7 +162,7 @@ const CourseCard = ({
             {title}
           </p>
           {description && (
-            <p className=" line-clamp-3 font-pop mt-2 text-[14px]  text-[#555555] xsm:text-[11px] sm:leading-none  md:text-[8px] ">
+            <p className=" line-clamp-3 font-pop mt-2 text-[14px]  text-[#555555] xsm:text-[11px] sm:text-[11px] sm:leading-none  md:text-[8px]  ">
               {description}
             </p>
           )}

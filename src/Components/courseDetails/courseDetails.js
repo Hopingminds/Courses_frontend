@@ -480,14 +480,14 @@ if (activelargevideo && localStorage.getItem(currentid)) {
     <>
       <div className="flex justify-between gap-5">
         {/* side menu */}
-        <div className="w-[20%] z-50 sticky top-20 h-max xsm:hidden">
+        <div className="w-[20%] z-50 sticky top-20 h-max xsm:hidden sm:hidden">
           {/* <SideBar /> */}
           {/* <NewSideBar /> */}
           <DrawerNavbar />
         </div>
 
-        <div className="w-[85%] xsm:w-full ">
-          <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] md:pr-[5%] md:h-[50vh] xsm:px-4">
+        <div className="w-[85%] xsm:w-full sm:w-full">
+          <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] sm:h-[42vh] sm:px-4 md:pr-[5%] md:h-[50vh] xsm:px-4">
             {showSmallvideo && (
               <div className="fixed bottom-0 left-0 z-[9999] rounded-xl">
                 <ReactPlayer
@@ -516,7 +516,7 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                 />
               </div>
             )}
-            {window.innerWidth <= 480 ? (
+            {window.innerWidth <= 720 ? (
               <FiMenu
                 className="absolute top-14 right-1 "
                 onClick={() => setMenu(true)}
@@ -527,10 +527,10 @@ if (activelargevideo && localStorage.getItem(currentid)) {
             )}
             <div className="flex gap-20 xsm:gap-0">
               <div className="CCD-content flex gap-5 pt-10">
-                <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
+                <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%] sm:w-[100%]">
 
                   <div
-                    className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh] "
+                    className="relative h-[100%] grid place-items-center xsm:h-[35vh] sm:h-[40vh] md:h-[40vh]"
                     style={{ borderRadius: "14px !important" }}
                   >
                     {showBanner &&
@@ -617,13 +617,13 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                         }}
                       />
                     )}
-                    <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] flex justify-center xsm:py-5 xsm:mb-5 xsm:w-full uppercase text-green-500">
+                    <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500">
                       {activeindex}
                     </div>
                   </div>
                 </div>
 
-                {window.innerWidth <= 480 ? (
+                {window.innerWidth <= 720 ? (
                   menu ? (
                     <div className="w-[45%] h-[80vh] overflow-y-auto ">
                       <Coursecontents
@@ -662,28 +662,28 @@ if (activelargevideo && localStorage.getItem(currentid)) {
           </div>
           <div
             id="ScrollToTop"
-            className=" w-[65%] pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]"
+            className=" w-[65%] pb-10 xsm:px-5 xsm:w-full sm:w-full sm:px-[2%] md:mb-10 md:px-[5%]"
           >
             <div className="CCD-Header-container flex justify-evenly">
-              <div className="w-[100%] xsm:mb-10">
-                <div className=" mt-8 xsm:mt-0 md:mt-0">
-                  <div className="bg-[#1DBF73] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 xsm:px-5 xsm:rounded-md md:px-8 md:py-4">
-                    <div className="space-y-2 xsm:space-y-0 md:space-y-1">
+              <div className="w-[100%] xsm:mb-10 sm:mb-10">
+                <div className=" mt-8 xsm:mt-0 sm:mt-0 md:mt-0">
+                  <div className="bg-[#1DBF73] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 sm:py-3 xsm:px-5 sm:px-5 xsm:rounded-md sm:rounded-md md:px-8 md:py-4">
+                    <div className="space-y-2 xsm:space-y-0 sm:space-y-0 md:space-y-1">
                       <p
-                        className={`font-pop font-semibold text-[22px] text-[#FFFFFF] xsm:text-[10px] md:text-[18px]`}
+                        className={`font-pop font-semibold text-[22px] text-[#FFFFFF] xsm:text-[10px] sm:text-[15px] md:text-[18px]`}
                       >
                         {Data?.title}{" "}
                       </p>
                       <div className="flex space-x-4">
-                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
+                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
                           {totalLessons} Lessons
                         </p>
-                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
+                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
                           {Timeconverter(dur)}
                         </p>
                       </div>
                     </div>
-                    {window.innerWidth <= 480 && (
+                    {window.innerWidth <= 720 && (
                       <div className="menu-icon" onClick={toggleMenu}>
                         <Menu />
                       </div>

@@ -413,23 +413,23 @@ const Register = () => {
         openModal={openModal}
       />
             <div className='flex overflow-hidden'>
-                <div className='xl:h-[75vh]  w-[40%] flex items-center justify-end relative xsm:hidden '>
-                    <img className='w-[75%]  object-cover absolute top-10 ' src='../login_bg.png' alt='' />
+                <div className='xl:h-[75vh]  w-[40%] sm:w-[50%] flex items-center justify-end relative xsm:hidden '>
+                    <img className='w-[75%] sm:w-[100%]  object-cover absolute top-12 ' src='../login_bg.png' alt='' />
                 </div>
-                <div className='flex flex-col items-center my-16 w-[60%] gap-4 xl:my-[9rem] xsm:w-full md:my-12'>
-                    {/* <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p> */}
-                    <div className='flex flex-col w-[75%] gap-4 xsm:w-[95%] items-center md:w-[90%]'>
-                        <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 w-[40%] md:w-[50%] xsm:w-[50%] xl:w-[35%]'>
-                            <button className='bg-transparent cursor-pointer Logininactive' onClick={() => navigate('/login-2')} >Login</button>
-                            <button className='bg-transparent cursor-pointer Loginactive' >Register</button>
+                <div className='flex flex-col items-center my-16 w-[60%] gap-4 xl:my-[9rem] xsm:w-full md:my-12 sm:my-5'>
+                    <p className='font-pop text-[16px]  hidden sm:block'>Welcome to Hoping Minds</p>
+                    <div className='flex flex-col w-[75%] gap-4 xsm:w-[95%] items-center md:w-[90%] sm:w-[95%]'>
+                        <div className='flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 w-[40%] md:w-[50%] xsm:w-[50%] sm:w-[50%] xl:w-[35%]'>
+                            <button className='bg-transparent cursor-pointer Logininactive sm:text-[10px]' onClick={() => navigate('/login-2')} >Login</button>
+                            <button className='bg-transparent cursor-pointer Loginactive sm:text-[10px]' >Register</button>
                         </div>
                         {/* inputs */}
                         <div className='flex flex-col gap-4 grid grid-cols-2  xsm:px-[5%]'>
                             <div>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Name  <span className='text-red-500'>*</span></p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px] sm:text-[12px]'>Name  <span className='text-red-500'>*</span></p>
                                 <input
                                     ref={nameRef}
-                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.name ? 'error_input' : ""}`}
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px] md:py-[7px] xsm:text-[12px] xsm:py-[7px] sm:text-[12px] sm:py-[7px] ${errors.name ? 'error_input' : ""}`}
                                     type="text"
                                     id="name"
                                     placeholder="Enter Your Name"
@@ -440,10 +440,10 @@ const Register = () => {
                                 />
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Email  <span className='text-red-500'>*</span></p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px] sm:text-[12px]'>Email  <span className='text-red-500'>*</span></p>
                                 <input
                                     ref={emailRef}
-                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.email ? 'error_input' : ""} ${isEmailValid && 'border-red-500'}`}
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] sm:text-[12px] sm:py-[7px] ${errors.email ? 'error_input' : ""} ${isEmailValid && 'border-red-500'}`}
                                     type="text"
                                     placeholder="Enter Your Email"
                                     name="email"
@@ -454,9 +454,9 @@ const Register = () => {
                                 />
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop'>Contact Number <span className='text-red-500'>*</span></p>
+                                <p className='text-[14px] font-pop xsm:text-[12px] sm:text-[12px]'>Contact Number <span className='text-red-500'>*</span></p>
                                 <PhoneInput
-                                    className={`phonenumbercountrycode phone-input-dropdown max-h-[100px]  overflow-y-auto mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full xsm:px-[18px] outline-none ${errors.phone ? 'error_input' : ""} ${isNumValid && 'border-red-500'}`}
+                                    className={`phonenumbercountrycode phone-input-dropdown max-h-[100px] xsm:text-[12px] xsm:py-[7px]  overflow-y-auto mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full xsm:px-[18px] outline-none sm:text-[12px] sm:py-[7px] ${errors.phone ? 'error_input' : ""} ${isNumValid && 'border-red-500'}`}
                                     defaultCountry="IN"
                                     name="phone"
                                     id={"phone"}
@@ -479,10 +479,10 @@ const Register = () => {
                                 /> */}
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Degree <span className='text-red-500'>*</span></p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px] sm:text-[12px]'>Degree <span className='text-red-500'>*</span></p>
                                 <input
                                     ref={degreeRef}
-                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.degree ? 'error_input' : ""}`}
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] sm:text-[12px] sm:py-[7px] ${errors.degree ? 'error_input' : ""}`}
                                     type="text"
                                     id={"degree"}
                                     placeholder="Enter Your Degree"
@@ -493,11 +493,11 @@ const Register = () => {
                                 />
                             </div>
                             <div>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>College/University <span className='text-red-500'>*</span></p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px] sm:text-[12px]'>College/University <span className='text-red-500'>*</span></p>
                                 <div className='relative'>
                                 <input
                                     ref={collegeRef}
-                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none ${SearchedData.length ? 'border-b-[0px] rounded-b-none' : 'border-b-[1px]'} ${errors.college ? ' error_input' : ""}`}
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] text-[14px] font-pop font-light rounded-full outline-none xsm:text-[12px] xsm:py-[7px] sm:text-[12px] sm:py-[7px] ${SearchedData.length ? 'border-b-[0px] rounded-b-none' : 'border-b-[1px]'} ${errors.college ? ' error_input' : ""}`}
                                     type="text"
                                     placeholder="Enter Your College/University"
                                     name="college"
@@ -521,10 +521,10 @@ const Register = () => {
                                 </div>
                             </div>
                             <div style={{ position: "relative" }}>
-                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px]'>Password <span className='text-red-500'>*</span></p>
+                                <p className='text-[14px] font-pop md:text-[12px] xsm:text-[12px] sm:text-[12px]'>Password <span className='text-red-500'>*</span></p>
                                 <input
                                     ref={passwordRef}
-                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] pl-[24px] pr-[32px]  text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] ${errors.password ? 'error_input' : ""}`}
+                                    className={`mt-2 w-full border-[1px] border-[#1dbf73] py-[10px] pl-[24px] pr-[32px] text-[14px] font-pop font-light rounded-full outline-none md:text-[12px]  md:py-[7px] xsm:text-[12px] xsm:py-[7px] sm:text-[12px] sm:py-[7px] ${errors.password ? 'error_input' : ""}`}
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Enter Your Password"
                                     name="password"
@@ -533,7 +533,7 @@ const Register = () => {
                                     onChange={handleChange}
                                     onKeyDown={(e) => handleKeyDown(e, null)}
                                 />
-                                <span className='absolute bottom-[12px] z-20 right-[15px] xsm:right-[10px] xsm:bottom-[14px]'> {
+                                <span className='absolute bottom-[12px] z-20 right-[15px] xsm:right-[10px] xsm:bottom-[14px] sm:bottom-[9px] sm:right-[10px]'> {
                                     showPassword ? <IoEyeOutline color="#1dbf73" size={18} onClick={() => setShowPassword((prev) => !prev)} /> : <IoEyeOffOutline color='#1dbf73' size={18} onClick={() => setShowPassword((prev) => !prev)} />
                                 }
                                 </span>
@@ -541,12 +541,12 @@ const Register = () => {
                         </div>
                         <div className='flex flex-col items-center gap-4 md:gap-3 xsm:gap-3'>
                             <div className=''>
-                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold md:text-[14px] md:py-1 xsm:text-[12px] xsm:py-1" onClick={handleRegister}>{btnLoader ? "Loading..." : "Sign Up"}</button>
+                                <button className="bg-[#1DBF73] py-2 px-7 rounded-full text-white font-nu font-bold md:text-[14px] md:py-1 xsm:text-[12px] sm:text-[12px] sm:py-1 xsm:py-1" onClick={handleRegister}>{btnLoader ? "Loading..." : "Sign Up"}</button>
                             </div>
                             <div className='flex items-center gap-1'>
-                                <p className='font-pop text-[14px] md:text-[10px] xsm:text-[10px]'>Already registered ? </p>
+                                <p className='font-pop text-[14px] md:text-[10px] xsm:text-[10px] sm:text-[10px] '>Already registered ? </p>
                                 {/* Sign up link */}
-                                <Link to={'/login-2'}>  <h5 className='text-[#1dbf73] md:text-[12px] xsm:text-[12px]'>Login</h5></Link>
+                                <Link to={'/login-2'}>  <h5 className='text-[#1dbf73] md:text-[12px] xsm:text-[12px] sm:text-[12px]'>Login</h5></Link>
                                 {/* Social media login buttons */}
                             </div>
                             <div className='flex flex-col gap-2 items-center'>
@@ -554,8 +554,8 @@ const Register = () => {
 
                                 <div className="flex gap-4 items-center">
 
-                                    <span onClick={handleGoogleRegister} className='cursor-pointer'><Google /></span>
-                                    <span onClick={handleLinkedInRegister} className='cursor-pointer'><Linkedin /></span>
+                                    <span onClick={handleGoogleRegister} className='cursor-pointer '><Google className='sm:w-[20px] sm:h-[20px]'/></span>
+                                    <span onClick={handleLinkedInRegister} className='cursor-pointer'><Linkedin className='sm:w-[25px] sm:h-[25px]' /></span>
 
                                 </div>
                             </div>

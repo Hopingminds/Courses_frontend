@@ -74,7 +74,7 @@ export default function MyStats({ courses }) {
       {!courses?.length?<div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Stats</div></div>:
       <div className="flex flex-row justify-between xsm:flex-col-reverse xsm:gap-10">
         <div className="w-[43%] xsm:w-full">
-          <p className="font-nu font-semibold text-[20px] text-[#243465] xsm:text-[10px] md:text-[16px]">
+          <p className="font-nu font-semibold text-[20px] text-[#243465] xsm:text-[10px] md:text-[16px] sm:text-[16px]">
             TOTAL COURSES
           </p>
           <div className="">
@@ -89,7 +89,7 @@ export default function MyStats({ courses }) {
                 <div key={ind} onClick={() => handleCourseClick(val,total)}>
                   {/* Course Item */}
                   <div className="flex justify-evenly py-6 cursor-pointer xsm:justify-between xsm:py-2 xsm:pt-4 md:py-4">
-                    <div className="w-[17%] font-nu font-semibold xsm:w-[14%] md:w-[15%]">
+                    <div className="w-[17%] font-nu font-semibold xsm:w-[14%] sm:w-[16%] md:w-[15%]">
                       <AnimatedProgressProvider
                         valueStart={0}
                         valueEnd={totalpercent}
@@ -117,7 +117,7 @@ export default function MyStats({ courses }) {
                     </div>
                     <div className="flex items-center justify-between w-[60%]">
                       <div>
-                        <p className="font-nu font-semibold text-[#243465] text-[22px] xsm:text-[10px] xsm:pb-1 md:text-[18px]">
+                        <p className="font-nu font-semibold text-[#243465] text-[22px] xsm:text-[10px] xsm:pb-1 md:text-[18px] sm:text-[15px]">
                           {val?.course?.title}
                         </p>
                       </div>
@@ -142,7 +142,7 @@ export default function MyStats({ courses }) {
             Your Spending
           </p>
           <div className="xsm:flex xsm:flex-row xsm:gap-40 xsm:items-center">
-            <div className=" flex items-center justify-center mt-12 w-full h-[350px] xsm:w-[50%] xsm:h-[60%] xsm:mt-0 md:mt-8 md:w-[70%] md:h-[70%] md:items-center">
+            <div className=" flex items-center justify-center mt-12 w-full h-[350px] xsm:w-[50%] xsm:h-[60%] xsm:mt-0 md:mt-8 md:w-[70%] md:h-[70%] sm:mt-8 sm:w-[70%] sm:h-[70%] md:items-center">
               {/* progressbar of each Course */}
               <AnimatedProgressProvider
                 valueStart={0}
@@ -216,7 +216,7 @@ export default function MyStats({ courses }) {
                 }}
               </AnimatedProgressProvider>
             </div>
-            <div className="flex space-x-10 mt-12 xsm:flex-col xsm:mt-0 xsm:space-x-0 xsm:gap-3 xsm:items-start md:mt-6 md:space-x-8">
+            <div className="flex space-x-10 mt-12 xsm:flex-col sm:flex-col sm:mt-2 sm:space-x-0 sm:gap-3 xsm:mt-0 xsm:space-x-0 xsm:gap-3 xsm:items-start md:mt-6 md:space-x-8">
               <div className="flex flex-col items-center">
                 <div className="flex space-x-2 items-center md:space-x-1">
                   <img

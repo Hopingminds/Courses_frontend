@@ -215,7 +215,7 @@ export default function Herosection() {
         </Link> */}
       </div>
       
-      <div className="flex flex-col gap-6 h-max w-[40%] md:gap-2 xsm:gap-1">
+      <div className="flex flex-col gap-6 h-max w-[40%] md:gap-2 xsm:gap-1 sm:w-[200px] sm:h-[250px] sm:gap-2 sm:pt-4">
 
       {/* <Splide
                     options={{
@@ -230,7 +230,7 @@ export default function Herosection() {
                       arrows: false,
                     }} >
 <SplideSlide> */}
-        <div className="flex flex-row gap-2 justify-end">
+        <div className="flex flex-row gap-2 justify-end  ">
           <div className="flex flex-col justify-end pb-6">
               <img
                 alt=""
@@ -246,14 +246,14 @@ export default function Herosection() {
 
           <div className="flex flex-row gap-8 lg:gap-5 md:gap-3 xsm:gap-2 sm:gap-2  ">
               <div className=" flex flex-col gap-5 items-end justify-between lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:items-center">
-              <div className="h-52 w-44 xsm:h-20 xsm:w-auto">
+              <div className="h-52 w-44 xsm:h-20 sm:h-16 sm:w-auto  xsm:w-auto">
                   <img
                   alt=""
                   src={images6[currentImageIndex]}
                   className="h-full w-full"
                 />
               </div>
-                <div className="h-36 w-28 xsm:h-16 xsm:w-auto">
+                <div className="h-36 w-28 xsm:h-16 sm:h-16 sm:w-auto xsm:w-auto">
                   <img
                     alt=""
                   src={images2[currentImageIndex]}
@@ -262,13 +262,13 @@ export default function Herosection() {
               </div>
             </div>
             <div className="h-full flex flex-col gap-1 items-end justify-between lg:gap-1 md:gap-2 sm:gap-2 xsm:gap-2 xsm:items-center">
-                <div className="h-32 w-28 xsm:h-12 xsm:w-auto">
+                <div className="h-32 w-28 xsm:h-12 sm:h-12 sm:w-auto xsm:w-auto">
                 <img alt=""
                   src={images3[currentImageIndex]}
                   className=" "
                 />
               </div>
-                <div className="xsm:h-20 xsm:w-auto">
+                <div className="xsm:h-20 xsm:w-auto sm:h-16 sm:w-auto">
                 <img alt=""
                   src={images1[currentImageIndex]}
                   className="h-full w-full"
@@ -277,13 +277,13 @@ export default function Herosection() {
            
             </div>
             <div className="flex flex-col gap-5 items-end lg:gap-3 md:gap-2 sm:gap-2 xsm:gap-2 xsm:hidden ">
-            <div className="  ">
+            <div className=" sm:h-16 sm:w-auto ">
                 <img
                   src={images5[currentImageIndex]}
                   className=" "
                 />
               </div>
-              <div className="h-32 w-28">
+              <div className="h-32 w-28 sm:h-16 sm:w-auto mt-4">
                 <img
                   src={images4[currentImageIndex]}
                   className=""

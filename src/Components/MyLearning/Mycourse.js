@@ -69,7 +69,7 @@ navigate(`/course/${val?.course?.slug}`)
     
         {!courses?.length ? <div className="flex justify-center  w-full mt-10"><div className="text-center font-semibold text-2xl w-full "> No Course Purchased</div></div> : ''}
 
-        <div className="my-[5%] mx-[5%] grid grid-cols-3 gap-16 xsm:my-3 xsm:gap-4 md:gap-10">
+        <div className="my-[5%] mx-[5%] grid grid-cols-3 sm:grid-cols-2 gap-16 xsm:my-3 xsm:gap-4 md:gap-10">
             {
                 courses?.map((val, ind) => {
                     let totallessons = 0
@@ -93,7 +93,7 @@ navigate(`/course/${val?.course?.slug}`)
                                 <img className="w-full h-full xsm:rounded-md xsm:h-[55px]" src={val?.course?.featured_image} />
                             </div>
                             <div className="h-[45%] flex flex-col justify-between mt-2 xsm:space-y-1 xsm:mt-1">
-                                <p className="font-pop font-semibold text-[18px] xsm:text-[6px] md:text-[16px]">{val?.course?.title}</p>
+                                <p className="font-pop font-semibold text-[18px] xsm:text-[6px] md:text-[16px] sm:text-[14px]">{val?.course?.title}</p>
                                 <div className=" flex items-center gap-1">
                                     <img className="w-[32px] h-[32px] xsm:w-[10px] xsm:h-[10px] md:h-[24px] md:w-[24px] rounded-full" src={val?.course?.instructor?.profile} />
                                     <p className="font-pop font-medium text-[16px] xsm:text-[6px] md:text-[12px]"> {val?.course?.instructor?.name}</p>

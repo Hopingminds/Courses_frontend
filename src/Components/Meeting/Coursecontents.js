@@ -134,24 +134,24 @@ export default function Coursecontents({
   };
 
   return (
-    <div className="bg-[#E2FFF1] rounded-3xl xsm:absolute xsm:top-[3rem] xsm:right-0 xsm:w-[80vw] xsm:h-screen xsm:overflow-y-auto z-20">
+    <div className="bg-[#E2FFF1] rounded-3xl  sm:absolute sm:top-[3rem] sm:right-0 sm:w-[80vw] sm:h-screen sm:overflow-y-auto xsm:absolute xsm:top-[3rem]  xsm:right-0 xsm:w-[80vw] xsm:h-screen xsm:overflow-y-auto z-20">
       <Toaster 
         toastOptions={{
           duration: 500,
         }}
       />
-      <div className="px-5 py-8 xsm:py-4 xsm:px-2 md:px-3 md:py-5">
+      <div className="px-5 py-8 xsm:py-4 sm:py-4 xsm:px-2 sm:px-2 md:px-3 md:py-5">
         <div className="space-y-2 xsm:space-y-1">
           <div className="flex flex-row justify-between">
-            <p className="font-pop font-semibold text-[21px] text-[#1DBF73] xsm:text-[12px] md:text-[16px]">
+            <p className="font-pop font-semibold text-[21px] text-[#1DBF73] xsm:text-[12px] sm:text-[16px] md:text-[16px]">
               Course Contents
             </p>
-            {window.innerWidth <= 480 && (
+            {window.innerWidth <= 720 && (
               <MdClose className="cursor-pointer" onClick={toggleMenu} />
             )}
           </div>
           <div className="flex justify-between items-center">
-            <p className="font-pop text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px]">
+            <p className="font-pop text-[12px] text-[#1DBF73] xsm:text-[10px] sm:text-[10px] md:text-[10px]">
               {completed_lessons?.length}/{totallessons} COMPLETED
             </p>
             {/* <img className="w-[19px] h-[19px] xsm:w-4 xsm:h-4 md:w-4 md:h-4" src="../Icons/Calender.svg" /> */}
@@ -175,7 +175,7 @@ export default function Coursecontents({
                       onClick={() => ClickSection(ind + 1)}
                     >
                       <div className="flex justify-between ">
-                        <p className="font-pop font-medium text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px]">
+                        <p className="font-pop font-medium text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px] sm:text-[10px]">
                           {val?.chapter_name}
                         </p>
                         <Down />
@@ -192,7 +192,7 @@ export default function Coursecontents({
                           </p>
                         </div> */}
                         <div className="flex items-center space-x-1">
-                          <IoBookOutline className="text-[#252641CC] w-4 h-4 xsm:h-3 xsm:w-3 md:h-3 md:w-3" />
+                          <IoBookOutline className="text-[#252641CC] w-4 h-4 xsm:h-3 xsm:w-3 md:h-3 md:w-3 sm:h-3 sm:w-3" />
                           <p className="text-[#252641CC] text-[11px] font-pop font-medium xsm:text-[8px] md:text-[10px]">
                             {val?.lessons?.length}{" "}
                             {val?.lessons?.length === 1 ? "Lesson" : "Lessons"}
@@ -225,7 +225,7 @@ export default function Coursecontents({
                                         chapter?.liveClass?.streamKey
                                       )
                                     }
-                                    className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px] text-red-500 "
+                                    className="font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] text-red-500 "
                                   >
                                     {index + 1}. {chapter?.lesson_name} (Live)
                                   </p>
@@ -239,7 +239,7 @@ export default function Coursecontents({
                                         chapter?._id
                                       )
                                     }
-                                    className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]"
+                                    className="font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]"
                                   >
                                     {index + 1}. {chapter?.lesson_name}
                                   </p>
@@ -253,7 +253,7 @@ export default function Coursecontents({
                                 <div className="relative">
                                   <button className="flex gap-2 align-middle justify-self-end w-fit items-center px-2 mt-3 realtive xsm:mt-2">
                                     {/* <TiFolderOpen className="xsm:w-3 xsm:h-3 md:w-4 md:h-4" /> */}
-                                    <p className="text-[12px] xsm:text-[6px] md:text-[10px]">
+                                    <p className="text-[12px] xsm:text-[6px] sm:text-[10px] md:text-[10px]">
                                       Resources
                                     </p>
                                   </button>
@@ -276,7 +276,7 @@ export default function Coursecontents({
                                           className="flex items-center gap-1"
                                         >
                                           <Notes className="w-3 h-3" />
-                                          <li className="text-[12px] md:text-[10px]">
+                                          <li className="text-[12px] sm:text-[10px] md:text-[10px]">
                                             Notes
                                           </li>
                                         </div>
@@ -302,7 +302,7 @@ export default function Coursecontents({
                                           className="flex items-center border rounded-md gap-1 px-2"
                                         >
                                           <Assignment className="w-3 h-3" />
-                                          <li className="text-[12px] md:text-[10px]">
+                                          <li className="text-[12px] sm:text-[10px] md:text-[10px]">
                                             Assignment
                                           </li>
                                         </div>
@@ -389,7 +389,7 @@ export default function Coursecontents({
                                         ? handleProject(chapter)
                                         : ""
                                     }
-                                    className={`font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]`}
+                                    className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]`}
                                   >
                                     {index + 1}. {chapter?.title}(
                                     {chapter?.duration || "5 mins"})

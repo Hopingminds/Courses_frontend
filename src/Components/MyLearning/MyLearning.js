@@ -141,15 +141,15 @@ export default function MyLearning() {
             </head>
             <div className='MLheader px-[5%] pt-14 flex flex-col space-y-8 xsm:pt-0 xsm:space-y-3 xsm:justify-end xsm:py-1 md:space-y-6 md:pt-12'>
                 <div>
-                    <p className='font-pop text-white font-semibold text-[44px] xsm:text-[10px] capitalize md:text-[34px]'>{`${userDetail?.name?.split(" ")[0]}'s Learning`}</p>
+                    <p className='font-pop text-white font-semibold text-[44px] xsm:text-[10px] capitalize md:text-[34px] sm:text-[28px]'>{`${userDetail?.name?.split(" ")[0]}'s Learning`}</p>
                 </div>
                 <div className='flex space-x-14 xsm:space-x-4 md:space-x-10'>
-                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px]' onClick={() => setshowpage('courses')} style={{ borderBottom: showpage === 'courses' ? "2px solid white" : "1px solid transparent" }}>My Courses</button>
-                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px]' onClick={() => setshowpage('assignments')} style={{ borderBottom: showpage === 'assignments' ? "2px solid white" : "1px solid transparent" }}>Assignment</button>
-                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px]' onClick={() => setshowpage('wishlist')} style={{ borderBottom: showpage === 'wishlist' ? "2px solid white" : "1px solid transparent" }}>Wishlist</button>
-                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px]' onClick={() => setshowpage('certificate')} style={{ borderBottom: showpage === 'certificate' ? "2px solid white" : "1px solid transparent" }}>Certifications</button>
-                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px]' onClick={() => setshowpage('stats')} style={{ borderBottom: showpage === 'stats' ? "2px solid white" : "1px solid transparent" }}>My Stats</button>
-                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px]' onClick={() => setshowpage('job')} style={{ borderBottom: showpage === 'job' ? "2px solid white" : "1px solid transparent" }}>Job Offering</button>
+                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px] sm:text-[10px]' onClick={() => setshowpage('courses')} style={{ borderBottom: showpage === 'courses' ? "2px solid white" : "1px solid transparent" }}>My Courses</button>
+                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px] sm:text-[10px]' onClick={() => setshowpage('assignments')} style={{ borderBottom: showpage === 'assignments' ? "2px solid white" : "1px solid transparent" }}>Assignment</button>
+                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px] sm:text-[10px]' onClick={() => setshowpage('wishlist')} style={{ borderBottom: showpage === 'wishlist' ? "2px solid white" : "1px solid transparent" }}>Wishlist</button>
+                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px] sm:text-[10px]' onClick={() => setshowpage('certificate')} style={{ borderBottom: showpage === 'certificate' ? "2px solid white" : "1px solid transparent" }}>Certifications</button>
+                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px] sm:text-[10px]' onClick={() => setshowpage('stats')} style={{ borderBottom: showpage === 'stats' ? "2px solid white" : "1px solid transparent" }}>My Stats</button>
+                    <button className='font-pop font-medium text-white text-[17px] xsm:text-[6px] md:text-[14px] sm:text-[10px]' onClick={() => setshowpage('job')} style={{ borderBottom: showpage === 'job' ? "2px solid white" : "1px solid transparent" }}>Job Offering</button>
                 </div>
             </div>
             {show ? <div className='w-full h-screen fixed top-0 left-0 bg-[#b4cca1]'>
