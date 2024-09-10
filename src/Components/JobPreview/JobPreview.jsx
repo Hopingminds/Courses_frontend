@@ -70,7 +70,7 @@ const JobPreview = () => {
   }, []);
 
   return (
-    <div className="bg-[#f7f7f7] px-[12%] py-[3%]">
+    <div className="bg-[#f7f7f7] px-[12%] py-[3%] sm:px-2">
       <Toaster toastOptions={{
          duration: 500,
       }} />
@@ -78,7 +78,7 @@ const JobPreview = () => {
         {/* Heading */}
         <div className="px-8 py-4 border-b  flex flex-col gap-1">
           <div className="flex flex-col">
-            <p className="font-semibold text-[25px]">{jobDetails?.position}</p>
+            <p className="font-semibold text-[25px] sm:text-[20px]">{jobDetails?.position}</p>
             <p className="font-nu text-[14px]">{jobDetails?.company}</p>
           </div>
           <div className="flex justify-between mt-4 mb-2">
@@ -108,7 +108,7 @@ const JobPreview = () => {
               </div>
             </div>
             <div className="flex items-end">
-              <button onClick={(e)=>handleApply(e,searchParams.get("jobid"))} className={`font-medium text-[20px] bg-green-400 text-white px-6 py-1 rounded-full ${check? 'cursor-not-allowed pointer-events-none opacity-50':''}`}>
+              <button onClick={(e)=>handleApply(e,searchParams.get("jobid"))} className={`font-medium text-[20px] bg-green-400 text-white px-6 py-1 sm:text-[12px] rounded-full ${check? 'cursor-not-allowed pointer-events-none opacity-50':''}`}>
                 Apply Now
               </button>
             </div>
@@ -138,35 +138,35 @@ const JobPreview = () => {
           </div>
           {/* Job Details */}
           <div className="grid grid-cols-2 gap-1 gap-x-10 font-nu text-[14px]">
-            <div className="grid grid-cols-[1fr,2fr]">
-              <p className="font-medium">Role</p>
+            <div className="grid grid-cols-[1fr,2fr] ">
+              <p className="font-medium sm:font-semibold">Role</p>
               <p>{jobDetails?.position}</p>
             </div>
-            <div className="grid grid-cols-[1fr,2fr]">
+            <div className="grid grid-cols-[1fr,2fr] sm:gap-1">
               <p className="font-medium">Work mode </p>
               <p>{jobDetails?.work_mode}</p>
             </div>
 
-            <div className="grid grid-cols-[1fr,2fr]">
-              <p className="font-medium">Specialization</p>
+            <div className="grid grid-cols-[1fr,2fr] sm:gap-1">
+              <p className="font-medium">Specialization </p>
               <p> {jobDetails?.specialization}</p>
             </div>
-            <div className="grid grid-cols-[1fr,2fr]">
-              <p className="font-medium">Employment Type</p>
+            <div className="grid grid-cols-[1fr,2fr] sm:gap-1">
+              <p className="font-medium">Employment Type </p>
               <p>{jobDetails?.employment_type}</p>
             </div>
-            <div className="grid grid-cols-[1fr,2fr]">
-              <p className="font-medium">Role Category</p>
+            <div className="grid grid-cols-[1fr,2fr] sm:gap-1">
+              <p className="font-medium">Role Category </p>
               <p> {jobDetails?.role_category}</p>
             </div>
-            <div className="grid grid-cols-[1fr,2fr]">
-              <p className="font-medium">Education</p>
+            <div className="grid grid-cols-[1fr,2fr] sm:gap-1">
+              <p className="font-medium">Education </p>
               <p>{jobDetails?.educational_qualification}</p>
             </div>
           </div>
           {/* Key Skills */}
-          <div className="flex flex-col gap-1 font-nu text-[14px]">
-            <p className="font-medium">Key Skills</p>
+          <div className="flex flex-col gap-1 font-nu text-[14px] sm:gap-1">
+            <p className="font-medium">Key Skills </p>
             <div className="flex flex-wrap gap-2">
               {jobDetails?.key_skills?.map((skill, ind) => {
                 return (

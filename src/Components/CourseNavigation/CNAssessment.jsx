@@ -63,14 +63,14 @@ const CNAssessment = ({slug}) => {
 
     return (
         <div className="bg-[#FFFFFF] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col gap-3 items-center ">
-            <div className="grid grid-cols-[1fr,1fr,1fr,1fr] w-full bg-[#E2FFF1] py-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
+            <div className="grid grid-cols-[1fr,1fr,1fr,1fr] w-full bg-[#E2FFF1] py-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] sm:text-[12px] md:p-3">
                 <p className="font-pop font-bold text-center grid">Topic</p>
                 <p className="font-pop font-bold text-center">Due Date</p>
                 <p className="font-pop font-bold text-center">Time</p>
                 <p className="font-pop font-bold text-center">Action</p>
             </div>
             {assessmentdata?.length ? assessmentdata?.map((item, ind) => (
-                <div key={ind} className="grid grid-cols-[1fr,1fr,1fr,1fr] w-full border border-[#E2FFF1] py-2 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] md:p-3">
+                <div key={ind} className="grid grid-cols-[1fr,1fr,1fr,1fr] w-full border border-[#E2FFF1] py-2 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] sm:text-[12px] md:p-3">
                     <p className="font-pop font-medium text-center grid">{item?.assessmentName}</p>
                     <p className="font-pop font-medium text-center">{item?.lastDate?.split("T")[0]}</p>
                     {/* <p className="font-pop font-medium text-center">{!item?.isTestCompleted?0:1}</p> */}

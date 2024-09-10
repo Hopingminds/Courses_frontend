@@ -515,11 +515,11 @@ const HireFromUs = () => {
               {tab === 1 ? (
                 <div
                   className="flex flex-col gap-2 px-6 
-                h-[350px] xsm:h-[300px]"
+                h-[350px] xsm:h-[300px] sm:h-[300px]"
                 >
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="name"
                     >
                       Name <span className="text-red-500">*</span>
@@ -527,7 +527,7 @@ const HireFromUs = () => {
                     <input
                       id="name"
                       name="name"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] sm:text-[14px] xsm:text-[14px] ${
                         warnings.name ? "border border-red-500" : ""
                       }`}
                       onChange={handleChange}
@@ -538,7 +538,7 @@ const HireFromUs = () => {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="pass"
                     >
                       Company <span className="text-red-500">*</span>
@@ -548,7 +548,7 @@ const HireFromUs = () => {
                       name="company"
                       onChange={handleChange}
                       value={hiredata.company}
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         warnings.company ? "border border-red-500" : ""
                       }`}
                       type="text"
@@ -557,7 +557,7 @@ const HireFromUs = () => {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="study"
                     >
                       Work E-mail <span className="text-red-500">*</span>
@@ -567,7 +567,7 @@ const HireFromUs = () => {
                       value={hiredata.email}
                       name="email"
                       id="study"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         warnings.email ? "border border-red-500" : ""
                       }`}
                       type="email"
@@ -576,7 +576,7 @@ const HireFromUs = () => {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="time"
                     >
                       Phone number <span className="text-red-500">*</span>
@@ -586,7 +586,7 @@ const HireFromUs = () => {
                       value={hiredata.phone}
                       id="time"
                       name="phone"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         warnings.phone ? "border border-red-500" : ""
                       }`}
                       type="number"
@@ -597,17 +597,17 @@ const HireFromUs = () => {
                   <div className="px-6 mt-2">
                     <button
                       onClick={handleRegister}
-                      className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]"
+                      className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px] sm:text-[14px]"
                     >
                       Submit
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col gap-y-5 px-6 h-[350px] xsm:h-[300px]">
+                <div className="flex flex-col gap-y-5 px-6 h-[350px] xsm:h-[300px] sm:h-[300px] ">
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="name"
                     >
                       Name <span className="text-red-500">*</span>
@@ -615,7 +615,7 @@ const HireFromUs = () => {
                     <input
                       id="name"
                       name="name"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         loginwarnings.name ? "border border-red-500" : ""
                       }`}
                       onChange={handleloginChange}
@@ -626,7 +626,7 @@ const HireFromUs = () => {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="email"
                     >
                       Email <span className="text-red-500">*</span>
@@ -634,7 +634,7 @@ const HireFromUs = () => {
                     <input
                       id="email"
                       name="email"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         loginwarnings.email ? "border border-red-500" : ""
                       }`}
                       onChange={handleloginChange}
@@ -645,7 +645,7 @@ const HireFromUs = () => {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="otp"
                     >
                       Password <span className="text-red-500">*</span>
@@ -653,7 +653,7 @@ const HireFromUs = () => {
                     <input
                       id="password"
                       name="password"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         loginwarnings.password ? "border border-red-500" : ""
                       }`}
                       onChange={handleloginChange}
@@ -665,7 +665,7 @@ const HireFromUs = () => {
                   <div className="px-6 mt-5">
                     <button
                       onClick={handleLogin}
-                      className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]"
+                      className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px] sm:text-[14px]"
                     >
                       Login
                     </button>

@@ -52,7 +52,7 @@ export default function WishList() {
         ""
       )}
 
-      <div className="my-[4%] mx-[5%] grid grid-cols-3 gap-10 xsm:mt-3 xsm:gap-3 xsm:grid-cols-3">
+      <div className="my-[4%] mx-[5%] grid grid-cols-3 sm:grid-cols-2 gap-10 xsm:mt-3 xsm:gap-3 xsm:grid-cols-3">
         {Data?.map((item) => {
           return (
             <>
@@ -72,20 +72,20 @@ export default function WishList() {
                   <div className="flex justify-between mt-3 min-h-[30%] xsm:mt-1 md:mt-0 items-center">
                     <div className="flex items-center space-x-3 max-w-[80%] xsm:space-x-1 md:space-x-1">
                       <img alt=""
-                        className="w-[32px] h-[32px] rounded-full xsm:w-4 xsm:h-4 md:w-5 md:h-5"
+                        className="w-[32px] h-[32px] rounded-full xsm:w-4 xsm:h-4 md:w-5 md:h-5 sm:w-[25px] sm:h-[25px]"
                         src={item?.course?.instructor?.profile}
                       />
-                      <p className="font-pop font-medium text-[14px] flex flex-wrap xsm:text-[5px] md:text-[10px]">
+                      <p className="font-pop font-medium text-[14px] flex flex-wrap xsm:text-[5px] md:text-[10px] sm:text-[12px]">
                         {item?.course?.instructor?.name}
                       </p>
                     </div>
                     <div>
-                      <p className="font-pop font-bold text-[#49BBBD] text-[18px] xsm:text-[5px] md:text-[10px]">
+                      <p className="font-pop font-bold text-[#49BBBD] text-[18px] xsm:text-[5px] md:text-[10px] sm:text-[12px]">
                         ₹{item?.course?.base_price}
                       </p>
                     </div>
                   </div>
-                    <p className="font-pop font-semibold text-[18px] text-[#252641] xsm:text-[8px] md:text-[14px] line-clamp-2">
+                    <p className="font-pop font-semibold text-[18px] text-[#252641] xsm:text-[8px] md:text-[14px] sm:text-[14px]  line-clamp-2">
                     {item?.course?.title}
                   </p>
                   </div>

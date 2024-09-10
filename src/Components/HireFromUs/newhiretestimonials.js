@@ -110,7 +110,7 @@ const NewHireTestimonial = () => {
                 <Splide
                     options={{
                         type: "loop",
-                        perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : 4,
+                        perPage: window.innerWidth <= 480 ? 2 : (window.innerWidth > 480 && window.innerWidth < 721) ? 2: (window.innerWidth >= 721 && window.innerWidth <= 1024) ? 3 : 4,
                         pagination: false,
                         perMove: 1,
                         wheel: false,
