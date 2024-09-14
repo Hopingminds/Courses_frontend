@@ -22,6 +22,7 @@ export default function Coursecontents({
   count,
   courseCategory,
   handleProject,
+  currentid
 }) {
   const navigate = useNavigate();
   // console.log(completed_lessons)
@@ -239,7 +240,7 @@ export default function Coursecontents({
                                         chapter?._id
                                       )
                                     }
-                                    className="font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]"
+                                    className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] ${currentid==chapter?._id ? 'text-[#1DBF73]':''} `}
                                   >
                                     {index + 1}. {chapter?.lesson_name}
                                   </p>
@@ -269,7 +270,8 @@ export default function Coursecontents({
                                               ? handleToggleNotes(
                                                   chapter?.notes,
                                                   ALLCHAPTER[count]?.video,
-                                                  chapter._id
+                                                  chapter._id,
+                                                  chapter?.lesson_name
                                                 )
                                               : ""
                                           }
@@ -293,7 +295,8 @@ export default function Coursecontents({
                                               ? handleToggleNotes(
                                                   chapter?.assignment,
                                                   ALLCHAPTER[count]?.video,
-                                                  chapter._id
+                                                  chapter._id,
+                                                  chapter?.lesson_name
                                                 )
                                               : ""
                                           }

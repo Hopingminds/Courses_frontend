@@ -79,7 +79,7 @@ navigate(`/course/${val?.course?.slug}`)
                     })
                     return (
                         new Date(val?.course?.courseStartDate)<new Date() ?
-                        <div onClick={()=>handleNavigation(val)} className=" relative w-full flex flex-col justify-between p-4  mt-2 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm">
+                        <div onClick={()=>handleNavigation(val)} className="cursor-pointer relative w-full flex flex-col justify-between p-4  mt-2 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm">
                             {val?.course?.courseCategory === "liveCourse" && (
                                 <div className="bg-transparent p-4 absolute top-2 right-2 z-[99]">
                                     <img

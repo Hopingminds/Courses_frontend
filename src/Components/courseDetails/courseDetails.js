@@ -11,7 +11,7 @@ import NewSideBar from "./NewSideBar.jsx";
 import { FiMenu } from "react-icons/fi";
 import DrawerNavbar from "./DrawerNavbar.jsx";
 import { FaLastfmSquare, FaPlay } from "react-icons/fa";
-
+import Draggable from 'react-draggable';
 export default function CDDetails() {
   const [clicked, setclicked] = useState(false);
   const [menu, setMenu] = useState(false);
@@ -134,10 +134,7 @@ export default function CDDetails() {
         //   response?.data?.completed_lessons?.length
         // );
         // console.log("data",allchapters,completed);
-        if (
-          allchapters?.length === response?.data?.completed_lessons?.length ||
-          response?.data?.completed_lessons?.length == 0
-        ) {
+        if (allchapters?.length === response?.data?.completed_lessons?.length ||response?.data?.completed_lessons?.length == 0) {
           if (allchapters[0]?.isLiveClass) {
             // setsk()
             localStorage.setItem("sk", allchapters[0]?.liveClass?.streamKey);
@@ -164,16 +161,31 @@ export default function CDDetails() {
           seturl(allchapters[0]?.video);
           setactiveindex(allchapters[0]?.lesson_name);
           setcount(0);
-        } else {
+          setcurrentid(allchapters[0]?._id)
+          setVideoUrl(allchapters[0]?.video);
+
+        } 
+        else {
           // console.log("hi");
-          seturl(allchapters[videoindex]?.video);
+          let last=localStorage.getItem('last')
+          if(!last){
+            seturl(allchapters[videoindex]?.video);
+            setcurrentid(allchapters[videoindex]?._id)
+            // setcount(videoindex);
+            setactiveindex(allchapters[videoindex]?.lesson_name);
+          }
+          else{
+            seturl(allchapters[last]?.video);
+          setcurrentid(allchapters[last]?._id)
+          setactiveindex(allchapters[last]?.lesson_name);
+          }
           setcount(videoindex);
-          setactiveindex(allchapters[videoindex]?.lesson_name);
           completed.push(allchapters[videoindex]?._id);
+
+
         }
         // console.log(completed);
         setcompleted_lessons(completed);
-        setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
       }
     }
@@ -213,8 +225,10 @@ export default function CDDetails() {
   }, []);
 
   function handleActiveVideo(url, title, id) {
+
     setactivesmallvideo(true)
-    
+    setactivelargevideo(true)
+    setcurrentid(id)
       if(playerRef2.current){
         const currenttime=playerRef2.current.getCurrentTime();
         // console.log("currenttime");
@@ -226,6 +240,8 @@ export default function CDDetails() {
       }
     let getindex = idwise[id];
     setcount(getindex);
+    localStorage.setItem('last',getindex)
+
     setactiveindex(title);
     setshowLive(false);
     setshowend(false);
@@ -239,7 +255,11 @@ export default function CDDetails() {
   const handleVideoEnded = async () => {
     // console.log(count + 1);
     // console.log(totalLessons,ALLCHAPTER.length);
+    localStorage.setItem('last',count+1)
 
+setactivelargevideo(true)
+setactivesmallvideo(true)
+setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
     setactiveindex(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.lesson_name);
     setshowSmallvideo(false);
     seturl(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.video);
@@ -247,13 +267,13 @@ export default function CDDetails() {
       count + 1 >= completed_lessons.length &&
       ALLCHAPTER?.length >= completed_lessons.length
     ) {
-      if (ALLCHAPTER?.length == completed_lessons.length) {
-        let temp = completed_lessons;
-        temp.push(ALLCHAPTER[count + 1]?._id);
-        // console.log(count);v
-        setcompleted_lessons(temp);
-      }
-
+      // if (ALLCHAPTER?.length == completed_lessons.length) {
+        
+      // }
+      let temp = completed_lessons;
+      temp.push(ALLCHAPTER[count + 1]?._id);
+      // console.log(count);v
+      setcompleted_lessons(temp);
       try {
         let login = localStorage.getItem("COURSES_USER_TOKEN");
         if (login) {
@@ -295,6 +315,7 @@ export default function CDDetails() {
   }
   const handleDuration = (duration) => {
     // setDuration(duration);
+    localStorage.setItem('duration'+currentid,duration)
     console.log(duration);
   };
 
@@ -310,11 +331,14 @@ export default function CDDetails() {
     e.preventDefault(); // Prevent default context menu behavior
   };
 
-  const handleToggleNotes = async (pdf, videourl,id) => {
+  const handleToggleNotes = async (pdf, videourl,id,lesson) => {
     setactivelargevideo(true)
     // console.log(id);
-    
+    setactiveindex(lesson)
     setcurrentid(id)
+    let getindex = idwise[id];
+    localStorage.setItem('last',getindex)
+
 
     try {
       if(playerRef.current){
@@ -373,9 +397,20 @@ export default function CDDetails() {
     }
   };
   const handlelargeVideoReady = () => {
+    // console.log(currentid,activelargevideo);
+    
 if (activelargevideo && localStorage.getItem(currentid)) {
     //  setactivelargevideo(false)
+    let durationtime=localStorage.getItem('duration'+currentid)
+    let playedtime=localStorage.getItem(currentid)
+    if(Math.floor(durationtime)==Math.floor(playedtime)){
+      playerRef.current.seekTo(0, 'seconds');
+
+    }
+    else{
       playerRef.current.seekTo(localStorage.getItem(currentid), 'seconds');
+
+    }
       // playerRef2.current.play();
     } else {
       console.error("Player references are not available.");
@@ -440,7 +475,6 @@ if (activelargevideo && localStorage.getItem(currentid)) {
   // console.log(formattedDate); // Output: "08 July 2024 2.30pm"
   useEffect(() => {
     // console.log("adfdasf");
-
     if (ALLCHAPTER[count]?.isLiveClass) {
       localStorage.setItem("sk", ALLCHAPTER[count]?.liveClass?.streamKey);
 
@@ -489,15 +523,14 @@ if (activelargevideo && localStorage.getItem(currentid)) {
         <div className="w-[85%] xsm:w-full sm:w-full">
           <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] sm:h-[42vh] sm:px-4 md:pr-[5%] md:h-[50vh] xsm:px-4">
             {showSmallvideo && (
+              <Draggable>
               <div className="fixed bottom-0 left-0 z-[9999] rounded-xl">
                 <ReactPlayer
                   onContextMenu={handleContextMenu}
-                  height="200px"
-                  width="250px"
+                  height="280px"
+                  width="350px"
                   ref={playerRef2}
-                  borderRadius="14px"
                   className="shadow-2xl rounded-xl"
-                  style={{ borderRadius: "14px !important" }}
                   playing={playing}
                   controls={true}
                   autoPlay={playing}
@@ -515,6 +548,7 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                   }}
                 />
               </div>
+              </Draggable>
             )}
             {window.innerWidth <= 720 ? (
               <FiMenu
@@ -584,7 +618,10 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                         </p>
                       </div>
                     ) : showSmallvideo || url?.toString().endsWith("pdf") ? (
-                      <iframe src={pdfurl} width="100%" height="100%" />
+                      // <div className="relative">
+                        <iframe src={pdfurl} width="100%" height="100%" />
+                        //  <button className="absolute top-0 right-0">ABC</button> 
+                        // </div> 
                     ) : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : !showLive && !showend && url?.toString() === "" ? (
@@ -636,6 +673,7 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                         ALLCHAPTER={ALLCHAPTER}
                         count={count}
                         handleProject={handleProject}
+                        currentid={currentid}
                       />
                     </div>
                   ) : (
@@ -653,6 +691,7 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                       ALLCHAPTER={ALLCHAPTER}
                       count={count}
                       handleProject={handleProject}
+                      currentid={currentid}
                     />
                   </div>
                 )}

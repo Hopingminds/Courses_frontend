@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
+::selection {
+  color: white;
+  background: #1DBF73;
+}
 .phonenumbercountrycode input {
   outline: none;
 }
