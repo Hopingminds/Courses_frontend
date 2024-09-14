@@ -96,7 +96,7 @@ navigate(`/course/${val?.course?.slug}`)
         let response = await data.json();
         // console.log(response);
         if (response.success) {
-          toast.success(response.msg);
+          // toast.success(response.msg);
           GetCart()
           CheckCourseInCart(courseid)
         } else {
@@ -127,11 +127,9 @@ navigate(`/course/${val?.course?.slug}`)
         });
         let response = await data.json();
         // console.log(response);
-        if (response.success) {
-          toast.success(response.msg);
-        } else {
+        if (!response.success) {
           toast.error(response.msg);
-        }
+        } 
       } else {
         navigate("/login-2");
       }

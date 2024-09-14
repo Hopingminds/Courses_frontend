@@ -30,7 +30,7 @@ export default function DetailCourses() {
   const [faqs, setFaqs] = useState([]);
   const [alreadyInCart, setAlreadyInCart] = useState(false);
   const [alreadyInWishlist, setalreadyInWishlist] = useState(false)
-  useLayoutEffect(() => {
+  useEffect(() => {
     async function Fetchdata() {
       try {
         setshow(true);
@@ -101,7 +101,7 @@ export default function DetailCourses() {
         let response = await data.json();
         // console.log(response);
         if (response.success) {
-          toast.success(response.msg);
+          // toast.success(response.msg);
           // setCartSize(cartSize + 1);
           setshow(false)
           GetCart();
@@ -136,7 +136,7 @@ export default function DetailCourses() {
         let response = await data.json();
         // console.log(response);
         if (response.success) {
-          toast.success(response.msg);
+          // toast.success(response.msg);
           CheckCourseInWishlist(courseid)
           setshow(false)
         } else {
