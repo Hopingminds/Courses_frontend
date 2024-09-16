@@ -145,7 +145,7 @@ const Footer = () => {
                   target="_blank"
                   className={`${pathname=='/privacy' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
-                  Mail: support@hopingminds.com
+                  Email: support@hopingminds.com
                 </Link>
                 <div className="flex flex-row gap-2 items-center">
                   <Link
