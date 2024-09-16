@@ -12,27 +12,37 @@ const JobOffering = ({ courses }) => {
   const [isApplied, setIsApplied] = useState(false);
   function formatDate(dateString) {
     const dateObj = new Date(dateString);
-    
-    const day = String(dateObj.getDate()).padStart(2, '0');
+
+    const day = String(dateObj.getDate()).padStart(2, "0");
     const year = dateObj.getFullYear();
 
     const monthNames = [
-        "January", "February", "March", "April", "May", "June", 
-        "July", "August", "September", "October", "November", "December"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
     const month = monthNames[dateObj.getMonth()];
 
     let hours = dateObj.getHours();
-    const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+    const minutes = String(dateObj.getMinutes()).padStart(2, "0");
 
-    const ampm = hours >= 12 ? 'pm' : 'am';
+    const ampm = hours >= 12 ? "pm" : "am";
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
-    
+
     const time = `${hours}.${minutes}${ampm}`;
 
     return `${day} ${month} ${year} ${time}`;
-}
+  }
   useEffect(() => {
     getAllJobAplicants();
     fetchUserData();
@@ -60,7 +70,7 @@ const JobOffering = ({ courses }) => {
       // console.log(res);
       if (res) {
         toast.success("You have Successfully Applied");
-        fetchUserData()
+        fetchUserData();
       } else {
         toast.error("Error while applying");
       }
@@ -89,9 +99,9 @@ const JobOffering = ({ courses }) => {
           )}
 
           {jobOpeningData?.map((item, ind) => {
-            let expiry=new Date(item?.lastDate);
-            let today=new Date()
-            let check=expiry<today;
+            let expiry = new Date(item?.lastDate);
+            let today = new Date();
+            let check = expiry < today;
             // console.log("keyskills",item?.key_skills);
             return (
               <>
@@ -124,29 +134,41 @@ const JobOffering = ({ courses }) => {
                             {item?.work_mode}
                           </p>
                         </div>
-                        {item.salaryType=="Salary Range" ?<p className=" text-sm">₹{item?.annual_salary_range.from}-{item?.annual_salary_range.to} LPA</p>:
-                        item.salaryType=="uptoPackage" ?<p className=" text-sm">Upto ₹{item?.uptoPackage} LPA</p>:
-                        <p className="text-sm">₹{item?.annualSalary} LPA</p>
-}
+                        {item.salaryType == "Salary Range" ? (
+                          <p className=" text-sm">
+                            ₹{item?.annual_salary_range.from}-
+                            {item?.annual_salary_range.to} LPA
+                          </p>
+                        ) : item.salaryType == "uptoPackage" ? (
+                          <p className=" text-sm">
+                            Upto ₹{item?.uptoPackage} LPA
+                          </p>
+                        ) : (
+                          <p className="text-sm">₹{item?.annualSalary} LPA</p>
+                        )}
                       </div>
                     </div>
                     <div className="flex space-x-2 items-center xsm:space-x-1">
-                        <p className="text-[14px] font-semibold">Skills required</p>
-                        {item?.key_skills?.map((it)=>{
-                          return<p className="font-pop capitalize text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
+                      <p className="text-[14px] font-semibold">
+                        Skills required
+                      </p>
+                      {item?.key_skills?.map((it) => {
+                        return (
+                          <p className="font-pop capitalize text-[11px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
                             {it},
-                              </p>
-                            })}
-                         
-                        </div>
+                          </p>
+                        );
+                      })}
+                    </div>
                     <div className="flex gap-2 items-center xsm:space-x-1 w-[70%]">
-                      <h3 className="text-[14px] font-semibold">Job expires on</h3>
+                      <h3 className="text-[14px] font-semibold">
+                        Job expires on
+                      </h3>
 
                       <p className="font-pop text-[14px] font-medium text-[#555555] xsm:text-[8px] md:text-[10px]">
                         {formatDate(item?.lastDate)}
                       </p>
                     </div>
-
 
                     {/* <div className="flex gap-2 items-center xsm:space-x-1 w-[70%]">
                       <h3 className="text-[14px] font-semibold">Position</h3>
@@ -161,19 +183,22 @@ const JobOffering = ({ courses }) => {
                     {!item?.isApplied ? (
                       <button
                         onClick={(e) => handleApply(e, item?._id)}
-                        className={`bg-[#1DBF73] py-1 px-6 mr-12 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 ${check ? 'cursor-not-allowed opacity-50 pointer-events-none':''}`}
+                        className={`bg-[#1DBF73] py-1 px-6 mr-12 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 ${
+                          check
+                            ? "cursor-not-allowed opacity-50 pointer-events-none"
+                            : ""
+                        }`}
                       >
                         Apply
                       </button>
-                    ):
-                    <button
-                    onClick={(e) => handleApply(e, item?._id)}
-                    className={`bg-[#1DBF73] py-1 px-6 mr-12 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 cursor-not-allowed opacity-50 pointer-events-none`}
-                  >
-                    Applied
-                  </button>
-                  
-                  }
+                    ) : (
+                      <button
+                        onClick={(e) => handleApply(e, item?._id)}
+                        className={`bg-[#1DBF73] py-1 px-6 mr-12 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] md:px-3 md:py-1 cursor-not-allowed opacity-50 pointer-events-none`}
+                      >
+                        Applied
+                      </button>
+                    )}
 
                     <button
                       onClick={() => navigate("/jobpreview?jobid=" + item?._id)}

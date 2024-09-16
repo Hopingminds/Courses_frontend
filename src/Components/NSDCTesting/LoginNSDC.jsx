@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { BASE_URL_NSDC } from "../../Api/api"; // Assuming this is where BASE_URL_NSDC is defined
+import { BASE_URL_NSDC } from "../../Api/api"; 
 
 const LoginNSDC = () => {
   const [userName, setUsername] = useState("");

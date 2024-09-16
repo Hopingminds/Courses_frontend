@@ -52,6 +52,20 @@
     --form-control-color: rebeccapurple;
     --form-control-disabled: #f3f2f3;
   }
+/* Change the highlight color for selected text */
+::selection {
+  background-color: #1DBF73; /* Highlight background color */
+  color: #000000; /* Highlight text color */
+}
+
+/* For browsers like Firefox that require a prefix */
+::-moz-selection {
+  background-color: #ffcc00;
+  color: #000000;
+}
+/* body{
+  cursor: url('https://static.vecteezy.com/system/resources/previews/009/279/626/original/s-pencil-logo-design-free-vector.jpg') 10 10, auto; 
+} */
 
   .meshGradient {
     background-color: #fd99ff;

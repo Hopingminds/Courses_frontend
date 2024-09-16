@@ -86,6 +86,8 @@ import AllModules from '../Components/Assignments/Submodules/index.js'
 import NewQuestion from '../Components/Assignments/newpatternquestion/index.js'
 import Normalassessment from '../Components/Assignments/normalassessment/index.js'
 import LoginNSDC from '../Components/NSDCTesting/LoginNSDC.jsx'
+import InternshipProgram from '../Components/InternshipProgram/InternshipProgram.jsx'
+import Freelancing from '../Components/Freelancing/Freelancing.jsx'
 
 function Locationpath(){
     const location=useLocation()
@@ -199,6 +201,9 @@ const Router = () => {
                 <Route path='/error' element={<PaymentFailed />} />
                 <Route path='/stream/:slug' element={<LiveStream />} />
                 <Route path='/allsubmodules' element={<AllModules />} />
+                <Route path='/internshipprogram' element={<InternshipProgram />} />
+                <Route path='/freelancing' element={<Freelancing />} />
+
                 <Route path="/nsdctest" element={<LoginNSDC />} />
 
 

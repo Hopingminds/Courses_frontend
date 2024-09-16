@@ -1,0 +1,39 @@
+
+.front:hover .back{
+    display: block;
+}
+.back{
+    display: none;
+}
+.afterclick{
+    background-color: #1FC074;
+    color: white;
+    font-size: 15px;
+    /* border-radius: 9999px; */
+    transition: all 0.4s ease-in-out;
+}
+.beforeclick{
+    background-color: transparent;
+    color: #333333;
+    font-size: 15px;
+    transition: all 0.4s ease-in-out;
+}
+.coursecardhome{
+    /* box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2), 0 5px 10px 0 rgba(0,0,0,0.19) !important; */
+    /* box-shadow: 5px 5px 5px black ; */
+}
+@media(max-width:500px){
+    .beforeclick{
+    background-color: transparent;
+    color: #333333;
+    font-size: 12px;
+    transition: all 0.4s ease-in-out;
+}
+.afterclick{
+    background-color: #1FC074;
+    color: white;
+    font-size: 13px;
+    /* border-radius: 9999px; */
+    transition: all 0.4s ease-in-out;
+}
+}
