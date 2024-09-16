@@ -86,12 +86,9 @@ import AllModules from '../Components/Assignments/Submodules/index.js'
 import NewQuestion from '../Components/Assignments/newpatternquestion/index.js'
 import Normalassessment from '../Components/Assignments/normalassessment/index.js'
 import LoginNSDC from '../Components/NSDCTesting/LoginNSDC.jsx'
-<<<<<<< HEAD
 import InternshipProgram from '../Components/InternshipProgram/InternshipProgram.jsx'
 import Freelancing from '../Components/Freelancing/Freelancing.jsx'
-=======
 import AuthProtected  from './AuthProtected.js'
->>>>>>> e8274c5fe17954084a22db88cb5d6d837ac30e56
 
 function Locationpath(){
     const location=useLocation()
@@ -194,16 +191,11 @@ const Router = () => {
                 <Route path='/hardwarecheck' element={<MediaCheck />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
                 <Route path='/error' element={<PaymentFailed />} />
-<<<<<<< HEAD
-                <Route path='/stream/:slug' element={<LiveStream />} />
-                <Route path='/allsubmodules' element={<AllModules />} />
                 <Route path='/internshipprogram' element={<InternshipProgram />} />
                 <Route path='/freelancing' element={<Freelancing />} />
 
-=======
                 <Route path='/stream/:slug' element={<AuthProtected path={'/learning'} Component={LiveStream}   />} />
                 <Route path='/allsubmodules' element={< AuthProtected path={'/allsubmodules'} Component={AllModules}   />} />
->>>>>>> e8274c5fe17954084a22db88cb5d6d837ac30e56
                 <Route path="/nsdctest" element={<LoginNSDC />} />
 
 
