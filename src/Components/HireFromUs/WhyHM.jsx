@@ -44,12 +44,12 @@ const WhyHM = () => {
     <div className=" pb-[6%] pt-[2%] xsm:pt-8 md:pt-12">
       <div className="flex flex-col gap-3 xsm:gap-5" ref={sectionRef}>
         <div className="flex justify-center">
-          <p className="text-[#1DBF73] text-[36px] font-pop font-semibold xsm:text-[24px] md:text-[30px]">
+          <p className="text-[#1DBF73] text-[36px] font-pop font-semibold xsm:text-[24px] sm:text-[24px] md:text-[30px]">
             Why Hoping Minds
           </p>
         </div>
         <div className="flex justify-center">
-          <p className="text-[#696984] text-[20px] font-pop w-[70%] text-center leading-12 xsm:text-[12px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
+          <p className="text-[#696984] text-[20px] font-pop w-[70%] text-center leading-12 xsm:text-[12px] sm:text-[14px] xsm:w-[95%] sm:w-[95%] sm:px-[5%] xsm:px-[5%] md:text-[12px] sm:text-justify">
             Welcome to HopingMinds, your gateway to a brighter future. As an
             esteemed partner of the <span className="font-semibold"> National Skill Development Corporation
             (NSDC)</span>, we stand at the forefront of transformative education,
@@ -58,10 +58,10 @@ const WhyHM = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-4 py-10 px-[5%] gap-x-6 md:py-6 xsm:grid-cols-2 xsm:gap-y-10 xsm:pt-6" >
+        <div className="grid grid-cols-4 py-10 px-[5%] gap-x-6 md:py-6 xsm:grid-cols-2 sm:grid-cols-2 sm:gap-y-10 sm:pt-6 xsm:gap-y-10 xsm:pt-6" >
             <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500 rounded-xl">
             <Hm1 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
-            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">Immediate Joining</div>
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight sm:text-[18px]">Immediate Joining</div>
             <div className="flex gap-x-2 ">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
               <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Rapid Skill Acquisition.</div>
@@ -81,7 +81,7 @@ const WhyHM = () => {
             </div>
             <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500 rounded-xl" >
             <Hm2 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
-            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">No Offer Dropouts</div>
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight sm:text-[18px]">No Offer Dropouts</div>
             <div className="flex gap-x-2 ">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
               <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Access to Skilled Talent Pool.</div>
@@ -101,7 +101,7 @@ const WhyHM = () => {
             </div>
             <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500 rounded-xl">
             <Hm3 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
-            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">Hiring In 1 day</div>
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight sm:text-[18px]">Hiring In 1 day</div>
             <div className="flex gap-x-2 ">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
               <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Reduced Hiring Risks.</div>
@@ -121,7 +121,7 @@ const WhyHM = () => {
             </div>
             <div className="gap-y-3 flex flex-col shadow-xl  hover:bg-[#0B1519] hover:rounded-xl p-3 pb-5 whyhmbox hover:transition hover:duration-500 rounded-xl">
             <Hm4 className="mx-auto h-14 w-14 md:h-10 md:w-10 xsm:h-10 xsm:w-10"/>
-            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] xsm:leading-tight">PAN India Availabilitiy</div>
+            <div className="text-center text-[#1DBF73] font-semibold text-2xl md:text-[16px] xsm:text-[14px] sm:text-[18px] xsm:leading-tight">PAN India Availabilitiy</div>
             <div className="flex gap-x-2 ">
               <Correct className="h-5 w-5 md:h-4 md:w-4 xsm:h-3 xsm:w-3"/>
               <div className="hmboxline text-sm md:text-[12px] xsm:text-[10px] xsm:leading-tight">Nationwide Talent Pool.</div>

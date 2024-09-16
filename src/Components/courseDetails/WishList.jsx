@@ -51,7 +51,7 @@ export default function WishList() {
         ""
       )}
 
-      <div className="my-[4%] mx-[5%] grid grid-cols-3 gap-10 xsm:mt-3 xsm:gap-3 xsm:grid-cols-3">
+      <div className="my-[4%] mx-[5%] grid grid-cols-3 gap-5 xsm:mt-3 xsm:gap-3 xsm:grid-cols-3">
         {Data?.map((item) => {
           return (
             <>

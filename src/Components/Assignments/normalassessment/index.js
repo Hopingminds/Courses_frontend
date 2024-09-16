@@ -401,7 +401,7 @@ let tempstate=true;
         <div  className="flex justify-between h-[77vh] xsm:flex-col xsm:gap-5 font-pop">
           <div className="flex flex-col max-h-full overflow-y-auto gap-2 question">
           {Array.from({ length: Length }).map((_, ind) => (
-        <button onClick={()=>navigate(`/nmquestion?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${ind + 1}&t=${params.get('t')}`)} key={index} className="border shadow-sm p-1">
+        <button onClick={()=>navigate(`/nmquestion?moduleAssessmentid=${params.get('moduleAssessmentid')}&index=${ind + 1}&t=${params.get('t')}`)} key={ind} className="border shadow-sm p-1">
           {ind+1}
         </button>
       ))}

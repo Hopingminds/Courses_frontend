@@ -10,8 +10,8 @@ import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import NewSideBar from "./NewSideBar.jsx";
 import { FiMenu } from "react-icons/fi";
 import DrawerNavbar from "./DrawerNavbar.jsx";
-import { FaPlay } from "react-icons/fa";
-
+import { FaLastfmSquare, FaPlay } from "react-icons/fa";
+import Draggable from 'react-draggable';
 export default function CDDetails() {
   const [clicked, setclicked] = useState(false);
   const [menu, setMenu] = useState(false);
@@ -38,6 +38,10 @@ export default function CDDetails() {
   const [expired, setexpired] = useState();
   const [sk, setsk] = useState("");
   const [dur, setdur] = useState();
+  const playerRef = useRef(null);
+  const playerRef2 = useRef(null);
+  const [currentDuration, setCurrentDuration] = useState(0);
+  const [playing, setPlaying] = useState(true);
   const params = useParams();
   let totalduration = 0;
   let finaldur = 0;
@@ -47,7 +51,9 @@ export default function CDDetails() {
   const navigate = useNavigate();
   const [showBanner, setShowBanner] = useState(true);
   const [imageBanner, setImageBanner] = useState();
-
+  const [currentid, setcurrentid] = useState()
+ const [activesmallvideo, setactivesmallvideo] = useState(true)
+ const [activelargevideo, setactivelargevideo] = useState(true)
   useEffect(() => {
     async function Fetchdata() {
       temp = false;
@@ -128,10 +134,7 @@ export default function CDDetails() {
         //   response?.data?.completed_lessons?.length
         // );
         // console.log("data",allchapters,completed);
-        if (
-          allchapters?.length === response?.data?.completed_lessons?.length ||
-          response?.data?.completed_lessons?.length == 0
-        ) {
+        if (allchapters?.length === response?.data?.completed_lessons?.length ||response?.data?.completed_lessons?.length == 0) {
           if (allchapters[0]?.isLiveClass) {
             // setsk()
             localStorage.setItem("sk", allchapters[0]?.liveClass?.streamKey);
@@ -158,16 +161,31 @@ export default function CDDetails() {
           seturl(allchapters[0]?.video);
           setactiveindex(allchapters[0]?.lesson_name);
           setcount(0);
-        } else {
+          setcurrentid(allchapters[0]?._id)
+          setVideoUrl(allchapters[0]?.video);
+
+        } 
+        else {
           // console.log("hi");
-          seturl(allchapters[videoindex]?.video);
+          let last=localStorage.getItem('last')
+          if(!last){
+            seturl(allchapters[videoindex]?.video);
+            setcurrentid(allchapters[videoindex]?._id)
+            // setcount(videoindex);
+            setactiveindex(allchapters[videoindex]?.lesson_name);
+          }
+          else{
+            seturl(allchapters[last]?.video);
+          setcurrentid(allchapters[last]?._id)
+          setactiveindex(allchapters[last]?.lesson_name);
+          }
           setcount(videoindex);
-          setactiveindex(allchapters[videoindex]?.lesson_name);
           completed.push(allchapters[videoindex]?._id);
+
+
         }
         // console.log(completed);
         setcompleted_lessons(completed);
-        setVideoUrl(response?.data?.course?.curriculum[0]?.lessons[0]?.video);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
       }
     }
@@ -207,8 +225,23 @@ export default function CDDetails() {
   }, []);
 
   function handleActiveVideo(url, title, id) {
+
+    setactivesmallvideo(true)
+    setactivelargevideo(true)
+    setcurrentid(id)
+      if(playerRef2.current){
+        const currenttime=playerRef2.current.getCurrentTime();
+        // console.log("currenttime");
+        
+        // playerRef.current.seekTo(currenttime, 'seconds');
+
+       localStorage.setItem(id,currenttime)
+
+      }
     let getindex = idwise[id];
     setcount(getindex);
+    localStorage.setItem('last',getindex)
+
     setactiveindex(title);
     setshowLive(false);
     setshowend(false);
@@ -222,6 +255,11 @@ export default function CDDetails() {
   const handleVideoEnded = async () => {
     // console.log(count + 1);
     // console.log(totalLessons,ALLCHAPTER.length);
+    localStorage.setItem('last',count+1)
+
+setactivelargevideo(true)
+setactivesmallvideo(true)
+setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
     setactiveindex(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.lesson_name);
     setshowSmallvideo(false);
     seturl(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.video);
@@ -229,13 +267,13 @@ export default function CDDetails() {
       count + 1 >= completed_lessons.length &&
       ALLCHAPTER?.length >= completed_lessons.length
     ) {
-      if (ALLCHAPTER?.length == completed_lessons.length) {
-        let temp = completed_lessons;
-        temp.push(ALLCHAPTER[count + 1]?._id);
-        // console.log(count);v
-        setcompleted_lessons(temp);
-      }
-
+      // if (ALLCHAPTER?.length == completed_lessons.length) {
+        
+      // }
+      let temp = completed_lessons;
+      temp.push(ALLCHAPTER[count + 1]?._id);
+      // console.log(count);v
+      setcompleted_lessons(temp);
       try {
         let login = localStorage.getItem("COURSES_USER_TOKEN");
         if (login) {
@@ -277,6 +315,7 @@ export default function CDDetails() {
   }
   const handleDuration = (duration) => {
     // setDuration(duration);
+    localStorage.setItem('duration'+currentid,duration)
     console.log(duration);
   };
 
@@ -292,13 +331,35 @@ export default function CDDetails() {
     e.preventDefault(); // Prevent default context menu behavior
   };
 
-  const handleToggleNotes = async (pdf, videourl) => {
-    // console.log(pdfurl);
-    setshowSmallvideo(true);
-    // seturl(pdfurl)
-    setpdfurl(pdf);
-    setsmallVideourl(videourl);
-  };
+  const handleToggleNotes = async (pdf, videourl,id,lesson) => {
+    setactivelargevideo(true)
+    // console.log(id);
+    setactiveindex(lesson)
+    setcurrentid(id)
+    let getindex = idwise[id];
+    localStorage.setItem('last',getindex)
+
+
+    try {
+      if(playerRef.current){
+       const currenttime=playerRef.current.getCurrentTime();
+      //  setCurrentDuration(currenttime)
+       localStorage.setItem(id,currenttime)
+        setPlaying(true)
+      } 
+      // Show the small video player
+      setshowSmallvideo(true);
+  
+      // Set the URLs for PDF and video
+      setpdfurl(pdf);
+      setsmallVideourl(videourl);
+  
+  // console.log(playerRef.current);
+  
+    } catch (error) {
+      console.error("An error occurred while toggling notes:", error);
+    }
+   };
 
   function handleProject(project) {
     setactiveindex(project?.title);
@@ -325,6 +386,37 @@ export default function CDDetails() {
       // handleVideoEnded();
     }
   }
+  
+  const handleSmallVideoReady = () => {
+    if (playerRef2.current && activesmallvideo && localStorage.getItem(currentid)) {
+      setactivesmallvideo(false)
+      playerRef2.current.seekTo(localStorage.getItem(currentid), 'seconds');
+      // playerRef2.current.play();
+    } else {
+      console.error("Player references are not available.");
+    }
+  };
+  const handlelargeVideoReady = () => {
+    // console.log(currentid,activelargevideo);
+    
+if (activelargevideo && localStorage.getItem(currentid)) {
+    //  setactivelargevideo(false)
+    let durationtime=localStorage.getItem('duration'+currentid)
+    let playedtime=localStorage.getItem(currentid)
+    if(Math.floor(durationtime)==Math.floor(playedtime)){
+      playerRef.current.seekTo(0, 'seconds');
+
+    }
+    else{
+      playerRef.current.seekTo(localStorage.getItem(currentid), 'seconds');
+
+    }
+      // playerRef2.current.play();
+    } else {
+      console.error("Player references are not available.");
+    }
+    setactivelargevideo(false)
+  };
   function Timeconverter(totalMinutes) {
     const minutes = parseInt(totalMinutes, 10);
     if (isNaN(minutes)) {
@@ -381,10 +473,8 @@ export default function CDDetails() {
   // Example usage
 
   // console.log(formattedDate); // Output: "08 July 2024 2.30pm"
-  function Checklive() {}
   useEffect(() => {
     // console.log("adfdasf");
-
     if (ALLCHAPTER[count]?.isLiveClass) {
       localStorage.setItem("sk", ALLCHAPTER[count]?.liveClass?.streamKey);
 
@@ -414,31 +504,38 @@ export default function CDDetails() {
       // if()
     }
   }, [count]);
+  function handleProgress(state){
+    const { playedSeconds } = state;
+    // console.log(playedSeconds);
+    localStorage.setItem(currentid,playedSeconds)
+    
+  }
   return (
     <>
       <div className="flex justify-between gap-5">
         {/* side menu */}
-        <div className="w-[20%] z-50 sticky top-20 h-max xsm:hidden">
+        <div className="w-[20%] z-50 sticky top-20 h-max xsm:hidden sm:hidden">
           {/* <SideBar /> */}
           {/* <NewSideBar /> */}
           <DrawerNavbar />
         </div>
 
-        <div className="w-[85%] xsm:w-full ">
-          <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] md:pr-[5%] md:h-[50vh] xsm:px-4">
+        <div className="w-[85%] xsm:w-full sm:w-full">
+          <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] sm:h-[42vh] sm:px-4 md:pr-[5%] md:h-[50vh] xsm:px-4">
             {showSmallvideo && (
+              <Draggable>
               <div className="fixed bottom-0 left-0 z-[9999] rounded-xl">
                 <ReactPlayer
                   onContextMenu={handleContextMenu}
-                  height="200px"
-                  width="250px"
-                  borderRadius="14px"
+                  height="280px"
+                  width="350px"
+                  ref={playerRef2}
                   className="shadow-2xl rounded-xl"
-                  style={{ borderRadius: "14px !important" }}
-                  playing={true}
+                  playing={playing}
                   controls={true}
-                  autoPlay={true}
+                  autoPlay={playing}
                   url={smallVideourl}
+                  onReady={handleSmallVideoReady}
                   onDuration={handleDuration}
                   onEnded={handleVideoEnded}
                   config={{
@@ -451,8 +548,9 @@ export default function CDDetails() {
                   }}
                 />
               </div>
+              </Draggable>
             )}
-            {window.innerWidth <= 480 ? (
+            {window.innerWidth <= 720 ? (
               <FiMenu
                 className="absolute top-14 right-1 "
                 onClick={() => setMenu(true)}
@@ -463,102 +561,10 @@ export default function CDDetails() {
             )}
             <div className="flex gap-20 xsm:gap-0">
               <div className="CCD-content flex gap-5 pt-10">
-                <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%]">
-                  
-                  {/* old code without Banner  */}
-                  {/* <div
-                    className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
-                    style={{ borderRadius: "14px !important" }}
-                  >
-                    {showSmallvideo || url?.toString().endsWith("pdf") ? (
-                      //  <div className="relative">
-                      <iframe src={pdfurl} width="100%" height="100%" />
-                    ) : //  <button className="absolute top-2 right-3 bg-[#1DBF73] text-white rounded px-3 py-1">Next</button>
-                    //  </div>
-                    {showBanner &&
-                      !showLive &&
-                      !showend &&
-                      !expired &&
-                      url &&
-                      url.toString().endsWith("mp4") ? (
-                        <div
-                          className="flex flex-col justify-center items-center w-full 2xl:h-[60vh] xl:h-[60vh] lg:h-[60vh] xsm:h-[30vh] sm:h-[30vh] rounded-xl"
-                          style={{
-                            backgroundImage: `url(${imageBanner})`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                          }}
-                        >
-                          <FaPlay
-                            className="absolute text-green-400 p-4 sm:p-3 lg:p-4 xl:p-5 2xl:p-6 rounded-2xl shadow-xl cursor-pointer animate-customPulse"
-                            style={{
-                              backgroundColor: "rgba(255, 255, 255, 0.7)",
-                            }}
-                            onClick={() => setShowBanner(false)}
-                            size={90}
-                          />
-                        </div>
-                      ) : showLive ? (
-                        <div className="text-center flex flex-col">
-                          <p>Live Class Will Start On {starttime}.</p>
-                          <p className="font-semibold cursor-pointer">
-                            <Link to={`/stream/${params.slug}`} target="_blank">
-                              GO TO LIVE CLASS
-                            </Link>
-                          </p>
-                        </div>
-                      ) : showend ? (
-                        <div className="text-center flex flex-col">
-                          <p>
-                            Live Class is going on and it will end on {endtime}.
-                          </p>
-                          <p className="font-semibold cursor-pointer">
-                            <Link to={`/stream/${params.slug}`} target="_blank">
-                              GO TO LIVE CLASS
-                            </Link>
-                          </p>
-                        </div>
-                      ) : expired ? (
-                        <div className="text-center flex flex-col">
-                          <p>
-                            Live class is over and you will get recording as soon
-                            as possible.
-                          </p>
-                        </div>
-                      ) : url?.toString().endsWith("mp3") ? (
-                        <iframe src={url} width="100%" height="100%" />
-                      ) : !showLive && !showend && url?.toString() === "" ? (
-                        <div className="text-center flex flex-col">
-                          <p className="font-semibold">Coming soon</p>
-                        </div>
-                      ) : (
-                        <ReactPlayer
-                          onContextMenu={handleContextMenu}
-                          height="auto"
-                          width="100%"
-                          borderRadius="14px"
-                          className="shadow-2xl rounded-[18px]"
-                          style={{ borderRadius: "14px !important" }}
-                          playing={!showBanner}
-                          controls={true}
-                          autoPlay={!showBanner}
-                          url={url}
-                          onDuration={handleDuration}
-                          onEnded={handleVideoEnded}
-                          config={{
-                            file: {
-                              attributes: {
-                                controlsList: "nodownload",
-                              },
-                            },
-                          }}
-                        />
-                      )}
-                  <div className="font-bold xsm:h-auto lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] flex justify-center xsm:py-5 xsm:mb-5 xsm:w-full uppercase text-green-500">{activeindex}</div>
-                  </div> */}
+                <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%] sm:w-[100%]">
 
                   <div
-                    className="relative h-[100%] grid place-items-center xsm:h-[35vh] md:h-[40vh]"
+                    className="relative h-[100%] grid place-items-center xsm:h-[35vh] sm:h-[40vh] md:h-[40vh]"
                     style={{ borderRadius: "14px !important" }}
                   >
                     {showBanner &&
@@ -612,11 +618,14 @@ export default function CDDetails() {
                         </p>
                       </div>
                     ) : showSmallvideo || url?.toString().endsWith("pdf") ? (
-                      <iframe src={pdfurl} width="100%" height="100%" />
+                      // <div className="relative">
+                        <iframe src={pdfurl} width="100%" height="100%" />
+                        //  <button className="absolute top-0 right-0">ABC</button> 
+                        // </div> 
                     ) : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : !showLive && !showend && url?.toString() === "" ? (
-                      <div className="text-center flex flex-col">
+                      <div className="text-center flex flex-col ">
                         <p className="font-semibold">Coming soon</p>
                       </div>
                     ) : (
@@ -624,6 +633,7 @@ export default function CDDetails() {
                         onContextMenu={handleContextMenu}
                         height="auto"
                         width="100%"
+                        ref={playerRef}
                         borderRadius="14px"
                         className="shadow-2xl rounded-[18px]"
                         style={{ borderRadius: "14px !important" }}
@@ -633,6 +643,8 @@ export default function CDDetails() {
                         url={url}
                         onDuration={handleDuration}
                         onEnded={handleVideoEnded}
+                        onReady={handlelargeVideoReady}
+                        onProgress={handleProgress}
                         config={{
                           file: {
                             attributes: {
@@ -642,13 +654,13 @@ export default function CDDetails() {
                         }}
                       />
                     )}
-                    <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] flex justify-center xsm:py-5 xsm:mb-5 xsm:w-full uppercase text-green-500">
+                    <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500">
                       {activeindex}
                     </div>
                   </div>
                 </div>
 
-                {window.innerWidth <= 480 ? (
+                {window.innerWidth <= 720 ? (
                   menu ? (
                     <div className="w-[45%] h-[80vh] overflow-y-auto ">
                       <Coursecontents
@@ -661,6 +673,7 @@ export default function CDDetails() {
                         ALLCHAPTER={ALLCHAPTER}
                         count={count}
                         handleProject={handleProject}
+                        currentid={currentid}
                       />
                     </div>
                   ) : (
@@ -678,6 +691,7 @@ export default function CDDetails() {
                       ALLCHAPTER={ALLCHAPTER}
                       count={count}
                       handleProject={handleProject}
+                      currentid={currentid}
                     />
                   </div>
                 )}
@@ -687,28 +701,28 @@ export default function CDDetails() {
           </div>
           <div
             id="ScrollToTop"
-            className=" w-[65%] pb-10 xsm:px-5 xsm:w-full md:mb-10 md:px-[5%]"
+            className=" w-[65%] pb-10 xsm:px-5 xsm:w-full sm:w-full sm:px-[2%] md:mb-10 md:px-[5%]"
           >
             <div className="CCD-Header-container flex justify-evenly">
-              <div className="w-[100%] xsm:mb-10">
-                <div className=" mt-8 xsm:mt-0 md:mt-0">
-                  <div className="bg-[#1DBF73] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 xsm:px-5 xsm:rounded-md md:px-8 md:py-4">
-                    <div className="space-y-2 xsm:space-y-0 md:space-y-1">
+              <div className="w-[100%] xsm:mb-10 sm:mb-10">
+                <div className=" mt-8 xsm:mt-0 sm:mt-0 md:mt-0">
+                  <div className="bg-[#1DBF73] rounded-2xl py-6 px-12 flex justify-between items-center xsm:py-3 sm:py-3 xsm:px-5 sm:px-5 xsm:rounded-md sm:rounded-md md:px-8 md:py-4">
+                    <div className="space-y-2 xsm:space-y-0 sm:space-y-0 md:space-y-1">
                       <p
-                        className={`font-pop font-semibold text-[22px] text-[#FFFFFF] xsm:text-[10px] md:text-[18px]`}
+                        className={`font-pop font-semibold text-[22px] text-[#FFFFFF] xsm:text-[10px] sm:text-[15px] md:text-[18px]`}
                       >
                         {Data?.title}{" "}
                       </p>
                       <div className="flex space-x-4">
-                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
+                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
                           {totalLessons} Lessons
                         </p>
-                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px]">
+                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
                           {Timeconverter(dur)}
                         </p>
                       </div>
                     </div>
-                    {window.innerWidth <= 480 && (
+                    {window.innerWidth <= 720 && (
                       <div className="menu-icon" onClick={toggleMenu}>
                         <Menu />
                       </div>

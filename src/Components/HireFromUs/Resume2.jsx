@@ -23,7 +23,7 @@ const Resume2 = () => {
       `}
       </style>
       <div
-        className="px-[5%] py-[15%] pb-[10%] bg-gradient-to-r from-[#0F2027] to-[#203A43] curvedbg w-full xsm:pt-[38%] xsm:pb-[22%]"
+        className="px-[5%] py-[15%] pb-[10%] bg-gradient-to-r from-[#0F2027] to-[#203A43] curvedbg w-full xsm:pt-[38%] xsm:pb-[22%] sm:pb-[22%] sm:pt-[38%]"
         style={{ width: "100%" }}
       >
         <div className="text-white font-pop font-semibold text-[40px] text-center relative md:text-[32px] xsm:text-[20px]">
@@ -45,7 +45,7 @@ const Resume2 = () => {
           {/* <p>careers, fuelled by Hoping minds</p> */}
         </div>
 
-        <div className="grid grid-cols-4 md:mt-8 mt-16 gap-8 xsm:grid-cols-2 xsm:mt-8">
+        <div className="grid grid-cols-4 md:mt-8 mt-16 gap-8 xsm:grid-cols-2 sm:grid-cols-2 sm:mt-8 xsm:mt-8">
           <div
             className="bw-border "
             onMouseEnter={() => setIsHovered(true)}

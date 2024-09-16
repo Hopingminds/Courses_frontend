@@ -141,22 +141,22 @@ const Login = () => {
       <div className="flex  overflow-hidden pb-6">
         <div className="w-[50%] xl:h-[75vh] flex justify-center relative xsm:hidden">
           <img
-            className="w-[60%] object-cover absolute top-10"
+            className="w-[60%] sm:w-[80%] object-cover absolute top-10"
             src="../login_bg.png"
             alt="Login Background"
           />
         </div>
         
-        <div className="flex flex-col xl:my-[10rem] items-center  my-16 w-[45%] gap-4 xsm:w-full md:my-12">
-        <div><h2 className="text-[18px] font-pop  md:text-[16px] xsm:text-[16px] pb-4 ">Welcome to Hoping Minds</h2></div>
+        <div className="flex flex-col xl:my-[10rem] items-center  my-16 w-[45%] gap-4 xsm:w-full md:my-12 sm:my-5">
+        <div><h2 className="text-[18px] font-pop  md:text-[16px] xsm:text-[16px] sm:text-[16px] pb-4 sm:pb-1 ">Welcome to Hoping Minds</h2></div>
           {/* <p className='font-pop text-[14px]'>Welcome to Hoping Minds</p> */}
-          <div className="flex flex-col w-[65%] gap-4 xsm:w-[90%] md:w-[100%] ">
-            <div className="flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 xl:mx-auto xl:w-[55%]">
-              <button className="bg-transparent cursor-pointer Loginactive">
+          <div className="flex flex-col w-[65%] gap-4 xsm:w-[90%] sm:w-[100%] md:w-[100%] ">
+            <div className="flex justify-between bg-[#e2fff1] rounded-full py-2 mx-16 sm:mx-8 xl:mx-auto xl:w-[55%]">
+              <button className="bg-transparent cursor-pointer Loginactive sm:text-[12px]">
                 Login
               </button>
               <button
-                className="bg-transparent cursor-pointer Logininactive"
+                className="bg-transparent cursor-pointer Logininactive sm:text-[12px]"
                 onClick={() => navigate("/register-user")}
               >
                 Register
@@ -164,11 +164,11 @@ const Login = () => {
             </div>
             <div className="flex flex-col xl:w-[70%] xl:mx-auto gap-4">
               <div>
-                <p className="text-[14px] font-pop md:text-[12px] xsm:text-[12px]">
+                <p className="text-[14px] font-pop md:text-[12px] xsm:text-[12px] sm:text-[12px]">
                   Username/Email <span className="text-red-500">*</span>
                 </p>
                 <input
-                  className="w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] md:py-[7px] text-[14px] md:text-[12px] xsm:text-[12px] font-pop font-light rounded-full xsm:py-[7px] outline-none"
+                  className="w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] md:py-[7px] text-[14px] md:text-[12px] xsm:text-[12px] font-pop font-light rounded-full xsm:py-[7px] outline-none sm:text-[12px] sm:py-[7px]"
                   type="text"
                   placeholder="Enter Your Username/Email"
                   name="email"
@@ -178,11 +178,11 @@ const Login = () => {
                 />
               </div>
               <div style={{ position: "relative" }}>
-                <p className="text-[14px] font-pop md:text-[12px] xsm:text-[12px]">
+                <p className="text-[14px] font-pop md:text-[12px] xsm:text-[12px] sm:text-[12px]">
                   Password <span className="text-red-500">*</span>
                 </p>
                 <input
-                  className="w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] md:py-[7px] text-[14px] md:text-[12px] xsm:py-[7px] xsm:text-[12px] font-pop font-light rounded-full outline-none"
+                  className="w-full border-[1px] border-[#1dbf73] py-[10px] px-[24px] md:py-[7px] text-[14px] md:text-[12px] xsm:py-[7px] xsm:text-[12px] font-pop font-light rounded-full outline-none sm:text-[12px] sm:py-[7px] "
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter Your Password"
                   name="password"
@@ -220,7 +220,7 @@ const Login = () => {
                                     <p className='text-[12px]'>Remember me</p>
                                 </div> */}
                 <Link to={"/forgot-password"}>
-                  <h6 className="xsm:text-[12px] md:text-[12px]">
+                  <h6 className="xsm:text-[12px] md:text-[12px] sm:text-[12px]">
                     Forgot password?
                   </h6>
                 </Link>
@@ -229,18 +229,18 @@ const Login = () => {
             <div className="flex flex-col items-center gap-4 md:gap-3">
               <div className="  ">
                 <button
-                  className="bg-[#1DBF73] py-2 px-7 rounded-full xsm:text-[12px] xsm:py-1 text-white font-nu font-bold md:py-1 md:text-[14px]"
+                  className="bg-[#1DBF73] py-2 px-7 rounded-full xsm:text-[12px] sm:text-[14px] sm:py-1 xsm:py-1 text-white font-nu font-bold md:py-1 md:text-[14px]"
                   onClick={handleLogin}
                 >
                   {btnLoader ? "Loading..." : "Login"}
                 </button>
               </div>
               <div className="flex items-center gap-1">
-                <p className="font-pop text-[14px] md:text-[10px] xsm:text-[10px]">
+                <p className="font-pop text-[14px] md:text-[10px] xsm:text-[10px] sm:text-[10px]">
                   New here?
                 </p>
                 <Link to={"/register-user"}>
-                  <h5 className="text-[#1dbf73] md:text-[12px] xsm:text-[12px] ">
+                  <h5 className="text-[#1dbf73] md:text-[12px] xsm:text-[12px] sm:text-[12px]">
                  Sign Up
                   </h5>
                 </Link>
@@ -248,13 +248,13 @@ const Login = () => {
               <div className="flex flex-col gap-2 items-center">
                 <div className="flex gap-4 items-center">
                   <span onClick={handleGoogleLogin} className="cursor-pointer">
-                    <Google />
+                    <Google className='sm:w-[20px] sm:h-[20px]'/>
                   </span>
                   <span
                     onClick={handleLinkedInLogin}
                     className="cursor-pointer"
                   >
-                    <Linkedin />
+                    <Linkedin className='sm:w-[25px] sm:h-[25px]'/>
                   </span>
                 </div>
               </div>

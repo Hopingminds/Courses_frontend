@@ -343,9 +343,9 @@ const HireFromUs = () => {
       >
         {/* Mainsection */}
         <div className=" flex justify-between pb-[18%] xsm:flex-col xsm:gap-6 xsm:pb-[72%] ">
-          <div className="flex flex-col gap-16 w-[70%] md:gap-10 xsm:w-full xsm:gap-6 md:w-[65%]">
+          <div className="flex flex-col gap-16 w-[70%] sm:w-[45%] md:gap-10 xsm:w-full xsm:gap-6 md:w-[65%]">
             <div>
-              <p className="font-pop font-semibold text-[50px] text-white md:text-[32px] xsm:text-[24px]">
+              <p className="font-pop font-semibold text-[50px] text-white md:text-[32px] xsm:text-[24px] sm:text-[18px]">
                 Hire Tech Talent That Delivers{" "}
                 <span className="text-[#1DBF73]">Quick.Simple.</span>
               </p>
@@ -353,32 +353,32 @@ const HireFromUs = () => {
 
             <div className="flex flex-col gap-y-7 md:gap-y-5 xsm:gap-y-3">
               <div className="flex items-center gap-x-4 xsm:gap-x-2">
-                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5" />
-                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5 sm:w-6 sm:h-6" />
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px] sm:text-[12px]">
                   Hire from our Pan-India Talent pool, across 100+ colleges
                 </div>
               </div>
               <div className="flex items-center gap-x-4 xsm:gap-x-2">
-                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5" />
-                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5 sm:w-8 sm:h-8" />
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px] sm:text-[12px]">
                   Pre-Trained Developers available across 10 profiles
                 </div>
               </div>
               <div className="flex items-center gap-x-4 xsm:gap-x-2">
-                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5" />
-                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5 sm:w-8 sm:h-8" />
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px] sm:text-[12px]">
                   Experience ranging from 0 to 3 years
                 </div>
               </div>
               <div className="flex items-center gap-x-4 xsm:gap-x-2">
-                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5" />
-                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5 sm:w-8 sm:h-8" />
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px] sm:text-[12px]">
                   Available for Full-Time as well as for Internships
                 </div>
               </div>
               <div className="flex items-center gap-x-4 xsm:gap-x-2">
-                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5" />
-                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px]">
+                <Ok className="md:w-6 md:h-6 xsm:w-5 xsm:h-5 sm:w-8 sm:h-8" />
+                <div className="text-[#FFFFFF] font-semibold text-lg md:text-[14px] xsm:text-[10px] sm:text-[12px]">
                   Solve your long-term Entry-Level Tech recruitment needs
                 </div>
               </div>
@@ -489,11 +489,11 @@ const HireFromUs = () => {
               </div>
             </div> */}
           </div>
-          <div className="w-[30%] self-end xsm:w-full ">
+          <div className="w-[30%] sm:w-[50%] self-end xsm:w-full ">
             <div className="bg-[#00000033] rounded-xl  text-white flex flex-col gap-6 bw-border md:gap-4 md:py-3 xsm:gap-4">
               <div className="flex w-full rounded-t-xl mt-2 space-x-1">
                 <button
-                  className={`w-[50%] ml-1 py-2  rounded-xl ${
+                  className={`w-[50%] ml-1 py-2  rounded-xl sm:text-[12px] ${
                     tab === 2 ? "border-b-[4px]" : "border-b-[1px]"
                   } `}
                   onClick={() => settab(2)}
@@ -501,7 +501,7 @@ const HireFromUs = () => {
                   Corporate Login
                 </button>
                 <button
-                  className={`w-[50%] mr-1 py-2  rounded-xl ${
+                  className={`w-[50%] mr-1 py-2 sm:text-[12px] rounded-xl ${
                     tab === 1 ? "border-b-[4px]" : "border-b-[1px]"
                   }`}
                   onClick={() => settab(1)}
@@ -515,11 +515,11 @@ const HireFromUs = () => {
               {tab === 1 ? (
                 <div
                   className="flex flex-col gap-2 px-6 
-                h-[350px] xsm:h-[300px]"
+                h-[350px] xsm:h-[300px] sm:h-[300px]"
                 >
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="name"
                     >
                       Name <span className="text-red-500">*</span>
@@ -527,7 +527,7 @@ const HireFromUs = () => {
                     <input
                       id="name"
                       name="name"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] sm:text-[14px] xsm:text-[14px] ${
                         warnings.name ? "border border-red-500" : ""
                       }`}
                       onChange={handleChange}
@@ -538,7 +538,7 @@ const HireFromUs = () => {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="pass"
                     >
                       Company <span className="text-red-500">*</span>
@@ -548,7 +548,7 @@ const HireFromUs = () => {
                       name="company"
                       onChange={handleChange}
                       value={hiredata.company}
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         warnings.company ? "border border-red-500" : ""
                       }`}
                       type="text"
@@ -557,7 +557,7 @@ const HireFromUs = () => {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="study"
                     >
                       Work E-mail <span className="text-red-500">*</span>
@@ -567,7 +567,7 @@ const HireFromUs = () => {
                       value={hiredata.email}
                       name="email"
                       id="study"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         warnings.email ? "border border-red-500" : ""
                       }`}
                       type="email"
@@ -576,7 +576,7 @@ const HireFromUs = () => {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="time"
                     >
                       Phone number <span className="text-red-500">*</span>
@@ -586,7 +586,7 @@ const HireFromUs = () => {
                       value={hiredata.phone}
                       id="time"
                       name="phone"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         warnings.phone ? "border border-red-500" : ""
                       }`}
                       type="number"
@@ -597,17 +597,17 @@ const HireFromUs = () => {
                   <div className="px-6 mt-2">
                     <button
                       onClick={handleRegister}
-                      className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]"
+                      className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px] sm:text-[14px]"
                     >
                       Submit
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col gap-y-5 px-6 h-[350px] xsm:h-[300px]">
-                  <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-y-8 px-6 h-[350px] xsm:h-[300px] pt-10 sm:h-[300px]">
+                  {/* <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="name"
                     >
                       Name <span className="text-red-500">*</span>
@@ -615,7 +615,7 @@ const HireFromUs = () => {
                     <input
                       id="name"
                       name="name"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         loginwarnings.name ? "border border-red-500" : ""
                       }`}
                       onChange={handleloginChange}
@@ -623,10 +623,10 @@ const HireFromUs = () => {
                       type="text"
                       placeholder="Enter your Name"
                     />
-                  </div>
+                  </div> */}
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="email"
                     >
                       Email <span className="text-red-500">*</span>
@@ -634,7 +634,7 @@ const HireFromUs = () => {
                     <input
                       id="email"
                       name="email"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         loginwarnings.email ? "border border-red-500" : ""
                       }`}
                       onChange={handleloginChange}
@@ -645,7 +645,7 @@ const HireFromUs = () => {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label
-                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px]"
+                      className="text-[16px] font-medium md:text-[12px] xsm:text-[14px] sm:text-[14px]"
                       htmlFor="otp"
                     >
                       Password <span className="text-red-500">*</span>
@@ -653,7 +653,7 @@ const HireFromUs = () => {
                     <input
                       id="password"
                       name="password"
-                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] ${
+                      className={`bg-[#00000033] border-[1px] border-[#808080] rounded-md px-3 py-[6px] text-[#808080] text-[16px] md:text-[12px] xsm:text-[14px] sm:text-[14px] ${
                         loginwarnings.password ? "border border-red-500" : ""
                       }`}
                       onChange={handleloginChange}
@@ -665,7 +665,7 @@ const HireFromUs = () => {
                   <div className="px-6 mt-5">
                     <button
                       onClick={handleLogin}
-                      className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px]"
+                      className="bg-[#1DBF73] border-[1px] border-[#808080] rounded-md py-1 font-int font-medium w-full md:text-[14px] xsm:text-[14px] sm:text-[14px]"
                     >
                       Login
                     </button>

@@ -30,7 +30,7 @@ export default function DetailCourses() {
   const [faqs, setFaqs] = useState([]);
   const [alreadyInCart, setAlreadyInCart] = useState(false);
   const [alreadyInWishlist, setalreadyInWishlist] = useState(false)
-  useLayoutEffect(() => {
+  useEffect(() => {
     async function Fetchdata() {
       try {
         setshow(true);
@@ -72,9 +72,13 @@ export default function DetailCourses() {
   let login = localStorage.getItem("COURSES_USER_TOKEN");
 
   let purchasedCourses = [];
+  let batchids="";
   if (Data) {
     userDetail?.purchased_courses?.forEach((val) => {
       purchasedCourses.push(val?.course?._id);
+      if(val?.course?.slug==slug){
+        batchids=val?.BatchId;
+      }
     });
   }
 
@@ -97,7 +101,7 @@ export default function DetailCourses() {
         let response = await data.json();
         // console.log(response);
         if (response.success) {
-          toast.success(response.msg);
+          // toast.success(response.msg);
           // setCartSize(cartSize + 1);
           setshow(false)
           GetCart();
@@ -132,7 +136,7 @@ export default function DetailCourses() {
         let response = await data.json();
         // console.log(response);
         if (response.success) {
-          toast.success(response.msg);
+          // toast.success(response.msg);
           CheckCourseInWishlist(courseid)
           setshow(false)
         } else {
@@ -389,7 +393,7 @@ export default function DetailCourses() {
 
         </div>
         <span className="w-[33%] h-[1000px] -translate-y-[20rem] xsm:-translate-y-[13rem] xsm:w-[100%] xsm:h-fit xsm:mb-[-10rem] ">
-          <Commoncard Data={Data} alreadyInCart={alreadyInCart} CheckCourseInCart={CheckCourseInCart} />
+          <Commoncard Data={Data} alreadyInCart={alreadyInCart} CheckCourseInCart={CheckCourseInCart} batchids={batchids}/>
           <div className=" flex flex-col gap-[2rem]">
          
           <div className="xsm:hidden">

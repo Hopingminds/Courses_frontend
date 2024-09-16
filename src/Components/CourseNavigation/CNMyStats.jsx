@@ -34,11 +34,11 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
 
   return (
     <div className="relative bg-[#FFFFFF] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col items-center gap-2 ">
-      <p className="font-nu font-semibold text-[20px] text-black xsm:text-[10px] md:text-[16px]">
+      <p className="font-nu font-semibold text-[20px] text-black xsm:text-[10px] md:text-[16px] sm:text-[16px]">
         Your Progress
       </p>
       <div className="flex justify-around items-center">
-        <div className=" flex items-center justify-center h-[350px] xsm:w-[50%] xsm:h-[60%] xsm:mt-0 md:mt-8 md:w-[70%] md:h-[70%] md:items-center">
+        <div className=" flex items-center justify-center h-[350px] xsm:w-[50%] xsm:h-[60%] sm:w-[50%] sm:h-[60%] xsm:mt-0 md:mt-8 md:w-[70%] md:h-[70%] md:items-center">
           {/* progressbar of each Course */}
           <AnimatedProgressProvider
             // className="-z-50"
@@ -125,11 +125,11 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
                 className="w-[15px] h-[15px] xsm:w-3 xsm:h-3 md:w-3 md:h-3"
                 src="../Icons/MSpinkcircle.svg"
               />
-              <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px]">
+              <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px] sm:text-[14px]">
                 Average
               </p>
             </div>
-            <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px]">
+            <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px] sm:text-[14px]">
               {calculateAverageProgress(
               completedLessons || 0,
               completedAssignments || 0
@@ -143,11 +143,11 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
                 className="w-[15px] h-[15px] xsm:w-3 xsm:h-3 md:w-3 md:h-3"
                 src="../Icons/MSorangecircle.svg"
               />
-              <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px]">
+              <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px] sm:text-[14px]">
                 Completed Assignments
               </p>
             </div>
-            <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px]">
+            <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px] sm:text-[14px]">
               {percentageAssignment}%
             </p>
           </div>
@@ -157,11 +157,11 @@ const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
                 className="w-[15px] h-[15px] xsm:w-3 xsm:h-3 md:w-3 md:h-3"
                 src="../Icons/MSbluecircle.svg"
               />
-              <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px]">
+              <p className="font-Inter font-semibold text-[#7A7A7A] text-[18px] xsm:text-[10px] md:text-[14px] sm:text-[14px]">
                Completed Lessons
               </p>
             </div>
-            <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px]">
+            <p className="font-nu font-semibold text-black text-[20px] xsm:text-[10px] md:text-[14px] sm:text-[14px]">
               {percentageLesson}%
             </p>
           </div>

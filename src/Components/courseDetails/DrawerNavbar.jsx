@@ -89,7 +89,7 @@ const DrawerNavbar = () => {
   }, []);
 
   return (
-    <div className="bg-[#E2FFF1] mx-4 my-6 pl-6 py-8 h-[80vh] rounded-3xl font-int font-medium text-[#1DBF73] flex flex-col gap-2 xsm:hidden">
+    <div className="bg-[#E2FFF1] mx-4 my-6 pl-6 py-8 h-[80vh] rounded-3xl font-int font-medium text-[#1DBF73] flex flex-col gap-2 xsm:hidden sm:hidden">
       <div
         onClick={() => renderComponent("MyCourse")}
         className={`relative flex gap-2 items-center px-4 py-2 hover:rounded-l-xl hover:bg-[#F0FFF8] hover:font-bold cursor-pointer ${

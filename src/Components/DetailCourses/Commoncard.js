@@ -13,11 +13,13 @@ import ReactPlayer from "react-player";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import { Tooltip } from "@mui/material";
 import { formatDate } from "../../helpers/helper_function";
+import BatchModal from "../MyLearning/Batchmodal";
 
 export default function Commoncard(props) {
-  let { Data } = props;
+  let { Data,batchids } = props;
   let { alreadyInCart } = props;
   let { CheckCourseInCart } = props;
+  const [data, setdata] = useState([])
   // console.log(Data);
   const [IsMuted, setIsMuted] = useState(true);
 
@@ -27,6 +29,54 @@ export default function Commoncard(props) {
   // const [Show, setShow] = useState(false)
 
   const { setCartSize, cartSize,GetCart } = useContext(Globalinfo);
+  function formatDate(dateString) {
+      const dateObj = new Date(dateString);
+      
+      const day = String(dateObj.getDate()).padStart(2, '0');
+      const year = dateObj.getFullYear();
+  
+      const monthNames = [
+          "January", "February", "March", "April", "May", "June", 
+          "July", "August", "September", "October", "November", "December"
+      ];
+      const month = monthNames[dateObj.getMonth()];
+  
+      let hours = dateObj.getHours();
+      const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+  
+      const ampm = hours >= 12 ? 'pm' : 'am';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      
+      const time = `${hours}.${minutes}${ampm}`;
+  
+      return `${day} ${month} ${year} ${time}`;
+  }
+  const [isModalOpen, setIsModalOpen] = useState(false);
+function closeModal(){
+setIsModalOpen(false)
+}
+async function openModal(id){
+setIsModalOpen(true)
+try {
+  const data=await fetch(BASE_URL+'/getUpcomingBatchesForCourse/'+id)
+  const response=await data.json()
+if(response.success){
+setdata(response?.batches)
+}
+} catch (error) {
+  
+}
+}
+
+  function handleNavigation(val){
+if(!val?.BatchId){
+openModal(val)
+}
+else{
+navigate(`/course/${val?.course?.slug}`)
+}
+  }
 
   async function Addtocart(courseid) {
     try {
@@ -46,7 +96,7 @@ export default function Commoncard(props) {
         let response = await data.json();
         // console.log(response);
         if (response.success) {
-          toast.success(response.msg);
+          // toast.success(response.msg);
           GetCart()
           CheckCourseInCart(courseid)
         } else {
@@ -77,11 +127,9 @@ export default function Commoncard(props) {
         });
         let response = await data.json();
         // console.log(response);
-        if (response.success) {
-          toast.success(response.msg);
-        } else {
+        if (!response.success) {
           toast.error(response.msg);
-        }
+        } 
       } else {
         navigate("/login-2");
       }
@@ -91,7 +139,7 @@ export default function Commoncard(props) {
   }
 
 
-  const { userDetail } = useContext(Globalinfo);
+  const { userDetail,getUserDetails } = useContext(Globalinfo);
 
   let purchasedCourses = [];
   if (Data) {
@@ -133,7 +181,14 @@ export default function Commoncard(props) {
 }
 
   // console.log(Data);
-  return (
+  return (<>
+   <BatchModal
+    isOpen={isModalOpen}
+    onRequestClose={closeModal}
+    openModal={openModal}
+    Data={data}
+    fetchUserData={getUserDetails}
+    />
     <div className="bg-[#E2FFF1] w-[full] h-max my-14 p-6 rounded-t-lg flex flex-col  xsm:mt-4 xsm:p-1 xsm:rounded-lg md:p-3 xsm:mb-8">
       <div className="max-h-[14rem] h-fit rounded-t-xl overflow-hidden bg-white md:h-[35%] relative xsm:h-fit xsm:max-h-[12rem]">
         {
@@ -186,6 +241,7 @@ export default function Commoncard(props) {
             {new Date(Data?.courseStartDate) > new Date() ? <p className="text-sm text-gray-400">Upcoming Batch {formatDate(Data?.courseStartDate)}</p>:''}
             {/* <p>Your batch will be start on {Data?.courseStartDate > new Date()}</p> */}
             {purchasedCourses.includes(Data?._id) ? (
+              !batchids?<button className="bg-[#1DBF73] py-2 px-7 flex justify-center rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1" onClick={()=>openModal(Data?._id)}>Choose batch</button>:
               <Link
                 to={"/course/" + Data?.slug}
                 className={`${new Date(Data?.courseStartDate) > new Date() ? 'pointer-events-none opacity-50 cursor-not-allowed':''} bg-[#1DBF73] py-2 px-7 flex justify-center rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1`}
@@ -323,6 +379,6 @@ export default function Commoncard(props) {
       </div>
       
       </div>
-    
+      </>
   );
 }
