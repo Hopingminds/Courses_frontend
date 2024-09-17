@@ -28,9 +28,9 @@ const HowItWorks = () => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-[10vh] py-10">
+    <div className="flex flex-col items-center mt-[10vh] py-10 ">
       {/* Wrapper for both buttons and content */}
-      <div className="relative border-2 border-gray-300 rounded-lg w-full max-w-[90vw] md:max-w-[70vw] lg:max-w-[50vw] bg-[#0F2027] text-white p-4 py-[10vh]">
+      <div className="relative border-2 border-gray-300 rounded-lg w-full max-w-[90vw] md:max-w-[85vw] lg:max-w-[85vw] xl:max-w-[85vw] 3xl:max-w-[85vw] 2xl:max-w-[85vw] bg-[#0F2027] text-white p-4 py-[10vh]">
         {/* Options row */}
         <div className="absolute top-[-3.5rem] left-1/2 transform -translate-x-1/2 flex justify-between w-full px-5 md:px-10">
           {/* Option 1 */}

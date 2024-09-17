@@ -4,26 +4,26 @@ import { FaSortDown } from "react-icons/fa";
 const FreelancingPage = () => {
   return (
     <div className="py-10 flex flex-col items-center justify-center text-center">
-      <div className="flex flex-col gap-7 items-center max-w-screen-lg mx-auto px-4">
-        <p className="text-4xl sm:text-4xl md:text-[60px] xsm:w-full font-bold font-pop">
+      <div className="flex flex-col gap-4 items-center max-w-screen-lg mx-auto px-4">
+        <p className="text-4xl md:text-[30px] sm:text-[30px] xsm:text-[30px] xsm:w-full font-bold font-pop">
           Freelancing Opportunities for Graduates
         </p>
 
-        <p className="text-base sm:text-lg md:text-xl xsm:w-full xl:text-xl font-pop px-10">
+        <p className="mt-10 xsm:mt-2 text-base sm:text-lg md:text-xl xsm:w-full xl:text-xl font-pop xsm:px-0 px-10">
           At Hoping Minds, we believe in empowering our students with real-world
           opportunities. Once you complete your course, you can unlock a wide
           range of freelancing jobs tailored to your skills and interests.
         </p>
-        <p className="text-base sm:text-lg md:text-xl xsm:w-full xl:text-xl px-10 font-pop">
+        <p className="text-base sm:text-lg md:text-xl xsm:w-full xl:text-xl px-10 xsm:px-0 font-pop">
           Use our eligibility checker tool below to see if you qualify for these
           exciting opportunities and take the first step towards your
           freelancing career.
         </p>
       </div>
 
-      <div className="mt-8 flex sm:flex-col xsm:flex-col xl:flex-row lg:flex-row md:flex-col 2xl:flex-row gap-4 justify-center items-center w-full sm:w-[40vw] max-w-screen-lg px-4 py-10">
+      <div className="mt-5 flex sm:flex-col xsm:flex-col xl:flex-row lg:flex-row md:flex-row 2xl:flex-row gap-4 justify-center items-center sm:w-[40vw] max-w-screen-lg px-4 py-10 lg:w-[70%] w-[70%] ">
         {/* Input Dropdown */}
-        <div className="relative w-full xl:w-[30vw]">
+        <div className="relative w-full xl:w-[30vw] sm:w-[80vw]">
           <select className="appearance-none border-2 border-green-600 h-[6vh] rounded-md p-2 w-full xsm:h-[5vh]">
             <option value="" disabled selected className="text-green-600 font-pop text-lg">
             Select Your Course Completion
@@ -37,7 +37,7 @@ const FreelancingPage = () => {
         </div>
 
         {/* Check Eligibility Button */}
-        <button className="bg-[#1DBF73] h-[6vh] text-white py-2 px-4 rounded-md w-full xl:w-[15vw] font-pop text-lg">
+        <button className="bg-[#1DBF73] h-[6vh] text-white py-2 px-4 rounded-md w-[25vw] xl:w-[25vw] font-pop sm:w-full xsm:w-full md:w-[30vw] text-lg">
           Check Eligibility
         </button>
       </div>

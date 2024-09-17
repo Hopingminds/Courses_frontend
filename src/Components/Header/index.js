@@ -203,6 +203,28 @@ export default function Navbar() {
                     Courses
                   </Link>
                   {/* <Link
+                  to={"/internshipprogram"}
+                  onClick={Top}
+                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${
+                    location.pathname === "/internshipprogram"
+                      ? " font-bold text-[#1DBF73]"
+                      : ""
+                  }`}
+                >
+                  Internship
+                </Link>
+                <Link
+                  to={"/freelancing"}
+                  onClick={Top}
+                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${
+                    location.pathname === "/freelancing"
+                      ? " font-bold text-[#1DBF73]"
+                      : ""
+                  }`}
+                >
+                  Freelancing
+                </Link> */}
+                  {/* <Link
                     to="/internship"
                     onClick={Top}
                     className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${
@@ -359,7 +381,7 @@ export default function Navbar() {
                 </Link>
 
 
-                <Link
+                {/* <Link
                   to={"/internshipprogram"}
                   onClick={Top}
                   className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${
@@ -380,7 +402,7 @@ export default function Navbar() {
                   }`}
                 >
                   Freelancing
-                </Link>
+                </Link> */}
                 {/* <Link
                   to={"/internship"}
                   onClick={Top}

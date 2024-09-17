@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-col  font-pop px-[5%] h-screen xsm:h-[130vh] sm:h-[130vh] xsm:px-2">
+    <div className="bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-col  font-pop px-[5%] h-screen xsm:h-[130vh] md:h-[130vh] sm:h-[130vh] xsm:px-2">
       <div className="mt-[5vh] xsm:w-full">
         <h1 className="xl:text-[70px] lg:text-[70px] md:text-[60px] sm:text-[50px] xsm:text-[35px] text-white font-semibold mb-4">
           10-Month
@@ -8,13 +8,12 @@ export default function Header() {
         <h1 className="text-4xl text-green-600 xl:text-[70px] lg:text-[70px] md:text-[60px] sm:text-[50px] xsm:text-[35px] font-semibold">
           Internship Program!
         </h1>
-      </div> 
-      <div className="flex flex-row xsm:flex-col sm:flex-col">
-
-        <div className="text-white flex flex-row flex-wrap mt-[15vh] xsm:mt-[8vh] sm:mt-[8vh] gap-4 xsm:flex-cols-2 sm:flex-grid-2 pb-4 sm:justify-center sm:items-center xsm:justify-center xsm:items-center">
+      </div>
+      <div className="xsm:flex-col sm:flex-col md:flex-grid-3 ">
+        <div className="text-white flex flex-row mt-[15vh] xsm:mt-[8vh] sm:mt-[8vh] gap-4 xsm:flex-cols-2 sm:flex-grid-2  pb-4 sm:justify-center sm:items-center xsm:justify-center xsm:items-center md:flex-cols-3 md:w-full">
           {/* Card 1 */}
           <div
-            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] md:w-[30%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -33,7 +32,7 @@ export default function Header() {
 
           {/* Card 2 */}
           <div
-            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] md:w-[30%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -52,7 +51,7 @@ export default function Header() {
 
           {/* Card 3 */}
           <div
-            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] md:w-[30%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -61,7 +60,9 @@ export default function Header() {
             }}
           >
             <div className="flex flex-col justify-center items-center text-center">
-              <p className="text-2xl font-semibold text-green-600">Aptitude Training</p>
+              <p className="text-2xl font-semibold text-green-600">
+                Aptitude Training
+              </p>
             </div>
             <p className="opacity-0 group-hover:opacity-100 absolute inset-0 flex items-center justify-center text-center text-white bg-black bg-opacity-50 backdrop-blur-lg transition-opacity duration-300 rounded-xl p-4">
               Some text appears on hover.
@@ -70,7 +71,7 @@ export default function Header() {
 
           {/* Card 4 */}
           <div
-            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] md:w-[30%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -79,17 +80,19 @@ export default function Header() {
             }}
           >
             <div className="flex flex-col justify-center items-center text-center">
-              <p className="text-2xl font-semibold text-green-600">Personality Enhancement</p>
+              <p className="text-2xl font-semibold text-green-600">
+                Personality Enhancement
+              </p>
             </div>
             <p className="opacity-0 group-hover:opacity-100 absolute inset-0 flex items-center justify-center text-center text-white bg-black bg-opacity-50 backdrop-blur-lg transition-opacity duration-300 rounded-xl p-4">
               Some text appears on hover.
             </p>
           </div>
-          </div>
+        </div>
 
         {/* Card 5 */}
         <div
-          className="group w-[25vw] h-[35vh] sm:object-cover xsm:object-cover xsm:w-full xsm:flex-col sm:w-full sm:flex-col md:flex-col shadow-lg rounded-xl p-1 flex justify-center items-center  cursor-pointer hover:text-white transition-all duration-300 relative lg:ml-7 xl:ml-7 2xl:ml-7 3xl:ml-7 lg:my-[10vh] xl:my-[10vh] 2xl:my-[10vh]"
+          className="group w-[25vw] h-[35vh] sm:object-cover xsm:object-cover xsm:w-full xsm:flex-col sm:w-full md:w-[35vw] md:flex-row sm:flex-col md:mt-[18vh] shadow-lg rounded-xl p-1 flex justify-center items-center  cursor-pointer hover:text-white transition-all duration-300 relative lg:ml-7 xl:ml-7 2xl:ml-7 3xl:ml-7 lg:my-[10vh] xl:my-[10vh] 2xl:my-[10vh]"
           style={{
             borderRadius: "20px",
             border: "4px solid transparent",
@@ -110,8 +113,6 @@ export default function Header() {
             </p>
           </div>
         </div>
-        
-
       </div>
     </div>
   );
