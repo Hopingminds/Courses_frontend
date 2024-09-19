@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-col  font-pop px-[5%] h-screen xsm:h-[130vh] md:h-[130vh] sm:h-[130vh] xsm:px-2">
+    <div className="bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-col  font-pop px-[5%] h-screen xsm:h-[130vh] md:h-[130vh] sm:h-[140vh] xsm:px-2">
       <div className="mt-[5vh] xsm:w-full">
         <h1 className="xl:text-[70px] lg:text-[70px] md:text-[60px] sm:text-[50px] xsm:text-[35px] text-white font-semibold mb-4">
           10-Month
@@ -9,11 +9,11 @@ export default function Header() {
           Internship Program!
         </h1>
       </div>
-      <div className="xsm:flex-col sm:flex-col md:flex-grid-3 ">
-        <div className="text-white flex flex-row mt-[15vh] xsm:mt-[8vh] sm:mt-[8vh] gap-4 xsm:flex-cols-2 sm:flex-grid-2  pb-4 sm:justify-center sm:items-center xsm:justify-center xsm:items-center md:flex-cols-3 md:w-full">
+      <div className="xsm:flex-col flex flex-row xsm:flex-cols-2 sm:flex-col md:flex-col items-center justify-center py-[10vh]">
+        <div className="text-white flex flex-row flex-wrap xsm:mt-[8vh] gap-4 pb-4 justify-center items-center">
           {/* Card 1 */}
           <div
-            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] md:w-[30%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[45vw] xsm:w-[45%] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -29,10 +29,9 @@ export default function Header() {
               Some text appears on hover.
             </p>
           </div>
-
           {/* Card 2 */}
           <div
-            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] md:w-[30%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[45vw] xsm:w-[45%] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -48,10 +47,9 @@ export default function Header() {
               Some text appears on hover.
             </p>
           </div>
-
           {/* Card 3 */}
           <div
-            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] md:w-[30%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[45vw] xsm:w-[45%] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -71,7 +69,7 @@ export default function Header() {
 
           {/* Card 4 */}
           <div
-            className="group w-[15vw] xsm:w-[45%] sm:w-[45%] md:w-[30%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[45vw] xsm:w-[45%] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -92,7 +90,7 @@ export default function Header() {
 
         {/* Card 5 */}
         <div
-          className="group w-[25vw] h-[35vh] sm:object-cover xsm:object-cover xsm:w-full xsm:flex-col sm:w-full md:w-[35vw] md:flex-row sm:flex-col md:mt-[18vh] shadow-lg rounded-xl p-1 flex justify-center items-center  cursor-pointer hover:text-white transition-all duration-300 relative lg:ml-7 xl:ml-7 2xl:ml-7 3xl:ml-7 lg:my-[10vh] xl:my-[10vh] 2xl:my-[10vh]"
+          className="group w-[25vw] h-[35vh] sm:h-full sm:object-cover sm:flex-col sm:w-full xsm:object-cover xsm:w-full xsm:flex-col md:flex-col       md:w-full md:h-full shadow-lg rounded-xl p-1 flex justify-center items-center cursor-pointer hover:text-white transition-all duration-300 relative"
           style={{
             borderRadius: "20px",
             border: "4px solid transparent",
@@ -102,7 +100,7 @@ export default function Header() {
         >
           <div className="relative h-full w-full flex justify-center items-center">
             <img
-              src="/Divyam-vashisht-1.jpg"
+              src="/blankCertificate-1.png"
               alt="Card Image"
               className="transition-opacity duration-300 h-full w-full object-cover rounded-lg"
             />

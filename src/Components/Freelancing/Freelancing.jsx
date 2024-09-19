@@ -28,7 +28,7 @@ const Freelancing = () => {
       <RecentlyPost />
       <OurFeatures />
       <BookSlot />
-      <Support />
+      {/* <Support /> */}
     </div>
   );
 };

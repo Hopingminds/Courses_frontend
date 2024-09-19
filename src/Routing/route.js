@@ -191,8 +191,8 @@ const Router = () => {
                 <Route path='/hardwarecheck' element={<MediaCheck />} />
                 <Route path='/college-studentdata' element={<StudentSection />} />
                 <Route path='/error' element={<PaymentFailed />} />
-                {/* <Route path='/internshipprogram' element={<InternshipProgram />} /> */}
-                {/* <Route path='/freelancing' element={<Freelancing />} /> */}
+                <Route path='/internshipprogram' element={<InternshipProgram />} />
+                <Route path='/freelancing' element={<Freelancing />} />
 
                 <Route path='/stream/:slug' element={<AuthProtected path={'/learning'} Component={LiveStream}   />} />
                 <Route path='/allsubmodules' element={< AuthProtected path={'/allsubmodules'} Component={AllModules}   />} />

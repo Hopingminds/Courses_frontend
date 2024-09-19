@@ -1,6 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const BookSlot = () => {
+  const navigate = useNavigate();
+
+  const handleBookNowClick = () => {
+    navigate('/internshipProgram', { state: { scrollToQuestionForm: true } });  // Pass state to trigger scroll
+  };
+
   return (
     <div className="bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full font-pop xsm:pl-2 pl-[5%] xsm:h-[80vh] sm:h-[100vh] py-10 md:h-[70vh] lg:h-[70vh] h-[70vh]">
       <div className="flex w-[100%] xsm:flex xsm:flex-col xsm:justify-center sm:flex sm:flex-col sm:justify-center">
@@ -22,7 +29,10 @@ const BookSlot = () => {
             </p>
           </div>
           <div className="mt-[9vh] w-[20vw] font-pop xsm:mt-2 sm:mt-2 xsm:w-full sm:w-full">
-            <button className="bg-green-600 hover:bg-green-700 text-white text-lg xsm:text-sm sm:text-sm xsm:h-[6vh] sm:h-[6vh] font-pop xsm:top-0 sm:top-0  rounded-full xsm:w-[30%]  xsm:items-center sm:w-[30%] sm:items-center w-[30vw] md:w-[30vw] h-[7vh]  top-4 mt-10">
+            <button
+              onClick={handleBookNowClick}
+              className="bg-green-600 hover:bg-green-700 text-white text-lg xsm:text-sm sm:text-sm xsm:h-[6vh] sm:h-[6vh] font-pop xsm:top-0 sm:top-0  rounded-full xsm:w-[30%]  xsm:items-center sm:w-[30%] sm:items-center w-[15vw] md:w-[30vw] h-[7vh]  top-4 mt-10"
+            >
               Book Now
             </button>
           </div>

@@ -147,7 +147,7 @@ const RecentlyPost = () => {
                       />
                       <p>{item.publishStatus}</p>
                     </div>
-                    {!item?.isApplied ? (
+                    {/* {!item?.isApplied ? (
                       <button
                         onClick={(e) => handleApply(e, item?._id)}
                         className="bg-[#1DBF73] py-1 px-6 rounded-full text-white text-[14px] font-bold"
@@ -158,7 +158,7 @@ const RecentlyPost = () => {
                       <button className="bg-[#1DBF73] py-1 px-6 rounded-full text-white text-[14px] font-bold cursor-not-allowed opacity-50">
                         Applied
                       </button>
-                    )}
+                    )} */}
 
                     <button
                       onClick={() => navigate("/jobpreview?jobid=" + item?._id)}

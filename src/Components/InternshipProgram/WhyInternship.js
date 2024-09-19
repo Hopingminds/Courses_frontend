@@ -33,13 +33,10 @@ const WhatHM = () => {
   }, [playingIndex]);
 
   const handlePlay = (index) => {
-
     if (playingIndex !== null && playingIndex !== index) {
       setPlayingIndex(null);
     }
     setPlayingIndex(index);
-
-
   };
 
   const handleContextMenu = (e) => {
@@ -48,17 +45,24 @@ const WhatHM = () => {
 
   return (
     <div className="py-12 xsm:py-0 md:py-4 lg:py-8 sm:py-2">
+      <div>
+        <h1 className="text-[40px]  font-semibold text-[#1DBF73] flex flex-row justify-center items-center xsm:text-[30px] sm:text-[30px] px-2 py-4" >
+          {" "}
+          What Top Universities Say About Us
+        </h1>
+      </div>
       <div className="flex flex-col gap-3" ref={sectionRef}>
         {/* <div className="flex justify-center">
           <p className="text-[#1DBF73] text-[36px] font-pop font-semibold xsm:text-[12px] md:text-[30px]">
             What is Hoping Minds?
           </p>
         </div> */}
+
         <div className="flex justify-center">
           <p className="text-[#696984] text-[20px] font-pop w-[70%] text-center leading-12 xl:text-[22px] lg:text-[16px] sm:text-[10px] xsm:text-[12px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
             Welcome to HopingMinds, your gateway to a brighter future. As an
-            esteemed partner of the <span className="font-semibold">National Skill Development Corporation
-              (NSDC)</span>, we stand at the forefront of transformative education,
+            esteemed partner of the National Skill Development Corporation
+            (NSDC), we stand at the forefront of transformative education,
             dedicated to nurturing the next generation of leaders and
             innovators.
           </p>
@@ -70,13 +74,14 @@ const WhatHM = () => {
           >
             <ReactPlayer
               onContextMenu={handleContextMenu}
-              className={"w-full h-full md:w-[30%] lg:w-[30%] lg:h-[200px] aspect-auto xsm:w-[80%] overflow-hidden"}
+              className={
+                "w-full h-full md:w-[30%] lg:w-[30%] lg:h-[200px] aspect-auto xsm:w-[80%] overflow-hidden"
+              }
               url="/Corporate1.mp4"
               playing={playingIndex === 0}
               loop={true}
               controls={playingIndex === 0}
               light={"/thumbnail1.jpg"}
-
               onPlay={() => handlePlay(0)}
               width="100%"
               height="100%"
@@ -85,9 +90,9 @@ const WhatHM = () => {
                 file: {
                   attributes: {
                     controlsList: "nodownload", // Disable download option
-                    playsInline: true // Play inline on iOS
-                  }
-                }
+                    playsInline: true, // Play inline on iOS
+                  },
+                },
               }}
             />
             {/* {playingIndex !== 0 && (
@@ -115,7 +120,9 @@ const WhatHM = () => {
           >
             <ReactPlayer
               onContextMenu={handleContextMenu}
-              className={"w-full h-full rounded-3xl md:w-[30%] lg:w-[30%] lg:h-[200px] aspect-auto"}
+              className={
+                "w-full h-full rounded-3xl md:w-[30%] lg:w-[30%] lg:h-[200px] aspect-auto"
+              }
               url="/Corporate2.mp4"
               playing={playingIndex === 1}
               loop={true}
@@ -129,9 +136,9 @@ const WhatHM = () => {
                 file: {
                   attributes: {
                     controlsList: "nodownload", // Disable download option
-                    playsInline: true // Play inline on iOS
-                  }
-                }
+                    playsInline: true, // Play inline on iOS
+                  },
+                },
               }}
             />
             {/* {playingIndex !== 1 && (

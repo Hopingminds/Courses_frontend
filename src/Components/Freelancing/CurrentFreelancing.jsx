@@ -1,29 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const CurrentFreelancing = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const cards = [
-    { name: "Development & IT", rating: 1, students: 1250 },
-    { name: "Graphic Design & Creative Stuff", rating: 4.7, students: 920 },
-    { name: "Sales & Marketing", rating: 4.3, students: 690 },
-    { name: "Admin & Customer Support", rating: 4.6, students: 480 },
-    { name: "Finance & Accounting", rating: 4.8, students: 700 },
-    { name: "Legal", rating: 4.4, students: 110 },
-    { name: "Engineer & Architecture", rating: 4.5, students: 830 },
-    { name: "Copy Writing & Translation", rating: 4.9, students: 1095 },
+    { name: "Full Stack Development", rating: 5, Data: 1250 },
+    { name: "Finance", rating: 4.7, Data: 920 },
+    { name: "Management", rating: 4.3, Data: 690 },
+    { name: "AI/ML", rating: 4.6, Data: 480 },
+    { name: "Networking", rating: 4.8, Data: 700 },
+    { name: "Data Science", rating: 4.4, Data: 110 },
   ];
 
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       if (i <= Math.floor(rating)) {
-        stars.push(<span key={i}>&#9733;</span>); // Full Star
+        stars.push(<span key={i}>&#9733;</span>);
       } else if (i === Math.ceil(rating)) {
-        stars.push(<span key={i}>&#9734;</span>); // Half Star
+        stars.push(<span key={i}>&#9734;</span>);
       } else {
-        stars.push(<span key={i}>&#9734;</span>); // Empty Star
+        stars.push(<span key={i}>&#9734;</span>);
       }
     }
     return stars;
+  };
+
+  // Handle card click to navigate to the appropriate category
+  const handleCardClick = (category) => {
+    navigate(`/courses?category=${category}`);
   };
 
   return (
@@ -42,11 +47,12 @@ const CurrentFreelancing = () => {
         {cards?.map((card, index) => (
           <div
             key={index}
-            className="bg-[#F2F7F1] p-4 rounded-md py-6 w-full xsm:w-full xsm:py-4"
+            className="bg-[#F2F7F1] p-6 rounded-md py-8 w-full lg:w-[400px] xsm:w-full cursor-pointer transform hover:scale-105 transition-transform duration-300"
+            onClick={() => handleCardClick(card.name)} // Navigate on click
           >
-            <h3 className="text-xl font-bold mb-2 xsm:text-lg">{card.name}</h3>
+            <h3 className="text-2xl font-bold mb-2 xsm:text-lg">{card.name}</h3>
 
-            <div className="flex flex-row  justify-between  py-5 pt-6">
+            <div className="flex flex-row justify-between py-5 pt-6">
               <div className="flex items-center">
                 <span className="text-green-400 flex">
                   {renderStars(card.rating)}
@@ -55,7 +61,7 @@ const CurrentFreelancing = () => {
               </div>
 
               <div className="text-gray-500 text-center xsm:text-sm">
-                {card.students} Skills
+                <p>{4000 + card.Data} Skills</p>
               </div>
             </div>
           </div>
