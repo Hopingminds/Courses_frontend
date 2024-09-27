@@ -101,7 +101,7 @@ const RecentlyPost = () => {
               transform: `translateX(-${currentIndex * 100}%)`,
             }}
           >
-            <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+            <div className="grid grid-cols-3 sm:grid-cols-2 xsm:grid-cols-1 lg:grid-cols-3 gap-4 w-full">
               {recentJobData?.map((item) => (
                 <div
                   key={item._id}
@@ -147,18 +147,6 @@ const RecentlyPost = () => {
                       />
                       <p>{item.publishStatus}</p>
                     </div>
-                    {/* {!item?.isApplied ? (
-                      <button
-                        onClick={(e) => handleApply(e, item?._id)}
-                        className="bg-[#1DBF73] py-1 px-6 rounded-full text-white text-[14px] font-bold"
-                      >
-                        Apply
-                      </button>
-                    ) : (
-                      <button className="bg-[#1DBF73] py-1 px-6 rounded-full text-white text-[14px] font-bold cursor-not-allowed opacity-50">
-                        Applied
-                      </button>
-                    )} */}
 
                     <button
                       onClick={() => navigate("/jobpreview?jobid=" + item?._id)}

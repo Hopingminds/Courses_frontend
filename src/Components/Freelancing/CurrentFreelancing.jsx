@@ -43,12 +43,12 @@ const CurrentFreelancing = () => {
           Search By Category
         </p>
       </div>
-      <div className="grid grid-cols-4 sm:grid-cols-2 xsm:grid-cols-1 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-6 pb-10 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-6 pb-10 w-full">
         {cards?.map((card, index) => (
           <div
             key={index}
-            className="bg-[#F2F7F1] p-6 rounded-md py-8 w-full lg:w-[400px] xsm:w-full cursor-pointer transform hover:scale-105 transition-transform duration-300"
-            onClick={() => handleCardClick(card.name)} // Navigate on click
+            className="bg-[#F2F7F1] p-6 rounded-md py-8 w-full cursor-pointer transform hover:scale-105 transition-transform duration-300"
+            onClick={() => handleCardClick(card.name)}
           >
             <h3 className="text-2xl font-bold mb-2 xsm:text-lg">{card.name}</h3>
 
