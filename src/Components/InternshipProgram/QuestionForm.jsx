@@ -51,8 +51,8 @@ const QuestionForm = () => {
         <Toaster position="top-center" reverseOrder={false} />
         <div className="max-w-[80vw] w-full flex flex-row lg:flex-row bg-[#E2FFF1] shadow-lg rounded-lg p-6 xsm:w-full xsm:p-0 xsm:max-h-screen">
           {/* Left side: Input Form */}
-          <div className="lg:w-1/3 w-full flex flex-col justify-center p-4 bg-white rounded-xl xsm:w-full xsm:p-0">
-            <form onSubmit={handleSubmit} className="space-y-4 p-4 xsm:p-0">
+          <div className="lg:w-1/3 w-full flex flex-col justify-center p-4 bg-white rounded-xl xsm:w-full ">
+            <form onSubmit={handleSubmit} className="space-y-4 p-4 ">
               <div>
                 <label className="block text-lg mb-2">Your Name:</label>
                 <input

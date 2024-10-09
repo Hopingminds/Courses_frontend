@@ -6,7 +6,7 @@ export default function Header({ scrollToFreelancingPage }) {
           <h1 className="text-[40px] sm:text-[50px] md:text-[60px] lg:text-[70px] xl:text-[70px] 2xl:text-[80px] 3xl:text-[90px] font-semibold font-pop mb-4">
             Unlock Your
           </h1>
-          <h1 className="text-4xl text-green-600 sm:text-[50px] sm:flex sm:gap-4 xsm:gap-2 md:text-[60px] md:flex lg:text-[60px] lg:flex xl:text-[70px] xl:flex 2xl:text-[80px] 2xl:flex 3xl:text-[90px] 3xl:flex font-semibold font-pop">
+          <h1 className="text-green-600 sm:text-[50px] sm:gap-4 md:text-[60px] lg:text-[60px] xl:text-[70px] 2xl:text-[80px] 3xl:text-[90px] font-semibold font-pop flex sm:flex-col md:space-x-3 md:flex-col lg:gap-0">
             Freelancing Opportunities!
           </h1>
         </div>

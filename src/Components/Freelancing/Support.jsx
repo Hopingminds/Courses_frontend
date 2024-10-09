@@ -1,83 +1,117 @@
-import React from "react";
+import { useState } from 'react';
 
 const Support = () => {
-  const courses = [
+  // Static data for the cards
+  const cards = [
     {
-      id: 1,
-      image:
-        "https://media.istockphoto.com/id/840610244/photo/business-people-negotiating-a-contract.jpg?s=612x612&w=0&k=20&c=wT5ATN3AAd7FO3vTHkZE32e7TRdzRexkHABVp7N5C0Y=",
-      date: "September 10, 2024",
-      name: "React Development",
-      description:
-        "Learn the basics of React and how to build scalable web applications.",
-      profileImage:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzw6Mk_YZsbSp1g6tL_6qZlhI0STrZL2mXVQ&s",
-      instructor: "John Doe",
-      designation: "Senior Developer",
+      title: 'Card 1',
+      description: 'This is the description for Card 1.',
+      content: 'Additional content for Card 1.',
+      image: 'https://picsum.photos/200/300?random=1', // Random image URL
     },
     {
-      id: 2,
-      image:
-        "https://media.istockphoto.com/id/840610244/photo/business-people-negotiating-a-contract.jpg?s=612x612&w=0&k=20&c=wT5ATN3AAd7FO3vTHkZE32e7TRdzRexkHABVp7N5C0Y=",
-      date: "September 12, 2024",
-      name: "UI/UX Design",
-      description:
-        "Understand the principles of UI/UX design and create stunning user interfaces.",
-      profileImage:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzw6Mk_YZsbSp1g6tL_6qZlhI0STrZL2mXVQ&s",
-      instructor: "Jane Smith",
-      designation: "Lead Designer",
+      title: 'Card 2',
+      description: 'This is the description for Card 2.',
+      content: 'Additional content for Card 2.',
+      image: 'https://picsum.photos/200/300?random=2', // Random image URL
     },
     {
-      id: 3,
-      image:
-        "https://media.istockphoto.com/id/840610244/photo/business-people-negotiating-a-contract.jpg?s=612x612&w=0&k=20&c=wT5ATN3AAd7FO3vTHkZE32e7TRdzRexkHABVp7N5C0Y=",
-      date: "September 15, 2024",
-      name: "Machine Learning",
-      description:
-        "Dive into machine learning algorithms and build intelligent models.",
-      profileImage:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzw6Mk_YZsbSp1g6tL_6qZlhI0STrZL2mXVQ&s",
-      instructor: "Alice Johnson",
-      designation: "Data Scientist",
+      title: 'Card 3',
+      description: 'This is the description for Card 3.',
+      content: 'Additional content for Card 3.',
+      image: 'https://picsum.photos/200/300?random=3', // Random image URL
+    },
+    {
+      title: 'Card 4',
+      description: 'This is the description for Card 4.',
+      content: 'Additional content for Card 4.',
+      image: 'https://picsum.photos/200/300?random=4', // Random image URL
+    },
+    {
+      title: 'Card 5',
+      description: 'This is the description for Card 5.',
+      content: 'Additional content for Card 5.',
+      image: 'https://picsum.photos/200/300?random=5', // Random image URL
+    },
+    {
+      title: 'Card 6',
+      description: 'This is the description for Card 6.',
+      content: 'Additional content for Card 6.',
+      image: 'https://picsum.photos/200/300?random=6', // Random image URL
+    },
+    {
+      title: 'Card 7',
+      description: 'This is the description for Card 7.',
+      content: 'Additional content for Card 7.',
+      image: 'https://picsum.photos/200/300?random=7', // Random image URL
+    },
+    {
+      title: 'Card 8',
+      description: 'This is the description for Card 8.',
+      content: 'Additional content for Card 8.',
+      image: 'https://picsum.photos/200/300?random=8', // Random image URL
+    },
+    {
+      title: 'Card 9',
+      description: 'This is the description for Card 9.',
+      content: 'Additional content for Card 9.',
+      image: 'https://picsum.photos/200/300?random=9', // Random image URL
+    },
+    {
+      title: 'Card 10',
+      description: 'This is the description for Card 10.',
+      content: 'Additional content for Card 10.',
+      image: 'https://picsum.photos/200/300?random=10', // Random image URL
     },
   ];
 
+  // State to track how many cards are displayed
+  const [showMore, setShowMore] = useState(false);
+
+  // Function to toggle between showing all or limited cards
+  const handleSeeMoreClick = () => {
+    setShowMore(!showMore);
+  };
+
+  // Decide how many cards to show based on 'showMore' state
+  const visibleCards = showMore ? cards : cards.slice(0, 8);
+
   return (
-    <div className="container mx-auto p-5 xsm:p-2 sm:p-2 py-10 xsm:mt-10 sm:mt-10 w-[70%]">
-      <div className="grid grid-cols-1 xsm:grid-cols-1 xsm:w-full sm:w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-3 4xl:grid-cols-3">
-        {courses.map((course) => (
+    <div className="max-w-full mx-auto p-4 px-[5vw]">
+      <h1 className="text-center text-3xl font-bold text-white mb-8">Our Cards</h1>
+      
+      {/* Responsive grid system */}
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {visibleCards.map((card, index) => (
           <div
-            key={course.id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
+            key={index}
+            className="bg-gradient-to-l h-[15vh] from-[#727374] via-[#444546] to-[#203A43] shadow-md rounded-lg p-3 flex transform transition-transform duration-300 hover:scale-105 cursor-pointer"
           >
             <img
-              src={course.image}
-              alt={course.name}
-              className="w-full h-48 object-cover"
+              src={card.image}
+              alt={card.title}
+              className="w-1/3 object-cover rounded-lg"
             />
-            <div className="p-4">
-              <div className="flex gap-2 py-5">
-                <p className="text-gray-500 text-sm">INTERNET</p>
-                <p className="text-gray-500 text-sm">{course.date}</p>
-              </div>
-              <h2 className="text-xl font-semibold mb-2">{course.name}</h2>
-              <p className="text-gray-700 mb-4">{course.description}</p>
-              <div className="flex items-center">
-                <img
-                  src={course.profileImage}
-                  alt={course.instructor}
-                  className="w-10 h-10 rounded-full mr-3"
-                />
-                <div>
-                  <p className="font-semibold">{course.instructor}</p>
-                  <p className="text-gray-500 text-sm">{course.designation}</p>
-                </div>
-              </div>
+            <div className="ml-4 w-2/3">
+              <h2 className="text-xl font-semibold text-white mb-2">{card.title}</h2>
+              <p className="text-white mb-2">{card.description}</p>
+              <p className="text-white">{card.content}</p>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Show "See More" button after the 8th card */}
+      {cards.length > 8 && (
+        <div className="text-center mt-6">
+          <button
+            onClick={handleSeeMoreClick}
+            className="bg-[#203A43] text-white px-4 py-2 rounded-md"
+          >
+            {showMore ? 'Show Less' : 'See More →'}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

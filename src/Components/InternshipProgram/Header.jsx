@@ -1,7 +1,7 @@
 export default function Header() {
   return (
-    <div className="bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-col  font-pop px-[5%] h-screen xsm:h-[130vh] md:h-[130vh] sm:h-[140vh] xsm:px-2">
-      <div className="mt-[5vh] xsm:w-full">
+    <div className="bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-col  font-pop px-[5%] h-screen xsm:h-[110vh] md:h-[130vh] sm:h-[140vh] xsm:px-2">
+      <div className="mt-[5vh] xsm:w-full px-5">
         <h1 className="xl:text-[70px] lg:text-[70px] md:text-[60px] sm:text-[50px] xsm:text-[35px] text-white font-semibold mb-4">
           10-Month
         </h1>
@@ -9,11 +9,11 @@ export default function Header() {
           Internship Program!
         </h1>
       </div>
-      <div className="xsm:flex-col flex flex-row xsm:flex-cols-2 sm:flex-col md:flex-col items-center justify-center py-[10vh]">
+      <div className="xsm:flex-col flex flex-row xsm:flex-cols-2 sm:flex-col md:flex-col items-center justify-center py-[10vh] xsm:py-0">
         <div className="text-white flex flex-row flex-wrap xsm:mt-[8vh] gap-4 pb-4 justify-center items-center">
           {/* Card 1 */}
           <div
-            className="group w-[45vw] xsm:w-[45%] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[45vw] xsm:w-[45%] xsm:h-[20vh] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -26,12 +26,13 @@ export default function Header() {
               <p className="text-lg font-light py-3">Online/Offline Training</p>
             </div>
             <p className="opacity-0 group-hover:opacity-100 absolute inset-0 flex items-center justify-center text-center text-white bg-black bg-opacity-50 backdrop-blur-lg transition-opacity duration-300 rounded-xl p-4">
-              Some text appears on hover.
+            By doing this you will gain a 1 year experience certificate from corporate which will help you to get the job.
+            
             </p>
           </div>
           {/* Card 2 */}
           <div
-            className="group w-[45vw] xsm:w-[45%] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[45vw] xsm:w-[45%] xsm:h-[20vh] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -44,12 +45,12 @@ export default function Header() {
               <p className="text-lg font-light py-3">Work On Live Projects</p>
             </div>
             <p className="opacity-0 group-hover:opacity-100 absolute inset-0 flex items-center justify-center text-center text-white bg-black bg-opacity-50 backdrop-blur-lg transition-opacity duration-300 rounded-xl p-4">
-              Some text appears on hover.
+            By doing this you will gain a 1 year experience certificate from corporate which will help you to get the job.
             </p>
           </div>
           {/* Card 3 */}
           <div
-            className="group w-[45vw] xsm:w-[45%] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[45vw] xsm:w-[45%] xsm:h-[20vh] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -63,13 +64,13 @@ export default function Header() {
               </p>
             </div>
             <p className="opacity-0 group-hover:opacity-100 absolute inset-0 flex items-center justify-center text-center text-white bg-black bg-opacity-50 backdrop-blur-lg transition-opacity duration-300 rounded-xl p-4">
-              Some text appears on hover.
+            By doing this you will gain a 1 year experience certificate from corporate which will help you to get the job.
             </p>
           </div>
 
           {/* Card 4 */}
           <div
-            className="group w-[45vw] xsm:w-[45%] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
+            className="group w-[45vw] xsm:w-[45%] xsm:text-[15px] xsm:h-[20vh] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
             style={{
               borderRadius: "20px",
               border: "4px solid transparent",
@@ -83,14 +84,14 @@ export default function Header() {
               </p>
             </div>
             <p className="opacity-0 group-hover:opacity-100 absolute inset-0 flex items-center justify-center text-center text-white bg-black bg-opacity-50 backdrop-blur-lg transition-opacity duration-300 rounded-xl p-4">
-              Some text appears on hover.
+            By doing this you will gain a 1 year experience certificate from corporate which will help you to get the job.
             </p>
           </div>
         </div>
 
         {/* Card 5 */}
         <div
-          className="group w-[25vw] h-[35vh] sm:h-full sm:object-cover sm:flex-col sm:w-full xsm:object-cover xsm:w-full xsm:flex-col md:flex-col       md:w-full md:h-full shadow-lg rounded-xl p-1 flex justify-center items-center cursor-pointer hover:text-white transition-all duration-300 relative"
+          className="group w-[25vw] h-[35vh] sm:h-full sm:object-cover sm:flex-col sm:w-full xsm:object-cover xsm:w-full xsm:flex-col md:flex-col       md:w-full md:h-full shadow-lg rounded-xl p-4 flex justify-center items-center cursor-pointer hover:text-white transition-all duration-300 relative"
           style={{
             borderRadius: "20px",
             border: "4px solid transparent",

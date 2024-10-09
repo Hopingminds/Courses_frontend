@@ -47,7 +47,7 @@ const HowItWorks = () => {
                   : "-translate-x-20 opacity-0"
               }`}
             >
-              <FaGraduationCap className="text-[60px] xsm:text-[30px]" />
+              <FaGraduationCap className="text-[50px] xsm:text-[30px]" />
             </div>
             {selectedOption !== 1 && (
               <span className="absolute text-3xl">1</span>
@@ -68,7 +68,7 @@ const HowItWorks = () => {
                   : "-translate-x-20 opacity-0"
               }`}
             >
-              <img src="/icon-3.png" alt="Check Circle" />
+              <img src="/icon-3.png" alt="Check Circle" className="xsm:h-[6vh] xsm:w-[12vw] sm:h-[8vh] sm:w-[11vw] md:h-[8vh] md:w-[8vw] lg:h-[8vh] lg:w-[5vw] xl:h-[8vh] xl:w-[4vw] 2xl:h-[8vh] 2xl:w-[4vw]" />
             </div>
             {selectedOption !== 2 && (
               <span className="absolute text-3xl">2</span>
@@ -89,7 +89,7 @@ const HowItWorks = () => {
                   : "-translate-x-20 opacity-0"
               }`}
             >
-              <img src="/icon-2.png" alt="Book Reader" />
+              <img src="/icon-2.png" alt="Book Reader" className="xsm:h-[5vh] xsm:w-[9vw] sm:h-[7vh] sm:w-[8vw] md:h-[6vh] md:w-[5vw] lg:h-[7vh] lg:w-[4vw] xl:h-[6vh] xl:w-[3vw] 2xl:h-[6vh] 2xl:w-[3vw]"/>
             </div>
             {selectedOption !== 3 && (
               <span className="absolute text-3xl">3</span>
@@ -110,7 +110,7 @@ const HowItWorks = () => {
                   : "-translate-x-20 opacity-0"
               }`}
             >
-              <img src="/Icon1.png" alt="Check" />
+              <img src="/Icon1.png" alt="Check" className="h-[6vh] w-[4vw] xsm:h-[4vh] xsm:w-[11vw] sm:h-[6vh] sm:w-[9vw] md:h-[6vh] md:w-[8vw] lg:h-[6vh] lg:w-[5vw] xl:h-[6vh] xl:w-[5vw] 2xl:h-[6vh] 2xl:w-[5vw]"/>
             </div>
             {selectedOption !== 4 && (
               <span className="absolute text-3xl">4</span>
@@ -120,7 +120,7 @@ const HowItWorks = () => {
 
         {/* Content box with sliding from left to right */}
         <div
-          className={`py-auto font-pop transition-transform duration-500 transform ${
+          className={`px-[5%] py-auto font-pop transition-transform duration-500 transform ${
             selectedOption
               ? "-translate-x-0 opacity-100"
               : "-translate-x-20 opacity-100"

@@ -90,13 +90,14 @@ const Courses_Home = () => {
         <div className="h-12 md:h-8 sm:h-8 xsm:h-fit flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-1 xsm:flex-nowrap xsm:gap-y-2 xsm:gap-x-[8px] xsm:justify-between xsm:text-[8px] sm:space-x-4 sm:gap-y-2 sm:text-[10px] sm:flex-wrap md:text-[12px] md:space-x-6 xsm:overflow-x-auto xsm:w-[90vw] xsm:overflow-y-hidden xsm:py-[6px]">
           {[
             "All",
+            "App Development",
             "Full Stack Development",
             "AI/ML",
             "Data Science",
             "Management",
             "Networking",
-            // "Free"
-          ].slice(0,(window.innerWidth >=320 && window.innerWidth<=480 ? 6 : 6)).map((category,index) => (
+            
+          ].slice(0,(window.innerWidth >=320 && window.innerWidth<=480 ? 7 : 7)).map((category,index) => (
             <button
               key={category+index}
               onClick={() => handleCategoryClick(category)}

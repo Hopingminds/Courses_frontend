@@ -24,7 +24,7 @@ const Footer = () => {
               }
             `}
       </style>
-      <div className="flex flex-col gap-14  pt-10 pb-4 xsm:gap-8 bg-radial-gradient sm:gap-9 md:gap-10 md:pt-8 xsm:min-w-[397px]">
+      <div className="flex flex-col gap-14  pt-10 pb-4 xsm:gap-8 bg-radial-gradient sm:gap-9 md:gap-10 md:pt-8 xsm:min-w-[320px]">
         <div className="flex  justify-between px-[5%] xsm:pl-[5%] xsm:flex xsm:flex-col xsm:gap-8">
           <div className="flex flex-col gap-5 w-[260px] xsm:gap-2 xsm:w-[90%] md:gap-6">
             <div onClick={() => navigate("/")}>
@@ -89,17 +89,11 @@ const Footer = () => {
                 className="flex flex-col gap-3 xsm:gap-1 md:gap-2"
                 onClick={Top}
               >
-                <Link
-                  to="/courses?category=Management"
-                  className={`${window.location.href=='/courses?category=Management' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                 <Link
+                  to="/courses?category=App Development"
+                  className={`${window.location.href=='/courses?category=App Development' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
-                  Management
-                </Link>
-                <Link
-                  to="/courses?category=Finance"
-                  className={`${window.location.href=='/courses?category=Finance' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
-                >
-                  Finance
+                  App Development
                 </Link>
                 <Link
                   to="/courses?category=Full Stack Development"
@@ -107,6 +101,19 @@ const Footer = () => {
                 >
                   Full Stack Development
                 </Link>
+                <Link
+                  to="/courses?category=Management"
+                  className={`${window.location.href=='/courses?category=Management' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                >
+                  Managements
+                </Link>
+                <Link
+                  to="/courses?category=Finance"
+                  className={`${window.location.href=='/courses?category=Finance' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                >
+                  Finance
+                </Link>
+               
                 <Link
                   to="/courses?category=AI/ML"
                   className={`${window.location.href=='/courses?category=AI/ML' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
@@ -125,6 +132,7 @@ const Footer = () => {
                 >
                   Data Science
                 </Link>
+               
               </div>
             </div>
             <div className="flex flex-col gap-8 xsm:gap-2 sm:gap-6">

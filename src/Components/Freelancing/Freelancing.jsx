@@ -1,19 +1,20 @@
-import React, { useRef } from 'react';
-import Header from './Header';
-import HowItWorks from './HowItWorks';
-import FreelancingPage from './FreelancingPage';
-import CurrentFreelancing from './CurrentFreelancing';
-import RecentlyPost from './RecentlyPost';
+import React, { useRef } from "react";
+import Header from "./Header";
+import HowItWorks from "./HowItWorks";
+import FreelancingPage from "./FreelancingPage";
+import CurrentFreelancing from "./CurrentFreelancing";
+import RecentlyPost from "./RecentlyPost";
 import OurFeatures from "./OurFeaturesFreeLancing/OurFeatures";
-import BookSlot from './BookSlot';
-import Support from './Support';
+import BookSlot from "./BookSlot";
+import Support from "./Support";
+import OurSourseSearchByCategory from "./OurSourseSearchByCategory";
 
 const Freelancing = () => {
   const freelancingPageRef = useRef(null);
 
   const scrollToFreelancingPage = () => {
     if (freelancingPageRef.current) {
-      freelancingPageRef.current.scrollIntoView({ behavior: 'smooth' });
+      freelancingPageRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -25,10 +26,11 @@ const Freelancing = () => {
         <FreelancingPage />
       </div>
       <CurrentFreelancing />
+      <OurSourseSearchByCategory />
       <RecentlyPost />
       <OurFeatures />
       <BookSlot />
-      {/* <Support /> */}
+      <Support />
     </div>
   );
 };
