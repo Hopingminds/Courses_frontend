@@ -120,12 +120,12 @@ const Footer = () => {
                 >
                   AI/ML
                 </Link>
-                <Link
+                {/* <Link
                   to="/courses?category=Networking"
                   className={`${window.location.href=='/courses?category=Networking' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Networking
-                </Link>
+                </Link> */}
                 <Link
                   to="/courses?category=Data Science"
                   className={`${window.location.href=='/courses?category=Data Science' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}

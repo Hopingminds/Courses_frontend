@@ -233,7 +233,7 @@ const ReturnPolicy = () => {
                     <div className="mb-8" ref={contactUsRef}>
                         <h2 className="text-xl xsm:text-2xl font-bold mb-4 font-poppins">Contact Us:</h2>
                         <p className="text-sm xsm:text-base text-gray-700 mb-2 font-poppins">
-                            If you have any questions or concerns about this Privacy Policy or how we handle your personal information, please contact us at privacy@hopingminds.com.
+                        If you have any questions about these Terms, please contact us at: <a href="mailto:support@hopingminds.com" className="text-blue-500 underline mr-1">support@hopingminds.com</a>,<a href='tel:+919193700050'>+919193700050</a>
                         </p>
                     </div>
                 </section>
