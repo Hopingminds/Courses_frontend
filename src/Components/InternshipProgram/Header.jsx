@@ -22,8 +22,7 @@ export default function Header() {
             }}
           >
             <div className="flex flex-col justify-center items-center text-center">
-              <p className="text-2xl font-semibold text-green-600">6 Months</p>
-              <p className="text-lg font-light py-3">Online/Offline Training</p>
+              <p className="text-2xl font-semibold text-green-600">6 Months of Hybrid Learning</p>
             </div>
             <p className="px-1 opacity-0 group-hover:opacity-100 absolute inset-0 flex items-center justify-center text-center text-white bg-black bg-opacity-50 backdrop-blur-lg transition-opacity duration-300 rounded-xl text-sm">
             Develop a strong foundation through six months of focused training, preparing you for real-world challenges.            
