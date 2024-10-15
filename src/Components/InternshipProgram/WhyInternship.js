@@ -48,8 +48,8 @@ const WhatHM = () => {
       <div>
         <h1 className="text-[40px]  font-semibold text-[#1DBF73] flex flex-row justify-center items-center xsm:text-[30px] sm:text-[30px] px-2 py-4" >
           {" "}
-          What Top Universities Say About Us
-        </h1>
+          What Top Universities Say About Our Internship Program
+                  </h1>
       </div>
       <div className="flex flex-col gap-3" ref={sectionRef}>
         {/* <div className="flex justify-center">
@@ -60,11 +60,7 @@ const WhatHM = () => {
 
         <div className="flex justify-center">
           <p className="text-[#696984] text-[20px] font-pop w-[70%] text-center leading-12 xl:text-[22px] lg:text-[16px] sm:text-[10px] xsm:text-[12px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
-            Welcome to HopingMinds, your gateway to a brighter future. As an
-            esteemed partner of the National Skill Development Corporation
-            (NSDC), we stand at the forefront of transformative education,
-            dedicated to nurturing the next generation of leaders and
-            innovators.
+          HopingMinds has transformed career pathways for countless students. Our internship program provides a corporate-ready experience, equipping future leaders with essential skills and placement opportunities to excel in their careers.
           </p>
         </div>
         <div className="flex flex-row gap-20 justify-around sm:mt-4 sm:gap-6 xsm:gap-4 mt-8 xsm:mt-2 md:mt-4 md:gap-10 lg:gap-14">
