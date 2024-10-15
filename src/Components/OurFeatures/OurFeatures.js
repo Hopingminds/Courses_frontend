@@ -110,12 +110,11 @@ const OurFeatures = () => {
         <div className="add_gradient flex flex-col gap-12  py-10 pb-16 px-28 xsm:px-[5%] xsm:gap-2 xsm:pb-[3%] xsm:py-[5%] sm:px-[5%] sm:pb-10 sm:gap-8 md:px-[5%] md:gap-4 md:pb-10 lg:px-[5%]">
           <div className="flex flex-col gap-4 justify-center items-center xsm:gap-2 md:gap-3">
             <p className="text-[40px] text-white font-pop font-semibold xsm:text-[12px] sm:text-[20px] md:text-[30px] lg:text-[32px]">
-              Our <span className="text-[#33EFA0]"> Features </span>{" "}
+            Program <span className="text-[#33EFA0]"> Highlights </span>{" "}
             </p>
             {/* <p className="text-[#696984] text-[20px] font-pop text-center xsm:text-[7px]">Unleash Your Potential</p> */}
             <p className="text-white text-[30px] font-pop text-center xsm:text-[7px] sm:text-[12px] md:text-[14px] md:w-[70%] lg:text-[16px]">
-              Explore Our Feature-Rich Toolbox for a Seamless, Engaging, and Rewarding Learning Journey Like Never Before!
-            </p>
+            This comprehensive set of features prepares you with essential skills for a successful career.            </p>
           </div>
           <div className="flex flex-row justify-between items-center sm:h-[30vh] md:h-[35vh] lg:h-[45vh]">
             <div className="flex w-[50%] relative justify-end items-center overflow-hidden">

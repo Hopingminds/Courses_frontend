@@ -49,7 +49,7 @@ const QuestionForm = () => {
       </h1>
       <div className="min-h-[40vh] flex justify-center xsm:p-0 xsm:w-full py-9">
         <Toaster position="top-center" reverseOrder={false} />
-        <div className="max-w-[80vw] w-full flex flex-row lg:flex-row bg-[#E2FFF1] shadow-lg rounded-lg p-6 xsm:w-full xsm:p-0 xsm:max-h-screen">
+        <div className="max-w-[80vw] w-full flex flex-row justify-center lg:flex-row bg-[#E2FFF1] shadow-lg rounded-lg p-6 xsm:w-full xsm:p-0 xsm:max-h-screen">
           {/* Left side: Input Form */}
           <div className="lg:w-1/3 w-full flex flex-col justify-center p-4 bg-white rounded-xl xsm:w-full ">
             <form onSubmit={handleSubmit} className="space-y-4 p-4 ">
@@ -60,7 +60,7 @@ const QuestionForm = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none"
                   placeholder="Enter your name"
                   required
                 />
@@ -72,7 +72,7 @@ const QuestionForm = () => {
                   name="number"
                   value={formData.number}
                   onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none"
                   placeholder="Enter your contact number"
                   required
                 />
@@ -84,7 +84,7 @@ const QuestionForm = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none"
                   placeholder="Enter your email"
                   required
                 />
@@ -95,9 +95,10 @@ const QuestionForm = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none resize-none"
                   placeholder="Enter your message"
                   rows="4"
+                  
                   required
                 ></textarea>
               </div>
@@ -105,7 +106,7 @@ const QuestionForm = () => {
                 type="submit"
                 className="w-full p-2 bg-green-500 text-white rounded-full hover:bg-green-600"
               >
-                {!loading ? "Enquiry" : "Enquiring..."}
+                {!loading ? "Submit" : "Submitting..."}
               </button>
             </form>
           </div>
@@ -113,15 +114,15 @@ const QuestionForm = () => {
           {/* Right side: Some text */}
           <div className="lg:w-1/2 w-full flex flex-col justify-center p-4 xsm:hidden">
             <h2 className="text-2xl font-bold mb-6 text-center font-pop">
-              Have A Question For Us?
+            Got Questions About Our Internship Program?
             </h2>
-            <p className="text-lg text-center font-pop">
-              Teachers don’t get lost in the grid view and have a dedicated
-              Podium space.
+            <p className="text-lg text-left font-pop ml-5 ">
+            Our mentors are here to guide you every step of the way. We make sure you're supported with personalized attention and a dedicated space for your queries.
+
             </p>
             <div className="flex flex-row py-5 mt-4 gap-3 p-4 items-center">
               <FaPhoneAlt />
-              <p className="text-lg">+91 9193100050</p>
+              <p className="text-lg">+91 9193100050,support@hopingminds.com</p>
             </div>
           </div>
         </div>
