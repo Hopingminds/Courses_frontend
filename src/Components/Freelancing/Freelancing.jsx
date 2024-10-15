@@ -22,11 +22,11 @@ const Freelancing = () => {
     <div>
       <Header scrollToFreelancingPage={scrollToFreelancingPage} />
       <HowItWorks />
-      <div ref={freelancingPageRef}>
+      {/* <div ref={freelancingPageRef}>
         <FreelancingPage />
-      </div>
+      </div> */}
       <CurrentFreelancing />
-      <OurSourseSearchByCategory />
+      {/* <OurSourseSearchByCategory /> */}
       <RecentlyPost />
       <OurFeatures />
       <BookSlot />

@@ -14,8 +14,8 @@ const HowItWorks = () => {
       text: "To start your freelancing journey, it’s essential to gain the right skills. Enroll in one of our tailored courses that provide practical knowledge, hands-on experience, and industry-recognized certifications. These courses will equip you with the tools to succeed and stand out in a competitive freelancing market.",
     },
     3: {
-      heading: "Check Eligibility",
-      text: "Before applying for freelance projects, it’s important to ensure you meet the necessary requirements. Review the project details, verify your certifications, and update your portfolio to reflect your latest skills and experience. This step guarantees that you're  prepared to showcase your expertise to potential clients.",
+      heading: "Get Hired and Start Working",
+      text: "After submitting your applications, clients will review your profile and proposals. Once selected, you can begin working on exciting projects, delivering high-quality results within the agreed timeline. Build lasting client relationships, enhance your reputation, and enjoy the benefits of freelancing.",
     },
     4: {
       heading: "Apply for Opportunities",

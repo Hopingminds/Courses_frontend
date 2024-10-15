@@ -1,15 +1,20 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import React, { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom"; // Import useNavigate
+// import { BASE_URL } from "../../Api/api";
+import { Toaster } from "react-hot-toast";
+import ShowCategoryWise from "./ShowCategoryWise";
 
 const CurrentFreelancing = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  // const navigate = useNavigate(); 
+  const [cardOpen, setCardOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState()
   const cards = [
-    { name: "Full Stack Development", rating: 5, Data: 1250 },
+    { name: "Software Development", rating: 5, Data: 1250 },
     { name: "Finance", rating: 4.7, Data: 920 },
     { name: "Management", rating: 4.3, Data: 690 },
     { name: "AI/ML", rating: 4.6, Data: 480 },
     { name: "Networking", rating: 4.8, Data: 700 },
-    { name: "Data Science", rating: 4.4, Data: 110 },
+    { name: "Design", rating: 4.4, Data: 110 },
   ];
 
   const renderStars = (rating) => {
@@ -28,11 +33,29 @@ const CurrentFreelancing = () => {
 
   // Handle card click to navigate to the appropriate category
   const handleCardClick = (category) => {
-    navigate(`/courses?category=${category}`);
+    if (cardOpen) {
+      // First close the currently open card
+      setCardOpen(false);
+  
+      // After a short delay, open the new card
+      setTimeout(() => {
+        setSelectedCategory(category);
+        setCardOpen(true);
+      }, 300); // 300ms delay for smooth closing and opening
+    } else {
+      // If no card is open, simply open the selected card
+      setSelectedCategory(category);
+      setCardOpen(true);
+    }
   };
+  
+  function handleClose(){
+    setCardOpen(false);
+  }
 
   return (
     <div className="flex flex-col justify-center px-[4vw] xsm:px-3">
+      <Toaster/>
       <div className="flex justify-center">
         <p className="text-[40px] font-pop font-bold xsm:text-[28px] xsm:text-center">
           Current Freelancing Opportunities
@@ -67,6 +90,11 @@ const CurrentFreelancing = () => {
           </div>
         ))}
       </div>
+      {
+        cardOpen && (
+          <ShowCategoryWise category={selectedCategory} close={handleClose} open={cardOpen}/>
+        )
+      }
     </div>
   );
 };

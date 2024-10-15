@@ -16,6 +16,12 @@ import 'react-phone-number-input/style.css'
 import OTPVerificationModal from './otp';
 const Register = () => {
     const navigate = useNavigate();
+    let token=localStorage.getItem('COURSES_USER_TOKEN')
+    useEffect(() => {
+      if(token){
+        navigate('/')
+      }
+    }, [])
     const { getUserDetails, cartData } = useContext(Globalinfo);
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);

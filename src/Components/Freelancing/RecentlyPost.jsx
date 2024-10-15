@@ -1,51 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { BASE_URL } from "../../Api/api";
-import { Link, useNavigate } from "react-router-dom";
-import { applyJob } from "../../helpers/helperapi";
-import { Check } from "@mui/icons-material";
+import FreelanceCard from "./components/FreelanceCard";
 
 const RecentlyPost = () => {
-  const navigate = useNavigate();
   const [recentJobData, setRecentJobData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState("");
 
-  // Fetch jobs from API
-  useEffect(() => {
-    fetchRecentJobs();
-  }, []);
+  const [loading, setloading] = useState(false);
+  async function fetchAllFreelancing() {
+    setloading(true);
+    const url = `${BASE_URL}/getAllFreelanceOpenings`;
 
-  const handleApply = async (e, id) => {
-    e.stopPropagation();
-    e.preventDefault();
     try {
-      const res = await applyJob(id);
-      if (res) {
-        toast.success("You have Successfully Applied");
-        fetchRecentJobs();
-      } else {
-        toast.error("Error while applying");
-      }
-    } catch (error) {
-      toast.error("Error while applying");
-    }
-  };
-
-  const fetchRecentJobs = async () => {
-    try {
-      const res = await axios.get(`${BASE_URL}/getalljobppenings`, {
+      const response = await fetch(url, {
+        method: "GET",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("COURSES_USER_TOKEN")}`,
         },
       });
-      setRecentJobData(res?.data?.jobOpenings || []);
+
+      if (!response.ok) {
+        // If the response status is not in the range 200-299, handle the error
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      setRecentJobData(data.freelanceOpenings); // Use the data here (like setting it in state)
     } catch (error) {
-      toast.error("Failed to fetch recent jobs.");
+      console.log("Error in fetching all freelancing job posts:", error);
+    } finally {
+      setloading(false);
     }
-  };
+  }
+
+  let temp = true;
+  useEffect(() => {
+    if (temp) {
+      fetchAllFreelancing();
+      temp = false;
+    }
+  }, []);
 
   const handlePrev = () => {
     setDirection("prev");
@@ -60,6 +57,14 @@ const RecentlyPost = () => {
       setCurrentIndex(currentIndex + 1);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-4 border-blue-500"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="py-5 px-[4vw] pb-6">
@@ -101,61 +106,9 @@ const RecentlyPost = () => {
               transform: `translateX(-${currentIndex * 100}%)`,
             }}
           >
-            <div className="grid grid-cols-3 sm:grid-cols-2 xsm:grid-cols-1 lg:grid-cols-3 gap-4 w-full">
+            <div className="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 xsm:grid-cols-1 lg:grid-cols-2 gap-8 w-full my-4 px-4">
               {recentJobData?.map((item) => (
-                <div
-                  key={item._id}
-                  className="bg-[#F2F7F1] p-4 rounded-xl shadow-sm w-full"
-                >
-                  <h3 className="text-2xl font-semibold py-4">
-                    {item.position}
-                  </h3>
-                  <p className="text-sm text-gray-500 py-2">
-                    Expires on: {new Date(item.lastDate).toLocaleDateString()}
-                  </p>
-                  <p className="text-sm text-gray-500 py-2">
-                    Company: {item.company}
-                  </p>
-                  <div className="flex justify-between">
-                    <p className="text-sm text-gray-500 py-2">
-                      Employment Type: {item.employment_type}
-                    </p>
-                    <p className="text-sm text-gray-500 py-2">
-                      Package: {item.uptoPackage} LPA
-                    </p>
-                  </div>
-                  <p className="text-sm text-gray-500 py-2">
-                    Skills Required: {item.key_skills}
-                  </p>
-                  <div className="flex flex-wrap mt-2 py-2">
-                    {item.key_skills.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="bg-gray-200 text-gray-700 px-2 py-1 mr-2 mb-2 rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-row w-full justify-start gap-3 items-start mt-4">
-                    <div className="flex justify-center items-center gap-2 bg-[#1DBF73] py-1 px-6 rounded-full text-white text-[14px] font-bold">
-                      <img
-                        src="https://media.tenor.com/7d64hlDIV9sAAAAi/red-circle-blink.gif"
-                        alt="status"
-                        className="w-3 h-3"
-                      />
-                      <p>{item.publishStatus}</p>
-                    </div>
-
-                    <button
-                      onClick={() => navigate("/jobpreview?jobid=" + item?._id)}
-                      className="bg-transparent text-[#1DBF73] py-1 px-6 rounded-full border border-[#1DBF73] text-[14px] font-bold"
-                    >
-                      View
-                    </button>
-                  </div>
-                </div>
+                <FreelanceCard item={item} key={item._id} />
               ))}
             </div>
           </div>

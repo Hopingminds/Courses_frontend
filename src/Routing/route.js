@@ -93,7 +93,7 @@ import AuthProtected  from './AuthProtected.js'
 function Locationpath(){
     const location=useLocation()
     useEffect(() => {
-      if(location.pathname!=='/login-2' && location.pathname!=='/register' && location.pathname!=='/forgot-password'){
+      if(location.pathname!=='/login-2' && location.pathname!=='/register-user' && location.pathname!=='/forgot-password'){
         localStorage.setItem("current",location.pathname)
       }
   
