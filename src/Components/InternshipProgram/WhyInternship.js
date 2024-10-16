@@ -46,7 +46,7 @@ const WhatHM = () => {
   return (
     <div className="py-12 xsm:py-0 md:py-4 lg:py-8 sm:py-2">
       <div>
-        <h1 className="text-[40px]  font-semibold text-[#1DBF73] flex flex-row justify-center items-center xsm:text-[30px] sm:text-[30px] px-2 py-4" >
+        <h1 className="text-[40px]  font-semibold text-[#1DBF73] flex flex-row text-center justify-center items-center xsm:text-[30px] sm:text-[30px] px-2 py-4" >
           {" "}
           What Top Universities Say About Our Internship Program
                   </h1>
