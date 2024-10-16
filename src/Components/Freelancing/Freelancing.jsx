@@ -8,6 +8,7 @@ import OurFeatures from "./OurFeaturesFreeLancing/OurFeatures";
 import BookSlot from "./BookSlot";
 import Support from "./Support";
 import OurSourseSearchByCategory from "./OurSourseSearchByCategory";
+import ListenFreelancers from "./ListenFreelancers";
 
 const Freelancing = () => {
   const freelancingPageRef = useRef(null);
@@ -29,6 +30,7 @@ const Freelancing = () => {
       {/* <OurSourseSearchByCategory /> */}
       <RecentlyPost />
       <OurFeatures />
+      <ListenFreelancers/>
       <BookSlot />
       <Support />
     </div>
