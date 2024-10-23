@@ -45,10 +45,10 @@ const Courses_Home = () => {
       } else if (window.innerWidth >= 481 && window.innerWidth <= 720) {
         setCardsToShow(3);
       } else if (window.innerWidth >= 1500 && window.innerWidth <= 1999) {
-        setCardsToShow(5);
+        setCardsToShow(courses?.length ? courses?.length : 100);
       }
       else {
-        setCardsToShow(4); // For larger screens, show 4 cards
+        setCardsToShow(courses?.length ? courses?.length : 100); // For larger screens, show 4 cards
       }
     }
 
@@ -120,7 +120,7 @@ const Courses_Home = () => {
           </Link>
         </div>
        
-        <div className="my-4 grid grid-cols-4 gap-4  xsm:gap-3 xsm:my-[2%] sm:grid-cols-3 md:gap-3 xl:grid-cols-5 xl:gap-7 xsm:grid-cols-1 xsm:mx-[0.7rem]">
+        <div className="my-4 grid grid-cols-4 gap-4  xsm:gap-3 xsm:my-[2%] sm:grid-cols-3 md:gap-3 xl:grid-cols-5 xl:gap-7 xsm:grid-cols-1 xsm:mx-[0.7rem] max-h-[470px] overflow-y-auto courses-home">
           {" "}
           {/* Changed flex to flex-wrap */}
           {

@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import BuildCV from "./BuildCV";
 import Companies2 from "../Companies/Companies2";
 import Benefits from "./benefits_sm";
+import Top from "../Newherosection";
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
@@ -52,8 +53,9 @@ export default function Home() {
           content="Holistic development programs that place students in specific high growth roles across 150+ Corporate Partners."
         />
       </head>
-      <div className="space-y-8 xsm:space-y-6 md:space-y-10">
+      <div className="">
         <Herosection />
+        {/* <Top/> */}
         <Companies2 />
         <Courses_Home />
         <WhatHM />

@@ -1,211 +1,115 @@
-import React, { useContext, useRef, useState } from "react";
-import "./Courses.css";
-import { Link } from "react-router-dom";
-import { ReactComponent as Clock } from "../../Assets/Icons/RCClock.svg";
-import { ReactComponent as Design } from "../../Assets/Icons/design.svg";
-import { cropString } from "../../helpers/helper_function";
-import ReactPlayer from "react-player";
-import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
-import { Globalinfo } from "../../App";
-import { IoTrendingUpSharp } from "react-icons/io5";
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Globalinfo } from '../../App';
+import { jwtDecode } from 'jwt-decode';
+import { BASE_URL } from '../../Api/api';
 
-const InternshipCard = ({
-  title,
-  slug,
-  featured_video,
-  price,
-  name,
-  email,
-  experience,
-  phone,
-  duration,
-  image,
-  onClick,
-  isSelected,
-  category,
-  description,
-  ind,
-  profile,
-  _id,
-  display,
-  IsMinorDegreeCourse,
-  credits,
-  courseCategory,
-  discount
-}) => {
-  // console.log(courseCategory);
-  const [mouseHovered, setMouseHovered] = useState(null);
-  const [IsMuted, setIsMuted] = useState(true);
-  const videoRef = useRef(null);
-  const { userDetail, getUserDetails } = useContext(Globalinfo);
+const Internshipcard = ({course}) => {
+  const navigate = useNavigate();
+  const [Data, setData] = useState();
+ 
+  const [show, setshow] = useState(false);
+  const { setCartSize, cartSize, GetCart } = useContext(Globalinfo);
 
-  const toggleHover = (index) => {
-    setMouseHovered(index);
-  };
-
-  const handleMute = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    setIsMuted((prev) => !prev);
-  };
-
-  // console.log(description);
+  async function Addtocart(courseid) {
+    try {
+      let login=localStorage.getItem('COURSES_USER_TOKEN')
+      if (login) {
+        let token = jwtDecode(login);
+        let email = token.email;
+        let quantity = 1;
+        setshow(true)
+        let url = BASE_URL + "/addtocart";
+        let data = await fetch(url, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, internshipid:courseid }),
+        });
+        let response = await data.json();
+        // console.log(response);
+        if (response.success) {
+          // toast.success(response.msg);
+          // setCartSize(cartSize + 1);
+          setshow(false)
+          GetCart();
+          // CheckCourseInCart(courseid)
+        } else {
+          // toast.error(response.msg);getcart?email
+        }
+      } else {
+        localStorage.setItem("ADD_TO_CART_HISTORY", window.location.pathname);
+        // console.log("add to cart withour log")
+        navigate("/login-2");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
-    <Link
-      onMouseEnter={() => toggleHover(ind)}
-      onMouseLeave={() => toggleHover(null)}
-      to={`/detailcourse/${slug}`}
-      className={`shadow-xl  max-w-sm font-pop rounded-2xl relative pb-[50px] h-full 2xl:h-[450px] coursecardhome  bg-white px-3 py-3 xsm:rounded- xsm:p-1 md:p-[6px] md:w-[95%] xsm:w-[100%] md:rounded-xl sm:p-2  ${
-        isSelected ? "border-2 border-blue-500" : ""
-      }`}
-      style={{
-        pointerEvents:
-          userDetail?.blocked_courses?.includes(_id) || !display
-            ? "none"
-            : "auto",
-      }}
-    >
-      {mouseHovered === ind && (
-        <span className="bg-transparent p-4 absolute top-2 left-2 z-[9999]">
-          {IsMuted ? (
-            <IoVolumeMuteOutline
-              size={"20"}
-              style={{
-                cursor: "pointer",
-                color: "black",
+    <div className="w-full overflow-hidden shadow-lg bg-white rounded-[30px]">
+      {/* Image Container with Hover Effect */}
+      <div className="relative group hover:cursor-pointer">
+        <img
+          src={course?.featured_image} // Replace with your image URL
+          alt="Digital Marketing"
+          className="w-full h-full object-cover"
+        />
 
-                zIndex: "999999",
-              }}
-              onClick={handleMute}
-            />
-          ) : (
-            <IoVolumeMediumOutline
-              size={"20"}
-              style={{
-                cursor: "pointer",
-                color: "black",
-
-                zIndex: "999999",
-              }}
-              onClick={handleMute}
-            />
-          )}
-        </span>
-      )}
-      {/* {courseCategory === "liveCourse" && (
-        <div className="bg-transparent p-4 absolute top-2 right-2 z-[99]">
-          <img
-            src="/liveclass.png"
-            alt="live class logo "
-            className="h-[30px] w-auto"
-          />
+        {/* Cart Icon - Always Visible */}
+        <div className="absolute top-4 right-4 hover:cursor-pointer">
+         <button >
+            <img src="cart.png" alt="Cart Icon" className="w-8 h-8" />
+          </button>
         </div>
-      )} */}
-      <div className="h-fit aspect-[16/10] ">
-        {mouseHovered === ind ? (
-          <ReactPlayer
-            className=" rounded-t-2xl xsm:rounded-md border overflow-hidden"
-            height={"100%"}
-            width={"100%"}
-            url={featured_video}
-            controls={false}
-            playing={true}
-            ref={videoRef}
-            muted={IsMuted}
-            config={{
-              file: {
-                attributes: {
-                  controlsList: "nodownload", 
-                },
-              },
-            }}
-          />
-        ) : (
-          <img
-            // style={{ height: "10rem" }}
-            className="w-full rounded-t-2xl h-full "
-            src={image}
-            alt="Course"
-          />
-        )}
-      </div>
-      <div className="flex flex-col gap-6 justify-between xsm:gap-1 sm:gap-3 md:gap-0 md:mt-0 xsm:mt-0 xsm:p-2 ">
-        <div className="flex flex-col justify-between gap-1 mt-2 xsm:mt-1 xsm:gap-1 sm:gap-2 md:gap-0">
-          <div className="flex justify-between items-center min-h-[30%] sm:min-h-[20%] md:min-h-0">
-            <div className="flex items-center space-x-3 max-w-[80%] xsm:max-w-[70%] xsm:space-x-1 sm:space-x-1 md:space-x-2 md:max-w-[70%]">
-              {/* <FaUserCircle  className="text-2xl  xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"/> */}
-              <img
-                alt=""
-                className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] sm:w-5 sm:h-5 md:h-4 md:w-4 rounded-full"
-                src={profile}
-              />
-              <p className="font-pop font-medium text-[13px] flex-wrap xsm:text-[10.3px] sm:text-[9px] md:text-[7px]">
-                {name}
-              </p>
-            </div>
-            <div className="flex gap-2">
 
-              {/* <p className="font-pop font-semibold italic text-[#1DBF73] text-[16px] xsm:text-[13px] sm:text-[10px] md:text-[10px]">{discount}% off</p> */}
-            { discount ? <strike className="font-pop font-semibold text-gray-400 italic text-[14px] xsm:text-[11px] sm:text-[8px] md:text-[8px]">
-                {price == 0 ? "Free" : "₹" + price}
-              </strike>:""}
-              <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[13px] sm:text-[10px] md:text-[10px]">
-                {price == 0 ? "Free" : "₹" + parseFloat(price-(price*(discount/100)))}
-              </p>
-       
-            </div>
+        {/* Price Overlay - Hidden by Default, Show on Hover */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
+          <div className="text-center">
+            <h2 className="text-white text-3xl font-bold">{course?.base_price}</h2>
+            <button onClick={()=>Addtocart(course?._id)}>
+            <img src="cart.png" alt="Cart Icon" className="w-8 h-8" />
+          </button>
           </div>
-          <p className="line-clamp-2  w-full font-pop font-semibold text-[16px] text-[#252641] xsm:text-[12px] sm:text-[12px] sm:leading-none sm:h-6 md:text-[10px] md:h-6 xsm:mt-1  xsm:line-clamp-2"
-          title={typeof title === 'string' ? title : 'Title'}
-          >
-           
-            {title}
-          </p>
-          {description && (
-            <p className=" line-clamp-3 font-pop mt-2 text-[14px]  text-[#555555] xsm:text-[11px] sm:leading-none  md:text-[8px] ">
-              {description}
-            </p>
-          )}
-        </div>
-        <div className=" flex items-start justify-between 2xl:pb-2 sm:flex-wrap xl:absolute bottom-[10px] w-[90%] ">
-          <span className="flex flex-col w-[70%]">
-            {credits ? (
-              <div className="flex space-x-2 items-center xsm:space-x-1 sm:space-x-1">
-             
-                <IoTrendingUpSharp className="w-[16px] h-[16px] text-[#DFDFDF] xsm:w-[8px] xsm:h-[8px] sm:w-3 sm:h-3 md:h-3 md:w-3" />
-                <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[8px] sm:text-[8px] sm:leading-none md:text-[6px]">
-                  Credits- {credits}
-                </p>
-              </div>
-            ) : (
-              <></>
-            )}
-            <div className="flex space-x-2 items-start xsm:space-x-1 sm:space-x-1">
-              <img
-                className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] sm:w-3 sm:h-3 md:h-3 md:w-3"
-                src="../Icons/RCDesign.svg" alt="icon"
-              />
-              <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[8px] sm:text-[8px] sm:leading-none md:text-[6px]">
-                {category}
-              </p>
-            </div>
-          </span>
-          <span className="flex flex-col">
-            <div className="flex space-x-2 items-center xsm:space-x-0 sm:space-x-1">
-              <img
-                className="w-[16px] h-[16px] text-[#555555] xsm:w-[8px] xsm:h-[8px] sm:w-3 sm:h-3 md:h-2 md:w-2"
-                src="../Icons/RCClock.svg"
-                alt=""
-              />
-              <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[8px] sm:text-[8px] sm:leading-none md:text-[6px]">
-               {duration} Hours
-              </p>
-            </div>
-          </span>
         </div>
       </div>
-    </Link>
+
+      {/* Content */}
+      <div className="p-4">
+        <h2 className="text-xl font-bold text-gray-800 h-20 ">{course?.title}</h2>
+        <p className='h-24'> {course?.overview?.length > 120 
+    ? `${course.overview.slice(0, 120)}...` 
+    : course?.overview}</p>
+      </div>
+
+      {/* Footer */}
+      <div className="flex justify-between items-center p-4 ">
+        {/* <div className="flex items-center space-x-2 flex-col">
+          <img src="advance.png" alt="Advance Icon" className="w-7" />
+          <span className="text-gray-800">{course?.category}</span>
+        </div> */}
+
+        <div className="flex items-center flex-col">
+          <img src="hybrid.png" alt="Hybrid Icon" className="w-9" />
+          <span className="text-gray-800">{course?.level}</span>
+        </div>
+
+        <div className="flex items-center space-x-2 flex-col">
+          <img src="240.png" alt="Clock Icon" className="w-7" />
+          <span className="text-gray-800">{course?.duration/60} hours</span>
+        </div>
+      </div>
+
+      {/* Enroll Button */}
+      <div className="p-4">
+        <button className="px-10 py-4 bg-green-500 w-full rounded-xl hover:bg-green-600 transition-all duration-300">
+          Enroll Now
+        </button>
+      </div>
+    </div>
   );
 };
 
-export default InternshipCard;
+export default Internshipcard;

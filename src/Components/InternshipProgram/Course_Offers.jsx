@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Courses.css";
-import CourseCard from "./InternshipCard";
 import { COURSESURL } from "../confidential";
 import { BASE_URL } from "../../Api/api";
 import { Link } from "react-router-dom";
-import { logDOM } from "@testing-library/react";
 import Skeleton from "../Skeleton/Skeletoncard";
+import Internshipcard from './internshipcard'
 // import { COURSESURL } from '../Confidential';
 
 const Course_Offers = () => {
@@ -19,7 +18,7 @@ const Course_Offers = () => {
     async function Fetchdata() {
   try {
     setshow(true)
-    let url = BASE_URL + "/courses";
+    let url = BASE_URL + "/getInternships";
     const data = await fetch(url);
     const response = await data.json();
     // console.log(response);
@@ -45,10 +44,10 @@ const Course_Offers = () => {
       } else if (window.innerWidth >= 481 && window.innerWidth <= 720) {
         setCardsToShow(3);
       } else if (window.innerWidth >= 1500 && window.innerWidth <= 1999) {
-        setCardsToShow(5);
+        setCardsToShow(courses?.length || 5);
       }
       else {
-        setCardsToShow(4); // For larger screens, show 4 cards
+        setCardsToShow(courses?.length || 4);
       }
     }
 
@@ -120,7 +119,7 @@ const Course_Offers = () => {
           </Link>
         </div>
        
-        <div className="my-4 grid grid-cols-4 gap-4  xsm:gap-3 xsm:my-[2%] sm:grid-cols-3 md:gap-3 xl:grid-cols-5 xl:gap-7 xsm:grid-cols-1 xsm:mx-[0.7rem]">
+        <div className="grid grid-cols-4 xsm:grid-cols-1 gap-4 md:grid-cols-3 sm:grid-cols-1 lg:grid-cols-4 mt-3">
           {" "}
           {/* Changed flex to flex-wrap */}
           {
@@ -128,31 +127,8 @@ const Course_Offers = () => {
             return(<Skeleton/>)
           }):
           filteredCourses?.slice(0, cardsToShow)?.map((val, ind) => (
-            <CourseCard
-              key={val?.title}
-              title={val?.title}
-              featured_video={val?.featured_video}
-              price={val?.base_price}
-              name={val?.instructor?.name}
-              duration={val?.duration}
-              image={val?.featured_image}
-              profile={val?.instructor?.profile}
-              email={val?.instructor?.email}
-              experience={val?.instructor?.experience}
-              bio={val?.instructor?.bio}
-              slug={val?.slug}
-              phone={val?.instructor?.phone}
-              onClick={() => handleCourseClick(val?.title)}
-              isSelected={selectedCourse === val?.title}
-              category={val?.category}
-              description={val?.overview}
-              ind={ind}
-              _id={val?._id}
-              display={val?.display}
-              IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
-              credits={val?.credits}
-              courseCategory={val?.courseCategory}
-              discount={val?.discount_percentage}
+            <Internshipcard
+              course={val}
             // Pass category to CourseCard component
             />
           ))}

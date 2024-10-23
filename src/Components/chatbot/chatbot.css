@@ -38,7 +38,7 @@ body.show-chatbot .chatbot-toggler span:last-child {
   position: fixed;
   right: -5px;
   bottom: 20px;
-  z-index: 999999;
+  z-index: 9999999999999999999917;
   width: 25vw;
   height: 65vh;
   /* background: #fff; */
@@ -53,7 +53,7 @@ body.show-chatbot .chatbot-toggler span:last-child {
   box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
     0 32px 64px -48px rgba(0, 0, 0, 0.5);
   transition: all 0.1s ease;
-  z-index: 9999999917 !important;
+  z-index: 9999999999999999999917 !important;
 }
 body.show-chatbot .chatbot {
   opacity: 1;
@@ -89,7 +89,7 @@ body.show-chatbot .chatbot {
 .chatbot .chatbox {
   overflow-y: auto;
   bottom: 10px;
-  height: 45vh;
+  height: 60vh;
   /* padding: 30px 20px 100px; */
   font-family: "Montserrat", sans-serif;
 }

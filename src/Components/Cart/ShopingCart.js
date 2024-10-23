@@ -11,12 +11,16 @@ function ShopingCart() {
   const [Data, setData] = useState([]);
   const [total, settotal] = useState(0);
   const [show, setshow] = useState(false);
+  const [internships, setinternships] = useState([])
   let token = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
   const { setCartSize,cartSize } = useContext(Globalinfo);
-  function Total(data) {
+  function Total(data,internshipsdata) {
     let price = 0;
     data?.map((item) => {
       price += item?.course?.base_price;
+    });
+    internshipsdata?.map((item) => {
+      price += item?.internship?.base_price;
     });
     settotal(price);
   }
@@ -52,7 +56,8 @@ function ShopingCart() {
       // console.log(url);
       const data = await fetch(url);
       const response = await data.json();
-      setData(response?.cart);
+      setData(response?.cart?.courses);
+      setinternships(response?.cart?.internships)
       Total(response?.cart);
       setshow(false);
       // console.log(response);

@@ -400,3 +400,6 @@ input::-webkit-inner-spin-button {
   justify-content: center;
   align-items: center;
 }
+.courses-home::-webkit-scrollbar{
+  width: 0px;
+}

@@ -53,7 +53,7 @@ function App() {
         let url = BASE_URL + "/getcart?email=" + token.email;
         const data = await fetch(url);
         const response = await data.json();
-        setCartSize(response?.cart?.length);
+        setCartSize(response?.cart?.courses?.length+response?.cart?.internships?.length);
         // console.log(response?.cart?.length);
       } catch (error) {
         console.error(error);
@@ -175,7 +175,9 @@ function App() {
       <div className='2xl:px-[17%]'>
        
         <Router />
-
+        <div className="fixed right-0 bottom-0 z-[999999999999999]">
+          <ChatBot className="w-fit" />
+        </div>
       </div>
       </Globalinfo.Provider>
     </>

@@ -155,7 +155,7 @@ const CourseCard = ({
        
             </div>
           </div>
-          <p className="line-clamp-2  w-full font-pop font-semibold text-[16px] text-[#252641] xsm:text-[12px] sm:text-[12px] sm:leading-none sm:h-6 md:text-[10px] md:h-6 xsm:mt-1  xsm:line-clamp-2"
+          <p className="line-clamp-2 min-h-12 w-full font-pop font-semibold text-[16px] text-[#252641] xsm:text-[12px] sm:text-[12px] sm:leading-none sm:h-6 md:text-[10px] md:h-6 xsm:mt-1  xsm:line-clamp-2"
           title={typeof title === 'string' ? title : 'Title'}
           >
            
