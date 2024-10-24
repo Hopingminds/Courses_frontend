@@ -4,7 +4,7 @@ import { COURSESURL } from "../confidential";
 import { BASE_URL } from "../../Api/api";
 import { Link } from "react-router-dom";
 import Skeleton from "../Skeleton/Skeletoncard";
-import Internshipcard from './internshipcard'
+import Internshipcard from "./InternshipCard"
 // import { COURSESURL } from '../Confidential';
 
 const Course_Offers = () => {
