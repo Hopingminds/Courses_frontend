@@ -18,8 +18,9 @@ import PackageCarousel from "./packageCarousel";
 import DetailCompany from "../Companies/Detailcompanies";
 import axios from "axios";
 import HireTestimonial from "./HireTestimonial";
+import Commoncardinternship from "./Commoncard";
 
-export default function DetailCourses() {
+export default function Detailsinternship() {
   const param = useParams();
   const navigate = useNavigate();
   const [Data, setData] = useState();
@@ -393,7 +394,7 @@ export default function DetailCourses() {
 
         </div>
         <span className="w-[33%] h-[1000px] -translate-y-[20rem] xsm:-translate-y-[13rem] xsm:w-[100%] xsm:h-fit xsm:mb-[-10rem] ">
-          <Commoncard Data={Data} alreadyInCart={alreadyInCart} CheckCourseInCart={CheckCourseInCart} batchids={batchids}/>
+          <Commoncardinternship Data={Data} alreadyInCart={alreadyInCart} CheckCourseInCart={CheckCourseInCart} batchids={batchids}/>
           <div className=" flex flex-col gap-[2rem]">
          
           <div className="xsm:hidden">

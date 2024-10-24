@@ -15,7 +15,7 @@ import { Tooltip } from "@mui/material";
 import { formatDate } from "../../helpers/helper_function";
 import BatchModal from "../MyLearning/Batchmodal";
 
-export default function Commoncard(props) {
+export default function Commoncardinternship(props) {
   let { Data,batchids } = props;
   let { alreadyInCart } = props;
   let { CheckCourseInCart } = props;

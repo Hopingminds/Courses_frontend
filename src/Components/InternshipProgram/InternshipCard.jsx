@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Globalinfo } from '../../App';
 import { jwtDecode } from 'jwt-decode';
 import { BASE_URL } from '../../Api/api';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Internshipcard = ({course}) => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Internshipcard = ({course}) => {
         let response = await data.json();
         // console.log(response);
         if (response.success) {
-          // toast.success(response.msg);
+          toast.success(response.msg);
           // setCartSize(cartSize + 1);
           setshow(false)
           GetCart();
@@ -50,6 +51,7 @@ const Internshipcard = ({course}) => {
   }
   return (
     <div className="w-full overflow-hidden shadow-lg bg-white rounded-[30px]">
+      <Toaster/>
       {/* Image Container with Hover Effect */}
       <div className="relative group hover:cursor-pointer">
         <img
