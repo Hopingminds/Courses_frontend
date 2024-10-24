@@ -100,7 +100,7 @@ const Internshipcard = ({course}) => {
 
         <div className="flex items-center space-x-2 flex-col">
           <img src="240.png" alt="Clock Icon" className="w-7" />
-          <span className="text-gray-800">{course?.duration/60} hours</span>
+          <span className="text-gray-800">{(course?.duration/60).toFixed(2)} hours</span>
         </div>
       </div>
 
