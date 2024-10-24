@@ -10,7 +10,7 @@ import Internshipcard from './internshipcard'
 const Course_Offers = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedCourse, setSelectedCourse] = useState("");
-  const [cardsToShow, setCardsToShow] = useState(4); // State to keep track of number of cards to display
+  const [cardsToShow, setCardsToShow] = useState(4);
   const [showAllCards, setShowAllCards] = useState(false);
   const [courses, setcourses] = useState([]);
   const [show, setshow] = useState(false)
