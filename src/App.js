@@ -53,7 +53,7 @@ function App() {
         let url = BASE_URL + "/getcart?email=" + token.email;
         const data = await fetch(url);
         const response = await data.json();
-        setCartSize(response?.cart?.courses?.length+response?.cart?.internships?.length);
+        setCartSize(response?.cart?.courses?.length+response?.cart?.internships?.length || 0);
         // console.log(response?.cart?.length);
       } catch (error) {
         console.error(error);

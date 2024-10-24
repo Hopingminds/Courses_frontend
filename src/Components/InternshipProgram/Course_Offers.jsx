@@ -44,10 +44,10 @@ const Course_Offers = () => {
       } else if (window.innerWidth >= 481 && window.innerWidth <= 720) {
         setCardsToShow(3);
       } else if (window.innerWidth >= 1500 && window.innerWidth <= 1999) {
-        setCardsToShow(courses?.length || 5);
+        setCardsToShow(courses?.length || 50);
       }
       else {
-        setCardsToShow(courses?.length || 4);
+        setCardsToShow(courses?.length || 50);
       }
     }
 
