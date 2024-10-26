@@ -89,6 +89,8 @@ import LoginNSDC from '../Components/NSDCTesting/LoginNSDC.jsx'
 import InternshipProgram from '../Components/InternshipProgram/InternshipProgram.jsx'
 import Freelancing from '../Components/Freelancing/Freelancing.jsx'
 import AuthProtected  from './AuthProtected.js'
+import InternshipDetail from '../Components/Detailinternship/index.js'
+// import InternshipCourseDetails from '../Components/InternshipProgram/InternCourseDetails/InternshipCourseDetails.jsx'
 
 function Locationpath(){
     const location=useLocation()
@@ -197,7 +199,7 @@ const Router = () => {
                 <Route path='/stream/:slug' element={<AuthProtected path={'/learning'} Component={LiveStream}   />} />
                 <Route path='/allsubmodules' element={< AuthProtected path={'/allsubmodules'} Component={AllModules}   />} />
                 <Route path="/nsdctest" element={<LoginNSDC />} />
-
+                <Route path="/internshipdetails/:slug" element={<InternshipDetail /> } />
 
                 <Route path="/teacherlogin" element={<Loginpage/>}/>
                 <Route path="/teacherpanel" element={<TPHome/>}>
@@ -216,6 +218,7 @@ const Router = () => {
                     </Route>
                     <Route path="userprofile" element={<UserProfile />} />
                     <Route path="media" element={<CourseMedia />} />
+                    
                    
                 </Route>
                 {/* <Route path='devicecheckpage' element={<DeviceCheckPage/>} /> */}

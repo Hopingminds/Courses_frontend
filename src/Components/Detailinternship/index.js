@@ -1,10 +1,9 @@
 import "./Pageheader.css";
-import Commoncard from "./Commoncard";
-import { Link, useParams } from "react-router-dom";
+import Commoncard from "./Commoncardinternship";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { BASE_URL } from "../../Api/api";
 import Spinner from "../Spinner";
-import Curriculum from "../Curriculum/Curriculum";
 import Instructor from "../Instructor/Instructor";
 import VideoTesttimonial from "./VideoTesttimonial";
 import { TiTick } from "react-icons/ti";
@@ -18,9 +17,11 @@ import PackageCarousel from "./packageCarousel";
 import DetailCompany from "../Companies/Detailcompanies";
 import axios from "axios";
 import HireTestimonial from "./HireTestimonial";
-import Commoncardinternship from "./Commoncard";
+// import Curriculum from "../Curriculum/Curriculum";
+import Commoncardinternship from "./Commoncardinternship";
+import InternshipCurriculum from "./Curriculum/InternshipCurriculum";
 
-export default function Detailsinternship() {
+export default function InternshipDetail() {
   const param = useParams();
   const navigate = useNavigate();
   const [Data, setData] = useState();
@@ -30,36 +31,49 @@ export default function Detailsinternship() {
   const { setCartSize, cartSize, GetCart } = useContext(Globalinfo);
   const [faqs, setFaqs] = useState([]);
   const [alreadyInCart, setAlreadyInCart] = useState(false);
-  const [alreadyInWishlist, setalreadyInWishlist] = useState(false)
-  useEffect(() => {
-    async function Fetchdata() {
-      try {
-        setshow(true);
-        let url = BASE_URL + "/course/" + slug;
-        const data = await fetch(url);
-        const response = await data.json();
-        // console.log(response);
-        setData(response?.course);
-        CheckCourseInCart(response?.course?._id)
-        CheckCourseInWishlist(response?.course?._id)
-        setFaqs(
-          response?.course?.faqs?.map((val) => {
-            return {
-              question: val.question,
-              answer: val.answer,
-              isOpen: false,
-            };
-          })
-        );
-        setshow(false);
-      } catch (error) {
-        console.log(error);
-      }
-      // console.log(response.course);
-    }
-    Fetchdata();
-  }, []);
+  const [alreadyInWishlist, setalreadyInWishlist] = useState(false);
+  const location = useLocation();
 
+  const fetchCourseData = async () => {
+    try {
+      setshow(true);
+      let url = `${BASE_URL}/getInternshipBySlug/${slug}`;
+
+      const response = await fetch(url);
+      const result = await response.json();
+
+      setData(result?.course || result?.internship);
+
+      const itemId = result?.course?._id || result?.internship?._id;
+      if (itemId) {
+        CheckCourseInCart(itemId);
+        CheckCourseInWishlist(itemId);
+      }
+
+      const faqs = result?.course?.faqs || result?.internship?.faqs;
+      if (faqs) {
+        setFaqs(
+          faqs.map((faq) => ({
+            question: faq.question,
+            answer: faq.answer,
+            isOpen: false,
+          }))
+        );
+      }
+      setshow(false);
+    } catch (error) {
+      console.error("Error fetching course or internship data:", error);
+    }
+  };
+
+  // Fetch data on component mount
+  let temp=true;
+  useEffect(() => {
+    if(temp){
+      fetchCourseData();
+temp=false;
+    }
+  }, []);
   function ClickSection(id) {
     const updatedFaqs = faqs?.map((faq, index) => {
       if (index === id) {
@@ -73,94 +87,113 @@ export default function Detailsinternship() {
   let login = localStorage.getItem("COURSES_USER_TOKEN");
 
   let purchasedCourses = [];
-  let batchids="";
+  let batchids = "";
   if (Data) {
     userDetail?.purchased_courses?.forEach((val) => {
       purchasedCourses.push(val?.course?._id);
-      if(val?.course?.slug==slug){
-        batchids=val?.BatchId;
+      if (val?.course?.slug == slug) {
+        batchids = val?.BatchId;
       }
     });
   }
 
   async function Addtocart(courseid) {
     try {
+      let login = localStorage.getItem("COURSES_USER_TOKEN");
+
       if (login) {
         let token = jwtDecode(login);
         let email = token.email;
-        let quantity = 1;
-        setshow(true)
-        let url = BASE_URL + "/addtocart";
+        let url = `${BASE_URL}/addtocart`;
+        setshow(true); // Show loader
+
         let data = await fetch(url, {
           method: "POST",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, courseid, quantity }),
+          body: JSON.stringify({ email, internshipid: courseid }),
         });
+
         let response = await data.json();
-        // console.log(response);
+
         if (response.success) {
-          // toast.success(response.msg);
-          // setCartSize(cartSize + 1);
-          setshow(false)
-          GetCart();
-          CheckCourseInCart(courseid)
+          toast.success(response.msg);
+          setshow(false); // Hide loader
+          GetCart(); // Refresh cart items
         } else {
-          // toast.error(response.msg);getcart?email
+          toast.error(response.msg || "Failed to add item to cart");
+          setshow(false);
         }
       } else {
         localStorage.setItem("ADD_TO_CART_HISTORY", window.location.pathname);
-        // console.log("add to cart withour log")
         navigate("/login-2");
       }
     } catch (error) {
-      console.log(error);
+      console.error("Error adding to cart:", error);
+      toast.error("An error occurred while adding to cart.");
+      setshow(false);
     }
   }
-  async function Addtowishlist(courseid) {
+
+  async function Addtowishlist(internshipid) {
     try {
+      let login = localStorage.getItem("COURSES_USER_TOKEN");
+
       if (login) {
         let token = jwtDecode(login);
         let email = token.email;
-        let url = BASE_URL + "/addtowishlist";
-        setshow(true)
+        let url = `${BASE_URL}/addtocart`;
+        setshow(true); // Show loader
+
         let data = await fetch(url, {
           method: "POST",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
+            Authorization: `Bearer ${login}`,
           },
-          body: JSON.stringify({ email, courseid }),
+          body: JSON.stringify({ email, internshipid: internshipid }),
         });
+
         let response = await data.json();
-        // console.log(response);
+
         if (response.success) {
-          // toast.success(response.msg);
-          CheckCourseInWishlist(courseid)
-          setshow(false)
+          toast.success(response.msg);
+          setshow(false); // Hide loader
+          GetCart(); // Refresh cart items
         } else {
-          toast.error(response.msg);
+          toast.error(response.msg || "Failed to add item to cart");
+          setshow(false);
         }
       } else {
+        localStorage.setItem("ADD_TO_CART_HISTORY", window.location.pathname);
         navigate("/login-2");
       }
     } catch (error) {
-      console.log(error);
+      console.error("Error adding to cart:", error);
+      toast.error("An error occurred while adding to cart.");
+      setshow(false);
     }
   }
 
-  async function CheckCourseInCart(courseid){
+
+  
+
+  async function CheckCourseInCart(courseid) {
     try {
       if (login) {
         const token = localStorage.getItem("COURSES_USER_TOKEN");
-        const response = await axios.get(`${BASE_URL}/iscourseincart/${courseid}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-                
+        const response = await axios.get(
+          `${BASE_URL}/iscourseincart/${courseid}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
         if (response?.data?.success) {
           setAlreadyInCart(true);
         } else {
@@ -176,17 +209,19 @@ export default function Detailsinternship() {
       console.log(error);
     }
   }
-  async function CheckCourseInWishlist(courseid){
+  async function CheckCourseInWishlist(courseid) {
     try {
       if (login) {
         const token = localStorage.getItem("COURSES_USER_TOKEN");
-        const response = await axios.get(`${BASE_URL}/iscourseinwishlist/${courseid}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        
-        
+        const response = await axios.get(
+          `${BASE_URL}/iscourseinwishlist/${courseid}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
         if (response?.data?.success) {
           setalreadyInWishlist(true);
         } else {
@@ -205,10 +240,12 @@ export default function Detailsinternship() {
 
   return (
     <div className="h-auto min-h-screen overflow-x-visible ">
-      <Toaster toastOptions={{
-         duration: 500,
-      }} 
-       position="top-center" />
+      <Toaster
+        toastOptions={{
+          duration: 500,
+        }}
+        position="top-center"
+      />
       <div className="mb-5 xsm:mx-0 xsm:mb-2">
         <div
           className="CCDetails-Header-main flex flex-col pl-[10vw]  w-full xsm:pt-1 xsm:h-[60vh] object-right"
@@ -226,7 +263,9 @@ export default function Detailsinternship() {
                   ? Data?.title?.slice(0, 90)
                   : Data?.title}
               </h2>
-              <p className="line-clamp-2 font-normal	text-white xsm:line-clamp-3">{Data?.overview}</p>
+              <p className="line-clamp-2 font-normal	text-white xsm:line-clamp-3">
+                {Data?.overview}
+              </p>
             </div>
             <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-1">
               <p>4.7</p>
@@ -242,17 +281,16 @@ export default function Detailsinternship() {
             <div className="flex gap-5 mt-5 xsm:mt-1 xsm:gap-3 xsm:hidden">
               {purchasedCourses?.includes(Data?._id) ? (
                 <></>
-              ) : (
-                
-                  alreadyInWishlist ?   <Link
-                  to='/learning?tab=wishlist'
+              ) : alreadyInWishlist ? (
+                <Link
+                  to="/learning?tab=wishlist"
                   className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
                 >
                   Go to Wishlist
                 </Link>
-                :
+              ) : (
                 <div
-                  onClick={() => Addtowishlist(Data?._id)}
+                  onClick={() => Addtowishlist(Data?.internshipid)}
                   className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
                 >
                   Add to Wishlist
@@ -260,20 +298,25 @@ export default function Detailsinternship() {
               )}
               {!purchasedCourses?.includes(Data?._id) ? (
                 <div className="space-x-4 w-fit flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
-                  {alreadyInCart ?
-                    (<div onClick={() => navigate("/cart")} className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 ">
-                        Go to Cart
-                    </div>)
-                    :
-                    (<div
+                  {alreadyInCart ? (
+                    <div
+                      onClick={() => navigate("/cart")}
+                      className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
+                    >
+                      Go to Cart
+                    </div>
+                  ) : (
+                    <div
                       onClick={() => Addtocart(Data?._id)}
                       className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
                     >
                       Add to cart
-                    </div>)
-                  }
+                    </div>
+                  )}
                 </div>
-              ) : ""}
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
@@ -285,11 +328,10 @@ export default function Detailsinternship() {
       ) : (
         ""
       )}
-     
 
       <div className="flex justify-between px-[8%] py-6 xsm:flex-col-reverse">
         <div className="w-[58%] flex flex-col gap-16 xsm:gap-10 xsm:w-[100%]">
-          {Data?.whatWillILearn?.length > 0 ? (
+          {Data?.learningOutcome?.length > 0 ? (
             <div
               className="flex flex-col p-[1rem_2rem] gap-4 capitalize xsm:gap-4 shadow-[0px_4px_11px_0px_#0000001C]
 "
@@ -299,8 +341,11 @@ export default function Detailsinternship() {
               </h1>
               <div className="flex flex-col gap-4 font-nu text-[#555555]">
                 <ul className="list-inside leading-7 tracking-wide pl-2 grid grid-cols-2 gap-4  p-5 shadow-[0_4px_11px_0px_rgb(0, 0, 0))] xsm:pl-0  xsm:leading-none xsm:grid-cols-1 xsm:gap-[10px]">
-                  {Data?.whatWillILearn?.map((item, index) => (
-                    <li key={index} className="flex gap-2 xsm:gap-1 xsm:text-[12px] xsm:leading-[18px]">
+                  {Data?.learningOutcome?.map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex gap-2 xsm:gap-1 xsm:text-[12px] xsm:leading-[18px]"
+                    >
                       {" "}
                       <img
                         src="/Icons/shield.svg"
@@ -316,30 +361,22 @@ export default function Detailsinternship() {
           ) : (
             ""
           )}
-          {Data?.curriculum?.length > 0 && (
-            <div className="flex flex-col gap-8 xsm:gap-4">
-              <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]  xsm:text-[18px]">
-                What's Included
-              </h1>
-              <Included curiculum={Data?.curriculum} title={Data?.title} />
-            </div>
-          )}
-          <div className="flex flex-col gap-8 xsm:gap-2">
-            <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[18px]">
-              Instructor
-            </h1>
-            <Instructor />
-          </div>
+          {/* Conditionally render based on whether it's from the internship page */}
+
+          <>
+            <InternshipCurriculum />
+          </>
 
           <div className="flex flex-col gap-8 justify-center items-center xsm:gap-4">
             <h1 className="w-full text-left font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[18px]">
               Companies Worldwide
             </h1>
-            <DetailCompany/>
-           
-          </div> 
+            <DetailCompany />
+          </div>
 
-          {Data?.companies?.length > 0 && <PackageCarousel data={Data?.companies} />}
+          {Data?.companies?.length > 0 && (
+            <PackageCarousel data={Data?.companies} />
+          )}
           {faqs?.length > 0 && (
             <div className="flex flex-col gap-8 xsm:gap-4">
               <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[18px]">
@@ -390,31 +427,37 @@ export default function Detailsinternship() {
               <VideoTesttimonial data={Data?.testimonials} />
             </div>
           )} */}
-         
-
         </div>
         <span className="w-[33%] h-[1000px] -translate-y-[20rem] xsm:-translate-y-[13rem] xsm:w-[100%] xsm:h-fit xsm:mb-[-10rem] ">
-          <Commoncardinternship Data={Data} alreadyInCart={alreadyInCart} CheckCourseInCart={CheckCourseInCart} batchids={batchids}/>
+          <Commoncardinternship
+            Data={Data}
+            alreadyInCart={alreadyInCart}
+            // CheckCourseInCart={CheckCourseInCart}
+            batchids={batchids}
+          />
           <div className=" flex flex-col gap-[2rem]">
-         
-          <div className="xsm:hidden">
-            <img src="/Icons/certificate-Design.svg" alt="" />
+            <div className="xsm:hidden">
+              <img src="/Icons/certificate-Design.svg" alt="" />
             </div>
             <div className="p-[15px] border border-black rounded-[16px] flex flex-col gap-4 items-center xsm:hidden">
               <h3 className="text-black text-[1.3rem] text-center font-semibold">
-                Create your professional <span className="text-[#1DBF73]">Resume</span>  with our designs
+                Create your professional{" "}
+                <span className="text-[#1DBF73]">Resume</span> with our designs
               </h3>
-              <Link to='/cv-builder' className="bg-[#1DBF73] button-resume rounded-lg px-3 py-1 text-white font-semibold">Create Your Resume</Link>
-              <img src='/detailcertificate.png'/>
+              <Link
+                to="/cv-builder"
+                className="bg-[#1DBF73] button-resume rounded-lg px-3 py-1 text-white font-semibold"
+              >
+                Create Your Resume
+              </Link>
+              <img src="/detailcertificate.png" />
             </div>
           </div>
-
         </span>
-       
       </div>
       <div className="bg-[#1D343D] w-full h-full">
-          <HireTestimonial/>
-          </div>
+        <HireTestimonial />
+      </div>
     </div>
   );
 }
