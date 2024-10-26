@@ -2,52 +2,52 @@ import React, { useEffect, useState } from "react";
 import "./Curriculum.css";
 import arrowIcon from "../../Assets/arrow.png";
 import { BASE_URL } from "../../Api/api";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { RiVideoLine } from "react-icons/ri";
 import { getVideoDuration } from "../../helpers/helper_function";
 
 function Curriculum() {
-  const [clicked, setclicked] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const [Data, setData] = useState();
   const params = useParams();
+  const location = useLocation();
 
+  // Toggle display of curriculum sections
   function ClickSection(id) {
+    const inner = document.getElementById(id);
+    const arrow = document.getElementById(`arrow${id}`);
     if (!clicked) {
-      setclicked(true);
-      let inner = document.getElementById(id);
-      let arrow = document.getElementById(`arrow${id}`);
-      // console.log(inner);
-      // inner.style
+      setClicked(true);
       arrow.style.transform = "rotate(0deg)";
-      // console.log(inner);
       inner.style.display = "none";
     } else {
-      setclicked(false);
-      let inner = document.getElementById(id);
-      let arrow = document.getElementById(`arrow${id}`);
-      // console.log(inner);
-      // inner.style
+      setClicked(false);
       arrow.style.transform = "rotate(180deg)";
       inner.style.display = "flex";
     }
   }
 
   useEffect(() => {
-    async function Fetchdata() {
+    async function FetchData() {
       try {
-        let url = BASE_URL + "/course/" + params.slug;
-        const data = await fetch(url);
-        const response = await data.json();
-        // console.log(response);
-        setData(response.course);
-      } catch (error) {
-        console.log(error);
-      }
-      // console.log(response.course.curriculum);
-      // setVideoUrl(response?.course?.curriculum[0]?.lessons[0]?.video);
-    }
-    Fetchdata();
+        // Determine endpoint based on internship flag
+        let url = `${BASE_URL}/course/${params.slug}`;
+        if (location.state?.isInternship) {
+          url = `${BASE_URL}/getInternshipBySlug/${params.slug}`;
+        }
 
+        const response = await fetch(url);
+        const result = await response.json();
+        setData(result.course || result.internship); // Assign data based on response
+
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    }
+
+    FetchData();
+
+    // Fetch example video duration
     getVideoDuration(
       "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1711955663670-001.mp4"
     )
@@ -57,7 +57,7 @@ function Curriculum() {
       .catch((error) => {
         console.error("Error fetching video duration:", error);
       });
-  }, []);
+  }, [location.state, params.slug]);
 
   return (
     <div className="curriculum font-nu" id="curriculum">
@@ -67,55 +67,49 @@ function Curriculum() {
       </p>
 
       <div className="curriculum-lessons">
-        {/* lesson container - 1 */}
-        {Data?.curriculum?.map((val, ind) => {
-          return (
-            <>
-              <div className="lesson-container "  key={ind}>
-                <div
-                  className="lesson-container-title xsm:p-[0px!important]"
-                  onClick={() => ClickSection(ind + 1)}
-                >
-                  <div className="lesson-container-title-left">
-                    <div className="icon-arrow">
-                      <img src={arrowIcon} id={`arrow${ind + 1}`} />
-                    </div>
-                    <p>{val.chapter_name}</p>
+        {/* Check if Data and Data.curriculum exist before mapping */}
+        {Data?.curriculum?.length > 0 ? (
+          Data.curriculum.map((val, ind) => (
+            <div className="lesson-container" key={ind}>
+              <div
+                className="lesson-container-title xsm:p-[0px!important]"
+                onClick={() => ClickSection(ind + 1)}
+              >
+                <div className="lesson-container-title-left">
+                  <div className="icon-arrow">
+                    <img src={arrowIcon} id={`arrow${ind + 1}`} alt="arrow icon" />
                   </div>
-
-                  <div className="lesson-container-title-right">
-                    <p>{val?.lessons?.length} lessons</p>
-                    <p>45 Mins</p>
-                  </div>
+                  <p>{val.chapter_name}</p>
                 </div>
 
-                <div className="lesson-container-contents hidden" id={ind + 1}>
-                  {val?.lessons.map((chapter, index) => {
-                    return (
-                      <>
-                        <div className="lesson-container-content">
-                          <div className="lesson-container-content-left">
-                            <div className="icon-file">
-                              <RiVideoLine />
-                            </div>
-                            <p className="font-nu text-[14px]">
-                              {chapter?.lesson_name}
-                            </p>
-                            <h5></h5>
-                          </div>
-                          <div className="lesson-container-content-right">
-                            {/* <button>Preview</button> */}
-                            <p>{chapter?.duration}</p>
-                          </div>
-                        </div>
-                      </>
-                    );
-                  })}
+                <div className="lesson-container-title-right">
+                  <p>{val?.lessons?.length} lessons</p>
+                  <p>45 Mins</p>
                 </div>
               </div>
-            </>
-          );
-        })}
+
+              <div className="lesson-container-contents hidden" id={ind + 1}>
+                {val?.lessons?.map((chapter, index) => (
+                  <div className="lesson-container-content" key={index}>
+                    <div className="lesson-container-content-left">
+                      <div className="icon-file">
+                        <RiVideoLine />
+                      </div>
+                      <p className="font-nu text-[14px]">
+                        {chapter?.lesson_name}
+                      </p>
+                    </div>
+                    <div className="lesson-container-content-right">
+                      <p>{chapter?.duration}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>No curriculum data available.</p>
+        )}
       </div>
     </div>
   );

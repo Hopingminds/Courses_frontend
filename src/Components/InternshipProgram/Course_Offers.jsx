@@ -4,13 +4,13 @@ import { COURSESURL } from "../confidential";
 import { BASE_URL } from "../../Api/api";
 import { Link } from "react-router-dom";
 import Skeleton from "../Skeleton/Skeletoncard";
-import Internshipcard from './internshipcard'
+import Internshipcard from "./InternshipCard"
 // import { COURSESURL } from '../Confidential';
 
 const Course_Offers = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedCourse, setSelectedCourse] = useState("");
-  const [cardsToShow, setCardsToShow] = useState(4); // State to keep track of number of cards to display
+  const [cardsToShow, setCardsToShow] = useState(4);
   const [showAllCards, setShowAllCards] = useState(false);
   const [courses, setcourses] = useState([]);
   const [show, setshow] = useState(false)
