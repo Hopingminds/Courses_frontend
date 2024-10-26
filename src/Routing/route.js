@@ -89,6 +89,7 @@ import LoginNSDC from '../Components/NSDCTesting/LoginNSDC.jsx'
 import InternshipProgram from '../Components/InternshipProgram/InternshipProgram.jsx'
 import Freelancing from '../Components/Freelancing/Freelancing.jsx'
 import AuthProtected  from './AuthProtected.js'
+import Internshipvideo from '../Components/internshipvideo/internshipDetailsvideo.js'
 import InternshipDetail from '../Components/Detailinternship/index.js'
 // import InternshipCourseDetails from '../Components/InternshipProgram/InternCourseDetails/InternshipCourseDetails.jsx'
 
@@ -146,6 +147,7 @@ const Router = () => {
                 <Route path='/cart' element={<AuthProtected path={'/cart'}  Component={ShopingCart}   />} />
                 <Route path='/courses' element={<AllCourses />} />
                 <Route path='/course/:slug' element={<AuthProtected path={'/learning'} Component={CDDetails} />} />
+                <Route path='/internship/:slug' element={<AuthProtected path={'/learning'} Component={Internshipvideo} />} />
                 <Route path='/liveclass/:slug' element={<AuthProtected path={'/learning'} Component={LiveClassDetailPage}   />} />
                 <Route path='/checkout' element={<AuthProtected path={'/checkout'} Component={CartCheckout}  />} />
                 <Route path='/AssignmentMeet' element={<AssignmentMeet />} />

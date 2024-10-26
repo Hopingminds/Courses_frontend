@@ -31,6 +31,7 @@ export default function MyLearning() {
     const [showpage, setshowpage] = useState('courses');
     const [purchasedCourses, setPurchasedCourses] = useState();
     const { userDetail, getUserDetails } = useContext(Globalinfo);
+    const [purchasedInternships, setpurchasedInternships] = useState()
     const maxPopupDisplays = 1;
     // console.log(userDetail)
 
@@ -67,6 +68,7 @@ export default function MyLearning() {
             const res = await axios.get(`${BASE_URL}/user/${email}`)
             // console.log("All Courses purchased",res?.data?.userDetails?.purchased_courses)
             setPurchasedCourses(res?.data?.userDetails?.purchased_courses)
+            setpurchasedInternships(res?.data?.userDetails?.purchased_internships)
             setshow(false)
 
         } catch (error) {
@@ -156,7 +158,7 @@ export default function MyLearning() {
                 <Spinner className='' />
 
             </div> : ''}
-            {showpage === 'courses' ? <Mycourse fetchUserData={fetchUserData} courses={purchasedCourses} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses} /> : showpage === 'stats' ? <MyStats courses={purchasedCourses} /> : showpage === 'assignments' ? <Assignment courses={purchasedCourses} /> : <JobOffering courses={purchasedCourses} />}
+            {showpage === 'courses' ? <Mycourse fetchUserData={fetchUserData} courses={purchasedCourses} internships={purchasedInternships} /> : showpage === 'wishlist' ? <WishList /> : showpage === 'certificate' ? <Certificate courses={purchasedCourses} /> : showpage === 'stats' ? <MyStats courses={purchasedCourses} /> : showpage === 'assignments' ? <Assignment courses={purchasedCourses} /> : <JobOffering courses={purchasedCourses} />}
             <RecommendedCourses className={'bg-[#E2FFF1]'} />
         </div>
     );
