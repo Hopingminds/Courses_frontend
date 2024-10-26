@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { BASE_URL } from "../../Api/api";
 import Img from "../../Assets/Images/nocoursefound.png"
 import { Link } from "react-router-dom";
-export default function Assignments({ courses }) {
+export default function InternshipAssignments({ courses }) {
   // console.log();
   const [Data, setData] = useState([]);
   let login = localStorage.getItem("COURSES_USER_TOKEN");

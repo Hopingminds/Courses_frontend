@@ -214,11 +214,13 @@ function ShopingCart() {
 
             
           ) 
-          : (
+          : 
+          Data?.length==0 && internships?.length==0?
+          (
             <div className="text-2xl w-[95vw] text-center mt-20 font-semibold">
               Your Cart is Empty
             </div>
-          )}
+          ):''}
         </div>
 {
   internships?.length>0&&  internships?.map((item) => {
@@ -328,7 +330,7 @@ function ShopingCart() {
     })
 }
 </div>
-        {Data?.length > 0 && (
+        {Data?.length > 0 || internships?.length>0 ? (
           <div className="w-[26%] md:w-[27%]  h-max flex flex-col justify-around space-y-4 font-pop p-6 rounded-xl xsm:w-[100%] sm:w-[100%] sm:mt-4 xsm:px-3 xsm:space-y-1 lg:space-y-2 md:space-y-1 border xl:space-y-2
            border-[#000]">
             <h1 className="font-semibold text-[1.7vw] xl:text-[32px] 2xl:text-[24px] xsm:text-[32px] lg:text-[28px] md:text-[22px] sm:font-semibold sm:text-[32px] xsm:font-semibold font-pop">
@@ -397,7 +399,7 @@ function ShopingCart() {
               </Link>
             </div>
           </div>
-        )}
+        ):''}
       </div>
       {show ? (
         <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">

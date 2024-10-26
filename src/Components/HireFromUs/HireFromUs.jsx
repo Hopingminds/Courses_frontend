@@ -88,7 +88,7 @@ const HireFromUs = () => {
       // toast.error("Enter valid Email Address");
       setloginwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ["name"]: true,
+        "name": true,
       }));
       toast.error("Name input is required!");
       // return;
@@ -96,7 +96,7 @@ const HireFromUs = () => {
       // toast.error("Enter valid Email Address");
       setloginwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ["name"]: true,
+        "name": true,
       }));
       toast.error(
         "Invaild name.Name can contains Uppercase,Lowercase letters or some symbols(. and ')"
@@ -116,19 +116,19 @@ const HireFromUs = () => {
     if (!hirelogindata.email) {
       setloginwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ["email"]: true,
+        "email": true,
       }));
       toast.error("Please fill in your email address first.");
     } else if (!validateEmail(hirelogindata.email)) {
       setloginwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ["email"]: true,
+        "email": true,
       }));
       toast.error("Invalid email address.");
     } else if (!hirelogindata.password) {
       setloginwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ["password"]: true,
+        "password": true,
       }));
       toast.error("Password is required");
     }
@@ -177,7 +177,7 @@ const HireFromUs = () => {
       // toast.error("Enter valid Email Address");
       setwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ["name"]: true,
+        "name": true,
       }));
       toast.error("Name input is required!");
       // return;
@@ -185,7 +185,7 @@ const HireFromUs = () => {
       // toast.error("Enter valid Email Address");
       setwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ["name"]: true,
+        "name": true,
       }));
       toast.error(
         "Invaild name.Name can contains Uppercase,Lowercase letters or some symbols(. and ')"
@@ -194,13 +194,13 @@ const HireFromUs = () => {
     } else if (!hiredata.company) {
       setwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ["company"]: true,
+        "company": true,
       }));
       toast.error("Company name is required");
     } else if (!validateCompanyName(hiredata.company)) {
       setwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ["company"]: true,
+        "company": true,
       }));
       toast.error(
         "Company name can contain only alphabets and some symbols (.,-)"
@@ -234,7 +234,7 @@ const HireFromUs = () => {
       // console.log(warnings);
       setwarnings((prevWarnings) => ({
         ...prevWarnings,
-        ["email"]: true,
+        "email": true,
       }));
       toast.error("Email required");
     }

@@ -93,9 +93,16 @@ setinputData((prev) => ({
     let price = 0;
     let disprice = 0;
 
-    data.forEach((item) => {
+    data?.courses?.forEach((item) => {
       let basePrice = item.course.base_price;
       let discountPercentage = item.course.discount_percentage;
+      let discountedPrice = basePrice * (1 - (discountPercentage / 100));
+      price += basePrice;
+      disprice += (basePrice - discountedPrice);
+    });
+    data?.internships?.forEach((item) => {
+      let basePrice = item.internship.base_price;
+      let discountPercentage = item.internship.discount_percentage;
       let discountedPrice = basePrice * (1 - (discountPercentage / 100));
       price += basePrice;
       disprice += (basePrice - discountedPrice);
@@ -129,8 +136,8 @@ setinputData((prev) => ({
           setData([data]);
           calculateTotals([data]);
         } else {
-          setData(data.cart);
-          calculateTotals(data.cart);
+          setData(data?.cart);
+          calculateTotals(data?.cart);
         }
       }
     }
@@ -460,7 +467,7 @@ try {
             <h1 className="text-xl font-bold mt-6 mb-3 xsm:text-[12px] xsm:mb-0 xsm:mt-4 md:text-[18px]">
               Order Details
             </h1>
-            {Data?.map((item) => {
+            {Data?.courses?.map((item) => {
               temp.push(item?.course?._id);
               return (
                 <>
@@ -550,6 +557,105 @@ try {
               </strike>:""}
                             <p className="font-Inter text-[1.2vw] font-semibold text-[black] 2xl:text-[20px] xsm:text-[8px]">
                               ₹{parseFloat(item?.course?.base_price-(item?.course?.base_price*(item?.course?.discount_percentage/100)))}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
+            {Data?.internships?.map((item) => {
+              temp.push(item?.internship?._id);
+              return (
+                <>
+                  <div className="w-full bg-white border p-3 shadow-xl rounded-xl xsm:p-2 md:p-2">
+                    <div className="flex  h-[15vw] rounded-[1.2vw] xsm:h-[80px] 2xl:w-[900px] 2xl:h-[240px]">
+                      <div className="w-[50%] 2xl:w-[600px]">
+                        <img
+                          className="w-[100%] h-[100%] rounded-xl"
+                          src={item?.internship?.featured_image}
+                          alt="FSD-img"
+                        ></img>
+                      </div>
+                      <div className="flex flex-col justify-evenly mx-[1vw] w-[100%] 2xl:h-[100%] xsm:mx-[2vw]">
+                        {/* <div>
+                                <p className='font-mons text-[0.8vw] 2xl:text-[14px]'><span className='text-[#555555]'>by</span> Determined-instructure</p>
+                            </div> */}
+                        <div className="flex flex-nowrap justify-between items-center">
+                          <div className="space-y-2 md:space-y-1">
+                            <p className="font-mons text-[1.5vw] font-semibold  2xl:text-[18px] xsm:text-[10px]">
+                              {item?.internship?.title?.slice(0,60)}..
+                            </p>
+                            <p className="text-[#696984] text-md w-[100%] xsm:hidden md:text-[10px]">
+                              {item?.internship?.overview.slice(0, 60)}..{" "}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex flex-nowrap justify-between items-center">
+                          <div className="flex gap-6 my-[0.5vw] w-[80%] 2xl:w-full 2xl:text-[11px] xsm:gap-2">
+                            <div className="flex space-x-2 items-center xsm:space-x-1">
+                              <img
+                                className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
+                                src="../Icons/design.svg"
+                              />
+                              <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
+                                {item?.internship?.category}
+                              </p>
+                            </div>
+                            <div className="flex space-x-2 items-center xsm:space-x-0">
+                              <img
+                                className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
+                                src="../Icons/clock2.svg"
+                              />
+                              <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
+                                45 Hours
+                              </p>
+                            </div>
+                          </div>
+                          
+                        </div>
+                        
+                        <div>
+                          <hr className="mt-[0.9vw] border-y-1 border-[#EAEAEA] " />
+                        </div>
+                        <div className="flex justify-between mt-[0.8vw] flex-wrap">
+                          <div>
+                            <div className="flex">
+                              <img
+                                className="w-[1.4vw] pr-[0.1vw] 2xl:w-[20px]"
+                                src="../Icons/Star.svg"
+                                alt="star"
+                              ></img>
+                              <img
+                                className="w-[1.4vw] pr-[0.1vw] 2xl:w-[20px]"
+                                src="../Icons/Star.svg"
+                                alt="star"
+                              ></img>
+                              <img
+                                className="w-[1.4vw] pr-[0.1vw] 2xl:w-[20px]"
+                                src="../Icons/Star.svg"
+                                alt="star"
+                              ></img>
+                              <img
+                                className="w-[1.4vw] pr-[0.1vw] 2xl:w-[20px]"
+                                src="../Icons/Star.svg"
+                                alt="star"
+                              ></img>
+                              <img
+                                className="w-[1.4vw] pr-[0.1vw] 2xl:w-[20px]"
+                                src="../Icons/Star.svg"
+                                alt="star"
+                              ></img>
+                            </div>
+                          </div>
+                          <div className="flex items-center">
+                          { item?.internship?.discount_percentage ? <strike className="font-pop font-semibold text-gray-400 italic text-[14px] xsm:text-[11px] sm:text-[8px] md:text-[8px]">
+                {item?.internship?.base_price == 0 ? "Free" : "₹" + item?.internship?.base_price}
+              </strike>:""}
+                            <p className="font-Inter text-[1.2vw] font-semibold text-[black] 2xl:text-[20px] xsm:text-[8px]">
+                              ₹{parseFloat(item?.internship?.base_price-(item?.internship?.base_price*(item?.internship?.discount_percentage/100)))}
                             </p>
                           </div>
                         </div>

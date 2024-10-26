@@ -277,7 +277,7 @@ const ProfilEdit = () => {
     setUser({ ...user, [name]: value });
   };
   const handleSelectedcollege = (college) => {
-    setUser({ ...user, ["college"]: college });
+    setUser({ ...user, "college": college });
     setshowallcolleges([]);
   };
   const handleCollege = async (e) => {
