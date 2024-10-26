@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Curriculum.css";
 import arrowIcon from "../../../Assets/arrow.png";
 import { BASE_URL } from "../../../Api/api";
 import { useParams, useLocation } from "react-router-dom";
@@ -14,47 +13,40 @@ function InternshipCurriculum() {
   const [expandedChapters, setExpandedChapters] = useState({});
   const [expandedProjects, setExpandedProjects] = useState({});
 
-  // Function to handle unit selection
   const handleUnitClick = (unitId) => {
-    setSelectedUnit(unitId);
+    setSelectedUnit((prevSelectedUnit) =>
+      prevSelectedUnit === unitId ? null : unitId
+    );
   };
 
-  // Function to toggle chapter dropdown
   const handleChapterToggle = (unitId) => {
-    console.log(expandedChapters[unitId]);
-
     setExpandedChapters((prev) => ({
       ...prev,
       [unitId]: !prev[unitId],
     }));
   };
 
-  // Function to toggle project dropdown
   const handleProjectToggle = (unitId) => {
-    console.log(unitId);
-
     setExpandedProjects((prev) => ({
       ...prev,
       [unitId]: !prev[unitId],
     }));
   };
 
-  // Fetch data from the API
   useEffect(() => {
     async function fetchData() {
       try {
-        let url = `${BASE_URL}/getInternshipBySlug/${params.slug}`;
-
+        const url = `${BASE_URL}/getInternshipBySlug/${params.slug}`;
         const response = await fetch(url);
         const result = await response.json();
         setData(result.course || result.internship);
-        let tempdata = {};
-        result?.internship?.curriculum?.map((item) => {
-          tempdata[item?._id] = true;
-        });
-        console.log(tempdata);
 
-        setExpandedChapters(tempdata);
+        // Set all chapters to be closed by default
+        const initialChaptersState = {};
+        result?.internship?.curriculum?.forEach((item) => {
+          initialChaptersState[item?._id] = false;
+        });
+        setExpandedChapters(initialChaptersState);
       } catch (error) {
         console.log("Error fetching data:", error);
       }
@@ -62,7 +54,6 @@ function InternshipCurriculum() {
 
     fetchData();
 
-    // Example of fetching video duration
     getVideoDuration(
       "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1711955663670-001.mp4"
     )
@@ -72,151 +63,159 @@ function InternshipCurriculum() {
       .catch((error) => {
         console.error("Error fetching video duration:", error);
       });
-  }, [location.state, params.slug]);
+  }, [location.state, params?.slug]);
 
   return (
     <div className="curriculum font-nu" id="curriculum">
-      <p className="curriculum-content">
+      <p className="text-lg font-semibold mb-4">
         Fast track your journey to become a skilled developer in just 6 months
         with our best Full Stack Developer Course.
       </p>
 
-      <div className="curriculum-lessons">
+      <div className="curriculum-lessons space-y-4">
         {data?.curriculum?.length > 0 ? (
-          data.curriculum.map((unit) => (
-            <div className="lesson-container" key={unit._id}>
+          data?.curriculum?.map((unit) => (
+            <div className="lesson-container border-b" key={unit._id}>
               <div
-                className="lesson-container-title"
+                className="flex justify-between items-center cursor-pointer py-2"
                 onClick={() => handleUnitClick(unit._id)}
               >
-                <div className="lesson-container-title-left">
-                  <div className="icon-arrow">
-                    <img
-                      src={arrowIcon}
-                      id={`arrow${unit._id}`}
-                      alt="arrow icon"
-                      style={{
-                        transform:
-                          selectedUnit === unit._id
-                            ? "rotate(180deg)"
-                            : "rotate(0deg)",
-                        transition: "transform 0.3s ease",
-                      }}
-                    />
-                  </div>
-                  <p>{unit.unitName}</p>
+                <div className="flex items-center">
+                  <img
+                    src={arrowIcon}
+                    alt="arrow icon"
+                    className={`transform transition-transform duration-300 ${
+                      selectedUnit === unit._id ? "rotate-180" : "rotate-0"
+                    } w-4 h-4 mr-2`}
+                  />
+                  <p className="text-lg font-semibold">{unit?.unitName}</p>
                 </div>
               </div>
 
               {selectedUnit === unit._id && (
-                <div className="lesson-container-dropdown">
+                <div className="space-y-4">
                   {/* Chapters Section */}
                   <div
-                    className="lesson-container-title"
+                    className="flex justify-between items-center cursor-pointer py-2"
                     onClick={() => handleChapterToggle(unit._id)}
                   >
-                    <div className="lesson-container-title-left">
-                      <div className="icon-arrow">
-                        <img
-                          src={arrowIcon}
-                          alt="arrow icon"
-                          style={{
-                            transform: expandedChapters[unit._id]
-                              ? "rotate(180deg)"
-                              : "rotate(0deg)",
-                            transition: "transform 0.3s ease",
-                          }}
-                        />
-                      </div>
-                      <p>Chapters</p>
+                    <div className="flex items-center ">
+                      <img
+                        src={arrowIcon}
+                        alt="arrow icon"
+                        className={`transform transition-transform duration-300 ${
+                          expandedChapters[unit._id] ? "rotate-180" : "rotate-0"
+                        } w-4 h-4 mr-2`}
+                      />
+                      <p className="font-semibold">Chapters</p>
                     </div>
-                    <div className="lesson-container-title-right">
-                      <p>{unit?.chapters?.length} chapters</p>
-                    </div>
+                    <p>
+                      {unit.chapters?.length}{" "}
+                      {unit.chapters?.length === 1 ? "Chapter" : "Chapters"}
+                    </p>
                   </div>
-                  {/* <div>dfadsfdasf</div> */}
-                  {/* Chapter Title and Dropdown Icon */}
+                  <hr />
 
-                  {/* Displaying chapter content with transition */}
-
-                  {expandedChapters[unit?._id] && (
-                    <div className={`lesson-container-contents-list `}>
+                  {expandedChapters[unit._id] && (
+                    <div className="ml-6 space-y-2 transition-all duration-300">
                       {unit?.chapters?.length > 0 ? (
-                        unit?.chapters.map((chapter, index) => (
-                          <div className="lesson-container-content" key={index}>
-                            <div className="lesson-container-content-left">
-                              <div className="icon-file">
-                                <RiVideoLine />
+                        unit?.chapters?.map((chapter, index) => {
+                          // Calculate total duration in minutes for the chapter
+                          const totalDuration = chapter?.lessons?.reduce(
+                            (acc, lesson) => acc + (lesson.duration || 0),
+                            0
+                          );
+
+                          // Convert total duration to hours and minutes
+                          const hours = Math.floor(totalDuration / 60);
+                          const minutes = totalDuration % 60;
+
+                          return (
+                            <div
+                              key={index}
+                              className="flex justify-between items-center p-2 rounded-lg bg-gray-100"
+                            >
+                              <div className="flex items-center">
+                                <RiVideoLine className="text-xl mr-2" />
+                                <p className="text-sm font-medium">
+                                  {chapter?.chapter_name}
+                                </p>
                               </div>
-                              <p className="font-nu text-[14px]">
-                                {chapter?.chapter_name}
+                              <p>
+                                {hours > 0 ? `${hours}h ` : ""}
+                                {minutes}m
                               </p>
                             </div>
-                            <div className="lesson-container-content-right">
-                              <p>{chapter?.duration || "N/A"}</p>
-                            </div>
-                            <p className="chapter-details">
-                              Chapter Details:{" "}
-                              {chapter.details || "No details available"}
-                            </p>
-                          </div>
-                        ))
+                          );
+                        })
                       ) : (
                         <p>No chapters available</p>
                       )}
+
+                      {/* hr line at the end of expanded chapters */}
+                      <hr />
                     </div>
                   )}
 
                   {/* Projects Section */}
                   <div
-                    className="lesson-container-title"
+                    className="flex justify-between items-center cursor-pointer py-2"
                     onClick={() => handleProjectToggle(unit._id)}
                   >
-                    <div className="lesson-container-title-left">
-                      <div className="icon-arrow">
-                        <img
-                          src={arrowIcon}
-                          alt="arrow icon"
-                          style={{
-                            transform: expandedProjects[unit._id]
-                              ? "rotate(180deg)"
-                              : "rotate(0deg)",
-                            transition: "transform 0.3s ease",
-                          }}
-                        />
-                      </div>
-                      <p>Projects</p>
+                    <div className="flex items-center">
+                      <img
+                        src={arrowIcon}
+                        alt="arrow icon"
+                        className={`transform transition-transform duration-300 ${
+                          expandedProjects[unit._id] ? "rotate-180" : "rotate-0"
+                        } w-4 h-4 mr-2`}
+                      />
+                      <p className="font-semibold">Projects</p>
                     </div>
-                    <div className="lesson-container-title-right">
-                      <p>{unit.project?.length} Projects</p>
-                    </div>
+                    <p>
+                      {unit.project?.length}{" "}
+                      {unit.project?.length === 1 ? "Project" : "Projects"}
+                    </p>
                   </div>
 
-                  {expandedProjects[unit?._id] && (
-                    <div className={`lesson-container-contents-list `}>
-                      {unit?.chapters?.length > 0 ? (
-                        unit?.chapters.map((chapter, index) => (
-                          <div className="lesson-container-content" key={index}>
-                            <div className="lesson-container-content-left">
-                              <div className="icon-file">
-                                <RiVideoLine />
+                  {expandedProjects[unit._id] && (
+                    <div className="ml-6 space-y-2 transition-all duration-300">
+                      {unit?.project?.length > 0 ? (
+                        unit?.project?.map((project, index) => {
+                          // Convert duration from minutes to days, hours, and minutes
+                          const days = Math.floor(
+                            project?.duration / (60 * 24)
+                          );
+                          const hours = Math.floor(
+                            (project?.duration % (60 * 24)) / 60
+                          );
+                          const minutes = project?.duration % 60;
+
+                          return (
+                            <div
+                              key={index}
+                              className="flex justify-between items-center p-2 rounded-lg bg-gray-100"
+                            >
+                              <div className="flex items-center">
+                                <RiVideoLine className="text-xl mr-2" />
+                                <p className="text-sm font-medium">
+                                  {project?.title}
+                                </p>
                               </div>
-                              <p className="font-nu text-[14px]">
-                                {chapter?.chapter_name}
+                              <p>
+                                {project?.duration
+                                  ? `${days}d ${hours}h ${minutes}m`
+                                  : "N/A"}
                               </p>
                             </div>
-                            <div className="lesson-container-content-right">
-                              <p>{chapter?.duration || "N/A"}</p>
-                            </div>
-                            <p className="chapter-details">
-                              Project Details:{" "}
-                              {chapter.details || "No details available"}
-                            </p>
-                          </div>
-                        ))
+                          );
+                        })
                       ) : (
-                        <p>No chapters available</p>
+                        <p>No projects available</p>
                       )}
+
+                      {/* hr line at the end of expanded projects */}
+                      <hr />
                     </div>
                   )}
                 </div>
