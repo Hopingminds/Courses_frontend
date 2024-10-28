@@ -228,7 +228,7 @@ function ShopingCart() {
         <>
           <div className="w-full bg-white border p-3 shadow-xl rounded-xl xsm:p-2 md:p-2">
             <div className="flex  h-[15vw] rounded-[1.2vw] xsm:h-[80px] 2xl:w-[900px] 2xl:h-[240px]">
-              <Link to={`/detailcourse/${item?.internship?.slug}`} className="w-[50%] 2xl:w-[600px]">
+              <Link to={`/internshipdetails/${item?.internship?.slug}`} className="w-[50%] 2xl:w-[600px]">
                 <img
                   className="w-[100%] h-[100%] rounded-xl"
                   src={item?.internship?.featured_image}

@@ -140,13 +140,16 @@ temp=false;
   async function Addtowishlist(internshipid) {
     try {
       let login = localStorage.getItem("COURSES_USER_TOKEN");
-
+  
       if (login) {
         let token = jwtDecode(login);
         let email = token.email;
-        let url = `${BASE_URL}/addtocart`;
+        let url = `${BASE_URL}/addtowishlist`;
         setshow(true); // Show loader
-
+  
+        // Clear any existing toasts to prevent duplicates
+        toast.dismiss();
+  
         let data = await fetch(url, {
           method: "POST",
           headers: {
@@ -156,10 +159,10 @@ temp=false;
           },
           body: JSON.stringify({ email, internshipid: internshipid }),
         });
-
+  
         let response = await data.json();
-
-        if (response.success) {
+  
+        if (response?.success) {
           toast.success(response.msg);
           setshow(false); // Hide loader
           GetCart(); // Refresh cart items
@@ -177,6 +180,8 @@ temp=false;
       setshow(false);
     }
   }
+  
+  
 
 
   
@@ -290,7 +295,7 @@ temp=false;
                 </Link>
               ) : (
                 <div
-                  onClick={() => Addtowishlist(Data?.internshipid)}
+                  onClick={() => Addtowishlist(Data?._id)}
                   className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
                 >
                   Add to Wishlist
