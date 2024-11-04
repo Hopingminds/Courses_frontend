@@ -1,5 +1,5 @@
 import "./Pageheader.css";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { BASE_URL } from "../../Api/api";
 import Spinner from "../Spinner";
@@ -17,17 +17,16 @@ import Commoncardinternship from "./Commoncardinternship";
 import InternshipCurriculum from "./Curriculum/InternshipCurriculum";
 
 export default function InternshipDetail() {
-  const param = useParams();
+  const param = useParams();  
   const navigate = useNavigate();
   const [Data, setData] = useState();
   let slug = param.slug;
   const { userDetail } = useContext(Globalinfo);
   const [show, setshow] = useState(false);
-  const { setCartSize, cartSize, GetCart } = useContext(Globalinfo);
+  const { GetCart } = useContext(Globalinfo);
   const [faqs, setFaqs] = useState([]);
   const [alreadyInCart, setAlreadyInCart] = useState(false);
   const [alreadyInWishlist, setalreadyInWishlist] = useState(false);
-  const location = useLocation();
 
   const fetchCourseData = async () => {
     try {
@@ -100,7 +99,7 @@ temp=false;
         let token = jwtDecode(login);
         let email = token.email;
         let url = `${BASE_URL}/addtocart`;
-        setshow(true); // Show loader
+        setshow(true);
 
         let data = await fetch(url, {
           method: "POST",
@@ -140,7 +139,7 @@ temp=false;
         let token = jwtDecode(login);
         let email = token.email;
         let url = `${BASE_URL}/addtowishlist`;
-        setshow(true); // Show loader
+        setshow(true); 
   
         // Clear any existing toasts to prevent duplicates
         toast.dismiss();
