@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Courses.css";
-import { COURSESURL } from "../confidential";
 import { BASE_URL } from "../../Api/api";
 import { Link } from "react-router-dom";
 import Skeleton from "../Skeleton/Skeletoncard";

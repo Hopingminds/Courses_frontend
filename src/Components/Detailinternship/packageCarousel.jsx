@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import "@splidejs/react-splide/css";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const PackageCarousel = ({ data }) => {
   const splideRef = useRef(null);

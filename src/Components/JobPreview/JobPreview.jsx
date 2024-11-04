@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FcBriefcase } from "react-icons/fc";
 import { GiWallet } from "react-icons/gi";
 import { FaBriefcase, FaMapLocationDot } from "react-icons/fa6";
 import { Link, useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
 import axios from "axios";
 import { formatDate } from "../../helpers/helper_function";
-import { applyJob, getAllJobAplicants } from '../../helpers/helperapi'
 import toast, { Toaster } from "react-hot-toast";
 
 const JobPreview = () => {

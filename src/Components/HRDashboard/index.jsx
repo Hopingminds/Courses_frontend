@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import SearchCandidate from './Database/SearchCandidate';
 import SaveSearch from './Database/SaveSearch';
-import Reports from './Report/Reports';
 import Sidebar from './SideBar/Sidebar';
 import HRHome from './HRHome/HRHome';
 import ReportMain from './Report/ReportMain';

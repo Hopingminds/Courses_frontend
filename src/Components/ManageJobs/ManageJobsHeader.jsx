@@ -1,5 +1,4 @@
 import React from "react";
-import { IoIosSettings } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 const ManageJobsHeader = () => {

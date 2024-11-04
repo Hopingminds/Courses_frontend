@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import AiBenefits from "./AiBenefits";
 import AiCareerBenefits from "./AiCareerBenefits";
-import AiExperts from "./AiExperts";
 import AiHead from "./AiHead";
 import AiJourney from "./AiJourney";
 import AiOpportunities from "./AiOpportunities";

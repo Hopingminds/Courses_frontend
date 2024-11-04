@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPhoneAlt } from "react-icons/fa";
+import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { BASE_URL } from "../../Api/api";
@@ -120,9 +120,17 @@ const QuestionForm = () => {
             Our mentors are here to guide you every step of the way. We make sure you're supported with personalized attention and a dedicated space for your queries.
 
             </p>
-            <div className="flex flex-row py-5 mt-4 gap-3 p-4 items-center">
-              <FaPhoneAlt />
-              <p className="text-lg">+91 9193100050,support@hopingminds.com</p>
+            <div className="flex flex-col py-5 mt-4 gap-3 p-4">
+              <div className="flex flex-row items-center ml-2">
+              <FaPhoneAlt className="text-green-500 pr-2 h-7 w-7"/>
+              <p className="text-lg">+91 9193100050</p>
+              </div>
+              <div className="flex flex-row items-center ml-2">
+
+              <FaEnvelope className="text-red-500 pr-2 h-8 w-8"/>
+              <p className="text-lg">support@hopingminds.com</p>
+              </div>
+              
             </div>
           </div>
         </div>

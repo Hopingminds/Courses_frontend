@@ -176,8 +176,8 @@ function App() {
        
         <Router />
         <div className="fixed right-0 bottom-0 z-[999999999999999]">
-          <ChatBot className="w-fit" />
-        </div>
+          {/* <ChatBot className="w-fit" /> */}
+        </div>  
       </div>
       </Globalinfo.Provider>
     </>

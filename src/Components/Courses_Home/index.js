@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Courses.css";
 import CourseCard from "./CourseCard";
-import { COURSESURL } from "../confidential";
 import { BASE_URL } from "../../Api/api";
 import { Link } from "react-router-dom";
-import { logDOM } from "@testing-library/react";
 import Skeleton from "../Skeleton/Skeletoncard";
 // import { COURSESURL } from '../Confidential';
 

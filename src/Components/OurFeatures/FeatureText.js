@@ -1,6 +1,4 @@
-import Img1 from "../../Assests/Icons/ourfeatures1.svg";
-import Img2 from "../../Assests/Icons/ourfeatures2.svg";
-import Img3 from "../../Assests/Icons/ourfeatures3.svg";
+
 
 const FeatureTexts = [
   // <>

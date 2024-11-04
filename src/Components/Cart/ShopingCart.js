@@ -144,6 +144,7 @@ function ShopingCart() {
                               <img
                                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
                                 src="../Icons/design.svg"
+                                alt=''
                               />
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                 {item?.course?.category}
@@ -153,6 +154,7 @@ function ShopingCart() {
                               <img
                                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
                                 src="../Icons/clock2.svg"
+                                alt=''
                               />
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                 45 Hours
@@ -228,7 +230,7 @@ function ShopingCart() {
         <>
           <div className="w-full bg-white border p-3 shadow-xl rounded-xl xsm:p-2 md:p-2">
             <div className="flex  h-[15vw] rounded-[1.2vw] xsm:h-[80px] 2xl:w-[900px] 2xl:h-[240px]">
-              <Link to={`/detailcourse/${item?.internship?.slug}`} className="w-[50%] 2xl:w-[600px]">
+              <Link to={`/internshipdetails/${item?.internship?.slug}`} className="w-[50%] 2xl:w-[600px]">
                 <img
                   className="w-[100%] h-[100%] rounded-xl"
                   src={item?.internship?.featured_image}

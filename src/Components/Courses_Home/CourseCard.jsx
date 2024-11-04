@@ -1,9 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import "./Courses.css";
 import { Link } from "react-router-dom";
-import { ReactComponent as Clock } from "../../Assets/Icons/RCClock.svg";
-import { ReactComponent as Design } from "../../Assets/Icons/design.svg";
-import { cropString } from "../../helpers/helper_function";
 import ReactPlayer from "react-player";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import { Globalinfo } from "../../App";

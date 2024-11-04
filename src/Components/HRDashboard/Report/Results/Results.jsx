@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import ArrowLeft from '../../../../Assets/Icons/hrlessthan.svg'
 import ArrowRight from '../../../../Assets/Icons/hrgreaterthan.svg'
-import { Breadcrumbs, Typography } from "@mui/joy";
-import { Link } from "react-router-dom";
+
 
 const Results = ({onItemClick}) => {
   const sampleData = [

@@ -3,7 +3,6 @@ import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import { toast } from "react-toastify";
-import { useAuth } from "../contexts/AuthContext";
 import { Globalinfo } from "../../App";
 
 const AvatarModal = ({ onClose, updateProfilePicture }) => {

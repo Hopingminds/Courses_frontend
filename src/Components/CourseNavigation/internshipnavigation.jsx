@@ -3,7 +3,6 @@ import Overview from "../Overview/Overview";
 import Instructor from "../Instructor/Instructor";
 import CNAssignment from "./CNAssignment";
 import CNMyStats from "./CNMyStats";
-import LiveClass from "../LiveClass";
 
 import CNAssessment from "./CNAssessment";
 

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import BagWhite from '../../../Assets/Icons/hrfilterbag.svg';
 import BagGray from '../../../Assets/Icons/hrfilterbaggray.svg';
 import DatabaseWhite from '../../../Assets/Icons/hrfilterdatabase.svg';
-import DatabaseGray from '../../../Assets/Icons/hrfilterdatabasegray.svg';
 import ReportWhite from '../../../Assets/Icons/hrfilterreportgray.svg';
 import ReportGray from '../../../Assets/Icons/hrfilterreport.svg';
 import Dropdown from '../../../Assets/Icons/hrfilterdropdown.svg';

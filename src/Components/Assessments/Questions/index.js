@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaArrowLeft, FaGreaterThan, FaLessThan } from "react-icons/fa";
+import {  FaGreaterThan, FaLessThan } from "react-icons/fa";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";

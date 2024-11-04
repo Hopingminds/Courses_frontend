@@ -10,12 +10,9 @@ import {
   buildStyles,
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { easeQuadInOut } from "d3-ease";
-import Temp from "../temp";
 
 const DataDashboard = ({data}) => {
   // console.log(data);
-  const [Completed, setCompleted] = useState()
   let complete=0;
 data?.purchased_courses?.map((item)=>{
   let count=0;

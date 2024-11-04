@@ -6,13 +6,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Globalinfo } from "../../App";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
-import toast, { Toaster } from "react-hot-toast";
-import { IoIosShareAlt } from "react-icons/io";
+import toast from "react-hot-toast";
 import { RWebShare } from "react-web-share";
 import ReactPlayer from "react-player";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
-import { Tooltip } from "@mui/material";
-import { formatDate } from "../../helpers/helper_function";
 import BatchModal from "../MyLearning/Batchmodal";
 
 export default function Commoncard(props) {

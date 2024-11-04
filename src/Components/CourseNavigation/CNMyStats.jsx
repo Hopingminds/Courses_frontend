@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  CircularProgressbar,
+  
   buildStyles,
   CircularProgressbarWithChildren,
 } from "react-circular-progressbar";

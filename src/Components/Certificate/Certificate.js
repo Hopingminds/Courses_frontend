@@ -1,12 +1,11 @@
 import React from "react";
-import Img1 from "../../Assests/Images/certificate.png";
 
 const Certificate = () => {
   return (
     <>
       <div className="flex flex-row justify-between items-center bg-[#F0FFF7] gap-14 px-[5%] py-16 xsm:py-6 xsm:gap-4 md:py-10 xsm:flex-col">
         <div className="w-[65%] h-[520px] sm:h-[200px] md:h-[220px] md:w-[50%] lg:h-[300px] lg:w-[50%] xsm:w-[90%] xsm:h-auto">
-          <img src='/Divyam-vashisht.jpg' className="w-full h-full object-fit" />
+          <img src='/Divyam-vashisht.jpg' className="w-full h-full object-fit" alt="" />
         </div>
         <div className="flex flex-col space-y-6 w-[70%] xsm:gap-2 xsm:space-y-0 xsm:w-[90%]">
           <p className="text-[40px] text-[#000000] font-pop font-semibold xsm:text-[18px] sm:text-[20px] md:text-[28px] xsm:text-center ">

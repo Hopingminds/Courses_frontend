@@ -1,82 +1,29 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Search from "../../Assests/Icons/search.svg";
-import User1 from "../../Assests/Images/Saurabh Pal-Data Resolve.png";
-import User2 from "../../Assests/Images/Sumit.jpg";
-import User3 from "../../Assests/Images/Khushpreet Kaur-Delta IT.jpeg";
-import User4 from "../../Assests/Images/Amritpal Protiviti GDU 5.7.png";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import RecommendedCourses from "../RecommendedCourses/RecommendedCourses";
-import Spinner from "../Spinner";
 import ReactPlayer from "react-player";
-import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
-import { IoIosLock } from "react-icons/io";
-import { GoUnmute } from "react-icons/go";
 
-import { Globalinfo } from "../../App";
 import Newinstructor from "../Newinstructor";
 import HireTestimonial from "../HireFromUs/HireTestimonial";
 import CourseCard from "../Courses_Home/CourseCard";
-import MinorDegree from "../MinorCourses/minordegree";
 import CountUp from 'react-countup';
 import Skeleton from "../Skeleton/Skeletoncard";
 const AllCourses = () => {
-  const [showAllCards, setShowAllCards] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(User1);
+
   const [allCourses, setAllCourses] = useState([]);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [Data, setData] = useState([]);
   const [SearchedData, setSearchedData] = useState([]);
   const [Temp, setTemp] = useState([]);
   const [show, setshow] = useState(false);
-  const [videoSkeleton, setvideoSkeleton] = useState(true)
-  const [secondloader, setsecondloader] = useState(true)
-  const [cat, setcat] = useState()
-  const [userData, setUserData] = useState({
 
-    [User1]: {
-      name: "SAURABH PAL",
-      email: "saurabh@dataresolve.com",
-      description1:
-        "Being a recent Computer Science graduate from Jaypee University, MP,I faced job challenges post-college. Enrolling in Hoping Minds for personal development and placement training, I swiftly secured a System Developer role at Data Resolve, grateful for their transformative assistance in my professional journey.",
-      description2: "Lorem ipsuut labore et dolore magna aliqua.",
-      description3:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    [User2]: {
-      name: "SUMIT VERMA",
-      email: "sumit@example.com",
-      description1:
-        "HopingMinds played a crucial role in securing my first job, providing unwavering support, essential skills, and invaluable guidance. Their exceptional job placement assistance led me to a role aligned with my aspirations, illuminating my path to success.",
-      description2:
-        "Ut enim ad min, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      description3: "Ut enim ad minim vequat.",
-    },
-    [User3]: {
-      name: "KHUSHPREET KAUR",
-      email: "khushpreet@example.com",
-      description1:
-        "Hoping Minds' dedicated efforts and comprehensive job assistance program transformed me from a hopeful job seeker to a proud employee. Their personalized approach, insightful counseling, and invaluable support led to securing my first job and equipped me for future career success.",
-      description2: "Duis aute irure dolor nulla pariatur.",
-      description3:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillumulla pariatur.",
-    },
-    [User4]: {
-      name: "AMRITPAL SINGH",
-      email: "jack@example.com",
-      description1:
-        "Thrilled to join Protiviti, thanks to Hoping Minds' fantastic support. The journey was challenging, but their assistance and opportunities for growth were invaluable. Grateful to family, teachers, and friends. Excited and determined for this new career chapter!",
-      description2: "Exce cupidatat non proident, sunt in culpaborum.",
-      description3:
-        "Excepteur sint occaect in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-  });
-  const { userDetail, getUserDetails } = useContext(Globalinfo);
+  const [cat, setcat] = useState()
+ 
 
   // console.log(userDetail.blocked_courses)
-  const [IsMuted, setIsMuted] = useState(true);
-  const videoRef = useRef(null);
   const [loaded, setloaded] = useState(true)
   const [selectedCourse, setSelectedCourse] = useState("");
   // console.log(pat);
@@ -120,12 +67,6 @@ const AllCourses = () => {
     } catch (error) { }
   };
 
-  const handleMute = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
-    setIsMuted((prev) => !prev);
-
-  };
   const debounce = (func, wait) => {
     let timeout;
     
@@ -142,8 +83,7 @@ const AllCourses = () => {
  async function SearchData(e) {
   
     let query = e.target.value;
-    let temp=[]
-    if (query == "") {
+    if (query === "") {
       setSearchedData([]);
 
       setAllCourses(Data);
@@ -240,7 +180,7 @@ const AllCourses = () => {
                 }`}
             />
            {SearchedData?.length ? <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center  pt-2" ref={searchResultsRef}>
-              {SearchedData?.map((item, ind) => {
+              {SearchedData?.map((item) => {
                 // console.log(item.);
                 return (
                   <>
@@ -332,10 +272,10 @@ const AllCourses = () => {
           ""
         )}
         {
-          (show && window.innerWidth <= 480) ? [1, 2, 3, 4, 5, 6].map((item) => {
+          (show && window.innerWidth <= 480) ? [1, 2, 3, 4, 5, 6].map(() => {
             return (<Skeleton />)
           }) :
-            show && window.innerWidth > 480 ? [1, 2, 3].map((item) => {
+            show && window.innerWidth > 480 ? [1, 2, 3].map(() => {
               return (<Skeleton />)
             })
               : allCourses?.map((val, ind) => {

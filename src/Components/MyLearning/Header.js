@@ -1,13 +1,7 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import './MLheader.css';
-import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
-import axios from 'axios';
-import { BASE_URL } from '../../Api/api';
 
 export default function Header() {
-    const navigate = useNavigate()
-    const [purchasedCourses, setPurchasedCourses] = useState();
     const [showpage, setshowpage] = useState('courses');
 
 

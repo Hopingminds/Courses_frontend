@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ManageJobsHeader from "./ManageJobsHeader";
 import ManageJobsFilter from "./ManageJobsFilter";
-import Jobs from "./JobsMain";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import AllJobs from "./AllJobs";

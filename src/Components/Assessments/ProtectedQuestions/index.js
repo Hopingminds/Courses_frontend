@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { FaArrowLeft, FaGreaterThan, FaLessThan } from "react-icons/fa";
+import { FaGreaterThan, FaLessThan } from "react-icons/fa";
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -13,8 +13,7 @@ export default function ProtectedAssessmentQuestion() {
   const [show, setshow] = useState(false);
   const [params, setparams] = useSearchParams();
   const [index, setindex] = useState(1);
-  const [audioAlert, setAudioAlert] = useState(false);
-  const [tabwarning, settabwarning] = useState(0);
+
   let [peoplewarning, setpeoplewarning] = useState(3);
   let navigate = useNavigate();
   const [Length, setLength] = useState();
@@ -132,15 +131,6 @@ export default function ProtectedAssessmentQuestion() {
     }
   }
 
-  function handlePrev() {
-    if (localStorage.getItem('history')) {
-      let history = localStorage.getItem('history');
-      localStorage.removeItem('history');
-      navigate(history);
-    } else {
-      navigate('/modules');
-    }
-  }
 
   const [audio] = useState(new Audio('/danger.mp3'));
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -155,8 +145,6 @@ export default function ProtectedAssessmentQuestion() {
     const storedTimer = localStorage.getItem('lastminute');
     return storedTimer ? parseInt(storedTimer) : parseInt(params.get('t'));
   });
-  const maxVolumeRef = useRef(0);
-  const allowedwarnings = 3;
 let tempstate=true;
   const startTimer = () => {
   

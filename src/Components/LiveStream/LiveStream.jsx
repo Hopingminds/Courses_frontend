@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import ReactHlsPlayer from "react-hls-player";
 import io from "socket.io-client";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";

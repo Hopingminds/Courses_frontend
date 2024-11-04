@@ -11,7 +11,6 @@ import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import CourseDrawer from "./CourseDrawer";
-import Assignment from "../MyLearning/Assignment";
 import MyStats from "../MyLearning/MyStats";
 import JobOffering from "./MyJobs";
 import Certificate from "./MyCertificate";

@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import "./courseDetails.css";
 import ReactPlayer from "react-player";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
 import Coursecontents from "../Meeting/Coursecontents";
 import { jwtDecode } from "jwt-decode";
 import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
 import CourseNavigation from "../CourseNavigation/CourseNavigation";
-import NewSideBar from "./NewSideBar.jsx";
 import { FiMenu } from "react-icons/fi";
 import DrawerNavbar from "./DrawerNavbar.jsx";
-import { FaLastfmSquare, FaPlay } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
 import Draggable from 'react-draggable';
 export default function CDDetails() {
   const [clicked, setclicked] = useState(false);
@@ -32,23 +31,18 @@ export default function CDDetails() {
   const [showLive, setshowLive] = useState(false);
   const [showend, setshowend] = useState(false);
   const [meetinglink, setmeetinglink] = useState("");
-  const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeindex, setactiveindex] = useState("");
   const [idwise, setidwise] = useState({});
   const [expired, setexpired] = useState();
-  const [sk, setsk] = useState("");
   const [dur, setdur] = useState();
   const playerRef = useRef(null);
   const playerRef2 = useRef(null);
-  const [currentDuration, setCurrentDuration] = useState(0);
   const [playing, setPlaying] = useState(true);
   const params = useParams();
   let totalduration = 0;
-  let finaldur = 0;
   let completed = [];
   let allchapters = [];
   let temp = true;
-  const navigate = useNavigate();
   const [showBanner, setShowBanner] = useState(true);
   const [imageBanner, setImageBanner] = useState();
   const [currentid, setcurrentid] = useState()
@@ -277,18 +271,6 @@ setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
       try {
         let login = localStorage.getItem("COURSES_USER_TOKEN");
         if (login) {
-          let url = BASE_URL + "/lessoncompleted";
-          let bodydata = { courseId, lessonId: ALLCHAPTER[count]?._id };
-          const data1 = await fetch(url, {
-            method: "PUT",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + login,
-            },
-            body: JSON.stringify(bodydata),
-          });
-          const response = await data1.json();
 
           // console.log(response);
         }
@@ -299,20 +281,6 @@ setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
     }
   };
 
-  function ClickSection(id) {
-    if (!clicked) {
-      setclicked(true);
-      let inner = document.getElementById(id);
-      // console.log(inner);
-      inner.style.display = "none";
-    } else {
-      setclicked(false);
-      let inner = document.getElementById(id);
-
-      // console.log(inner);
-      inner.style.display = "block";
-    }
-  }
   const handleDuration = (duration) => {
     // setDuration(duration);
     localStorage.setItem('duration'+currentid,duration)
@@ -428,14 +396,6 @@ if (activelargevideo && localStorage.getItem(currentid)) {
     return `${hours}h ${remainingMinutes}m`;
   }
 
-  function handleNext() {
-    setshowSmallvideo(false);
-    if (count == completed_lessons.length) {
-      handleVideoEnded();
-    } else {
-      seturl(ALLCHAPTER[count + 1]?.video);
-    }
-  }
   function formatDate(dateString) {
     const dateObj = new Date(dateString);
 

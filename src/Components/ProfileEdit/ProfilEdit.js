@@ -29,14 +29,7 @@ const ProfilEdit = () => {
   const [isProfilePage, setIsProfilePage] = useState(true);
   
 
-  const handleMouseEnter = () => {
-    setShowTooltip(true);
-  };
 
-  const handleMouseLeave = () => {
-    setShowTooltip(false);
-  };
-  const navigate = useNavigate();
   const [btnLoader, setbtnLoader] = useState(false);
   const [show, setshow] = useState(false);
   const [data, setData] = useState([]);

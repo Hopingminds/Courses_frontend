@@ -5,13 +5,11 @@ import ReactPlayer from "react-player";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api.js";
 import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
-import Coursecontents from "../Meeting/Coursecontents.js";
 import "./courseDetails.css";
 
 import Draggable from 'react-draggable';
 import { FaPlay } from "react-icons/fa";
 import InternshipCourseNavigation from "../Internshipnavigation/CourseNavigation.jsx";
-import InternshipDrawerNavbar from "./DrawerNavbar.jsx";
 import Internshipcontent from "../Meeting/Internshipcontent.js";
 export default function Internshipvideo() {
   const [clicked, setclicked] = useState(false);

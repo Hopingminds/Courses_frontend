@@ -14,7 +14,6 @@ import Spinner from '../Spinner';
 
 const DetailTableDashboard = ({ data,FetchData }) => {
   // console.log(data);
-  const [selectedFile, setSelectedFile] = useState(null);
   const [Coins, setCoins] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [emailerros, setemailerros] = useState([])

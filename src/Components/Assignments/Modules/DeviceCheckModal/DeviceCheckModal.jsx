@@ -1,5 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { TfiControlForward, TfiControlBackward } from "react-icons/tfi";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../../../Api/api";
 import toast, { Toaster } from "react-hot-toast";
@@ -24,7 +23,6 @@ const DeviceCheckPage = () => {
   const analyserRef = useRef(null);
   const [micworking, setmicworking] = useState(false)
   const [cameraworking, setcameraworking] = useState(false)
-const navigate=useNavigate()
   const startCamera = async () => {
     try {
       const cameraStream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -97,32 +95,8 @@ const navigate=useNavigate()
     draw();
   };
 
-  const stopMediaTracks = () => {
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach((track) => track.stop());
-      streamRef.current = null;
-    }
-    if (audioContextRef.current) {
-      audioContextRef.current.close();
-      audioContextRef.current = null;
-    }
-  };
 
 
-  const enterFullScreen = () => {
-    if (document.fullscreenEnabled) {
-      const element = document.documentElement; // or any specific element
-      if (element.requestFullscreen) {
-        element.requestFullscreen().catch((err) => {
-          console.error("Error attempting to enable full-screen mode:", err.message);
-        });
-      } else {
-        console.warn("Fullscreen API is not supported on this browser.");
-      }
-    } else {
-      console.warn("Fullscreen mode is not allowed.");
-    }
-  };
   async function handleContinue(){
     let token=localStorage.getItem('COURSES_USER_TOKEN')
     try {
@@ -182,7 +156,6 @@ await startMicrophone()
   const circumference = 2 * Math.PI * radius;
   const totalOptions = 3;
   const percentage = (selectedOptions[currentStep] / totalOptions) * 100;
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   const renderStepContent = () => {
     switch (currentStep) {

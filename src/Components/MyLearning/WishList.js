@@ -3,7 +3,6 @@ import { BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import { Link } from "react-router-dom";
 import Spinner from "../Spinner";
-import { AiTwotoneDelete } from "react-icons/ai";
 
 export default function WishList() {
   const [Data, setData] = useState([]);
