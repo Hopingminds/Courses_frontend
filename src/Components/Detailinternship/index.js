@@ -22,7 +22,7 @@ import Commoncardinternship from "./Commoncardinternship";
 import InternshipCurriculum from "./Curriculum/InternshipCurriculum";
 
 export default function InternshipDetail() {
-  const param = useParams();
+  const param = useParams();  
   const navigate = useNavigate();
   const [Data, setData] = useState();
   let slug = param.slug;
@@ -105,7 +105,7 @@ temp=false;
         let token = jwtDecode(login);
         let email = token.email;
         let url = `${BASE_URL}/addtocart`;
-        setshow(true); // Show loader
+        setshow(true);
 
         let data = await fetch(url, {
           method: "POST",
@@ -145,7 +145,7 @@ temp=false;
         let token = jwtDecode(login);
         let email = token.email;
         let url = `${BASE_URL}/addtowishlist`;
-        setshow(true); // Show loader
+        setshow(true); 
   
         // Clear any existing toasts to prevent duplicates
         toast.dismiss();
