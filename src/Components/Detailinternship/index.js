@@ -185,7 +185,7 @@ temp=false;
       if (login) {
         const token = localStorage.getItem("COURSES_USER_TOKEN");
         const response = await axios.get(
-          `${BASE_URL}/iscourseincart/${courseid}`,
+          `${BASE_URL}/isinternshipincart/${courseid}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -213,7 +213,7 @@ temp=false;
       if (login) {
         const token = localStorage.getItem("COURSES_USER_TOKEN");
         const response = await axios.get(
-          `${BASE_URL}/iscourseinwishlist/${courseid}`,
+          `${BASE_URL}/isinternshipinwishlist/${courseid}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
