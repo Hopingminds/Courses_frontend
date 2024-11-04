@@ -8,29 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 
-const INITIAL_FORM_STATE = {
-  logoUrl: "",
-  position: "",
-  employmentType: "",
-  departmentRoleCategory: "",
-  company: "",
-  workMode: "",
-  workExperience: { from: "", to: "",isFresher:false },
-  annual_salary_range: { currency: "INR", from: "", to: "" },
-  companyIndustry: "",
-  educationalQualification: "",
-  specialization: "",
-  interviewmode: "",
-  aboutCompany: "",
-  websiteurl: "",
-  publishDate:"",
-  lastDate:"",
-  companyAddress: "",
-  jobDescription: "",
-  annualSalary: "",
-  uptoPackage: "",
-  key_skills:[]
-};
+;
 const degrees={
   "B.Tech/B.E":["CSE","ECE","IT","Any"],
   "MCA":[],

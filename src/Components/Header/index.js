@@ -1,28 +1,22 @@
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import { useContext, useEffect, useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi"; // Import hamburger and close icons
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AUTH_BASE_URL, BASE_URL } from "../../Api/api";
 import { Globalinfo } from "../../App";
 import { ReactComponent as Account } from "../../Assets/Icons/account.svg";
 import { ReactComponent as Cart } from "../../Assets/Icons/cart.svg";
-import { Tooltip } from "@mui/material";
-import { AUTH_BASE_URL, BASE_URL } from "../../Api/api";
-import { jwtDecode } from "jwt-decode";
-import { FiMenu, FiX } from "react-icons/fi"; // Import hamburger and close icons
-import Cookies from "js-cookie";
 
 export default function Navbar() {
   const [profile, setProfile] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage menu open/close
   let token=localStorage.getItem('COURSES_USER_TOKEN')
   const {
-    cartData,
     cartSize,
-    GetCart,
-    wishListData,
-    GetWishList,
     userDetail,
-    getUserDetails,
   } = useContext(Globalinfo);
-
+ 
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -357,7 +351,7 @@ export default function Navbar() {
           </>
         ) : (
           <div className="flex  space-x-10 items-center xsm:space-x-2 md:space-x-4 sm:space-x-3">
-            {userDetail?.role != "subadmin" && (
+            {userDetail?.role !== "subadmin" && (
               <>
                 <Link
                   to={"/"}
@@ -428,7 +422,7 @@ export default function Navbar() {
                 {/* <Link to={'/ai'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Ai Minds</Link> */}
                 {/* <Link to={'/hire-from-us'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Hire From Us</Link> */}
                 <a
-                  href={location.pathname == "/" ? "#" : "/pap"}
+                  href={location.pathname === "/" ? "#" : "/pap"}
                   onClick={ScrollToPap}
                   className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] cursor-pointer md:text-[14px] font-pop ${
                     location.pathname === "/pap"

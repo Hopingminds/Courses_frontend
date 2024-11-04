@@ -1,7 +1,6 @@
 import React from 'react'
 import Icon1 from '../../../Assets/Icons/hrreporticon1.svg'
 import Icon2 from '../../../Assets/Icons/hrreporticon2.svg'
-import { useNavigate } from 'react-router-dom'
 
 const Reports = ({ onItemClick }) => {
 

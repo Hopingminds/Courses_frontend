@@ -1,25 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import "./liveclassdetail.css";
-import ReactPlayer from "react-player";
-import ChatBot from "../chatbot/chatbot";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BASE_URL } from "../../Api/api";
 import Coursecontents from "../Meeting/Coursecontents";
 import { jwtDecode } from "jwt-decode";
 import { ReactComponent as Menu } from "../../Assests/Icons/menu.svg";
-import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import NewSideBar from "../courseDetails/NewSideBar";
 import { FiMenu } from "react-icons/fi";
 import { checkAndDisable, formatDate } from "../../helpers/helper_function";
 
 export default function LiveClassDetailPage() {
-  const [clicked, setclicked] = useState(false);
   const [menu, setMenu] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
   const [Data, setData] = useState(null);
   const [completed_lessons, setcompleted_lessons] = useState([]);
   const [count, setcount] = useState(0);
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [ALLCHAPTER, setALLCHAPTER] = useState([]);
   const [courseId, setcourseId] = useState();
   const [courseAssignment, setCourseAssignment] = useState([]);
@@ -27,9 +22,7 @@ export default function LiveClassDetailPage() {
   const [showSmallvideo, setshowSmallvideo] = useState(false);
   const [smallVideourl, setsmallVideourl] = useState("");
   const [pdfurl, setpdfurl] = useState("");
-  const [pageFullyRead, setPageFullyRead] = useState(false);
-  const [url, seturl] = useState("");
-  const pdfRef = useRef(null);
+  const [ seturl] = useState("");
   const params = useParams();
   let completed = [];
   let allchapters = [];

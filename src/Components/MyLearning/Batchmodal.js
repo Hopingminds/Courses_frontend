@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 import { BASE_URL } from '../../Api/api';
-import toast, { Toaster } from 'react-hot-toast';
-import { jwtDecode } from 'jwt-decode';
+import  { Toaster } from 'react-hot-toast';
 
 Modal.setAppElement('#root'); // Ensure to bind modal to your app element (for accessibility reasons)
 

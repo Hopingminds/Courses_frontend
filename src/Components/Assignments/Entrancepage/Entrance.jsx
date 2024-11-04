@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Spinner from "../../Spinner";
 
 export default function Enterance(){
     return (

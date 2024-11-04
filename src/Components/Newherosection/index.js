@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { GoSearch } from "react-icons/go";
 import { Typewriter } from 'react-simple-typewriter';
 
 // Custom hook for counting animation

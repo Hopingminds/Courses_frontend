@@ -90,11 +90,9 @@
 
 import { useEffect, useState } from "react";
 import "./hero.css";
-import Circle from "../../Assests/Images/home-circle.png";
 import Square from "../../Assests/Images/home-square.png";
 import '@splidejs/react-splide/css';
 import '@splidejs/splide/dist/css/splide.min.css';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 // import Img1 from "../../Assests/Images/stu1.jpg";
 // import Img2 from "../../Assests/Images/stu2.jpg";
 // import Img3 from "../../Assests/Images/stu3.jpg";

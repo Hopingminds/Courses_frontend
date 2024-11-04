@@ -1,13 +1,10 @@
 import "./Pageheader.css";
 import Commoncard from "./Commoncard";
 import { Link, useParams } from "react-router-dom";
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BASE_URL } from "../../Api/api";
 import Spinner from "../Spinner";
-import Curriculum from "../Curriculum/Curriculum";
 import Instructor from "../Instructor/Instructor";
-import VideoTesttimonial from "./VideoTesttimonial";
-import { TiTick } from "react-icons/ti";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Included from "./included";
 import { Globalinfo } from "../../App";
@@ -26,7 +23,7 @@ export default function DetailCourses() {
   let slug = param.slug;
   const { userDetail } = useContext(Globalinfo);
   const [show, setshow] = useState(false);
-  const { setCartSize, cartSize, GetCart } = useContext(Globalinfo);
+  const {  GetCart } = useContext(Globalinfo);
   const [faqs, setFaqs] = useState([]);
   const [alreadyInCart, setAlreadyInCart] = useState(false);
   const [alreadyInWishlist, setalreadyInWishlist] = useState(false)

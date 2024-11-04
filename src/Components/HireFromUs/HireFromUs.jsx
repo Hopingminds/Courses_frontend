@@ -5,18 +5,14 @@ import "./hirefromus.css";
 import WhyHM from "./WhyHM";
 import { ReactComponent as Ok } from "../../Assets/Icons/ok.svg";
 import { ReactComponent as Wb } from "../../Assests/Icons/Whatsapp.svg";
-import HireTestimonial from "./HireTestimonial";
 import NewHireTestimonial from "./newhiretestimonials";
-import { RiWhatsappFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { BASE_URL } from "../../Api/api";
-import HireTable from "./HireTable";
 import Close from "../../Assests/Images/close.png";
 import { validateEmail, validateMobileNumber } from "../../helpers";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Companies from "../Companies";
 
 const HireFromUs = () => {
   const navigate = useNavigate();

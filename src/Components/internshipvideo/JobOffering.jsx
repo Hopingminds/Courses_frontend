@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../../Api/api";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { applyJob, getAllJobAplicants } from "../../helpers/helperapi";
 
 const InternshipJobOffering = ({ courses }) => {

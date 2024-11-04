@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./forgotPassword.module.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { validateEmail } from "../../helpers";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +10,7 @@ import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 const Forgotpassword = () => {
   const navigate = useNavigate();
-  const { userDetail, getUserDetails, GetCart, GetWishList } =
+  const {  getUserDetails } =
     useContext(Globalinfo);
   const [btnLoader, setBtnLoader] = useState(false);
   const [show, setShow] = useState(1);

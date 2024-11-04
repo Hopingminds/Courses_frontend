@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./chatbot.css";
 import { IoMdClose } from "react-icons/io";
-import axios from "axios";
 import { BASE_URL } from "../../Api/api";
 
 const ChatBot = () => {

@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from 'react';
-import { IoFilterOutline, IoSearchOutline } from 'react-icons/io5';
+import React, { useState } from 'react';
+import { IoFilterOutline } from 'react-icons/io5';
 import { FaChevronDown } from 'react-icons/fa6';
 import { RxCross2 } from 'react-icons/rx';
 

@@ -3,7 +3,6 @@ import '@splidejs/react-splide/css';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 
 export default function AiExperts() {
-    const [currentIndex, setCurrentIndex] = useState(0);
     const experts = [
         {
             text: "I have observed the transformation HopingMinds' programs bring in their students. Their hands-on approach, personalised focus on each student and curriculum alignment with market trends are key strengths. I recommend their programs as a pathway to a better future.",

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../../Api/api';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const InternshipCNAssessment = ({slug}) => {
     const [assessmentdata, setassessmentdata] = useState([]);
     // const [show, setshow] = useState(false);
     // const [Completed, setCompleted] = useState(false);
-    const navigate = useNavigate();
     useEffect(() => {
         async function Fetchdata() {
             try {

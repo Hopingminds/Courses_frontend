@@ -1,21 +1,15 @@
 import Certificate from "../Certificate/Certificate";
-import Companies from "../Companies";
 import Courses_Home from "../Courses_Home";
-import Footer from "../Footer/Footer";
-import Navbar from "../Header";
 import Herosection from "../Herosection";
 import OurFeatures from "../OurFeatures/OurFeatures";
 import Testimonial from "../Testimonial/Testimonial";
 import WhatHM from "../WhatHM/WhatHM";
-import logo from "../../Assests/Images/hmlogo.png";
 import PapHome from "./paphome";
-import NewTestimonial from "../Testimonial/NewTestimonial";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BuildCV from "./BuildCV";
 import Companies2 from "../Companies/Companies2";
 import Benefits from "./benefits_sm";
-import Top from "../Newherosection";
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);

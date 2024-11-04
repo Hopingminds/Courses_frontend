@@ -1,9 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./Cart.css";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { ReactComponent as Clock } from "../../Assets/Icons/clock2.svg";
-import { ReactComponent as Design } from "../../Assets/Icons/design2.svg";
-import { ReactComponent as Star } from "../../Assets/Icons/Star.svg";
+import { useSearchParams } from "react-router-dom";
 import { AUTH_BASE_URL, BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import {
@@ -18,9 +16,7 @@ import { authenticateUser } from "../../helpers/helperapi";
 import { useContext } from "react";
 import { Globalinfo } from "../../App";
 import Spinner from "../Spinner";
-import { handleGenerateUrl } from "../../helpers/paymentHelpers";
 import axios from "axios";
-import { data } from "@tensorflow/tfjs";
 
 const CartCheckout = () => {
   const [country, setcountry] = useState("");
@@ -152,70 +148,7 @@ setinputData((prev) => ({
   };
 
   // Navigate page
-  const navigate = useNavigate();
 
-  const handleContinueCheckout = async () => {
-    try {
-      setshow(true);
-      let url = BASE_URL + "/purchasecourse";
-      let url1 = BASE_URL + "/deletecart";
-      let orderDetails = {
-        name: userDetail.name,
-        zip,
-        gstnumber,
-        country: country.capital,
-        state: state.label,
-        address,
-      };
-     
-      setcourseId(temp);
-      let data = await fetch(url, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + login,
-        },
-        body: JSON.stringify({ courses: temp, orderDetails: orderDetails }),
-      });
-      let response = await data.json();
-      // console.log(response);
-      if (response.success) {
-        if (!query.get("slug")) {
-          let data1 = await fetch(url1, {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + login,
-            },
-            body: JSON.stringify({ email: userDetail.email }),
-          });
-          // let response1 = await data1.json();
-        }
-        // toast.success(response.message);
-        setshow(false);
-        // setTimeout(() => {
-        //   navigate("/success");
-        // }, 1000);
-      } else {
-        // toast.error(response.message);
-      }
-      //   if (response.success) {
-      //     toast.success(response.message);
-      //     setTimeout(() => {
-      //       navigate("/success");
-      //     }, 1000);
-      //   } else {
-      //     toast.error(response.message);
-      //   }
-      // } else {
-      //   toast.error(response.message);
-      // }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   // const loadRazorpay = () => {
   //   if (!country) {

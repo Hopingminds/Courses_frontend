@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 function MediaCheck() {
@@ -82,32 +82,8 @@ function MediaCheck() {
     draw();
   };
 
-  const stopMediaTracks = () => {
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach((track) => track.stop());
-      streamRef.current = null;
-    }
-    if (audioContextRef.current) {
-      audioContextRef.current.close();
-      audioContextRef.current = null;
-    }
-  };
 
 
-  const enterFullScreen = () => {
-    if (document.fullscreenEnabled) {
-      const element = document.documentElement; // or any specific element
-      if (element.requestFullscreen) {
-        element.requestFullscreen().catch((err) => {
-          console.error("Error attempting to enable full-screen mode:", err.message);
-        });
-      } else {
-        console.warn("Fullscreen API is not supported on this browser.");
-      }
-    } else {
-      console.warn("Fullscreen mode is not allowed.");
-    }
-  };
 
 function handleContinue(){
     // enterFullScreen()

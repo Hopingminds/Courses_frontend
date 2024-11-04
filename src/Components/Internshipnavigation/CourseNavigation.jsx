@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Overview from "../Overview/Overview";
-import Instructor from "../Instructor/Instructor";
+
 
 import InternshipCNAssessment from "./CNAssessment";
 import InternshipCNMyStats from "./CNMyStats";

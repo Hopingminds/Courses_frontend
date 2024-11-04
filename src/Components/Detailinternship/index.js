@@ -1,14 +1,9 @@
 import "./Pageheader.css";
-import Commoncard from "./Commoncardinternship";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BASE_URL } from "../../Api/api";
 import Spinner from "../Spinner";
-import Instructor from "../Instructor/Instructor";
-import VideoTesttimonial from "./VideoTesttimonial";
-import { TiTick } from "react-icons/ti";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
-import Included from "./included";
 import { Globalinfo } from "../../App";
 import { jwtDecode } from "jwt-decode";
 import toast, { Toaster } from "react-hot-toast";

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import {  useSearchParams } from "react-router-dom";
 
 const Assessmentinstruction = () => {
     const [isChecked, setIsChecked] = useState(false);

@@ -22,13 +22,11 @@ const Register = () => {
         navigate('/')
       }
     }, [])
-    const { getUserDetails, cartData } = useContext(Globalinfo);
+    const { getUserDetails } = useContext(Globalinfo);
     const [showPassword, setShowPassword] = useState(false);
     const [btnLoader, setBtnLoader] = useState(false);
-    const [searchParams, setSearchParams] = useSearchParams()
     const [countrycode, setcountrycode] = useState('')
     const [SearchedData, setSearchedData] = useState([])
-    const [verified, setverified] = useState(false)
 
     // console.log("cardatata",cartData);
     const [isModalOpen, setIsModalOpen] = useState(false);

@@ -3,15 +3,13 @@ import "react-circular-progressbar/dist/styles.css";
 import { PiWarningOctagonBold } from "react-icons/pi";
 import { FaCheckCircle } from "react-icons/fa";
 import "./modules.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
-import { Link, useNavigate } from "react-router-dom";
-import DeviceCheckModal from "./DeviceCheckModal/DeviceCheckModal";
+import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function Modules() {
-  const modulesContainerRef = useRef(null);
   const [modulesdata, setmodulesdata] = useState([]);
   const [show, setshow] = useState(false);
   const [Completed, setCompleted] = useState(false);
@@ -20,7 +18,6 @@ export default function Modules() {
   const [testreport, settestreport] = useState();
 
   const navigate = useNavigate();
-  const webcamRef = useRef(null);
   const [showWebcam, setShowWebcam] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [time,settime]=useState()
@@ -157,7 +154,7 @@ export default function Modules() {
                 <div className="font-semibold">Max Score : {testreport?.totalMarks}</div>
               </div>
             </div> */}
-            {modulesdata?.map((item, ind) => {
+            {modulesdata?.map((item) => {
               return (
                 <>
                   {item?.isAssessmentCompleted || item?.totalProgress>0 ? (

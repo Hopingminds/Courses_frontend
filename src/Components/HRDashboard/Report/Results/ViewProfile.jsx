@@ -4,7 +4,6 @@ import Profile from '../../../../Assets/Icons/hrviewprofile.svg'
 import ProgressBar from "@ramonak/react-progress-bar";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import DoughnutChart  from './DoughnutChart';
 import { PieChart } from '@mui/x-charts';
 
 const ViewProfile = ({onItemClick}) => {

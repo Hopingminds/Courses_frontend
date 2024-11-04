@@ -144,6 +144,7 @@ function ShopingCart() {
                               <img
                                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
                                 src="../Icons/design.svg"
+                                alt=''
                               />
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                 {item?.course?.category}
@@ -153,6 +154,7 @@ function ShopingCart() {
                               <img
                                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
                                 src="../Icons/clock2.svg"
+                                alt=''
                               />
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                 45 Hours

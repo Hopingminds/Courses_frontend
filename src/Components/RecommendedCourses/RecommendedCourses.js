@@ -1,4 +1,3 @@
-import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../Api/api";
 import CourseCard from "../Courses_Home/CourseCard";
@@ -6,7 +5,6 @@ import CourseCard from "../Courses_Home/CourseCard";
 export default function RecommendedCourses() {
 
     const [Data, setData] = useState([])
-    let login = localStorage.getItem('COURSES_USER_TOKEN')
 
     useEffect(() => {
         async function Fetchdata() {

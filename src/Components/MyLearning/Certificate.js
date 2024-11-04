@@ -2,7 +2,6 @@
 export default function Certificate(props) {
     // console.log(props);
     let { courses } = props
-    console.log(courses);
     
 
     // }

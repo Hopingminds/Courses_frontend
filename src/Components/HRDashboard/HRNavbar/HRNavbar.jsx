@@ -1,6 +1,4 @@
 import React from 'react'
-import Bell from '../../../Assets/Icons/hrbell.svg'
-import Profile from '../../../Assets/Icons/hrprofile.svg'
 import { Link, useNavigate } from 'react-router-dom'
 
 const HRNavbar = () => {
@@ -8,7 +6,6 @@ const HRNavbar = () => {
     function Top() {
         window.scrollTo(0, 0);
     }
-    let navigate=useNavigate()
     function handleLogout(){
         localStorage.removeItem('hrtoken')
         window.location.replace('/hire-from-us')

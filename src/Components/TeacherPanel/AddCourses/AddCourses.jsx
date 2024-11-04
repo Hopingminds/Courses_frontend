@@ -4,35 +4,7 @@ import Upload from '../../../Assets/Icons/tpfileupload.svg'
 
 const AddCourses = () => {
     
-    const [course, setCourse] = useState({
-        courseID:'',
-        title:'',
-        category:'',
-        subcategory:'',
-        // subcategory:'', ????Course
-        level:'',
-        overview:'',
-        featured_image:'',
-        featured_video:'',
-        faqs:[
-            {
-                answer:'',
-                question:'',
-            }
-        ],
-        curriculum:[
-            {
-                chapter_name:'',
-                lessons:[{
-                    lesson_name:'',
-                    assignment:'',
-                    notes:'',
-                    video:'',
-                }],
-            }
-        ],
-        whatWillILearn:[],
-    });
+  
 
     const [previewImage, setPreviewImage] = useState(null);
     const [previewVideo, setPreviewVideo] = useState(null);
