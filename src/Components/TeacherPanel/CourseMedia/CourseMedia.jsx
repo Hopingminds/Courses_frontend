@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
-import { IoMdDownload } from "react-icons/io";
-import { RxCross2 } from "react-icons/rx";
-import { FaFilePdf, FaVideo } from "react-icons/fa";
+import { FaFilePdf } from "react-icons/fa";
 import "./CourseMedia.css";
 import Loader from "../Loader/Loader";
 import { IoSearchOutline } from "react-icons/io5";

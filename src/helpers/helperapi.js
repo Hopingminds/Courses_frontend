@@ -1,7 +1,5 @@
 import axios from "axios";
 import { BASE_URL } from "../Api/api";
-import toast from "react-hot-toast";
-import { jwtDecode } from "jwt-decode";
 
 export const authenticateUser = async () => {
 

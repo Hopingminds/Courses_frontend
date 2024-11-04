@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from "react-player";
-import { IoPlayCircle } from "react-icons/io5";
-import { IoPauseCircle } from "react-icons/io5";
 
 const WhatHM = () => {
   const [playingIndex, setPlayingIndex] = useState(null);

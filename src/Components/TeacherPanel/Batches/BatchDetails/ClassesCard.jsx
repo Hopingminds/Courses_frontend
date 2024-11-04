@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Clock from '../../../../Assets/Icons/tpclock.svg'
 import Calender from '../../../../Assets/Icons/tpcalender.svg'
 

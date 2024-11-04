@@ -1,5 +1,4 @@
 import React from 'react'
-import Cross from '../../../../Assets/Icons/tpcross.svg'
 import Clock from '../../../../Assets/Icons/tpattendanceclock.svg'
 import Calender from '../../../../Assets/Icons/tpattendancecalender.svg'
 const SubmitAttendance = ({setBatchDetails, setShowAttendance, setActiveAttendance}) => {

@@ -1,5 +1,4 @@
-import React, { useLayoutEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react'
 import Login from '../Components/Login/login'
 
 function AuthProtected({Component,path}) {

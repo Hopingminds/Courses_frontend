@@ -4,7 +4,6 @@ import Message from "../../../Assets/Icons/tpmessage.svg";
 import Number from "../../../Assets/Icons/tpnumber.svg";
 import Bag from "../../../Assets/Icons/tpbag.svg";
 import { BASE_URL } from "../../../Api/api";
-import Navbar from "../../../Components/TeacherPanel/Navbar/Navbar.jsx";
 
 const UserProfile = () => {
   const [instructor, setInstructor] = useState({

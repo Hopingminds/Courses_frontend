@@ -4,8 +4,6 @@ import Router from './Routing/route';
 import { AUTH_BASE_URL, BASE_URL } from './Api/api';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
-import ChatBot from './Components/chatbot/chatbot';
-import { useLocation } from 'react-router-dom';
 // import io from 'socket.io-client';
 
 export const Globalinfo = createContext()
@@ -18,7 +16,6 @@ function App() {
   const [checkoutData, setCheckoutData] = useState();
   const [adminlogin, setadminlogin] = useState()
   const [cartSize, setCartSize] = useState(0);
-  const [user, setUser] = useState(null);
   const [liveClassKey, setLiveClassKey] = useState("test");
 
   const getUser = async () => {

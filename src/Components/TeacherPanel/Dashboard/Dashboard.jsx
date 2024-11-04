@@ -4,11 +4,9 @@ import LinkGray from "../../../Assets/Icons/tplinkgray.svg";
 import LiveClassCard from "./LiveClassCard";
 import MyCourseCard from "./MyCourseCard";
 import MyBatchCard from "./MyBatchCard";
-import ScheduledClasses from "../LiveClasses/ScheduledClasses";
 
 const Dashboard = () => {
     const [scheduledClasses, setScheduledClasses] = useState([]);
-    const [completedClasses, setCompletedClasses] = useState([]);
 
     useEffect(() => {
         // Simulated asynchronous data fetch

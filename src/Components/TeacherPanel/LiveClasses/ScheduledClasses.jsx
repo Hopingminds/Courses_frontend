@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import LiveClassCard from "../Dashboard/LiveClassCard";
-import ClassHistory from "./ClassHistory";
 
 const ScheduledClasses = () => {
   const [scheduledClasses, setScheduledClasses] = useState([]);
-  const [completedClasses, setCompletedClasses] = useState([]);
 
   useEffect(() => {
     // Simulated asynchronous data fetch

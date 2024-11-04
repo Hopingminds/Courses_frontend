@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import background from "../../../Assests/Images/bg-login.png";
 import logo from "../../../Assests/Images/HMLOGO.gif";
 import toast, { Toaster } from "react-hot-toast";
-import { AUTH_BASE_URL, BASE_URL } from "../../../Api/api";
+import {  BASE_URL } from "../../../Api/api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Loginpage() {

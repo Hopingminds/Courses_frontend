@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import Dashboard from './Dashboard/Dashboard'
 import Sidebar from './Sidebar/Sidebar'
 import Navbar from './Navbar/Navbar'
-import LiveClasses from './LiveClasses/LiveClasses'
-import AddCourses from './AddCourses/AddCourses'
 import { Outlet, useNavigate } from 'react-router-dom'
 
 const TPHome = () => {
