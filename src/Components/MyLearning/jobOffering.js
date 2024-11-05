@@ -162,7 +162,7 @@ const JobOffering = ({ courses }) => {
                         onClick={(e) => handleApply(e, item?._id)}
                         className={`bg-[#1DBF73] py-1 px-6 mr-12 rounded-full text-white text-[14px] font-nu font-bold xsm:text-[6px] xsm:py-1 xsm:px-3 md:text-[10px] sm:text-[10px] md:px-3 md:py-1 ${check ? 'cursor-not-allowed opacity-50 pointer-events-none':''}`}
                       >
-                        Apply
+                        {!check ? 'Apply' : 'Expired'}
                       </button>
                     ):
                     <button

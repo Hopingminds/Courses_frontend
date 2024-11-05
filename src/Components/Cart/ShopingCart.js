@@ -38,7 +38,8 @@ function ShopingCart() {
     let response = await data.json();
     // console.log(response);
     if (response.success) {
-      setData(response?.data);
+      // setData(response?.data);
+      Fetchdata();
       Total(response?.data);
       toast.success("Course removed successfully");
       setCartSize(cartSize-1);
