@@ -8,7 +8,7 @@
 // const Internshipcard = ({course}) => {
 //   const navigate = useNavigate();
 //   const [Data, setData] = useState();
- 
+
 //   const [show, setshow] = useState(false);
 //   const { setCartSize, cartSize, GetCart } = useContext(Globalinfo);
 
@@ -81,8 +81,8 @@
 //       {/* Content */}
 //       <div className="p-4">
 //         <h2 className="text-xl font-bold text-gray-800 h-20 ">{course?.title}</h2>
-//         <p className='h-24'> {course?.overview?.length > 120 
-//     ? `${course.overview.slice(0, 120)}...` 
+//         <p className='h-24'> {course?.overview?.length > 120
+//     ? `${course.overview.slice(0, 120)}...`
 //     : course?.overview}</p>
 //       </div>
 
@@ -116,12 +116,12 @@
 
 // export default Internshipcard;
 
-import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Globalinfo } from '../../App';
-import {jwtDecode} from 'jwt-decode'; 
-import { BASE_URL } from '../../Api/api';
-import toast, { Toaster } from 'react-hot-toast';
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Globalinfo } from "../../App";
+import { jwtDecode } from "jwt-decode";
+import { BASE_URL } from "../../Api/api";
+import toast, { Toaster } from "react-hot-toast";
 
 const Internshipcard = ({ course }) => {
   const navigate = useNavigate();
@@ -130,7 +130,7 @@ const Internshipcard = ({ course }) => {
 
   async function Addtocart(courseid) {
     try {
-      let login = localStorage.getItem('COURSES_USER_TOKEN');
+      let login = localStorage.getItem("COURSES_USER_TOKEN");
       if (login) {
         let token = jwtDecode(login);
         let email = token.email;
@@ -138,10 +138,10 @@ const Internshipcard = ({ course }) => {
         setshow(true);
 
         let data = await fetch(url, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
+            Accept: "application/json",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ email, internshipid: courseid }),
         });
@@ -155,8 +155,8 @@ const Internshipcard = ({ course }) => {
           // Handle error scenario
         }
       } else {
-        localStorage.setItem('ADD_TO_CART_HISTORY', window.location.pathname);
-        navigate('/login-2');
+        localStorage.setItem("ADD_TO_CART_HISTORY", window.location.pathname);
+        navigate("/login-2");
       }
     } catch (error) {
       console.log(error);
@@ -188,7 +188,9 @@ const Internshipcard = ({ course }) => {
         </div>
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
           <div className="text-center">
-            <h2 className="text-white text-3xl font-bold">{course?.base_price}</h2>
+            <h2 className="text-white text-3xl font-bold">
+              {course?.base_price}
+            </h2>
             <button onClick={() => Addtocart(course?._id)}>
               <img src="cart.png" alt="Cart Icon" className="w-8 h-8" />
             </button>
@@ -196,7 +198,9 @@ const Internshipcard = ({ course }) => {
         </div>
       </div>
       <div className="p-4">
-        <h2 className="text-xl font-bold text-gray-800 h-20 ">{course?.title}</h2>
+        <h2 className="text-xl font-bold text-gray-800 h-20 ">
+          {course?.title}
+        </h2>
         <p className="h-24">
           {course?.overview?.length > 120
             ? `${course.overview.slice(0, 120)}...`
@@ -210,15 +214,19 @@ const Internshipcard = ({ course }) => {
         </div>
         <div className="flex items-center space-x-2 flex-col">
           <img src="240.png" alt="Clock Icon" className="w-7" />
-          <span className="text-gray-800">{(course?.duration / 60).toFixed(2)} hours</span>
+          <span className="text-gray-800">
+            {course?.duration % 60 === 0
+              ? `${course.duration / 60} hours`
+              : `${(course.duration / 60).toFixed(2)} hours`}
+          </span>
         </div>
       </div>
       <div className="p-4">
         <button
           className="px-10 py-4 bg-green-500 w-full rounded-xl hover:bg-green-600 transition-all duration-300"
-          onClick={handleEnrollClick} 
+          onClick={handleEnrollClick}
         >
-          Enroll Now
+          View Course
         </button>
       </div>
     </div>
@@ -226,4 +234,3 @@ const Internshipcard = ({ course }) => {
 };
 
 export default Internshipcard;
-
