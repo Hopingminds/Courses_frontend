@@ -17,7 +17,7 @@ import Commoncardinternship from "./Commoncardinternship";
 import InternshipCurriculum from "./Curriculum/InternshipCurriculum";
 
 export default function InternshipDetail() {
-  const param = useParams();  
+  const param = useParams();
   const navigate = useNavigate();
   const [Data, setData] = useState();
   let slug = param.slug;
@@ -61,11 +61,11 @@ export default function InternshipDetail() {
   };
 
   // Fetch data on component mount
-  let temp=true;
+  let temp = true;
   useEffect(() => {
-    if(temp){
+    if (temp) {
       fetchCourseData();
-temp=false;
+      temp = false;
     }
   }, []);
   function ClickSection(id) {
@@ -134,16 +134,16 @@ temp=false;
   async function Addtowishlist(internshipid) {
     try {
       let login = localStorage.getItem("COURSES_USER_TOKEN");
-  
+
       if (login) {
         let token = jwtDecode(login);
         let email = token.email;
         let url = `${BASE_URL}/addtowishlist`;
-        setshow(true); 
-  
+        setshow(true);
+
         // Clear any existing toasts to prevent duplicates
         toast.dismiss();
-  
+
         let data = await fetch(url, {
           method: "POST",
           headers: {
@@ -153,9 +153,9 @@ temp=false;
           },
           body: JSON.stringify({ email, internshipid: internshipid }),
         });
-  
+
         let response = await data.json();
-  
+
         if (response?.success) {
           toast.success(response.msg);
           setshow(false); // Hide loader
@@ -174,11 +174,6 @@ temp=false;
       setshow(false);
     }
   }
-  
-  
-
-
-  
 
   async function CheckCourseInCart(courseid) {
     try {
@@ -434,10 +429,23 @@ temp=false;
             // CheckCourseInCart={CheckCourseInCart}
             batchids={batchids}
           />
-          <div className=" flex flex-col gap-[2rem]">
-            <div className="xsm:hidden">
+          <div className="flex flex-col gap-[2rem]">
+            {/* <div className="xsm:hidden">
               <img src="/Icons/certificate-Design.svg" alt="" />
+              
+            </div> */}
+
+            <div className="border  border-black rounded-xl p-4">
+            <h1 class="text-center text-2xl font-semibold text-gray-800 mb-6">
+                   Certifications Of Completion
+            </h1>
+              <img
+                src="/certificate-temp-2.png"
+                alt="Certificate Template"
+                className="transition-opacity duration-300 h-full w-full object-contain rounded-lg"
+              />
             </div>
+
             <div className="p-[15px] border border-black rounded-[16px] flex flex-col gap-4 items-center xsm:hidden">
               <h3 className="text-black text-[1.3rem] text-center font-semibold">
                 Create your professional{" "}
