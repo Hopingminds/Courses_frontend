@@ -67,9 +67,13 @@ function InternshipCurriculum() {
 
   return (
     <div className="curriculum font-nu" id="curriculum">
-      <p className="text-lg font-semibold mb-4">
+       <div className="text-center text-[40px] font-semibold text-[#000] xsm:text-[12px] sm:text-[18px] md:text-[20px] shadow-sm">
+        Internship <span className="text-[#1dbf73]">Curriculum</span>
+      </div>
+      <p className="text-lg font-semibold my-4">
         Fast track your journey to become a skilled developer in just 6 months
-        with our best Full Stack Developer Course.
+        with our best{" "}
+        <p className="text-gray-600">{data?.title || "Course"}.</p>
       </p>
 
       <div className="curriculum-lessons space-y-4">
@@ -88,7 +92,15 @@ function InternshipCurriculum() {
                       selectedUnit === unit._id ? "rotate-180" : "rotate-0"
                     } w-4 h-4 mr-2`}
                   />
-                  <p className="text-lg font-semibold">{unit?.unitName}</p>
+                  <p
+                    className={`text-lg font-semibold ${
+                      selectedUnit === unit._id
+                        ? "text-green-500"
+                        : "text-black"
+                    }`}
+                  >
+                    {unit?.unitName}
+                  </p>
                 </div>
               </div>
 
@@ -96,10 +108,10 @@ function InternshipCurriculum() {
                 <div className="space-y-4">
                   {/* Chapters Section */}
                   <div
-                    className="flex justify-between items-center cursor-pointer py-2"
+                    className="flex justify-between items-center cursor-pointer pt-2"
                     onClick={() => handleChapterToggle(unit._id)}
                   >
-                    <div className="flex items-center ">
+                    <div className="flex items-center pl-5">
                       <img
                         src={arrowIcon}
                         alt="arrow icon"
@@ -107,7 +119,15 @@ function InternshipCurriculum() {
                           expandedChapters[unit._id] ? "rotate-180" : "rotate-0"
                         } w-4 h-4 mr-2`}
                       />
-                      <p className="font-semibold">Chapters</p>
+                      <p
+                        className={`text-lg font-semibold ${
+                          expandedChapters[unit._id]
+                            ? "text-green-500"
+                            : "text-black"
+                        }`}
+                      >
+                        Chapters
+                      </p>
                     </div>
                     <p>
                       {unit.chapters?.length}{" "}
@@ -120,13 +140,10 @@ function InternshipCurriculum() {
                     <div className="ml-6 space-y-2 transition-all duration-300">
                       {unit?.chapters?.length > 0 ? (
                         unit?.chapters?.map((chapter, index) => {
-                          // Calculate total duration in minutes for the chapter
                           const totalDuration = chapter?.lessons?.reduce(
                             (acc, lesson) => acc + (lesson.duration || 0),
                             0
                           );
-
-                          // Convert total duration to hours and minutes
                           const hours = Math.floor(totalDuration / 60);
                           const minutes = totalDuration % 60;
 
@@ -151,8 +168,6 @@ function InternshipCurriculum() {
                       ) : (
                         <p>No chapters available</p>
                       )}
-
-                      {/* hr line at the end of expanded chapters */}
                       <hr />
                     </div>
                   )}
@@ -162,7 +177,7 @@ function InternshipCurriculum() {
                     className="flex justify-between items-center cursor-pointer py-2"
                     onClick={() => handleProjectToggle(unit._id)}
                   >
-                    <div className="flex items-center">
+                    <div className="flex items-center pl-5">
                       <img
                         src={arrowIcon}
                         alt="arrow icon"
@@ -170,7 +185,15 @@ function InternshipCurriculum() {
                           expandedProjects[unit._id] ? "rotate-180" : "rotate-0"
                         } w-4 h-4 mr-2`}
                       />
-                      <p className="font-semibold">Projects</p>
+                      <p
+                        className={`text-lg font-semibold ${
+                          expandedProjects[unit._id]
+                            ? "text-green-500"
+                            : "text-black"
+                        }`}
+                      >
+                        Projects
+                      </p>
                     </div>
                     <p>
                       {unit.project?.length}{" "}
@@ -182,7 +205,6 @@ function InternshipCurriculum() {
                     <div className="ml-6 space-y-2 transition-all duration-300">
                       {unit?.project?.length > 0 ? (
                         unit?.project?.map((project, index) => {
-                          // Convert duration from minutes to days, hours, and minutes
                           const days = Math.floor(
                             project?.duration / (60 * 24)
                           );
@@ -213,8 +235,6 @@ function InternshipCurriculum() {
                       ) : (
                         <p>No projects available</p>
                       )}
-
-                      {/* hr line at the end of expanded projects */}
                       <hr />
                     </div>
                   )}
