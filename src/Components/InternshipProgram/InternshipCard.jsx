@@ -189,7 +189,7 @@ const Internshipcard = ({ course }) => {
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
           <div className="text-center">
             <h2 className="text-white text-3xl font-bold">
-              {course?.base_price}
+              ₹ {course?.base_price}
             </h2>
             <button onClick={() => Addtocart(course?._id)}>
               <img src="cart.png" alt="Cart Icon" className="w-8 h-8" />
