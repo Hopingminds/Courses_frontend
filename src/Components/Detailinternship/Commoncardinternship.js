@@ -14,7 +14,7 @@ import BatchModal from "../MyLearning/Batchmodal";
 
 export default function Commoncardinternship(props) {
   let { Data, batchids } = props;
-  let { alreadyInCart } = props;
+  let { alreadyInCart,CheckCourseInCart,CheckCourseInWishlist } = props;
   // let { CheckCourseInCart } = props;
   const [data, setdata] = useState([]);
   // console.log(Data);
@@ -111,6 +111,7 @@ export default function Commoncardinternship(props) {
           toast.success(response.msg);
           setshow(false); // Hide loader
           GetCart(); // Refresh cart items
+          CheckCourseInCart(courseid)
         } else {
           // Display error message if unsuccessful
           toast.error(response.msg || "Failed to add item to cart");
@@ -159,6 +160,7 @@ export default function Commoncardinternship(props) {
         toast.success(response.msg);
         // CheckCourseInWishlist(internshipid);
         setshow(false); // Hide loader
+        CheckCourseInWishlist(internshipid)
       } else {
         // Display error message if unsuccessful
         toast.error(response.msg || "Failed to add item to wishlist");

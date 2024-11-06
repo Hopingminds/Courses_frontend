@@ -38,7 +38,7 @@ export default function InternshipDetail() {
 
       setData(result?.course || result?.internship);
 
-      const itemId = result?.course?._id || result?.internship?._id;
+      const itemId =  result?.internship?._id;
       if (itemId) {
         CheckCourseInCart(itemId);
         CheckCourseInWishlist(itemId);
@@ -116,6 +116,7 @@ temp=false;
           toast.success(response.msg);
           setshow(false); // Hide loader
           GetCart(); // Refresh cart items
+          CheckCourseInCart(courseid);
         } else {
           toast.error(response.msg || "Failed to add item to cart");
           setshow(false);
@@ -160,6 +161,7 @@ temp=false;
           toast.success(response.msg);
           setshow(false); // Hide loader
           GetCart(); // Refresh cart items
+          CheckCourseInWishlist(internshipid);
         } else {
           toast.error(response.msg || "Failed to add item to cart");
           setshow(false);
@@ -431,7 +433,8 @@ temp=false;
           <Commoncardinternship
             Data={Data}
             alreadyInCart={alreadyInCart}
-            // CheckCourseInCart={CheckCourseInCart}
+            CheckCourseInCart={CheckCourseInCart}
+            CheckCourseInWishlist={CheckCourseInWishlist}
             batchids={batchids}
           />
           <div className=" flex flex-col gap-[2rem]">

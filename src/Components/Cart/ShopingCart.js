@@ -275,7 +275,7 @@ function ShopingCart() {
                         src="../Icons/clock2.svg"
                       />
                       <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
-                        45 Hours
+                        {item?.internship?.duration/60} Hours
                       </p>
                     </div>
                    
