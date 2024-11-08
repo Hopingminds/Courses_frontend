@@ -69,7 +69,7 @@ const Course_Offers = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="text-[#1DBF73] text-[16px] font-bold xsm:text-[10px] md:text-[14px] px-4 py-2 rounded-md border-2 border-[#1DBF73] shadow-lg focus:outline-none focus:border-[#1DAF63] focus:shadow-md transition-all duration-200 ease-in-out"
-            placeholder="Search by course name..."
+            placeholder="Search by internship name..."
           />
         </div>
       </div>

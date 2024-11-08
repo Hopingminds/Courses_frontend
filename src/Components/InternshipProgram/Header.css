@@ -1,0 +1,14 @@
+/* Add this CSS in your stylesheet */
+@keyframes rotate360 {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  .hover\\:rotate-card:hover {
+    animation: rotate360 0.7s ease-in-out;
+  }
+  

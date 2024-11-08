@@ -39,34 +39,37 @@ const CartCheckout = () => {
   const [sgst, setSgst] = useState(0);
   const [finalPrice, setFinalPrice] = useState(0);
   const [city, setCity] = useState("");
-  const [coupon, setcoupon] = useState()
-  const [applied, setapplied] = useState(false)
+  const [coupon, setcoupon] = useState();
+  const [applied, setapplied] = useState(false);
+  const [cart, setCart] = useState(null);
+  const [internshipPayment, setInternshipPayment] = useState(""); 
   const [inputData, setinputData] = useState({
     name,
     address,
     zip,
-    gstnumber
-  })
+    gstnumber,
+  });
+
   // console.log(userDetail);
   const [warnings, setwarnings] = useState({
-    name:false,
-    country:false,
-    state:false,
-    address:false,
-    zip:false
-  })
+    name: false,
+    country: false,
+    state: false,
+    address: false,
+    zip: false,
+  });
 
-  const handleInputchange=(e)=>{
-let {name,value}=e.target;
-setwarnings((prevWarnings) => ({
-  ...prevWarnings,
-  [name]: false
-}));
-setinputData((prev) => ({
-  ...prev,
-  [name]: value
-}));
-  }
+  const handleInputchange = (e) => {
+    let { name, value } = e.target;
+    setwarnings((prevWarnings) => ({
+      ...prevWarnings,
+      [name]: false,
+    }));
+    setinputData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
   const checkUserValidation = async () => {
     const isValidUser = await authenticateUser();
 
@@ -92,16 +95,16 @@ setinputData((prev) => ({
     data?.courses?.forEach((item) => {
       let basePrice = item.course.base_price;
       let discountPercentage = item.course.discount_percentage;
-      let discountedPrice = basePrice * (1 - (discountPercentage / 100));
+      let discountedPrice = basePrice * (1 - discountPercentage / 100);
       price += basePrice;
-      disprice += (basePrice - discountedPrice);
+      disprice += basePrice - discountedPrice;
     });
     data?.internships?.forEach((item) => {
       let basePrice = item.internship.base_price;
       let discountPercentage = item.internship.discount_percentage;
-      let discountedPrice = basePrice * (1 - (discountPercentage / 100));
+      let discountedPrice = basePrice * (1 - discountPercentage / 100);
       price += basePrice;
-      disprice += (basePrice - discountedPrice);
+      disprice += basePrice - discountedPrice;
     });
 
     settotal(price);
@@ -112,18 +115,17 @@ setinputData((prev) => ({
 
     setSgst(gstAmount / 2);
     setGst(gstAmount / 2);
-    setFinalPrice((price-disprice));
+    setFinalPrice(price - disprice);
   }
-
-
-  
 
   useEffect(() => {
     async function fetchData() {
       if (login) {
         let slug = query.get("slug");
         let token = jwtDecode(login);
-        let url = slug ? `${BASE_URL}/course/${slug}` : `${BASE_URL}/getcart?email=${token.email}`;
+        let url = slug
+          ? `${BASE_URL}/course/${slug}`
+          : `${BASE_URL}/getcart?email=${token.email}`;
 
         const response = await fetch(url);
         const data = await response.json();
@@ -148,7 +150,6 @@ setinputData((prev) => ({
   };
 
   // Navigate page
-
 
   // const loadRazorpay = () => {
   //   if (!country) {
@@ -194,50 +195,67 @@ setinputData((prev) => ({
   // };
 
   // console.log(total)
+  const handlePaymentChange = (value) => {
+    setInternshipPayment(value);
+  };
   const handlePayment = async () => {
+    console.log("Selected Payment Option:", internshipPayment);
     const userData = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
-  
+
     // Validate inputs
     // if (!inputData.name) {
     //   setwarnings(prevWarnings => ({ ...prevWarnings, name: true }));
     //   return; // Early return on missing name
     // }
     if (!inputData.address) {
-      setwarnings(prevWarnings => ({ ...prevWarnings, address: true }));
+      setwarnings((prevWarnings) => ({ ...prevWarnings, address: true }));
       return; // Early return on missing address
     }
     if (!inputData.zip) {
-      setwarnings(prevWarnings => ({ ...prevWarnings, zip: true }));
+      setwarnings((prevWarnings) => ({ ...prevWarnings, zip: true }));
       return; // Early return on missing zip
     }
     if (!country) {
-      setwarnings(prevWarnings => ({ ...prevWarnings, country: true }));
+      setwarnings((prevWarnings) => ({ ...prevWarnings, country: true }));
       toast.error("Select country");
       return; // Early return on missing country
     }
     if (!state) {
-      setwarnings(prevWarnings => ({ ...prevWarnings, state: true }));
+      setwarnings((prevWarnings) => ({ ...prevWarnings, state: true }));
       toast.error("Select State");
       return; // Early return on missing state
     }
-    
+
     function getLast10Digits(number) {
-        // Using modulus to get the last 10 digits
-        return number % 10000000000;
+      // Using modulus to get the last 10 digits
+      return number % 10000000000;
     }
-  
+
     let number = userDetail?.phone;
     let last10Digits = getLast10Digits(number);
 
-
-    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${userData?.userID}&email=${userDetail?.email}&phone=${last10Digits || "0000000000"}&name=${userDetail?.name?.replace(/\s/g,"%20")}&address=${inputData.address.replace(/\s/g,"%20")}&zip=${inputData.zip}&country=${country?.name?.replace(/\s/g,"%20")}&state=${state?.name.replace(/\s/g,"%20")}&gstNumber=${inputData?.gstnumber || "000"}&promoCode=${coupon}`;
+    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
+      userData?.userID
+    }&email=${userDetail?.email}&phone=${
+      last10Digits || "0000000000"
+    }&name=${userDetail?.name?.replace(
+      /\s/g,
+      "%20"
+    )}&address=${inputData.address.replace(/\s/g, "%20")}&zip=${
+      inputData.zip
+    }&country=${country?.name?.replace(
+      /\s/g,
+      "%20"
+    )}&state=${state?.name.replace(/\s/g, "%20")}&gstNumber=${
+      inputData?.gstnumber || "000"
+    }&promoCode=${coupon}`;
     // console.log(paymentUrl)
-    async function handlePaymentUrl(){
+    async function handlePaymentUrl() {
       try {
         const res = await axios.get(paymentUrl);
-    
+
         if (res.status === 200) {
-          toast.success("Please confirm your purchase")
+          toast.success("Please confirm your purchase");
           setPaymentLink(res.data.payment_link);
           setShowModal(true);
         } else {
@@ -251,7 +269,9 @@ setinputData((prev) => ({
           if (error.response.status === 429) {
             toast.error("Too many requests. Please try again later.");
           } else {
-            toast.error(`Error: ${error.response.status} - ${error.response.data.message}`);
+            toast.error(
+              `Error: ${error.response.status} - ${error.response.data.message}`
+            );
           }
         } else if (error.request) {
           // Request was made but no response was received
@@ -260,7 +280,7 @@ setinputData((prev) => ({
           // Something happened in setting up the request
           toast.error(`Error: ${error.message}`);
         }
-      }    
+      }
     }
     handlePaymentUrl();
     // else {
@@ -281,40 +301,38 @@ setinputData((prev) => ({
     //   }`;
   };
 
-  const handleConfirm = () =>{
-    if(paymentLink){
+  const handleConfirm = () => {
+    if (paymentLink) {
       setShowModal(false);
       window.location.href = paymentLink;
-    }else{
+    } else {
       toast.error("Too many requests. Please try again later.");
     }
-  }
+  };
   const closeConfirm = () => {
     setShowModal(false);
-  }
-async function handlecoupon(){
-try {
-  const data=await fetch(BASE_URL+'/ispromocodevalid/'+coupon,{
-    method:'GET',
-    headers:{
-      'Content-type':'application/json',
-      'Authorization':`Bearer ${localStorage.getItem('COURSES_USER_TOKEN')}`
+  };
+  async function handlecoupon() {
+    try {
+      const data = await fetch(BASE_URL + "/ispromocodevalid/" + coupon, {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("COURSES_USER_TOKEN")}`,
+        },
+      });
+      const response = await data.json();
+      if (response?.success) {
+        toast.success("Coupon applied successfully");
+        setDiscountPrice(total * (response?.data?.discountPercentage / 100));
+        setapplied(true);
+      } else {
+        toast.error(response?.message);
+      }
+    } catch (error) {
+      console.log(error);
     }
-  })
-  const response=await data.json()
-  if(response?.success){
-    toast.success("Coupon applied successfully")
-   setDiscountPrice(total*(response?.data?.discountPercentage/100))
-   setapplied(true)
   }
-  else{
-    toast.error(response?.message)
-  }
- 
-} catch (error) {
-  console.log(error);
-}
-}
   return (
     <>
       {show ? (
@@ -339,9 +357,11 @@ try {
               name="country"
               placeholder="Select a country"
               value={country}
-              className={warnings.country?'border border-red-500':''}
-              styleContainer={{ padding: "0px !important" , border:`${warnings.country ?'1px solid red' : ''}`}}
-
+              className={warnings.country ? "border border-red-500" : ""}
+              styleContainer={{
+                padding: "0px !important",
+                border: `${warnings.country ? "1px solid red" : ""}`,
+              }}
             />
 
             <StateSelector
@@ -349,20 +369,26 @@ try {
               value={state}
               countryPlaceholder="Select state"
               onChange={handleStateChange}
-              className={warnings.state?'border border-red-500':''}
-              styleContainer={{ width: "400px !important",border:`${warnings.state ?'1px solid red' : ''}` }}
+              className={warnings.state ? "border border-red-500" : ""}
+              styleContainer={{
+                width: "400px !important",
+                border: `${warnings.state ? "1px solid red" : ""}`,
+              }}
             />
           </div>
           <div className=" space-x-10 grid grid-cols-2 xsm:justify-between xsm:gap-0 xsm:space-x-2">
-            {state?
-          <CitySelector
-          country={country}
-          state={state}
-          value={city}
-          onChange={setCity}
-          placeholder="Select a city"
-          styleContainer={{ padding: "0px !important" }}
-        />:''}
+            {state ? (
+              <CitySelector
+                country={country}
+                state={state}
+                value={city}
+                onChange={setCity}
+                placeholder="Select a city"
+                styleContainer={{ padding: "0px !important" }}
+              />
+            ) : (
+              ""
+            )}
             <input
               value={inputData.gstnumber}
               name="gstnumber"
@@ -373,12 +399,14 @@ try {
           </div>
           <div className="flex space-x-10 grid grid-cols-2 xsm:justify-between xsm:gap-0 xsm:space-x-2">
             <input
-             value={inputData.address}
+              value={inputData.address}
               name="address"
               onChange={handleInputchange}
               placeholder="Address"
               required
-              className={`w-full py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px] ${warnings.address ? 'border border-red-500' : ''}`}
+              className={`w-full py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 md:text-[14px] ${
+                warnings.address ? "border border-red-500" : ""
+              }`}
             />
             <input
               value={inputData.zip}
@@ -392,7 +420,9 @@ try {
               }}
               type="number"
               placeholder="ZIP Code"
-              className={`w-[88%] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 xsm:w-[95%] md:text-[14px] md:w-[80%] ${warnings.zip ? 'border border-red-500' : ''}`}
+              className={`w-[88%] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 xsm:w-[95%] md:text-[14px] md:w-[80%] ${
+                warnings.zip ? "border border-red-500" : ""
+              }`}
             />
           </div>
 
@@ -420,7 +450,7 @@ try {
                         <div className="flex flex-nowrap justify-between items-center">
                           <div className="space-y-2 md:space-y-1">
                             <p className="font-mons text-[1.5vw] font-semibold  2xl:text-[18px] xsm:text-[10px]">
-                              {item?.course?.title?.slice(0,60)}..
+                              {item?.course?.title?.slice(0, 60)}..
                             </p>
                             <p className="text-[#696984] text-md w-[100%] xsm:hidden md:text-[10px]">
                               {item?.course?.overview.slice(0, 60)}..{" "}
@@ -437,6 +467,9 @@ try {
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                 {item?.course?.category}
                               </p>
+                              <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
+                                {item?.internship?.category}
+                              </p>
                             </div>
                             <div className="flex space-x-2 items-center xsm:space-x-0">
                               <img
@@ -448,9 +481,8 @@ try {
                               </p>
                             </div>
                           </div>
-                          
                         </div>
-                        
+
                         <div>
                           <hr className="mt-[0.9vw] border-y-1 border-[#EAEAEA] " />
                         </div>
@@ -485,11 +517,22 @@ try {
                             </div>
                           </div>
                           <div className="flex items-center">
-                          { item?.course?.discount_percentage ? <strike className="font-pop font-semibold text-gray-400 italic text-[14px] xsm:text-[11px] sm:text-[8px] md:text-[8px]">
-                {item?.course?.base_price == 0 ? "Free" : "₹" + item?.course?.base_price}
-              </strike>:""}
+                            {item?.course?.discount_percentage ? (
+                              <strike className="font-pop font-semibold text-gray-400 italic text-[14px] xsm:text-[11px] sm:text-[8px] md:text-[8px]">
+                                {item?.course?.base_price == 0
+                                  ? "Free"
+                                  : "₹" + item?.course?.base_price}
+                              </strike>
+                            ) : (
+                              ""
+                            )}
                             <p className="font-Inter text-[1.2vw] font-semibold text-[black] 2xl:text-[20px] xsm:text-[8px]">
-                              ₹{parseFloat(item?.course?.base_price-(item?.course?.base_price*(item?.course?.discount_percentage/100)))}
+                              ₹
+                              {parseFloat(
+                                item?.course?.base_price -
+                                  item?.course?.base_price *
+                                    (item?.course?.discount_percentage / 100)
+                              )}
                             </p>
                           </div>
                         </div>
@@ -519,7 +562,7 @@ try {
                         <div className="flex flex-nowrap justify-between items-center">
                           <div className="space-y-2 md:space-y-1">
                             <p className="font-mons text-[1.5vw] font-semibold  2xl:text-[18px] xsm:text-[10px]">
-                              {item?.internship?.title?.slice(0,60)}..
+                              {item?.internship?.title?.slice(0, 60)}..
                             </p>
                             <p className="text-[#696984] text-md w-[100%] xsm:hidden md:text-[10px]">
                               {item?.internship?.overview.slice(0, 60)}..{" "}
@@ -543,13 +586,13 @@ try {
                                 src="../Icons/clock2.svg"
                               />
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
-                                45 Hours
+                                {/* 45 Hours */}
+                                {item?.internship?.duration / 60} Hours
                               </p>
                             </div>
                           </div>
-                          
                         </div>
-                        
+
                         <div>
                           <hr className="mt-[0.9vw] border-y-1 border-[#EAEAEA] " />
                         </div>
@@ -584,11 +627,23 @@ try {
                             </div>
                           </div>
                           <div className="flex items-center">
-                          { item?.internship?.discount_percentage ? <strike className="font-pop font-semibold text-gray-400 italic text-[14px] xsm:text-[11px] sm:text-[8px] md:text-[8px]">
-                {item?.internship?.base_price == 0 ? "Free" : "₹" + item?.internship?.base_price}
-              </strike>:""}
+                            {item?.internship?.discount_percentage ? (
+                              <strike className="font-pop font-semibold text-gray-400 italic text-[14px] xsm:text-[11px] sm:text-[8px] md:text-[8px]">
+                                {item?.internship?.base_price == 0
+                                  ? "Free"
+                                  : "₹" + item?.internship?.base_price}
+                              </strike>
+                            ) : (
+                              ""
+                            )}
                             <p className="font-Inter text-[1.2vw] font-semibold text-[black] 2xl:text-[20px] xsm:text-[8px]">
-                              ₹{parseFloat(item?.internship?.base_price-(item?.internship?.base_price*(item?.internship?.discount_percentage/100)))}
+                              ₹
+                              {parseFloat(
+                                item?.internship?.base_price -
+                                  item?.internship?.base_price *
+                                    (item?.internship?.discount_percentage /
+                                      100)
+                              )}
                             </p>
                           </div>
                         </div>
@@ -613,36 +668,119 @@ try {
           {/* Summary div start*/}
           <div className="mt-5 mb-4 xsm:my-0">
             <div className="flex justify-between">
-            <h1 className="text-base font-semibold xsm:text-[10px] md:text-[14px]">
-              Original Price:
-            </h1>
-              <p className="xsm:text-[12px] md:text-[14px] font-semibold">₹{total}</p>
+              <h1 className="text-base font-semibold xsm:text-[10px] md:text-[14px]">
+                Original Price:
+              </h1>
+              <p className="xsm:text-[12px] md:text-[14px] font-semibold">
+                ₹{total}
+              </p>
             </div>
           </div>
           <hr />
           <div className="mt-5 mb-4 xsm:my-0">
             <div className="flex justify-between">
-            <input value={coupon} onChange={(e)=>setcoupon(e.target.value)} placeholder="Coupon (optional)" className="px-2 focus:outline-none border-b"/>
-            {!applied ? <p onClick={handlecoupon} className="xsm:text-[12px] md:text-[14px] font-semibold green-color cursor-pointer">Apply</p>:<p  className="xsm:text-[12px] md:text-[14px] font-semibold opacity-50 cursor-not-allowed">Applied</p>}
+              <input
+                value={coupon}
+                onChange={(e) => setcoupon(e.target.value)}
+                placeholder="Coupon (optional)"
+                className="px-2 focus:outline-none border-b"
+              />
+              {!applied ? (
+                <p
+                  onClick={handlecoupon}
+                  className="xsm:text-[12px] md:text-[14px] font-semibold green-color cursor-pointer"
+                >
+                  Apply
+                </p>
+              ) : (
+                <p className="xsm:text-[12px] md:text-[14px] font-semibold opacity-50 cursor-not-allowed">
+                  Applied
+                </p>
+              )}
             </div>
           </div>
           <div className="mt-5 mb-4 xsm:my-0">
             <div className="flex justify-between">
               <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
-                Discount Added 
+                Discount Added
               </p>
-              <p className="xsm:text-[12px] md:text-[14px]">-₹{discountPrice}</p>
+              <p className="xsm:text-[12px] md:text-[14px]">
+                -₹{discountPrice}
+              </p>
             </div>
           </div>
           <div className="mt-5 mb-4 xsm:my-0">
-            <h1 className="text-base xsm:text-[10px] md:text-[14px] font-semibold">Total:</h1>
+            <h1 className="text-base xsm:text-[10px] md:text-[14px] font-semibold">
+              Total:
+            </h1>
             <div className="flex justify-between">
               <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
                 Including all the taxes
               </p>
-              <p className="xsm:text-[12px] md:text-[14px] font-semibold">₹{total-discountPrice}</p>
+              <p className="xsm:text-[12px] md:text-[14px] font-semibold">
+                ₹ {total - discountPrice}
+              </p>
             </div>
+
+            {Data?.internships && Data?.internships?.length > 0 && (
+              <div>
+                <div className="flex justify-between">
+                  <p className="font-semibold">Registration Fee :</p>
+                  <p className="font-semibold">
+                    ₹ {Data?.internships[0].internship.registration_price}
+                  </p>
+                </div>
+
+                {/* Radio Button */}
+                <div className="flex justify-around items-center py-4">
+                  {/* Radio Button 1 */}
+                  <div className="flex items-center">
+                    <label
+                      htmlFor="option1"
+                      className="flex items-center space-x-2 cursor-pointer p-1 hover:bg-gray-300 rounded-lg shadow-md"
+                    >
+                      <input
+                        id="option1"
+                        type="radio"
+                        name="options"
+                        value="registration_amount"
+                        className="hidden peer"
+                        onChange={() =>
+                          handlePaymentChange("registration_amount")
+                        }
+                      />
+                      <span className="w-4 h-4 rounded-full border border-gray-600 bg-gray-100 peer-checked:bg-green-600 peer-checked:border-green-600 peer-focus:ring-2 peer-focus:ring-blue-500"></span>
+                      <span className="text-sm font-medium text-gray-900">
+                        Pay Registration Fee
+                      </span>
+                    </label>
+                  </div>
+
+                  {/* Radio Button 2 */}
+                  <div className="flex items-center">
+                    <label
+                      htmlFor="option2"
+                      className="flex items-center space-x-2 cursor-pointer p-1 hover:bg-gray-300  rounded-lg shadow-md"
+                    >
+                      <input
+                        id="option2"
+                        type="radio"
+                        name="options"
+                        value="totalamount"
+                        className="hidden peer"
+                        onChange={() => handlePaymentChange("totalamount")}
+                      />
+                      <span className="w-4 h-4 rounded-full border border-gray-600 bg-gray-100 peer-checked:bg-green-600 peer-checked:border-green-600 peer-focus:ring-2 peer-focus:ring-blue-500"></span>
+                      <span className="text-sm font-medium text-gray-700">
+                        Pay Total Fee
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
+
           <span className="flex justify-center xsm:mt-4 md:mt-4">
             <button
               className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px] md:text-[16px] md:px-8"
@@ -654,42 +792,62 @@ try {
               confirm Payment
             </a> */}
           </span>
+
           {/* Summary div end*/}
         </div>
         {/* Summary end */}
       </div>
-      {showModal &&
-        <div id="modelConfirm" className="fixed  z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 ">
-            <div className="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
-
-                <div className="flex justify-end p-2">
-                    <button onClick={closeConfirm} type="button"
-                        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clipRule="evenodd"></path>
-                        </svg>
-                    </button>
-                </div>
-
-                <div className="p-6 pt-0 text-center">
-                    <h3 className="text-xl font-normal text-gray-500 mt-5 mb-6">Please confirm your purchase</h3>
-                    <a href="#"  onClick={handleConfirm}
-                        className="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
-                        Yes, I'm sure
-                    </a>
-                    <a href="#" onClick={closeConfirm}
-                        className="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center"
-                        data-modal-toggle="delete-user-modal">
-                        No, cancel
-                    </a>
-                </div>
-
+      {showModal && (
+        <div
+          id="modelConfirm"
+          className="fixed  z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 "
+        >
+          <div className="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
+            <div className="flex justify-end p-2">
+              <button
+                onClick={closeConfirm}
+                type="button"
+                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </button>
             </div>
+
+            <div className="p-6 pt-0 text-center">
+              <h3 className="text-xl font-normal text-gray-500 mt-5 mb-6">
+                Please confirm your purchase
+              </h3>
+              <a
+                href="#"
+                onClick={handleConfirm}
+                className="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2"
+              >
+                Yes, I'm sure
+              </a>
+              <a
+                href="#"
+                onClick={closeConfirm}
+                className="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center"
+                data-modal-toggle="delete-user-modal"
+              >
+                No, cancel
+              </a>
+            </div>
+          </div>
         </div>
-      }
-      
+      )}
+
       <Toaster position="top-center" />
       {/* CheckOut end */}
     </>

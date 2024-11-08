@@ -1,3 +1,5 @@
+import "./Header.css";
+
 export default function Header() {
   return (
     <div className="bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-col  font-pop px-[5%] h-screen xsm:h-[110vh] md:h-[130vh] sm:h-[140vh] xsm:px-2">
@@ -28,6 +30,10 @@ export default function Header() {
             Develop a strong foundation through six months of focused training, preparing you for real-world challenges.            
             </p>
           </div>
+
+
+
+          
           {/* Card 2 */}
           <div
             className="group w-[45vw] xsm:w-[45%] xsm:h-[20vh] sm:w-[45%] md:w-[23%] lg:w-[23%] xl:w-[23%] 2xl:w-[23%] 3xl:w-[23%] h-[25vh] shadow-lg rounded-xl p-4 flex flex-col justify-center items-center cursor-pointer hover:bg-gray-800 hover:text-white transition-all duration-300 relative"
@@ -83,7 +89,6 @@ export default function Header() {
             Gain access to job placement opportunities that align with your skills and help launch your career path.            </p>
           </div>
         </div>
-
         {/* Card 5 */}
         <div
           className="group w-[25vw] h-[35vh] sm:h-full sm:object-cover sm:flex-col sm:w-full xsm:object-cover xsm:w-full xsm:flex-col md:flex-col       md:w-full md:h-full shadow-lg rounded-xl p-4 flex justify-center items-center cursor-pointer hover:text-white transition-all duration-300 relative"
