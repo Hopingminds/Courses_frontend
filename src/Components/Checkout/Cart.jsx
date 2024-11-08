@@ -42,7 +42,7 @@ const CartCheckout = () => {
   const [coupon, setcoupon] = useState();
   const [applied, setapplied] = useState(false);
   const [cart, setCart] = useState(null);
-  const [internshipPayment, setInternshipPayment] = useState(""); 
+  const [internshipPayment, setInternshipPayment] = useState("registration_amount"); 
   const [inputData, setinputData] = useState({
     name,
     address,
@@ -248,7 +248,7 @@ const CartCheckout = () => {
       "%20"
     )}&state=${state?.name.replace(/\s/g, "%20")}&gstNumber=${
       inputData?.gstnumber || "000"
-    }&promoCode=${coupon}`;
+    }&promoCode=${coupon}&internshipPayment=${internshipPayment}`;
     // console.log(paymentUrl)
     async function handlePaymentUrl() {
       try {
@@ -744,6 +744,8 @@ const CartCheckout = () => {
                         type="radio"
                         name="options"
                         value="registration_amount"
+                        checked={internshipPayment=="registration_amount"}
+
                         className="hidden peer"
                         onChange={() =>
                           handlePaymentChange("registration_amount")
@@ -765,6 +767,7 @@ const CartCheckout = () => {
                       <input
                         id="option2"
                         type="radio"
+                        checked={internshipPayment=="totalamount"}
                         name="options"
                         value="totalamount"
                         className="hidden peer"
