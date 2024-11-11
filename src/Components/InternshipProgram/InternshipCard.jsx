@@ -201,9 +201,9 @@ const Internshipcard = ({ course }) => {
         <h2 className="text-xl font-bold text-gray-800 h-20 ">
           {course?.title}
         </h2>
-        <p className="h-24">
-          {course?.overview?.length > 120
-            ? `${course.overview.slice(0, 120)}...`
+        <p className="h-10">
+          {course?.overview?.length > 70
+            ? `${course.overview.slice(0, 70)}...`
             : course?.overview}
         </p>
       </div>
@@ -223,7 +223,7 @@ const Internshipcard = ({ course }) => {
       </div>
       <div className="p-4">
         <button
-          className="px-10 py-4 bg-green-500 w-full rounded-xl hover:bg-green-600 transition-all duration-300"
+          className="px-6 text-white py-3 bg-green-500 w-full rounded-xl hover:bg-green-600 transition-all duration-300"
           onClick={handleEnrollClick}
         >
           View Course

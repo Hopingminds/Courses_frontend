@@ -108,14 +108,13 @@ export default function Commoncardinternship(props) {
 
         if (response.success) {
           // Show success message and refresh cart
-          toast.success(response.msg);
-          setshow(false); // Hide loader
+          // toast.success(response.msg);
           GetCart(); // Refresh cart items
           CheckCourseInCart(courseid)
         } else {
           // Display error message if unsuccessful
           toast.error(response.msg || "Failed to add item to cart");
-          setshow(false);
+          // setshow(false);
         }
       } else {
         // Save the current path and navigate to login if not authenticated
@@ -141,7 +140,6 @@ export default function Commoncardinternship(props) {
       let token = jwtDecode(login);
       let email = token.email;
       let url = `${BASE_URL}/addtowishlist`;
-      setshow(true); // Show loader
 
       // Send POST request to add item to wishlist
       let data = await fetch(url, {
@@ -157,14 +155,12 @@ export default function Commoncardinternship(props) {
 
       if (response.success) {
         // Show success message and refresh wishlist
-        toast.success(response.msg);
+        // toast.success(response.msg);
         // CheckCourseInWishlist(internshipid);
-        setshow(false); // Hide loader
         CheckCourseInWishlist(internshipid)
       } else {
         // Display error message if unsuccessful
         toast.error(response.msg || "Failed to add item to wishlist");
-        setshow(false);
       }
     } else {
       // Save the current path and navigate to login if not authenticated
@@ -175,7 +171,7 @@ export default function Commoncardinternship(props) {
     // Log and notify user of any errors during the fetch operation
     console.error("Error adding to wishlist:", error);
     toast.error("An error occurred while adding to wishlist.");
-    setshow(false);
+    // setshow(false);
   }
 }
 

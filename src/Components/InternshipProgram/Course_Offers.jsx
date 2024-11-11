@@ -63,12 +63,12 @@ const Course_Offers = () => {
           </button>
         ))}
 
-        <div className="flex justify-center text-center text-[40px] font-semibold text-[#000] xsm:text-[12px] sm:text-[18px] md:text-[20px]">
+        <div className="flex justify-center text-center text-[40px]  text-[#000] xsm:text-[12px] sm:text-[18px] md:text-[20px]">
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="text-[#1DBF73] text-[16px] font-bold xsm:text-[10px] md:text-[14px] px-4 py-2 rounded-md border-2 border-[#1DBF73] shadow-lg focus:outline-none focus:border-[#1DAF63] focus:shadow-md transition-all duration-200 ease-in-out"
+            className="text-[#1DBF73] text-[16px]  xsm:text-[10px] md:text-[14px] px-4 py-2 rounded-md border-2 border-[#1DBF73] shadow-lg focus:outline-none focus:border-[#1DAF63] focus:shadow-md transition-all duration-200 ease-in-out"
             placeholder="Search by internship name..."
           />
         </div>

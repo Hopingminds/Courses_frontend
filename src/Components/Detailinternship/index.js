@@ -99,7 +99,7 @@ export default function InternshipDetail() {
         let token = jwtDecode(login);
         let email = token.email;
         let url = `${BASE_URL}/addtocart`;
-        setshow(true);
+        // setshow(true);
 
         let data = await fetch(url, {
           method: "POST",
@@ -113,13 +113,11 @@ export default function InternshipDetail() {
         let response = await data.json();
 
         if (response.success) {
-          toast.success(response.msg);
-          setshow(false); // Hide loader
+          // toast.success(response.msg);
           GetCart(); // Refresh cart items
           CheckCourseInCart(courseid);
         } else {
           toast.error(response.msg || "Failed to add item to cart");
-          setshow(false);
         }
       } else {
         localStorage.setItem("ADD_TO_CART_HISTORY", window.location.pathname);
@@ -128,7 +126,7 @@ export default function InternshipDetail() {
     } catch (error) {
       console.error("Error adding to cart:", error);
       toast.error("An error occurred while adding to cart.");
-      setshow(false);
+      // setshow(false);
     }
   }
 
@@ -140,7 +138,7 @@ export default function InternshipDetail() {
         let token = jwtDecode(login);
         let email = token.email;
         let url = `${BASE_URL}/addtowishlist`;
-        setshow(true);
+        // setshow(true);
 
         // Clear any existing toasts to prevent duplicates
         toast.dismiss();
@@ -158,13 +156,12 @@ export default function InternshipDetail() {
         let response = await data.json();
 
         if (response?.success) {
-          toast.success(response.msg);
-          setshow(false); // Hide loader
+          // toast.success(response.msg);
           GetCart(); // Refresh cart items
           CheckCourseInWishlist(internshipid);
         } else {
           toast.error(response.msg || "Failed to add item to cart");
-          setshow(false);
+          // setshow(false);
         }
       } else {
         localStorage.setItem("ADD_TO_CART_HISTORY", window.location.pathname);
@@ -172,8 +169,6 @@ export default function InternshipDetail() {
       }
     } catch (error) {
       console.error("Error adding to cart:", error);
-      toast.error("An error occurred while adding to cart.");
-      setshow(false);
     }
   }
 
