@@ -127,7 +127,7 @@ const QuestionForm = () => {
               </div>
               <div className="flex flex-row items-center ml-2">
 
-              <FaEnvelope className="text-red-500 pr-2 h-8 w-8"/>
+              <FaEnvelope className="text-green-500 pr-2 h-8 w-8"/>
               <p className="text-lg">support@hopingminds.com</p>
               </div>
               

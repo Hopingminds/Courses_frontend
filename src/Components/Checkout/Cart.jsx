@@ -118,6 +118,7 @@ const CartCheckout = () => {
     setFinalPrice(price - disprice);
   }
 
+
   useEffect(() => {
     async function fetchData() {
       if (login) {
@@ -299,6 +300,68 @@ const CartCheckout = () => {
     //   )}&state=${state?.name.replace(/\s/g, "%20")}&gstNumber=${
     //     inputData?.gstnumber
     //   }`;
+  };
+const handleContinueCheckout = async () => {
+    try {
+      setshow(true);
+      let url = BASE_URL + "/purchasecourse";
+      let url1 = BASE_URL + "/deletecart";
+      let orderDetails = {
+        name: userDetail.name,
+        zip,
+        gstnumber,
+        country: country.capital,
+        state: state.label,
+        address,
+      };
+     
+      setcourseId(temp);
+      let data = await fetch(url, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + login,
+        },
+        body: JSON.stringify({ courses: temp, orderDetails: orderDetails }),
+      });
+      let response = await data.json();
+      // console.log(response);
+      if (response.success) {
+        if (!query.get("slug")) {
+          let data1 = await fetch(url1, {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + login,
+            },
+            body: JSON.stringify({ email: userDetail.email }),
+          });
+          // let response1 = await data1.json();
+        }
+        // toast.success(response.message);
+        setshow(false);
+        // setTimeout(() => {
+        //   navigate("/success");
+        // }, 1000);
+      } else {
+        // toast.error(response.message);
+      }
+      //   if (response.success) {
+      //     toast.success(response.message);
+      //     setTimeout(() => {
+      //       navigate("/success");
+      //     }, 1000);
+      //   } else {
+      //     toast.error(response.message);
+      //   }
+      // } else {
+      //   toast.error(response.message);
+      // }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleConfirm = () => {
@@ -727,7 +790,7 @@ const CartCheckout = () => {
                 <div className="flex justify-between">
                   <p className="font-semibold">Registration Fee :</p>
                   <p className="font-semibold">
-                    ₹ {Data?.internships[0].internship.registration_price}
+                    ₹ {Data?.internships[0].internship.registration_price*Data?.internships?.length}
                   </p>
                 </div>
 

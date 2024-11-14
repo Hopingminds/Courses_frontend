@@ -7,6 +7,8 @@ import HireTestimonial from './Testimonials';
 import QuestionForm from './QuestionForm';
 import { useLocation } from 'react-router-dom';
 import OurFeatures from '../OurFeatures/OurFeatures';
+import Banner from './Banner';
+import Certificate from '../Certificate/Certificate';
 
 const InternshipProgram = () => {
   const questionFormRef = useRef(null);
@@ -21,11 +23,14 @@ const InternshipProgram = () => {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
+  <Banner/>
       <Companies2 />
       <Course_Offers />
       <OurFeatures />
       <WhatHM />
+      <Certificate/>
+
       <HireTestimonial />
       {/* Ref added to QuestionForm for smooth scrolling */}
       <div ref={questionFormRef}>

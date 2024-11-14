@@ -97,7 +97,7 @@ const Register = () => {
             body:JSON.stringify({mobileNo:countrycode,otp:otp})
         })
        response=await data.json()
-        console.log(response);
+        // console.log(response);
         if(response.success){
             toast.success(response.message)
             closeModal()

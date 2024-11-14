@@ -149,10 +149,20 @@ const Internshipcard = ({ course }) => {
         let response = await data.json();
         if (response.success) {
           toast.success(response.msg);
+          setTimeout(() => {
+            toast.dismiss()
+          }, 1500);
+
           setshow(false);
           GetCart();
         } else {
           // Handle error scenario
+          
+          toast.error(response.msg);
+          setTimeout(() => {
+            toast.dismiss()
+          }, 1500);
+
         }
       } else {
         localStorage.setItem("ADD_TO_CART_HISTORY", window.location.pathname);
@@ -174,26 +184,26 @@ const Internshipcard = ({ course }) => {
 
   return (
     <div className="w-full overflow-hidden shadow-lg bg-white rounded-[30px]">
-      <Toaster />
+      {/* <Toaster /> */}
       <div className="relative group hover:cursor-pointer">
         <img
           src={course?.featured_image}
           alt={course?.title || "Internship Course Image"}
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-4 right-4 hover:cursor-pointer">
-          <button>
+        <div className="absolute top-4 right-4 hover:cursor-pointer z-50">
+          <button onClick={() => Addtocart(course?._id)}>
             <img src="cart.png" alt="Cart Icon" className="w-8 h-8" />
           </button>
         </div>
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
+        <div className="absolute  inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
           <div className="text-center">
             <h2 className="text-white text-3xl font-bold">
               ₹ {course?.base_price}
             </h2>
-            <button onClick={() => Addtocart(course?._id)}>
+            {/* <button >
               <img src="cart.png" alt="Cart Icon" className="w-8 h-8" />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
