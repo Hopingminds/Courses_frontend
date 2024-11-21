@@ -4,6 +4,7 @@ import Router from './Routing/route';
 import { AUTH_BASE_URL, BASE_URL } from './Api/api';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
+import ChatBot from './Components/chatbot/chatbot'
 // import io from 'socket.io-client';
 
 export const Globalinfo = createContext()
