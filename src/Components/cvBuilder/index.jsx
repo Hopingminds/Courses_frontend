@@ -16,6 +16,9 @@ import LS from "./utils/browser.utils";
 import CV4 from "./CV4";
 import CV5 from "./CV5";
 import toast, { Toaster } from "react-hot-toast";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { BASE_URL } from "../../Api/api";
 
 export default function CVBuilder() {
   const [cv, setCv] = useState(cvData);
@@ -189,7 +192,46 @@ export default function CVBuilder() {
       setCv((currentCv) => ({ ...currentCv, ...cvLocal }));
     }
   }, []);
+const Savedata=async(componentRef)=>{
+  const element = componentRef.current;
+    console.log(element);
+    
+  // Capture the component as a canvas
+  const canvas = await html2canvas(element, { scale: 1 });
+  const imgData = canvas.toDataURL("image/png",0.7);
 
+  // Create a new PDF instance
+  const pdf = new jsPDF("p", "mm", "a4");
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+  pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+
+  // Convert the PDF to a Blob
+  const pdfBlob = pdf.output("blob");
+console.log(pdfBlob);
+
+  // Create FormData and append the PDF Blob
+  const formData = new FormData();
+  formData.append("resume", pdfBlob, `${cv.name}.pdf`);
+
+  // Attach any additional data if needed
+  formData.append("name", cv.name);
+  formData.append("email", cv.email);
+
+  try {
+    // Send the FormData via API
+    const response = await fetch(BASE_URL+'/saveUserResume', {
+      method:'POST',
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      body:formData
+    });
+    console.log("PDF uploaded successfully:", response);
+  } catch (error) {
+    console.error("Error uploading PDF:", error);
+  }
+}
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
 
@@ -197,7 +239,7 @@ export default function CVBuilder() {
       "body { transform-origin: top left; margin: auto; transform: scale(1); -webkit-print-color-adjust: exact !important;  color-adjust: exact !important; print-color-adjust: exact !important; }",
 
     documentTitle: cv.name,
-    onAfterPrint: () => console.log("printed"),
+    onAfterPrint: () => Savedata(componentRef),
   });
 
   const ifScaleUpOrDown = () => {
