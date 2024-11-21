@@ -281,13 +281,13 @@ export default function Commoncardinternship(props) {
         <div className="flex flex-col gap-4 mt-6 xsm:mt-2 xsm:gap-1 md:gap-3 md:mt-4 xsm:px-[1rem]">
           <div className="flex flex-col justify-between items-center xsm:pb-1 ">
             <h2 className="flex-col font-nu text-[30px] font-bold xsm:text-[32px] md:text-[12px] flex items-center">
-              {Data?.featured_image && (
+              {(!Data?.featured_video)? (
                 <img
                   src={Data?.featured_image}
                   alt="Featured"
-                  className="w-full h-full" 
+                  className="w-full h-full rounded-lg" 
                 />
-              )}
+              ):''}
               {Data?.base_price === 0
                 ? "Free"
                 : "₹" +
