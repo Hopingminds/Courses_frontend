@@ -4,7 +4,7 @@ const Banner = () => {
   return (
     <div className=" bg-white ">
     <div
-      style={{ backgroundImage: "url('/background.png')" }}
+      style={{ backgroundImage: "url('/internshipbackground.png')" }}
       className="bg-[#0F2027] bg-cover h-[80vh]"
     >
       <div className="flex justify-between h-[90vh]">
@@ -25,22 +25,22 @@ const Banner = () => {
         </div>
       </div>
     </div>
-    <div className=" ml-[20%] relative bottom-32 xsm:ml-[20%] xsm:mt-[40%] sm:ml-24 sm:mt-24 md:right-[20%]  lg:bottom-28 xl:mt-10 xl:ml-[26%]">
+    <div className=" ml-[20%] relative bottom-32 xsm:ml-[12%] xsm:w-full sm:ml-24 sm:mt-24 md:right-[20%]  lg:bottom-28 xl:mt-10 xl:ml-[26%]">
       <div className=" border border-white p-14 lg:p-10 md:p-9 xl:p-10  bg-[#0F2027] xsm:flex-col sm:flex-col flex justify-between xsm:gap-5 sm:gap-5 lg:gap-4 w-9/12  xl:w-[65%] md:w-full md:ml-20 rounded-3xl relative">
         <img
           src="trophy.png"
-          className=" xsm:hidden sm:hidden absolute top-0 -right-0 lg:right-7 transform -translate-x-1/2 -translate-y-[65%] bg-[#0F2027] rounded-full border border-white hover:bg-[#1DBF73] hover:cursor-pointer transition-all duration-300 w-[90px] h-[90px]"
+          className=" xsm:hidden sm:hidden absolute top-0 -right-0 lg:right-2 transform -translate-x-1/2 -translate-y-[65%] bg-[#0F2027] rounded-full border border-white hover:bg-[#1DBF73] hover:cursor-pointer transition-all duration-300 w-[90px] h-[90px]"
           alt=""
         />
         <div className="flex flex-col gap-3 xsm:gap-1 items-center ">
           <h1 className="text-[#1DBF73] text-2xl font-bold xsm:text-2xl sm:text-3xl md:text-3xl lg:text-2xl tracking-tighter">
             6 Months
           </h1>
-          <p className="text-white font-semibold ">of Practical Learning</p>
+          <p className="text-white font-semibold ">Practical Learning</p>
         </div>
         <img
           src="bag.png"
-          className=" xsm:hidden sm:hidden absolute top-0 left-[60%] lg:left-[60%] transform -translate-x-1/2 -translate-y-[65%] bg-[#0F2027] rounded-full border border-white hover:bg-[#1DBF73] hover:cursor-pointer transition-all duration-300 w-[90px] h-[90px]"
+          className=" xsm:hidden sm:hidden absolute top-0 left-[60%] md:left-[66%] lg:left-[64%] xl:left-[64%] transform -translate-x-1/2 -translate-y-[65%] bg-[#0F2027] rounded-full border border-white hover:bg-[#1DBF73] hover:cursor-pointer transition-all duration-300 w-[90px] h-[90px]"
           alt=""
         />
         <div className="flex flex-col gap-3 xsm:gap-1 items-center">
@@ -51,7 +51,7 @@ const Banner = () => {
         </div>
         <img
           src="cal.png"
-          className="xsm:hidden sm:hidden absolute top-0 left-[39%] transform -translate-x-1/2 -translate-y-[65%] bg-[#0F2027] rounded-full border border-white hover:bg-[#1DBF73] hover:cursor-pointer transition-all duration-300 w-[90px] h-[90px]"
+          className="xsm:hidden sm:hidden absolute top-0 left-[39%] md:left-[41%] transform -translate-x-1/2 -translate-y-[65%] bg-[#0F2027] rounded-full border border-white hover:bg-[#1DBF73] hover:cursor-pointer transition-all duration-300 w-[90px] h-[90px]"
           alt=""
         />
         <div className="flex flex-col gap-3 xsm:gap-1 items-center">
@@ -62,14 +62,14 @@ const Banner = () => {
         </div>
         <img
           src="cale.png"
-          className=" xsm:hidden sm:hidden absolute top-0 left-[14%] transform -translate-x-1/2 -translate-y-[65%] bg-[#0F2027] rounded-full border border-white hover:bg-[#1DBF73] hover:cursor-pointer transition-all duration-300 w-[90px] h-[90px]"
+          className=" xsm:hidden sm:hidden absolute top-0 left-[14%] md:left-[16%] transform -translate-x-1/2 -translate-y-[65%] bg-[#0F2027] rounded-full border border-white hover:bg-[#1DBF73] hover:cursor-pointer transition-all duration-300 w-[90px] h-[90px]"
           alt=""
         />
         <div className="flex flex-col gap-3 xsm:gap-1 items-center">
           <h1 className="text-[#1DBF73] text-2xl font-bold xsm:text-2xl sm:text-3xl md:text-3xl lg:text-2xl">
-          Open Doors
+          Gain
           </h1>
-          <p className="text-white font-semibold">to Career Opportunities</p>
+          <p className="text-white font-semibold">Career Access</p>
         </div>
       </div>
     </div>
