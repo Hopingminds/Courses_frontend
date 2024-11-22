@@ -2,10 +2,10 @@ import React from 'react'
 
 const Banner = () => {
   return (
-    <div className=" bg-black ">
+    <div className=" bg-white ">
     <div
       style={{ backgroundImage: "url('/background.png')" }}
-      className="bg-[#0F2027] bg-cover h-[80vh]"
+      className=" bg-cover h-[80vh]"
     >
       <div className="flex justify-between h-[90vh]">
         <div className=" flex p-32 flex-col gap-6 xsm:p-10 sm:p-16 md:p-12 lg:p-16">
@@ -21,7 +21,7 @@ const Banner = () => {
           </button>
         </div>
         <div className="  xsm:hidden sm:hidden">
-          <img src="Group.png" alt="" className="h-[80%]  lg:h-[60%] lg:w-[25vw] md:h-[50%] md:w-[50vw]" />
+          <img src="Group.png" alt="" className="h-[80%]  lg:h-[60%]  md:h-[50%] md:w-[50vw]" />
         </div>
       </div>
     </div>
