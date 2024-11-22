@@ -16,7 +16,7 @@ const Banner = () => {
           <p className="text-white tracking-wide ">
           Gain the skills, confidence, and connections to kickstart your career. Ready to take the leap? Let's get started!           
           </p>
-          <button className=" bg-[#1DBF73] text-white w-[20%] p-3 xsm:w-full sm:w-full md:w-[30%] lg:w-[30%]  text-2xl font-bold tracking-wide rounded-full">
+          <button className=" bg-[#1DBF73] text-white w-[20%] p-2 xsm:w-full sm:w-full md:w-[30%] lg:w-[20%]  text-xl font-bold tracking-wide rounded-full">
             Book Now
           </button>
         </div>
