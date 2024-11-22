@@ -5,7 +5,7 @@ const Banner = () => {
     <div className=" bg-white ">
     <div
       style={{ backgroundImage: "url('/background.png')" }}
-      className=" bg-cover h-[80vh]"
+      className="bg-[#0F2027] bg-cover h-[80vh]"
     >
       <div className="flex justify-between h-[90vh]">
         <div className=" flex p-32 flex-col gap-6 xsm:p-10 sm:p-16 md:p-12 lg:p-16">
