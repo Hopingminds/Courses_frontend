@@ -45,7 +45,7 @@ const Course_Offers = () => {
         Internship <span className="text-[#1dbf73]">Programs</span>
       </div>
       
-      <div className="justify-between h-12 md:h-8 sm:h-8 xsm:h-fit flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-1 xsm:flex-nowrap xsm:gap-y-2 xsm:gap-x-[8px] xsm:justify-between xsm:text-[8px] sm:space-x-4 sm:gap-y-2 sm:text-[10px] sm:flex-wrap md:text-[12px] md:space-x-6 xsm:overflow-x-auto xsm:w-[90vw] xsm:overflow-y-hidden xsm:py-[6px]">
+      {/* <div className="justify-between h-12 md:h-8 sm:h-8 xsm:h-fit flex w-full font-semibold space-x-10 font-pop xl:space-x-12 xsm:space-x-1 xsm:flex-nowrap xsm:gap-y-2 xsm:gap-x-[8px] xsm:justify-between xsm:text-[8px] sm:space-x-4 sm:gap-y-2 sm:text-[10px] sm:flex-wrap md:text-[12px] md:space-x-6 xsm:overflow-x-auto xsm:w-[90vw] xsm:overflow-y-hidden xsm:py-[6px]">
         {[
           "All Internship Programs",
           // Add other categories as needed
@@ -72,13 +72,13 @@ const Course_Offers = () => {
             placeholder="Search by internship name..."
           />
         </div>
-      </div>
+      </div> */}
 
-      <div className="grid grid-cols-4 xsm:grid-cols-1 gap-4 md:grid-cols-3 sm:grid-cols-1 lg:grid-cols-4 mt-3">
+      <div className="grid grid-cols-4 xsm:grid-cols-1 gap-4 md:grid-cols-3 sm:grid-cols-1 lg:grid-cols-4 mt-5">
         {loading
           ? [1, 2, 3, 4].map((item) => <Skeleton key={item} />)
-          : courses?.map((course) => (
-              <Internshipcard key={course.id} course={course} />
+          : courses?.map((course,index) => (
+              <Internshipcard key={course.id} ind={index} course={course} />
             ))}
       </div>
     </div>

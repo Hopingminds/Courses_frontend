@@ -116,18 +116,22 @@
 
 // export default Internshipcard;
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Globalinfo } from "../../App";
 import { jwtDecode } from "jwt-decode";
 import { BASE_URL } from "../../Api/api";
 import toast, { Toaster } from "react-hot-toast";
+import { IoVolumeMediumOutline, IoVolumeMuteOutline } from "react-icons/io5";
+import ReactPlayer from "react-player";
 
-const Internshipcard = ({ course }) => {
+const Internshipcard = ({ course,ind }) => {
   const navigate = useNavigate();
   const [show, setshow] = useState(false);
   const { GetCart } = useContext(Globalinfo);
-
+  const [mouseHovered, setMouseHovered] = useState(null);
+  const [IsMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
   async function Addtocart(courseid) {
     try {
       let login = localStorage.getItem("COURSES_USER_TOKEN");
@@ -181,65 +185,125 @@ const Internshipcard = ({ course }) => {
       console.log("Course slug is not available");
     }
   };
+  const toggleHover = (index) => {
+    setMouseHovered(index);
+  };
 
+  const handleMute = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setIsMuted((prev) => !prev);
+  };
   return (
-    <div className="w-full overflow-hidden shadow-lg bg-white rounded-[30px]">
-      {/* <Toaster /> */}
-      <div className="relative group hover:cursor-pointer">
-        <img
-          src={course?.featured_image}
-          alt={course?.title || "Internship Course Image"}
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute top-4 right-4 hover:cursor-pointer z-50">
-          <button onClick={() => Addtocart(course?._id)}>
-            <img src="cart.png" alt="Cart Icon" className="w-8 h-8" />
-          </button>
-        </div>
-        <div className="absolute  inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
-          <div className="text-center">
-            <h2 className="text-white text-3xl font-bold">
-              ₹ {course?.base_price}
-            </h2>
-            {/* <button >
-              <img src="cart.png" alt="Cart Icon" className="w-8 h-8" />
-            </button> */}
-          </div>
-        </div>
-      </div>
-      <div className="p-4">
-        <h2 className="text-xl font-bold text-gray-800 h-20 ">
-          {course?.title}
-        </h2>
-        <p className="h-10">
-          {course?.overview?.length > 70
-            ? `${course.overview.slice(0, 70)}...`
-            : course?.overview}
-        </p>
-      </div>
-      <div className="flex justify-between items-center p-4 ">
-        <div className="flex items-center flex-col">
-          <img src="hybrid.png" alt="Hybrid Icon" className="w-9" />
-          <span className="text-gray-800">{course?.level}</span>
-        </div>
-        <div className="flex items-center space-x-2 flex-col">
-          <img src="240.png" alt="Clock Icon" className="w-7" />
-          <span className="text-gray-800">
-            {course?.duration % 60 === 0
-              ? `${course.duration / 60} hours`
-              : `${(course.duration / 60).toFixed(2)} hours`}
-          </span>
-        </div>
-      </div>
-      <div className="p-4">
-        <button
-          className="px-6 text-white py-3 bg-green-500 w-full rounded-xl hover:bg-green-600 transition-all duration-300"
-          onClick={handleEnrollClick}
-        >
-          View Course
-        </button>
-      </div>
+    <div
+  onMouseEnter={() => toggleHover(ind)}
+  onMouseLeave={() => toggleHover(null)}
+  className="w-full overflow-hidden shadow-lg bg-white rounded-[30px]"
+>
+  <div className="relative  hover:cursor-pointer h-[170px] w-full bg-black">
+    {/* Mute/Unmute Button */}
+    {mouseHovered === ind && (
+      <span className="  absolute top-4 right-2 z-[9999]">
+        {IsMuted ? (
+          <IoVolumeMuteOutline
+            size={"20"}
+            style={{
+              cursor: "pointer",
+              color: "white",
+              zIndex: "999999",
+            }}
+            onClick={handleMute}
+          />
+        ) : (
+          <IoVolumeMediumOutline
+            size={"20"}
+            style={{
+              cursor: "pointer",
+              color: "white",
+              zIndex: "999999",
+            }}
+            onClick={handleMute}
+          />
+        )}
+      </span>
+    )}
+
+    {/* Video or Image */}
+    {mouseHovered === ind ? (
+      <ReactPlayer
+        className="h-full w-full   aspect-video"
+        height="100%"
+        width="100%"
+        url={course?.featured_video}
+        controls={false}
+        playing={true}
+        ref={videoRef}
+        muted={IsMuted}
+        config={{
+          file: {
+            attributes: {
+              controlsList: "nodownload",
+            },
+          },
+        }}
+      />
+    ) : (
+      <img
+        src={course?.featured_image}
+        alt={course?.title || "Internship Course Image"}
+        className="w-full h-full object-cover "
+      />
+    )}
+  </div>
+
+  {/* Content */}
+  <div className="p-4">
+    <h2 className="text-lg font-bold text-gray-800 h-16 ">
+      {course?.title}
+    </h2>
+    <h2 className="text-lg font-bold text-[#1FC074] ">
+      ₹{course?.base_price}
+    </h2>
+    <p className="h-10">
+      {course?.overview?.length > 70
+        ? `${course.overview.slice(0, 70)}...`
+        : course?.overview}
+    </p>
+  </div>
+
+  {/* Footer */}
+  <div className="flex justify-between items-center p-4 ">
+    <div className="flex items-center flex-col">
+      <img src="hybrid.png" alt="Hybrid Icon" className="w-9" />
+      <span className="text-gray-800">{course?.level}</span>
     </div>
+    <div className="flex items-center space-x-2 flex-col">
+      <img src="240.png" alt="Clock Icon" className="w-7" />
+      <span className="text-gray-800">
+        {course?.duration % 60 === 0
+          ? `${course.duration / 60} hours`
+          : `${(course.duration / 60).toFixed(2)} hours`}
+      </span>
+    </div>
+  </div>
+
+  {/* Actions */}
+  <div className="flex justify-center gap-1 p-2">
+    <button
+      className="px-2 text-white py-3 bg-green-500 w-full rounded-l-xl hover:bg-green-600 transition-all duration-300"
+      onClick={handleEnrollClick}
+    >
+      View Course
+    </button>
+    <button
+      className="bg-green-500 rounded-r-xl px-4"
+      onClick={() => Addtocart(course?._id)}
+    >
+      <img src="cart.png" alt="Cart Icon" />
+    </button>
+  </div>
+</div>
+
   );
 };
 

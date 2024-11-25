@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Img4 from "../../Assests/Images/ourfeatures.png";
-import Img5 from "../../Assests/Images/ourfeatures2.png";
-import Img6 from "../../Assests/Images/ourfeatures3.png";
+import Img4 from "../../Assests/Images/ourfeatures4.png";
+import Img5 from "../../Assests/Images/ourfeatures5.png";
+import Img6 from "../../Assests/Images/ourfeatures6.png";
 import FeatureTexts from "./FeatureText";
 
 // add 4th image also
