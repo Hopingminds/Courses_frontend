@@ -29,7 +29,7 @@ const [option, setoption] = useState()
             
             if (newResponse?.options?.length > 0) {
                 // Update question and response for the next interaction
-                setQuestion(newResponse.options[0]?.dropOffQuestion || newQuestion);
+                setQuestion(newResponse.question || newQuestion);
                 setoption(newResponse.options[0]?.optTitle);
                 setData(newResponse);
                 setid(newResponse?._id)
@@ -37,7 +37,15 @@ const [option, setoption] = useState()
                 // Append the bot's response to the chat history
                 setChatHistory((prevHistory) => [
                     ...prevHistory,
-                    { message: question, response: question=="Greeting"?'': newResponse.options, isUser: false }
+                    { 
+                        message: newResponse.question, 
+                        response: question === "Greeting" ? '' : newResponse.options.map(option => ({
+                            ...option,
+                            questionId: newResponse?._id, // Attach the question's ID to each option
+                        })), 
+                        isUser: false,
+                        id: newResponse?._id // Store the response ID
+                    }
                 ]);
             }
         } catch (error) {
@@ -118,7 +126,7 @@ const [option, setoption] = useState()
                                                 {chat.response?.length > 0 && chat.response.map((item, idx) => (
                                                     <button
                                                         key={idx}
-                                                        onClick={() => handleOptionClick(item.dropOffQuestion, item.optTitle,id)}
+                                                        onClick={() => handleOptionClick(item.dropOffQuestion, item.optTitle,item.questionId)}
                                                         className="p-1 text-black rounded border border-black m-1"
                                                     >
                                                         {item.optTitle}
