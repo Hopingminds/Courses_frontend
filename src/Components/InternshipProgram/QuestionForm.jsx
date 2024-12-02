@@ -123,7 +123,7 @@ const QuestionForm = () => {
             <div className="flex flex-col py-5 mt-4 gap-3 p-4">
               <div className="flex flex-row items-center ml-2">
               <FaPhoneAlt className="text-green-500 pr-2 h-7 w-7"/>
-              <p className="text-lg">+91 9193100050</p>
+              <p className="text-lg">+91 7657922600</p>
               </div>
               <div className="flex flex-row items-center ml-2">
 
