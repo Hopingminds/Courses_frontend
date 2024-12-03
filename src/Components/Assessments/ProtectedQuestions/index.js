@@ -1,8 +1,8 @@
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FaGreaterThan, FaLessThan } from "react-icons/fa";
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useBlocker, useNavigate, useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../../Api/api";
 import Spinner from "../../Spinner";
 import toast, { Toaster } from "react-hot-toast";
@@ -26,6 +26,33 @@ export default function ProtectedAssessmentQuestion() {
   const audioIntervalRef = useRef(null);
   const [micblocked, setmicblocked] = useState()
 
+  const isLeavingPage = React.useRef(false);
+
+  const handleNavigation = (event) => {
+    if (!isLeavingPage.current) {
+      event.preventDefault();
+      const confirmLeave = window.confirm("Are you sure you want to leave this page?");
+      if (confirmLeave) {
+        isLeavingPage.current = true; // Allow navigation
+        navigate(event.target.href || "/"); // Navigate to the intended path
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
+      event.returnValue = ""; // Required for modern browsers
+    };
+
+    // Attach the beforeunload event listener for browser navigation
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      // Cleanup beforeunload listener
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
   async function Fetchdata() {
     try {
       let url = `${BASE_URL}/getassessment?assessmentId=${params.get("assessmentId")}&index=${params.get("index")}`;

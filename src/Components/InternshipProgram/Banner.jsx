@@ -1,6 +1,15 @@
 import React from 'react'
 
 const Banner = () => {
+  function ScrollToPap(event) {
+    event.preventDefault();
+    const navbarHeight = 80;
+    const papElement = document.getElementById("questionform");
+    if (papElement) {
+      const targetOffset = papElement.offsetTop - navbarHeight;
+      window.scrollTo({ top: targetOffset, behavior: "smooth" });
+    } 
+  }
   return (
     <div className=" bg-white ">
     <div
@@ -16,7 +25,7 @@ const Banner = () => {
           <p className="text-white tracking-wide ">
           Gain the skills, confidence, and connections to kickstart your career. Ready to take the leap? Let's get started!           
           </p>
-          <button className=" bg-[#1DBF73] text-white w-[20%] p-2 xsm:w-full sm:w-full md:w-[30%] lg:w-[20%]  text-xl font-bold tracking-wide rounded-full">
+          <button onClick={ScrollToPap} className=" bg-[#1DBF73] text-white w-[20%] p-2 xsm:w-full sm:w-full md:w-[30%] lg:w-[20%]  text-xl font-bold tracking-wide rounded-full">
             Book Now
           </button>
         </div>
