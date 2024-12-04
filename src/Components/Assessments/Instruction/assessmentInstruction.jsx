@@ -16,7 +16,7 @@ const Assessmentinstruction = () => {
 
   return (
     <div className="flex flex-col gap-8 p-[5%] py-10 font-pop">
-      <div className="font-semibold text-xl">Here are the online test instructions for an AI-proctored PAP (Pay After Placement) test, with additional alerts for specific behaviour</div>
+      <div className="font-semibold text-xl">Here are the online test instructions for an AI-proctored  test, with additional alerts for specific behaviour</div>
       <div className="flex flex-col gap-4">
         <h1 className="text-2xl text-[#1dbf73] font-bold">
         Getting Ready:
