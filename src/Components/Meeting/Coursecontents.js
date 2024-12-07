@@ -176,7 +176,7 @@ export default function Coursecontents({
                       onClick={() => ClickSection(ind + 1)}
                     >
                       <div className="flex justify-between ">
-                        <p className="font-pop font-medium text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px] sm:text-[10px]">
+                        <p className="font-pop capitalize font-medium text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px] sm:text-[10px]">
                           {val?.chapter_name}
                         </p>
                         <Down />
@@ -226,7 +226,7 @@ export default function Coursecontents({
                                         chapter?.liveClass?.streamKey
                                       )
                                     }
-                                    className="font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] text-red-500 "
+                                    className="font-pop capitalize font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] text-red-500 "
                                   >
                                     {index + 1}. {chapter?.lesson_name} (Live)
                                   </p>
@@ -240,7 +240,7 @@ export default function Coursecontents({
                                         chapter?._id
                                       )
                                     }
-                                    className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] ${currentid==chapter?._id ? 'text-[#1DBF73]':''} `}
+                                    className={`font-pop capitalize font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] ${currentid==chapter?._id ? 'text-[#1DBF73]':''} `}
                                   >
                                     {index + 1}. {chapter?.lesson_name}
                                   </p>

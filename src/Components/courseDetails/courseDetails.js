@@ -12,7 +12,8 @@ import DrawerNavbar from "./DrawerNavbar.jsx";
 import { FaPlay } from "react-icons/fa";
 import Draggable from 'react-draggable';
 export default function CDDetails() {
-  const [clicked, setclicked] = useState(false);
+  const [maxWatched, setMaxWatched] = useState(0); // Maximum watched time
+const [isSeeking, setIsSeeking] = useState(false);
   const [menu, setMenu] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
   const [Data, setData] = useState(null);
@@ -271,6 +272,18 @@ setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
       try {
         let login = localStorage.getItem("COURSES_USER_TOKEN");
         if (login) {
+          let url = BASE_URL + "/lessoncompleted";
+          let bodydata = { courseId, lessonId: ALLCHAPTER[count]?._id };
+          const data1 = await fetch(url, {
+            method: "PUT",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + login,
+            },
+            body: JSON.stringify(bodydata),
+          });
+          const response = await data1.json();
 
           // console.log(response);
         }
@@ -464,12 +477,27 @@ if (activelargevideo && localStorage.getItem(currentid)) {
       // if()
     }
   }, [count]);
-  function handleProgress(state){
+  const handleProgress = (state) => {
     const { playedSeconds } = state;
-    // console.log(playedSeconds);
-    localStorage.setItem(currentid,playedSeconds)
+    console.log("handleprogress");
     
-  }
+    if (!isSeeking && playedSeconds > maxWatched) {
+      setMaxWatched(playedSeconds); // Update max watched time
+    }
+    localStorage.setItem(currentid, playedSeconds); // Save progress
+  };
+  
+  const handleSeek = (seekTime) => {
+    console.log("seektime",seekTime);
+    console.log("maxwatched",maxWatched);
+    
+    
+    if (seekTime > maxWatched) {
+      setIsSeeking(true);
+      playerRef.current.seekTo(maxWatched, 'seconds'); // Restrict seeking forward
+      setTimeout(() => setIsSeeking(false), 200); // Small timeout to reset the seeking state
+    }
+  };
   return (
     <>
       <div className="flex justify-between gap-5">
@@ -605,6 +633,7 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                         onEnded={handleVideoEnded}
                         onReady={handlelargeVideoReady}
                         onProgress={handleProgress}
+                        onSeek={handleSeek}
                         config={{
                           file: {
                             attributes: {
