@@ -479,25 +479,37 @@ if (activelargevideo && localStorage.getItem(currentid)) {
   }, [count]);
   const handleProgress = (state) => {
     const { playedSeconds } = state;
-    console.log("handleprogress");
-    
-    if (!isSeeking && playedSeconds > maxWatched) {
-      setMaxWatched(playedSeconds); // Update max watched time
+  // console.log(isSeeking);
+  
+    // Update maxWatched only if the user is actively watching
+    if (!isSeeking) {
+      setMaxWatched((prevMax) => Math.max(prevMax, playedSeconds));
     }
-    localStorage.setItem(currentid, playedSeconds); // Save progress
+    else{
+      setMaxWatched(playedSeconds)
+      localStorage.setItem(currentid,playedSeconds)
+    }
+    setIsSeeking(false)
+
   };
   
+  // Function to restrict seeking beyond maxWatched
   const handleSeek = (seekTime) => {
-    console.log("seektime",seekTime);
-    console.log("maxwatched",maxWatched);
-    
-    
+    // console.log("handleseeking");
+// console.log("maxWatched",maxWatched);
+setIsSeeking(true)
     if (seekTime > maxWatched) {
-      setIsSeeking(true);
-      playerRef.current.seekTo(maxWatched, 'seconds'); // Restrict seeking forward
-      setTimeout(() => setIsSeeking(false), 200); // Small timeout to reset the seeking state
+      playerRef.current.seekTo(maxWatched, "seconds"); // Revert to maxWatched time
     }
+   
   };
+  
+  // Detect when user starts and stops seeking
+  const handleSeeking = (seeking) => {
+    
+    setIsSeeking(seeking);
+  };
+  
   return (
     <>
       <div className="flex justify-between gap-5">
@@ -634,6 +646,8 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                         onReady={handlelargeVideoReady}
                         onProgress={handleProgress}
                         onSeek={handleSeek}
+                        onSeekStart={() => handleSeeking(true)}
+                        onSeekEnd={() => handleSeeking(false)}
                         config={{
                           file: {
                             attributes: {
