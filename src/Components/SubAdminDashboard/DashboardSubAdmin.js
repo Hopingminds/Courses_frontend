@@ -7,6 +7,7 @@ import { BASE_URL } from "../../Api/api";
 
 const DashboardSubAdmin = () => {
   const [data, setdata] = useState()
+  const [Filters, setFilters] = useState()
   let navigate = useNavigate()
   useEffect(() => {
     if (!localStorage.getItem('token')) {
@@ -25,9 +26,25 @@ const DashboardSubAdmin = () => {
     setdata(response?.data)
     // console.log(response);
   }
+  // async function Fetchfilters(){
+  //   const data=await fetch(BASE_URL+'/getAllEducationFields',{
+  //     method:'GET',
+  //     headers:{
+  //       'Authorization':'Bearer '+localStorage.getItem('token')
+  //     }
+      
+  //   })
+  //   const response=await data.json()
+  //   setFilters(response?.data)
+  //   // console.log(response);
+    
+  //   // setdata(response?.data)
+  //   // console.log(response);
+  // }
   useEffect(() => {
    
     FetchData()
+    // Fetchfilters()
       }, [])
 
       function Statehandle(temp){
@@ -37,8 +54,8 @@ setdata(temp)
     <>
 
       <BannarSubAdmin />
-        <div className="grid grid-cols-[1fr_3.2fr] px-[8vw] my-[5vh]">
-          <FilterSubAdmin data={data}  FetchData={FetchData} Statehandle={Statehandle}/>
+        <div className="grid grid-cols-[1fr_6.2fr] px-[4vw] my-[5vh]">
+          <FilterSubAdmin data={data} Filters={Filters} FetchData={FetchData} Statehandle={Statehandle}/>
           {/* <DataDashboard data={data} /> */}
     
         <DetailTableDashboard data={data} FetchData={FetchData} />
