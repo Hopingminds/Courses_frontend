@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BASE_URL } from "../../Api/api";
 
-const FilterSubAdmin = ({ FetchData, Statehandle }) => {
+const FilterSubAdmin = ({ FetchData, Statehandle,filtersData,setFiltersData,setshowspinner,showspinner }) => {
   const [degree, setDegree] = useState("");
   const [stream, setStream] = useState("");
   const [profileCompleted, setProfileCompleted] = useState("");
   const [invitation, setInvitation] = useState("");
-  const [filtersData, setFiltersData] = useState({ degrees: [], streams: [] });
   const [filteredStreams, setFilteredStreams] = useState([]);
 
   const handleRadioChange = (event) => {
@@ -64,29 +63,11 @@ const FilterSubAdmin = ({ FetchData, Statehandle }) => {
     }
   };
 
-  const fetchFiltersData = async () => {
-    try {
-      const response = await fetch(`${BASE_URL}/getAllEducationFields`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-      const data = await response.json();
-      setFiltersData({
-        degrees: [...new Set(data?.data?.map((item) => item.degree))],
-        streams: data?.data?.map((item) => ({
-          name: item.stream,
-          degree: item.degree,
-        })),
-      });
-    } catch (error) {
-      console.error("Error fetching filters data:", error);
-    }
-  };
+ 
 
   const FilterData = async () => {
     try {
+      setshowspinner(true)
       const queryParams = new URLSearchParams({
         profileComplete: profileCompleted,
         stream: stream,
@@ -103,6 +84,7 @@ const FilterSubAdmin = ({ FetchData, Statehandle }) => {
 
       const data = await response.json();
       Statehandle(data?.data);
+      setshowspinner(false)
     } catch (error) {
       console.error("Error fetching filtered data:", error);
     }
@@ -117,9 +99,7 @@ const FilterSubAdmin = ({ FetchData, Statehandle }) => {
     FetchData();
   };
 
-  useEffect(() => {
-    fetchFiltersData();
-  }, []);
+
 
   useEffect(() => {
     FilterData();

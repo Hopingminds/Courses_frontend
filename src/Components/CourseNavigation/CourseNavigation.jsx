@@ -11,7 +11,7 @@ const CourseNavigation = ({
   totalLessons,
   courseAssignment,
   liveclass,
-  slug
+  slug,
 }) => {
   const [activeComponent, setActiveComponent] = useState("Overview");
   // console.log("courseLessons",courseLessons);

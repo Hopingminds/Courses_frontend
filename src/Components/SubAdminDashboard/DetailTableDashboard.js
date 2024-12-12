@@ -12,7 +12,7 @@ import { jwtDecode } from 'jwt-decode';
 import MyModal from './Modal';
 import Spinner from '../Spinner';
 
-const DetailTableDashboard = ({ data, FetchData }) => {
+const DetailTableDashboard = ({ data, FetchData,fetchFiltersData,setshowspinner,showspinner }) => {
   // console.log(data);
   const [Coins, setCoins] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +20,6 @@ const DetailTableDashboard = ({ data, FetchData }) => {
   const [phoneErrors, setphoneErrors] = useState([])
   const [duplicateEmails, setduplicateEmails] = useState([])
   const [duplicatePhones, setduplicatePhones] = useState([])
-  const [showspinner, setshowspinner] = useState(false)
   const navigate = useNavigate()
 
   const openModal = () => {
@@ -71,6 +70,7 @@ const DetailTableDashboard = ({ data, FetchData }) => {
 
           FetchData()
           Fetchdata()
+          fetchFiltersData()
         }
         else if (!response?.success && response?.validationError) {
           openModal()

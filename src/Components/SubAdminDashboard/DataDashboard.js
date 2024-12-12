@@ -14,14 +14,15 @@ import "react-circular-progressbar/dist/styles.css";
 const DataDashboard = ({data}) => {
   // console.log(data);
   let complete=0;
-data?.purchased_courses?.map((item)=>{
   let count=0;
+  let completedlessons=0;
+data?.purchased_courses?.map((item)=>{
+
   item?.course?.curriculum?.map((it)=>{
-    count+=it?.lessons?.length
+    count=count+parseInt(it?.lessons?.length)||0
   })
-  if(item?.completed_lessons?.length==count){
-    complete+=1
-  }
+  completedlessons=completedlessons+parseInt(item?.completed_lessons?.length)
+
 })
 // setCompleted(complete)
 
@@ -61,14 +62,14 @@ data?.purchased_courses?.map((item)=>{
       </div>
       <div className="flex flex-row justify-between">
         <div className="bg-white rounded-xl shadow-lg flex flex-col  gap-2 p-4 w-[45%]">
-          <p className="font-pop font-semibold text-[18px]">Completed Course</p>
+          <p className="font-pop font-semibold text-[18px]">Total Completed Courses</p>
           <div className="flex flex-row justify-between items-center  my-auto">
             <div className="w-[60%] border-[6px] rounded-full p-2 border-[#36AE8F] font-semibold  "
               style={{borderImage:'linear-gradient(toright,#36AE8F,#1A35DD47,#32AF8B)1'}}
             >
               <CircularProgressbar
-                value={((complete/data?.purchased_courses?.length)*100 ).toFixed(2)|| 0}
-                text={`${((complete/data?.purchased_courses?.length)*100).toFixed(2) || 0}%`}
+                value={((completedlessons/count)*100 ).toFixed(2)|| 0}
+                text={`${((completedlessons/count)*100).toFixed(2) || 0}%`}
                 styles={buildStyles({
                   strokeLinecap: "butt",
                   pathColor: "#1DBF73",
@@ -77,7 +78,7 @@ data?.purchased_courses?.map((item)=>{
                 })}
               />
             </div>
-            <div className="flex flex-col justify-between">
+            {/* <div className="flex flex-col justify-between">
               <div className="flex flex-row gap-2 items-start">
                 <img src={Img4} className="w-[14px]" />
                 <div className="flex flex-col items-center">
@@ -100,7 +101,7 @@ data?.purchased_courses?.map((item)=>{
                   </p>
                 </div>
               </div>
-              {/* <div className="flex flex-row gap-2 items-start">
+              <div className="flex flex-row gap-2 items-start">
                 <img src={Img4} className="w-[14px]" />
                 <div className="flex flex-col items-center">
                   <p className="font-nu font-semibold text-[#7A7A7A] text-[14px]">
@@ -110,8 +111,8 @@ data?.purchased_courses?.map((item)=>{
                     60%
                   </p>
                 </div>
-              </div> */}
-            </div>
+              </div>
+            </div> */}
           </div>
         </div>
         {/* <div className="bg-white rounded-xl shadow-lg flex flex-col gap-2 p-4 w-[50%]">
@@ -127,8 +128,10 @@ data?.purchased_courses?.map((item)=>{
             data?.purchased_courses?.map((item)=>{
               let count=0;
   item?.course?.curriculum?.map((it)=>{
-    count+=it?.lessons?.length
+    count+=parseInt(it?.lessons?.length)||0
   })
+  // console.log(item?.completed_lessons?.length/count);
+  
               return(<>
                   <div className="flex flex-row items-center">
             <p className="font-pop font-semibold text-[#000000] text-[12px] w-[37%]">
@@ -136,15 +139,18 @@ data?.purchased_courses?.map((item)=>{
             </p>
             <div className="w-full">
             <ProgressBar 
-              completed={item?.completed_lessons?.length/count}
+              completed={item?.completed_lessons?.length}
               maxCompleted={count}
+              
               bgColor="#29B27E"
               height="15px"
               width="100%"
               baseBgColor="#EDF2F7"
-              labelColor="white"
+              labelColor="black"
               labelSize="13px"
-              customLabel={`${((item?.completed_lessons?.length/count)*100).toFixed(2) || 0}%`}
+              // customLabel={`${((item?.completed_lessons?.length/count)*100).toFixed(2) || 0}%`}
+              isLabelVisible={true}
+
               />
             </div>
           </div>

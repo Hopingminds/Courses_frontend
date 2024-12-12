@@ -39,6 +39,7 @@ const [isSeeking, setIsSeeking] = useState(false);
   const playerRef = useRef(null);
   const playerRef2 = useRef(null);
   const [playing, setPlaying] = useState(true);
+  const [allotedbycollege, setallotedbycollege] = useState(false)
   const params = useParams();
   let totalduration = 0;
   let completed = [];
@@ -59,7 +60,8 @@ const [isSeeking, setIsSeeking] = useState(false);
 
         const data = await fetch(url1);
         const response = await data.json();
-        // console.log("Course particular", response);
+        console.log("Course allotted", response?.data?.allotedByCollege);
+        setallotedbycollege(response?.data?.allotedByCollege)
         setImageBanner(response?.data?.course?.featured_image);
         setCourseLessons(response?.data?.completed_lessons);
         setCourseAssignment(response?.data?.completed_assignments);
@@ -83,7 +85,7 @@ const [isSeeking, setIsSeeking] = useState(false);
             val?.lessons?.map((it) => {
               // console.log("it",val);
 
-              totalduration = totalduration + parseInt(it?.duration);
+              totalduration = totalduration + (parseInt(it?.duration)||0);
               // console.log(totalduration);
               allchapters.push({
                 video: it?.video,
@@ -720,9 +722,9 @@ setIsSeeking(true)
                         <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
                           {totalLessons} Lessons
                         </p>
-                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
+                       {!allotedbycollege ? <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
                           {Timeconverter(dur)}
-                        </p>
+                        </p>:''}
                       </div>
                     </div>
                     {window.innerWidth <= 720 && (
