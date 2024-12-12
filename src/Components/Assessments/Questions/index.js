@@ -25,9 +25,12 @@ export default function AssessmentQuestion() {
         headers: { Authorization: `Bearer ${token}` },
       });
       const response = await data.json();
-      console.log(response);
+      // console.log(response);
       if (response.success) {
         setshow(false);
+        if(response?.isProtected){
+          window.location.replace(`/prassessmentquestions?assessmentId=${params.get("assessmentId")}&index=${1}`)
+        }
         setdata(response?.data);
         setLength(response?.length);
       } else {

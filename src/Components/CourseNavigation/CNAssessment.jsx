@@ -62,14 +62,14 @@ const CNAssessment = ({slug}) => {
 
     return (
         <div className="bg-[#FFFFFF] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col gap-3 items-center ">
-            <div className="grid grid-cols-[1fr,1fr,1fr,1fr] w-full bg-[#E2FFF1] py-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] sm:text-[12px] md:p-3">
+            <div className="grid grid-cols-[2fr,1fr,1fr,1fr] w-full bg-[#E2FFF1] py-4 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] sm:text-[12px] md:p-3">
                 <p className="font-pop font-bold text-center grid">Topic</p>
                 <p className="font-pop font-bold text-center">Due Date</p>
                 <p className="font-pop font-bold text-center">Time</p>
                 <p className="font-pop font-bold text-center">Action</p>
             </div>
             {assessmentdata?.length ? assessmentdata?.map((item, ind) => (
-                <div key={ind} className="grid grid-cols-[1fr,1fr,1fr,1fr] w-full border border-[#E2FFF1] py-2 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] sm:text-[12px] md:p-3">
+                <div key={ind} className="grid grid-cols-[2fr,1fr,1fr,1fr] w-full border border-[#E2FFF1] py-2 rounded-md xsm:text-[6px] xsm:py-1 xsm:px-1 xsm:rounded-sm md:text-[12px] sm:text-[12px] md:p-3">
                     <p className="font-pop font-medium text-center grid">{item?.assessmentName}</p>
                     <p className="font-pop font-medium text-center">{item?.lastDate?.split("T")[0]}</p>
                     {/* <p className="font-pop font-medium text-center">{!item?.isTestCompleted?0:1}</p> */}
@@ -79,7 +79,7 @@ const CNAssessment = ({slug}) => {
                     item?.resultDetails?.isSubmitted ? (<p className="font-pop font-medium text-center text-[#1FC074]">Completed</p>)
                     : isDateBeforeNow(item?.startDate,item?.lastDate)
                         ?
-                            (<Link to={`/assessmentinstruction?assessmentId=${item?._id}&pr=${item?.isProtected}1&t=${item?.timelimit}`} className="font-pop font-medium text-center">Start</Link>)
+                            (<Link to={`/assessmentinstruction?assessmentId=${item?._id}&pr=${item?.isProtected}1&t=${item?.timelimit}`} className="font-pop font-medium text-center bg-blue-600 h-fit  my-auto rounded py-2 mx-2 text-white">Start</Link>)
                         :
                             (<p className="font-pop font-medium text-center text-[#868585]">Expired</p>)
                     }

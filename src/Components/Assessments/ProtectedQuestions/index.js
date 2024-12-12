@@ -65,6 +65,9 @@ export default function ProtectedAssessmentQuestion() {
       console.log(response);
       if (response.success) {
         setshow(false);
+        if(!response?.isProtected){
+          window.location.replace(`/assessmentquestions?assessmentId=${params.get("assessmentId")}&index=${1}`)
+        }
         setdata(response?.data);
         setLength(response?.length);
       } else {
