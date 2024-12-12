@@ -24,11 +24,13 @@ const Freelancing = () => {
       {/* <div ref={freelancingPageRef}>
         <FreelancingPage />
       </div> */}
-      <CurrentFreelancing />
+      <div ref={freelancingPageRef}>
+        <CurrentFreelancing />
+      </div>
       {/* <OurSourseSearchByCategory /> */}
       <RecentlyPost />
       <OurFeatures />
-      <ListenFreelancers/>
+      <ListenFreelancers />
       <BookSlot />
       <Support />
     </div>

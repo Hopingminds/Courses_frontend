@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { BASE_URL } from "../../Api/api";
-import FreelanceCard from "./components/FreelanceCard";
+import JobCard from "./components/JobCard";
 
 const RecentlyPost = () => {
   const [recentJobData, setRecentJobData] = useState([]);
@@ -11,7 +11,7 @@ const RecentlyPost = () => {
   const [loading, setloading] = useState(false);
   async function fetchAllFreelancing() {
     setloading(true);
-    const url = `${BASE_URL}/getAllFreelanceOpenings`;
+    const url = `${BASE_URL}/getalljobppenings`;
 
     try {
       const response = await fetch(url, {
@@ -28,7 +28,7 @@ const RecentlyPost = () => {
       }
 
       const data = await response.json();
-      setRecentJobData(data.freelanceOpenings); // Use the data here (like setting it in state)
+      setRecentJobData(data.jobOpenings); // Use the data here (like setting it in state)
     } catch (error) {
       console.log("Error in fetching all freelancing job posts:", error);
     } finally {
@@ -69,12 +69,16 @@ const RecentlyPost = () => {
   return (
     <div className="py-5 px-[4vw] pb-6">
       <div>
-        <p className="text-[30px] font-pop text-[#9D9D9D]">
+        <p className="text-[30px] font-pop text-[#9D9D9D] xsm:text-[10px]">
           The latest freelance work!
         </p>
         <div className="flex flex-row">
-          <p className="text-[50px] font-pop">Recently Posted</p>
-          <p className="text-[#1DBF73] text-[50px] font-pop ml-2">Works</p>
+          <p className="text-[50px] xsm:text-[1rem] font-pop">
+            Recently Posted
+          </p>
+          <p className="text-[#1DBF73] text-[50px] xsm:text-[1rem] font-pop ml-2">
+            Works
+          </p>
         </div>
       </div>
 
@@ -108,7 +112,7 @@ const RecentlyPost = () => {
           >
             <div className="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 xsm:grid-cols-1 lg:grid-cols-2 gap-8 w-full my-4 px-4">
               {recentJobData?.map((item) => (
-                <FreelanceCard item={item} key={item._id} />
+                <JobCard item={item} key={item._id} />
               ))}
             </div>
           </div>

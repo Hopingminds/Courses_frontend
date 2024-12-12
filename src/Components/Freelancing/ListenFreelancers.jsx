@@ -60,33 +60,33 @@ const ListenFreelancers = () => {
 
   return (
     <div className="flex flex-col justify-center px-[4vw] xsm:px-3 mt-[3rem] mb-[5rem] relative font-pop">
-      <h1 className="text-[50px] text-center capitalize mb-5">
+      <h1 className="text-[50px] md:text-[30px] text-center capitalize mb-5 xsm:text-xl">
         listen from our recent{" "}
         <span className="text-green-500">freelancers</span>
       </h1>
 
-      <div className="relative mx-auto max-w-[800px]">
+      <div className="relative mx-auto max-w-[50rem] md:w-[30rem] xsm:w-[15rem]">
         <img src={pic} alt="frame" className="w-full" />
         
       
         
         {/* Left Arrow */}
         <FaArrowLeft
-          className="absolute top-1/2 transform -translate-y-1/2 left-[-4rem] text-black text-2xl cursor-pointer"
+          className="absolute top-1/2 transform -translate-y-1/2 left-[-4rem] text-black text-2xl cursor-pointer xsm:text-xl"
           onClick={goToPrevious}
         />
         
         {/* Right Arrow */}
         <FaArrowRight
-          className="absolute top-1/2 transform -translate-y-1/2 right-[-4rem] text-black text-2xl cursor-pointer"
+          className="absolute top-1/2 transform -translate-y-1/2 right-[-4rem] text-black text-2xl cursor-pointer xsm:text-xl"
           onClick={goToNext}
         />
       </div>
         {/* Testimonial Card */}
-        <div className="absolute -bottom-10  right-60 bg-black text-white px-6 py-4 max-w-[500px] flex flex-col font-pop">
-          <span className="text-lg font-bold">{testimonials[currentIndex].name}</span>
-          <span className="text-sm italic">{testimonials[currentIndex].role}</span>
-          <p className="text-justify my-4">{testimonials[currentIndex].testimonial}</p>
+        <div className="absolute -bottom-14  xl:right-60 lg:right-5  bg-black text-white px-6 py-4 max-w-[32rem] md:w-[23rem] xsm:w-[10rem] flex flex-col font-pop md:h-[8rem] xsm:h-[5rem] xsm:px-2 xsm:py-0 md:right-7 xsm:gap-0 xsm:right-2">
+          <span className="text-lg font-bold md:text-sm xsm:text-[6px]">{testimonials[currentIndex].name}</span>
+          <span className="text-sm italic md:text-[12px] xsm:text-[7px]">{testimonials[currentIndex].role}</span>
+          <p className="text-justify my-4 md:my-2 xsm:my-0 md:text-[10px] xsm:text-[5px]">{testimonials[currentIndex].testimonial}</p>
         </div>
     </div>
   );
