@@ -14,22 +14,26 @@ export default function Mycourse({ courses, fetchUserData,internships }) {
   function formatDate(dateString) {
     const dateObj = new Date(dateString);
 
+    // Subtract 5.5 hours from the date object
+    const hoursToSubtract = 5.5; // 5.5 hours
+    dateObj.setTime(dateObj.getTime() - hoursToSubtract * 60 * 60 * 1000);
+
     const day = String(dateObj.getDate()).padStart(2, "0");
     const year = dateObj.getFullYear();
 
     const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
     ];
     const month = monthNames[dateObj.getMonth()];
 
@@ -43,7 +47,7 @@ export default function Mycourse({ courses, fetchUserData,internships }) {
     const time = `${hours}.${minutes}${ampm}`;
 
     return `${day} ${month} ${year} ${time}`;
-  }
+}
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ismodalopenforinternship, setismodalopenforinternship] = useState(false)
   function closeModal() {
