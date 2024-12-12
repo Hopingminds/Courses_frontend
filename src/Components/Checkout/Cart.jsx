@@ -826,7 +826,7 @@ const handleContinueCheckout = async () => {
                     <label
                       htmlFor="option2"
                       className="flex items-center space-x-2 cursor-pointer p-1 hover:bg-gray-300  rounded-lg shadow-md"
-                    >
+                    > 
                       <input
                         id="option2"
                         type="radio"

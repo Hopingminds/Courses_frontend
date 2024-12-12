@@ -17,7 +17,8 @@ import CV4 from "./CV4";
 import CV5 from "./CV5";
 import toast, { Toaster } from "react-hot-toast";
 import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+// import jsPDF from "jspdf";
+import jsPDF from "jspdf"
 import { BASE_URL } from "../../Api/api";
 
 export default function CVBuilder() {
@@ -201,7 +202,7 @@ const Savedata=async(componentRef)=>{
   const imgData = canvas.toDataURL("image/png",0.7);
 
   // Create a new PDF instance
-  const pdf = new jsPDF("p", "mm", "a4");
+  const pdf = new jsPDF ("p", "mm", "a4");
   const pdfWidth = pdf.internal.pageSize.getWidth();
   const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
   pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
