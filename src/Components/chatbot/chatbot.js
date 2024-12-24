@@ -99,7 +99,7 @@ const ChatBot = () => {
 
     return (
         <div>
-            <div className="h-[100%] z-[999999999] font-pop">
+            <div className="h-[100%] z-[999999999] font-pop scroll-m-0">
                 <button className="chatbot-toggler" onClick={handleToggle}>
                     <span className="material-symbols-rounded pt-2 ">
                         <img src="/chat.svg" alt="Chat Icon" />
@@ -115,7 +115,7 @@ const ChatBot = () => {
                             <IoMdClose className="text-3xl closebutton cursor-pointer" onClick={handleToggle} />
                         </div>
 
-                        <ul className="chatbox flex flex-col gap-5" ref={chatboxRef}>
+                        <ul className="chatbox flex flex-col" ref={chatboxRef}>
                             {chatHistory.map((chat, index) => (
                                 <li
                                     key={index}
@@ -123,19 +123,19 @@ const ChatBot = () => {
                                 >
                                     {chat.isUser ? (
                                         // User's selected option on the right
-                                        <div className="bg-green-500 text-white rounded-md p-2 rounded-t-2xl rounded-bl-2xl rounded-br-none mr-2">
+                                        <div className="bg-green-500 text-white rounded-md p-2 rounded-t-2xl rounded-bl-2xl rounded-br-none mr-2 ">
                                             {chat.message}
                                         </div>
                                     ) : (
                                         // Bot's response on the left
-                                        <div className="bg-[#FFFFFF] text-[#848484] p-2 rounded-md">
+                                        <div className="bg-[#FFFFFF] text-[#848484] p-2 rounded-md" >
                                             <p>{chat.message}</p>
                                             <div className="flex flex-wrap max-w-[90%]">
                                                 {chat.response?.length > 0 && chat.response.map((item, idx) => (
                                                     <button
                                                         key={idx}
                                                         onClick={() => handleOptionClick(item.dropOffQuestion, item.optTitle, item.questionId, item)}
-                                                        className="p-1 text-black rounded border border-black m-1"
+                                                        className="p-1 text-black rounded border border-black m-1 mt-4"
                                                     >
                                                         {item.optTitle}
                                                     </button>
