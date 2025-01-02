@@ -206,7 +206,7 @@ const Footer = () => {
             className=" xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[16px] md:h-[16px]"
           />
           <p className="text-white text-[16px] hover:text-[#1dbf73] font-pop font-semibold xsm:text-[12px] sm:text-[11px] md:text-[12px]">
-            KATINA SKILLS PRIVATE LIMITED 2024
+            KATINA SKILLS PRIVATE LIMITED 2025
           </p>
         </div>
       </div>
