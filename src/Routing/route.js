@@ -91,6 +91,7 @@ import Freelancing from '../Components/Freelancing/Freelancing.jsx'
 import AuthProtected  from './AuthProtected.js'
 import Internshipvideo from '../Components/internshipvideo/internshipDetailsvideo.js'
 import InternshipDetail from '../Components/Detailinternship/index.js'
+import VerifiedCertificate from '../Components/verifiedCertificate/verifiedCertificate.jsx'
 // import InternshipCourseDetails from '../Components/InternshipProgram/InternCourseDetails/InternshipCourseDetails.jsx'
 
 function Locationpath(){
@@ -202,6 +203,7 @@ const Router = () => {
                 <Route path='/allsubmodules' element={< AuthProtected path={'/allsubmodules'} Component={AllModules}   />} />
                 <Route path="/nsdctest" element={<LoginNSDC />} />
                 <Route path="/internshipdetails/:slug" element={<InternshipDetail /> } />
+                <Route path="/verifiedCertificate" element={<VerifiedCertificate /> } />
 
                 <Route path="/teacherlogin" element={<Loginpage/>}/>
                 <Route path="/teacherpanel" element={<TPHome/>}>
