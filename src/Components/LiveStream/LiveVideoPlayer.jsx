@@ -4,7 +4,8 @@ import ReactHlsPlayer from 'react-hls-player';
 const LiveVideoPlayer = ({ liveClassKey }) => {
     return (
         <ReactHlsPlayer
-            src={`https://stream.hopingminds.com/hls/${liveClassKey}.m3u8`}
+            // src={`https://stream.hopingminds.com/hls/${liveClassKey}.m3u8`}
+            src={`https://live.hopingminds.com/stream_key.m3u8`}
             autoPlay={false}
             controls={true}
             className='rounded-xl'
