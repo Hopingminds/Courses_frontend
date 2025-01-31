@@ -381,7 +381,7 @@ const PostJobsForm = () => {
               <input
                 type="text"
                 placeholder="Enter the Job Title"
-                className="border outline-none px-4 py-2 text-[14px] xsm:text-[12px] w-full xsm:text-[12px] "
+                className="border outline-none px-4 py-2 text-[14px]  w-full xsm:text-[12px] "
                 value={formData.position}
                 onChange={handleChange}
                 name="position"
