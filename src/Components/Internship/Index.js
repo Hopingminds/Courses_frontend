@@ -177,85 +177,121 @@ const Internship = () => {
               placeholder="Search for an Internship program"
               ref={searchBarRef}
               onChange={SearchData}
-              className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg xsm:leading-none md:text-[14px] ${!SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
-                }`}
+              className={`flex-1 w-full outline-none placeholder-[#808080] text-[16px] font-pop rounded-bl-md rounded-tl-md py-2 px-4 xsm:rounded-l-md xsm:py-1 xsm:text-[10px] md:rounded-l-lg xsm:leading-none md:text-[14px] ${
+                !SearchedData.length ? "rounded-bl-2xl" : "rounded-bl-0"
+              }`}
             />
-         { SearchedData.length ? <div className="flex flex-col w-full absolute bg-[#f3fffa] justify-center  pt-2" ref={searchResultsRef}>
-              {SearchedData?.map((item, ind) => {
-                // console.log(item.);
-                return (
-                  <>
-                    <Link
-                      key={ind}
-                      to={"/detailcourse/" + item.slug}
-                      className="text-left pl-2 py-1 border-b-[2px]"
-                    >
-                      {item.title}
-                    </Link>
-                  </>
-                );
-              })}
-            </div> : ''}
+            {SearchedData.length ? (
+              <div
+                className="flex flex-col w-full absolute bg-[#f3fffa] justify-center  pt-2"
+                ref={searchResultsRef}
+              >
+                {SearchedData?.map((item, ind) => {
+                  // console.log(item.);
+                  return (
+                    <>
+                      <Link
+                        key={ind}
+                        to={"/detailcourse/" + item.slug}
+                        className="text-left pl-2 py-1 border-b-[2px]"
+                      >
+                        {item.title}
+                      </Link>
+                    </>
+                  );
+                })}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
           <button className="text-[#ffffff] text-[22px] flex flex-row gap-2 justify-center items-center font-pop bg-[#1DBF73] rounded-md py-1 px-4 xsm:rounded-r-md xsm:text-[10px] xsm:py-0 xsm:px-2 xsm:leading-none md:text-[14px] md:rounded-r-lg">
-            <span> <img src={Search} className="w-12 h-8 md:w-10 md:h-6 xsm:w-6 xsm:h-2" /> </span>Search
+            <span>
+              {" "}
+              <img
+                src={Search}
+                className="w-12 h-8 md:w-10 md:h-6 xsm:w-6 xsm:h-2"
+              />{" "}
+            </span>
+            Search
           </button>
         </div>
 
-        <div className="absolute z-20 top-[10%] flex justify-center items-center text-center w-full text-white text-[50px] font-pop font-semibold md:text-[35px] xsm:text-[18px]">Gain Professional Skills</div>
-        <div className="absolute z-20 top-[27%] flex justify-center items-center text-center w-full text-white font-pop md:text-[16px] xsm:text-[12px] px-[5%]">Unlock your potential with real-world experience in your field of study.</div>
+        <div className="absolute z-20 top-[10%] flex justify-center items-center text-center w-full text-white text-[50px] font-pop font-semibold md:text-[35px] xsm:text-[18px]">
+          Gain Professional Skills
+        </div>
+        <div className="absolute z-20 top-[27%] flex justify-center items-center text-center w-full text-white font-pop md:text-[16px] xsm:text-[12px] px-[5%]">
+          Unlock your potential with real-world experience in your field of
+          study.
+        </div>
 
-        <div className="h-full w-full bg-gray-300" >
+        <div className="h-full w-full bg-gray-300">
           <ReactPlayer
             onContextMenu={handleContextMenu}
             playsInline={true}
-           
             // url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1712146617474-vid-1.mp4'
             // url='https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716441485951-stock%20web_1compressed_1.mp4'
-            url= {window.innerWidth > 500 ? 'https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1716441485951-stock%20web_1compressed_1.mp4' : "/internshipvideo.mp4" }
+            url={
+              window.innerWidth > 500
+                ? "https://drdy957pjga3n.cloudfront.net/assets/1716441485951-stock%20web_1compressed_1.mp4"
+                : "/internshipvideo.mp4"
+            }
             height="100%"
-            width={'100%'}
+            width={"100%"}
             playing={true}
             loop={true}
             controls={false}
             config={{
               file: {
                 attributes: {
-                  controlsList: "nodownload" // Disable download option
-                }
-              }
+                  controlsList: "nodownload", // Disable download option
+                },
+              },
             }}
           />
         </div>
 
         <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 flex justify-center space-x-28 text-white font-pop  absolute bottom-0 items-center xsm:h-8 xsm:space-x-5 md:h-16 md:space-x-12">
           <div className="text-white xsm:flex xsm:flex-col xsm:gap-1">
-
-            <div className="text-center text-xl font-semibold xsm:text-[10px] xsm:leading-none md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={28725} />+</div>
-            <div className="text-center xsm:text-[9px] xsm:leading-none md:text-[14px]">Students Enrolled</div>
+            <div className="text-center text-xl font-semibold xsm:text-[10px] xsm:leading-none md:text-[14px]">
+              <CountUp start={0} delay={2} duration={5} end={28725} />+
+            </div>
+            <div className="text-center xsm:text-[9px] xsm:leading-none md:text-[14px]">
+              Students Enrolled
+            </div>
           </div>
           <div className="xsm:flex xsm:flex-col xsm:gap-1">
-            <div className="text-center text-xl font-semibold xsm:text-[10px] xsm:leading-none md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={5000} />+</div>
-            <div className="text-center xsm:text-[9px] xsm:leading-none md:text-[14px]">Students Placed</div>
+            <div className="text-center text-xl font-semibold xsm:text-[10px] xsm:leading-none md:text-[14px]">
+              <CountUp start={0} delay={2} duration={5} end={5000} />+
+            </div>
+            <div className="text-center xsm:text-[9px] xsm:leading-none md:text-[14px]">
+              Students Placed
+            </div>
           </div>
           {/* <div className="xsm:flex xsm:flex-col xsm:gap-1">
             <div className="text-center text-xl font-semibold xsm:text-[10px] xsm:leading-none md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={175} />+</div>
             <div className="text-center xsm:text-[9px] xsm:leading-none md:text-[14px]">Courses Enrolled</div>
           </div> */}
           <div className="xsm:flex xsm:flex-col xsm:gap-1">
-            <div className="text-center text-xl font-semibold xsm:text-[10px] xsm:leading-none md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={626} />+</div>
-            <div className="text-center xsm:text-[9px] xsm:leading-none md:text-[14px]">Industry Experts</div>
+            <div className="text-center text-xl font-semibold xsm:text-[10px] xsm:leading-none md:text-[14px]">
+              <CountUp start={0} delay={2} duration={5} end={626} />+
+            </div>
+            <div className="text-center xsm:text-[9px] xsm:leading-none md:text-[14px]">
+              Industry Experts
+            </div>
           </div>
           <div className="xsm:flex xsm:flex-col xsm:gap-1">
-            <div className="text-center text-xl font-semibold xsm:text-[10px] xsm:leading-none md:text-[14px]"><CountUp start={0} delay={2} duration={5} end={256} />+</div>
-            <div className="text-center xsm:text-[9px] xsm:leading-none md:text-[14px]">Corporate Partners</div>
+            <div className="text-center text-xl font-semibold xsm:text-[10px] xsm:leading-none md:text-[14px]">
+              <CountUp start={0} delay={2} duration={5} end={256} />+
+            </div>
+            <div className="text-center xsm:text-[9px] xsm:leading-none md:text-[14px]">
+              Corporate Partners
+            </div>
           </div>
         </div>
       </div>
       {/* cards */}
-      {
-      
-      !allCourses?.length && !show ? (
+      {!allCourses?.length && !show ? (
         <div className="flex justify-center  w-full mt-10">
           <div className="text-center font-semibold text-2xl w-full ">
             {" "}
@@ -268,41 +304,40 @@ const Internship = () => {
       <div className="text-2xl font-bold pl-[5%]">{cat}</div>
 
       <div className="my-5 mx-[5%] grid grid-cols-4 gap-6 xsm:grid-cols-2 lg:grid-cols-3 lg:gap-10 xsm:gap-3 xsm:my-[4%] md:my-[2%] ">
-        {
-        show ? [1,2,3,4].map((item)=>{
-          return(<Skeleton/>)
-        })  :
-        
-        allCourses?.map((val, ind) => {
-          return (
-            <CourseCard
-              key={val?.title}
-              title={val?.title}
-              featured_video={val?.featured_video}
-              price={val?.base_price}
-              name={val?.instructor?.name}
-              duration={val?.duration}
-              image={val?.featured_image}
-              profile={val?.instructor?.profile}
-              email={val?.instructor?.email}
-              experience={val?.instructor?.experience}
-              bio={val?.instructor?.bio}
-              slug={val?.slug}
-              phone={val?.instructor?.phone}
-              onClick={() => handleCourseClick(val?.title)}
-              isSelected={selectedCourse === val?.title}
-              category={val?.category}
-              description={val?.overview}
-              ind={ind}
-              _id={val?._id}
-              display={val?.display}
-              IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
-              credits={val?.credits}
-              discount={val?.discount_percentage}
-            // Pass category to CourseCard component
-            />
-          );
-        })}
+        {show
+          ? [1, 2, 3, 4].map((item) => {
+              return <Skeleton />;
+            })
+          : allCourses?.map((val, ind) => {
+              return (
+                <CourseCard
+                  key={val?.title}
+                  title={val?.title}
+                  featured_video={val?.featured_video}
+                  price={val?.base_price}
+                  name={val?.instructor?.name}
+                  duration={val?.duration}
+                  image={val?.featured_image}
+                  profile={val?.instructor?.profile}
+                  email={val?.instructor?.email}
+                  experience={val?.instructor?.experience}
+                  bio={val?.instructor?.bio}
+                  slug={val?.slug}
+                  phone={val?.instructor?.phone}
+                  onClick={() => handleCourseClick(val?.title)}
+                  isSelected={selectedCourse === val?.title}
+                  category={val?.category}
+                  description={val?.overview}
+                  ind={ind}
+                  _id={val?._id}
+                  display={val?.display}
+                  IsMinorDegreeCourse={val?.IsMinorDegreeCourse}
+                  credits={val?.credits}
+                  discount={val?.discount_percentage}
+                  // Pass category to CourseCard component
+                />
+              );
+            })}
       </div>
       <Newinstructor />
       {/* <div className="flex flex-col gap-14 px-24 py-20 md:px-[5%] md:gap-2 md:py-10">

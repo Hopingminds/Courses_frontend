@@ -49,7 +49,7 @@ function Curriculum() {
 
     // Fetch example video duration
     getVideoDuration(
-      "https://hoping-minds-courses.s3.ap-south-1.amazonaws.com/assets/1711955663670-001.mp4"
+      "https://drdy957pjga3n.cloudfront.net/assets/1711955663670-001.mp4"
     )
       .then((duration) => {
         console.log("Video duration:", duration);
