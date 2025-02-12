@@ -33,6 +33,13 @@ export default function AssessmentQuestion() {
         }
         setdata(response?.data);
         setLength(response?.length);
+      } else if(!response.success && response.length) {
+        if(response?.isProtected){
+          window.location.replace(`/prassessmentquestions?assessmentId=${params.get("assessmentId")}&index=${1}`)
+        }
+        else {
+          navigate(`/assessmentquestions?assessmentId=${params.get("assessmentId")}&index=${response.length}`);
+        }
       } else {
         localStorage.removeItem('lastminute')
         navigate("/submitted");
