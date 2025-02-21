@@ -114,7 +114,21 @@ const DetailTableDashboard = ({ data, FetchData,fetchFiltersData,setshowspinner,
       });
   };
   const exportToExcel = () => {
-    const worksheet = XLSX.utils.json_to_sheet(data);
+    const flattenedData = data.map(item => ({
+        name: item?.name,
+        phone: item?.phone,
+        email: item?.email,
+        college: item?.college,
+        degree: item?.degree,
+        stream: item?.stream,
+        isCourseOpened: item?.isCourseOpened,
+        totalLessons: item?.purchased_courses?.length > 0 ? item?.purchased_courses[0]?.totalLessons : "",
+        completedLessons: item?.purchased_courses?.length > 0 ? item?.purchased_courses[0]?.completedLessons : "",
+        totalAssessments: item?.purchased_courses?.length > 0 ? item?.purchased_courses[0]?.totalAssessments : "",
+        completedAssessments: item?.purchased_courses?.length > 0 ? item?.purchased_courses[0]?.completedAssessments : "",
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(flattenedData);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
 
@@ -122,9 +136,8 @@ const DetailTableDashboard = ({ data, FetchData,fetchFiltersData,setshowspinner,
     const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
 
-    saveAs(blob, "data.csv");
-  };
-
+    saveAs(blob, "data.xlsx");
+};
   // Example table content
 
   return (
@@ -153,7 +166,7 @@ const DetailTableDashboard = ({ data, FetchData,fetchFiltersData,setshowspinner,
             </div>
           </div>
           <label htmlFor='fileInput' className='text-xs font-semibold cursor-pointer'>
-            <div className='h-32 w-56 flex justify-center items-center border border-[#D0D0D0] rounded-md gap-1'>
+            <div className='h-32 w-56 flex flex-col justify-center items-center border border-[#D0D0D0] rounded-md gap-1'>
               <Upload className='h-16 w-12' />
               <div className='flex flex-col '>
                 Upload Sheet
@@ -168,10 +181,10 @@ const DetailTableDashboard = ({ data, FetchData,fetchFiltersData,setshowspinner,
               </div>
             </div>
           </label>
-          <div onClick={exportToExcel} className='h-32 cursor-pointer w-56 flex justify-center items-center border border-[#D0D0D0] rounded-md gap-1'>
+          <div onClick={exportToExcel} className='h-32 cursor-pointer w-56 flex flex-col justify-center items-center border border-[#D0D0D0] rounded-md gap-1'>
             <Download className='h-16 w-12' />
             <div className='flex flex-col '>
-              <p className='text-xs font-semibold'>Download Sheets</p>
+              <p className='text-xs font-semibold'>Download Students Report</p>
             </div>
           </div>
         </div>
@@ -205,7 +218,7 @@ const DetailTableDashboard = ({ data, FetchData,fetchFiltersData,setshowspinner,
                 <div key={row.id} className='grid grid-cols-5 bg-[#fff] py-3 text-center border border-[#E2E2E2] w-full'>
                 <p className='text-[#000] text-[16px] font-pop font-semibold'>{row.name}</p>
                 <p
-                  className='text-[#000] text-[16px] font-pop font-semibold  '
+                  className='text-[#000] text-[16px] font-pop font-semibold'
                   title={row.email}
                 >
                   {row.email}
