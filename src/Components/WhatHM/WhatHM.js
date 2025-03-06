@@ -47,11 +47,7 @@ const WhatHM = () => {
   return (
     <div className="py-12 xsm:py-0 md:py-4 lg:py-8 sm:py-2">
       <div className="flex flex-col gap-3" ref={sectionRef}>
-        {/* <div className="flex justify-center">
-          <p className="text-[#1DBF73] text-[36px] font-pop font-semibold xsm:text-[12px] md:text-[30px]">
-            What is Hoping Minds?
-          </p>
-        </div> */}
+       
         <div className="flex justify-center">
           <p className="text-[#696984] text-[20px] font-pop w-[70%] text-center leading-12 xl:text-[22px] lg:text-[16px] sm:text-[10px] xsm:text-[12px] xsm:w-[95%] xsm:px-[5%] md:text-[12px]">
             Welcome to HopingMinds, your gateway to a brighter future. As an
@@ -88,24 +84,7 @@ const WhatHM = () => {
                 }
               }}
             />
-            {/* {playingIndex !== 0 && (
-              <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9]">
-                {true && (
-                  <IoPlayCircle
-                    size={window.innerWidth <= 480 ? 30 : 60}
-                    onClick={() => handlePlay(0)}
-                    style={{
-                      cursor: "pointer",
-                      color: "#1DBF73",
-
-                      zIndex: "999999",
-
-                    }}
-
-                  />
-                )}
-              </span>
-            )} */}
+           
           </div>
           <div
             className="w-[500px] h-[350px] 2xl:w-[600px] 2xl:h-[400px] rounded-3xl overflow-hidden sm:w-[30%] sm:h-[140px] xsm:w-[42%] xsm:h-[100px] xsm:rounded-lg md:w-[30%] md:h-[180px] lg:w-[35%] lg:h-[280px] relative xsm:hidden"
@@ -132,23 +111,7 @@ const WhatHM = () => {
                 }
               }}
             />
-            {/* {playingIndex !== 1 && (
-              <span className=" p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9]">
-                {true && (
-                  <IoPlayCircle
-                    size={window.innerWidth <= 480 ? 30 : 60}
-                    onClick={() => handlePlay(1)}
-                    style={{
-                      cursor: "pointer",
-                      color: "#1DBF73",
-
-                      zIndex: "999999",
-                    }}
-
-                  />
-                )}
-              </span>
-            )} */}
+           
           </div>
         </div>
       </div>

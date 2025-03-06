@@ -1,30 +1,32 @@
-import React, { useState, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React, { useState, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 
 function MediaCheck() {
-    const [search,setsearch]=useSearchParams()
+  const [search, setsearch] = useSearchParams();
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  const [cameraError, setCameraError] = useState('');
-  const [microphoneError, setMicrophoneError] = useState('');
+  const [cameraError, setCameraError] = useState("");
+  const [microphoneError, setMicrophoneError] = useState("");
   const streamRef = useRef(null);
   const audioContextRef = useRef(null);
   const analyserRef = useRef(null);
-  const [micworking, setmicworking] = useState(false)
-  const [cameraworking, setcameraworking] = useState(false)
+  const [micworking, setmicworking] = useState(false);
+  const [cameraworking, setcameraworking] = useState(false);
 
   const startCamera = async () => {
     try {
-      const cameraStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const cameraStream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+      });
       if (videoRef.current) {
         videoRef.current.srcObject = cameraStream;
       }
       streamRef.current = cameraStream;
-      setcameraworking(true)
+      setcameraworking(true);
     } catch (err) {
       console.error("Error accessing camera:", err);
       setCameraError("Could not access camera. Please check permissions.");
-      if (err.name === 'NotAllowedError' || err.name === 'SecurityError') {
+      if (err.name === "NotAllowedError" || err.name === "SecurityError") {
         alert("Camera access denied. Please allow camera access.");
       }
     }
@@ -32,21 +34,27 @@ function MediaCheck() {
 
   const startMicrophone = async () => {
     try {
-      const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+      const audioStream = await navigator.mediaDevices.getUserMedia({
+        audio: true,
+      });
+      audioContextRef.current = new (window.AudioContext ||
+        window.webkitAudioContext)();
       analyserRef.current = audioContextRef.current.createAnalyser();
-      const source = audioContextRef.current.createMediaStreamSource(audioStream);
+      const source =
+        audioContextRef.current.createMediaStreamSource(audioStream);
       source.connect(analyserRef.current);
       analyserRef.current.fftSize = 256;
 
       visualizeMicrophone();
 
       streamRef.current = audioStream;
-      setmicworking(true)
+      setmicworking(true);
     } catch (err) {
       console.error("Error accessing microphone:", err);
-      setMicrophoneError("Could not access microphone. Please check permissions.");
-      if (err.name === 'NotAllowedError' || err.name === 'SecurityError') {
+      setMicrophoneError(
+        "Could not access microphone. Please check permissions."
+      );
+      if (err.name === "NotAllowedError" || err.name === "SecurityError") {
         alert("Microphone access denied. Please allow microphone access.");
       }
     }
@@ -63,7 +71,7 @@ function MediaCheck() {
 
       analyserRef.current.getByteFrequencyData(dataArray);
 
-      canvasCtx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+      canvasCtx.fillStyle = "rgba(0, 0, 0, 0.5)";
       canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
 
       const barWidth = (canvas.width / bufferLength) * 2.5;
@@ -73,7 +81,12 @@ function MediaCheck() {
       for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i];
         canvasCtx.fillStyle = `rgb(${barHeight + 100},50,50)`;
-        canvasCtx.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
+        canvasCtx.fillRect(
+          x,
+          canvas.height - barHeight / 2,
+          barWidth,
+          barHeight / 2
+        );
 
         x += barWidth + 1;
       }
@@ -82,37 +95,55 @@ function MediaCheck() {
     draw();
   };
 
-
-
-
-function handleContinue(){
-    // enterFullScreen()
-    // setTimeout(() => {
-        window.location.replace(`/questions?module_id=${search.get('module_id')}&index=1&t=${search.get('t')}`)
-
-    // }, 1000);
-}
+  function handleContinue() {
+    window.location.replace(
+      `/questions?module_id=${search.get("module_id")}&index=1&t=${search.get(
+        "t"
+      )}`
+    );
+  }
 
   return (
-    <div className='min-h-screen w-full'>
+    <div className="min-h-screen w-full">
       <button onClick={startCamera}>Turn On Camera</button>
-      <button className='ml-5' onClick={startMicrophone}>Turn On Microphone</button>
-      {/* <button className='ml-5' onClick={enterFullScreen}>Enable Fullscreen</button> */}
-      
+      <button className="ml-5" onClick={startMicrophone}>
+        Turn On Microphone
+      </button>
+
       <div>
-        {cameraError && <p style={{ color: 'red' }}>{cameraError}</p>}
-        {microphoneError && <p style={{ color: 'red' }}>{microphoneError}</p>}
+        {cameraError && <p style={{ color: "red" }}>{cameraError}</p>}
+        {microphoneError && <p style={{ color: "red" }}>{microphoneError}</p>}
       </div>
 
-      <div className='flex justify-between w-full'>
-        <video ref={videoRef} autoPlay style={{ width: '100%', maxWidth: '400px', marginTop: '20px' }} />
-        <canvas ref={canvasRef} width="800" height="100" style={{ marginTop: '20px', border: '1px solid black' }}></canvas>
+      <div className="flex justify-between w-full">
+        <video
+          ref={videoRef}
+          autoPlay
+          style={{ width: "100%", maxWidth: "400px", marginTop: "20px" }}
+        />
+        <canvas
+          ref={canvasRef}
+          width="800"
+          height="100"
+          style={{ marginTop: "20px", border: "1px solid black" }}
+        ></canvas>
       </div>
-      <div className='flex justify-center mt-10'>     {(micworking  && cameraworking ) ? <button onClick={handleContinue} className='bg-[#1DBF73] text-white rounded p-2'>Continue test</button>:<button className='bg-[#1DBF73] cursor-not-allowed text-white rounded p-2 opacity-50'>Continue test</button>}
+      <div className="flex justify-center mt-10">
+        {" "}
+        {micworking && cameraworking ? (
+          <button
+            onClick={handleContinue}
+            className="bg-[#1DBF73] text-white rounded p-2"
+          >
+            Continue test
+          </button>
+        ) : (
+          <button className="bg-[#1DBF73] cursor-not-allowed text-white rounded p-2 opacity-50">
+            Continue test
+          </button>
+        )}
       </div>
-      {/* <div className='flex justify-center mt-10'>      <button onClick={handleContinue} className='bg-[#1DBF73] text-white rounded p-2'>Continue test</button>
-      </div> */}
-      </div>
+    </div>
   );
 }
 

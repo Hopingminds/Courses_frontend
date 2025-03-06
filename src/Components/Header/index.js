@@ -11,12 +11,9 @@ import { ReactComponent as Cart } from "../../Assets/Icons/cart.svg";
 export default function Navbar() {
   const [profile, setProfile] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage menu open/close
-  let token=localStorage.getItem('COURSES_USER_TOKEN')
-  const {
-    cartSize,
-    userDetail,
-  } = useContext(Globalinfo);
- 
+  let token = localStorage.getItem("COURSES_USER_TOKEN");
+  const { cartSize, userDetail } = useContext(Globalinfo);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -38,22 +35,26 @@ export default function Navbar() {
     }
   }
 
-  useEffect(() => {
-    async function FetchData() {
-      try {
-        let token = localStorage.getItem("COURSES_USER_TOKEN");
-        if (token) {
-          let URL = BASE_URL + "/user/" + jwtDecode(token.email);
-          const data = await fetch(URL);
-          const response = await data.json();
-          setProfile(response?.profile);
-          console.log(response?.profile);
-        }
-      } catch (error) {
-        console.error(error);
+  async function FetchData() {
+    try {
+      let token = localStorage.getItem("COURSES_USER_TOKEN");
+      if (token) {
+        let URL = BASE_URL + "/user/" + jwtDecode(token.email);
+        const data = await fetch(URL);
+        const response = await data.json();
+        setProfile(response?.profile);
+        console.log(response?.profile);
       }
+    } catch (error) {
+      console.error(error);
     }
-    FetchData();
+  }
+  let temp = true;
+  useEffect(() => {
+    if (temp) {
+      temp = false;
+      FetchData();
+    }
   }, []);
   useEffect(() => {
     return setIsMenuOpen(false);
@@ -64,7 +65,7 @@ export default function Navbar() {
     Object.keys(allCookies).forEach((cookieName) => {
       Cookies.remove(cookieName);
     });
-    if ('caches' in window) {
+    if ("caches" in window) {
       caches.keys().then((cacheNames) => {
         cacheNames.forEach((cacheName) => {
           caches.delete(cacheName);
@@ -72,17 +73,7 @@ export default function Navbar() {
       });
     }
     window.open(`${AUTH_BASE_URL}/logout`, "_self");
-    // navigate('/login-2')
-    // getUserDetails();
-    // clearCart();
-    // clearWishList();
-    // window.open(
-    // 	`${AUTH_BASE_URL}/logout`,
-    // 	"_self"
-    // );
   };
-
-  // console.log(location.pathname)
 
   return (
     <>
@@ -197,49 +188,31 @@ export default function Navbar() {
                     Courses
                   </Link>
                   <Link
-                  to={"/internshipprogram"}
-                  onClick={Top}
-                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${
-                    location.pathname === "/internshipprogram"
-                      ? " font-bold text-[#1DBF73]"
-                      : ""
-                  }`}
-                >
-                  Internship
-                </Link>
-                {/* <Link
-                  to={"/freelancing"}
-                  onClick={Top}
-                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${
-                    location.pathname === "/freelancing"
-                      ? " font-bold text-[#1DBF73]"
-                      : ""
-                  }`}
-                >
-                  Freelancing
-                </Link>  */}
-                   {/* <Link
-                    to="/internship"
+                    to={"/internshipprogram"}
                     onClick={Top}
                     className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${
-                      location.pathname === "/internship"
+                      location.pathname === "/internshipprogram"
                         ? " font-bold text-[#1DBF73]"
                         : ""
                     }`}
                   >
                     Internship
-                  </Link> */}
-        {   !token ?     <Link
-                  to="/hire-from-us"
-                  onClick={Top}
-                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop ${
-                    location.pathname === "/hire-from-us"
-                      ? " font-bold text-[#1DBF73]"
-                      : ""
-                  }`}
-                >
-                  Hire From Us
-                </Link> : ''}
+                  </Link>
+                  {!token ? (
+                    <Link
+                      to="/hire-from-us"
+                      onClick={Top}
+                      className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop ${
+                        location.pathname === "/hire-from-us"
+                          ? " font-bold text-[#1DBF73]"
+                          : ""
+                      }`}
+                    >
+                      Hire From Us
+                    </Link>
+                  ) : (
+                    ""
+                  )}
                   <a
                     href={location.pathname === "/" ? "#" : "/pap"}
                     onClick={ScrollToPap}
@@ -374,7 +347,6 @@ export default function Navbar() {
                   Courses
                 </Link>
 
-
                 <Link
                   to={"/internshipprogram"}
                   onClick={Top}
@@ -386,41 +358,21 @@ export default function Navbar() {
                 >
                   Internship
                 </Link>
-                {/* <Link
-                  to={"/freelancing"}
-                  onClick={Top}
-                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${
-                    location.pathname === "/freelancing"
-                      ? " font-bold text-[#1DBF73]"
-                      : ""
-                  }`}
-                >
-                  Freelancing
-                </Link> */}
-                {/* <Link
-                  to={"/internship"}
-                  onClick={Top}
-                  className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] md:text-[14px] font-pop  ${
-                    location.pathname === "/internship"
-                      ? " font-bold text-[#1DBF73]"
-                      : ""
-                  }`}
-                >
-                  Internship
-                </Link> */}
-           {  !token ?   <Link
-                  to={"/hire-from-us"}
-                  onClick={Top}
-                  className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] sm:text-[10px] md:text-[14px] font-pop ${
-                    location.pathname === "/hire-from-us"
-                      ? " font-bold text-[#1DBF73]"
-                      : ""
-                  }`}
-                >
-                  Hire From Us
-                </Link> : ''}
-                {/* <Link to={'/ai'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Ai Minds</Link> */}
-                {/* <Link to={'/hire-from-us'} onClick={Top} className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] md:text-[14px] font-pop ${location.pathname === '/career' ? ' font-bold text-[#1DBF73]' : ''}`}>Hire From Us</Link> */}
+                {!token ? (
+                  <Link
+                    to={"/hire-from-us"}
+                    onClick={Top}
+                    className={` rounded-full hover:text-[#1DBF73]  xsm:text-[8px] sm:text-[10px] md:text-[14px] font-pop ${
+                      location.pathname === "/hire-from-us"
+                        ? " font-bold text-[#1DBF73]"
+                        : ""
+                    }`}
+                  >
+                    Hire From Us
+                  </Link>
+                ) : (
+                  ""
+                )}
                 <a
                   href={location.pathname === "/" ? "#" : "/pap"}
                   onClick={ScrollToPap}
@@ -481,7 +433,7 @@ export default function Navbar() {
                         </Link>
                       ) : (
                         <Link to="/profile" className="text-[#1DBF73] text-sm">
-                         Complete Your Profile
+                          Complete Your Profile
                         </Link>
                       )}
                       <button

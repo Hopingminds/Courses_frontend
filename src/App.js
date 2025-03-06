@@ -37,10 +37,9 @@ function App() {
 
 
   useEffect(() => {
-    // console.log(cartData)
     getUserDetails();
     GetCart()
-    // GetWishList()
+   
   }, [localStorage.getItem('COURSES_USER_TOKEN'), userDetail?._id])
 
 
@@ -52,16 +51,16 @@ function App() {
         const data = await fetch(url);
         const response = await data.json();
         setCartSize(response?.cart?.courses?.length+response?.cart?.internships?.length || 0);
-        // console.log(response?.cart?.length);
+        
       } catch (error) {
         console.error(error);
       }
     }
     else {
       let temp = localStorage.getItem('COURSES_LOCAL_CART');
-      // console.log(temp);
+     
       let temp2 = JSON.parse(temp)
-      console.log(temp2);
+      // console.log(temp2);
     }
   }
 
@@ -75,9 +74,9 @@ function App() {
     }
   }
   const getUserDetails = async () => {
-    // console.log(localStorage.getItem('GROC_USER_TOKEN'))
+    
     const token = localStorage.getItem('COURSES_USER_TOKEN')
-    // console.log(token)
+    
     if (token) {
       const decoded = jwtDecode(token);
       console.log(decoded)
@@ -104,64 +103,6 @@ function App() {
   const clearWishList = () => {
     setWishListData([]);
   }
-
-  // useEffect(() => {
-  //   // Initialize Socket.io client with specified transport
-  //   const socket = io('https://api.hopingminds.com', {
-  //     secure: true,
-  //     reconnectionAttempts: 5,
-  //     withCredentials: true, // Include credentials if needed
-  //   });
-
-  //   // Handle connection event
-  //   socket.on('connect', () => {
-  //     console.log('Connected to WebSocket server');
-  //   });
-
-  //   // Handle incoming notifications
-  //   socket.on('notification', (data) => {
-  //     console.log('Notification received:', data);
-  //     alert('Notification received Check Console');
-  //   });
-
-  //   // Cleanup function to disconnect the socket when the component unmounts
-  //   return () => {
-  //     socket.disconnect();
-  //   };
-  // }, []);
-
-
-
-  // useEffect(() => {
-  //   checkPaymentStatus()
-
-  //   const originalFetch = window.fetch;
-
-  //   window.fetch = async function (...args) {
-  //     const response = await originalFetch(...args);
-  //     console.log('Request URL:', args[0]);
-  //     console.log('Request Options:', args[1]);
-
-  //     // Clone the response to read its body without affecting the original response
-  //     const clonedResponse = response.clone();
-  //     clonedResponse.json().then((data) => {
-  //       console.log('Response Payload:', data);
-  //     });
-
-  //     return response;
-  //   };
-  // }, [])
-
-
-  // const checkPaymentStatus = async () => {
-  //   try {
-  //     const res = await axios.get("https://hopingminds.in/")
-  //     console.log("Return response getting ****** ", res)
-  //   } catch (error) {
-  //     console.log("Errro is ************" + error);
-  //   }
-  // }
-
 
   return (
     <>

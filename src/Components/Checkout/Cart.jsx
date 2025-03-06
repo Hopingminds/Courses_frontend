@@ -854,9 +854,7 @@ const handleContinueCheckout = async () => {
             >
               Continue Checkout
             </button>
-            {/* <a href={`${paymentLink}`}>
-              confirm Payment
-            </a> */}
+           
           </span>
 
           {/* Summary div end*/}

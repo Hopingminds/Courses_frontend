@@ -51,7 +51,11 @@ const AboutUs = () => {
       <div className="flex flex-row gap-36 px-[5%] py-10 xsm:gap-0 xsm:py-2 xsm:flex-col-reverse">
         <div className="flex w-[35%] justify-center items-center relative xsm:h-56 xsm:w-[100%] xsm:mt-6">
           <div className="w-[90%] h-full bg-[#E2FFF1] rounded-lg xsm:w-[70%]"></div>
-          <img src={Img3} alt="" className="absolute top-12 w-[80%] xsm:w-[60%] xsm:top-6" />
+          <img
+            src={Img3}
+            alt=""
+            className="absolute top-12 w-[80%] xsm:w-[60%] xsm:top-6"
+          />
         </div>
         <div className="flex flex-col gap-3 w-[45%] py-6 xsm:w-[100%] xsm:pb-0 xsm:mx-auto">
           <p className="text-[#22B286] text-[32px] font-pop font-bold xsm:text-center xsm:text-[18px]">
@@ -109,38 +113,6 @@ const AboutUs = () => {
           day in and day out to identify requirements from these partners and
           also help tailor our programs on an agile basis to meet them.
         </p>
-        {/* <div className="grid grid-cols-3 gap-6 w-[80%] pt-6 xsm:flex xsm:flex-col xsm:w-full xsm:px-4">
-          <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6 xsm:w-full">
-            <img src={Num1} alt="" className="w-[15%]" />
-            <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Standardization</p>
-            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">When working in a global workplace, it’s often difficult to gauge learners’ training experiences, which are ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-          </div>
-          <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
-            <img src={Num2} alt="" className="w-[15%]" />
-            <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Reduced Costs</p>
-            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">With hoping minds, there’s no cost to reproduce materials and, thanks to mobile learning and microlearning ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-          </div>
-          <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6">
-            <img src={Num3} alt="" className="w-[15%]" />
-            <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">More Customization</p>
-            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">Just like learners aren’t one-size-fits-all, learning is not a one-size-fits-all experience. By using different ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-          </div>
-          <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
-            <img src={Num4} alt="" className="w-[15%]" />
-            <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Affordable Pricing</p>
-            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">With hoping minds, there’s no cost to reproduce materials and, thanks to mobile learning and microlearning ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-          </div>
-          <div className="flex flex-col gap-4 justify-between rounded-xl bg-[#E2FFF1] p-6">
-            <img src={Num5} alt="" className="w-[15%]" />
-            <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Learner Satisfaction</p>
-            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">If you really want students to retain what they learn, you’ll need to aim for high satisfaction rates. Bad ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-          </div>
-          <div className="flex flex-col gap-4 justify-between rounded-xl border p-6">
-            <img src={Num6} alt="" className="w-[15%]" />
-            <p className="text-[#141414] text-[32px] font-poppins xsm:text-[26px]">Multimedia Materials</p>
-            <p className="text-[#1E1E1E] text-[20px] font-Nunito Sans text-justify leading-8 xsm:text-[16px] font-pop">One of the main reasons why custom eLearning is effective is that it’s the perfect delivery method for ... <span className="text-[#1DBF73] cursor-pointer">Read More</span></p>
-          </div>
-        </div> */}
       </div>
     </>
   );

@@ -78,7 +78,6 @@ setdata(temp)
       };
   return (
     <>
-
       <BannarSubAdmin />
         <div className="grid grid-cols-[1fr_6.2fr] px-[4vw] my-[5vh]">
           <FilterSubAdmin showspinner={showspinner} setshowspinner={setshowspinner} data={data} Filters={Filters} FetchData={FetchData} Statehandle={Statehandle} fetchFiltersData={fetchFiltersData} filtersData={filtersData} setFiltersData={setFiltersData}/>

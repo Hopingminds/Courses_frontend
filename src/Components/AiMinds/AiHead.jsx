@@ -1,5 +1,5 @@
 import "./AiMinds.css";
-import Typewriter from 'typewriter-effect';
+import Typewriter from "typewriter-effect";
 
 export default function AiHead() {
   const handleDownloadPdf = () => {
@@ -30,13 +30,13 @@ export default function AiHead() {
         <div>
           <p className="font-mons font-bold text-[70px] text-[#169f63] leading-none flex xsm:text-[22px]">
             <Typewriter
-                          options={{
-                            strings: ['AI & Data Science'],
-                            cursor: '',
-                            autoStart: true,
-                            loop: true,
-                          }}
-                        /> 
+              options={{
+                strings: ["AI & Data Science"],
+                cursor: "",
+                autoStart: true,
+                loop: true,
+              }}
+            />
             <span className="text-white text-[80px] xsm:text-[24px]">|</span>
           </p>
         </div>
@@ -49,7 +49,6 @@ export default function AiHead() {
           </p>
         </div>
         <div className="flex justify-between w-[73%] mt-6 xsm:mt-2">
-          {/* <button className="font-mons font-bold text-white text-[20px] bg-[#169f63] border-2 border-white rounded-2xl px-14 py-4">Enroll Now</button> */}
           <a
             onClick={handleDownloadPdf}
             className="font-mons font-bold text-white text-[20px] bg-[#169f63] border-2 border-white rounded-2xl px-9 py-4 cursor-pointer xsm:px-2 xsm:py-1 xsm:text-[8px] xsm:rounded-md xsm:border-[1px]"
@@ -60,24 +59,34 @@ export default function AiHead() {
       </div>
       <div className="w-[30%] flex flex-col gap-4 items-end xsm:w-[38%] xsm:gap-1">
         <div className="w-[90%] bg-white flex flex-col gap-2 items-center rounded-2xl py-3 innerShadow fadeInLeft  xsm:w-full xsm:py-1 xsm:rounded-md xsm:gap-1">
-          <p className="font-mons font-bold text-[#169f63] text-center xsm:text-[9px]">Partner with</p>
+          <p className="font-mons font-bold text-[#169f63] text-center xsm:text-[9px]">
+            Partner with
+          </p>
           <img className="w-36 xsm:w-14" src="../img/ainsdc.png" alt="nsdc" />
         </div>
         <div className="w-[90%] bg-white flex flex-col gap-2 items-center rounded-2xl py-6 innerShadow fadeInLeft  xsm:w-full xsm:py-1 xsm:rounded-md xsm:gap-1">
           <p className="font-mons font-bold text-[#169f63] text-center xsm:text-[9px]">
             Boom in AI Applications
           </p>
-          <p className="font-mons font-medium xsm:text-[7px]">Limited Seats Available</p>
+          <p className="font-mons font-medium xsm:text-[7px]">
+            Limited Seats Available
+          </p>
         </div>
         <div className="w-[90%] bg-white flex flex-col gap-2 items-center rounded-2xl py-6 innerShadow fadeInLeft  xsm:w-full xsm:py-1 xsm:rounded-md xsm:gap-1">
           <p className="font-mons font-bold text-[#169f63] text-center xsm:text-[9px]">
             Program Duration: 40 Weeks
           </p>
-          <p className="font-mons font-medium xsm:text-[7px]">8-10 hours/week</p>
+          <p className="font-mons font-medium xsm:text-[7px]">
+            8-10 hours/week
+          </p>
         </div>
         <div className="w-[90%] bg-white flex flex-col gap-2 items-center rounded-2xl py-6 innerShadow fadeInLeft  xsm:w-full xsm:py-1 xsm:rounded-md xsm:gap-1">
-          <p className="font-mons font-bold text-[#169f63] text-center xsm:text-[9px]">Learning Format</p>
-          <p className="font-mons font-medium xsm:text-[7px]">Online Live Classes</p>
+          <p className="font-mons font-bold text-[#169f63] text-center xsm:text-[9px]">
+            Learning Format
+          </p>
+          <p className="font-mons font-medium xsm:text-[7px]">
+            Online Live Classes
+          </p>
         </div>
       </div>
     </div>
