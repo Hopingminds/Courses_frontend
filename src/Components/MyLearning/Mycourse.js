@@ -4,6 +4,7 @@ import BatchModal from "./Batchmodal";
 import { useState } from "react";
 import { BASE_URL } from "../../Api/api";
 import InternshipBatchModal from "./Internshipbatchmodal";
+const image = `${process.env.PUBLIC_URL}/colors.png`;
 // import { useMediaQuery } from 'react-responsive';
 
 export default function Mycourse({ courses, fetchUserData,internships }) {
@@ -87,6 +88,8 @@ export default function Mycourse({ courses, fetchUserData,internships }) {
     }
   }
   function handleInternshipbatch(val) {
+    console.log("val?.BatchId",!val?.BatchId);
+    
     if (!val?.BatchId) {
       openModalinternship(val);
     } else {
@@ -255,7 +258,7 @@ export default function Mycourse({ courses, fetchUserData,internships }) {
               <div className="w-full h-[50%]">
                 <img
                   className="w-full h-full xsm:rounded-md xsm:h-[55px]"
-                  src={val?.internship?.featured_image}
+                  src={val?.internship?.featured_image?val?.internship?.featured_image:image}
                 />
               </div>
               <div className="h-[45%] flex flex-col justify-between mt-2 xsm:space-y-1 xsm:mt-1">

@@ -66,7 +66,7 @@ const LoginSubAdmin = () => {
           <label className='font-pop font-semibold text-[16px]'>Username</label>
           <div>
             <input
-              className='w-full h-[44px] shadow-lg'
+              className='w-full h-[44px] rounded shadow-lg p-2'
               type='email'
               name='username'
               value={Admin.email}
@@ -80,7 +80,7 @@ const LoginSubAdmin = () => {
           <label className='font-pop font-semibold text-[16px]'>Password</label>
           <div>
             <input
-              className='w-full h-[44px] shadow-lg'
+              className='w-full h-[44px] rounded shadow-lg p-2'
               type='password'
               name='password'
               value={Admin.password}

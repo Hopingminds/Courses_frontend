@@ -28,28 +28,14 @@ const DashboardSubAdmin = () => {
     })
     const response=await data.json()
     setdata(response?.data)
-    // console.log(response);
-  }
-  // async function Fetchfilters(){
-  //   const data=await fetch(BASE_URL+'/getAllEducationFields',{
-  //     method:'GET',
-  //     headers:{
-  //       'Authorization':'Bearer '+localStorage.getItem('token')
-  //     }
-      
-  //   })
-  //   const response=await data.json()
-  //   setFilters(response?.data)
-  //   // console.log(response);
     
-  //   // setdata(response?.data)
-  //   // console.log(response);
-  // }
+  }
+
+  
   useEffect(() => {
    
     FetchData()
     fetchFiltersData()
-    // Fetchfilters()
       }, [])
 
       function Statehandle(temp){

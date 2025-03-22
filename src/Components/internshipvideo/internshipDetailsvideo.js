@@ -60,15 +60,17 @@ export default function Internshipvideo() {
       if (login) {
         let token = jwtDecode(login);
         let url1 = BASE_URL + "/getUserInternshipBySlug" + "/" + params.slug;
-
+        
         const data = await fetch(url1,{
           method:'GET',
           headers:{
-'Content-type':'application/json',
-'Authorization':`Bearer ${login}`
+            'Content-type':'application/json',
+            'Authorization':`Bearer ${login}`
           }
         });
         const response = await data.json();
+        console.log("response?.data?.internship",response?.data?.internship);
+        setData(response?.data?.internship);
         // console.log("Course particular", response);
         setImageBanner(response?.data?.internship?.featured_image);
         setCourseLessons(response?.data?.completed_lessons);
@@ -77,7 +79,7 @@ export default function Internshipvideo() {
           setcourseId(response?.data?.internship?._id);
           if (!response?.data?.completed_lessons?.length) {
             completed.push(
-              response?.data?.internship?.curriculum[0]?.lessons[0]?._id
+              response?.data?.internship?.curriculum?.lessons?._id
             );
           } else {
             response?.data?.completed_lessons?.forEach((val) => {
@@ -105,8 +107,8 @@ export default function Internshipvideo() {
                 tempids[it?._id] = ind++;
               })
               // console.log("it",val);
-
-            
+              
+              
             });
             val?.project?.map((it) => {
               totalduration = totalduration + parseInt(it?.duration);
@@ -127,6 +129,7 @@ export default function Internshipvideo() {
           });
           setidwise(tempids);
         }
+        // console.log("allchapters="+allchapters);
         // console.log("all", allchapters[0]?.video);
         // allchapters=[...new Set(allchapters)]
         // console.log(allchapters);
@@ -135,7 +138,7 @@ export default function Internshipvideo() {
         
         setdur(totalduration);
         setALLCHAPTER(allchapters);
-        setData(response?.data?.internship);
+        
         completed = [...new Set(completed)];
         let videoindex = completed.length;
 
@@ -195,6 +198,7 @@ export default function Internshipvideo() {
 
 
         }
+        
         // console.log(completed);
         setcompleted_lessons(completed);
         // console.log("data", data && (BASE_URL+'/videos/'+ data[0]?.lessons[0]?.video));
@@ -205,7 +209,7 @@ export default function Internshipvideo() {
     }
   }, []);
   const handleKeyDown = (e) => {
-    console.log(e.key);
+    // console.log(e.key);
     // if (e.metaKey) {
     //   alert("Screenshot is not allowed")
     //   e.preventDefault()
@@ -216,13 +220,15 @@ export default function Internshipvideo() {
   const countLessons = () => {
     let temp = 0;
     Data?.curriculum?.forEach((val) => {
-      temp += val?.lessons?.length;
-      temp += val?.project?.length;
+      temp += Array.isArray(val?.lessons) ? val?.lessons.length : 0;
+      temp += Array.isArray(val?.project) ? val?.project.length : 0;
     });
+  
     return temp;
   };
-
-  let totalLessons = countLessons();
+  
+  let totalLessons = countLessons() || 0; 
+  // console.log(totalLessons);
   // useEffect hook to add event listeners when the component mounts
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
@@ -663,7 +669,7 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                         }}
                       />
                     )}
-                    <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500 mt-5">
+                    <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] xsm:hidden flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500 mt-5">
                       {activeindex}
                     </div>
                   </div>
@@ -724,7 +730,7 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                       </p>
                       <div className="flex space-x-4">
                         <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
-                          {totalLessons} Lessons
+                          {totalLessons} Chapters
                         </p>
                         <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
                           {Timeconverter(dur)}

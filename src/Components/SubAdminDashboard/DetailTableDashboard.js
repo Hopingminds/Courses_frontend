@@ -11,6 +11,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
 import MyModal from "./Modal";
 import Spinner from "../Spinner";
+import Joyride from "react-joyride";
 
 const DetailTableDashboard = ({
   data,
@@ -28,6 +29,18 @@ const DetailTableDashboard = ({
   const [duplicateEmails, setduplicateEmails] = useState([]);
   const [duplicatePhones, setduplicatePhones] = useState([]);
   const [selectedCourses, setSelectedCourses] = useState([]);
+  const [isTourOpen, setIsTourOpen] = useState(false);
+  const [isBlocking, setIsBlocking] = useState(false);
+
+  useEffect(() => {
+    Fetchdata();
+    const hasVisited = localStorage.getItem("hasVisited");
+    if (!hasVisited) {
+      setIsTourOpen(true);
+      setIsBlocking(true);
+      localStorage.setItem("hasVisited", "true");
+    }
+  }, []);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -182,9 +195,55 @@ const DetailTableDashboard = ({
     saveAs(blob, "data.xlsx");
   };
   // Example table content
+  const steps = [
+    {
+      target: ".download-button",
+      content: "Download the format to uploade csv file (sheet) of student .",
+    },
+    {
+      target: ".upload-button",
+      content: "Click here to upload the csv file (sheet) of students .",
+    },
+    {
+      target: ".total-students",
+      content: "Here you can see the total number of students.",
+    },
+    {
+      target: ".total-coins",
+      content: "This section displays your available coins.",
+    },
+    {
+      target: ".student-table",
+      content: "This table shows all student details.",
+    },
+    {
+      target: ".report",
+      content: "Click here to download the students report.",
+    }
+  ];
 
   return (
-    <>
+    <div>
+      {isBlocking && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+          <p className="text-white text-lg font-bold">Please follow the tour</p>
+        </div>
+      )}
+
+      
+    <Joyride
+      steps={steps}
+      continuous
+      showSkipButton
+      run={isTourOpen}
+      callback={(data) => {
+        if (data.status === "finished") {
+          setIsTourOpen(false);
+          setIsBlocking(false); // Unblock user interaction
+          localStorage.setItem("hasVisited", "true");
+        }
+      }}
+    />
       <Toaster
         toastOptions={{
           duration: 500,
@@ -199,7 +258,7 @@ const DetailTableDashboard = ({
         closeModal={closeModal}
       />
       {isUploadModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0  flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white rounded-lg shadow-xl w-f p-6 max-w-4xl w-full">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">Upload Sheet</h2>
@@ -264,25 +323,25 @@ const DetailTableDashboard = ({
       <div className="px-[4%] flex flex-col gap-4 w-full">
         <div className="flex w-full justify-end">
           <button
-            className="py-2 bg-[#1DBF73] text-white rounded mt-3 px-3"
+            className="py-2 bg-[#1DBF73] shadow-lg text-white rounded mt-3 px-3 download-button"
             onClick={handleDownload}
           >
             Download format
           </button>
         </div>
         <div className="w-full flex justify-between">
-          <div className="h-32 w-56 flex justify-center items-center border border-[#D0D0D0] rounded-md">
+          <div className="h-32 w-56 flex justify-center items-center border border-[#D0D0D0] rounded-md total-students">
             <Cap className="h-20 w-20" />
             <div className="flex flex-col ">
               <p className="font-bold text-center text-xl">{data?.length}</p>
               <p className="text-xs font-semibold">Total students</p>
             </div>
           </div>
-          <div className="h-32 w-56 flex justify-center items-center border border-[#D0D0D0] rounded-md gap-1">
+          <div className="h-32 w-56 flex justify-center items-center border border-[#D0D0D0] rounded-md gap-1 total-coins">
             <Coin className="h-12 w-16" />
             <div className="flex flex-col ">
               <p className="font-bold text-center text-xl ">
-                <span className="text-gray-500 text-2xl flip-scale-2-hor-top">
+                <span className="text-gray-500 text-2xl ">
                   {Coins?.used_coins}
                 </span>
                 /{Coins?.coins}
@@ -297,7 +356,7 @@ const DetailTableDashboard = ({
             <div>
               <button
                 onClick={openUploadModal}
-                className="h-32 text-base w-56 flex flex-col justify-center items-center border border-[#D0D0D0] rounded-md gap-1"
+                className="h-32 text-base w-56 flex flex-col justify-center items-center border border-[#D0D0D0] rounded-md gap-1 upload-button"
               >
                 <Upload className="h-16 w-12" />
                 Upload Sheet
@@ -306,7 +365,7 @@ const DetailTableDashboard = ({
           </label>
           <div
             onClick={exportToExcel}
-            className="h-32 cursor-pointer w-56 flex flex-col justify-center items-center border border-[#D0D0D0] rounded-md gap-1"
+            className="  h-32 cursor-pointer w-56 flex flex-col justify-center items-center border border-[#D0D0D0] rounded-md gap-1 report"
           >
             <Download className="h-16 w-12" />
             <div className="flex flex-col ">
@@ -315,7 +374,7 @@ const DetailTableDashboard = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-5 bg-[#000000] py-6 text-center w-full">
+        <div className="grid grid-cols-5 bg-[#000000] py-6 text-center w-full student-table">
           <p className="text-[#FFFFFF] text-[17px] font-pop font-semibold">
             Name
           </p>
@@ -339,7 +398,6 @@ const DetailTableDashboard = ({
                 key={row.id}
                 className="grid grid-cols-5 bg-[#fff] py-3 text-center border border-[#E2E2E2] w-full"
               >
-                
                 <p className="text-[#000] text-[16px] font-pop font-semibold">
                   {row.name}
                 </p>
@@ -383,7 +441,7 @@ const DetailTableDashboard = ({
           ""
         )}
       </div>
-    </>
+    </div>
   );
 };
 

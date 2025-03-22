@@ -10,6 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { ReactComponent as Notes } from "../../Assets/Icons/notes.svg";
 import { ReactComponent as Assignment } from "../../Assets/Icons/assignment.svg";
 import { Globalinfo } from "../../App";
+import { CiStreamOn } from "react-icons/ci";
 
 export default function Internshipcontent({
   data,
@@ -22,10 +23,10 @@ export default function Internshipcontent({
   count,
   courseCategory,
   handleProject,
-  currentid
+  currentid,
 }) {
-  // console.log('content',data);
-  
+  // console.log("content", data);
+
   const navigate = useNavigate();
   // console.log(completed_lessons)
 
@@ -33,9 +34,9 @@ export default function Internshipcontent({
   const [clicked, setclicked] = useState(false);
   const [totallessons, setTotalLessons] = useState(0);
   const [openDropDown, setOpenDropdown] = useState("");
-  const [clickedunit, setclickedunit] = useState(false)
+  const [clickedunit, setclickedunit] = useState(false);
   const [openUnits, setOpenUnits] = useState([]); // Track multiple open units
-  const [openChapters, setOpenChapters] = useState({}); 
+  const [openChapters, setOpenChapters] = useState({});
   let allchapters = [];
   let active = 0;
   // console.log(data);
@@ -52,11 +53,10 @@ export default function Internshipcontent({
   const countLessons = () => {
     let temp = 0;
     data?.forEach((val) => {
-val?.chapters?.map((item)=>{
-  temp += item?.lessons?.length;
-})
-temp += val?.project?.length;
-
+      val?.chapters?.map((item) => {
+        temp += item?.lessons?.length;
+      });
+      temp += val?.project?.length;
     });
     setTotalLessons(temp);
   };
@@ -157,8 +157,8 @@ temp += val?.project?.length;
     fileInputRef.current.click();
   };
   function handleClickUnit(unitIndex) {
-    console.log("unit");
-    
+    // console.log("unit");
+
     setOpenUnits((prevOpenUnits) => {
       if (prevOpenUnits.includes(unitIndex)) {
         return prevOpenUnits.filter((index) => index !== unitIndex); // Close unit if open
@@ -170,15 +170,17 @@ temp += val?.project?.length;
 
   // Toggle the chapter view inside a specific unit
   function handleClickChapter(unitIndex, chapterIndex) {
-    console.log("chapter");
-    
+    // console.log("chapter");
+
     setOpenChapters((prevOpenChapters) => {
       const currentUnitChapters = prevOpenChapters[unitIndex] || [];
       if (currentUnitChapters.includes(chapterIndex)) {
         // Close the chapter if open
         return {
           ...prevOpenChapters,
-          [unitIndex]: currentUnitChapters.filter((index) => index !== chapterIndex),
+          [unitIndex]: currentUnitChapters.filter(
+            (index) => index !== chapterIndex
+          ),
         };
       } else {
         // Open new chapter
@@ -191,7 +193,7 @@ temp += val?.project?.length;
   }
   return (
     <div className="bg-[#E2FFF1] rounded-3xl  sm:absolute sm:top-[3rem] sm:right-0 sm:w-[80vw] sm:h-screen sm:overflow-y-auto xsm:absolute xsm:top-[3rem]  xsm:right-0 xsm:w-[80vw] xsm:h-screen xsm:overflow-y-auto z-20">
-      <Toaster 
+      <Toaster
         toastOptions={{
           duration: 500,
         }}
@@ -217,66 +219,74 @@ temp += val?.project?.length;
             <hr />
           </div>
         </div>
-        {
-            data?.map((item,counter)=>{
-                // console.log("a",item);
-                
-                return(<>
-                <div 
+        {data?.map((item, counter) => {
+          // console.log("a",item);
+
+          return (
+            <>
+              <div
                 key={counter}
-                 className="border border-[#1DBF73] p-2 rounded-xl h-auto mt-1 cursor-pointer">
-                   <div onClick={() => handleClickUnit(counter)} className="flex  justify-between h-auto ">
-                                      <p  className="font-pop font-medium text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px] sm:text-[10px]">
-                                        Unit {counter+1}. {item?.unitName}
-                                      </p>
-                                      <Down />
-                                      </div>
-              { openUnits.includes(counter) &&  <div  >
-                {
-                      item?.chapters?.map((val, ind) => {
-                        
-                        
-                        return (
-                          <>
-                            <div 
-                            
-                              className="mt-3  border border-[#1DBF73] bg-[#F1FFF8] rounded-xl cursor-pointer md:p-1"
-                              key={ind}
-                            >
-                              <div className="">
-                                
-                                <div>
+                className="border border-[#1DBF73] p-2 rounded-xl h-auto mt-1 cursor-pointer"
+              >
+                <div
+                  onClick={() => handleClickUnit(counter)}
+                  className="flex  justify-between h-auto "
+                >
+                  <p className="font-pop font-medium text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px] sm:text-[10px]">
+                    Unit {counter + 1}. {item?.unitName}
+                  </p>
+                  <Down />
+                </div>
+                {openUnits.includes(counter) && (
+                  <div>
+                    {item?.chapters?.map((val, ind) => {
+                      return (
+                        <>
+                          <div
+                            className="mt-3  border border-[#1DBF73] bg-[#F1FFF8] rounded-xl cursor-pointer md:p-1"
+                            key={ind}
+                          >
+                            <div className="">
+                              <div>
+                                <div onClick={() =>
+                                      handleClickChapter(counter, ind)
+                                    } className="py-2 px-4">
                                   <div
-                                    className="py-2 px-4"
-                                   
+                                    
+                                    className="flex justify-between "
                                   >
-                                    <div  onClick={() => handleClickChapter(counter, ind)} className="flex justify-between ">
-                                      <p className="font-pop font-medium text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px] sm:text-[10px]">
-                                        {val?.chapter_name}
-                                      </p>
-                                      <Down />
+                                    <p className="font-pop font-medium text-[12px] text-[#1DBF73] xsm:text-[10px] md:text-[10px] sm:text-[10px]">
+                                      {val?.chapter_name}
+                                    </p>
+                                    <Down />
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <div className="flex items-center ml-2 space-x-1">
+                                      {/* <img className='text-[#252641CC]' src="../Icons/Clock.svg" /> */}
+                                      <p className="text-[#252641CC] text-[11px] font-pop font-medium"></p>
                                     </div>
-                                    <div className="flex justify-between">
-                                      <div className="flex items-center ml-2 space-x-1">
-                                        {/* <img className='text-[#252641CC]' src="../Icons/Clock.svg" /> */}
-                                        <p className="text-[#252641CC] text-[11px] font-pop font-medium"></p>
-                                      </div>
-                                      {/* <div className="flex items-center space-x-1">
+                                    {/* <div className="flex items-center space-x-1">
                                         <IoBookOutline className="text-[#252641CC] w-4 h-4 xsm:h-3 xsm:w-3 md:h-3 md:w-3" />
                                         <p className="text-[#252641CC] text-[11px] font-pop font-medium xsm:text-[8px] md:text-[10px]">
                                           {val?.lessons?.length} Lessons
                                         </p>
                                       </div> */}
-                                      <div className="flex items-center space-x-1">
-                                        <IoBookOutline className="text-[#252641CC] w-4 h-4 xsm:h-3 xsm:w-3 md:h-3 md:w-3 sm:h-3 sm:w-3" />
-                                        <p className="text-[#252641CC] text-[11px] font-pop font-medium xsm:text-[8px] md:text-[10px]">
-                                          {val?.lessons?.length}{" "}
-                                          {val?.lessons?.length === 1 ? "Lesson" : "Lessons"}
-                                        </p>
-                                      </div>
+                                    <div className="flex items-center space-x-1">
+                                      <IoBookOutline className="text-[#252641CC] w-4 h-4 xsm:h-3 xsm:w-3 md:h-3 md:w-3 sm:h-3 sm:w-3" />
+                                      <p className="text-[#252641CC] text-[11px] font-pop font-medium xsm:text-[8px] md:text-[10px]">
+                                        {val?.lessons?.length}{" "}
+                                        {val?.lessons?.length === 1
+                                          ? "Lesson"
+                                          : "Lessons"}
+                                      </p>
                                     </div>
                                   </div>
-                           {   openChapters[counter]?.includes(ind) &&    <div id={ind + 1} className="pt-2 py-2 px-4 flex flex-col">
+                                </div>
+                                {openChapters[counter]?.includes(ind) && (
+                                  <div
+                                    id={ind + 1}
+                                    className="pt-2 py-2 px-4 flex flex-col"
+                                  >
                                     <div className="w-full">
                                       {val?.lessons?.map((chapter, index) => {
                                         // console.log("index"+index,completed_lessons?.includes(chapter?._id))
@@ -286,8 +296,10 @@ temp += val?.project?.length;
                                               courseCategory === "liveCourse"
                                                 ? ""
                                                 : `flex-col justify-between border-t py-2 w-full ${
-                                                    !completed_lessons?.includes(chapter?._id)
-                                                      ? "cursor-not-allowed text-gray-300"
+                                                    !completed_lessons?.includes(
+                                                      chapter?._id
+                                                    )
+                                                      ? " text-gray-300"
                                                       : ""
                                                   }`
                                             }
@@ -296,36 +308,63 @@ temp += val?.project?.length;
                                             <span className="flex justify-between">
                                               {chapter?.isLiveClass ? (
                                                 <p
-                                                  onClick={() =>
-                                                    setLiveClassKey(
-                                                      chapter?.liveClass?.streamKey
-                                                    )
-                                                  }
-                                                  className="font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] text-red-500 "
+                                                  onClick={() => {
+                                                    if (
+                                                      chapter?.liveClass
+                                                        ?.classUrl
+                                                    ) {
+                                                      window.open(
+                                                        chapter.liveClass
+                                                          .classUrl,
+                                                        "_blank"
+                                                      );
+                                                    }
+                                                  }}
+                                                  className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]  `}
                                                 >
-                                                  {index + 1}. {chapter?.lesson_name} (Live)
+                                                  <span className="flex gap-3 text-black items-center">
+                                                    {index + 1}.{" "}
+                                                    {chapter?.lesson_name}
+                                                    <CiStreamOn
+                                                      className={` ${
+                                                        chapter?.isLiveClass &&
+                                                        chapter?.liveClass
+                                                          ?.isCompleted
+                                                          ? "text-gray-500"
+                                                          : "text-red-500"
+                                                      } text-base`}
+                                                    />
+                                                  </span>
                                                 </p>
                                               ) : (
                                                 <p
                                                   onClick={() =>
-                                                    completed_lessons.includes(chapter._id) &&
+                                                    completed_lessons.includes(
+                                                      chapter._id
+                                                    ) &&
                                                     handleActiveVideo(
                                                       chapter?.video,
                                                       chapter?.lesson_name,
                                                       chapter?._id
                                                     )
                                                   }
-                                                  className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] ${currentid==chapter?._id ? 'text-[#1DBF73]':''} `}
+                                                  className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] ${
+                                                    currentid == chapter?._id
+                                                      ? "text-[#1DBF73]"
+                                                      : ""
+                                                  } `}
                                                 >
-                                                  {index + 1}. {chapter?.lesson_name}
+                                                  {index + 1}.{" "}
+                                                  {chapter?.lesson_name}
                                                 </p>
                                               )}
                                               {/* <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
                                                 {chapter?.duration}Mins
                                               </p> */}
                                             </span>
-              
-                                            {(chapter?.notes || chapter?.assignment) && (
+
+                                            {(chapter?.notes ||
+                                              chapter?.assignment) && (
                                               <div className="relative">
                                                 <button className="flex gap-2 align-middle justify-self-end w-fit items-center px-2 mt-3 realtive xsm:mt-2">
                                                   {/* <TiFolderOpen className="xsm:w-3 xsm:h-3 md:w-4 md:h-4" /> */}
@@ -333,7 +372,7 @@ temp += val?.project?.length;
                                                     Resources
                                                   </p>
                                                 </button>
-              
+
                                                 <ul className="list-none flex items-center bg-[#F1FFF8] text-sm  py-1 z-40 gap-1 text-[12px]">
                                                   {chapter?.notes && (
                                                     <span className=" flex justify-between items-center px-2 border rounded-md h-max">
@@ -344,7 +383,9 @@ temp += val?.project?.length;
                                                           )
                                                             ? handleToggleNotes(
                                                                 chapter?.notes,
-                                                                ALLCHAPTER[count]?.video,
+                                                                ALLCHAPTER[
+                                                                  count
+                                                                ]?.video,
                                                                 chapter._id,
                                                                 chapter?.lesson_name
                                                               )
@@ -359,7 +400,7 @@ temp += val?.project?.length;
                                                       </div>
                                                     </span>
                                                   )}
-              
+
                                                   {chapter?.assignment && (
                                                     <span className=" flex gap-1 items-center h-max">
                                                       <div
@@ -369,13 +410,17 @@ temp += val?.project?.length;
                                                           )
                                                             ? handleToggleNotes(
                                                                 chapter?.assignment,
-                                                                ALLCHAPTER[count]?.video,
+                                                                ALLCHAPTER[
+                                                                  count
+                                                                ]?.video,
                                                                 chapter._id,
                                                                 chapter?.lesson_name
                                                               )
                                                             : ""
                                                         }
-                                                        href={chapter?.assignment}
+                                                        href={
+                                                          chapter?.assignment
+                                                        }
                                                         target="_blank"
                                                         className="flex items-center border rounded-md gap-1 px-2"
                                                       >
@@ -387,15 +432,22 @@ temp += val?.project?.length;
                                                       <span className="flex gap-2 border rounded-md px-2 py-1 relative ">
                                                         <MdOutlineFileUpload
                                                           size={16}
-                                                          onClick={handleFileUploadClick}
+                                                          onClick={
+                                                            handleFileUploadClick
+                                                          }
                                                           className="peer w-3 h-3"
                                                         />
                                                         <input
                                                           ref={fileInputRef}
                                                           type="file"
-                                                          style={{ display: "none" }}
+                                                          style={{
+                                                            display: "none",
+                                                          }}
                                                           onChange={(e) =>
-                                                            handleUpload(e, chapter?._id)
+                                                            handleUpload(
+                                                              e,
+                                                              chapter?._id
+                                                            )
                                                           }
                                                         />
                                                         <p className="absolute top-8 right-[0px] bg-black text-[0.7rem] text-white w-[8rem] px-2 py-1 opacity-0 peer-hover:opacity-100 rounded-lg text-center">
@@ -437,7 +489,7 @@ temp += val?.project?.length;
                                         );
                                       })}
                                     </div> */}
-              
+
                                     {val?.project?.length > 0 && (
                                       <div className="w-full border-t">
                                         <div className="font-semibold text-sm text-[#1DBF73] py-1">
@@ -463,14 +515,18 @@ temp += val?.project?.length;
                                               <span className="flex justify-between">
                                                 <p
                                                   onClick={() =>
-                                                    completed_lessons?.includes(chapter?._id)
+                                                    completed_lessons?.includes(
+                                                      chapter?._id
+                                                    )
                                                       ? handleProject(chapter)
                                                       : ""
                                                   }
                                                   className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]`}
                                                 >
                                                   {index + 1}. {chapter?.title}(
-                                                  {chapter?.duration || "5 mins"})
+                                                  {chapter?.duration ||
+                                                    "5 mins"}
+                                                  )
                                                 </p>
                                               </span>
                                               {/* <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
@@ -481,21 +537,20 @@ temp += val?.project?.length;
                                         })}
                                       </div>
                                     )}
-                                  </div>}
-                                </div>
+                                  </div>
+                                )}
                               </div>
                             </div>
-                          </>
-                        );
-                      })
-                }
-                </div>}
-                                                    </div>
-
-                </>)
-              
-            })
-        }
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </>
+          );
+        })}
         {/* {} */}
       </div>
     </div>

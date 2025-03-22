@@ -38,7 +38,7 @@ export default function MyLearning() {
     // console.log(userDetail?.name?.split(" ")[0])
     const checkUserValidation = async () => {
         const isValidUser = await authenticateUser()
-        console.log(isValidUser)
+        // console.log(isValidUser)
         if (isValidUser !== 200) {
             localStorage.removeItem('COURSES_USER_TOKEN');
             toast.error('You have been Logged Out')
