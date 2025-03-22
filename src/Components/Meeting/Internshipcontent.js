@@ -309,15 +309,17 @@ export default function Internshipcontent({
                                               {chapter?.isLiveClass ? (
                                                 <p
                                                   onClick={() => {
-                                                    if (
-                                                      chapter?.liveClass
-                                                        ?.classUrl
-                                                    ) {
-                                                      window.open(
-                                                        chapter.liveClass
-                                                          .classUrl,
-                                                        "_blank"
-                                                      );
+                                                    if ( chapter?.liveClass?.classUrl && chapter?.liveClass?.isCompleted === false) {
+                                                      window.open( chapter.liveClass.classUrl, "_blank");
+                                                    } else if(chapter?.liveClass?.isCompleted === true) {
+                                                      completed_lessons.includes(
+                                                        chapter._id
+                                                      ) &&
+                                                      handleActiveVideo(
+                                                        chapter?.video,
+                                                        chapter?.lesson_name,
+                                                        chapter?._id
+                                                      )
                                                     }
                                                   }}
                                                   className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]  `}
