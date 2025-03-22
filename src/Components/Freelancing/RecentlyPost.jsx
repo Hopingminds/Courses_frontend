@@ -67,16 +67,16 @@ const RecentlyPost = () => {
   }
 
   return (
-    <div className="py-5 px-[4vw] pb-6">
+    <div className="py-5 mt-16 -mb-5 px-[4vw] pb-0">
       <div>
         <p className="text-[30px] font-pop text-[#9D9D9D] xsm:text-[10px]">
           The latest freelance work!
         </p>
         <div className="flex flex-row">
-          <p className="text-[50px] xsm:text-[1rem] font-pop">
+          <p className="text-[50px] xsm:text-[1rem] font-pop font-semibold">
             Recently Posted
           </p>
-          <p className="text-[#1DBF73] text-[50px] xsm:text-[1rem] font-pop ml-2">
+          <p className="text-[#1DBF73] text-[50px] xsm:text-[1rem] font-semibold font-pop ml-2">
             Works
           </p>
         </div>

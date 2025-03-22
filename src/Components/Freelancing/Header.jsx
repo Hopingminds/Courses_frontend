@@ -4,15 +4,15 @@ export default function Header({ scrollToFreelancingPage }) {
   return (
     <div className="py-6 pl-[5vw] bg-gradient-to-l from-[#0F2027] via-[#0B1418] to-[#203A43] w-full flex flex-col lg:flex-row justify-between font-pop px-6 lg:px-[10%] h-[40%] lg:h-[40%] sm:h-[30%] md:h-[40vh] relative xsm:max-h-[20%] xsm:pb-1">
       <div className="text-white w-full ">
-        <div className="flex flex-col py-[5vh] md:py-1 xsm:py-1">
-          <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[2rem] lg:text-[3.75rem] xl:text-[4.375rem] 2xl:text-[5rem] font-semibold mb-4 sm:mb-2 xsm:text-[1rem]">
+        <div className="flex flex-col py-[5vh] -mb-5 md:py-1 xsm:py-1">
+          <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[2rem] lg:text-[3.75rem] xl:text-[4.375rem] 2xl:text-[5rem] font-semibold -mb-5 sm:mb-2 xsm:text-[1rem]">
             Unlock Your
           </h1>
           <h1 className="text-green-600 flex flex-wrap sm:gap-4 md:gap-3 lg:gap-0 text-[2rem] sm:text-[2.5rem] md:text-[2rem] lg:text-[3.75rem] xl:text-[4.375rem] 2xl:text-[5rem] font-semibold xsm:text-[0.9rem]">
             Freelancing Opportunities!
           </h1>
         </div>
-        <div className="mt-[3vh] lg:mt-[5vh] w-full sm:w-[70vw] md:w-[60vw] lg:w-[70vw] xsm:mt-0">
+        <div className="mb-[4vh] lg:mt-[5vh] w-full sm:w-[70vw] md:w-[60vw] lg:w-[70vw] xsm:mt-0">
           <p className="text-lg sm:text-xl md:text-lg lg:text-xl xsm:text-[10px]">
             Complete your course and start your freelancing
           </p>

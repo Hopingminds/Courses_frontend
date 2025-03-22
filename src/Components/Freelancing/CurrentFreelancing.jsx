@@ -154,7 +154,7 @@ const CurrentFreelancing = () => {
           ))}
         </div>
       </div>
-      <div className="flex flex-col justify-center px-[4vw] xsm:px-3 xsm:mt-4">
+      <div className="flex flex-col mt-10 justify-center px-[4vw] xsm:px-3 xsm:mt-4">
         <div className="flex justify-center">
           <p className="text-[40px] font-pop font-bold xsm:text-[1rem] xsm:text-center">
             Current Freelancing Opportunities
@@ -169,7 +169,7 @@ const CurrentFreelancing = () => {
           {cards?.map((card, index) => (
             <div
               key={index}
-              className="bg-[#F2F7F1] p-6 rounded-md py-8 w-full cursor-pointer transform hover:scale-105 transition-transform duration-300  hover:bg-green-300 focus:bg-green-300"
+              className="bg-[#F2F7F1] p-6 rounded-md py-8 w-full cursor-pointer transform hover:scale-105  duration-300 transition-all  hover:ring-green-300 hover:ring-2"
               onClick={() => handleCardClick(card.name)}
             >
               <h3 className="text-2xl font-bold mb-2 xsm:text-lg ">
