@@ -242,6 +242,11 @@ const DetailTableDashboard = ({
           setIsBlocking(false); // Unblock user interaction
           localStorage.setItem("hasVisited", "true");
         }
+        if (data.action === "skip") {
+          setIsTourOpen(false);
+          setIsBlocking(false); // Unblock user interaction
+          localStorage.setItem("hasVisited", "true");
+        }
       }}
     />
       <Toaster

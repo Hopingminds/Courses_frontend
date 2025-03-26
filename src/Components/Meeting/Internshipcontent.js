@@ -322,9 +322,9 @@ export default function Internshipcontent({
                                                       )
                                                     }
                                                   }}
-                                                  className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]  `}
+                                                  className={`font-pop flex gap-3 text-black items-center font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]  `}
                                                 >
-                                                  <span className="flex gap-3 text-black items-center">
+                                                  
                                                     {index + 1}.{" "}
                                                     {chapter?.lesson_name}
                                                     <CiStreamOn
@@ -336,11 +336,12 @@ export default function Internshipcontent({
                                                           : "text-red-500"
                                                       } text-base`}
                                                     />
-                                                  </span>
+                                                  
                                                 </p>
                                               ) : (
                                                 <p
-                                                  onClick={() =>
+                                                  onClick={() =>{
+                                                    
                                                     completed_lessons.includes(
                                                       chapter._id
                                                     ) &&
@@ -349,7 +350,7 @@ export default function Internshipcontent({
                                                       chapter?.lesson_name,
                                                       chapter?._id
                                                     )
-                                                  }
+                                                  }}
                                                   className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] ${
                                                     currentid == chapter?._id
                                                       ? "text-[#1DBF73]"

@@ -12,7 +12,7 @@ import { FaPlay } from "react-icons/fa";
 import InternshipCourseNavigation from "../Internshipnavigation/CourseNavigation.jsx";
 import Internshipcontent from "../Meeting/Internshipcontent.js";
 export default function Internshipvideo() {
-  const [clicked, setclicked] = useState(false);
+  // const [clicked, setclicked] = useState(false);
   const [menu, setMenu] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
   const [Data, setData] = useState(null);
@@ -47,12 +47,13 @@ export default function Internshipvideo() {
   let completed = [];
   let allchapters = [];
   let temp = true;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [showBanner, setShowBanner] = useState(true);
   const [imageBanner, setImageBanner] = useState();
   const [currentid, setcurrentid] = useState()
  const [activesmallvideo, setactivesmallvideo] = useState(true)
  const [activelargevideo, setactivelargevideo] = useState(true)
+ const [state, setState] = useState({});
   useEffect(() => {
     async function Fetchdata() {
       temp = false;
@@ -240,96 +241,120 @@ export default function Internshipvideo() {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+  async function handleActiveVideo(url, title, id) {
+    setactivesmallvideo(true);
+    setactivelargevideo(true);
+    setcurrentid(id);
+    
+    if(playerRef2.current){
+        const currenttime = playerRef2.current.getCurrentTime();
+        localStorage.setItem(id, currenttime);
+    }
 
-  function handleActiveVideo(url, title, id) {
-
-    setactivesmallvideo(true)
-    setactivelargevideo(true)
-    setcurrentid(id)
-      if(playerRef2.current){
-        const currenttime=playerRef2.current.getCurrentTime();
-        // console.log("currenttime");
-        
-        // playerRef.current.seekTo(currenttime, 'seconds');
-
-       localStorage.setItem(id,currenttime)
-
-      }
     let getindex = idwise[id];
     setcount(getindex);
-    localStorage.setItem('last',getindex)
+    localStorage.setItem('last', getindex);
 
+   
+  
+    
+    // Ensure all state updates are complete before setting the URL
+    await Promise.resolve();
+    seturl(url);
     setactiveindex(title);
+    setexpired(false);
     setshowLive(false);
     setshowend(false);
-    setexpired(false);
-    // console.log(url);
+    
     setshowSmallvideo(false);
-    seturl(url);
+}
+useEffect(() => {
+  if (url) {
+      setShowBanner(url.toString().endsWith("mp4"));
   }
+}, [url]);
 
   // console.log(allchapters);
   const handleVideoEnded = async () => {
-    // console.log(count + 1);
-    // console.log(totalLessons,ALLCHAPTER.length);
-    localStorage.setItem('last',count+1)
-
-setactivelargevideo(true)
-setactivesmallvideo(true)
-setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
-    setactiveindex(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.lesson_name);
-    setshowSmallvideo(false);
-    seturl(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.video);
-    if (
-      count + 1 >= completed_lessons.length &&
-      ALLCHAPTER?.length >= completed_lessons.length
-    ) {
-      // if (ALLCHAPTER?.length == completed_lessons.length) {
+    try {
+      // Calculate next chapter index safely
+      const nextIndex = (count + 1) % ALLCHAPTER.length;
+      const nextChapter = ALLCHAPTER[nextIndex];
+      const currentChapter = ALLCHAPTER[count];
+  
+      // Update local state first for immediate UI feedback
+      setState(prev => ({
+        ...prev,
+        activelargevideo: true,
+        activesmallvideo: true,
+        currentid: nextChapter?._id,
+        activeindex: nextChapter?.lesson_name,
+        showSmallvideo: false,
+        url: nextChapter?.video,
+      }));
+  
+      localStorage.setItem('last', nextIndex);
+  
+      // Only proceed with API call if we're moving to a new uncompleted lesson
+      if (nextIndex >= completed_lessons.length && ALLCHAPTER.length > completed_lessons.length) {
+        // Create new array without mutating the original
+        const updatedLessons = [...completed_lessons, currentChapter?._id];
         
-      // }
-      let temp = completed_lessons;
-      temp.push(ALLCHAPTER[count + 1]?._id);
-      // console.log(count);v
-      setcompleted_lessons(temp);
-      try {
-        let login = localStorage.getItem("COURSES_USER_TOKEN");
-        if (login) {
-          let url = BASE_URL + "/internshipLessonCompleted ";
-          let bodydata = { internshipId:courseId, lessonId: ALLCHAPTER[count]?._id };
-          const data1 = await fetch(url, {
+        // Update local state optimistically
+        setcompleted_lessons(updatedLessons);
+        setcount(nextIndex);
+  
+        // Make API call
+        const login = localStorage.getItem("COURSES_USER_TOKEN");
+        if (login && currentChapter?._id) {
+          const url = BASE_URL + "/internshipLessonCompleted";
+          const bodydata = { 
+            internshipId: courseId, 
+            lessonId: currentChapter._id 
+          };
+  
+          const response = await fetch(url, {
             method: "PUT",
             headers: {
-              Accept: "application/json",
               "Content-Type": "application/json",
               Authorization: "Bearer " + login,
             },
             body: JSON.stringify(bodydata),
           });
-          const response = await data1.json();
-
-          // console.log(response);
+  
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+  
+          const data = await response.json();
+          console.log("API success:", data);
         }
-      } catch (error) {
-        console.log(error);
+      } else {
+        // Just update the count if no API call needed
+        setcount(nextIndex);
       }
-      setcount((prev) => prev + 1);
+    } catch (error) {
+      console.error("Error in handleVideoEnded:", error);
+      // Revert optimistic update if API fails
+      setcompleted_lessons(completed_lessons);
+      // Optionally show error to user
     }
   };
 
-  function ClickSection(id) {
-    if (!clicked) {
-      setclicked(true);
-      let inner = document.getElementById(id);
-      // console.log(inner);
-      inner.style.display = "none";
-    } else {
-      setclicked(false);
-      let inner = document.getElementById(id);
+  // function ClickSection(id) {
+  //   if (!clicked) {
+  //     setclicked(true);
+  //     let inner = document.getElementById(id);
+  //     // console.log(inner);
+  //     inner.style.display = "none";
+  //   } else {
+  //     setclicked(false);
+  //     let inner = document.getElementById(id);
 
-      // console.log(inner);
-      inner.style.display = "block";
-    }
-  }
+  //     // console.log(inner);
+  //     inner.style.display = "block";
+  //   }
+  // }
   const handleDuration = (duration) => {
     // setDuration(duration);
     localStorage.setItem('duration'+currentid,duration)
@@ -639,7 +664,7 @@ if (activelargevideo && localStorage.getItem(currentid)) {
                         // </div> 
                     ) : url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
-                    ) : !showLive && !showend && url?.toString() === "" ? (
+                    ) : !showLive && !showend && !url || url?.toString() === "" ? (
                       <div className="text-center  border h-[50vh] w-full flex justify-center items-center rounded-xl">
                         <p className="font-semibold">Coming soon</p>
                       </div>

@@ -114,7 +114,7 @@ export default function Mycourse({ courses, fetchUserData,internships }) {
       />
 
       {!courses?.length ? (
-        <div className="flex justify-center  w-full mt-10">
+        <div key={courses?._id} className="flex justify-center  w-full mt-10">
           <div className="text-center font-semibold text-2xl w-full ">
             {" "}
             No Course Purchased
