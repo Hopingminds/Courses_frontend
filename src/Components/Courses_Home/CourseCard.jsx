@@ -89,14 +89,18 @@ const CourseCard = ({
           )}
         </span>
       )}
-  
+
       <div className="h-fit aspect-[16/10] ">
         {mouseHovered === ind ? (
           <ReactPlayer
-            className=" rounded-t-2xl xsm:rounded-md border overflow-hidden"
-            height={"100%"}
-            width={"100%"}
-            url={featured_video}
+            className="rounded-t-2xl xsm:rounded-md border overflow-hidden"
+            height="100%"
+            width="100%"
+            url={featured_video || "/defaultvideo.mp4"}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/defaultvideo.mp4";
+            }}
             controls={false}
             playing={true}
             ref={videoRef}
@@ -104,16 +108,19 @@ const CourseCard = ({
             config={{
               file: {
                 attributes: {
-                  controlsList: "nodownload", 
+                  controlsList: "nodownload",
                 },
               },
             }}
           />
         ) : (
           <img
-            // style={{ height: "10rem" }}
-            className="w-full rounded-t-2xl h-full "
-            src={image}
+            className="w-full rounded-t-2xl h-full"
+            src={image || "/defaultimg.png"} // ✅ Also fix this path
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/defaultimg.png";
+            }}
             alt="Course"
           />
         )}
@@ -125,29 +132,41 @@ const CourseCard = ({
               {/* <FaUserCircle  className="text-2xl  xsm:w-[14px] xsm:h-[14px] md:h-4 md:w-4 rounded-full"/> */}
               <img
                 alt=""
-                className="w-[32px] h-[32px] xsm:w-[14px] xsm:h-[14px] sm:w-5 sm:h-5 md:h-4 md:w-4 rounded-full"
-                src={profile}
+                className="w-[35px] h-[32px] xsm:w-[14px] xsm:h-[14px] sm:w-5 sm:h-5 md:h-4 md:w-4 rounded-full"
+                src={
+                  profile ||
+                  "https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg"
+                }
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src =
+                    "https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg";
+                }}
               />
               <p className="font-pop font-medium text-[13px] flex-wrap xsm:text-[10.3px] sm:text-[9px] md:text-[7px]">
                 {name}
               </p>
             </div>
             <div className="flex gap-2">
-
               {/* <p className="font-pop font-semibold italic text-[#1DBF73] text-[16px] xsm:text-[13px] sm:text-[10px] md:text-[10px]">{discount}% off</p> */}
-            { discount ? <strike className="font-pop font-semibold text-gray-400 italic text-[14px] xsm:text-[11px] sm:text-[8px] md:text-[8px]">
-                {price == 0 ? "Free" : "₹" + price}
-              </strike>:""}
+              {discount ? (
+                <strike className="font-pop font-semibold text-gray-400 italic text-[14px] xsm:text-[11px] sm:text-[8px] md:text-[8px]">
+                  {price == 0 ? "Free" : "₹" + price}
+                </strike>
+              ) : (
+                ""
+              )}
               <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[13px] sm:text-[10px] md:text-[10px]">
-                {price == 0 ? "Free" : "₹" + parseFloat(price-(price*(discount/100)))}
+                {price == 0
+                  ? "Free"
+                  : "₹" + parseFloat(price - price * (discount / 100))}
               </p>
-       
             </div>
           </div>
-          <p className="line-clamp-2 min-h-12 w-full font-pop font-semibold text-[16px] text-[#252641] xsm:text-[12px] sm:text-[12px] sm:leading-none sm:h-6 md:text-[10px] md:h-6 xsm:mt-1  xsm:line-clamp-2"
-          title={typeof title === 'string' ? title : 'Title'}
+          <p
+            className="line-clamp-2 min-h-12 w-full font-pop font-semibold text-[16px] text-[#252641] xsm:text-[12px] sm:text-[12px] sm:leading-none sm:h-6 md:text-[10px] md:h-6 xsm:mt-1  xsm:line-clamp-2"
+            title={typeof title === "string" ? title : "Title"}
           >
-           
             {title}
           </p>
           {description && (
@@ -160,7 +179,6 @@ const CourseCard = ({
           <span className="flex flex-col w-[70%]">
             {credits ? (
               <div className="flex space-x-2 items-center xsm:space-x-1 sm:space-x-1">
-             
                 <IoTrendingUpSharp className="w-[16px] h-[16px] text-[#DFDFDF] xsm:w-[8px] xsm:h-[8px] sm:w-3 sm:h-3 md:h-3 md:w-3" />
                 <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[8px] sm:text-[8px] sm:leading-none md:text-[6px]">
                   Credits- {credits}
@@ -172,7 +190,8 @@ const CourseCard = ({
             <div className="flex space-x-2 items-start xsm:space-x-1 sm:space-x-1">
               <img
                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] sm:w-3 sm:h-3 md:h-3 md:w-3"
-                src="../Icons/RCDesign.svg" alt="icon"
+                src="../Icons/RCDesign.svg"
+                alt="icon"
               />
               <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[8px] sm:text-[8px] sm:leading-none md:text-[6px]">
                 {category}
@@ -187,7 +206,7 @@ const CourseCard = ({
                 alt=""
               />
               <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[8px] sm:text-[8px] sm:leading-none md:text-[6px]">
-               {duration} Hours
+                {duration} Hours
               </p>
             </div>
           </span>

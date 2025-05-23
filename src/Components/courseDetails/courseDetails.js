@@ -10,10 +10,10 @@ import CourseNavigation from "../CourseNavigation/CourseNavigation";
 import { FiMenu } from "react-icons/fi";
 import DrawerNavbar from "./DrawerNavbar.jsx";
 import { FaPlay } from "react-icons/fa";
-import Draggable from 'react-draggable';
+import Draggable from "react-draggable";
 export default function CDDetails() {
   const [maxWatched, setMaxWatched] = useState(0); // Maximum watched time
-const [isSeeking, setIsSeeking] = useState(false);
+  const [isSeeking, setIsSeeking] = useState(false);
   const [menu, setMenu] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
   const [Data, setData] = useState(null);
@@ -39,7 +39,7 @@ const [isSeeking, setIsSeeking] = useState(false);
   const playerRef = useRef(null);
   const playerRef2 = useRef(null);
   const [playing, setPlaying] = useState(true);
-  const [allotedbycollege, setallotedbycollege] = useState(false)
+  const [allotedbycollege, setallotedbycollege] = useState(false);
   const params = useParams();
   let totalduration = 0;
   let completed = [];
@@ -47,9 +47,22 @@ const [isSeeking, setIsSeeking] = useState(false);
   let temp = true;
   const [showBanner, setShowBanner] = useState(true);
   const [imageBanner, setImageBanner] = useState();
-  const [currentid, setcurrentid] = useState()
- const [activesmallvideo, setactivesmallvideo] = useState(true)
- const [activelargevideo, setactivelargevideo] = useState(true)
+  const [currentid, setcurrentid] = useState();
+  const [activesmallvideo, setactivesmallvideo] = useState(true);
+  const [activelargevideo, setactivelargevideo] = useState(true);
+
+  console.log("check playerRef", playerRef);
+  console.log("check url", url);
+  // console.log("check playerRef", playerRef);
+
+  // const extractYouTubeID = (url) => {
+  //   const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/;
+  //   const match = url.match(regex);
+  //   return match ? match[1] : null;
+  // };
+
+  // console.log("url", url);
+
   useEffect(() => {
     async function Fetchdata() {
       temp = false;
@@ -61,8 +74,8 @@ const [isSeeking, setIsSeeking] = useState(false);
         const data = await fetch(url1);
         const response = await data.json();
         console.log("Course allotted", response?.data?.allotedByCollege);
-        setallotedbycollege(response?.data?.allotedByCollege)
-        setImageBanner(response?.data?.course?.featured_image);
+        setallotedbycollege(response?.data?.allotedByCollege);
+        setImageBanner(response?.data?.course?.featured_video);
         setCourseLessons(response?.data?.completed_lessons);
         setCourseAssignment(response?.data?.completed_assignments);
         if (response?.data?.course) {
@@ -85,7 +98,7 @@ const [isSeeking, setIsSeeking] = useState(false);
             val?.lessons?.map((it) => {
               // console.log("it",val);
 
-              totalduration = totalduration + (parseInt(it?.duration)||0);
+              totalduration = totalduration + (parseInt(it?.duration) || 0);
               // console.log(totalduration);
               allchapters.push({
                 video: it?.video,
@@ -131,7 +144,10 @@ const [isSeeking, setIsSeeking] = useState(false);
         //   response?.data?.completed_lessons?.length
         // );
         // console.log("data",allchapters,completed);
-        if (allchapters?.length === response?.data?.completed_lessons?.length ||response?.data?.completed_lessons?.length == 0) {
+        if (
+          allchapters?.length === response?.data?.completed_lessons?.length ||
+          response?.data?.completed_lessons?.length == 0
+        ) {
           if (allchapters[0]?.isLiveClass) {
             // setsk()
             localStorage.setItem("sk", allchapters[0]?.liveClass?.streamKey);
@@ -155,31 +171,29 @@ const [isSeeking, setIsSeeking] = useState(false);
             }
             // if()
           }
-          seturl(allchapters[0]?.video);
+          if (url !== allchapters[0]?.video) {
+            seturl(allchapters[0]?.video);
+          }
+
           setactiveindex(allchapters[0]?.lesson_name);
           setcount(0);
-          setcurrentid(allchapters[0]?._id)
+          setcurrentid(allchapters[0]?._id);
           setVideoUrl(allchapters[0]?.video);
-
-        } 
-        else {
+        } else {
           // console.log("hi");
-          let last=localStorage.getItem('last')
-          if(!last){
+          let last = localStorage.getItem("last");
+          if (!last) {
             seturl(allchapters[videoindex]?.video);
-            setcurrentid(allchapters[videoindex]?._id)
+            setcurrentid(allchapters[videoindex]?._id);
             // setcount(videoindex);
             setactiveindex(allchapters[videoindex]?.lesson_name);
-          }
-          else{
+          } else {
             seturl(allchapters[last]?.video);
-          setcurrentid(allchapters[last]?._id)
-          setactiveindex(allchapters[last]?.lesson_name);
+            setcurrentid(allchapters[last]?._id);
+            setactiveindex(allchapters[last]?.lesson_name);
           }
           setcount(videoindex);
           completed.push(allchapters[videoindex]?._id);
-
-
         }
         // console.log(completed);
         setcompleted_lessons(completed);
@@ -190,6 +204,7 @@ const [isSeeking, setIsSeeking] = useState(false);
       Fetchdata();
     }
   }, []);
+
   const handleKeyDown = (e) => {
     console.log(e.key);
     // if (e.metaKey) {
@@ -222,22 +237,20 @@ const [isSeeking, setIsSeeking] = useState(false);
   }, []);
 
   function handleActiveVideo(url, title, id) {
+    setactivesmallvideo(true);
+    setactivelargevideo(true);
+    setcurrentid(id);
+    if (playerRef2.current) {
+      const currenttime = playerRef2.current.getCurrentTime();
+      // console.log("currenttime");
 
-    setactivesmallvideo(true)
-    setactivelargevideo(true)
-    setcurrentid(id)
-      if(playerRef2.current){
-        const currenttime=playerRef2.current.getCurrentTime();
-        // console.log("currenttime");
-        
-        // playerRef.current.seekTo(currenttime, 'seconds');
+      // playerRef.current.seekTo(currenttime, 'seconds');
 
-       localStorage.setItem(id,currenttime)
-
-      }
+      localStorage.setItem(id, currenttime);
+    }
     let getindex = idwise[id];
     setcount(getindex);
-    localStorage.setItem('last',getindex)
+    localStorage.setItem("last", getindex);
 
     setactiveindex(title);
     setshowLive(false);
@@ -252,11 +265,11 @@ const [isSeeking, setIsSeeking] = useState(false);
   const handleVideoEnded = async () => {
     // console.log(count + 1);
     // console.log(totalLessons,ALLCHAPTER.length);
-    localStorage.setItem('last',count+1)
+    localStorage.setItem("last", count + 1);
 
-setactivelargevideo(true)
-setactivesmallvideo(true)
-setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
+    setactivelargevideo(true);
+    setactivesmallvideo(true);
+    setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id);
     setactiveindex(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.lesson_name);
     setshowSmallvideo(false);
     seturl(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?.video);
@@ -265,7 +278,7 @@ setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
       ALLCHAPTER?.length >= completed_lessons.length
     ) {
       // if (ALLCHAPTER?.length == completed_lessons.length) {
-        
+
       // }
       let temp = completed_lessons;
       temp.push(ALLCHAPTER[count + 1]?._id);
@@ -298,7 +311,7 @@ setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
 
   const handleDuration = (duration) => {
     // setDuration(duration);
-    localStorage.setItem('duration'+currentid,duration)
+    localStorage.setItem("duration" + currentid, duration);
     console.log(duration);
   };
 
@@ -314,35 +327,33 @@ setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
     e.preventDefault(); // Prevent default context menu behavior
   };
 
-  const handleToggleNotes = async (pdf, videourl,id,lesson) => {
-    setactivelargevideo(true)
+  const handleToggleNotes = async (pdf, videourl, id, lesson) => {
+    setactivelargevideo(true);
     // console.log(id);
-    setactiveindex(lesson)
-    setcurrentid(id)
+    setactiveindex(lesson);
+    setcurrentid(id);
     let getindex = idwise[id];
-    localStorage.setItem('last',getindex)
-
+    localStorage.setItem("last", getindex);
 
     try {
-      if(playerRef.current){
-       const currenttime=playerRef.current.getCurrentTime();
-      //  setCurrentDuration(currenttime)
-       localStorage.setItem(id,currenttime)
-        setPlaying(true)
-      } 
+      if (playerRef.current) {
+        const currenttime = playerRef.current.getCurrentTime();
+        //  setCurrentDuration(currenttime)
+        localStorage.setItem(id, currenttime);
+        setPlaying(true);
+      }
       // Show the small video player
       setshowSmallvideo(true);
-  
+
       // Set the URLs for PDF and video
       setpdfurl(pdf);
       setsmallVideourl(videourl);
-  
-  // console.log(playerRef.current);
-  
+
+      // console.log(playerRef.current);
     } catch (error) {
       console.error("An error occurred while toggling notes:", error);
     }
-   };
+  };
 
   function handleProject(project) {
     setactiveindex(project?.title);
@@ -369,11 +380,15 @@ setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
       // handleVideoEnded();
     }
   }
-  
+
   const handleSmallVideoReady = () => {
-    if (playerRef2.current && activesmallvideo && localStorage.getItem(currentid)) {
-      setactivesmallvideo(false)
-      playerRef2.current.seekTo(localStorage.getItem(currentid), 'seconds');
+    if (
+      playerRef2.current &&
+      activesmallvideo &&
+      localStorage.getItem(currentid)
+    ) {
+      setactivesmallvideo(false);
+      playerRef2.current.seekTo(localStorage.getItem(currentid), "seconds");
       // playerRef2.current.play();
     } else {
       console.error("Player references are not available.");
@@ -381,24 +396,21 @@ setcurrentid(ALLCHAPTER[(count + 1) % ALLCHAPTER.length]?._id)
   };
   const handlelargeVideoReady = () => {
     // console.log(currentid,activelargevideo);
-    
-if (activelargevideo && localStorage.getItem(currentid)) {
-    //  setactivelargevideo(false)
-    let durationtime=localStorage.getItem('duration'+currentid)
-    let playedtime=localStorage.getItem(currentid)
-    if(Math.floor(durationtime)==Math.floor(playedtime)){
-      playerRef.current.seekTo(0, 'seconds');
 
-    }
-    else{
-      playerRef.current.seekTo(localStorage.getItem(currentid), 'seconds');
-
-    }
+    if (activelargevideo && localStorage.getItem(currentid)) {
+      //  setactivelargevideo(false)
+      let durationtime = localStorage.getItem("duration" + currentid);
+      let playedtime = localStorage.getItem(currentid);
+      if (Math.floor(durationtime) == Math.floor(playedtime)) {
+        playerRef.current.seekTo(0, "seconds");
+      } else {
+        playerRef.current.seekTo(localStorage.getItem(currentid), "seconds");
+      }
       // playerRef2.current.play();
     } else {
       console.error("Player references are not available.");
     }
-    setactivelargevideo(false)
+    setactivelargevideo(false);
   };
   function Timeconverter(totalMinutes) {
     const minutes = parseInt(totalMinutes, 10);
@@ -481,37 +493,33 @@ if (activelargevideo && localStorage.getItem(currentid)) {
   }, [count]);
   const handleProgress = (state) => {
     const { playedSeconds } = state;
-  // console.log(isSeeking);
-  
+    // console.log(isSeeking);
+
     // Update maxWatched only if the user is actively watching
     if (!isSeeking) {
       setMaxWatched((prevMax) => Math.max(prevMax, playedSeconds));
+    } else {
+      setMaxWatched(playedSeconds);
+      localStorage.setItem(currentid, playedSeconds);
     }
-    else{
-      setMaxWatched(playedSeconds)
-      localStorage.setItem(currentid,playedSeconds)
-    }
-    setIsSeeking(false)
-
+    setIsSeeking(false);
   };
-  
+
   // Function to restrict seeking beyond maxWatched
   const handleSeek = (seekTime) => {
     // console.log("handleseeking");
-// console.log("maxWatched",maxWatched);
-setIsSeeking(true)
+    // console.log("maxWatched",maxWatched);
+    setIsSeeking(true);
     if (seekTime > maxWatched) {
       playerRef.current.seekTo(maxWatched, "seconds"); // Revert to maxWatched time
     }
-   
   };
-  
+
   // Detect when user starts and stops seeking
   const handleSeeking = (seeking) => {
-    
     setIsSeeking(seeking);
   };
-  
+
   return (
     <>
       <div className="flex justify-between gap-5">
@@ -526,30 +534,30 @@ setIsSeeking(true)
           <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] sm:h-[42vh] sm:px-4 md:pr-[5%] md:h-[50vh] xsm:px-4">
             {showSmallvideo && (
               <Draggable>
-              <div className="fixed bottom-0 left-0 z-[9999] rounded-xl">
-                <ReactPlayer
-                  onContextMenu={handleContextMenu}
-                  height="280px"
-                  width="350px"
-                  ref={playerRef2}
-                  className="shadow-2xl rounded-xl"
-                  playing={playing}
-                  controls={true}
-                  autoPlay={playing}
-                  url={smallVideourl}
-                  onReady={handleSmallVideoReady}
-                  onDuration={handleDuration}
-                  onEnded={handleVideoEnded}
-                  config={{
-                    file: {
-                      attributes: {
-                        controlsList: "nodownload",
-                        playsInline: true,
+                <div className="fixed bottom-0 left-0 z-[9999] rounded-xl">
+                  <ReactPlayer
+                    onContextMenu={handleContextMenu}
+                    height="280px"
+                    width="350px"
+                    ref={playerRef2}
+                    className="shadow-2xl rounded-xl"
+                    playing={playing}
+                    controls={true}
+                    autoPlay={playing}
+                    url={smallVideourl}
+                    onReady={handleSmallVideoReady}
+                    onDuration={handleDuration}
+                    onEnded={handleVideoEnded}
+                    config={{
+                      file: {
+                        attributes: {
+                          controlsList: "nodownload",
+                          playsInline: true,
+                        },
                       },
-                    },
-                  }}
-                />
-              </div>
+                    }}
+                  />
+                </div>
               </Draggable>
             )}
             {window.innerWidth <= 720 ? (
@@ -564,7 +572,6 @@ setIsSeeking(true)
             <div className="flex gap-20 xsm:gap-0">
               <div className="CCD-content flex gap-5 pt-10">
                 <div className="CCD-content-left 2xl:w-[55%] xsm:w-[100%] sm:w-[100%]">
-
                   <div
                     className="relative h-[100%] grid place-items-center xsm:h-[35vh] sm:h-[40vh] md:h-[40vh]"
                     style={{ borderRadius: "14px !important" }}
@@ -621,43 +628,77 @@ setIsSeeking(true)
                       </div>
                     ) : showSmallvideo || url?.toString().endsWith("pdf") ? (
                       // <div className="relative">
-                        <iframe src={pdfurl} width="100%" height="100%" />
-                        //  <button className="absolute top-0 right-0">ABC</button> 
-                        // </div> 
-                    ) : url?.toString().endsWith("mp3") ? (
+                      <iframe src={pdfurl} width="100%" height="100%" />
+                    ) : //  <button className="absolute top-0 right-0">ABC</button>
+                    // </div>
+                    url?.toString().endsWith("mp3") ? (
                       <iframe src={url} width="100%" height="100%" />
                     ) : !showLive && !showend && url?.toString() === "" ? (
                       <div className="text-center flex flex-col ">
                         <p className="font-semibold">Coming soon</p>
                       </div>
                     ) : (
-                      <ReactPlayer
-                        onContextMenu={handleContextMenu}
-                        height="auto"
-                        width="100%"
-                        ref={playerRef}
-                        borderRadius="14px"
-                        className="shadow-2xl rounded-[18px]"
-                        style={{ borderRadius: "14px !important" }}
-                        playing={!showBanner}
-                        controls={true}
-                        autoPlay={!showBanner}
-                        url={url}
-                        onDuration={handleDuration}
-                        onEnded={handleVideoEnded}
-                        onReady={handlelargeVideoReady}
-                        onProgress={handleProgress}
-                        onSeek={handleSeek}
-                        onSeekStart={() => handleSeeking(true)}
-                        onSeekEnd={() => handleSeeking(false)}
-                        config={{
-                          file: {
-                            attributes: {
-                              controlsList: "nodownload",
+                      // <ReactPlayer
+                      //   onContextMenu={handleContextMenu}
+                      //   height="auto"
+                      //   width="100%"
+                      //   ref={playerRef}
+                      //   borderRadius="14px"
+                      //   className="shadow-2xl rounded-[18px]"
+                      //   style={{ borderRadius: "14px !important" }}
+                      //   playing={!showBanner}
+                      //   controls={true}
+                      //   autoPlay={!showBanner}
+                      //   url={url}
+                      //   onDuration={handleDuration}
+                      //   onEnded={handleVideoEnded}
+                      //   onReady={handlelargeVideoReady}
+                      //   onProgress={handleProgress}
+                      //   onSeek={handleSeek}
+                      //   onSeekStart={() => handleSeeking(true)}
+                      //   onSeekEnd={() => handleSeeking(false)}
+                      //   config={{
+                      //     file: {
+                      //       attributes: {
+                      //         controlsList: "nodownload",
+                      //       },
+                      //     },
+                      //   }}
+                      // />
+
+                      <div className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-2xl">
+                        <ReactPlayer
+                          ref={playerRef}
+                          className="absolute top-0 left-0 rounded-[18px]"
+                          width="100%"
+                          height="100%"
+                          playing={true}
+                          controls={true}
+                          autoPlay={true}
+                          // url="https://www.youtube.com/embed/jh2LJVDtGIY?modestbranding=1&rel=0&showinfo=0&controls=1"
+                          url={url}
+                          config={{
+                            youtube: {
+                              playerVars: {
+                                modestbranding: 1, // less YouTube branding
+                                rel: 0, // disables related videos
+                                showinfo: 0,
+                                controls: 1,
+                              },
                             },
-                          },
-                        }}
-                      />
+                            file: {
+                              attributes: {
+                                controlsList: "nodownload", // disables download button
+                              },
+                            },
+                          }}
+                          loop={false}
+                          muted={false}
+                          playbackRate={1}
+                          progressInterval={1000}
+                          stopOnUnmount={true}
+                        />
+                      </div>
                     )}
                     <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500">
                       {activeindex}
@@ -722,9 +763,13 @@ setIsSeeking(true)
                         <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
                           {totalLessons} Lessons
                         </p>
-                       {!allotedbycollege ? <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
-                          {Timeconverter(dur)}
-                        </p>:''}
+                        {!allotedbycollege ? (
+                          <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
+                            {Timeconverter(dur)}
+                          </p>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
                     {window.innerWidth <= 720 && (

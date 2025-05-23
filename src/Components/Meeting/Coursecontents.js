@@ -207,15 +207,16 @@ export default function Coursecontents({
                           // console.log("index"+index,completed_lessons?.includes(chapter?._id))
                           return (
                             <div
-                              className={
-                                courseCategory === "liveCourse"
-                                  ? ""
-                                  : `flex-col justify-between border-t py-2 w-full ${
-                                      !completed_lessons?.includes(chapter?._id)
-                                        ? "cursor-not-allowed text-gray-300"
-                                        : ""
-                                    }`
-                              }
+                              // className={
+                              //   courseCategory === "liveCourse"
+                              //     ? ""
+                              //     : `flex-col justify-between border-t py-2 w-full ${
+                              //         !completed_lessons?.includes(chapter?._id)
+                              //           ? "cursor-not-allowed text-gray-300"
+                              //           : ""
+                              //       }`
+                              // }
+                              className="flex flex-col justify-between border-t py-2 w-full"
                               key={index}
                             >
                               <span className="flex justify-between">
@@ -232,6 +233,15 @@ export default function Coursecontents({
                                   </p>
                                 ) : (
                                   <p
+                                    // onClick={() =>
+                                    //   completed_lessons.includes(chapter._id) &&
+                                    //   handleActiveVideo(
+                                    //     chapter?.video,
+                                    //     chapter?.lesson_name,
+                                    //     chapter?._id
+                                    //   )
+                                    // }
+
                                     onClick={() =>
                                       completed_lessons.includes(chapter._id) &&
                                       handleActiveVideo(
@@ -240,7 +250,11 @@ export default function Coursecontents({
                                         chapter?._id
                                       )
                                     }
-                                    className={`font-pop capitalize font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] ${currentid==chapter?._id ? 'text-[#1DBF73]':''} `}
+                                    className={`font-pop capitalize font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] ${
+                                      currentid == chapter?._id
+                                        ? "text-[#1DBF73]"
+                                        : ""
+                                    } `}
                                   >
                                     {index + 1}. {chapter?.lesson_name}
                                   </p>
@@ -371,36 +385,55 @@ export default function Coursecontents({
                           {val?.project?.map((chapter, index) => {
                             // console.log(chapter);
                             return (
+                              // <div
+                              //   className={
+                              //     courseCategory === "liveCourse"
+                              //       ? ""
+                              //       : `flex flex-col justify-between border-t py-2 w-full ${
+                              //           !completed_lessons?.includes(
+                              //             chapter?._id
+                              //           )
+                              //             ? "cursor-not-allowed text-gray-300"
+                              //             : ""
+                              //         }`
+                              //   }
+                              //   key={index}
+                              // >
+                              //   <span className="flex justify-between">
+                              //     <p
+                              //       onClick={() =>
+                              //         completed_lessons?.includes(chapter?._id)
+                              //           ? handleProject(chapter)
+                              //           : ""
+                              //       }
+                              //       className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]`}
+                              //     >
+                              //       {index + 1}. {chapter?.title}(
+                              //       {chapter?.duration || "5 mins"})
+                              //     </p>
+                              //   </span>
+                              //   {/* <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
+                              //     Duration-{chapter?.duration || '5 mins'}
+                              //   </p> */}
+                              // </div>
+
                               <div
-                                className={
-                                  courseCategory === "liveCourse"
-                                    ? ""
-                                    : `flex flex-col justify-between border-t py-2 w-full ${
-                                        !completed_lessons?.includes(
-                                          chapter?._id
-                                        )
-                                          ? "cursor-not-allowed text-gray-300"
-                                          : ""
-                                      }`
-                                }
+                                className="flex flex-col justify-between border-t py-2 w-full"
                                 key={index}
                               >
                                 <span className="flex justify-between">
                                   <p
-                                    onClick={() =>
-                                      completed_lessons?.includes(chapter?._id)
-                                        ? handleProject(chapter)
-                                        : ""
-                                    }
-                                    className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]`}
+                                    onClick={() => handleProject(chapter)}
+                                    className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] ${
+                                      currentid === chapter?._id
+                                        ? "text-[#1DBF73]"
+                                        : "text-black"
+                                    }`}
                                   >
-                                    {index + 1}. {chapter?.title}(
+                                    {index + 1}. {chapter?.title} (
                                     {chapter?.duration || "5 mins"})
                                   </p>
                                 </span>
-                                {/* <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
-                                  Duration-{chapter?.duration || '5 mins'}
-                                </p> */}
                               </div>
                             );
                           })}
