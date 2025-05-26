@@ -243,7 +243,6 @@ export default function Coursecontents({
                                     // }
 
                                     onClick={() =>
-                                      completed_lessons.includes(chapter._id) &&
                                       handleActiveVideo(
                                         chapter?.video,
                                         chapter?.lesson_name,
@@ -278,7 +277,7 @@ export default function Coursecontents({
                                       <span className=" flex justify-between items-center px-2 border rounded-md h-max">
                                         <div
                                           onClick={() =>
-                                            completed_lessons.includes(
+                                            completed_lessons?.includes(
                                               chapter._id
                                             )
                                               ? handleToggleNotes(

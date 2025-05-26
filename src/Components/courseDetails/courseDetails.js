@@ -53,7 +53,7 @@ export default function CDDetails() {
 
   console.log("check playerRef", playerRef);
   console.log("check url", url);
-  // console.log("check playerRef", playerRef);
+  console.log("check ALLCHAPTER", ALLCHAPTER);
 
   // const extractYouTubeID = (url) => {
   //   const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/;
@@ -62,6 +62,11 @@ export default function CDDetails() {
   // };
 
   // console.log("url", url);
+  // Function to convert YouTube URL
+  const getEmbedUrl = (url) => {
+    const match = url.match(/v=([^&]+)/);
+    return match ? `https://www.youtube.com/embed/${match[1]}` : url;
+  };
 
   useEffect(() => {
     async function Fetchdata() {
@@ -676,7 +681,7 @@ export default function CDDetails() {
                           controls={true}
                           autoPlay={true}
                           // url="https://www.youtube.com/embed/jh2LJVDtGIY?modestbranding=1&rel=0&showinfo=0&controls=1"
-                          url={url}
+                          url= {getEmbedUrl(url)}
                           config={{
                             youtube: {
                               playerVars: {

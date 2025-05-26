@@ -30,7 +30,8 @@ const Footer = () => {
             <div onClick={() => navigate("/")}>
               <img
                 src="/logo.png"
-                className="w-auto h-[50px] xsm:w-[40%] xsm:h-[10%] sm:w-[45%] sm:h-[30px] md:w-[60%]  cursor-pointer" alt=""
+                className="w-auto h-[50px] xsm:w-[40%] xsm:h-[10%] sm:w-[45%] sm:h-[30px] md:w-[60%]  cursor-pointer"
+                alt=""
               />
             </div>
             <p className="text-white text-[12px] font-pop text-balance w-[90%] xsm:w-[100%] xsm:text-[11px] sm:text-[10px] md:text-[12px] md:w-[90%] md:pl-2">
@@ -49,33 +50,43 @@ const Footer = () => {
                 {/* <Link className='text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px]'>Contact Us</p> */}
                 <Link
                   to="/privacy"
-                  className={` text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px] ${pathname=='/privacy' ? 'text-[#1dbf73]' : 'text-white'}`}
+                  className={` text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px] ${
+                    pathname == "/privacy" ? "text-[#1dbf73]" : "text-white"
+                  }`}
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   to="/terms"
-                  className={`${pathname=='/terms' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px] `}
+                  className={`${
+                    pathname == "/terms" ? "text-[#1dbf73]" : "text-white"
+                  } text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px] `}
                 >
                   Terms and Conditions
                 </Link>
                 <Link
                   to="/pap"
-                  className={`${pathname=='/pap' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${
+                    pathname == "/pap" ? "text-[#1dbf73]" : "text-white"
+                  } text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Pay After Placement
                 </Link>
                 {/* <Link to='/career' className='text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]'>Career</Link> */}
                 <Link
                   to="/about"
-                  className={`${pathname=='/about' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${
+                    pathname == "/about" ? "text-[#1dbf73]" : "text-white"
+                  } text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   About
                 </Link>
                 {/* <Link to='/hire-from-us' className='text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]'>Hire From Us</Link> */}
                 <Link
                   to="/cv-builder"
-                  className={`${pathname=='/cv-builder' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${
+                    pathname == "/cv-builder" ? "text-[#1dbf73]" : "text-white"
+                  } text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   CV Builder
                 </Link>
@@ -89,34 +100,55 @@ const Footer = () => {
                 className="flex flex-col gap-3 xsm:gap-1 md:gap-2"
                 onClick={Top}
               >
-                 <Link
+                <Link
                   to="/courses?category=App Development"
-                  className={`${window.location.href=='/courses?category=App Development' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${
+                    window.location.href == "/courses?category=App Development"
+                      ? "text-[#1dbf73]"
+                      : "text-white"
+                  } text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   App Development
                 </Link>
                 <Link
                   to="/courses?category=Full Stack Development"
-                  className={`${window.location.href=='/courses?category=Full Stack Development' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${
+                    window.location.href ==
+                    "/courses?category=Full Stack Development"
+                      ? "text-[#1dbf73]"
+                      : "text-white"
+                  } text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Full Stack Development
                 </Link>
                 <Link
                   to="/courses?category=Management"
-                  className={`${window.location.href=='/courses?category=Management' ? 'text-[#1dbf73]' : 'text-white'} text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${
+                    window.location.href == "/courses?category=Management"
+                      ? "text-[#1dbf73]"
+                      : "text-white"
+                  } text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Managements
                 </Link>
                 <Link
                   to="/courses?category=Finance"
-                  className={`${window.location.href=='/courses?category=Finance' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${
+                    window.location.href == "/courses?category=Finance"
+                      ? "text-[#1dbf73]"
+                      : "text-white"
+                  } text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Finance
                 </Link>
-               
+
                 <Link
                   to="/courses?category=AI/ML"
-                  className={`${window.location.href=='/courses?category=AI/ML' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${
+                    window.location.href == "/courses?category=AI/ML"
+                      ? "text-[#1dbf73]"
+                      : "text-white"
+                  } text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   AI/ML
                 </Link>
@@ -128,11 +160,14 @@ const Footer = () => {
                 </Link> */}
                 <Link
                   to="/courses?category=Data Science"
-                  className={`${window.location.href=='/courses?category=Data Science' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${
+                    window.location.href == "/courses?category=Data Science"
+                      ? "text-[#1dbf73]"
+                      : "text-white"
+                  } text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Data Science
                 </Link>
-               
               </div>
             </div>
             <div className="flex flex-col gap-8 xsm:gap-2 sm:gap-6">
@@ -141,17 +176,24 @@ const Footer = () => {
               </p>
               <div className="flex flex-col gap-3 xsm:gap-1 md:gap-2">
                 <div className=" text-white text-[16px]  font-pop flex flex-col xsm:flex-col  xsm:text-[11px] sm:text-[9px] md:text-[10px]">
-                  <Link className="hover:text-[#1dbf73]" to="callto:917657922600">Tel: +91 76579 22600,</Link>
-                
+                  <Link
+                    className="hover:text-[#1dbf73]"
+                    to="callto:917657922600"
+                  >
+                    Tel: +91 76579 22600,
+                  </Link>
                 </div>
                 <div className=" text-white text-[16px]  font-pop flex flex-col xsm:flex-col  xsm:text-[11px] sm:text-[9px] md:text-[10px]">
-                  <Link className="hover:text-[#1dbf73]" to="callto:9193100050">+91 91931 00050</Link>
-                
+                  <Link className="hover:text-[#1dbf73]" to="callto:9193100050">
+                    +91 91931 00050
+                  </Link>
                 </div>
                 <Link
                   to="mailto:support@hopingminds.com"
                   target="_blank"
-                  className={`${pathname=='/privacy' ? 'text-[#1dbf73]' : 'text-white'} text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
+                  className={`${
+                    pathname == "/privacy" ? "text-[#1dbf73]" : "text-white"
+                  } text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Email: support@hopingminds.com
                 </Link>
@@ -163,7 +205,8 @@ const Footer = () => {
                     {" "}
                     <img
                       src={Icon1}
-                      className="w-[30px] h-[30px] xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px]"
+                      alt="no icon"
+                      className="w-[36px] h-[36px] xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px] bg-red-400 rounded-lg"
                     />
                   </Link>
                   <Link
@@ -173,7 +216,8 @@ const Footer = () => {
                     {" "}
                     <img
                       src={Icon2}
-                      className="w-[32px] h-[32px] xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px]"
+                      alt="no icon"
+                      className="w-[36px] h-[36px] xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px] bg-blue-700 rounded-lg"
                     />
                   </Link>
                   <Link
@@ -182,7 +226,8 @@ const Footer = () => {
                   >
                     <img
                       src={Icon3}
-                      className="w-[30px] h-[30px] xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px]"
+                      alt="no icon"
+                      className="w-[36px] h-[36px] xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px] bg-blue-700 rounded-lg"
                     />
                   </Link>
                   <Link
@@ -192,7 +237,8 @@ const Footer = () => {
                     {" "}
                     <img
                       src={Icon4}
-                      className="w-[36px] h-[36px] xsm:w-[18px] xsm:h-[18px] sm:w-[18px] sm:h-[18px] md:w-[20px] md:h-[20px]"
+                      alt="no icon"
+                      className="w-[36px] h-[36px] xsm:w-[18px] xsm:h-[18px] sm:w-[18px] sm:h-[18px] md:w-[20px] md:h-[20px] bg-red-700 rounded-lg"
                     />
                   </Link>
                 </div>
@@ -203,6 +249,7 @@ const Footer = () => {
         <div className="flex flex-row gap-2 items-center justify-center xsm:gap-1">
           <img
             src={Img1}
+            alt="no icon"
             className=" xsm:w-[18px] xsm:h-[18px] sm:w-[16px] sm:h-[16px] md:w-[16px] md:h-[16px]"
           />
           <p className="text-white text-[16px] hover:text-[#1dbf73] font-pop font-semibold xsm:text-[12px] sm:text-[11px] md:text-[12px]">
