@@ -26,7 +26,7 @@ import SubAdmin from '../Components/SubAdminDashboard/index.js'
 
 // subadmin
 // import SubAdmin from '../Components/SubAdminDashboard/index.js'
-import Pap from '../Components/PAP/Pap.js'
+// import Pap from '../Components/PAP/Pap.js'
 import Modal from '../Components/PAP/modal.jsx'
 import Forgotpassword from '../Components/forgotPassword/forgotPassword.js'
 import CareerServices from '../Components/HireFromUs/CarrerServices.jsx'
@@ -161,7 +161,7 @@ const Router = () => {
                 <Route path='/success' element={<Success />} />
                 <Route path='/cv-builder' element={<CVBuilder />} />
                 {/* <Route path='/subadmin-dashboard' element={<DashboardSubAdmin />} /> */}
-                <Route path='/pap' element={<Pap />} />
+                {/* <Route path='/pap' element={<Pap />} /> */}
                 {/* <Route path='/career' element={<CareerServices />} /> */}
                 <Route path='/ai' element={<AiMinds />} />
                 <Route path='/privacy' element={<ReturnPolicy />} />

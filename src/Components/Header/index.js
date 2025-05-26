@@ -373,7 +373,7 @@ export default function Navbar() {
                 ) : (
                   ""
                 )}
-                <a
+                {/* <a
                   href={location.pathname === "/" ? "#" : "/pap"}
                   onClick={ScrollToPap}
                   className={` rounded-full hover:text-[#1DBF73] xsm:text-[12px] sm:text-[10px] cursor-pointer md:text-[14px] font-pop ${
@@ -383,7 +383,7 @@ export default function Navbar() {
                   }`}
                 >
                   PAP
-                </a>
+                </a> */}
                 {/* <Link>Search</Link> */}
                 {userDetail?._id && (
                   <Link
