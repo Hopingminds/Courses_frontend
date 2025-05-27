@@ -137,13 +137,14 @@ export default function Navbar() {
           }
         }
         `}
+        
       </style>
       <div className="w-full 2xl:w-[66%] flex justify-between px-[5%] h-20 items-center  font-pop fixed top-0 z-[9999] bg-[#0F2027] xsm:h-12 sm:px-[3%] sm:h-12 xsm:px-[2%] text-white md:h-14">
         <Link to="/" onClick={Top} className=" cursor-pointer">
           <img
             src="/logo.png"
-            className="h-[50px] w-auto xsm:w-auto xsm:h-[27px] sm:w-[50px] sm:h-[27px] md:w-[70px] md:h-[30px]"
             alt="Logo"
+            className="h-[50px] w-auto xsm:w-auto xsm:h-[27px] sm:w-[50px] sm:h-[27px] md:w-[70px] md:h-[30px]"
           />
         </Link>
         {window.innerWidth <= 480 ? (
