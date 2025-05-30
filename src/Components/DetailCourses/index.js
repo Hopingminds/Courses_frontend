@@ -201,10 +201,12 @@ export default function DetailCourses() {
 
   return (
     <div className="h-auto min-h-screen overflow-x-visible ">
-      <Toaster toastOptions={{
-         duration: 500,
-      }} 
-       position="top-center" />
+      <Toaster
+        toastOptions={{
+          duration: 500,
+        }}
+        position="top-center"
+      />
       <div className="mb-5 xsm:mx-0 xsm:mb-2">
         <div
           className="CCDetails-Header-main flex flex-col pl-[10vw]  w-full xsm:pt-1 xsm:h-[60vh] object-right"
@@ -222,7 +224,9 @@ export default function DetailCourses() {
                   ? Data?.title?.slice(0, 90)
                   : Data?.title}
               </h2>
-              <p className="line-clamp-2 font-normal	text-white xsm:line-clamp-3">{Data?.overview}</p>
+              <p className="line-clamp-2 font-normal	text-white xsm:line-clamp-3">
+                {Data?.overview}
+              </p>
             </div>
             <div className="text-white flex gap-2 items-center text-[14px] font-pop mt-4 xsm:text-[8px] xsm:mt-1">
               <p>4.7</p>
@@ -238,15 +242,14 @@ export default function DetailCourses() {
             <div className="flex gap-5 mt-5 xsm:mt-1 xsm:gap-3 xsm:hidden">
               {purchasedCourses?.includes(Data?._id) ? (
                 <></>
-              ) : (
-                
-                  alreadyInWishlist ?   <Link
-                  to='/learning?tab=wishlist'
+              ) : alreadyInWishlist ? (
+                <Link
+                  to="/learning?tab=wishlist"
                   className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
                 >
                   Go to Wishlist
                 </Link>
-                :
+              ) : (
                 <div
                   onClick={() => Addtowishlist(Data?._id)}
                   className="bg-[#1DBF73] cursor-pointer flex justify-center w-fit py-2 px-10 rounded-full text-white font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
@@ -256,20 +259,25 @@ export default function DetailCourses() {
               )}
               {!purchasedCourses?.includes(Data?._id) ? (
                 <div className="space-x-4 w-fit flex items-center md:space-x-2 xsm:space-x-3 xsm:mr-1">
-                  {alreadyInCart ?
-                    (<div onClick={() => navigate("/cart")} className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 ">
-                        Go to Cart
-                    </div>)
-                    :
-                    (<div
+                  {alreadyInCart ? (
+                    <div
+                      onClick={() => navigate("/cart")}
+                      className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
+                    >
+                      Go to Cart
+                    </div>
+                  ) : (
+                    <div
                       onClick={() => Addtocart(Data?._id)}
                       className="border cursor-pointer border-[#1DBF73] flex justify-center w-full py-2 px-10 rounded-full text-[#1DBF73] font-nu font-bold xsm:px-[8px] xsm:py-[6px] xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1 "
                     >
                       Add to cart
-                    </div>)
-                  }
+                    </div>
+                  )}
                 </div>
-              ) : ""}
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
@@ -281,7 +289,6 @@ export default function DetailCourses() {
       ) : (
         ""
       )}
-     
 
       <div className="flex justify-between px-[8%] py-6 xsm:flex-col-reverse">
         <div className="w-[58%] flex flex-col gap-16 xsm:gap-10 xsm:w-[100%]">
@@ -296,7 +303,10 @@ export default function DetailCourses() {
               <div className="flex flex-col gap-4 font-nu text-[#555555]">
                 <ul className="list-inside leading-7 tracking-wide pl-2 grid grid-cols-2 gap-4  p-5 shadow-[0_4px_11px_0px_rgb(0, 0, 0))] xsm:pl-0  xsm:leading-none xsm:grid-cols-1 xsm:gap-[10px]">
                   {Data?.whatWillILearn?.map((item, index) => (
-                    <li key={index} className="flex gap-2 xsm:gap-1 xsm:text-[12px] xsm:leading-[18px]">
+                    <li
+                      key={index}
+                      className="flex gap-2 xsm:gap-1 xsm:text-[12px] xsm:leading-[18px]"
+                    >
                       {" "}
                       <img
                         src="/Icons/shield.svg"
@@ -312,6 +322,27 @@ export default function DetailCourses() {
           ) : (
             ""
           )}
+          <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md mx-auto mt-6">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              Course Duration
+            </h2>
+            <div className="flex justify-between items-center text-gray-700">
+              <div className="flex flex-col items-start">
+                <span className="text-sm text-gray-500">Start Date</span>
+                <span className="text-lg font-medium text-green-600">
+                  01 June 2025
+                </span>
+              </div>
+              <div className="h-10 border-l-2 border-dashed border-gray-300 mx-4"></div>
+              <div className="flex flex-col items-end">
+                <span className="text-sm text-gray-500">End Date</span>
+                <span className="text-lg font-medium text-red-600">
+                  31 Dec 2025
+                </span>
+              </div>
+            </div>
+          </div>
+
           {Data?.curriculum?.length > 0 && (
             <div className="flex flex-col gap-8 xsm:gap-4">
               <h1 className="font-pop font-semibold text-[32px] text-[#0F2027]  xsm:text-[18px]">
@@ -331,11 +362,12 @@ export default function DetailCourses() {
             <h1 className="w-full text-left font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[18px]">
               Companies Worldwide
             </h1>
-            <DetailCompany/>
-           
-          </div> 
+            <DetailCompany />
+          </div>
 
-          {Data?.companies?.length > 0 && <PackageCarousel data={Data?.companies} />}
+          {Data?.companies?.length > 0 && (
+            <PackageCarousel data={Data?.companies} />
+          )}
           {faqs?.length > 0 && (
             <div className="flex flex-col gap-8 xsm:gap-4">
               <h1 className="font-pop font-semibold text-[32px] text-[#0F2027] xsm:text-[18px]">
@@ -386,31 +418,37 @@ export default function DetailCourses() {
               <VideoTesttimonial data={Data?.testimonials} />
             </div>
           )} */}
-         
-
         </div>
         <span className="w-[33%] h-[1000px] -translate-y-[20rem] xsm:-translate-y-[13rem] xsm:w-[100%] xsm:h-fit xsm:mb-[-10rem] ">
-          <Commoncard Data={Data} alreadyInCart={alreadyInCart} CheckCourseInCart={CheckCourseInCart} batchids={batchids}/>
+          <Commoncard
+            Data={Data}
+            alreadyInCart={alreadyInCart}
+            CheckCourseInCart={CheckCourseInCart}
+            batchids={batchids}
+          />
           <div className=" flex flex-col gap-[2rem]">
-         
-          <div className="xsm:hidden">
-            <img src="/Divyam-vashisht.jpg" alt="" />
+            <div className="xsm:hidden">
+              <img src="/Divyam-vashisht.jpg" alt="" />
             </div>
             <div className="p-[15px] border border-black rounded-[16px] flex flex-col gap-4 items-center xsm:hidden">
               <h3 className="text-black text-[1.3rem] text-center font-semibold">
-                Create your professional <span className="text-[#1DBF73]">Resume</span>  with our designs
+                Create your professional{" "}
+                <span className="text-[#1DBF73]">Resume</span> with our designs
               </h3>
-              <Link to='/cv-builder' className="bg-[#1DBF73] button-resume rounded-lg px-3 py-1 text-white font-semibold">Create Your Resume</Link>
-              <img src='/detailcertificate.png' alt=""/>
+              <Link
+                to="/cv-builder"
+                className="bg-[#1DBF73] button-resume rounded-lg px-3 py-1 text-white font-semibold"
+              >
+                Create Your Resume
+              </Link>
+              <img src="/detailcertificate.png" alt="" />
             </div>
           </div>
-
         </span>
-       
       </div>
       <div className="bg-[#1D343D] w-full h-full">
-          <HireTestimonial/>
-          </div>
+        <HireTestimonial />
+      </div>
     </div>
   );
 }

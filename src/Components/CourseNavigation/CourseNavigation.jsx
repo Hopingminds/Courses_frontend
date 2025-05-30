@@ -80,12 +80,15 @@ const CourseNavigation = ({
         </button> */}
         <button
           className={`btn_corners_last py-[12px] border-l border-[#EAEAEA] ${
-            activeComponent === "assessment" ? "bg-[#1FC074] text-[#FFFFFF]" : ""
+            activeComponent === "assessment"
+              ? "bg-[#1FC074] text-[#FFFFFF]"
+              : ""
           }`}
           onClick={() => renderComponent("assessment")}
         >
           Assessment
         </button>
+
       </div>
 
       {activeComponent === "Overview" && <Overview />}
@@ -102,7 +105,7 @@ const CourseNavigation = ({
         />
       )}
       {/* {activeComponent === "liveClass" && <LiveClass data={liveclass} />} */}
-      {activeComponent === "assessment" && <CNAssessment slug={slug}/>}
+      {activeComponent === "assessment" && <CNAssessment slug={slug} />}
     </div>
   );
 };

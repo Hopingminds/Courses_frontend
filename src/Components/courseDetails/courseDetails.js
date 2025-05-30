@@ -51,9 +51,16 @@ export default function CDDetails() {
   const [activesmallvideo, setactivesmallvideo] = useState(true);
   const [activelargevideo, setactivelargevideo] = useState(true);
 
-  console.log("check playerRef", playerRef);
-  console.log("check url", url);
-  console.log("check ALLCHAPTER", ALLCHAPTER);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
+
+  // console.log("check playerRef", playerRef);
+  // console.log("check url", url);
+  // console.log("check ALLCHAPTER", ALLCHAPTER);
+
+  console.log("check Data", Data);
 
   // const extractYouTubeID = (url) => {
   //   const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/;
@@ -178,6 +185,7 @@ export default function CDDetails() {
           }
           if (url !== allchapters[0]?.video) {
             seturl(allchapters[0]?.video);
+            
           }
 
           setactiveindex(allchapters[0]?.lesson_name);
@@ -399,6 +407,9 @@ export default function CDDetails() {
       console.error("Player references are not available.");
     }
   };
+
+
+
   const handlelargeVideoReady = () => {
     // console.log(currentid,activelargevideo);
 
@@ -673,27 +684,26 @@ export default function CDDetails() {
 
                       <div className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-2xl">
                         <ReactPlayer
-                          ref={playerRef}
+                          ref={playerRef2}
                           className="absolute top-0 left-0 rounded-[18px]"
                           width="100%"
                           height="100%"
-                          playing={true}
+                          playing={false}
                           controls={true}
-                          autoPlay={true}
-                          // url="https://www.youtube.com/embed/jh2LJVDtGIY?modestbranding=1&rel=0&showinfo=0&controls=1"
-                          url= {getEmbedUrl(url)}
+                          autoPlay={false}
+                          url={getEmbedUrl(url)}
                           config={{
                             youtube: {
                               playerVars: {
-                                modestbranding: 1, // less YouTube branding
-                                rel: 0, // disables related videos
+                                modestbranding: 1,
+                                rel: 0,
                                 showinfo: 0,
                                 controls: 1,
                               },
                             },
                             file: {
                               attributes: {
-                                controlsList: "nodownload", // disables download button
+                                controlsList: "nodownload",
                               },
                             },
                           }}
@@ -702,11 +712,42 @@ export default function CDDetails() {
                           playbackRate={1}
                           progressInterval={1000}
                           stopOnUnmount={true}
+                          // ✅ Restore video playback time when player is ready
+                          onReady={() => {
+                            const lastIndex = localStorage.getItem("last");
+                            const currentId = allchapters?.[lastIndex]?._id;
+                            const lastTime =
+                              parseFloat(localStorage.getItem(currentId)) || 0;
+
+                            if (playerRef2.current && lastTime) {
+                              playerRef2.current.seekTo(lastTime, "seconds");
+                            }
+                          }}
+                          // ✅ Update video playback time during play
+                          onProgress={({ playedSeconds }) => {
+                            const lastIndex = localStorage.getItem("last");
+                            const currentId = allchapters?.[lastIndex]?._id;
+                            if (currentId) {
+                              localStorage.setItem(
+                                currentId,
+                                playedSeconds.toString()
+                              );
+                            }
+                          }}
                         />
                       </div>
                     )}
-                    <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500">
-                      {activeindex}
+
+                    <div>
+                      <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500">
+                        {activeindex}
+                      </div>
+                      <div
+                        onClick={openModal}
+                        className="cursor-pointer text-white bg-green-400 hover:bg-green-600 uppercase border border-1 p-2 rounded-xl w-full text-center md:mt-2 mt-0"
+                      >
+                        Transcript
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -749,6 +790,8 @@ export default function CDDetails() {
               </div>
             </div>
             {/* <div className="font-bold text-lg text-wrap h-auto flex flex-wrap w-[70%]">{activeindex}</div> */}
+
+            {/* Transcript part */}
           </div>
           <div
             id="ScrollToTop"
@@ -800,6 +843,33 @@ export default function CDDetails() {
                   slug={params?.slug}
                 />
               </div>
+            </div>
+          </div>
+        </div>
+        <div className="p-4 max-h-[80vh] overflow-y-auto">
+          {/* Overlay */}
+          {isOpen && (
+            <div
+              onClick={closeModal}
+              className="fixed inset-0  bg-opacity-30 z-40 "
+            ></div>
+          )}
+
+          {/* Slide-in Modal */}
+          <div
+            className={`fixed mt-10 top-10 right-0 h-full w-[25%] sm:w-1/3 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
+              isOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <div className="flex justify-between items-center p-4 border-b">
+              <h2 className="text-xl font-semibold">Transcript</h2>
+              <button onClick={closeModal} className="text-gray-500 text-2xl">
+                &times;
+              </button>
+            </div>
+            <div className="p-4">
+              {/* Modal Content */}
+              {Data?.title}{" "}
             </div>
           </div>
         </div>

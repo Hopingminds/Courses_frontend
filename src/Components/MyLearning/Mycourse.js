@@ -149,6 +149,7 @@ export default function Mycourse({ courses, fetchUserData,internships }) {
                 <img
                   className="w-full h-full xsm:rounded-md xsm:h-[55px]"
                   src={val?.course?.featured_image}
+                  alt=""
                 />
               </div>
               <div className="h-[45%] flex flex-col justify-between mt-2 xsm:space-y-1 xsm:mt-1">
@@ -159,6 +160,7 @@ export default function Mycourse({ courses, fetchUserData,internships }) {
                   <img
                     className="w-[32px] h-[32px] xsm:w-[10px] xsm:h-[10px] md:h-[24px] md:w-[24px] rounded-full"
                     src={val?.course?.instructor?.profile}
+                    alt=""
                   />
                   <p className="font-pop font-medium text-[16px] xsm:text-[6px] md:text-[12px]">
                     {" "}
@@ -194,6 +196,7 @@ export default function Mycourse({ courses, fetchUserData,internships }) {
                 <img
                   className="w-full h-full xsm:rounded-md xsm:h-[55px]"
                   src={val?.course?.featured_image}
+                  alt=""
                 />
               </div>
               <div className="h-[45%] flex flex-col justify-between mt-2 xsm:space-y-1 xsm:mt-1">
@@ -208,6 +211,7 @@ export default function Mycourse({ courses, fetchUserData,internships }) {
                   <img
                     className="w-[32px] h-[32px] xsm:w-[10px] xsm:h-[10px] md:h-[24px] md:w-[24px] rounded-full"
                     src={val?.course?.instructor?.profile}
+                    alt=""
                   />
                   <p className="font-pop font-medium text-[16px] xsm:text-[6px] md:text-[12px]">
                     {" "}
@@ -259,6 +263,7 @@ export default function Mycourse({ courses, fetchUserData,internships }) {
                 <img
                   className="w-full h-full xsm:rounded-md xsm:h-[55px]"
                   src={val?.internship?.featured_image?val?.internship?.featured_image:image}
+                  alt=""
                 />
               </div>
               <div className="h-[45%] flex flex-col justify-between mt-2 xsm:space-y-1 xsm:mt-1">
@@ -299,6 +304,7 @@ export default function Mycourse({ courses, fetchUserData,internships }) {
               <img
                 className="w-full h-full xsm:rounded-md xsm:h-[55px]"
                 src={val?.internship?.featured_image}
+                alt=""
               />
             </div>
             <div className="h-[45%] flex flex-col justify-between mt-2 xsm:space-y-1 xsm:mt-1">

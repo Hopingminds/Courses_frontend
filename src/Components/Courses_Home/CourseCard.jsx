@@ -96,11 +96,11 @@ const CourseCard = ({
             className="rounded-t-2xl xsm:rounded-md border overflow-hidden"
             height="100%"
             width="100%"
-            url={featured_video || "/defaultvideo.mp4"}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = "/defaultvideo.mp4";
-            }}
+            url={featured_video}
+            // onError={(e) => {
+            //   e.target.onerror = null;
+            //   e.target.src = "/defaultvideo.mp4";
+            // }}
             controls={false}
             playing={true}
             ref={videoRef}
@@ -116,11 +116,11 @@ const CourseCard = ({
         ) : (
           <img
             className="w-full rounded-t-2xl h-full"
-            src={image || "/defaultimg.png"} // ✅ Also fix this path
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = "/defaultimg.png";
-            }}
+            src={image}
+            // onError={(e) => {
+            //   e.target.onerror = null;
+            //   e.target.src = "/defaultimg.png";
+            // }}
             alt="Course"
           />
         )}
@@ -177,16 +177,25 @@ const CourseCard = ({
         </div>
         <div className=" flex items-start justify-between 2xl:pb-2 sm:flex-wrap xl:absolute bottom-[10px] w-[90%] ">
           <span className="flex flex-col w-[70%]">
-            {credits ? (
+            {credits !== undefined ? (
               <div className="flex space-x-2 items-center xsm:space-x-1 sm:space-x-1">
                 <IoTrendingUpSharp className="w-[16px] h-[16px] text-[#DFDFDF] xsm:w-[8px] xsm:h-[8px] sm:w-3 sm:h-3 md:h-3 md:w-3" />
-                <p className="font-pop text-[12px] font-medium text-[#555555] xsm:text-[8px] sm:text-[8px] sm:leading-none md:text-[6px]">
-                  Credits- {credits}
+                <p className="font-pop text-[14px] font-medium text-[#555555] xsm:text-[10px] sm:text-[10px] sm:leading-none md:text-[6px]">
+                  {credits > 1 && (
+                    <span className="font-bold uppercase text-green-500">
+                      Credit eligible ({credits})
+                    </span>
+                  )}
                 </p>
               </div>
-            ) : (
-              <></>
-            )}
+            ) : null}
+
+            {/* {credits ? (
+              <p className="text-green-500 font-bold uppercase text-sm xsm:text-xs">
+               CRADITS - Yes
+              </p>
+            ) : null} */}
+
             <div className="flex space-x-2 items-start xsm:space-x-1 sm:space-x-1">
               <img
                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] sm:w-3 sm:h-3 md:h-3 md:w-3"

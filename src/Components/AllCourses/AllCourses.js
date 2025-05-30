@@ -191,6 +191,7 @@ const AllCourses = () => {
               {" "}
               <img
                 src={Search}
+                alt=""
                 className="w-12 h-8 md:w-10 md:h-6 xsm:w-6 xsm:h-2 sm:w-10 sm:h-6 "
               />{" "}
             </span>

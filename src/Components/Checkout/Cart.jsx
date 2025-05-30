@@ -526,6 +526,7 @@ const handleContinueCheckout = async () => {
                               <img
                                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
                                 src="../Icons/design.svg"
+                                alt=""
                               />
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                 {item?.course?.category}
@@ -538,6 +539,7 @@ const handleContinueCheckout = async () => {
                               <img
                                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
                                 src="../Icons/clock2.svg"
+                                alt=""
                               />
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                 45 Hours
@@ -638,6 +640,7 @@ const handleContinueCheckout = async () => {
                               <img
                                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
                                 src="../Icons/design.svg"
+                                alt=""
                               />
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                 {item?.internship?.category}
@@ -647,6 +650,7 @@ const handleContinueCheckout = async () => {
                               <img
                                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
                                 src="../Icons/clock2.svg"
+                                alt=""
                               />
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                 {/* 45 Hours */}
@@ -790,7 +794,9 @@ const handleContinueCheckout = async () => {
                 <div className="flex justify-between">
                   <p className="font-semibold">Registration Fee :</p>
                   <p className="font-semibold">
-                    ₹ {Data?.internships[0].internship.registration_price*Data?.internships?.length}
+                    ₹{" "}
+                    {Data?.internships[0].internship.registration_price *
+                      Data?.internships?.length}
                   </p>
                 </div>
 
@@ -807,8 +813,7 @@ const handleContinueCheckout = async () => {
                         type="radio"
                         name="options"
                         value="registration_amount"
-                        checked={internshipPayment=="registration_amount"}
-
+                        checked={internshipPayment == "registration_amount"}
                         className="hidden peer"
                         onChange={() =>
                           handlePaymentChange("registration_amount")
@@ -826,11 +831,11 @@ const handleContinueCheckout = async () => {
                     <label
                       htmlFor="option2"
                       className="flex items-center space-x-2 cursor-pointer p-1 hover:bg-gray-300  rounded-lg shadow-md"
-                    > 
+                    >
                       <input
                         id="option2"
                         type="radio"
-                        checked={internshipPayment=="totalamount"}
+                        checked={internshipPayment == "totalamount"}
                         name="options"
                         value="totalamount"
                         className="hidden peer"
@@ -850,11 +855,11 @@ const handleContinueCheckout = async () => {
           <span className="flex justify-center xsm:mt-4 md:mt-4">
             <button
               className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px] md:text-[16px] md:px-8"
-              onClick={handlePayment}
+              onClick={handlePayment} // buy with paymentgetway
+              // onClick={handleContinueCheckout} //buy free course 
             >
               Continue Checkout
             </button>
-           
           </span>
 
           {/* Summary div end*/}
