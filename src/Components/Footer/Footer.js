@@ -176,16 +176,16 @@ const Footer = () => {
               </p>
               <div className="flex flex-col gap-3 xsm:gap-1 md:gap-2">
                 <div className=" text-white text-[16px]  font-pop flex flex-col xsm:flex-col  xsm:text-[11px] sm:text-[9px] md:text-[10px]">
-                  <Link
+                  {/* <Link
                     className="hover:text-[#1dbf73]"
                     to="callto:917657922600"
                   >
                     Tel: +91 76579 22600,
-                  </Link>
+                  </Link> */}
                 </div>
                 <div className=" text-white text-[16px]  font-pop flex flex-col xsm:flex-col  xsm:text-[11px] sm:text-[9px] md:text-[10px]">
                   <Link className="hover:text-[#1dbf73]" to="callto:9193100050">
-                    +91 91931 00050
+                    Tel: +91 91931 00050
                   </Link>
                 </div>
                 <Link
