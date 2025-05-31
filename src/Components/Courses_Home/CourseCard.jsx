@@ -97,10 +97,6 @@ const CourseCard = ({
             height="100%"
             width="100%"
             url={featured_video}
-            // onError={(e) => {
-            //   e.target.onerror = null;
-            //   e.target.src = "/defaultvideo.mp4";
-            // }}
             controls={false}
             playing={true}
             ref={videoRef}
@@ -117,10 +113,11 @@ const CourseCard = ({
           <img
             className="w-full rounded-t-2xl h-full"
             src={image}
-            // onError={(e) => {
-            //   e.target.onerror = null;
-            //   e.target.src = "/defaultimg.png";
-            // }}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src =
+                "https://sbs.ac.in/wp-content/uploads/2023/09/Asset-5.png";
+            }}
             alt="Course"
           />
         )}
