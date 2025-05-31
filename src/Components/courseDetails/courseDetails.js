@@ -18,7 +18,7 @@ export default function CDDetails() {
   const [videoUrl, setVideoUrl] = useState("");
   const [Data, setData] = useState(null);
   const [completed_lessons, setcompleted_lessons] = useState([]);
-  const [count, setcount] = useState(0);
+
   const [ALLCHAPTER, setALLCHAPTER] = useState([]);
   const [courseId, setcourseId] = useState();
   const [courseAssignment, setCourseAssignment] = useState([]);
@@ -52,13 +52,23 @@ export default function CDDetails() {
   // const lastIndex = parseInt(localStorage.getItem("last")) || 0;
   // const url = allchapters?.[lastIndex]?.videoUrl;
   const [url, seturl] = useState("");
+  // const [count, setcount] = useState(0);
+  const [count, setcount] = useState(() => {
+    const savedCount = localStorage.getItem("currentLesson");
+    return savedCount !== null ? Number(savedCount) : 0;
+  });
 
   const [currentVideoIndex, setCurrentVideoIndex] = useState(() => {
     // Initialization from localStorage on first render
     return parseInt(localStorage.getItem("last")) || 0;
   });
 
-  console.log("check index", currentVideoIndex);
+  useEffect(() => {
+    localStorage.setItem("currentLesson", count);
+  }, [count]);
+  
+
+  console.log("check index", count);
 
 
   const [isOpen, setIsOpen] = useState(false);
@@ -198,7 +208,7 @@ export default function CDDetails() {
           }
 
           setactiveindex(allchapters[0]?.lesson_name);
-          setcount(0);
+          setcount(currentVideoIndex);
           setcurrentid(allchapters[0]?._id);
           setVideoUrl(allchapters[0]?.video);
         } else {
@@ -214,8 +224,8 @@ export default function CDDetails() {
             setcurrentid(allchapters[last]?._id);
             setactiveindex(allchapters[last]?.lesson_name);
           }
-          setcount(videoindex);
-          completed.push(allchapters[videoindex]?._id);
+          setcount(currentVideoIndex);
+          completed.push(allchapters[currentVideoIndex]?._id);
         }
         // console.log(completed);
         setcompleted_lessons(completed);
@@ -258,10 +268,11 @@ export default function CDDetails() {
     };
   }, []);
 
-  function handleActiveVideo(url, title, id) {
+  function handleActiveVideo(url, title, id, index) {
     setactivesmallvideo(true);
     setactivelargevideo(true);
     setcurrentid(id);
+    setcount(index);
 
     if (playerRef2.current) {
       const currenttime = playerRef2.current.getCurrentTime();
@@ -269,8 +280,8 @@ export default function CDDetails() {
     }
 
     let getindex = idwise[id];
-    setcount(getindex);
-    localStorage.setItem("last", getindex);
+    setcount(currentVideoIndex);
+    localStorage.setItem("last", currentVideoIndex);
 
     // Here you update the current video index state
     setCurrentVideoIndex(getindex);
