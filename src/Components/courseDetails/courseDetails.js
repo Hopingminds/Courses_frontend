@@ -26,7 +26,6 @@ export default function CDDetails() {
   const [showSmallvideo, setshowSmallvideo] = useState(false);
   const [smallVideourl, setsmallVideourl] = useState("");
   const [pdfurl, setpdfurl] = useState("");
-  const [url, seturl] = useState("");
   const [starttime, setstarttime] = useState();
   const [endtime, setendtime] = useState();
   const [showLive, setshowLive] = useState(false);
@@ -50,6 +49,16 @@ export default function CDDetails() {
   const [currentid, setcurrentid] = useState();
   const [activesmallvideo, setactivesmallvideo] = useState(true);
   const [activelargevideo, setactivelargevideo] = useState(true);
+  // const lastIndex = parseInt(localStorage.getItem("last")) || 0;
+  // const url = allchapters?.[lastIndex]?.videoUrl;
+  const [url, seturl] = useState("");
+
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(() => {
+    // Initialization from localStorage on first render
+    return parseInt(localStorage.getItem("last")) || 0;
+  });
+
+  console.log("check index", currentVideoIndex);
 
 
   const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +69,7 @@ export default function CDDetails() {
   // console.log("check url", url);
   // console.log("check ALLCHAPTER", ALLCHAPTER);
 
-  console.log("check Data", Data);
+  // console.log("check Data", Data);
 
   // const extractYouTubeID = (url) => {
   //   const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/;
@@ -69,6 +78,7 @@ export default function CDDetails() {
   // };
 
   // console.log("url", url);
+
   // Function to convert YouTube URL
   const getEmbedUrl = (url) => {
     const match = url.match(/v=([^&]+)/);
@@ -184,8 +194,7 @@ export default function CDDetails() {
             // if()
           }
           if (url !== allchapters[0]?.video) {
-            seturl(allchapters[0]?.video);
-            
+            seturl(allchapters[currentVideoIndex]?.video);
           }
 
           setactiveindex(allchapters[0]?.lesson_name);
@@ -253,26 +262,28 @@ export default function CDDetails() {
     setactivesmallvideo(true);
     setactivelargevideo(true);
     setcurrentid(id);
+
     if (playerRef2.current) {
       const currenttime = playerRef2.current.getCurrentTime();
-      // console.log("currenttime");
-
-      // playerRef.current.seekTo(currenttime, 'seconds');
-
       localStorage.setItem(id, currenttime);
     }
+
     let getindex = idwise[id];
     setcount(getindex);
     localStorage.setItem("last", getindex);
+
+    // Here you update the current video index state
+    setCurrentVideoIndex(getindex);
 
     setactiveindex(title);
     setshowLive(false);
     setshowend(false);
     setexpired(false);
-    // console.log(url);
     setshowSmallvideo(false);
     seturl(url);
   }
+  
+  
 
   // console.log(allchapters);
   const handleVideoEnded = async () => {
@@ -407,8 +418,6 @@ export default function CDDetails() {
       console.error("Player references are not available.");
     }
   };
-
-
 
   const handlelargeVideoReady = () => {
     // console.log(currentid,activelargevideo);
@@ -684,6 +693,7 @@ export default function CDDetails() {
 
                       <div className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-2xl">
                         <ReactPlayer
+                          key={allchapters?.[currentVideoIndex]?._id}
                           ref={playerRef2}
                           className="absolute top-0 left-0 rounded-[18px]"
                           width="100%"
@@ -713,20 +723,19 @@ export default function CDDetails() {
                           progressInterval={1000}
                           stopOnUnmount={true}
                           // ✅ Restore video playback time when player is ready
-                          onReady={() => {
-                            const lastIndex = localStorage.getItem("last");
-                            const currentId = allchapters?.[lastIndex]?._id;
-                            const lastTime =
-                              parseFloat(localStorage.getItem(currentId)) || 0;
-
-                            if (playerRef2.current && lastTime) {
-                              playerRef2.current.seekTo(lastTime, "seconds");
-                            }
-                          }}
-                          // ✅ Update video playback time during play
+                          // Inside onProgress
                           onProgress={({ playedSeconds }) => {
-                            const lastIndex = localStorage.getItem("last");
-                            const currentId = allchapters?.[lastIndex]?._id;
+                            console.log("check last index", currentVideoIndex);
+                            const currentId =
+                              allchapters?.[currentVideoIndex]?._id;
+                            console.log(
+                              "onProgress - currentVideoIndex:",
+                              currentVideoIndex,
+                              "currentId:",
+                              currentId,
+                              "playedSeconds:",
+                              playedSeconds
+                            );
                             if (currentId) {
                               localStorage.setItem(
                                 currentId,
@@ -734,14 +743,29 @@ export default function CDDetails() {
                               );
                             }
                           }}
+                          // Inside onReady
+                          onReady={() => {
+                            const lastIndex = localStorage.getItem("last");
+                            const currentId = allchapters?.[lastIndex]?._id;
+                            const lastTime =
+                              parseFloat(localStorage.getItem(currentId)) || 0;
+
+                            if (playerRef2.current && lastTime > 0) {
+                              // Delay seeking just a bit to make sure video is ready
+                              setTimeout(() => {
+                                playerRef2.current.seekTo(lastTime, "seconds");
+                                console.log("Seeked after delay to:", lastTime);
+                              }, 500); // try 500ms
+                            }
+                          }}
                         />
                       </div>
                     )}
 
                     <div>
-                      <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500">
+                      {/* <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500">
                         {activeindex}
-                      </div>
+                      </div> */}
                       <div
                         onClick={openModal}
                         className="cursor-pointer text-white bg-green-400 hover:bg-green-600 uppercase border border-1 p-2 rounded-xl w-full text-center md:mt-2 mt-0"
@@ -784,6 +808,8 @@ export default function CDDetails() {
                       count={count}
                       handleProject={handleProject}
                       currentid={currentid}
+                      setcurrentid={setcurrentid}
+                      currentVideoIndex={currentVideoIndex} //pass here current index to send playing video index
                     />
                   </div>
                 )}
