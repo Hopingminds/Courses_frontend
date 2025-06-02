@@ -43,6 +43,7 @@ const CartCheckout = () => {
   const [applied, setapplied] = useState(false);
   const [cart, setCart] = useState(null);
   const [internshipPayment, setInternshipPayment] = useState("registration_amount"); 
+  const [grandTotal, setGrandTotal] = useState(0);
   const [inputData, setinputData] = useState({
     name,
     address,
@@ -88,7 +89,39 @@ const CartCheckout = () => {
   let login = localStorage.getItem("COURSES_USER_TOKEN");
   let temp = [];
 
-  function calculateTotals(data) {
+  // function calculateTotals(data) {
+  //   let price = 0;
+  //   let disprice = 0;
+
+  //   data?.courses?.forEach((item) => {
+  //     let basePrice = item.course.base_price;
+  //     let discountPercentage = item.course.discount_percentage;
+  //     let discountedPrice = basePrice * (1 - discountPercentage / 100);
+  //     price += basePrice;
+  //     disprice += basePrice - discountedPrice;
+  //   });
+  //   data?.internships?.forEach((item) => {
+  //     let basePrice = item.internship.base_price;
+  //     let discountPercentage = item.internship.discount_percentage;
+  //     let discountedPrice = basePrice * (1 - discountPercentage / 100);
+  //     price += basePrice;
+  //     disprice += basePrice - discountedPrice;
+  //   });
+
+  //   settotal(price);
+  //   setDiscountPrice(disprice);
+
+
+    
+  //   let priceAfterGST = (price - disprice) * 1.18;
+  //   let gstAmount = priceAfterGST - (price - disprice);
+
+  //   setSgst(gstAmount / 2);
+  //   setGst(gstAmount / 2);
+  //   setFinalPrice(price - disprice);
+  // }
+
+  function calculateTotals(data, internshipPayment) {
     let price = 0;
     let disprice = 0;
 
@@ -99,6 +132,7 @@ const CartCheckout = () => {
       price += basePrice;
       disprice += basePrice - discountedPrice;
     });
+
     data?.internships?.forEach((item) => {
       let basePrice = item.internship.base_price;
       let discountPercentage = item.internship.discount_percentage;
@@ -110,13 +144,34 @@ const CartCheckout = () => {
     settotal(price);
     setDiscountPrice(disprice);
 
-    let priceAfterGST = (price - disprice) * 1.18;
-    let gstAmount = priceAfterGST - (price - disprice);
+    const priceAfterDiscount = price - disprice;
+    const priceAfterGST = priceAfterDiscount * 1.18;
+    const gstAmount = priceAfterGST - priceAfterDiscount;
 
     setSgst(gstAmount / 2);
     setGst(gstAmount / 2);
-    setFinalPrice(price - disprice);
+    setFinalPrice(priceAfterDiscount);
+
+    // Calculate registration fee total (for internships)
+    const registrationFee =
+      data?.internships && data?.internships.length > 0
+        ? data.internships[0].internship.registration_price *
+          data.internships.length
+        : 0;
+
+    // Calculate grand total depending on internshipPayment choice
+    let grandTotal = 0;
+    if (internshipPayment === "registration_amount") {
+      grandTotal = registrationFee + gstAmount;
+    } else if (internshipPayment === "totalamount") {
+      grandTotal = priceAfterDiscount + gstAmount;
+    } else {
+      grandTotal = priceAfterDiscount + gstAmount; // fallback default
+    }
+
+    setGrandTotal(grandTotal);
   }
+  
 
 
   useEffect(() => {
@@ -301,6 +356,9 @@ const CartCheckout = () => {
     //     inputData?.gstnumber
     //   }`;
   };
+
+
+  
 const handleContinueCheckout = async () => {
     try {
       setshow(true);
@@ -739,7 +797,11 @@ const handleContinueCheckout = async () => {
                 Original Price:
               </h1>
               <p className="xsm:text-[12px] md:text-[14px] font-semibold">
-                ₹{total}
+                ₹{" "}
+                {(total).toLocaleString("en-IN", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
               </p>
             </div>
           </div>
@@ -777,15 +839,47 @@ const handleContinueCheckout = async () => {
             </div>
           </div>
           <div className="mt-5 mb-4 xsm:my-0">
-            <h1 className="text-base xsm:text-[10px] md:text-[14px] font-semibold">
+            {/* <h1 className="text-base xsm:text-[10px] md:text-[14px] font-semibold">
               Total:
-            </h1>
+            </h1> */}
             <div className="flex justify-between">
-              <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
+              {/* <p className=" green-color text-sm xsm:text-[10px] md:text-[14px]">
                 Including all the taxes
+              </p> */}
+              <h1 className="text-base xsm:text-[10px] md:text-[14px] font-semibold">
+                Total:
+              </h1>
+              <p className="xsm:text-[12px] md:text-[14px] font-semibold">
+                ₹{" "}
+                {(total - discountPrice).toLocaleString("en-IN", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
+            </div>
+
+            <div className="flex justify-between mt-2">
+              <p className="text-sm xsm:text-[10px] md:text-[14px] font-semibold">
+                GST
               </p>
               <p className="xsm:text-[12px] md:text-[14px] font-semibold">
-                ₹ {total - discountPrice}
+                ₹{" "}
+                {(gst + sgst).toLocaleString("en-IN", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
+            </div>
+            <div className="flex justify-between mt-2">
+              <p className="text-sm xsm:text-[10px] md:text-[14px] font-semibold">
+              Total Payable Amount:
+              </p>
+              <p className="xsm:text-[12px] md:text-[14px] font-semibold">
+                ₹{" "}
+                {grandTotal.toLocaleString("en-IN", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
               </p>
             </div>
 
@@ -856,7 +950,7 @@ const handleContinueCheckout = async () => {
             <button
               className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px] md:text-[16px] md:px-8"
               onClick={handlePayment} // buy with paymentgetway
-              // onClick={handleContinueCheckout} //buy free course 
+              // onClick={handleContinueCheckout} //buy free course
             >
               Continue Checkout
             </button>

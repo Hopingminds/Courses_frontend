@@ -396,7 +396,8 @@ function ShopingCart() {
             </div>
             <div>
               <p className=" text-[1vw] text-[#1DBF73] 2xl:text-[16px] sm:text-[12px] xsm:text-[12px] xl:text-[0.9rem] xl:font-normal ">
-                Including all the taxes
+                {/* Including all the taxes */}
+                Excluding all taxes
               </p>
             </div>
             {/* </div> */}
@@ -409,7 +410,11 @@ function ShopingCart() {
                 Total
               </p>
               <p className="font-mons font-semibold xl:font-normal text-[1.7vw] 2xl:text-[20px] xsm:text-[20px] sm:text-[20px] lg:text-[20px] xsm:font-normal xl:text-[24px] md:text-[13px]">
-                ₹{total}
+                ₹{" "}
+                {(total).toLocaleString("en-IN", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
               </p>
             </div>
             <div>
