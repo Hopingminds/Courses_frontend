@@ -510,13 +510,14 @@ const handleContinueCheckout = async () => {
             ) : (
               ""
             )}
+            {/* 
             <input
               value={inputData.gstnumber}
               name="gstnumber"
               onChange={handleInputchange}
               placeholder="GST No.(optional)"
               className="w-[88%] py-[6px] outline-none border rounded pl-2 xsm:text-[10px] xsm:py-1 xsm:w-[95%] md:text-[14px] md:w-[80%]"
-            />
+            /> */}
           </div>
           <div className="flex space-x-10 grid grid-cols-2 xsm:justify-between xsm:gap-0 xsm:space-x-2">
             <input
@@ -798,7 +799,7 @@ const handleContinueCheckout = async () => {
               </h1>
               <p className="xsm:text-[12px] md:text-[14px] font-semibold">
                 ₹{" "}
-                {(total).toLocaleString("en-IN", {
+                {total.toLocaleString("en-IN", {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
                 })}
@@ -870,9 +871,10 @@ const handleContinueCheckout = async () => {
                 })}
               </p>
             </div>
+            <hr />
             <div className="flex justify-between mt-2">
-              <p className="text-sm xsm:text-[10px] md:text-[14px] font-semibold">
-              Total Payable Amount:
+              <p className="text-base xsm:text-[10px] md:text-[14px] font-semibold">
+                Total Payable Amount:
               </p>
               <p className="xsm:text-[12px] md:text-[14px] font-semibold">
                 ₹{" "}
