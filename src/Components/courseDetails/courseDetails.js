@@ -830,7 +830,7 @@ export default function CDDetails() {
 
           {/* Slide-in Modal */}
           <div
-            className={`fixed top-10 md:mt-10 mt-0 right-0 h-full bg-white shadow-lg z-50 transform transition-transform duration-300
+            className={`fixed top-10 mt-10 right-0 h-full bg-white shadow-lg z-50 transform transition-transform duration-300
     w-[80%] sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4
     ${isOpen ? "translate-x-0" : "translate-x-full"}`}
           >
@@ -840,9 +840,14 @@ export default function CDDetails() {
                 &times;
               </button>
             </div>
-            <div className="p-4">
+
+            {/* Add scrolling here */}
+            <div className="p-4 pb-10 overflow-y-auto max-h-[calc(100vh-120px)]">
               {/* Modal Content */}
-              {Data?.title}
+              <h3 className="font-semibold text-lg mb-2">{Data?.title}</h3>
+              <p className="text-gray-700 text-sm leading-relaxed">
+                {Data?.overview}
+              </p>
             </div>
           </div>
         </div>

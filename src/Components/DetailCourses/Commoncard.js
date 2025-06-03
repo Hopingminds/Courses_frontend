@@ -66,14 +66,25 @@ setdata(response?.batches)
 }
 }
 
-  function handleNavigation(val){
-if(!val?.BatchId){
-openModal(val)
-}
-else{
-navigate(`/course/${val?.course?.slug}`)
-}
+//   function handleNavigation(val){
+// if(!val?.BatchId){
+// openModal(val)
+// }
+// else{
+// navigate(`/course/${val?.course?.slug}`)
+// }
+//   }
+
+
+function handleNavigation(val) {
+  // If it's an internship and no batch selected, open modal
+  if (val?.course?.category === "Internship" && !val?.BatchId) {
+    openModal(val?.course?._id);
+  } else {
+    navigate(`/course/${val?.course?.slug}`);
   }
+}
+
 
   async function Addtocart(courseid) {
     try {
