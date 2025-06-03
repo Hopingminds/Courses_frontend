@@ -719,7 +719,8 @@ export default function CDDetails() {
                     </div>
                     <div
                       onClick={openModal}
-                      className="cursor-pointer text-white bg-green-400 hover:bg-green-600 uppercase border border-1 p-2 rounded-xl w-full text-center md:mt-2 mt-0"
+                      className="cursor-pointer text-white bg-green-400 hover:bg-green-600 uppercase border border-1
+                       p-2 px-4 rounded-xl w-1/2 text-center md:mt-2 mt-0"
                     >
                       Transcript
                     </div>
