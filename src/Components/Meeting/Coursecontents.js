@@ -22,7 +22,7 @@ export default function Coursecontents({
   count,
   courseCategory,
   handleProject,
-  currentid
+  currentid,
 }) {
   const navigate = useNavigate();
   // console.log(completed_lessons)
@@ -136,7 +136,7 @@ export default function Coursecontents({
 
   return (
     <div className="bg-[#E2FFF1] rounded-3xl  sm:absolute sm:top-[3rem] sm:right-0 sm:w-[80vw] sm:h-screen sm:overflow-y-auto xsm:absolute xsm:top-[3rem]  xsm:right-0 xsm:w-[80vw] xsm:h-screen xsm:overflow-y-auto z-20">
-      <Toaster 
+      <Toaster
         toastOptions={{
           duration: 500,
         }}
@@ -207,16 +207,15 @@ export default function Coursecontents({
                           // console.log("index"+index,completed_lessons?.includes(chapter?._id))
                           return (
                             <div
-                              // className={
-                              //   courseCategory === "liveCourse"
-                              //     ? ""
-                              //     : `flex-col justify-between border-t py-2 w-full ${
-                              //         !completed_lessons?.includes(chapter?._id)
-                              //           ? "cursor-not-allowed text-gray-300"
-                              //           : ""
-                              //       }`
-                              // }
-                              className="flex flex-col justify-between border-t py-2 w-full"
+                              className={
+                                courseCategory === "liveCourse"
+                                  ? ""
+                                  : `flex-col justify-between border-t py-2 w-full ${
+                                      !completed_lessons?.includes(chapter?._id)
+                                        ? "cursor-not-allowed text-gray-300"
+                                        : ""
+                                    }`
+                              }
                               key={index}
                             >
                               <span className="flex justify-between">
@@ -233,16 +232,8 @@ export default function Coursecontents({
                                   </p>
                                 ) : (
                                   <p
-                                    // onClick={() =>
-                                    //   completed_lessons.includes(chapter._id) &&
-                                    //   handleActiveVideo(
-                                    //     chapter?.video,
-                                    //     chapter?.lesson_name,
-                                    //     chapter?._id
-                                    //   )
-                                    // }
-
                                     onClick={() =>
+                                      completed_lessons.includes(chapter._id) &&
                                       handleActiveVideo(
                                         chapter?.video,
                                         chapter?.lesson_name,
@@ -277,7 +268,7 @@ export default function Coursecontents({
                                       <span className=" flex justify-between items-center px-2 border rounded-md h-max">
                                         <div
                                           onClick={() =>
-                                            completed_lessons?.includes(
+                                            completed_lessons.includes(
                                               chapter._id
                                             )
                                               ? handleToggleNotes(
@@ -384,55 +375,36 @@ export default function Coursecontents({
                           {val?.project?.map((chapter, index) => {
                             // console.log(chapter);
                             return (
-                              // <div
-                              //   className={
-                              //     courseCategory === "liveCourse"
-                              //       ? ""
-                              //       : `flex flex-col justify-between border-t py-2 w-full ${
-                              //           !completed_lessons?.includes(
-                              //             chapter?._id
-                              //           )
-                              //             ? "cursor-not-allowed text-gray-300"
-                              //             : ""
-                              //         }`
-                              //   }
-                              //   key={index}
-                              // >
-                              //   <span className="flex justify-between">
-                              //     <p
-                              //       onClick={() =>
-                              //         completed_lessons?.includes(chapter?._id)
-                              //           ? handleProject(chapter)
-                              //           : ""
-                              //       }
-                              //       className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]`}
-                              //     >
-                              //       {index + 1}. {chapter?.title}(
-                              //       {chapter?.duration || "5 mins"})
-                              //     </p>
-                              //   </span>
-                              //   {/* <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
-                              //     Duration-{chapter?.duration || '5 mins'}
-                              //   </p> */}
-                              // </div>
-
                               <div
-                                className="flex flex-col justify-between border-t py-2 w-full"
+                                className={
+                                  courseCategory === "liveCourse"
+                                    ? ""
+                                    : `flex flex-col justify-between border-t py-2 w-full ${
+                                        !completed_lessons?.includes(
+                                          chapter?._id
+                                        )
+                                          ? "cursor-not-allowed text-gray-300"
+                                          : ""
+                                      }`
+                                }
                                 key={index}
                               >
                                 <span className="flex justify-between">
                                   <p
-                                    onClick={() => handleProject(chapter)}
-                                    className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px] ${
-                                      currentid === chapter?._id
-                                        ? "text-[#1DBF73]"
-                                        : "text-black"
-                                    }`}
+                                    onClick={() =>
+                                      completed_lessons?.includes(chapter?._id)
+                                        ? handleProject(chapter)
+                                        : ""
+                                    }
+                                    className={`font-pop font-bold text-[11px] xsm:text-[8px] sm:text-[10px] md:text-[10px]`}
                                   >
-                                    {index + 1}. {chapter?.title} (
+                                    {index + 1}. {chapter?.title}(
                                     {chapter?.duration || "5 mins"})
                                   </p>
                                 </span>
+                                {/* <p className="font-pop font-bold text-[11px] xsm:text-[8px] md:text-[10px]">
+                                  Duration-{chapter?.duration || '5 mins'}
+                                </p> */}
                               </div>
                             );
                           })}

@@ -67,7 +67,7 @@ async function handleChoose(batchid,courseid){
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      contentLabel="Batch selection"
+      contentLabel="Batch Selection"
       className="flex items-center justify-center  w-[80%] h-[400px]"
       overlayClassName="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center"
     >

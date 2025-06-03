@@ -18,7 +18,7 @@ export default function CDDetails() {
   const [videoUrl, setVideoUrl] = useState("");
   const [Data, setData] = useState(null);
   const [completed_lessons, setcompleted_lessons] = useState([]);
-
+  const [count, setcount] = useState(0);
   const [ALLCHAPTER, setALLCHAPTER] = useState([]);
   const [courseId, setcourseId] = useState();
   const [courseAssignment, setCourseAssignment] = useState([]);
@@ -26,6 +26,7 @@ export default function CDDetails() {
   const [showSmallvideo, setshowSmallvideo] = useState(false);
   const [smallVideourl, setsmallVideourl] = useState("");
   const [pdfurl, setpdfurl] = useState("");
+  const [url, seturl] = useState("");
   const [starttime, setstarttime] = useState();
   const [endtime, setendtime] = useState();
   const [showLive, setshowLive] = useState(false);
@@ -49,51 +50,9 @@ export default function CDDetails() {
   const [currentid, setcurrentid] = useState();
   const [activesmallvideo, setactivesmallvideo] = useState(true);
   const [activelargevideo, setactivelargevideo] = useState(true);
-  // const lastIndex = parseInt(localStorage.getItem("last")) || 0;
-  // const url = allchapters?.[lastIndex]?.videoUrl;
-  const [url, seturl] = useState("");
-  // const [count, setcount] = useState(0);
-  const [count, setcount] = useState(() => {
-    const savedCount = localStorage.getItem("currentLesson");
-    return savedCount !== null ? Number(savedCount) : 0;
-  });
-
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(() => {
-    // Initialization from localStorage on first render
-    return parseInt(localStorage.getItem("last")) || 0;
-  });
-
-  useEffect(() => {
-    localStorage.setItem("currentLesson", count);
-  }, [count]);
-  
-
-  console.log("check index", count);
-
-
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
-
-  // console.log("check playerRef", playerRef);
-  // console.log("check url", url);
-  // console.log("check ALLCHAPTER", ALLCHAPTER);
-
-  // console.log("check Data", Data);
-
-  // const extractYouTubeID = (url) => {
-  //   const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/;
-  //   const match = url.match(regex);
-  //   return match ? match[1] : null;
-  // };
-
-  // console.log("url", url);
-
-  // Function to convert YouTube URL
-  const getEmbedUrl = (url) => {
-    const match = url.match(/v=([^&]+)/);
-    return match ? `https://www.youtube.com/embed/${match[1]}` : url;
-  };
 
   useEffect(() => {
     async function Fetchdata() {
@@ -107,7 +66,7 @@ export default function CDDetails() {
         const response = await data.json();
         console.log("Course allotted", response?.data?.allotedByCollege);
         setallotedbycollege(response?.data?.allotedByCollege);
-        setImageBanner(response?.data?.course?.featured_video);
+        setImageBanner(response?.data?.course?.featured_image);
         setCourseLessons(response?.data?.completed_lessons);
         setCourseAssignment(response?.data?.completed_assignments);
         if (response?.data?.course) {
@@ -203,12 +162,9 @@ export default function CDDetails() {
             }
             // if()
           }
-          if (url !== allchapters[0]?.video) {
-            seturl(allchapters[currentVideoIndex]?.video);
-          }
-
+          seturl(allchapters[0]?.video);
           setactiveindex(allchapters[0]?.lesson_name);
-          setcount(currentVideoIndex);
+          setcount(0);
           setcurrentid(allchapters[0]?._id);
           setVideoUrl(allchapters[0]?.video);
         } else {
@@ -224,8 +180,8 @@ export default function CDDetails() {
             setcurrentid(allchapters[last]?._id);
             setactiveindex(allchapters[last]?.lesson_name);
           }
-          setcount(currentVideoIndex);
-          completed.push(allchapters[currentVideoIndex]?._id);
+          setcount(videoindex);
+          completed.push(allchapters[videoindex]?._id);
         }
         // console.log(completed);
         setcompleted_lessons(completed);
@@ -236,7 +192,6 @@ export default function CDDetails() {
       Fetchdata();
     }
   }, []);
-
   const handleKeyDown = (e) => {
     console.log(e.key);
     // if (e.metaKey) {
@@ -268,33 +223,30 @@ export default function CDDetails() {
     };
   }, []);
 
-  function handleActiveVideo(url, title, id, index) {
+  function handleActiveVideo(url, title, id) {
     setactivesmallvideo(true);
     setactivelargevideo(true);
     setcurrentid(id);
-    setcount(index);
-
     if (playerRef2.current) {
       const currenttime = playerRef2.current.getCurrentTime();
+      // console.log("currenttime");
+
+      // playerRef.current.seekTo(currenttime, 'seconds');
+
       localStorage.setItem(id, currenttime);
     }
-
     let getindex = idwise[id];
-    setcount(currentVideoIndex);
-    localStorage.setItem("last", currentVideoIndex);
-
-    // Here you update the current video index state
-    setCurrentVideoIndex(getindex);
+    setcount(getindex);
+    localStorage.setItem("last", getindex);
 
     setactiveindex(title);
     setshowLive(false);
     setshowend(false);
     setexpired(false);
+    // console.log(url);
     setshowSmallvideo(false);
     seturl(url);
   }
-  
-  
 
   // console.log(allchapters);
   const handleVideoEnded = async () => {
@@ -342,6 +294,12 @@ export default function CDDetails() {
       }
       setcount((prev) => prev + 1);
     }
+  };
+
+  // Function to convert YouTube URL
+  const getEmbedUrl = (url) => {
+    const match = url.match(/v=([^&]+)/);
+    return match ? `https://www.youtube.com/embed/${match[1]}` : url;
   };
 
   const handleDuration = (duration) => {
@@ -429,7 +387,6 @@ export default function CDDetails() {
       console.error("Player references are not available.");
     }
   };
-
   const handlelargeVideoReady = () => {
     // console.log(currentid,activelargevideo);
 
@@ -674,115 +631,97 @@ export default function CDDetails() {
                         <p className="font-semibold">Coming soon</p>
                       </div>
                     ) : (
-                      // <ReactPlayer
-                      //   onContextMenu={handleContextMenu}
-                      //   height="auto"
-                      //   width="100%"
-                      //   ref={playerRef}
-                      //   borderRadius="14px"
-                      //   className="shadow-2xl rounded-[18px]"
-                      //   style={{ borderRadius: "14px !important" }}
-                      //   playing={!showBanner}
-                      //   controls={true}
-                      //   autoPlay={!showBanner}
-                      //   url={url}
-                      //   onDuration={handleDuration}
-                      //   onEnded={handleVideoEnded}
-                      //   onReady={handlelargeVideoReady}
-                      //   onProgress={handleProgress}
-                      //   onSeek={handleSeek}
-                      //   onSeekStart={() => handleSeeking(true)}
-                      //   onSeekEnd={() => handleSeeking(false)}
-                      //   config={{
-                      //     file: {
-                      //       attributes: {
-                      //         controlsList: "nodownload",
-                      //       },
-                      //     },
-                      //   }}
-                      // />
-
                       <div className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-2xl">
                         <ReactPlayer
-                          key={allchapters?.[currentVideoIndex]?._id}
-                          ref={playerRef2}
+                          onContextMenu={handleContextMenu}
                           className="absolute top-0 left-0 rounded-[18px]"
                           width="100%"
                           height="100%"
-                          playing={false}
+                          playing={true}
                           controls={true}
-                          autoPlay={false}
+                          autoPlay={true}
+                          ref={playerRef}
+                          borderRadius="14px"
+                          style={{ borderRadius: "14px !important" }}
+                          // playing={!showBanner}
+                          // controls={true}
+                          // autoPlay={!showBanner}
+                          // url={url}
                           url={getEmbedUrl(url)}
+                          onDuration={handleDuration}
+                          onEnded={handleVideoEnded}
+                          onReady={handlelargeVideoReady}
+                          onProgress={handleProgress}
+                          onSeek={handleSeek}
+                          onSeekStart={() => handleSeeking(true)}
+                          onSeekEnd={() => handleSeeking(false)}
                           config={{
-                            youtube: {
-                              playerVars: {
-                                modestbranding: 1,
-                                rel: 0,
-                                showinfo: 0,
-                                controls: 1,
-                              },
-                            },
                             file: {
                               attributes: {
                                 controlsList: "nodownload",
                               },
                             },
                           }}
-                          loop={false}
-                          muted={false}
-                          playbackRate={1}
-                          progressInterval={1000}
-                          stopOnUnmount={true}
-                          // ✅ Restore video playback time when player is ready
-                          // Inside onProgress
-                          onProgress={({ playedSeconds }) => {
-                            console.log("check last index", currentVideoIndex);
-                            const currentId =
-                              allchapters?.[currentVideoIndex]?._id;
-                            console.log(
-                              "onProgress - currentVideoIndex:",
-                              currentVideoIndex,
-                              "currentId:",
-                              currentId,
-                              "playedSeconds:",
-                              playedSeconds
-                            );
-                            if (currentId) {
-                              localStorage.setItem(
-                                currentId,
-                                playedSeconds.toString()
-                              );
-                            }
-                          }}
-                          // Inside onReady
-                          onReady={() => {
-                            const lastIndex = localStorage.getItem("last");
-                            const currentId = allchapters?.[lastIndex]?._id;
-                            const lastTime =
-                              parseFloat(localStorage.getItem(currentId)) || 0;
-
-                            if (playerRef2.current && lastTime > 0) {
-                              // Delay seeking just a bit to make sure video is ready
-                              setTimeout(() => {
-                                playerRef2.current.seekTo(lastTime, "seconds");
-                                console.log("Seeked after delay to:", lastTime);
-                              }, 500); // try 500ms
-                            }
-                          }}
                         />
                       </div>
-                    )}
 
-                    <div>
-                      {/* <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500">
-                        {activeindex}
-                      </div> */}
-                      <div
-                        onClick={openModal}
-                        className="cursor-pointer text-white bg-green-400 hover:bg-green-600 uppercase border border-1 p-2 rounded-xl w-full text-center md:mt-2 mt-0"
-                      >
-                        Transcript
-                      </div>
+                      // <div className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-2xl">
+                      //   <ReactPlayer
+                      //     // key={_id}
+                      //     ref={playerRef2}
+                      //     className="absolute top-0 left-0 rounded-[18px]"
+                      //     width="100%"
+                      //     height="100%"
+                      //     playing={false}
+                      //     controls={true}
+                      //     autoPlay={false}
+                      //     url={getEmbedUrl(url)}
+                      //     config={{
+                      //       youtube: {
+                      //         playerVars: {
+                      //           modestbranding: 1,
+                      //           rel: 0,
+                      //           showinfo: 0,
+                      //           controls: 1,
+                      //         },
+                      //       },
+                      //       file: {
+                      //         attributes: {
+                      //           controlsList: "nodownload",
+                      //         },
+                      //       },
+                      //     }}
+                      //     loop={false}
+                      //     muted={false}
+                      //     playbackRate={1}
+                      //     progressInterval={1000}
+                      //     stopOnUnmount={true}
+                      //     // Inside onReady
+                      //     onReady={() => {
+                      //       const lastIndex = localStorage.getItem("last");
+                      //       const currentId = allchapters?.[lastIndex]?._id;
+                      //       const lastTime =
+                      //         parseFloat(localStorage.getItem(currentId)) || 0;
+
+                      //       if (playerRef2.current && lastTime > 0) {
+                      //         // Delay seeking just a bit to make sure video is ready
+                      //         setTimeout(() => {
+                      //           playerRef2.current.seekTo(lastTime, "seconds");
+                      //           console.log("Seeked after delay to:", lastTime);
+                      //         }, 500); // try 500ms
+                      //       }
+                      //     }}
+                      //   />
+                      // </div>
+                    )}
+                    <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500">
+                      {activeindex}
+                    </div>
+                    <div
+                      onClick={openModal}
+                      className="cursor-pointer text-white bg-green-400 hover:bg-green-600 uppercase border border-1 p-2 rounded-xl w-full text-center md:mt-2 mt-0"
+                    >
+                      Transcript
                     </div>
                   </div>
                 </div>
@@ -819,16 +758,12 @@ export default function CDDetails() {
                       count={count}
                       handleProject={handleProject}
                       currentid={currentid}
-                      setcurrentid={setcurrentid}
-                      currentVideoIndex={currentVideoIndex} //pass here current index to send playing video index
                     />
                   </div>
                 )}
               </div>
             </div>
             {/* <div className="font-bold text-lg text-wrap h-auto flex flex-wrap w-[70%]">{activeindex}</div> */}
-
-            {/* Transcript part */}
           </div>
           <div
             id="ScrollToTop"
@@ -883,6 +818,7 @@ export default function CDDetails() {
             </div>
           </div>
         </div>
+
         <div className="p-4 max-h-[80vh] overflow-y-auto">
           {/* Overlay */}
           {isOpen && (
@@ -894,9 +830,9 @@ export default function CDDetails() {
 
           {/* Slide-in Modal */}
           <div
-            className={`fixed mt-10 top-10 right-0 h-full w-[25%] sm:w-1/3 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
-              isOpen ? "translate-x-0" : "translate-x-full"
-            }`}
+            className={`fixed top-10 md:mt-10 mt-0 right-0 h-full bg-white shadow-lg z-50 transform transition-transform duration-300
+    w-[80%] sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4
+    ${isOpen ? "translate-x-0" : "translate-x-full"}`}
           >
             <div className="flex justify-between items-center p-4 border-b">
               <h2 className="text-xl font-semibold">Transcript</h2>
@@ -906,7 +842,7 @@ export default function CDDetails() {
             </div>
             <div className="p-4">
               {/* Modal Content */}
-              {Data?.title}{" "}
+              {Data?.title}
             </div>
           </div>
         </div>
