@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./Cart.css";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { AUTH_BASE_URL, BASE_URL } from "../../Api/api";
 import { jwtDecode } from "jwt-decode";
 import {
@@ -50,6 +50,33 @@ const CartCheckout = () => {
     zip,
     gstnumber,
   });
+
+  const [totalwithgst, setTotalwithgst] = useState(0);
+  const [gstAmount, setGstAmount] = useState(0);
+  const navigate = useNavigate();
+
+        useEffect(() => {
+        const calculated = (total - discountPrice).toFixed(2);
+        setTotalwithgst(calculated);
+        }, [total, discountPrice, gst, sgst]); // dependencies
+
+        console.log("Total with GST:", totalwithgst);
+
+        useEffect(() => {
+          const discountedTotal = total - discountPrice;
+          const gst = discountedTotal * 0.18;
+          const finalAmount = discountedTotal + gst;
+
+          setGstAmount(gst.toFixed(2));
+          setTotalwithgst(finalAmount.toFixed(2));
+        }, [total, discountPrice]);
+
+        console.log({
+          total,
+          discountPrice,
+          gstAmount,
+          totalwithgst,
+        })
 
   // console.log(userDetail);
   const [warnings, setwarnings] = useState({
@@ -359,68 +386,119 @@ const CartCheckout = () => {
 
 
   
-const handleContinueCheckout = async () => {
-    try {
-      setshow(true);
-      let url = BASE_URL + "/purchasecourse";
-      let url1 = BASE_URL + "/deletecart";
-      let orderDetails = {
-        name: userDetail.name,
-        zip,
-        gstnumber,
-        country: country.capital,
-        state: state.label,
-        address,
-      };
+// const handleContinueCheckout = async () => {
+//     try {
+//       setshow(true);
+//       let url = BASE_URL + "/purchasecourse";
+//       let url1 = BASE_URL + "/deletecart";
+//       let orderDetails = {
+//         name: userDetail.name,
+//         zip,
+//         gstnumber,
+//         country: country.capital,
+//         state: state.label,
+//         address,
+//       };
      
-      setcourseId(temp);
-      let data = await fetch(url, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + login,
-        },
-        body: JSON.stringify({ courses: temp, orderDetails: orderDetails }),
-      });
-      let response = await data.json();
-      // console.log(response);
-      if (response.success) {
-        if (!query.get("slug")) {
-          let data1 = await fetch(url1, {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + login,
-            },
-            body: JSON.stringify({ email: userDetail.email }),
-          });
-          // let response1 = await data1.json();
-        }
-        // toast.success(response.message);
-        setshow(false);
-        // setTimeout(() => {
-        //   navigate("/success");
-        // }, 1000);
-      } else {
-        // toast.error(response.message);
+//       setcourseId(temp);
+//       let data = await fetch(url, {
+//         method: "PUT",
+//         headers: {
+//           Accept: "application/json",
+//           "Content-Type": "application/json",
+//           Authorization: "Bearer " + login,
+//         },
+//         body: JSON.stringify({ courses: temp, orderDetails: orderDetails }),
+//       });
+//       let response = await data.json();
+//       // console.log(response);
+//       if (response.success) {
+//         if (!query.get("slug")) {
+//           let data1 = await fetch(url1, {
+//             method: "POST",
+//             headers: {
+//               Accept: "application/json",
+//               "Content-Type": "application/json",
+//               Authorization: "Bearer " + login,
+//             },
+//             body: JSON.stringify({ email: userDetail.email }),
+//           });
+//           // let response1 = await data1.json();
+//         }
+//         // toast.success(response.message);
+//         setshow(false);
+//         // setTimeout(() => {
+//         //   navigate("/success");
+//         // }, 1000);
+//       } else {
+//         // toast.error(response.message);
+//       }
+//       //   if (response.success) {
+//       //     toast.success(response.message);
+//       //     setTimeout(() => {
+//       //       navigate("/success");
+//       //     }, 1000);
+//       //   } else {
+//       //     toast.error(response.message);
+//       //   }
+//       // } else {
+//       //   toast.error(response.message);
+//       // }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+const handleContinueCheckout = async () => {
+  try {
+    setshow(true);
+    let url = BASE_URL + "/purchasecourse";
+    let url1 = BASE_URL + "/deletecart";
+    let orderDetails = {
+      name: userDetail.name,
+      zip,
+      gstnumber,
+      country: country.capital,
+      state: state.label,
+      address,
+    };
+
+    setcourseId(temp);
+    let data = await fetch(url, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + login,
+      },
+      body: JSON.stringify({ courses: temp, orderDetails: orderDetails }),
+    });
+
+    let response = await data.json();
+
+    if (response.success) {
+      if (!query.get("slug")) {
+        await fetch(url1, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + login,
+          },
+          body: JSON.stringify({ email: userDetail.email }),
+        });
       }
-      //   if (response.success) {
-      //     toast.success(response.message);
-      //     setTimeout(() => {
-      //       navigate("/success");
-      //     }, 1000);
-      //   } else {
-      //     toast.error(response.message);
-      //   }
-      // } else {
-      //   toast.error(response.message);
-      // }
-    } catch (error) {
-      console.log(error);
+
+      setshow(false);
+      navigate("/success"); // ✅ directly redirect
+    } else {
+      console.log("Error: ", response.message);
     }
-  };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
   const handleConfirm = () => {
     if (paymentLink) {
@@ -865,7 +943,7 @@ const handleContinueCheckout = async () => {
               </p>
               <p className="xsm:text-[12px] md:text-[14px] font-semibold">
                 ₹{" "}
-                {(gst + sgst).toLocaleString("en-IN", {
+                {gstAmount.toLocaleString("en-IN", {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
                 })}
@@ -878,7 +956,7 @@ const handleContinueCheckout = async () => {
               </p>
               <p className="xsm:text-[12px] md:text-[14px] font-semibold">
                 ₹{" "}
-                {grandTotal.toLocaleString("en-IN", {
+                {totalwithgst.toLocaleString("en-IN", {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
                 })}
@@ -949,10 +1027,22 @@ const handleContinueCheckout = async () => {
           </div>
 
           <span className="flex justify-center xsm:mt-4 md:mt-4">
-            <button
+            {/* <button
               className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px] md:text-[16px] md:px-8"
               onClick={handlePayment} // buy with paymentgetway
               // onClick={handleContinueCheckout} //buy free course
+            >
+              Continue Checkout
+            </button> */}
+            <button
+              className="bg-green-color px-12 py-3 rounded-full text-white text-[20px] xsm:text-[12px] md:text-[16px] md:px-8"
+              onClick={() => {
+                if (parseFloat(totalwithgst) > 0) {
+                  handlePayment();
+                } else {
+                  handleContinueCheckout();
+                }
+              }}
             >
               Continue Checkout
             </button>
