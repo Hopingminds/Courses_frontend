@@ -272,19 +272,19 @@ function handleNavigation(val) {
                     Choose batch
                   </button>
                 ) : (
-                  <Link
-                    to={"/course/" + Data?.slug}
-                    className={`${new Date(Data?.courseStartDate) > new Date() ? 'pointer-events-none opacity-50 cursor-not-allowed':''} bg-[#1DBF73] py-2 px-7 flex justify-center rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1`}
-                  >
-                    View Course
-                  </Link>
-
                   // <Link
                   //   to={"/course/" + Data?.slug}
-                  //   className="bg-[#1DBF73] py-2 px-7 flex justify-center rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1"
+                  //   className={`${new Date(Data?.courseStartDate) > new Date() ? 'pointer-events-none opacity-50 cursor-not-allowed':''} bg-[#1DBF73] py-2 px-7 flex justify-center rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1`}
                   // >
                   //   View Course
                   // </Link>
+
+                  <Link
+                    to={"/course/" + Data?.slug}
+                    className="bg-[#1DBF73] py-2 px-7 flex justify-center rounded-full text-white font-nu font-bold xsm:px-1 xsm:py-1 xsm:text-[12px] md:text-[14px] md:px-[8px] md:py-1"
+                  >
+                    View Course
+                  </Link>
                 )
               ) : (
                 <div className="space-x-4 w-full flex xsm:flex-col xsm:gap-[10px] items-center md:space-x-2  xsm:mr-1">
