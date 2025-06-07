@@ -6,10 +6,11 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'float-slow': 'float-slow 6s ease-in-out infinite',
-        'float-slow-alter': 'float-slow-alter 6s ease-in-out infinite',
-        'float-fast': 'float-fast 8s ease-in-out infinite',
-        'float-rendom': 'float-rendom 6s ease-in-out infinite',
+        "float-slow": "float-slow 6s ease-in-out infinite",
+        "float-slow-alter": "float-slow-alter 6s ease-in-out infinite",
+        "float-fast": "float-fast 8s ease-in-out infinite",
+        "float-rendom": "float-rendom 6s ease-in-out infinite",
+        "ping-slow": "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite",
       },
       keyframes: {
         scroll: {
@@ -19,25 +20,25 @@ module.exports = {
           "100%": { transform: "translateX(100%)" },
           "0%": { transform: "translateX(0%)" },
         },
-        'float-slow': {
-          '0%': { transform: 'translateY(-10px)' },
-          '50%': { transform: 'translateY(10px)' },
-          '100%': { transform: 'translateY(-10px)' },
+        "float-slow": {
+          "0%": { transform: "translateY(-10px)" },
+          "50%": { transform: "translateY(10px)" },
+          "100%": { transform: "translateY(-10px)" },
         },
-        'float-slow-alter': {
-          '0%': { transform: 'translateY(10px)' },
-          '50%': { transform: 'translateY(0px)' },
-          '100%': { transform: 'translateY(10px)' },
+        "float-slow-alter": {
+          "0%": { transform: "translateY(10px)" },
+          "50%": { transform: "translateY(0px)" },
+          "100%": { transform: "translateY(10px)" },
         },
-        'float-fast': {
-          '0%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(20px)' },
-          '100%': { transform: 'translateY(0px)' },
+        "float-fast": {
+          "0%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(20px)" },
+          "100%": { transform: "translateY(0px)" },
         },
-        'float-rendom': {
-          '0%': { transform: 'translateX(0px)' },
-          '50%': { transform: 'translateX(20px)' },
-          '100%': { transform: 'translateX(0px)' },
+        "float-rendom": {
+          "0%": { transform: "translateX(0px)" },
+          "50%": { transform: "translateX(20px)" },
+          "100%": { transform: "translateX(0px)" },
         },
       },
       fontFamily: {

@@ -27,6 +27,7 @@ export default function DetailCourses() {
   const [faqs, setFaqs] = useState([]);
   const [alreadyInCart, setAlreadyInCart] = useState(false);
   const [alreadyInWishlist, setalreadyInWishlist] = useState(false)
+ 
   useEffect(() => {
     async function Fetchdata() {
       try {
@@ -292,6 +293,35 @@ export default function DetailCourses() {
 
       <div className="flex justify-between px-[8%] py-6 xsm:flex-col-reverse">
         <div className="w-[58%] flex flex-col gap-16 xsm:gap-10 xsm:w-[100%]">
+          <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md mx-auto mt-6">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              Course Duration
+            </h2>
+            <div className="flex justify-between items-center text-gray-700">
+              <div className="flex flex-col items-start">
+                <span className="text-sm text-gray-500">Start Date</span>
+                <span className="text-lg font-medium text-green-600">
+                  {Data?.courseStartDate
+                    ? new Date(Data?.courseStartDate).toLocaleDateString(
+                        "en-GB",
+                        {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                        }
+                      )
+                    : "N/A"}
+                </span>
+              </div>
+              <div className="h-10 border-l-2 border-dashed border-gray-300 mx-4"></div>
+              <div className="flex flex-col items-end">
+                <span className="text-sm text-gray-500">End Date</span>
+                <span className="text-lg font-medium text-red-600">
+                  31 Dec 2025
+                </span>
+              </div>
+            </div>
+          </div>
           {Data?.whatWillILearn?.length > 0 ? (
             <div
               className="flex flex-col p-[1rem_2rem] gap-4 capitalize xsm:gap-4 shadow-[0px_4px_11px_0px_#0000001C]
@@ -322,26 +352,6 @@ export default function DetailCourses() {
           ) : (
             ""
           )}
-          <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md mx-auto mt-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">
-              Course Duration
-            </h2>
-            <div className="flex justify-between items-center text-gray-700">
-              <div className="flex flex-col items-start">
-                <span className="text-sm text-gray-500">Start Date</span>
-                <span className="text-lg font-medium text-green-600">
-                  01 June 2025
-                </span>
-              </div>
-              <div className="h-10 border-l-2 border-dashed border-gray-300 mx-4"></div>
-              <div className="flex flex-col items-end">
-                <span className="text-sm text-gray-500">End Date</span>
-                <span className="text-lg font-medium text-red-600">
-                  31 Dec 2025
-                </span>
-              </div>
-            </div>
-          </div>
 
           {Data?.curriculum?.length > 0 && (
             <div className="flex flex-col gap-8 xsm:gap-4">

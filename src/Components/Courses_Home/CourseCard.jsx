@@ -122,6 +122,11 @@ const CourseCard = ({
           />
         )}
       </div>
+
+
+
+
+      
       <div className="flex flex-col gap-6 justify-between xsm:gap-1 sm:gap-3 md:gap-0 md:mt-0 xsm:mt-0 xsm:p-2 ">
         <div className="flex flex-col justify-between gap-1 mt-2 xsm:mt-1 xsm:gap-1 sm:gap-2 md:gap-0">
           <div className="flex justify-between items-center min-h-[30%] sm:min-h-[20%] md:min-h-0">

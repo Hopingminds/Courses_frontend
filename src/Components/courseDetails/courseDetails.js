@@ -54,6 +54,8 @@ export default function CDDetails() {
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
+  console.log("check data have comming transcript", Data);
+
   useEffect(() => {
     async function Fetchdata() {
       temp = false;
@@ -301,6 +303,12 @@ export default function CDDetails() {
     const match = url.match(/v=([^&]+)/);
     return match ? `https://www.youtube.com/embed/${match[1]}` : url;
   };
+
+  const handleBannerClick = () => {
+    setShowBanner(false);
+    playerRef?.current?.getInternalPlayer()?.play?.(); // optional: force play if needed
+  };
+  
 
   const handleDuration = (duration) => {
     // setDuration(duration);
@@ -631,22 +639,50 @@ export default function CDDetails() {
                         <p className="font-semibold">Coming soon</p>
                       </div>
                     ) : (
+                      // <div className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-2xl">
+                      //   <ReactPlayer
+                      //     onContextMenu={handleContextMenu}
+                      //     className="absolute top-0 left-0 rounded-[18px]"
+                      //     width="100%"
+                      //     height="100%"
+                      //     // playing={true}
+                      //     // controls={true}
+                      //     // autoPlay={true}
+                      //     ref={playerRef}
+                      //     borderRadius="14px"
+                      //     style={{ borderRadius: "14px !important" }}
+                      //     playing={!showBanner}
+                      //     controls={true}
+                      //     autoPlay={!showBanner}
+                      //     // url={url}
+                      //     url={getEmbedUrl(url)}
+                      //     onDuration={handleDuration}
+                      //     onEnded={handleVideoEnded}
+                      //     onReady={handlelargeVideoReady}
+                      //     onProgress={handleProgress}
+                      //     onSeek={handleSeek}
+                      //     onSeekStart={() => handleSeeking(true)}
+                      //     onSeekEnd={() => handleSeeking(false)}
+                      //     config={{
+                      //       file: {
+                      //         attributes: {
+                      //           controlsList: "nodownload",
+                      //         },
+                      //       },
+                      //     }}
+                      //   />
+                      // </div>
+
                       <div className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-2xl">
                         <ReactPlayer
                           onContextMenu={handleContextMenu}
                           className="absolute top-0 left-0 rounded-[18px]"
                           width="100%"
                           height="100%"
-                          playing={true}
-                          controls={true}
-                          autoPlay={true}
                           ref={playerRef}
-                          borderRadius="14px"
-                          style={{ borderRadius: "14px !important" }}
-                          // playing={!showBanner}
-                          // controls={true}
-                          // autoPlay={!showBanner}
-                          // url={url}
+                          playing={!showBanner}
+                          controls={true}
+                          autoPlay={!showBanner}
                           url={getEmbedUrl(url)}
                           onDuration={handleDuration}
                           onEnded={handleVideoEnded}
@@ -663,6 +699,31 @@ export default function CDDetails() {
                             },
                           }}
                         />
+
+                        {showBanner && (
+                          <div
+                            onClick={handleBannerClick}
+                            className="absolute inset-0 bg-black bg-opacity-60 z-10 cursor-pointer flex items-center justify-center rounded-[18px]"
+                          >
+                            <img
+                              src={imageBanner}
+                              alt="Banner"
+                              className="w-full h-full object-fill rounded-[18px]"
+                            />
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="animate-ping-slow rounded-full bg-white bg-opacity-80 p-6">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-12 w-12"
+                                  fill="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        )}
                       </div>
 
                       // <div className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-2xl">
@@ -845,10 +906,10 @@ export default function CDDetails() {
             {/* Add scrolling here */}
             <div className="p-4 pb-10 overflow-y-auto max-h-[calc(100vh-120px)]">
               {/* Modal Content */}
-              <h3 className="font-semibold text-lg mb-2">{Data?.title}</h3>
-              <p className="text-gray-700 text-sm leading-relaxed">
+              <h3 className="font-semibold text-lg mb-2">{Data?.transcript}</h3>
+              {/* <p className="text-gray-700 text-sm leading-relaxed">
                 {Data?.overview}
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
