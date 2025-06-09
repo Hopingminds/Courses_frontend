@@ -53,8 +53,24 @@ export default function CDDetails() {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
+  const [courseData, setCourseData] = useState();
+ 
 
-  console.log("check data have comming transcript", Data);
+  useEffect(() => {
+    async function FetchData() {
+      try {
+        const res = await fetch(`${BASE_URL}/course/${params.slug}`);
+        const response = await res.json();
+        setCourseData(response.course);
+      } catch (error) {
+        console.error("Error fetching course data:", error);
+      }
+    }
+
+    FetchData();
+  }, [params.slug]);
+  
+  // console.log("Course Data:", courseData);
 
   useEffect(() => {
     async function Fetchdata() {
@@ -66,7 +82,7 @@ export default function CDDetails() {
 
         const data = await fetch(url1);
         const response = await data.json();
-        console.log("Course allotted", response?.data?.allotedByCollege);
+        console.log("Course allotted", response);
         setallotedbycollege(response?.data?.allotedByCollege);
         setImageBanner(response?.data?.course?.featured_image);
         setCourseLessons(response?.data?.completed_lessons);
@@ -886,15 +902,15 @@ export default function CDDetails() {
           {isOpen && (
             <div
               onClick={closeModal}
-              className="fixed inset-0  bg-opacity-30 z-40 "
+              className="fixed inset-0 bg-black bg-opacity-30 z-40"
             ></div>
           )}
 
           {/* Slide-in Modal */}
           <div
             className={`fixed top-10 mt-10 right-0 h-full bg-white shadow-lg z-50 transform transition-transform duration-300
-    w-[80%] sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4
-    ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+      w-[80%] sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4
+      ${isOpen ? "translate-x-0" : "translate-x-full"}`}
           >
             <div className="flex justify-between items-center p-4 border-b">
               <h2 className="text-xl font-semibold">Transcript</h2>
@@ -906,10 +922,36 @@ export default function CDDetails() {
             {/* Add scrolling here */}
             <div className="p-4 pb-10 overflow-y-auto max-h-[calc(100vh-120px)]">
               {/* Modal Content */}
-              <h3 className="font-semibold text-lg mb-2">{Data?.transcript}</h3>
-              {/* <p className="text-gray-700 text-sm leading-relaxed">
-                {Data?.overview}
-              </p> */}
+              {courseData?.curriculum?.length > 0 ? (
+                courseData.curriculum.map((chapter, cIndex) => (
+                  <div key={cIndex} className="mb-6">
+                  
+                    {chapter.lessons?.map((lesson, lIndex) => (
+                      <div
+                        key={lIndex}
+                        className="mb-4 pl-4 border-l-4 border-gray-200"
+                      >
+                        <h4 className="text-md font-semibold mb-1 text-gray-800">
+                          {lesson.lesson_name}
+                        </h4>
+                        {lesson.transcript ? (
+                          <p className="text-gray-700 whitespace-pre-wrap">
+                            {lesson.transcript}
+                          </p>
+                        ) : (
+                          <p className="text-gray-400 italic">
+                            Transcript not available.
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ))
+              ) : (
+                <p className="text-gray-500 italic">
+                  No curriculum data found.
+                </p>
+              )}
             </div>
           </div>
         </div>
