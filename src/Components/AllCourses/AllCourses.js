@@ -51,7 +51,7 @@ const AllCourses = () => {
         setshow(true);
 
         const res = await axios.get(`${BASE_URL}/courses`);
-        // console.log(res?.data?.courses);
+        console.log("chekc responces",res);
 
         setAllCourses(res?.data?.courses);
         // setAllCourses(newCourses)

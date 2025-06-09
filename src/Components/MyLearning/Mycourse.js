@@ -508,21 +508,26 @@ export default function Mycourse({ courses, fetchUserData, internships }) {
     } catch (error) {}
   }
 
-  function handleNavigation(val) {
-    const courseStartDate = new Date(val?.course?.courseStartDate);
-    const now = new Date();
+  // function handleNavigation(val) {
+  //   const courseStartDate = new Date(val?.course?.courseStartDate);
+  //   const now = new Date();
 
-    if (courseStartDate > now) {
-      setInfoModal({
-        title: val?.course?.title,
-        startDate: courseStartDate,
-      });
-    } else if (!val?.BatchId) {
-      openModal(val);
-    } else {
-      navigate(`/course/${val?.course?.slug}`);
-    }
+  //   if (courseStartDate > now) {
+  //     setInfoModal({
+  //       title: val?.course?.title,
+  //       startDate: courseStartDate,
+  //     });
+  //   } else if (!val?.BatchId) {
+  //     openModal(val);
+  //   } else {
+  //     navigate(`/course/${val?.course?.slug}`);
+  //   }
+  // }
+
+  function handleNavigation(val) {
+    navigate(`/course/${val?.course?.slug}`);
   }
+  
 
   function handleInternshipbatch(val) {
     if (!val?.BatchId) {
