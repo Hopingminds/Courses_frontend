@@ -584,18 +584,37 @@ export default function Mycourse({ courses, fetchUserData, internships }) {
                   />
                 </div>
               )}
-              <div className="w-full h-[50%]">
+              {/* <div className="w-full h-[50%]">
                 <img
                   className="w-full h-full xsm:rounded-md xsm:h-[55px]"
                   src={val?.course?.featured_image}
                   alt=""
                 />
+              </div> */}
+
+              <div className="w-full h-[50%]">
+                <img
+                  className="w-full h-full xsm:rounded-md xsm:h-[55px]"
+                  src={
+                    val?.course?.featured_image &&
+                    val.course.featured_image.trim() !== ""
+                      ? val.course.featured_image
+                      : "https://sbs.ac.in/wp-content/uploads/2023/09/Asset-5.png"
+                  }
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://sbs.ac.in/wp-content/uploads/2023/09/Asset-5.png";
+                  }}
+                  alt="Course"
+                />
               </div>
+
               <div className="h-[45%] flex flex-col justify-between mt-2 xsm:space-y-1 xsm:mt-1">
                 <p className="font-pop font-semibold text-[18px] xsm:text-[6px] md:text-[16px] sm:text-[14px]">
                   {val?.course?.title}
                 </p>
-                <div className="flex items-center gap-1">
+                {/* <div className="flex items-center gap-1">
                   <img
                     className="w-[32px] h-[32px] xsm:w-[10px] xsm:h-[10px] md:h-[24px] md:w-[24px] rounded-full"
                     src={val?.course?.instructor?.profile}
@@ -604,7 +623,27 @@ export default function Mycourse({ courses, fetchUserData, internships }) {
                   <p className="font-pop font-medium text-[16px] xsm:text-[6px] md:text-[12px]">
                     {val?.course?.instructor?.name}
                   </p>
+                </div> */}
+                <div className="flex items-center gap-1">
+                  <img
+                    className="w-[32px] h-[32px] xsm:w-[10px] xsm:h-[10px] md:h-[24px] md:w-[24px] rounded-full"
+                    src={
+                      val?.course?.instructor?.profile &&
+                      val.course.instructor.profile.trim() !== " "
+                        ? val.course.instructor.profile
+                        : `${process.env.PUBLIC_URL}/Avtars/Avtar-9.png`
+                    }
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = `${process.env.PUBLIC_URL}/Avtars/Avtar-9.png`;
+                    }}
+                    alt="Instructor"
+                  />
+                  <p className="font-pop font-medium text-[16px] xsm:text-[6px] md:text-[12px]">
+                    {val?.course?.instructor?.name}
+                  </p>
                 </div>
+
                 <ProgressBar
                   completed={val?.completed_lessons.length}
                   maxCompleted={totallessons}
