@@ -27,7 +27,7 @@ export default function CourseDrawer({ isOpen, setIsOpen, component }) {
     >
       <section
         ref={drawerRef}
-        className={`absolute bg-gray-100 shadow-xl transition-transform duration-500 ease-in-out transform rounded-xl
+        className={`absolute bg-gray-100 mt-6 shadow-xl transition-transform duration-500 ease-in-out transform rounded-xl
           ${isOpen ? "scale-100" : "scale-50"}
           sm:w-[90vw] sm:h-[70vh] sm:top-[10vh] sm:left-[7vw]
           md:w-[80vw] md:h-[75vh] md:top-[10vh] md:left-[12vw]
@@ -52,6 +52,8 @@ export default function CourseDrawer({ isOpen, setIsOpen, component }) {
           >
             X
           </header>
+          <h1 className="text-center text-2xl font-bold mb-2">My Learning</h1>
+          {/* Render the component passed as a prop */}
           <div className="mt-10">{component}</div>
         </article>
       </section>
