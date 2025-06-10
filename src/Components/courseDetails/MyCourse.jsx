@@ -54,7 +54,7 @@ export default function Mycourses({ courses }) {
           return (
             <div
               key={course.id}
-              className={`relative w-full h-[70vh] flex flex-col justify-between p-2 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm ${
+              className={`relative w-full h-[70vh] flex flex-col justify-between p-3 rounded-xl shadow-xl shadow-[#D9D9D9] xsm:mt-0 xsm:py-1 xsm:px-1 xsm:rounded-sm ${
                 isCourseAvailable ? "" : "cursor-not-allowed"
               }`}
             >
