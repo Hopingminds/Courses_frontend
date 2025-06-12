@@ -293,7 +293,7 @@ export default function DetailCourses() {
 
       <div className="flex justify-between px-[8%] py-6 xsm:flex-col-reverse">
         <div className="w-[58%] flex flex-col gap-16 xsm:gap-10 xsm:w-[100%]">
-          <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md mx-auto mt-6">
+          {/* <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md mx-auto mt-6">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Course Duration
             </h2>
@@ -321,7 +321,7 @@ export default function DetailCourses() {
                 </span>
               </div>
             </div>
-          </div>
+          </div> */}
           {Data?.whatWillILearn?.length > 0 ? (
             <div
               className="flex flex-col p-[1rem_2rem] gap-4 capitalize xsm:gap-4 shadow-[0px_4px_11px_0px_#0000001C]
