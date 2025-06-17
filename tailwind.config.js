@@ -11,6 +11,7 @@ module.exports = {
         "float-fast": "float-fast 8s ease-in-out infinite",
         "float-rendom": "float-rendom 6s ease-in-out infinite",
         "ping-slow": "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite",
+        "ping-custom": "ping-custom 1.5s ease-in-out infinite",
       },
       keyframes: {
         scroll: {
@@ -39,6 +40,10 @@ module.exports = {
           "0%": { transform: "translateX(0px)" },
           "50%": { transform: "translateX(20px)" },
           "100%": { transform: "translateX(0px)" },
+        },
+        "ping-custom": {
+          "0%, 100%": { transform: "scale(1)", opacity: "1" },
+          "50%": { transform: "scale(1.6)", opacity: "0.6" },
         },
       },
       fontFamily: {

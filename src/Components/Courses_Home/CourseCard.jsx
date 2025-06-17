@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import "./Courses.css";
 import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
@@ -45,6 +45,14 @@ const CourseCard = ({
     e.preventDefault();
     setIsMuted((prev) => !prev);
   };
+  function getDirectGoogleDriveLink(url) {
+    const regex = /\/file\/d\/([a-zA-Z0-9_-]+)\//;
+    const match = url.match(regex);
+    if (match && match[1]) {
+      return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+    }
+    return url; // fallback
+  }
 
   // console.log(description);
   return (
@@ -112,7 +120,7 @@ const CourseCard = ({
         ) : (
           <img
             className="w-full rounded-t-2xl h-full"
-            src={image}
+            src={getDirectGoogleDriveLink(image)}
             onError={(e) => {
               e.target.onerror = null;
               e.target.src =
@@ -123,10 +131,6 @@ const CourseCard = ({
         )}
       </div>
 
-
-
-
-      
       <div className="flex flex-col gap-6 justify-between xsm:gap-1 sm:gap-3 md:gap-0 md:mt-0 xsm:mt-0 xsm:p-2 ">
         <div className="flex flex-col justify-between gap-1 mt-2 xsm:mt-1 xsm:gap-1 sm:gap-2 md:gap-0">
           <div className="flex justify-between items-center min-h-[30%] sm:min-h-[20%] md:min-h-0">
@@ -222,6 +226,19 @@ const CourseCard = ({
             </div>
           </span>
         </div>
+        {/* {credits !== undefined && credits > 0 && (
+          <div className="flex items-center gap-3 bg-green-50 border border-green-400 rounded-md px-4 py-2 xsm:px-2 xsm:py-1">
+
+            <div className="w-3 h-3 rounded-full bg-red-500 animate-ping-custom xsm:w-2 xsm:h-2"></div>
+
+            <div className="flex flex-col text-sm leading-tight xsm:text-xs">
+              <span className="text-gray-700 font-medium">
+                Registration live till{" "}
+                <span className="text-red-500 font-semibold">25th July</span>
+              </span>
+            </div>
+          </div>
+        )} */}
       </div>
     </Link>
   );
