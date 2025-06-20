@@ -490,9 +490,11 @@ const handleContinueCheckout = async () => {
       }
 
       setshow(false);
-      navigate("/success"); // ✅ directly redirect
+      // navigate("/success"); // ✅ directly redirect
+      // window.location.href = "/success";
+      window.location.replace("/success?reload=true");
     } else {
-      console.log("Error: ", response.message);
+      console.log("Error: ", response?.message);
     }
   } catch (error) {
     console.log(error);

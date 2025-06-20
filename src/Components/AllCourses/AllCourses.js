@@ -204,6 +204,7 @@ const AllCourses = () => {
             onContextMenu={handleContextMenu}
             playsinline={true}
             url="https://drdy957pjga3n.cloudfront.net/assets/1712146617474-vid-1.mp4"
+            // url="https://www.youtube.com/watch?v=v_o3bnm-5Nw&t=100s"
             height="100%"
             width={"100%"}
             playing={true}

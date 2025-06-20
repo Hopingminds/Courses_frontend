@@ -28,7 +28,7 @@ const CourseCard = ({
   IsMinorDegreeCourse,
   credits,
   courseCategory,
-  discount
+  discount,
 }) => {
   // console.log(courseCategory);
   const [mouseHovered, setMouseHovered] = useState(null);
@@ -40,20 +40,31 @@ const CourseCard = ({
     setMouseHovered(index);
   };
 
+
   const handleMute = (e) => {
     e.stopPropagation();
     e.preventDefault();
     setIsMuted((prev) => !prev);
   };
+  // function getDirectGoogleDriveLink(url) {
+  //   const fileIdMatch = url.match(/(?:\/d\/|id=)([a-zA-Z0-9_-]{10,})/);
+  //   if (fileIdMatch && fileIdMatch[1]) {
+  //     return `https://drive.google.com/thumbnail?id=${fileIdMatch[1]}`;
+  //   }
+  //   return url;
+  // }
+  
   function getDirectGoogleDriveLink(url) {
-    const regex = /\/file\/d\/([a-zA-Z0-9_-]+)\//;
-    const match = url.match(regex);
-    if (match && match[1]) {
-      return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+    const fileIdMatch = url.match(/(?:\/d\/|id=)([a-zA-Z0-9_-]+)/);
+    if (fileIdMatch && fileIdMatch[1]) {
+      return `https://drive.google.com/uc?export=view&id=${fileIdMatch[1]}`;
     }
-    return url; // fallback
+    return url;
   }
-
+  
+  
+  // console.log("getDirectGoogleDriveLink(image)", getDirectGoogleDriveLink(image));
+  
   // console.log(description);
   return (
     <Link
@@ -98,7 +109,7 @@ const CourseCard = ({
         </span>
       )}
 
-      <div className="h-fit aspect-[16/10] ">
+      <div className="h-fit aspect-[16/10]">
         {mouseHovered === ind ? (
           <ReactPlayer
             className="rounded-t-2xl xsm:rounded-md border overflow-hidden"
@@ -119,14 +130,14 @@ const CourseCard = ({
           />
         ) : (
           <img
-            className="w-full rounded-t-2xl h-full"
             src={getDirectGoogleDriveLink(image)}
+            alt="Course Thumbnail"
+            className="rounded-t-2xl xsm:rounded-md border overflow-hidden object-contain w-full h-full"
             onError={(e) => {
               e.target.onerror = null;
               e.target.src =
-                "https://sbs.ac.in/wp-content/uploads/2023/09/Asset-5.png";
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8sCIC8QTh_3PknKUF5GeFT8BylgcTsnTgyg&s";
             }}
-            alt="Course"
           />
         )}
       </div>

@@ -11,6 +11,8 @@ import { FiMenu } from "react-icons/fi";
 import DrawerNavbar from "./DrawerNavbar.jsx";
 import { FaPlay } from "react-icons/fa";
 import Draggable from "react-draggable";
+import { TiLocationArrowOutline } from "react-icons/ti";
+import NotesModal from "./NotesModal.jsx";
 export default function CDDetails() {
   const [maxWatched, setMaxWatched] = useState(0); // Maximum watched time
   const [isSeeking, setIsSeeking] = useState(false);
@@ -54,6 +56,25 @@ export default function CDDetails() {
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
   const [courseData, setCourseData] = useState();
+  const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
+  const [currentNotesUrl, setCurrentNotesUrl] = useState("");
+  const [playbackPositions, setPlaybackPositions] = useState({});
+  const [lastPlayerType, setLastPlayerType] = useState("");
+
+  
+  useEffect(() => {
+    return () => {
+      // Save position when component unmounts
+      if (playerRef.current) {
+        const currentTime = playerRef.current.getCurrentTime();
+        localStorage.setItem(currentid, currentTime);
+      }
+      if (playerRef2.current) {
+        const currentTime = playerRef2.current.getCurrentTime();
+        localStorage.setItem(currentid, currentTime);
+      }
+    };
+  }, [currentid]);
  
 
   useEffect(() => {
@@ -241,19 +262,50 @@ export default function CDDetails() {
     };
   }, []);
 
-  function handleActiveVideo(url, title, id) {
+  // function handleActiveVideo(url, title, id) {
+  //   setactivesmallvideo(true);
+  //   setactivelargevideo(true);
+  //   setcurrentid(id);
+  //   if (playerRef2.current) {
+  //     const currenttime = playerRef2.current.getCurrentTime();
+  //     // console.log("currenttime");
+
+  //     // playerRef.current.seekTo(currenttime, 'seconds');
+
+  //     localStorage.setItem(id, currenttime);
+  //   }
+  //   let getindex = idwise[id];
+  //   setcount(getindex);
+  //   localStorage.setItem("last", getindex);
+
+  //   setactiveindex(title);
+  //   setshowLive(false);
+  //   setshowend(false);
+  //   setexpired(false);
+  //   // console.log(url);
+  //   setshowSmallvideo(false);
+  //   seturl(url);
+  // }
+
+
+  const handleActiveVideo = (url, title, id) => {
+    // Save current position from whichever player is active
+    if (playerRef.current && !showSmallvideo) {
+      const currentTime = playerRef.current.getCurrentTime();
+      localStorage.setItem(id, currentTime);
+      setPlaybackPositions((prev) => ({ ...prev, [id]: currentTime }));
+    } else if (playerRef2.current && showSmallvideo) {
+      const currentTime = playerRef2.current.getCurrentTime();
+      localStorage.setItem(id, currentTime);
+      setPlaybackPositions((prev) => ({ ...prev, [id]: currentTime }));
+    }
+
+    // Set states for the new video
     setactivesmallvideo(true);
     setactivelargevideo(true);
     setcurrentid(id);
-    if (playerRef2.current) {
-      const currenttime = playerRef2.current.getCurrentTime();
-      // console.log("currenttime");
 
-      // playerRef.current.seekTo(currenttime, 'seconds');
-
-      localStorage.setItem(id, currenttime);
-    }
-    let getindex = idwise[id];
+    const getindex = idwise[id];
     setcount(getindex);
     localStorage.setItem("last", getindex);
 
@@ -261,10 +313,13 @@ export default function CDDetails() {
     setshowLive(false);
     setshowend(false);
     setexpired(false);
-    // console.log(url);
     setshowSmallvideo(false);
     seturl(url);
-  }
+
+    // Store which player we're switching from
+    setLastPlayerType(showSmallvideo ? "small" : "large");
+  };
+
 
   // console.log(allchapters);
   const handleVideoEnded = async () => {
@@ -329,7 +384,7 @@ export default function CDDetails() {
   const handleDuration = (duration) => {
     // setDuration(duration);
     localStorage.setItem("duration" + currentid, duration);
-    console.log(duration);
+    // console.log(duration);
   };
 
   const toggleMenu = () => {
@@ -344,31 +399,57 @@ export default function CDDetails() {
     e.preventDefault(); // Prevent default context menu behavior
   };
 
+  // const handleToggleNotes = async (pdf, videourl, id, lesson) => {
+  //   setactivelargevideo(true);
+  //   // console.log(id);
+  //   setactiveindex(lesson);
+  //   setcurrentid(id);
+  //   let getindex = idwise[id];
+  //   localStorage.setItem("last", getindex);
+
+  //   try {
+  //     if (playerRef.current) {
+  //       const currenttime = playerRef.current.getCurrentTime();
+  //       //  setCurrentDuration(currenttime)
+  //       localStorage.setItem(id, currenttime);
+  //       setPlaying(true);
+  //     }
+  //     // Show the small video player
+  //     setshowSmallvideo(true);
+
+  //     // Set the URLs for PDF and video
+  //     setpdfurl(pdf);
+  //     setsmallVideourl(videourl);
+
+  //     // console.log(playerRef.current);
+  //   } catch (error) {
+  //     console.error("An error occurred while toggling notes:", error);
+  //   }
+  // };
+
   const handleToggleNotes = async (pdf, videourl, id, lesson) => {
-    setactivelargevideo(true);
-    // console.log(id);
     setactiveindex(lesson);
     setcurrentid(id);
-    let getindex = idwise[id];
-    localStorage.setItem("last", getindex);
 
     try {
       if (playerRef.current) {
         const currenttime = playerRef.current.getCurrentTime();
-        //  setCurrentDuration(currenttime)
         localStorage.setItem(id, currenttime);
-        setPlaying(true);
       }
-      // Show the small video player
-      setshowSmallvideo(true);
 
-      // Set the URLs for PDF and video
-      setpdfurl(pdf);
-      setsmallVideourl(videourl);
+      // Always handle video if present
+      if (videourl) {
+        setshowSmallvideo(true);
+        setsmallVideourl(videourl);
+      }
 
-      // console.log(playerRef.current);
+      // Independently handle PDF if present
+      if (pdf) {
+        setCurrentNotesUrl(pdf);
+        setIsNotesModalOpen(true);
+      }
     } catch (error) {
-      console.error("An error occurred while toggling notes:", error);
+      console.error("Error:", error);
     }
   };
 
@@ -549,7 +630,7 @@ export default function CDDetails() {
 
         <div className="w-[85%] xsm:w-full sm:w-full">
           <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] sm:h-[42vh] sm:px-4 md:pr-[5%] md:h-[50vh] xsm:px-4">
-            {showSmallvideo && (
+            {/* {showSmallvideo && (
               <Draggable>
                 <div className="fixed bottom-0 left-0 z-[9999] rounded-xl">
                   <ReactPlayer
@@ -558,11 +639,88 @@ export default function CDDetails() {
                     width="350px"
                     ref={playerRef2}
                     className="shadow-2xl rounded-xl"
-                    playing={playing}
+                    // playing={playing}
+                    playing={false}
                     controls={true}
                     autoPlay={playing}
                     url={smallVideourl}
                     onReady={handleSmallVideoReady}
+                    onDuration={handleDuration}
+                    onEnded={handleVideoEnded}
+                    config={{
+                      file: {
+                        attributes: {
+                          controlsList: "nodownload",
+                          playsInline: true,
+                        },
+                      },
+                    }}
+                  />
+                </div>
+              </Draggable>
+            )} */}
+            {showSmallvideo && (
+              <Draggable>
+                <div className="fixed bottom-0 left-0 z-[9999] rounded-xl">
+                  {/* Close button added here */}
+                  <button
+                    className="absolute -top-8 right-0 bg-green-500 text-white p-1 rounded-full z-50"
+                    onClick={() => {
+                      setshowSmallvideo(false);
+                      setPlaying(true); // Resume main video
+                      setIsNotesModalOpen(false);
+                    }}
+                  >
+                    <TiLocationArrowOutline />
+                  </button>
+
+                  {/* <ReactPlayer
+                    ref={playerRef}
+                    onContextMenu={handleContextMenu}
+                    height="280px"
+                    width="350px"
+                    // ref={playerRef2}
+                    className="shadow-2xl rounded-xl"
+                    playing={false}
+                    controls={true}
+                    autoPlay={playing}
+                    url={smallVideourl}
+                    onReady={handleSmallVideoReady}
+                    onDuration={handleDuration}
+                    onEnded={handleVideoEnded}
+                    config={{
+                      file: {
+                        attributes: {
+                          controlsList: "nodownload",
+                          playsInline: true,
+                        },
+                      },
+                    }}
+                  /> */}
+
+                  <ReactPlayer
+                    ref={playerRef2}
+                    onContextMenu={handleContextMenu}
+                    height="280px"
+                    width="350px"
+                    className="shadow-2xl rounded-xl"
+                    playing={false}
+                    controls={true}
+                    autoPlay={playing}
+                    url={smallVideourl}
+                    onReady={() => {
+                      const savedPosition =
+                        playbackPositions[currentid] ||
+                        localStorage.getItem(currentid);
+                      if (savedPosition && showSmallvideo) {
+                        setTimeout(() => {
+                          playerRef2.current.seekTo(
+                            parseFloat(savedPosition),
+                            "seconds"
+                          );
+                        }, 100);
+                      }
+                    }}
                     onDuration={handleDuration}
                     onEnded={handleVideoEnded}
                     config={{
@@ -690,12 +848,13 @@ export default function CDDetails() {
                       // </div>
 
                       <div className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-2xl">
-                        <ReactPlayer
+                        {/* <ReactPlayer
                           onContextMenu={handleContextMenu}
                           className="absolute top-0 left-0 rounded-[18px]"
                           width="100%"
                           height="100%"
                           ref={playerRef}
+                          // ref={playerRef2}
                           playing={!showBanner}
                           controls={true}
                           autoPlay={!showBanner}
@@ -707,6 +866,42 @@ export default function CDDetails() {
                           onSeek={handleSeek}
                           onSeekStart={() => handleSeeking(true)}
                           onSeekEnd={() => handleSeeking(false)}
+                          config={{
+                            file: {
+                              attributes: {
+                                controlsList: "nodownload",
+                              },
+                            },
+                          }}
+                        /> */}
+
+                        <ReactPlayer
+                          ref={playerRef}
+                          onContextMenu={handleContextMenu}
+                          className="absolute top-0 left-0 rounded-[18px]"
+                          width="100%"
+                          height="100%"
+                          playing={!showBanner}
+                          controls={true}
+                          autoPlay={!showBanner}
+                          url={getEmbedUrl(url)}
+                          onDuration={handleDuration}
+                          onEnded={handleVideoEnded}
+                          onReady={() => {
+                            const savedPosition =
+                              playbackPositions[currentid] ||
+                              localStorage.getItem(currentid);
+                            if (savedPosition && !showSmallvideo) {
+                              setTimeout(() => {
+                                playerRef.current.seekTo(
+                                  parseFloat(savedPosition),
+                                  "seconds"
+                                );
+                              }, 100);
+                            }
+                          }}
+                          onProgress={handleProgress}
+                          onSeek={handleSeek}
                           config={{
                             file: {
                               attributes: {
@@ -925,7 +1120,6 @@ export default function CDDetails() {
               {courseData?.curriculum?.length > 0 ? (
                 courseData.curriculum.map((chapter, cIndex) => (
                   <div key={cIndex} className="mb-6">
-                  
                     {chapter.lessons?.map((lesson, lIndex) => (
                       <div
                         key={lIndex}
@@ -955,6 +1149,11 @@ export default function CDDetails() {
             </div>
           </div>
         </div>
+        <NotesModal
+          isOpen={isNotesModalOpen}
+          onClose={() => setIsNotesModalOpen(false)}
+          pdfUrl={currentNotesUrl}
+        />
       </div>
     </>
   );
