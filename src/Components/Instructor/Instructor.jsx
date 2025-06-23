@@ -49,10 +49,10 @@ function Instructor() {
             <p>{Data?.instructor?.noOfStudents ? 4000+Data?.instructor?.noOfStudents:4000} Students</p>
           </div>
 
-          <div className="lessons text-black">
+          {/* <div className="lessons text-black">
             <img alt="" src={lessonsIcon} />
             <p>20 Lessons</p>
-          </div>
+          </div> */}
         </div>
       </div>
 
