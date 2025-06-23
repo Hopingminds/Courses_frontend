@@ -199,7 +199,7 @@ const AllCourses = () => {
           </button>
         </div>
 
-        <div className="h-full w-full bg-gray-300 video-container">
+        {/* <div className="h-full w-full bg-gray-300 video-container">
           <ReactPlayer
             onContextMenu={handleContextMenu}
             playsinline={true}
@@ -218,6 +218,15 @@ const AllCourses = () => {
               },
             }}
           />
+        </div> */}
+
+        <div className="relative w-full bg-gray-300 video-container">
+          <img
+            src="/searchbanner.jpeg"
+            alt="Thumbnail"
+            className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] object-cover"
+          />
+          <div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
         </div>
 
         <div className="w-full bg-[rgba(0,0,0,0.6)] h-28 sm:h-16 flex justify-center space-x-28 text-white font-pop  absolute bottom-0 items-center xsm:h-10 xsm:space-x-3 md:h-16 md:space-x-12 sm:space-x-4">
