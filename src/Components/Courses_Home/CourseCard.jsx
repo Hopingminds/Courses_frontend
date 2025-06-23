@@ -132,7 +132,7 @@ const CourseCard = ({
           <img
             src={getDirectGoogleDriveLink(image)}
             alt="Course Thumbnail"
-            className="rounded-t-2xl xsm:rounded-md border overflow-hidden object-contain w-full h-full"
+            className="rounded-t-2xl xsm:rounded-md border overflow-hidden object-cover rounded-lg w-full h-full "
             onError={(e) => {
               e.target.onerror = null;
               e.target.src =
@@ -168,13 +168,13 @@ const CourseCard = ({
               {/* <p className="font-pop font-semibold italic text-[#1DBF73] text-[16px] xsm:text-[13px] sm:text-[10px] md:text-[10px]">{discount}% off</p> */}
               {discount ? (
                 <strike className="font-pop font-semibold text-gray-400 italic text-[14px] xsm:text-[11px] sm:text-[8px] md:text-[8px]">
-                  {price == 0 ? "Free" : "₹" + price}
+                  {price === 0 ? "Free" : "₹" + price}
                 </strike>
               ) : (
                 ""
               )}
               <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[13px] sm:text-[10px] md:text-[10px]">
-                {price == 0
+                {price === 0
                   ? "Free"
                   : "₹" + parseFloat(price - price * (discount / 100))}
               </p>
