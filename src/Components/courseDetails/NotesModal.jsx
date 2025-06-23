@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IoMdClose } from "react-icons/io";
 
 const NotesModal = ({ isOpen, onClose, pdfUrl }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -28,7 +29,7 @@ const NotesModal = ({ isOpen, onClose, pdfUrl }) => {
               className="text-gray-500 hover:text-red-600 text-xl"
               onClick={onClose}
             >
-              ×
+              <IoMdClose />
             </button>
           </div>
         </div>

@@ -1151,7 +1151,11 @@ export default function CDDetails() {
         </div>
         <NotesModal
           isOpen={isNotesModalOpen}
-          onClose={() => setIsNotesModalOpen(false)}
+          onClose={() => {
+            setIsNotesModalOpen(false);
+            setPlaying(true);
+            setshowSmallvideo(false);
+          }}
           pdfUrl={currentNotesUrl}
         />
       </div>
