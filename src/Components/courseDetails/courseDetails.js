@@ -120,7 +120,8 @@ export default function CDDetails() {
             });
           }
         }
-        // console.log(completed);
+
+        // console.log("This is data for check course detsils : ",data);
         if (response?.data?.course) {
           let tempids = {};
           let ind = 0;
@@ -1056,13 +1057,16 @@ export default function CDDetails() {
                         <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
                           {totalLessons} Lessons
                         </p>
-                        {!allotedbycollege ? (
+                        <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
+                          {Data?.duration} Hours
+                        </p>
+                        {/* {!allotedbycollege ? (
                           <p className="font-pop text-[#FFFFFF] text-[14px] xsm:text-[8px] md:text-[12px] sm:text-[12px]">
                             {Timeconverter(dur)}
                           </p>
                         ) : (
                           ""
-                        )}
+                        )} */}
                       </div>
                     </div>
                     {window.innerWidth <= 720 && (

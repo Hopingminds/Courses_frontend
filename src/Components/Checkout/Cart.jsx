@@ -212,6 +212,7 @@ const CartCheckout = () => {
 
         const response = await fetch(url);
         const data = await response.json();
+        // console.log("new data will check to comming course duration: ", data);
 
         if (slug) {
           setData([data]);
