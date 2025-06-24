@@ -90,9 +90,9 @@ const Internshipnavigation = ({
 
       {activeComponent === "Overview" && <Overview />}
       {activeComponent === "Instructor" && <Instructor />}
-      {activeComponent === "assignment" && (
+      {/* {activeComponent === "assignment" && (
         <CNAssignment courseAssignment={courseAssignment} />
-      )}
+      )} */}
       {/* {activeComponent === 'certifications' && <CNCertifications />} */}
       {activeComponent === "mystats" && (
         <CNMyStats

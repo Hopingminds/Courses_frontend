@@ -1,2 +1,24 @@
 
 
+@keyframes borderSpin {
+    0% {
+      border-image-source: linear-gradient(90deg, #4f46e5, #3b82f6);
+      transform: rotate(0deg);
+    }
+    100% {
+      border-image-source: linear-gradient(450deg, #4f46e5, #3b82f6);
+      transform: rotate(360deg);
+    }
+  }
+  
+  .group-hover\\:animate-borderSpin:hover {
+    animation: borderSpin 2s linear infinite;
+  }
+  
+  .border-gradient {
+    border-image-slice: 1;
+    border-width: 2px;
+    border-style: solid;
+    border-image-source: linear-gradient(90deg, #4f46e5, #3b82f6);
+  }
+  

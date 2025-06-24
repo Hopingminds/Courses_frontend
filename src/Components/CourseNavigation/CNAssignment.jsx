@@ -33,7 +33,7 @@ const CNAssignment = ({ courseAssignment }) => {
     Fetchdata();
   }, []);
 
-  console.log("Assignments", courseAssignment);
+  // console.log("Assignments", courseAssignment);
 
   return (
     <div className="bg-[#FFFFFF] min-h-[425px] rounded-b-[20px] px-[30px] py-[24px]  flex flex-col gap-3 items-center ">
@@ -43,7 +43,7 @@ const CNAssignment = ({ courseAssignment }) => {
             Assignment Coming Soon
           </p>
           <div className="w-full flex justify-center">
-            <img className="w-[40%]" src={Img} />
+            <img className="w-[40%]" src={Img} alt="" />
           </div>
         </div>
       ) : (

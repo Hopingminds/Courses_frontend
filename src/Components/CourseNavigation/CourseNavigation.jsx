@@ -50,7 +50,7 @@ const CourseNavigation = ({
         >
           Instructor
         </button>
-        <button
+        {/* <button
           className={`btn_border py-[12px] border-l border-[#EAEAEA] ${
             activeComponent === "assignment"
               ? "bg-[#1FC074] text-[#FFFFFF]"
@@ -59,7 +59,7 @@ const CourseNavigation = ({
           onClick={() => renderComponent("assignment")}
         >
           Assignment
-        </button>
+        </button> */}
         {/* <button className={`btn_border py-[12px] border-l border-[#EAEAEA] ${activeComponent === 'certifications' ? 'bg-[#1FC074] text-[#FFFFFF]' : ''}`} 
                         onClick={() => renderComponent('certifications')}>Certifications</button> */}
         <button
