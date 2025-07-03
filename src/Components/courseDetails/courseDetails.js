@@ -11,8 +11,11 @@ import { FiMenu } from "react-icons/fi";
 import DrawerNavbar from "./DrawerNavbar.jsx";
 import { FaPlay } from "react-icons/fa";
 import Draggable from "react-draggable";
-import { TiLocationArrowOutline } from "react-icons/ti";
+
 import NotesModal from "./NotesModal.jsx";
+import { YoutubeTranscript } from "youtube-transcript";
+import { MdClose } from "react-icons/md";
+import { TbWindowMaximize } from "react-icons/tb";
 export default function CDDetails() {
   const [maxWatched, setMaxWatched] = useState(0); // Maximum watched time
   const [isSeeking, setIsSeeking] = useState(false);
@@ -61,7 +64,6 @@ export default function CDDetails() {
   const [playbackPositions, setPlaybackPositions] = useState({});
   const [lastPlayerType, setLastPlayerType] = useState("");
 
-  
   useEffect(() => {
     return () => {
       // Save position when component unmounts
@@ -75,7 +77,6 @@ export default function CDDetails() {
       }
     };
   }, [currentid]);
- 
 
   useEffect(() => {
     async function FetchData() {
@@ -90,7 +91,7 @@ export default function CDDetails() {
 
     FetchData();
   }, [params.slug]);
-  
+
   // console.log("Course Data:", courseData);
 
   useEffect(() => {
@@ -233,7 +234,7 @@ export default function CDDetails() {
     }
   }, []);
   const handleKeyDown = (e) => {
-    console.log(e.key);
+    // console.log(e.key);
     // if (e.metaKey) {
     //   alert("Screenshot is not allowed")
     //   e.preventDefault()
@@ -288,7 +289,6 @@ export default function CDDetails() {
   //   seturl(url);
   // }
 
-
   const handleActiveVideo = (url, title, id) => {
     // Save current position from whichever player is active
     if (playerRef.current && !showSmallvideo) {
@@ -320,7 +320,6 @@ export default function CDDetails() {
     // Store which player we're switching from
     setLastPlayerType(showSmallvideo ? "small" : "large");
   };
-
 
   // console.log(allchapters);
   const handleVideoEnded = async () => {
@@ -376,11 +375,23 @@ export default function CDDetails() {
     return match ? `https://www.youtube.com/embed/${match[1]}` : url;
   };
 
+  const fetchTranscript = async (videoUrl) => {
+    const videoId = getYouTubeVideoID(videoUrl); // you need to extract this
+    const transcript = await YoutubeTranscript.fetchTranscript(videoId);
+    return transcript; // array of { text, start, duration }
+  };
+
+  // Helper to extract video ID from URL
+  const getYouTubeVideoID = (url) => {
+    const regex = /(?:v=|\/)([0-9A-Za-z_-]{11}).*/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+  };
+
   const handleBannerClick = () => {
     setShowBanner(false);
     playerRef?.current?.getInternalPlayer()?.play?.(); // optional: force play if needed
   };
-  
 
   const handleDuration = (duration) => {
     // setDuration(duration);
@@ -664,16 +675,29 @@ export default function CDDetails() {
               <Draggable>
                 <div className="fixed bottom-0 left-0 z-[9999] rounded-xl">
                   {/* Close button added here */}
-                  <button
-                    className="absolute -top-8 right-0 bg-green-500 text-white p-1 rounded-full z-50"
-                    onClick={() => {
-                      setshowSmallvideo(false);
-                      setPlaying(true); // Resume main video
-                      setIsNotesModalOpen(false);
-                    }}
-                  >
-                    <TiLocationArrowOutline />
-                  </button>
+                  <div className="w-[350px] bg-green-700 p-2 rounded-t-xl flex justify-between items-center relative">
+                    {/* Button to close everything and resume main video */}
+                    <button
+                      className="bg-green-500 text-white p-2 rounded-full z-50"
+                      onClick={() => {
+                        setshowSmallvideo(false);
+                        setPlaying(true); // Resume main video
+                        setIsNotesModalOpen(false); // Close notes
+                      }}
+                    >
+                      <TbWindowMaximize size={20} />
+                    </button>
+
+                    {/* Button to close only small video */}
+                    <button
+                      className="bg-red-500 text-white p-2 rounded-full z-50"
+                      onClick={() => {
+                        setshowSmallvideo(false); // Only close small player
+                      }}
+                    >
+                      <MdClose size={20} />
+                    </button>
+                  </div>
 
                   {/* <ReactPlayer
                     ref={playerRef}
@@ -1108,16 +1132,16 @@ export default function CDDetails() {
           {/* Slide-in Modal */}
           <div
             className={`fixed top-10 mt-10 right-0 h-full bg-white shadow-lg z-50 transform transition-transform duration-300
-      w-[80%] sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4
-      ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+            w-[80%] sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4
+            ${isOpen ? "translate-x-0" : "translate-x-full"}`}
           >
+            ``
             <div className="flex justify-between items-center p-4 border-b">
               <h2 className="text-xl font-semibold">Transcript</h2>
               <button onClick={closeModal} className="text-gray-500 text-2xl">
                 &times;
               </button>
             </div>
-
             {/* Add scrolling here */}
             <div className="p-4 pb-10 overflow-y-auto max-h-[calc(100vh-120px)]">
               {/* Modal Content */}
@@ -1153,6 +1177,7 @@ export default function CDDetails() {
             </div>
           </div>
         </div>
+
         <NotesModal
           isOpen={isNotesModalOpen}
           onClose={() => {

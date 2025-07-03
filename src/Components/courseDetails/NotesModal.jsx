@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FiMaximize, FiMinimize } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 
 const NotesModal = ({ isOpen, onClose, pdfUrl }) => {
@@ -20,13 +21,13 @@ const NotesModal = ({ isOpen, onClose, pdfUrl }) => {
           <h2 className="text-lg sm:text-xl font-bold">Notes</h2>
           <div className="flex items-center gap-2">
             <button
-              className="text-gray-600 hover:text-blue-600 text-sm border px-2 py-1 rounded"
+              className="text-xl bg-gray-200 hover:bg-gray-300 rounded-full text-gray-700 p-2"
               onClick={() => setIsFullScreen(!isFullScreen)}
             >
-              {isFullScreen ? "Exit Fullscreen" : "Fullscreen"}
+              {isFullScreen ? <FiMinimize /> : <FiMaximize />}
             </button>
             <button
-              className="text-gray-500 hover:text-red-600 text-xl"
+              className="hover:text-red-600 text-xl bg-green-600 rounded-full text-white p-2"
               onClick={onClose}
             >
               <IoMdClose />

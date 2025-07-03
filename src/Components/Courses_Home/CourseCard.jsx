@@ -173,10 +173,17 @@ const CourseCard = ({
               ) : (
                 ""
               )}
+              {/* <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[13px] sm:text-[10px] md:text-[10px]">
+                {price === 0
+                  ? "Free"
+                  : "₹" + parseFloat(price - price * (discount / 100))} + GST
+              </p> */}
               <p className="font-pop font-bold text-[#1DBF73] text-[16px] xsm:text-[13px] sm:text-[10px] md:text-[10px]">
                 {price === 0
                   ? "Free"
-                  : "₹" + parseFloat(price - price * (discount / 100))}
+                  : "₹" +
+                    parseFloat(price - price * (discount / 100)).toFixed(0)}
+                <span className="text-[10px] align-super ml-1 text-black">+ GST</span>
               </p>
             </div>
           </div>

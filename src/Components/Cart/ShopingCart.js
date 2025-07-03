@@ -160,8 +160,12 @@ function ShopingCart() {
                                   src="../Icons/clock2.svg"
                                   alt=""
                                 />
-                                <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
+                                {/* <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                   45 Hours
+                                </p> */}
+
+                                <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
+                                  {item?.course?.duration} Hours
                                 </p>
                               </div>
                             </div>
@@ -405,7 +409,7 @@ function ShopingCart() {
               <hr className=" border-y-1 border-[#EAEAEA] " />
             </div>
             {/* <div className="flex xsm:flex-col justify-between"> */}
-            <div className="flex justify-between items-center space-y-4 font-nu xl:space-y-2 xsm:space-y-0 xsm:flex xsm:flex-row xsm:justify-between md:space-y-0">
+            {/* <div className="flex justify-between items-center space-y-4 font-nu xl:space-y-2 xsm:space-y-0 xsm:flex xsm:flex-row xsm:justify-between md:space-y-0">
               <p className=" xl:font-normal text-[2vw] 2xl:text-[24px] sm:text-[18px] xsm:text-[18px] font-nu xsm:font-noraml lg:text-[20px] xl:text-[24px] md:text-[15px]">
                 Total
               </p>
@@ -416,7 +420,58 @@ function ShopingCart() {
                   maximumFractionDigits: 2,
                 })}
               </p>
+            </div> */}
+
+            <div className="flex flex-col space-y-2 font-nu xsm:space-y-0 xsm:flex xsm:flex-col">
+              {/* Total Row */}
+              <div className="flex justify-between items-center">
+                <p className="xl:font-normal text-[2vw] 2xl:text-[24px] sm:text-[18px] xsm:text-[18px] font-nu xsm:font-normal lg:text-[20px] xl:text-[24px] md:text-[15px]">
+                  Total
+                </p>
+                <p className="font-mons font-semibold xl:font-normal text-[1.7vw] 2xl:text-[20px] xsm:text-[20px] sm:text-[20px] lg:text-[20px] xsm:font-normal xl:text-[24px] md:text-[13px]">
+                  ₹{" "}
+                  {total.toLocaleString("en-IN", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                </p>
+              </div>
+
+              {/* GST Row */}
+              <div className="flex justify-between items-center">
+                <p className="text-gray-600 font-nu text-[1vw] 2xl:text-[15px] sm:text-[15px] xsm:text-[12px] lg:text-[12px] md:text-[12px]">
+                  GST
+                </p>
+                <p className="font-mons font-normal text-[1vw] 2xl:text-[15px] xsm:text-[12px] lg:text-[15px] md:text-[12px] text-gray-600">
+                  ₹{" "}
+                  {(total * 0.18).toLocaleString("en-IN", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                </p>
+              </div>
+              <div className="py-5">
+                <hr className=" border-y-1 border-[#EAEAEA] " />
+              </div>
+
+              {/* Total with GST */}
+              <div className="flex justify-between items-center">
+                <p className="font-serif font-normal text-green-600 text-[1vw] 2xl:text-[22px] sm:text-[17px] xsm:text-[17px] lg:text-[19px] md:text-[14px]">
+                  Grand Total
+                </p>
+                <p className="font-Gorditas font-normal text-green-600 text-[1.6vw] 2xl:text-[22px] xsm:text-[19px] lg:text-[19px] md:text-[14px] text-black] `font-normal">
+                  ₹{" "}
+                  {(total * 1.18).toLocaleString("en-IN", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                </p>
+              </div>
             </div>
+            <div>
+              <hr className=" border-y-1 border-[#EAEAEA] " />
+            </div>
+
             <div>
               <p className=" text-[1vw] text-[#1DBF73] xsm:font-normal 2xl:text-[16px]  xsm:text-[12px] sm:text-[12px] xl:text-[0.9rem] ">
                 By completing your purchase you agree to terms of services
@@ -424,11 +479,20 @@ function ShopingCart() {
             </div>
             {/* </div> */}
 
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <Link
                 to="/checkout"
                 className="mt-[1.6vw] xl:mt-0 font-nu text-[1.7vw] px-[4vw] py-[0.5vw] bg-[#1DBF73] text-[#fff] border-none rounded-full 2xl:text-[24px] capitalize xl:text-[22px] md:text-[13px] md:px-[2vw] xsm:py-2 xsm:px-8 xsm:text-[18px] sm:text-[18px]"
                 type=""
+              >
+                Checkout
+              </Link>
+            </div> */}
+
+            <div className="flex justify-center">
+              <Link
+                to="/checkout"
+                className="relative overflow-hidden mt-[1.6vw] xl:mt-0 font-nu text-[1.7vw] px-[4vw] py-[0.5vw] bg-[#1DBF73] text-[#fff] border-none rounded-full 2xl:text-[24px] capitalize xl:text-[22px] md:text-[13px] md:px-[2vw] xsm:py-2 xsm:px-8 xsm:text-[18px] sm:text-[18px] wave-btn"
               >
                 Checkout
               </Link>

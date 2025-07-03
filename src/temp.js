@@ -75,7 +75,10 @@ function ShopingCart() {
             Data?.map((item, index) => {
               return (
                 <>
-                  <div className="w-full bg-[#fff] border  border-[#858181] xsm:mx-0  px-6 shadow-xl rounded-xl xsm:p-2 sm:mx-0 md:p-2 mx-[2rem] py-5 sm:py-0 sm:px-1" key={index+"c1"}>
+                  <div
+                    className="w-full bg-[#fff] border  border-[#858181] xsm:mx-0  px-6 shadow-xl rounded-xl xsm:p-2 sm:mx-0 md:p-2 mx-[2rem] py-5 sm:py-0 sm:px-1"
+                    key={index + "c1"}
+                  >
                     <div
                       className="flex items-center xl:h-[18vh] h-[15vh] rounded-[1.2vw] xsm:h-[250px] 2xl:w-[900px] 2xl:h-[240px] md:h-[12vh] sm:h-[100px]  xsm:flex-col "
                       key={"cour" + index}
@@ -99,7 +102,10 @@ function ShopingCart() {
 
                             {/* sm screen */}
                             <p className="text-[1.5vw] md:text-[14px] font-semibold 2xl:text-[18px] xl:text-[24px] sm:text-[15px] xsm:text-[14px] xsm:font-normal hidden sm:block">
-                              {item?.course?.title?.split(":")[0] + " : " +item?.course?.title?.split(":")[0].slice(0,10) }..
+                              {item?.course?.title?.split(":")[0] +
+                                " : " +
+                                item?.course?.title?.split(":")[0].slice(0, 10)}
+                              ..
                             </p>
 
                             <p className="font-mons text-[1.2vw] font-semibold text-[black] xl:text-[18px] xl:font-normal 2xl:text-[20px] xsm:text-[20px] sm:text-[13px] xl:hidden md:hidden lg:hidden 2xl:hidden xsm:font-normal self-end">
@@ -225,30 +231,33 @@ function ShopingCart() {
         </div>
 
         {Data?.length > 0 && (
-          <div className="w-[26%] md:w-[27%]  h-max flex flex-col justify-around space-y-4 font-pop p-6 rounded-xl xsm:w-[100%] sm:w-[100%] sm:mt-4 xsm:px-3 xsm:space-y-1 lg:space-y-2 md:space-y-1 border xl:space-y-2
-           border-[#000]">
+          <div
+            className="w-[26%] md:w-[27%]  h-max flex flex-col justify-around space-y-4 font-pop p-6 rounded-xl xsm:w-[100%] sm:w-[100%] sm:mt-4 xsm:px-3 xsm:space-y-1 lg:space-y-2 md:space-y-1 border xl:space-y-2
+           border-[#000]"
+          >
             <h1 className="font-semibold text-[1.7vw] xl:text-[32px] 2xl:text-[24px] xsm:text-[32px] lg:text-[28px] md:text-[22px] sm:font-semibold sm:text-[32px] xsm:font-semibold font-pop">
-              Summary
+              Summary first
             </h1>
             <p className="font-nu font-semibold xl:font-normal text-[2vw] xl:text-[24px] 2xl:text-[24px] lg:text-[20px] sm:text-[24px] xsm:text-[24px] md:text-[15px] xsm:font-normal ">
               Original Price
             </p>
             {/* <div className="flex xsm:flex-col  justify-between"> */}
-            {
-              Data.map((item,index)=>(
-            <div className="flex justify-between items-center space-y-4 font-nu xl:space-y-0 xsm:space-y-0 sm:space-y-0 lg:space-y-1 xsm:px-2 md:pl-2  xl:pl-4 xsm:flex lg:pl-2 xsm:flex-row xsm:justify-between md:space-y-0 sm:px-4 " key={index+"c"}>
-              <p className="font-mons font-semibold xl:font-normal text-[1.7vw] 2xl:text-[20px] xsm:text-[15px] sm:text-[15px] xsm:font-normal xl:text-[18px] lg:text-[15px] md:text-[9px]">
-              {item?.course?.title.slice(0,20)}...
-              </p>
-              <p className="font-mons font-normal xl:font-normal text-[1.7vw] 2xl:text-[20px] lg:font-normal xsm:text-[19px] sm:text-[19px] xsm:font-normal xl:text-[24px] lg:text-[15px] md:text-[11px]">
-              ₹{item?.course?.base_price}
-              </p>
-            </div>
-              ))
-            }
+            {Data.map((item, index) => (
+              <div
+                className="flex justify-between items-center space-y-4 font-nu xl:space-y-0 xsm:space-y-0 sm:space-y-0 lg:space-y-1 xsm:px-2 md:pl-2  xl:pl-4 xsm:flex lg:pl-2 xsm:flex-row xsm:justify-between md:space-y-0 sm:px-4 "
+                key={index + "c"}
+              >
+                <p className="font-mons font-semibold xl:font-normal text-[1.7vw] 2xl:text-[20px] xsm:text-[15px] sm:text-[15px] xsm:font-normal xl:text-[18px] lg:text-[15px] md:text-[9px]">
+                  {item?.course?.title.slice(0, 20)}...
+                </p>
+                <p className="font-mons font-normal xl:font-normal text-[1.7vw] 2xl:text-[20px] lg:font-normal xsm:text-[19px] sm:text-[19px] xsm:font-normal xl:text-[24px] lg:text-[15px] md:text-[11px]">
+                  ₹{item?.course?.base_price}
+                </p>
+              </div>
+            ))}
             <div>
               <p className=" text-[1vw] text-[#1DBF73] 2xl:text-[16px] sm:text-[12px] xsm:text-[12px] xl:text-[0.9rem] xl:font-normal ">
-                Including all the taxes
+                Excluding all the taxes
               </p>
             </div>
             {/* </div> */}
@@ -289,9 +298,12 @@ function ShopingCart() {
       ) : (
         ""
       )}
-      <Toaster toastOptions={{
-         duration: 500,
-      }}  position="top-right" />
+      <Toaster
+        toastOptions={{
+          duration: 500,
+        }}
+        position="top-right"
+      />
     </div>
   );
 }
