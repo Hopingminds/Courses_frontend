@@ -1135,9 +1135,10 @@ export default function CDDetails() {
             w-[80%] sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4
             ${isOpen ? "translate-x-0" : "translate-x-full"}`}
           >
-            ``
             <div className="flex justify-between items-center p-4 border-b">
-              <h2 className="text-xl font-semibold">Transcript</h2>
+              <h2 className="text-xl uppercase text-green-600 underline-offset-1">
+                Transcript
+              </h2>
               <button onClick={closeModal} className="text-gray-500 text-2xl">
                 &times;
               </button>
@@ -1146,14 +1147,14 @@ export default function CDDetails() {
             <div className="p-4 pb-10 overflow-y-auto max-h-[calc(100vh-120px)]">
               {/* Modal Content */}
               {courseData?.curriculum?.length > 0 ? (
-                courseData.curriculum.map((chapter, cIndex) => (
-                  <div key={cIndex} className="mb-6">
-                    {chapter.lessons?.map((lesson, lIndex) => (
+                courseData.curriculum.map((chapter, cIndex) =>
+                  chapter.lessons?.map((lesson, lIndex) =>
+                    lesson._id === currentid ? (
                       <div
                         key={lIndex}
                         className="mb-4 pl-4 border-l-4 border-gray-200"
                       >
-                        <h4 className="text-md font-semibold mb-1 text-gray-800">
+                        <h4 className="text-md mb-1 text-green-400">
                           {lesson.lesson_name}
                         </h4>
                         {lesson.transcript ? (
@@ -1166,9 +1167,9 @@ export default function CDDetails() {
                           </p>
                         )}
                       </div>
-                    ))}
-                  </div>
-                ))
+                    ) : null
+                  )
+                )
               ) : (
                 <p className="text-gray-500 italic">
                   No curriculum data found.
