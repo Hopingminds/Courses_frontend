@@ -77,8 +77,7 @@
     "typewriter-effect": "^2.21.0",
     "volkeno-react-country-state-city": "^1.0.0",
     "web-vitals": "^2.1.4",
-    "xlsx": "^0.18.5",
-    "youtube-transcript": "^1.2.1"
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",

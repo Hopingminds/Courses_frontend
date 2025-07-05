@@ -64,14 +64,14 @@ const Footer = () => {
                 >
                   Terms and Conditions
                 </Link>
-                <Link
+                {/* <Link
                   to="/pap"
                   className={`${
                     pathname == "/pap" ? "text-[#1dbf73]" : "text-white"
                   } text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]`}
                 >
                   Pay After Placement
-                </Link>
+                </Link> */}
                 {/* <Link to='/career' className='text-white text-[16px] hover:text-[#1dbf73] font-pop xsm:text-[11px] sm:text-[9px] md:text-[10px]'>Career</Link> */}
                 <Link
                   to="/about"
