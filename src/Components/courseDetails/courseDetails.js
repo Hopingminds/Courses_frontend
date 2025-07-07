@@ -13,7 +13,7 @@ import { FaPlay } from "react-icons/fa";
 import Draggable from "react-draggable";
 
 import NotesModal from "./NotesModal.jsx";
-import { YoutubeTranscript } from "youtube-transcript";
+// import { YoutubeTranscript } from "youtube-transcript";
 import { MdClose } from "react-icons/md";
 import { TbWindowMaximize } from "react-icons/tb";
 export default function CDDetails() {
@@ -375,11 +375,11 @@ export default function CDDetails() {
     return match ? `https://www.youtube.com/embed/${match[1]}` : url;
   };
 
-  const fetchTranscript = async (videoUrl) => {
-    const videoId = getYouTubeVideoID(videoUrl); // you need to extract this
-    const transcript = await YoutubeTranscript.fetchTranscript(videoId);
-    return transcript; // array of { text, start, duration }
-  };
+  // const fetchTranscript = async (videoUrl) => {
+  //   const videoId = getYouTubeVideoID(videoUrl); // you need to extract this
+  //   const transcript = await YoutubeTranscript.fetchTranscript(videoId);
+  //   return transcript; // array of { text, start, duration }
+  // };
 
   // Helper to extract video ID from URL
   const getYouTubeVideoID = (url) => {
