@@ -281,6 +281,7 @@ function ShopingCart() {
                               <img
                                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-3 md:w-3"
                                 src="../Icons/design.svg"
+                                alt="imgae not found"
                               />
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                 {item?.internship?.category}
@@ -290,6 +291,7 @@ function ShopingCart() {
                               <img
                                 className="w-[16px] h-[16px] xsm:w-[8px] xsm:h-[8px] md:h-2 md:w-2"
                                 src="../Icons/clock2.svg"
+                                alt="imgae not found"
                               />
                               <p className="font-pop text-[16px] font-medium text-[#696984] xsm:text-[5px] md:text-[6px]">
                                 {item?.internship?.duration / 60} Hours
@@ -451,7 +453,7 @@ function ShopingCart() {
                 </p>
               </div>
               <div className="py-5">
-                <hr className=" border-y-1 border-[#EAEAEA] " />
+                <hr className=" border-y-1 border-[#EAEAEA]" />
               </div>
 
               {/* Total with GST */}

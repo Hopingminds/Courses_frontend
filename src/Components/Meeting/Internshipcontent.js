@@ -371,9 +371,9 @@ export default function Internshipcontent({
                                               <div className="relative">
                                                 <button className="flex gap-2 align-middle justify-self-end w-fit items-center px-2 mt-3 realtive xsm:mt-2">
                                                   {/* <TiFolderOpen className="xsm:w-3 xsm:h-3 md:w-4 md:h-4" /> */}
-                                                  <p className="text-[12px] xsm:text-[6px] sm:text-[10px] md:text-[10px]">
+                                                  {/* <p className="text-[12px] xsm:text-[6px] sm:text-[10px] md:text-[10px]">
                                                     Resources
-                                                  </p>
+                                                  </p> */}
                                                 </button>
 
                                                 <ul className="list-none flex items-center bg-[#F1FFF8] text-sm  py-1 z-40 gap-1 text-[12px]">

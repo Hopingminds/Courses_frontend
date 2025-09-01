@@ -16,6 +16,7 @@ import NotesModal from "./NotesModal.jsx";
 // import { YoutubeTranscript } from "youtube-transcript";
 import { MdClose } from "react-icons/md";
 import { TbWindowMaximize } from "react-icons/tb";
+import axios from "axios";
 export default function CDDetails() {
   const [maxWatched, setMaxWatched] = useState(0); // Maximum watched time
   const [isSeeking, setIsSeeking] = useState(false);
@@ -63,6 +64,84 @@ export default function CDDetails() {
   const [currentNotesUrl, setCurrentNotesUrl] = useState("");
   const [playbackPositions, setPlaybackPositions] = useState({});
   const [lastPlayerType, setLastPlayerType] = useState("");
+
+  const [selectedLanguage, setSelectedLanguage] = useState("original");
+  const [translatedTranscript, setTranslatedTranscript] = useState("");
+  const [currentLesson, setCurrentLesson] = useState(null);
+  const [isTranslating, setIsTranslating] = useState(false);
+
+  // Helper function to translate text
+
+  const translateText = async (text, targetLang, sourceLang = "auto") => {
+    if (!text || targetLang === "original") return text;
+
+    try {
+      const res = await fetch(
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(
+          text
+        )}`
+      );
+
+      const data = await res.json();
+      return data[0].map((item) => item[0]).join("");
+    } catch (error) {
+      console.error("Google Translate API Error:", error);
+      return text;
+    }
+  };
+
+  const handleLanguageChange = async (lang) => {
+    setSelectedLanguage(lang);
+
+    if (lang === "original") {
+      return;
+    }
+
+    setIsTranslating(true);
+
+    const text = currentLesson?.transcript || "";
+    const isHindi = /[\u0900-\u097F]/.test(text);
+    const sourceLang = isHindi ? "hi" : "en";
+
+    try {
+      const translated = await translateText(text, lang, sourceLang);
+      setTranslatedTranscript(translated);
+    } catch (err) {
+      setTranslatedTranscript(text); // fallback
+      console.error("Translation failed", err);
+    } finally {
+      setIsTranslating(false);
+    }
+  };
+
+  // Find the current lesson
+  useEffect(() => {
+    if (courseData?.curriculum?.length > 0) {
+      for (const chapter of courseData.curriculum) {
+        for (const lesson of chapter.lessons || []) {
+          if (lesson._id === currentid) {
+            setCurrentLesson(lesson);
+            return;
+          }
+        }
+      }
+    }
+  }, [courseData, currentid]);
+
+  // Translate transcript if language changes
+  useEffect(() => {
+    const fetchTranslation = async () => {
+      if (currentLesson?.transcript) {
+        const translated = await translateText(
+          currentLesson.transcript,
+          selectedLanguage
+        );
+        setTranslatedTranscript(translated);
+      }
+    };
+
+    fetchTranslation();
+  }, [selectedLanguage, currentLesson]);
 
   useEffect(() => {
     return () => {
@@ -251,6 +330,82 @@ export default function CDDetails() {
     return temp;
   };
 
+  // ...............................transcript part ......................................
+
+  const parseTranscript = (text) => {
+    if (!text) return [];
+
+    // Split transcript into lines and parse timestamps
+    const lines = text.split("\n");
+    return lines.map((line) => {
+      const timeMatch = line.match(/^(\d{1,2}:\d{2})/);
+      if (timeMatch) {
+        return {
+          time: timeMatch[1],
+          text: line.replace(timeMatch[1], "").trim(),
+          timestamp: convertTimeToSeconds(timeMatch[1]),
+        };
+      }
+      return {
+        time: "",
+        text: line.trim(),
+        timestamp: 0,
+      };
+    });
+  };
+
+  const convertTimeToSeconds = (timeString) => {
+    const [minutes, seconds] = timeString.split(":").map(Number);
+    return minutes * 60 + seconds;
+  };
+
+  const handleTimestampClick = (seconds) => {
+    if (playerRef.current) {
+      playerRef.current.seekTo(seconds, "seconds");
+      setPlaying(true);
+    }
+    if (playerRef2.current) {
+      playerRef2.current.seekTo(seconds, "seconds");
+      setPlaying(true);
+    }
+  };
+
+  // Add state for parsed transcript
+  const [parsedTranscript, setParsedTranscript] = useState([]);
+  const [currentTranscriptIndex, setCurrentTranscriptIndex] = useState(0);
+
+  // Update when currentLesson changes
+  useEffect(() => {
+    if (currentLesson?.transcript) {
+      const parsed = parseTranscript(currentLesson.transcript);
+      setParsedTranscript(parsed);
+    }
+  }, [currentLesson]);
+
+  // Add effect to track current transcript position based on video time
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (playerRef.current && !showSmallvideo) {
+        const currentTime = playerRef.current.getCurrentTime();
+        updateActiveTranscriptLine(currentTime);
+      } else if (playerRef2.current && showSmallvideo) {
+        const currentTime = playerRef2.current.getCurrentTime();
+        updateActiveTranscriptLine(currentTime);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [showSmallvideo]);
+
+  const updateActiveTranscriptLine = (currentTime) => {
+    for (let i = parsedTranscript.length - 1; i >= 0; i--) {
+      if (parsedTranscript[i].timestamp <= currentTime) {
+        setCurrentTranscriptIndex(i);
+        break;
+      }
+    }
+  };
+
   let totalLessons = countLessons();
   // useEffect hook to add event listeners when the component mounts
   useEffect(() => {
@@ -382,11 +537,11 @@ export default function CDDetails() {
   // };
 
   // Helper to extract video ID from URL
-  const getYouTubeVideoID = (url) => {
-    const regex = /(?:v=|\/)([0-9A-Za-z_-]{11}).*/;
-    const match = url.match(regex);
-    return match ? match[1] : null;
-  };
+  // const getYouTubeVideoID = (url) => {
+  //   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11}).*/;
+  //   const match = url.match(regex);
+  //   return match ? match[1] : null;
+  // };
 
   const handleBannerClick = () => {
     setShowBanner(false);
@@ -632,7 +787,7 @@ export default function CDDetails() {
 
   return (
     <>
-      <div className="flex justify-between gap-5">
+      <div className="flex justify-between w-full h-max xsm:flex-col sm:flex-col">
         {/* side menu */}
         <div className="w-[20%] z-50 sticky top-20 h-max xsm:hidden sm:hidden">
           {/* <SideBar /> */}
@@ -640,7 +795,8 @@ export default function CDDetails() {
           <DrawerNavbar />
         </div>
 
-        <div className="w-[85%] xsm:w-full sm:w-full">
+        {/* <div className="w-[85%] xsm:w-full sm:w-full"> */}
+        <div className="w-full xsm:w-full sm:w-full justify-between">
           <div className="CCD-container pb-10 pr-16  xsm:h-[42vh] sm:h-[42vh] sm:px-4 md:pr-[5%] md:h-[50vh] xsm:px-4">
             {/* {showSmallvideo && (
               <Draggable>
@@ -762,7 +918,7 @@ export default function CDDetails() {
             )}
             {window.innerWidth <= 720 ? (
               <FiMenu
-                className="absolute top-14 right-1 "
+                className="absolute top-14 right-1 z-999"
                 onClick={() => setMenu(true)}
                 size={24}
               />
@@ -872,7 +1028,7 @@ export default function CDDetails() {
                       //   />
                       // </div>
 
-                      <div className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-2xl">
+                      <div className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-2xl md:mt-0 mt-10">
                         {/* <ReactPlayer
                           onContextMenu={handleContextMenu}
                           className="absolute top-0 left-0 rounded-[18px]"
@@ -1011,7 +1167,7 @@ export default function CDDetails() {
                       //   />
                       // </div>
                     )}
-                    <div className="font-bold xsm:h-[10vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500">
+                    <div className="font-bold h-[10vh] xsm:h-[5vh] xsm:mt-10 top-[15vh] sm:h-[10vh] lg:items-start xl:items-start 2xl:items-start text-sm xsm:text-[10px] sm:text-[10px] flex justify-center xsm:py-5 sm:py-5 xsm:mb-5 sm:mb-5 xsm:w-full sm:w-full uppercase text-green-500">
                       {activeindex}
                     </div>
                     <div
@@ -1130,51 +1286,112 @@ export default function CDDetails() {
           )}
 
           {/* Slide-in Modal */}
-          <div
-            className={`fixed top-10 mt-10 right-0 h-full bg-white shadow-lg z-50 transform transition-transform duration-300
-            w-[80%] sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4
-            ${isOpen ? "translate-x-0" : "translate-x-full"}`}
-          >
-            <div className="flex justify-between items-center p-4 border-b">
-              <h2 className="text-xl uppercase text-green-600 underline-offset-1">
-                Transcript
-              </h2>
-              <button onClick={closeModal} className="text-gray-500 text-2xl">
-                &times;
-              </button>
-            </div>
-            {/* Add scrolling here */}
-            <div className="p-4 pb-10 overflow-y-auto max-h-[calc(100vh-120px)]">
-              {/* Modal Content */}
-              {courseData?.curriculum?.length > 0 ? (
-                courseData.curriculum.map((chapter, cIndex) =>
-                  chapter.lessons?.map((lesson, lIndex) =>
-                    lesson._id === currentid ? (
-                      <div
-                        key={lIndex}
-                        className="mb-4 pl-4 border-l-4 border-gray-200"
-                      >
-                        <h4 className="text-md mb-1 text-green-400">
-                          {lesson.lesson_name}
-                        </h4>
-                        {lesson.transcript ? (
-                          <p className="text-gray-700 whitespace-pre-wrap">
-                            {lesson.transcript}
-                          </p>
-                        ) : (
-                          <p className="text-gray-400 italic">
-                            Transcript not available.
-                          </p>
-                        )}
-                      </div>
-                    ) : null
-                  )
-                )
-              ) : (
-                <p className="text-gray-500 italic">
-                  No curriculum data found.
-                </p>
+          <div className="p-4 max-h-[80vh] overflow-y-auto">
+            {/* Overlay */}
+            {isOpen && (
+              <div
+                onClick={closeModal}
+                className="fixed inset-0 bg-black bg-opacity-30 z-40"
+              ></div>
+            )}
+
+            {/* Slide-in Modal */}
+            <div
+              className={`fixed top-10 mt-10 right-0 h-full bg-white shadow-lg z-50 transform transition-transform duration-300
+    w-[80%] sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4
+    ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+            >
+              {/* Loader Overlay */}
+              {isTranslating && (
+                <div className="absolute inset-0 z-50 bg-white bg-opacity-70 flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
+                </div>
               )}
+
+              {/* Header */}
+              <div className="flex justify-between items-center p-4 border-b">
+                <h2 className="text-xl uppercase text-green-600 underline-offset-1">
+                  Transcript
+                </h2>
+                <button onClick={closeModal} className="text-gray-500 text-2xl">
+                  &times;
+                </button>
+              </div>
+
+              {/* Language Selector */}
+              {/* <div className="p-4 flex justify-end gap-2">
+                {[
+                  { label: "Original", value: "original" },
+                  { label: "Hindi", value: "hi" },
+                  { label: "English", value: "en" },
+                  { label: "Punjabi", value: "pa" },
+                ].map((lang) => (
+                  <button
+                    key={lang.value}
+                    onClick={() => handleLanguageChange(lang.value)}
+                    className={`px-3 py-1 text-sm rounded ${
+                      selectedLanguage === lang.value
+                        ? "bg-green-600 text-white"
+                        : "bg-gray-200 text-gray-800"
+                    }`}
+                  >
+                    {lang.label}
+                  </button>
+                ))}
+              </div> */}
+
+              {/* Modal Content */}
+              <div className="p-4 pb-10 overflow-y-auto max-h-[calc(100vh-180px)]">
+                {currentLesson ? (
+                  <div className="mb-4 pl-4 border-l-4 border-gray-200">
+                    <h4 className="text-md mb-1 text-green-400">
+                      {currentLesson.lesson_name}
+                    </h4>
+
+                    {parsedTranscript.length > 0 ? (
+                      <div className="text-gray-700 space-y-2">
+                        {parsedTranscript.map((line, idx) => {
+                          const isActive = idx === currentTranscriptIndex;
+                          return (
+                            <div
+                              key={idx}
+                              className={`flex items-start gap-3  my-0 rounded-md cursor-pointer transition-colors *:
+                              
+                                ${
+                                  isActive
+                                    ? "bg-blue-100 border-green-500 p-2"
+                                    : "hover:bg-gray-100 p-2 "
+                                }`}
+                              onClick={() =>
+                                line.timestamp &&
+                                handleTimestampClick(line.timestamp)
+                              }
+                            >
+                              {/* Time */}
+                              {line.time && (
+                                <span className="font-bold text-green-600 hover:underline">
+                                  {line.time}
+                                </span>
+                              )}
+
+                              {/* Text */}
+                              <span className="text-gray-700">{line.text}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <p className="text-gray-400 italic">
+                        Transcript not available.
+                      </p>
+                    )}
+                  </div>
+                ) : (
+                  <p className="text-gray-500 italic">
+                    No curriculum data found.
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>

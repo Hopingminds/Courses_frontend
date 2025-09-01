@@ -58,18 +58,22 @@ const CartCheckout = () => {
         useEffect(() => {
         const calculated = (total - discountPrice).toFixed(2);
         setTotalwithgst(calculated);
+        console.log("Total with total:", total);
+       
+        console.log("Total with totalwithgst:", totalwithgst);
+
         }, [total, discountPrice, gst, sgst]); // dependencies
 
-        console.log("Total with GST:", totalwithgst);
+        // console.log("Total with GST:", totalwithgst);
 
-        useEffect(() => {
-          const discountedTotal = total - discountPrice;
-          const gst = discountedTotal * 0.18;
-          const finalAmount = discountedTotal + gst;
+       useEffect(() => {
+         const discountedTotal = total - discountPrice;
+         const gst = discountedTotal * 0.18;
+         const finalAmount = discountedTotal + gst;
 
-          setGstAmount(gst.toFixed(2));
-          setTotalwithgst(finalAmount.toFixed(2));
-        }, [total, discountPrice]);
+         setGstAmount(parseFloat(gst.toFixed(2)));
+         setTotalwithgst(parseFloat(finalAmount.toFixed(2)));
+       }, [total, discountPrice]);
 
         console.log({
           total,
@@ -148,10 +152,63 @@ const CartCheckout = () => {
   //   setFinalPrice(price - disprice);
   // }
 
+  // function calculateTotals(data, internshipPayment) {
+  //   let price = 0;
+  //   let disprice = 0;
+
+  //   data?.courses?.forEach((item) => {
+  //     let basePrice = item.course.base_price;
+  //     let discountPercentage = item.course.discount_percentage;
+  //     let discountedPrice = basePrice * (1 - discountPercentage / 100);
+  //     price += basePrice;
+  //     disprice += basePrice - discountedPrice;
+  //   });
+
+  //   data?.internships?.forEach((item) => {
+  //     let basePrice = item.internship.base_price;
+  //     let discountPercentage = item.internship.discount_percentage;
+  //     let discountedPrice = basePrice * (1 - discountPercentage / 100);
+  //     price += basePrice;
+  //     disprice += basePrice - discountedPrice;
+  //   });
+
+  //   settotal(price);
+  //   setDiscountPrice(disprice);
+
+  //   const priceAfterDiscount = price - disprice;
+  //   const priceAfterGST = priceAfterDiscount * 1.18;
+  //   const gstAmount = priceAfterGST - priceAfterDiscount;
+
+  //   setSgst(gstAmount / 2);
+  //   setGst(gstAmount / 2);
+  //   setFinalPrice(priceAfterDiscount);
+
+  //   // Calculate registration fee total (for internships)
+  //   const registrationFee =
+  //     data?.internships && data?.internships.length > 0
+  //       ? data.internships[0].internship.registration_price *
+  //         data.internships.length
+  //       : 0;
+
+  //   // Calculate grand total depending on internshipPayment choice
+  //   let grandTotal = 0;
+  //   if (internshipPayment === "registration_amount") {
+  //     grandTotal = registrationFee + gstAmount;
+  //   } else if (internshipPayment === "totalamount") {
+  //     grandTotal = priceAfterDiscount + gstAmount;
+  //   } else {
+  //     grandTotal = priceAfterDiscount + gstAmount; // fallback default
+  //   }
+
+  //   setGrandTotal(grandTotal);
+  // }
+  
+
   function calculateTotals(data, internshipPayment) {
     let price = 0;
     let disprice = 0;
 
+    // 🔹 Courses calculation
     data?.courses?.forEach((item) => {
       let basePrice = item.course.base_price;
       let discountPercentage = item.course.discount_percentage;
@@ -160,6 +217,7 @@ const CartCheckout = () => {
       disprice += basePrice - discountedPrice;
     });
 
+    // 🔹 Internships calculation
     data?.internships?.forEach((item) => {
       let basePrice = item.internship.base_price;
       let discountPercentage = item.internship.discount_percentage;
@@ -171,34 +229,40 @@ const CartCheckout = () => {
     settotal(price);
     setDiscountPrice(disprice);
 
+    // 🔹 Price after discount
     const priceAfterDiscount = price - disprice;
+
+    // 🔹 Add 18% GST
     const priceAfterGST = priceAfterDiscount * 1.18;
     const gstAmount = priceAfterGST - priceAfterDiscount;
 
     setSgst(gstAmount / 2);
     setGst(gstAmount / 2);
-    setFinalPrice(priceAfterDiscount);
 
-    // Calculate registration fee total (for internships)
+    // 🔹 Store both versions
+    setFinalPrice(priceAfterDiscount); // (without GST - jaise tum pehle use kar rahe the)
+    setTotalwithgst(priceAfterGST); // (with GST - payment gateway ke liye)
+
+    // 🔹 Registration fee for internships
     const registrationFee =
       data?.internships && data?.internships.length > 0
         ? data.internships[0].internship.registration_price *
           data.internships.length
         : 0;
 
-    // Calculate grand total depending on internshipPayment choice
+    // 🔹 Grand total based on internshipPayment type
     let grandTotal = 0;
     if (internshipPayment === "registration_amount") {
       grandTotal = registrationFee + gstAmount;
     } else if (internshipPayment === "totalamount") {
-      grandTotal = priceAfterDiscount + gstAmount;
+      grandTotal = priceAfterGST; // 👈 GST included
     } else {
-      grandTotal = priceAfterDiscount + gstAmount; // fallback default
+      grandTotal = priceAfterGST; // fallback default
     }
 
     setGrandTotal(grandTotal);
   }
-  
+
 
 
   useEffect(() => {
@@ -281,109 +345,135 @@ const CartCheckout = () => {
   // console.log(total)
   const handlePaymentChange = (value) => {
     setInternshipPayment(value);
+    
   };
-  const handlePayment = async () => {
-    console.log("Selected Payment Option:", internshipPayment);
-    const userData = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
 
-    // Validate inputs
-    // if (!inputData.name) {
-    //   setwarnings(prevWarnings => ({ ...prevWarnings, name: true }));
-    //   return; // Early return on missing name
-    // }
-    if (!inputData.address) {
-      setwarnings((prevWarnings) => ({ ...prevWarnings, address: true }));
-      return; // Early return on missing address
-    }
-    if (!inputData.zip) {
-      setwarnings((prevWarnings) => ({ ...prevWarnings, zip: true }));
-      return; // Early return on missing zip
-    }
-    if (!country) {
-      setwarnings((prevWarnings) => ({ ...prevWarnings, country: true }));
-      toast.error("Select country");
-      return; // Early return on missing country
-    }
-    if (!state) {
-      setwarnings((prevWarnings) => ({ ...prevWarnings, state: true }));
-      toast.error("Select State");
-      return; // Early return on missing state
-    }
 
-    function getLast10Digits(number) {
-      // Using modulus to get the last 10 digits
-      return number % 10000000000;
-    }
+  // const handlePayment = async () => {
+  //   console.log("Selected Payment Option:", internshipPayment);
+  //   const userData = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
 
-    let number = userDetail?.phone;
-    let last10Digits = getLast10Digits(number);
+  //   // Validate inputs
+  //   // if (!inputData.name) {
+  //   //   setwarnings(prevWarnings => ({ ...prevWarnings, name: true }));
+  //   //   return; // Early return on missing name
+  //   // }
+  //   if (!inputData.address) {
+  //     setwarnings((prevWarnings) => ({ ...prevWarnings, address: true }));
+  //     return; // Early return on missing address
+  //   }
+  //   if (!inputData.zip) {
+  //     setwarnings((prevWarnings) => ({ ...prevWarnings, zip: true }));
+  //     return; // Early return on missing zip
+  //   }
+  //   if (!country) {
+  //     setwarnings((prevWarnings) => ({ ...prevWarnings, country: true }));
+  //     toast.error("Select country");
+  //     return; // Early return on missing country
+  //   }
+  //   if (!state) {
+  //     setwarnings((prevWarnings) => ({ ...prevWarnings, state: true }));
+  //     toast.error("Select State");
+  //     return; // Early return on missing state
+  //   }
 
-    const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
-      userData?.userID
-    }&email=${userDetail?.email}&phone=${
-      last10Digits || "0000000000"
-    }&name=${userDetail?.name?.replace(
-      /\s/g,
-      "%20"
-    )}&address=${inputData.address.replace(/\s/g, "%20")}&zip=${
-      inputData.zip
-    }&country=${country?.name?.replace(
-      /\s/g,
-      "%20"
-    )}&state=${state?.name.replace(/\s/g, "%20")}&gstNumber=${
-      inputData?.gstnumber || "000"
-    }&promoCode=${coupon}&internshipPayment=${internshipPayment}`;
-    // console.log(paymentUrl)
-    async function handlePaymentUrl() {
-      try {
-        const res = await axios.get(paymentUrl);
+  //   function getLast10Digits(number) {
+  //     // Using modulus to get the last 10 digits
+  //     return number % 10000000000;
+  //   }
 
-        if (res.status === 200) {
-          toast.success("Please confirm your purchase");
-          setPaymentLink(res.data.payment_link);
-          setShowModal(true);
-        } else {
-          toast.error("Unexpected response status.");
-          setPaymentLink(null);
-        }
-      } catch (error) {
-        setPaymentLink(null);
-        if (error.response) {
-          // Server responded with a status other than 200
-          if (error.response.status === 429) {
-            toast.error("Too many requests. Please try again later.");
-          } else {
-            toast.error(
-              `Error: ${error.response.status} - ${error.response.data.message}`
-            );
-          }
-        } else if (error.request) {
-          // Request was made but no response was received
-          toast.error("Network error. Please check your internet connection.");
-        } else {
-          // Something happened in setting up the request
-          toast.error(`Error: ${error.message}`);
-        }
-      }
-    }
-    handlePaymentUrl();
-    // else {
-    //   const Linksend = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
-    //     userData?.userID
-    //   }&email=${userDetail?.email}&phone=${
-    //     userDetail?.phone
-    //   }&name=${userDetail?.name?.replace(
-    //     /\s/g,
-    //     "%20"
-    //   )}&address=${inputData.address.replace(/\s/g, "%20")}&zip=${
-    //     inputData.zip
-    //   }&country=${country?.name?.replace(
-    //     /\s/g,
-    //     "%20"
-    //   )}&state=${state?.name.replace(/\s/g, "%20")}&gstNumber=${
-    //     inputData?.gstnumber
-    //   }`;
-  };
+  //   let number = userDetail?.phone;
+  //   let last10Digits = getLast10Digits(number);
+
+  //   // const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
+  //   //   userData?.userID
+  //   // }&email=${userDetail?.email}&phone=${
+  //   //   last10Digits || "0000000000"
+  //   // }&name=${userDetail?.name?.replace(
+  //   //   /\s/g,
+  //   //   "%20"
+  //   // )}&address=${inputData.address.replace(/\s/g, "%20")}&zip=${
+  //   //   inputData.zip
+  //   // }&country=${country?.name?.replace(
+  //   //   /\s/g,
+  //   //   "%20"
+  //   // )}&state=${state?.name.replace(/\s/g, "%20")}&gstNumber=${
+  //   //   inputData?.gstnumber || "000"
+  //   // }&promoCode=${coupon}&internshipPayment=${internshipPayment}`;
+
+ 
+
+  //   // console.log(paymentUrl)
+
+  //   const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
+  //     userData?.userID
+  //   }&email=${userDetail?.email}&phone=${
+  //     last10Digits || "0000000000"
+  //   }&name=${userDetail?.name?.replace(
+  //     /\s/g,
+  //     "%20"
+  //   )}&address=${inputData.address.replace(/\s/g, "%20")}&zip=${
+  //     inputData.zip
+  //   }&country=${country?.name?.replace(
+  //     /\s/g,
+  //     "%20"
+  //   )}&state=${state?.name.replace(/\s/g, "%20")}&gstNumber=${
+  //     inputData?.gstnumber || "000"
+  //   }&promoCode=${coupon}&internshipPayment=${internshipPayment}&amount=${totalwithgst}`;
+
+
+    
+
+  //   async function handlePaymentUrl() {
+  //     try {
+  //       const res = await axios.get(paymentUrl);
+
+  //       if (res.status === 200) {
+  //         toast.success("Please confirm your purchase");
+  //         setPaymentLink(res.data.payment_link);
+  //         setShowModal(true);
+  //       } else {
+  //         toast.error("Unexpected response status.");
+  //         setPaymentLink(null);
+  //       }
+  //     } catch (error) {
+  //       setPaymentLink(null);
+  //       if (error.response) {
+  //         // Server responded with a status other than 200
+  //         if (error.response.status === 429) {
+  //           toast.error("Too many requests. Please try again later.");
+  //         } else {
+  //           toast.error(
+  //             `Error: ${error.response.status} - ${error.response.data.message}`
+  //           );
+  //         }
+  //       } else if (error.request) {
+  //         // Request was made but no response was received
+  //         toast.error("Network error. Please check your internet connection.");
+  //       } else {
+  //         // Something happened in setting up the request
+  //         toast.error(`Error: ${error.message}`);
+  //       }
+  //     }
+  //   }
+  //   handlePaymentUrl();
+  //   // else {
+  //   //   const Linksend = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
+  //   //     userData?.userID
+  //   //   }&email=${userDetail?.email}&phone=${
+  //   //     userDetail?.phone
+  //   //   }&name=${userDetail?.name?.replace(
+  //   //     /\s/g,
+  //   //     "%20"
+  //   //   )}&address=${inputData.address.replace(/\s/g, "%20")}&zip=${
+  //   //     inputData.zip
+  //   //   }&country=${country?.name?.replace(
+  //   //     /\s/g,
+  //   //     "%20"
+  //   //   )}&state=${state?.name.replace(/\s/g, "%20")}&gstNumber=${
+  //   //     inputData?.gstnumber
+  //   //   }`;
+  // };
 
 
   
@@ -449,6 +539,185 @@ const CartCheckout = () => {
 //       console.log(error);
 //     }
 //   };
+
+
+// const handlePayment = async () => {
+//   console.log("Selected Payment Option:", internshipPayment);
+
+//   const userData = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
+
+//   // ---- Validation ----
+//   if (!inputData.address) {
+//     setwarnings((prevWarnings) => ({ ...prevWarnings, address: true }));
+//     return;
+//   }
+//   if (!inputData.zip) {
+//     setwarnings((prevWarnings) => ({ ...prevWarnings, zip: true }));
+//     return;
+//   }
+//   if (!country) {
+//     setwarnings((prevWarnings) => ({ ...prevWarnings, country: true }));
+//     toast.error("Select country");
+//     return;
+//   }
+//   if (!state) {
+//     setwarnings((prevWarnings) => ({ ...prevWarnings, state: true }));
+//     toast.error("Select State");
+//     return;
+//   }
+
+//   // ---- Phone number format ----
+//   function getLast10Digits(number) {
+//     return number % 10000000000;
+//   }
+//   let number = userDetail?.phone;
+//   let last10Digits = getLast10Digits(number);
+
+//   // ---- Amount calculation with GST ----
+//   const discountedTotal = total - discountPrice;
+//   const gst = discountedTotal * 0.18;
+//   const finalAmount = (discountedTotal + gst).toFixed(2);
+
+//   console.log("➡️ Total without GST:", discountedTotal);
+//   console.log("➡️ GST (18%):", gst);
+//   console.log("✅ Final Amount going to gateway:", finalAmount);
+
+//   // ---- Payment URL with finalAmount ----
+//   const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
+//     userData?.userID
+//   }&email=${userDetail?.email}&phone=${
+//     last10Digits || "0000000000"
+//   }&name=${userDetail?.name?.replace(
+//     /\s/g,
+//     "%20"
+//   )}&address=${inputData.address.replace(/\s/g, "%20")}&zip=${
+//     inputData.zip
+//   }&country=${country?.name?.replace(/\s/g, "%20")}&state=${state?.name.replace(
+//     /\s/g,
+//     "%20"
+//   )}&gstNumber=${
+//     inputData?.gstnumber || "000"
+//   }&promoCode=${coupon}&internshipPayment=${internshipPayment}&amount=${finalAmount}`;
+
+//   // ---- API Call ----
+//   try {
+//     const res = await axios.get(paymentUrl);
+
+//     if (res.status === 200) {
+//       toast.success("Please confirm your purchase");
+//       setPaymentLink(res.data.payment_link);
+//       setShowModal(true);
+//     } else {
+//       toast.error("Unexpected response status.");
+//       setPaymentLink(null);
+//     }
+//   } catch (error) {
+//     setPaymentLink(null);
+//     if (error.response) {
+//       if (error.response.status === 429) {
+//         toast.error("Too many requests. Please try again later.");
+//       } else {
+//         toast.error(
+//           `Error: ${error.response.status} - ${error.response.data.message}`
+//         );
+//       }
+//     } else if (error.request) {
+//       toast.error("Network error. Please check your internet connection.");
+//     } else {
+//       toast.error(`Error: ${error.message}`);
+//     }
+//   }
+// };
+
+
+const handlePayment = async () => {
+  console.log("Selected Payment Option:", internshipPayment);
+
+  const userData = jwtDecode(localStorage.getItem("COURSES_USER_TOKEN"));
+
+  // ---- Validation ----
+  if (!inputData.address) {
+    setwarnings((prevWarnings) => ({ ...prevWarnings, address: true }));
+    return;
+  }
+  if (!inputData.zip) {
+    setwarnings((prevWarnings) => ({ ...prevWarnings, zip: true }));
+    return;
+  }
+  if (!country) {
+    setwarnings((prevWarnings) => ({ ...prevWarnings, country: true }));
+    toast.error("Select country");
+    return;
+  }
+  if (!state) {
+    setwarnings((prevWarnings) => ({ ...prevWarnings, state: true }));
+    toast.error("Select State");
+    return;
+  }
+
+  // ---- Phone number format ----
+  function getLast10Digits(number) {
+    return number % 10000000000;
+  }
+  let number = userDetail?.phone;
+  let last10Digits = getLast10Digits(number);
+
+  // ---- Amount calculation with GST ----
+  const discountedTotal = total - discountPrice; // base price
+  const gst = discountedTotal * 0.18; // 18% GST
+  const finalAmount = (discountedTotal + gst).toFixed(2); // ✅ GST included
+
+  console.log("➡️ Total without GST:", discountedTotal);
+  console.log("➡️ GST (18%):", gst.toFixed(2));
+  console.log("✅ Final Subtotal (with GST) going to gateway:", finalAmount);
+
+  // ---- Payment URL (send subtotal with GST) ----
+  const paymentUrl = `https://payme.hopingminds.com/api/v1/make-payment?userID=${
+    userData?.userID
+  }&email=${userDetail?.email}&phone=${
+    last10Digits || "0000000000"
+  }&name=${encodeURIComponent(userDetail?.name)}&address=${encodeURIComponent(
+    inputData.address
+  )}&zip=${inputData.zip}&country=${encodeURIComponent(
+    country?.name
+  )}&state=${encodeURIComponent(state?.name)}&gstNumber=${
+    inputData?.gstnumber || "000"
+  }&promoCode=${coupon}&internshipPayment=${internshipPayment}&subtotal=${finalAmount}`;
+  // 👆 amount ki jagah sirf subtotal send ho raha hai (GST included)
+
+  console.log("Payment URL:", paymentUrl);
+
+  // ---- API Call ----
+  try {
+    const res = await axios.get(paymentUrl);
+
+    if (res.status === 200) {
+      toast.success("Please confirm your purchase");
+      setPaymentLink(res.data.payment_link);
+      setShowModal(true);
+    } else {
+      toast.error("Unexpected response status.");
+      setPaymentLink(null);
+    }
+  } catch (error) {
+    setPaymentLink(null);
+    if (error.response) {
+      if (error.response.status === 429) {
+        toast.error("Too many requests. Please try again later.");
+      } else {
+        toast.error(
+          `Error: ${error.response.status} - ${error.response.data.message}`
+        );
+      }
+    } else if (error.request) {
+      toast.error("Network error. Please check your internet connection.");
+    } else {
+      toast.error(`Error: ${error.message}`);
+    }
+  }
+};
+
+
 
 const handleContinueCheckout = async () => {
   try {
@@ -1113,3 +1382,7 @@ const handleContinueCheckout = async () => {
 };
 
 export default CartCheckout;
+
+
+
+
