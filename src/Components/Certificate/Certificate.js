@@ -5,7 +5,7 @@ const Certificate = () => {
     <>
       <div className="flex flex-row justify-between items-center bg-[#F0FFF7] gap-14 px-[5%] py-16 xsm:py-6 xsm:gap-4 md:py-10 xsm:flex-col">
         <div className="w-[60%] h-[520px] sm:h-[200px] md:h-[220px] md:w-[50%] lg:h-[300px] lg:w-[50%] xsm:w-[90%] xsm:h-auto">
-          <img src='/Divyam-vashisht.jpg' className="w-full h-full object-fit" alt="" />
+          <img src='/cert1.jpg' className="w-full h-full object-fit" alt="" />
         </div>
         <div className="flex flex-col space-y-6 w-[80%] xsm:gap-2 xsm:space-y-0 xsm:w-[90%]">
           <p className="text-[35px] text-[#000000] font-pop font-semibold xsm:text-[18px] sm:text-[20px] md:text-[28px] xsm:text-center ">
