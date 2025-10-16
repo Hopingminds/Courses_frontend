@@ -18,6 +18,8 @@ import { Globalinfo } from "../../App";
 import Spinner from "../Spinner";
 import axios from "axios";
 
+console.log("Check City Page", CitySelector);
+
 const CartCheckout = () => {
   const [country, setcountry] = useState("");
   const [state, setstate] = useState("");

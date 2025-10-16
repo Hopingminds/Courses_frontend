@@ -83,6 +83,7 @@ const FilterSubAdmin = ({ FetchData, Statehandle,filtersData,setFiltersData,sets
       });
 
       const data = await response.json();
+      console.log("checking data is comming", data)
       Statehandle(data?.data);
       setshowspinner(false)
     } catch (error) {

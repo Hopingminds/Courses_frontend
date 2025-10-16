@@ -140,7 +140,10 @@ const ProfilEdit = () => {
         let url = BASE_URL + "/user/" + token.email;
         const data = await fetch(url);
         const response = await data.json();
-        // console.log(response.userDetails);
+        // console.log("Check Detials For user",response.userDetails._id);
+         localStorage.setItem("COURSE_USER_DETAILS", JSON.stringify(response?.userDetails));
+
+
         setData(response?.userDetails);
         setUser({
           email: response?.userDetails.email,

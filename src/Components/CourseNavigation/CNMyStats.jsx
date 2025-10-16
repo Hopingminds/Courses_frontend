@@ -9,6 +9,9 @@ import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "../MyLearning/AnimatedProgressProvider";
 
 const CNMyStats = ({ courseLessons, totalLessons, courseAssignment }) => {
+  console.log("courseLessons",courseLessons);
+  console.log("totalLessons",totalLessons);
+  console.log("courseAssignment",courseAssignment);
   const [completedLessons, setCompletedLessons] = useState(
     courseLessons.length
   );

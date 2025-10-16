@@ -9,7 +9,7 @@ import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
 export default function MyStats({ courses }) {
-  // console.log(courses);
+  // console.log("Checking",courses);
   const [completed, setcompleted] = useState(0)
   const [completedLessons,setCompletedLessons] = useState(0);
   const [completedAssignments,setCompletedAssignments] = useState(0);

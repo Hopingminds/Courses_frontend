@@ -11,10 +11,11 @@ function Overview() {
       let url = BASE_URL + "/course/" + params.slug;
       const data = await fetch(url);
       const response = await data.json();
-      console.log("This is overview page", Data);
+      // console.log("This is overview page", Data);
       setData(response.course);
       // console.log(response.course.curriculum);
       // setVideoUrl(response?.course?.curriculum[0]?.lessons[0]?.video);
+      
     }
     Fetchdata();
   }, []);

@@ -16,6 +16,9 @@ const DataDashboard = ({ data }) => {
   let count = 0;
   let completedlessons = 0;
 
+
+  console.log("Check data is comming", data)
+
   data?.purchased_courses?.forEach((item) => {
     count += parseInt(item?.totalLessons?.length) || 0;
     completedlessons += parseInt(item?.completedLessons?.length) || 0;
@@ -23,6 +26,8 @@ const DataDashboard = ({ data }) => {
       complete += 1;
     }
   });
+
+
 
   return (
     <div className="flex flex-col gap-12 px-[4%] pt-[2%] mb-2 w-full">

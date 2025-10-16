@@ -190,6 +190,7 @@ export default function CDDetails() {
         setCourseAssignment(response?.data?.completed_assignments);
         if (response?.data?.course) {
           setcourseId(response?.data?.course?._id);
+          localStorage.setItem("COURSE_ID", response?.data?.course?._id);
           if (!response?.data?.completed_lessons?.length) {
             completed.push(
               response?.data?.course?.curriculum[0]?.lessons[0]?._id

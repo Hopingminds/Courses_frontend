@@ -31,7 +31,7 @@ function Instructor() {
     Fetchdata();
   }, []);
   return (
-    <div className="instructor  bg-[#FFFFFF] text-black sm:p-4" id="Instructor">
+    <div className="instructor  bg-[#FFFFFF] text-black sm:p-4 p-4" id="Instructor ">
       <div className="instructor-container">
         <div className="instructor-image">
           <img src={Data?.instructor?.profile} />
