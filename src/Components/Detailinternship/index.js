@@ -438,7 +438,7 @@ export default function InternshipDetail() {
                    Certifications Of Completion
             </h1>
               <img
-                src="/Divyam-vashisht.jpg"
+                src="/cert1.jpg"
                 alt="Certificate Template"
                 className="transition-opacity duration-300 h-full w-full object-contain rounded-lg"
               />
