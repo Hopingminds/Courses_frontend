@@ -185,7 +185,7 @@ const Footer = () => {
                 </div>
                 <div className=" text-white text-[16px]  font-pop flex flex-col xsm:flex-col  xsm:text-[11px] sm:text-[9px] md:text-[10px]">
                   <Link className="hover:text-[#1dbf73]" to="callto:9193100050">
-                    Tel: +91 91931 00050
+                    Tel: +91 76960 01117
                   </Link>
                 </div>
                 <Link
