@@ -324,7 +324,10 @@ export default function Coursecontents({
                                             <input
                                               type="file"
                                               hidden
-                                              onChange={(e) => handleUpload(e, chapter?._id)}
+                                              onChange={(e) => {
+                                                console.log("Clicked - DEV")
+                                                handleUpload(e, chapter?._id)
+                                              }}
                                             />
                                           </label>
                                           <p className="absolute top-8 right-[0px] bg-black text-[0.7rem] text-white w-[8rem] px-2 py-1 opacity-0 peer-hover:opacity-100 rounded-lg text-center">
