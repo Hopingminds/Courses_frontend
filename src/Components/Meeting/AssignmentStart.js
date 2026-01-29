@@ -11,7 +11,7 @@ export default function AssignmentStart(){
         value 
     ) => { 
         setSelectedValue(value); 
-    }; 
+    };  
 
     return (
         <div className="my-10 mx-[5%] flex justify-between">
