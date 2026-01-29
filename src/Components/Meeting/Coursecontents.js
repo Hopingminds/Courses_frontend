@@ -27,7 +27,6 @@ export default function Coursecontents({
   const navigate = useNavigate();
   // console.log(completed_lessons)
 
-  const fileInputRef = useRef(null);
   const [clicked, setclicked] = useState(false);
   const [totallessons, setTotalLessons] = useState(0);
   const [openDropDown, setOpenDropdown] = useState("");
@@ -116,6 +115,17 @@ export default function Coursecontents({
           },
           body: JSON.stringify(grouped),
         });
+
+        await fetch(BASE_URL + "/lessoncompleted", {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+            Authorization: "Bearer " + token,
+          },
+          body: JSON.stringify(grouped),
+        });
+
         const response1 = await data1.json();
         // console.log(response1);
         if (response1.success) {
@@ -127,11 +137,6 @@ export default function Coursecontents({
         toast.error(response.message);
       }
     }
-  };
-
-  const handleFileUploadClick = (e) => {
-    // Programmatically trigger click event of file input element
-    fileInputRef.current.click();
   };
 
   return (
@@ -314,19 +319,14 @@ export default function Coursecontents({
                                           </li>
                                         </div>
                                         <span className="flex gap-2 border rounded-md px-2 py-1 relative ">
-                                          <MdOutlineFileUpload
-                                            size={16}
-                                            onClick={handleFileUploadClick}
-                                            className="peer w-3 h-3"
-                                          />
-                                          <input
-                                            ref={fileInputRef}
-                                            type="file"
-                                            style={{ display: "none" }}
-                                            onChange={(e) =>
-                                              handleUpload(e, chapter?._id)
-                                            }
-                                          />
+                                          <label className="cursor-pointer">
+                                            <MdOutlineFileUpload size={16} className="peer w-3 h-3" />
+                                            <input
+                                              type="file"
+                                              hidden
+                                              onChange={(e) => handleUpload(e, chapter?._id)}
+                                            />
+                                          </label>
                                           <p className="absolute top-8 right-[0px] bg-black text-[0.7rem] text-white w-[8rem] px-2 py-1 opacity-0 peer-hover:opacity-100 rounded-lg text-center">
                                             Upload Your assignment
                                           </p>
