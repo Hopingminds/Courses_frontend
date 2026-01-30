@@ -106,16 +106,6 @@ export default function Coursecontents({
       const response = await data.json();
       if (response.success) {
         let grouped = { courseId: courseId, lessonId: id };
-        const data1 = await fetch(BASE_URL + "/assignmentcompleted", {
-          method: "PUT",
-          headers: {
-            "Content-type": "application/json",
-            Accept: "application/json",
-            Authorization: "Bearer " + token,
-          },
-          body: JSON.stringify(grouped),
-        });
-
         await fetch(BASE_URL + "/lessoncompleted", {
           method: "PUT",
           headers: {
@@ -125,14 +115,15 @@ export default function Coursecontents({
           },
           body: JSON.stringify(grouped),
         });
-
-        const response1 = await data1.json();
-        // console.log(response1);
-        if (response1.success) {
-          toast.success(response1.message);
-        } else {
-          toast.error(response1.message);
-        }
+        await fetch(BASE_URL + "/assignmentcompleted", {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+            Authorization: "Bearer " + token,
+          },
+          body: JSON.stringify(grouped),
+        });
       } else {
         toast.error(response.message);
       }
@@ -325,7 +316,6 @@ export default function Coursecontents({
                                               type="file"
                                               hidden
                                               onChange={(e) => {
-                                                console.log("Clicked - DEV")
                                                 handleUpload(e, chapter?._id)
                                               }}
                                             />
